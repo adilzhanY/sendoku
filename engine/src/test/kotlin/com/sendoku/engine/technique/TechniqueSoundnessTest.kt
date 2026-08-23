@@ -38,6 +38,7 @@ class TechniqueSoundnessTest {
         WWing,
         SimpleColouring,
         MultiColouring,
+        UniqueRectangle,
     )
 
     @Test
