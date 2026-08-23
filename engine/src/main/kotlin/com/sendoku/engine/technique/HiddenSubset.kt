@@ -27,10 +27,7 @@ public object HiddenQuad : Technique by HiddenSubset(TechniqueId.HIDDEN_QUAD, si
  * evidence is spread across the house rather than sitting in the cells themselves. That
  * is why they sit higher on the ladder despite being the same argument.
  */
-internal class HiddenSubset(
-    override val id: TechniqueId,
-    private val size: Int,
-) : Technique {
+internal class HiddenSubset(override val id: TechniqueId, private val size: Int) : Technique {
 
     init {
         require(size >= 2) { "a hidden subset needs at least two digits" }

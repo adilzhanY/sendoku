@@ -125,8 +125,7 @@ public object GridEquivalence {
         return true
     }
 
-    private fun lineCounts(board: Board, byRow: Boolean): IntArray =
-        IntArray(board.size) { countIn(board, it, byRow) }
+    private fun lineCounts(board: Board, byRow: Boolean): IntArray = IntArray(board.size) { countIn(board, it, byRow) }
 
     private fun countIn(board: Board, line: Int, byRow: Boolean): Int {
         var count = 0

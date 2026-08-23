@@ -9,9 +9,9 @@ import com.sendoku.engine.catalog.GradedGenerator
 import com.sendoku.engine.catalog.PuzzleSupply
 import com.sendoku.engine.catalog.RatedPuzzle
 import com.sendoku.engine.catalog.Supplied
-import kotlin.random.Random
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlin.random.Random
 
 /** Where the next puzzle comes from. */
 public interface PuzzleSource {
@@ -28,9 +28,7 @@ public interface PuzzleSource {
  * milliseconds, which is fine on the way into a game and is not fine every time somebody
  * taps for another one.
  */
-public class CatalogPuzzleSource(
-    private val open: () -> java.io.InputStream,
-) : PuzzleSource {
+public class CatalogPuzzleSource(private val open: () -> java.io.InputStream) : PuzzleSource {
 
     private val supply: PuzzleSupply by lazy {
         PuzzleSupply(reader, GradedGenerator(Dimensions.CLASSIC, Random.Default))

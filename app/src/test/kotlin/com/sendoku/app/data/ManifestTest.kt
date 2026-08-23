@@ -1,9 +1,9 @@
 package com.sendoku.app.data
 
-import java.io.File
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import java.io.File
 
 /**
  * Sendoku does not touch the network, and this is what keeps it that way.

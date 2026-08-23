@@ -10,7 +10,6 @@ import com.sendoku.engine.Grade
 import com.sendoku.engine.Symmetry
 import com.sendoku.engine.catalog.GradedGenerator
 import com.sendoku.engine.catalog.RatedPuzzle
-import kotlin.random.Random
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.SupervisorJob
@@ -27,6 +26,7 @@ import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import kotlin.random.Random
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class GameViewModelTest {
@@ -46,8 +46,7 @@ class GameViewModelTest {
         var saveCount = 0
         val finished = MutableStateFlow<List<FinishedGame>>(emptyList())
 
-        override suspend fun loadInProgress(settings: GameSettings): GameState? =
-            saved?.copy(settings = settings)
+        override suspend fun loadInProgress(settings: GameSettings): GameState? = saved?.copy(settings = settings)
 
         override suspend fun saveInProgress(state: GameState) {
             saveCount++
@@ -57,7 +56,9 @@ class GameViewModelTest {
         override fun watchInProgress(): Flow<com.sendoku.app.data.SavedGame?> =
             MutableStateFlow(saved?.let { com.sendoku.app.data.SavedGame.of(it) })
 
-        override suspend fun clearInProgress() { saved = null }
+        override suspend fun clearInProgress() {
+            saved = null
+        }
 
         override suspend fun recordFinished(state: GameState, finishedAt: Long) {
             finished.value = finished.value + FinishedGame.of(state, finishedAt)
@@ -72,7 +73,9 @@ class GameViewModelTest {
         override fun statistics(): Flow<com.sendoku.app.data.Statistics> =
             finished.map { com.sendoku.app.data.Statistics.of(it) }
 
-        override suspend fun clearHistory() { finished.value = emptyList() }
+        override suspend fun clearHistory() {
+            finished.value = emptyList()
+        }
     }
 
     private class FixedSettings(settings: GameSettings = GameSettings()) : SettingsStore {
@@ -103,8 +106,7 @@ class GameViewModelTest {
     private inner class RotatingPuzzles : PuzzleSource {
         var handedOut = 0
         override suspend fun next(grade: Grade): RatedPuzzle = puzzles[handedOut++ % puzzles.size]
-        override suspend fun daily(epochDay: Long): RatedPuzzle =
-            puzzles[(epochDay % puzzles.size).toInt()]
+        override suspend fun daily(epochDay: Long): RatedPuzzle = puzzles[(epochDay % puzzles.size).toInt()]
     }
 
     @Test
@@ -276,7 +278,6 @@ class GameViewModelTest {
         assertNotNull(repository.saved)
         assertTrue(!repository.saved!!.isRunning)
     }
-
 
     @Test
     fun `the daily is the same puzzle however many times it is opened`() = runTest {

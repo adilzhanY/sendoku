@@ -5,6 +5,7 @@ import com.sendoku.engine.Dimensions
 import com.sendoku.engine.Grade
 import com.sendoku.engine.Symmetry
 import com.sendoku.engine.technique.TechniqueId
+import org.junit.jupiter.api.Tag
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.IOException
@@ -14,6 +15,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 import kotlin.test.assertTrue
 
+@Tag("slow")
 class PuzzleFormatTest {
 
     private val classic = Dimensions.CLASSIC

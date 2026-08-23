@@ -93,7 +93,11 @@ class DailyPuzzleTest {
             val stride = DailyPuzzle.strideFor(choices)
             var a = stride
             var b = choices.toLong()
-            while (b != 0L) { val t = a % b; a = b; b = t }
+            while (b != 0L) {
+                val t = a % b
+                a = b
+                b = t
+            }
             assertEquals(1L, a, "stride $stride is not coprime with $choices")
         }
     }

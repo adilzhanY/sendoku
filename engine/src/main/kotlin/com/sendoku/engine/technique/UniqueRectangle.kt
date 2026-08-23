@@ -93,12 +93,7 @@ public object UniqueRectangle : Technique {
      * Type two. Both remaining corners carry the same single extra digit. One of them has
      * to take it, or the rectangle closes, so nothing seeing both of them can hold it.
      */
-    private fun typeTwo(
-        grid: CandidateGrid,
-        corners: List<Int>,
-        pair: Candidates,
-        roof: List<Int>,
-    ): Deduction? {
+    private fun typeTwo(grid: CandidateGrid, corners: List<Int>, pair: Candidates, roof: List<Int>): Deduction? {
         val extras = roof.map { grid.candidatesAt(it) without pair }
         if (extras.any { !it.isSingle } || extras[0] != extras[1]) return null
         val extra = extras[0].single
@@ -116,12 +111,7 @@ public object UniqueRectangle : Technique {
      * Say y is locked to those two corners. Putting x in either of them forces y into the
      * other, and then all four corners hold nothing but x and y. So x goes from both.
      */
-    private fun typeFour(
-        grid: CandidateGrid,
-        corners: List<Int>,
-        pair: Candidates,
-        roof: List<Int>,
-    ): Deduction? {
+    private fun typeFour(grid: CandidateGrid, corners: List<Int>, pair: Candidates, roof: List<Int>): Deduction? {
         val shared = sharedHouses(grid, roof[0], roof[1])
         if (shared.isEmpty()) return null
         val digits = pair.toList()
@@ -149,12 +139,7 @@ public object UniqueRectangle : Technique {
      * like a single cell holding exactly those extras, which can then join a naked subset
      * with real cells in a house the corners share.
      */
-    private fun typeThree(
-        grid: CandidateGrid,
-        corners: List<Int>,
-        pair: Candidates,
-        roof: List<Int>,
-    ): Deduction? {
+    private fun typeThree(grid: CandidateGrid, corners: List<Int>, pair: Candidates, roof: List<Int>): Deduction? {
         val extras = (grid.candidatesAt(roof[0]) or grid.candidatesAt(roof[1])) without pair
         if (extras.size < 2 || extras.size > 4) return null
         val subsetSize = extras.size

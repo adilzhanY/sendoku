@@ -19,8 +19,6 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.ui.res.stringResource
-import com.sendoku.app.R
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -31,15 +29,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.KeyEventType
 import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.input.key.type
-import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.sendoku.app.R
 import com.sendoku.app.game.GameState
 import com.sendoku.app.game.Hint
 import com.sendoku.app.game.HintEngine
@@ -47,9 +47,9 @@ import com.sendoku.app.game.HintLevel
 import com.sendoku.app.game.logicCells
 import com.sendoku.app.game.struckCells
 import com.sendoku.app.theme.Sendoku
+import kotlinx.coroutines.delay
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
-import kotlinx.coroutines.delay
 
 /**
  * The playing screen: a header, the board, the pad and the tools.
@@ -97,7 +97,6 @@ public fun GameScreen(
     val haptics = LocalHapticFeedback.current
     val view = LocalView.current
     val feedback: (GameEvent) -> Unit = { event ->
-        val before = state
         onEvent(event)
         if (event is GameEvent.Digit || event is GameEvent.Erase) {
             if (state.settings.haptics) haptics.performHapticFeedback(HapticFeedbackType.TextHandleMove)
@@ -135,7 +134,7 @@ public fun GameScreen(
                         verticalArrangement = Arrangement.spacedBy(dimens.spaceM, Alignment.CenterVertically),
                     ) {
                         GameHeader(state, onEvent)
-                        HintArea(state, hint, onEvent, { hint = it }, onGlossary)
+                        HintArea(hint, onEvent, { hint = it }, onGlossary)
                         Controls(state, feedback) { hint = HintEngine.next(state) }
                     }
                 }
@@ -151,7 +150,7 @@ public fun GameScreen(
                     ) {
                         BoardArea(state, onEvent, onNextPuzzle, onHome, { longPressed = it }, boardCap, hint)
                     }
-                    HintArea(state, hint, onEvent, { hint = it }, onGlossary)
+                    HintArea(hint, onEvent, { hint = it }, onGlossary)
                     Controls(state, feedback) { hint = HintEngine.next(state) }
                 }
             }
@@ -185,7 +184,10 @@ public fun GameScreen(
                 )
             },
             confirmButton = {
-                TextButton(onClick = { confirmLeaving = false; onHome() }) {
+                TextButton(onClick = {
+                    confirmLeaving = false
+                    onHome()
+                }) {
                     Text(stringResource(R.string.leave_confirm), color = colors.accent, style = Sendoku.type.label)
                 }
             },
@@ -216,23 +218,23 @@ private fun BoardArea(
     BoxWithConstraints {
         val side = minOf(maxWidth, maxHeight, cap)
         Box(Modifier.size(side)) {
-        SudokuBoard(
-            state = state,
-            onSelect = { onEvent(GameEvent.Select(it)) },
-            onLongPress = onLongPress,
-            hintLogic = if (showCells) step.deduction.logicCells() else emptySet(),
-            hintStrike = if (showCells) step.deduction.struckCells() else emptySet(),
-            wrong = (hint as? Hint.Mistake)?.cells.orEmpty(),
-            modifier = Modifier.fillMaxWidth(),
-        )
-        if (state.isOver) {
-            OutcomePanel(state = state, onNextPuzzle = onNextPuzzle, onHome = onHome)
-        } else if (!state.isRunning) {
-            PauseOverlay(
-                elapsed = state.elapsed.clock(),
-                onResume = { onEvent(GameEvent.Resume) },
+            SudokuBoard(
+                state = state,
+                onSelect = { onEvent(GameEvent.Select(it)) },
+                onLongPress = onLongPress,
+                hintLogic = if (showCells) step.deduction.logicCells() else emptySet(),
+                hintStrike = if (showCells) step.deduction.struckCells() else emptySet(),
+                wrong = (hint as? Hint.Mistake)?.cells.orEmpty(),
+                modifier = Modifier.fillMaxWidth(),
             )
-        }
+            if (state.isOver) {
+                OutcomePanel(state = state, onNextPuzzle = onNextPuzzle, onHome = onHome)
+            } else if (!state.isRunning) {
+                PauseOverlay(
+                    elapsed = state.elapsed.clock(),
+                    onResume = { onEvent(GameEvent.Resume) },
+                )
+            }
         }
     }
 }
@@ -257,13 +259,7 @@ private fun Controls(state: GameState, onEvent: (GameEvent) -> Unit, onHint: () 
 
 /** The hint panel, when there is one to show. */
 @Composable
-private fun HintArea(
-    state: GameState,
-    hint: Hint?,
-    onEvent: (GameEvent) -> Unit,
-    onHint: (Hint?) -> Unit,
-    onGlossary: () -> Unit,
-) {
+private fun HintArea(hint: Hint?, onEvent: (GameEvent) -> Unit, onHint: (Hint?) -> Unit, onGlossary: () -> Unit) {
     if (hint == null) return
     HintPanel(
         hint = hint,

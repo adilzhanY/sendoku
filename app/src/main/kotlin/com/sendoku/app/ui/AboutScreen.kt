@@ -12,12 +12,12 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
-import androidx.compose.ui.res.stringResource
-import com.sendoku.app.R
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
+import com.sendoku.app.R
 import com.sendoku.app.theme.Sendoku
 
 /**
@@ -27,12 +27,7 @@ import com.sendoku.app.theme.Sendoku
  * because a promise nobody can find is not much of a promise.
  */
 @Composable
-public fun AboutScreen(
-    version: String,
-    onBack: () -> Unit,
-    onLicences: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
+public fun AboutScreen(version: String, onBack: () -> Unit, onLicences: () -> Unit, modifier: Modifier = Modifier) {
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
 

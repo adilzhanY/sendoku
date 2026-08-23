@@ -6,10 +6,7 @@ package com.sendoku.engine
  * The board carries no notion of which cells were given and which the player typed.
  * That belongs to the game layer, not to the engine.
  */
-public class Board private constructor(
-    public val dims: Dimensions,
-    private val cells: IntArray,
-) {
+public class Board private constructor(public val dims: Dimensions, private val cells: IntArray) {
 
     public constructor(dims: Dimensions) : this(dims, IntArray(dims.cellCount))
 
@@ -49,8 +46,7 @@ public class Board private constructor(
         return row * size + col
     }
 
-    override fun equals(other: Any?): Boolean =
-        other is Board && other.dims == dims && other.cells.contentEquals(cells)
+    override fun equals(other: Any?): Boolean = other is Board && other.dims == dims && other.cells.contentEquals(cells)
 
     override fun hashCode(): Int = 31 * dims.hashCode() + cells.contentHashCode()
 
@@ -98,8 +94,7 @@ public object Digits {
 
     private const val ALPHABET = "123456789ABCDEFG"
 
-    public fun toChar(digit: Int): Char =
-        if (digit == Board.EMPTY) '.' else ALPHABET[digit - 1]
+    public fun toChar(digit: Int): Char = if (digit == Board.EMPTY) '.' else ALPHABET[digit - 1]
 
     public fun fromChar(char: Char, size: Int): Int {
         if (char == '.' || char == '0' || char == '-' || char == ' ') return Board.EMPTY

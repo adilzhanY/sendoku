@@ -4,11 +4,13 @@ import com.sendoku.engine.Dimensions
 import com.sendoku.engine.Grade
 import com.sendoku.engine.Solver
 import com.sendoku.engine.technique.TechniqueSolver
+import org.junit.jupiter.api.Tag
 import kotlin.random.Random
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
+@Tag("slow")
 class PuzzleSupplyTest {
 
     private val classic = Dimensions.CLASSIC

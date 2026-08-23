@@ -118,7 +118,6 @@ public data class Statistics(
             return longest
         }
 
-        private fun Long.toLocalDate(zone: ZoneId): LocalDate =
-            Instant.ofEpochMilli(this).atZone(zone).toLocalDate()
+        private fun Long.toLocalDate(zone: ZoneId): LocalDate = Instant.ofEpochMilli(this).atZone(zone).toLocalDate()
     }
 }

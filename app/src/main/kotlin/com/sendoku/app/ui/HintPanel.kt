@@ -50,6 +50,7 @@ public fun HintPanel(
     ) {
         when (hint) {
             is Hint.Step -> StepBody(hint, onGlossary)
+
             is Hint.Mistake -> {
                 Text(stringResource(R.string.hint_wrong_title), style = Sendoku.type.overline, color = colors.conflict)
                 val one = hint.cells.size == 1
@@ -70,10 +71,12 @@ public fun HintPanel(
                     color = colors.muted,
                 )
             }
+
             Hint.Solved -> {
                 Text(stringResource(R.string.hint_done_title), style = Sendoku.type.overline, color = colors.accent)
                 Text(stringResource(R.string.hint_done_body), style = Sendoku.type.body, color = colors.muted)
             }
+
             Hint.Stuck -> {
                 Text(stringResource(R.string.hint_stuck_title), style = Sendoku.type.overline, color = colors.muted)
                 Text(
@@ -88,7 +91,12 @@ public fun HintPanel(
             modifier = Modifier.fillMaxWidth().padding(top = dimens.spaceXs),
             horizontalArrangement = Arrangement.spacedBy(dimens.padGap),
         ) {
-            HintButton(stringResource(R.string.hint_close), accent = false, onClick = onDismiss, modifier = Modifier.weight(1f))
+            HintButton(
+                stringResource(R.string.hint_close),
+                accent = false,
+                onClick = onDismiss,
+                modifier = Modifier.weight(1f),
+            )
             if (hint is Hint.Step) {
                 if (hint.level.hasMore) {
                     HintButton(
@@ -100,7 +108,12 @@ public fun HintPanel(
                         modifier = Modifier.weight(1.6f),
                     )
                 } else {
-                    HintButton(stringResource(R.string.hint_do_it), accent = true, onClick = onApply, modifier = Modifier.weight(1.6f))
+                    HintButton(
+                        stringResource(R.string.hint_do_it),
+                        accent = true,
+                        onClick = onApply,
+                        modifier = Modifier.weight(1.6f),
+                    )
                 }
             }
         }
@@ -160,12 +173,7 @@ private fun StepBody(hint: Hint.Step, onGlossary: () -> Unit) {
 }
 
 @Composable
-private fun HintButton(
-    label: String,
-    accent: Boolean,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
+private fun HintButton(label: String, accent: Boolean, onClick: () -> Unit, modifier: Modifier = Modifier) {
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
     Box(

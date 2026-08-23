@@ -176,5 +176,4 @@ public object WWing : Technique {
 }
 
 /** The cells that see both [a] and [b], excluding the two themselves. */
-internal fun CandidateGrid.seenByBoth(a: Int, b: Int): List<Int> =
-    peersOf(a).filter { it != b && sees(it, b) }
+internal fun CandidateGrid.seenByBoth(a: Int, b: Int): List<Int> = peersOf(a).filter { it != b && sees(it, b) }

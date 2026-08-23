@@ -18,12 +18,12 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
-import com.sendoku.app.R
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import com.sendoku.app.R
 import com.sendoku.app.game.GameState
 import com.sendoku.app.theme.Sendoku
 
@@ -39,11 +39,7 @@ import com.sendoku.app.theme.Sendoku
  * the other eight along under a thumb that already knows where they are.
  */
 @Composable
-public fun NumberPad(
-    state: GameState,
-    onDigit: (Int) -> Unit,
-    modifier: Modifier = Modifier,
-) {
+public fun NumberPad(state: GameState, onDigit: (Int) -> Unit, modifier: Modifier = Modifier) {
     val dimens = Sendoku.dimens
     Row(
         modifier = modifier.fillMaxWidth(),

@@ -9,11 +9,7 @@ import com.sendoku.engine.CandidateGrid
  * Exactly one of the two colours is the true one. Which is unknown, and never needs to
  * be known: every colouring rule works by showing that one colour cannot be true.
  */
-internal class Cluster(
-    val digit: Int,
-    val first: List<Int>,
-    val second: List<Int>,
-) {
+internal class Cluster(val digit: Int, val first: List<Int>, val second: List<Int>) {
     val cells: Set<Int> = (first + second).toSet()
 
     /** The colour that is not [colour]. */

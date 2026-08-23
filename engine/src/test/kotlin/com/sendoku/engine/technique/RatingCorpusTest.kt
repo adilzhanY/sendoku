@@ -4,6 +4,7 @@ import com.sendoku.engine.Board
 import com.sendoku.engine.Dimensions
 import com.sendoku.engine.Generator
 import com.sendoku.engine.Grade
+import org.junit.jupiter.api.Tag
 import kotlin.math.abs
 import kotlin.random.Random
 import kotlin.test.Ignore
@@ -24,6 +25,7 @@ import kotlin.test.assertTrue
  * whether that was on purpose. If it was, regenerate the file with [regenerate] below and
  * read the diff before committing it.
  */
+@Tag("slow")
 class RatingCorpusTest {
 
     private data class Entry(

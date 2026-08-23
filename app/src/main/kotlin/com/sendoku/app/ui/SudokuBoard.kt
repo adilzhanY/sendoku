@@ -3,8 +3,8 @@ package com.sendoku.app.ui
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.background
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
@@ -18,17 +18,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.ReadOnlyComposable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import androidx.compose.ui.res.stringResource
-import com.sendoku.app.R
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.role
@@ -40,6 +39,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.sendoku.app.R
 import com.sendoku.app.game.Cell
 import com.sendoku.app.game.GameState
 import com.sendoku.app.theme.Sendoku
@@ -290,8 +290,7 @@ private fun PencilMarks(cell: Cell, markSize: TextUnit) {
  * same brightness for somebody with red green colour blindness, and identically in
  * greyscale. The underline is what actually carries it.
  */
-internal fun decorationFor(isConflict: Boolean): TextDecoration? =
-    if (isConflict) TextDecoration.Underline else null
+internal fun decorationFor(isConflict: Boolean): TextDecoration? = if (isConflict) TextDecoration.Underline else null
 
 /**
  * What a screen reader says about a cell.
@@ -311,9 +310,12 @@ internal fun describe(state: GameState, index: Int, conflicting: Boolean): Strin
     )
     val body = when {
         cell.isGiven -> stringResource(R.string.cell_clue, position, cell.digit)
+
         !cell.isEmpty -> stringResource(R.string.cell_digit, position, cell.digit)
+
         cell.marks.isNotEmpty ->
             stringResource(R.string.cell_noted, position, cell.marks.toList().joinToString(", "))
+
         else -> stringResource(R.string.cell_empty, position)
     }
     return if (conflicting) stringResource(R.string.cell_repeated, body) else body

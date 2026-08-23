@@ -125,11 +125,10 @@ public class Solver(private val dims: Dimensions) {
             return false
         }
 
-        private fun candidates(row: Int, col: Int): Int =
-            dims.allDigits and
-                rowMask[row].inv() and
-                colMask[col].inv() and
-                boxMask[dims.boxOf(row, col)].inv()
+        private fun candidates(row: Int, col: Int): Int = dims.allDigits and
+            rowMask[row].inv() and
+            colMask[col].inv() and
+            boxMask[dims.boxOf(row, col)].inv()
 
         private fun digitOrder(mask: Int): IntArray {
             val digits = IntArray(Integer.bitCount(mask))

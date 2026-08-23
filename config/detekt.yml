@@ -1,0 +1,107 @@
+# What detekt looks for, on top of its defaults.
+#
+# Tuned rather than accepted wholesale. Several defaults are written for server code and are
+# actively wrong for an app built out of Compose functions and exhaustive `when` blocks over
+# a twenty four value enum.
+
+build:
+  maxIssues: 0
+
+complexity:
+  LongMethod:
+    # A composable that lays out a screen is one long function by nature, and splitting it to
+    # satisfy a counter makes it harder to read, not easier.
+    active: true
+    threshold: 120
+    ignoreAnnotated: ['Composable']
+  LongParameterList:
+    active: true
+    functionThreshold: 9
+    constructorThreshold: 16
+    ignoreAnnotated: ['Composable']
+  CyclomaticComplexMethod:
+    # Twenty two rather than twenty because the wing and chain searches sit at twenty and
+    # twenty one, and every branch in them is a guard clause that the algorithm needs. They
+    # were read before this number was raised.
+    active: true
+    threshold: 22
+    # A `when` over every technique is twenty four branches and is exactly as complex as it
+    # looks, which is to say not at all.
+    ignoreSingleWhenExpression: true
+  TooManyFunctions:
+    active: true
+    thresholdInClasses: 30
+    thresholdInFiles: 30
+    thresholdInObjects: 30
+    ignoreAnnotatedFunctions: ['Composable']
+  LargeClass:
+    active: true
+    threshold: 900
+  NestedBlockDepth:
+    active: true
+    threshold: 6
+  ComplexCondition:
+    # Four is the default and several conditions here are exactly four terms, all of them
+    # clearer written out than hidden behind a named helper.
+    active: true
+    threshold: 5
+
+style:
+  MagicNumber:
+    # A sudoku engine is made of numbers. Naming 9 as NINE helps nobody.
+    active: false
+  ReturnCount:
+    # Guard clauses. The unique rectangle search has eight, each one a reason the shape does
+    # not apply, and collapsing them into nested ifs would make it far harder to follow.
+    active: true
+    max: 8
+  MaxLineLength:
+    active: true
+    maxLineLength: 120
+  UnusedPrivateMember:
+    active: true
+    # A preview function is called by the tooling, never by the code.
+    ignoreAnnotated: ['Preview', 'Composable']
+  ForbiddenComment:
+    # A TODO in the code is a thing that will be forgotten. The checklist is the place for it.
+    active: true
+    comments:
+      - reason: 'put it in TODO.md, where it will actually be looked at'
+        value: 'TODO:'
+      - reason: 'put it in TODO.md, where it will actually be looked at'
+        value: 'FIXME:'
+  ThrowsCount:
+    # Reading a batch header validates four separate things, and each one deserves its own
+    # message. Funnelling them through one throw would make a corrupt file harder to diagnose.
+    active: true
+    max: 5
+  LoopWithTooManyJumpStatements:
+    active: true
+    maxJumpCount: 4
+
+naming:
+  MemberNameEqualsClassName:
+    # The backtracking search has a `search` member inside a `Search` class, which is the
+    # clearest name for both.
+    active: false
+  MatchingDeclarationName:
+    active: true
+  FunctionNaming:
+    active: true
+    ignoreAnnotated: ['Composable']
+  TopLevelPropertyNaming:
+    active: true
+    constantPattern: '[A-Z][_A-Za-z0-9]*'
+
+exceptions:
+  TooGenericExceptionCaught:
+    active: true
+  SwallowedException:
+    active: true
+  InstanceOfCheckForException:
+    active: true
+
+performance:
+  SpreadOperator:
+    # Used deliberately for Candidates.of(*digits), where the arrays are at most sixteen long.
+    active: false

@@ -7,8 +7,6 @@ import com.sendoku.engine.Grade
 import com.sendoku.engine.Symmetry
 import com.sendoku.engine.catalog.GradedGenerator
 import com.sendoku.engine.catalog.RatedPuzzle
-import kotlin.random.Random
-import kotlin.time.Duration.Companion.minutes
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first
@@ -18,6 +16,8 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import kotlin.random.Random
+import kotlin.time.Duration.Companion.minutes
 
 /**
  * The repository, over stand in DAOs.
@@ -32,8 +32,12 @@ class GameRepositoryTest {
         val rows = MutableStateFlow<InProgressRow?>(null)
         override suspend fun load(id: Int): InProgressRow? = rows.value
         override fun watch(id: Int): Flow<InProgressRow?> = rows
-        override suspend fun save(row: InProgressRow) { rows.value = row }
-        override suspend fun clear() { rows.value = null }
+        override suspend fun save(row: InProgressRow) {
+            rows.value = row
+        }
+        override suspend fun clear() {
+            rows.value = null
+        }
     }
 
     private class FakeFinished : FinishedDao {
@@ -49,7 +53,9 @@ class GameRepositoryTest {
         override fun watchSolvedCount(): Flow<Int> = rows.map { list -> list.count { it.solved } }
         override suspend fun bestSeconds(grade: String): Long? =
             rows.value.filter { it.solved && it.grade == grade }.minOfOrNull { it.elapsedSeconds }
-        override suspend fun clear() { rows.value = emptyList() }
+        override suspend fun clear() {
+            rows.value = emptyList()
+        }
     }
 
     private val puzzle: RatedPuzzle by lazy {
@@ -160,7 +166,6 @@ class GameRepositoryTest {
         assertTrue(repository.history().first().isNotEmpty())
     }
 
-
     @Test
     fun `the saved game can be watched, which is how the home screen learns about it`() = runTest {
         val repository = RoomGameRepository(FakeInProgress(), FakeFinished())
@@ -184,7 +189,6 @@ class GameRepositoryTest {
         // One digit was entered on top of the clues.
         assertEquals(puzzle.clueCount + 1, saved.placed)
     }
-
 
     @Test
     fun `statistics come from the history and clearing it empties them`() = runTest {

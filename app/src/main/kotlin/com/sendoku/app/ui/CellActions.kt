@@ -12,12 +12,12 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
-import androidx.compose.ui.res.pluralStringResource
-import androidx.compose.ui.res.stringResource
-import com.sendoku.app.R
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
+import com.sendoku.app.R
 import com.sendoku.app.game.GameState
 import com.sendoku.app.theme.Sendoku
 
@@ -30,12 +30,7 @@ import com.sendoku.app.theme.Sendoku
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-public fun CellActionSheet(
-    state: GameState,
-    cell: Int,
-    onAction: (GameEvent) -> Unit,
-    onDismiss: () -> Unit,
-) {
+public fun CellActionSheet(state: GameState, cell: Int, onAction: (GameEvent) -> Unit, onDismiss: () -> Unit) {
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
     val target = state.cells[cell]
@@ -79,7 +74,11 @@ public fun CellActionSheet(
                 SheetAction(stringResource(R.string.cell_actions_clear_notes), enabled = target.marks.isNotEmpty) {
                     onAction(GameEvent.ClearMarks)
                 }
-                SheetAction(stringResource(R.string.cell_actions_clear), enabled = !target.isEmpty || target.marks.isNotEmpty) {
+                SheetAction(
+                    stringResource(R.string.cell_actions_clear),
+                    enabled =
+                    !target.isEmpty || target.marks.isNotEmpty,
+                ) {
                     onAction(GameEvent.Erase)
                 }
             }

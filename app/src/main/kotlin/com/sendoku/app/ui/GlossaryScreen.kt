@@ -31,10 +31,7 @@ import com.sendoku.engine.technique.TechniqueId
  * never go.
  */
 @Composable
-public fun GlossaryScreen(
-    onBack: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
+public fun GlossaryScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
     val ladder = TechniqueId.entries.sortedBy { it.cost }
@@ -76,7 +73,11 @@ public fun GlossaryScreen(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        Text(stringResource(TechniqueCopy.nameOf(technique)), style = Sendoku.type.label, color = colors.given)
+                        Text(
+                            stringResource(TechniqueCopy.nameOf(technique)),
+                            style = Sendoku.type.label,
+                            color = colors.given,
+                        )
                         Text(
                             text = stringResource(gradeName(Grade.of(technique.cost))).uppercase(),
                             style = Sendoku.type.overline,

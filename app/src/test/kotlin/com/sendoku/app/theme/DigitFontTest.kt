@@ -1,9 +1,9 @@
 package com.sendoku.app.theme
 
-import java.io.File
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import java.io.File
 
 /**
  * Checks the bundled font is a real font that really has the digits in it.

@@ -11,10 +11,10 @@ import com.sendoku.engine.Dimensions
 import com.sendoku.engine.Symmetry
 import com.sendoku.engine.catalog.GradedGenerator
 import com.sendoku.engine.catalog.RatedPuzzle
-import kotlin.random.Random
 import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
+import kotlin.random.Random
 
 /**
  * What a screen reader is actually handed.
@@ -38,6 +38,33 @@ class BoardSemanticsTest {
 
     private fun state() = GameState.start(puzzle)
 
+    /**
+     * The description a cell should have, written out longhand.
+     *
+     * Deliberately not calling the app's own describe: a test that reuses the code under test
+     * to work out what it expects can only ever agree with it. These are the exact words a
+     * screen reader will say, spelled out here so that changing them is a visible decision.
+     */
+    private fun describeFor(state: GameState, cell: Int): String {
+        val position = "Row ${cell / 9 + 1}, column ${cell % 9 + 1}"
+        val target = state.cells[cell]
+        return when {
+            target.isGiven -> "$position, ${target.digit}, a clue"
+            !target.isEmpty -> "$position, ${target.digit}"
+            target.marks.isNotEmpty -> "$position, empty, noted ${target.marks.toList().joinToString(", ")}"
+            else -> "$position, empty"
+        }
+    }
+
+    private fun padLabel(state: GameState, digit: Int): String {
+        val remaining = state.remaining(digit)
+        return when {
+            remaining <= 0 -> "$digit, all placed"
+            remaining == 1 -> "$digit, one left"
+            else -> "$digit, $remaining left"
+        }
+    }
+
     @Test
     fun everyCellIsLabelledAndClickable() {
         val start = state()
@@ -46,7 +73,7 @@ class BoardSemanticsTest {
         }
 
         for (index in 0 until 81) {
-            val description = describe(start, index, conflicting = false)
+            val description = describeFor(start, index)
             compose.onNodeWithContentDescription(description, useUnmergedTree = false)
                 .assertHasClickAction()
         }
@@ -60,10 +87,10 @@ class BoardSemanticsTest {
         val clue = (0 until 81).first { start.cells[it].isGiven }
         val empty = (0 until 81).first { start.cells[it].isEmpty }
 
-        compose.onNodeWithContentDescription(describe(start, clue, false)).assertHasClickAction()
-        compose.onNodeWithContentDescription(describe(start, empty, false)).assertHasClickAction()
-        assertTrue(describe(start, clue, false).endsWith("a clue"))
-        assertTrue(describe(start, empty, false).endsWith("empty"))
+        compose.onNodeWithContentDescription(describeFor(start, clue)).assertHasClickAction()
+        compose.onNodeWithContentDescription(describeFor(start, empty)).assertHasClickAction()
+        assertTrue(describeFor(start, clue).endsWith("a clue"))
+        assertTrue(describeFor(start, empty).endsWith("empty"))
     }
 
     @Test
@@ -74,7 +101,7 @@ class BoardSemanticsTest {
             SendokuTheme { SudokuBoard(state = start, onSelect = { tapped = it }) }
         }
         val empty = (0 until 81).first { start.cells[it].isEmpty }
-        compose.onNodeWithContentDescription(describe(start, empty, false)).performClick()
+        compose.onNodeWithContentDescription(describeFor(start, empty)).performClick()
         assertTrue("expected cell $empty, got $tapped", tapped == empty)
     }
 
@@ -83,7 +110,7 @@ class BoardSemanticsTest {
         val empty = (0 until 81).first { state().cells[it].isEmpty }
         val selected = state().select(empty)
         compose.setContent { SendokuTheme { SudokuBoard(state = selected, onSelect = {}) } }
-        compose.onNodeWithContentDescription(describe(selected, empty, false)).assertIsSelected()
+        compose.onNodeWithContentDescription(describeFor(selected, empty)).assertIsSelected()
     }
 
     @Test
@@ -93,13 +120,7 @@ class BoardSemanticsTest {
             SendokuTheme { NumberPad(state = start, onDigit = {}) }
         }
         for (digit in 1..9) {
-            val remaining = start.remaining(digit)
-            val spoken = when {
-                remaining <= 0 -> "$digit, all placed"
-                remaining == 1 -> "$digit, one left"
-                else -> "$digit, $remaining left"
-            }
-            compose.onNodeWithContentDescription(spoken).assertHasClickAction()
+            compose.onNodeWithContentDescription(padLabel(start, digit)).assertHasClickAction()
         }
     }
 
@@ -110,7 +131,7 @@ class BoardSemanticsTest {
         start = start.select(empty).setPencilMode(true).enter(2).enter(7)
         compose.setContent { SendokuTheme { SudokuBoard(state = start, onSelect = {}) } }
 
-        val description = describe(start, empty, false)
+        val description = describeFor(start, empty)
         assertTrue(description, description.contains("noted 2, 7"))
         compose.onNodeWithContentDescription(description).assertHasClickAction()
     }

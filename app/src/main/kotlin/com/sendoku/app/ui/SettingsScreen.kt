@@ -17,18 +17,18 @@ import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
-import androidx.compose.ui.res.stringResource
-import com.sendoku.app.R
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
+import com.sendoku.app.R
 import com.sendoku.app.data.Appearance
 import com.sendoku.app.data.ThemeMode
 import com.sendoku.app.game.GameSettings
+import com.sendoku.app.theme.Sendoku
 import com.sendoku.app.theme.SendokuThemeId
 import com.sendoku.app.theme.SendokuThemes
-import com.sendoku.app.theme.Sendoku
 
 /**
  * The settings that exist so far.

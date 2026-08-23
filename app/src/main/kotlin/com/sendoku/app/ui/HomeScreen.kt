@@ -18,31 +18,23 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
-import androidx.compose.ui.res.stringResource
-import com.sendoku.app.R
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.sendoku.app.R
 import com.sendoku.app.theme.Sendoku
 import com.sendoku.engine.Grade
 import kotlin.time.Duration
 
 /** What the home screen needs to know. */
-public data class HomeState(
-    val solvedByGrade: Map<Grade, Int>,
-    val inProgress: InProgressSummary?,
-)
+public data class HomeState(val solvedByGrade: Map<Grade, Int>, val inProgress: InProgressSummary?)
 
 /** The puzzle waiting to be picked up, if there is one. */
-public data class InProgressSummary(
-    val grade: Grade,
-    val placed: Int,
-    val total: Int,
-    val elapsed: Duration,
-) {
+public data class InProgressSummary(val grade: Grade, val placed: Int, val total: Int, val elapsed: Duration) {
     val fraction: Float get() = if (total == 0) 0f else placed.toFloat() / total
 }
 
@@ -83,24 +75,24 @@ public fun HomeScreen(
         ) {
             Text(stringResource(R.string.app_name), style = Sendoku.type.title, color = colors.given)
             Row(horizontalArrangement = Arrangement.spacedBy(dimens.spaceXs)) {
-            Text(
-                text = stringResource(R.string.home_stats),
-                style = Sendoku.type.overline,
-                color = colors.muted,
-                modifier = Modifier
-                    .clip(RoundedCornerShape(dimens.radiusS))
-                    .clickable(onClick = onStats)
-                    .padding(dimens.spaceS),
-            )
-            Text(
-                text = stringResource(R.string.home_settings),
-                style = Sendoku.type.overline,
-                color = colors.muted,
-                modifier = Modifier
-                    .clip(RoundedCornerShape(dimens.radiusS))
-                    .clickable(onClick = onSettings)
-                    .padding(dimens.spaceS),
-            )
+                Text(
+                    text = stringResource(R.string.home_stats),
+                    style = Sendoku.type.overline,
+                    color = colors.muted,
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(dimens.radiusS))
+                        .clickable(onClick = onStats)
+                        .padding(dimens.spaceS),
+                )
+                Text(
+                    text = stringResource(R.string.home_settings),
+                    style = Sendoku.type.overline,
+                    color = colors.muted,
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(dimens.radiusS))
+                        .clickable(onClick = onSettings)
+                        .padding(dimens.spaceS),
+                )
             }
         }
 
@@ -143,9 +135,22 @@ public fun HomeScreen(
                 .padding(dimens.spaceM),
             horizontalArrangement = Arrangement.spacedBy(dimens.padGap),
         ) {
-            HomeButton(stringResource(R.string.home_daily), accent = false, onClick = onDaily, modifier = Modifier.weight(1f))
             HomeButton(
-                label = stringResource(if (state.inProgress != null) R.string.home_resume else R.string.home_new_puzzle),
+                stringResource(R.string.home_daily),
+                accent = false,
+                onClick = onDaily,
+                modifier = Modifier.weight(1f),
+            )
+            HomeButton(
+                label = stringResource(
+                    if (state.inProgress !=
+                        null
+                    ) {
+                        R.string.home_resume
+                    } else {
+                        R.string.home_new_puzzle
+                    },
+                ),
                 accent = true,
                 onClick = { if (state.inProgress != null) onResume() else onPlay(reached) },
                 modifier = Modifier.weight(1.4f),
@@ -160,8 +165,7 @@ public fun HomeScreen(
  * Used only to decide what is dimmed. It is a description of where they have got to, not a
  * permission.
  */
-internal fun HomeState.reachedGrade(): Grade =
-    Grade.entries.lastOrNull { (solvedByGrade[it] ?: 0) > 0 } ?: Grade.GENTLE
+internal fun HomeState.reachedGrade(): Grade = Grade.entries.lastOrNull { (solvedByGrade[it] ?: 0) > 0 } ?: Grade.GENTLE
 
 @Composable
 private fun GradeRow(grade: Grade, solved: Int, aheadOfYou: Boolean, onClick: () -> Unit) {
@@ -199,8 +203,6 @@ private fun GradeRow(grade: Grade, solved: Int, aheadOfYou: Boolean, onClick: ()
     }
 }
 
-
-
 @Composable
 private fun ContinueCard(summary: InProgressSummary, onResume: () -> Unit) {
     val colors = Sendoku.colors
@@ -223,7 +225,14 @@ private fun ContinueCard(summary: InProgressSummary, onResume: () -> Unit) {
             Text(summary.elapsed.clock(), style = Sendoku.type.timer, color = colors.muted)
         }
         Text(
-            text = stringResource(R.string.home_percent, stringResource(gradeName(summary.grade)), (summary.fraction * 100).toInt()),
+            text = stringResource(
+                R.string.home_percent,
+                stringResource(gradeName(summary.grade)),
+                (
+                    summary.fraction *
+                        100
+                    ).toInt(),
+            ),
             style = Sendoku.type.title,
             color = colors.given,
         )
@@ -251,12 +260,7 @@ private fun ContinueCard(summary: InProgressSummary, onResume: () -> Unit) {
 }
 
 @Composable
-private fun HomeButton(
-    label: String,
-    accent: Boolean,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
+private fun HomeButton(label: String, accent: Boolean, onClick: () -> Unit, modifier: Modifier = Modifier) {
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
     Box(

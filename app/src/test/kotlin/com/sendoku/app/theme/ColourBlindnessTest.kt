@@ -3,12 +3,12 @@ package com.sendoku.app.theme
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextDecoration
 import com.sendoku.app.ui.decorationFor
+import org.junit.Assert.assertTrue
+import org.junit.Test
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.pow
-import org.junit.Assert.assertTrue
-import org.junit.Test
 
 /**
  * The board, seen by somebody who cannot separate the colours it uses.
@@ -70,19 +70,6 @@ class ColourBlindnessTest {
         return (max(first, second) + 0.05) / (min(first, second) + 0.05)
     }
 
-    /** How far apart two colours are once hue has been taken away from the viewer. */
-    private fun separation(vision: Vision, a: Color, b: Color): Double {
-        val first = vision.simulate(a)
-        val second = vision.simulate(b)
-        val byLuminance = contrast(first, second)
-        val byChannel = maxOf(
-            abs(first.red - second.red),
-            abs(first.green - second.green),
-            abs(first.blue - second.blue),
-        ).toDouble()
-        return max(byLuminance - 1.0, byChannel)
-    }
-
     private val palettes: List<Pair<String, SendokuColors>> =
         SendokuThemeId.entries.flatMap { theme ->
             listOf(false, true).map { dark ->
@@ -142,7 +129,6 @@ class ColourBlindnessTest {
             assertTrue("$name uses one colour for mistakes and entries", colors.conflict != colors.entry)
         }
     }
-
 
     @Test
     fun `the accent is still visible against the surface without any hue at all`() {

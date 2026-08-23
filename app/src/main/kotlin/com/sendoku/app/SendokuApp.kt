@@ -12,23 +12,23 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import com.sendoku.app.data.Appearance
+import com.sendoku.app.data.Statistics
 import com.sendoku.app.game.GameSettings
 import com.sendoku.app.game.GameViewModel
 import com.sendoku.app.nav.Destination
 import com.sendoku.app.nav.Navigator
 import com.sendoku.app.theme.Sendoku
-import com.sendoku.app.ui.GameScreen
-import androidx.compose.ui.res.stringResource
-import com.sendoku.app.data.Appearance
-import com.sendoku.app.data.Statistics
 import com.sendoku.app.ui.AboutScreen
+import com.sendoku.app.ui.GameScreen
 import com.sendoku.app.ui.GlossaryScreen
-import com.sendoku.app.ui.LicencesScreen
-import com.sendoku.app.ui.StatsScreen
 import com.sendoku.app.ui.HomeScreen
 import com.sendoku.app.ui.HomeState
 import com.sendoku.app.ui.InProgressSummary
+import com.sendoku.app.ui.LicencesScreen
 import com.sendoku.app.ui.SettingsScreen
+import com.sendoku.app.ui.StatsScreen
 import com.sendoku.engine.Grade
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
@@ -68,7 +68,7 @@ public fun SendokuApp(
     // because the way out of a home screen is out of the app.
     BackHandler(enabled = navigator.canGoBack) { navigator.back() }
 
-    when (val destination = navigator.current) {
+    when (navigator.current) {
         Destination.Home -> {
             HomeScreen(
                 state = HomeState(

@@ -17,9 +17,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.ui.res.pluralStringResource
-import androidx.compose.ui.res.stringResource
-import com.sendoku.app.R
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -28,7 +25,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.sendoku.app.R
 import com.sendoku.app.data.GradeRecord
 import com.sendoku.app.data.Statistics
 import com.sendoku.app.theme.Sendoku
@@ -149,7 +149,9 @@ public fun StatsScreen(
         AlertDialog(
             onDismissRequest = { confirmReset = false },
             containerColor = colors.surfaceRaised,
-            title = { Text(stringResource(R.string.stats_reset_title), style = Sendoku.type.title, color = colors.given) },
+            title = {
+                Text(stringResource(R.string.stats_reset_title), style = Sendoku.type.title, color = colors.given)
+            },
             text = {
                 Text(
                     stringResource(R.string.stats_reset_body),
@@ -158,8 +160,15 @@ public fun StatsScreen(
                 )
             },
             confirmButton = {
-                TextButton(onClick = { confirmReset = false; onReset() }) {
-                    Text(stringResource(R.string.stats_reset_confirm), color = colors.conflict, style = Sendoku.type.label)
+                TextButton(onClick = {
+                    confirmReset = false
+                    onReset()
+                }) {
+                    Text(
+                        stringResource(R.string.stats_reset_confirm),
+                        color = colors.conflict,
+                        style = Sendoku.type.label,
+                    )
                 }
             },
             dismissButton = {

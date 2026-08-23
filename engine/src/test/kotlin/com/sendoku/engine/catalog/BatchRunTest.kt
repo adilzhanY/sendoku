@@ -5,11 +5,13 @@ import com.sendoku.engine.Grade
 import com.sendoku.engine.Solver
 import com.sendoku.engine.Symmetry
 import com.sendoku.engine.technique.TechniqueSolver
+import org.junit.jupiter.api.Tag
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 import kotlin.test.assertTrue
 
+@Tag("slow")
 class BatchRunTest {
 
     private val classic = Dimensions.CLASSIC

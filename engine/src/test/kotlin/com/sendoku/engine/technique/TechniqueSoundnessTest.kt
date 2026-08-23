@@ -4,6 +4,7 @@ import com.sendoku.engine.Board
 import com.sendoku.engine.CandidateGrid
 import com.sendoku.engine.Dimensions
 import com.sendoku.engine.Generator
+import org.junit.jupiter.api.Tag
 import kotlin.random.Random
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -17,6 +18,7 @@ import kotlin.test.assertTrue
  * belongs in a cell destroys the puzzle, and it does so silently, several moves later.
  * So every technique is run against puzzles whose solution is already known.
  */
+@Tag("slow")
 class TechniqueSoundnessTest {
 
     private val techniques = listOf(

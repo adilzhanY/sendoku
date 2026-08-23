@@ -1,0 +1,128 @@
+# Everything that has to be true before a change lands.
+#
+# The engine runs first and on its own. It is pure Kotlin, it takes a couple of seconds, and
+# it holds the solver and the rating, so a break there should be reported in a minute rather
+# than after a ten minute Android build.
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  # A newer push makes an older run pointless.
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  engine:
+    name: Engine
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Set up Gradle
+        # Caches the Gradle distribution, the dependency cache and the configuration cache,
+        # and writes them back only from the default branch so a pull request cannot poison
+        # the cache for everybody else.
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          cache-read-only: ${{ github.ref != 'refs/heads/main' }}
+
+      - name: Formatting and code smells
+        # Both are fast and both fail the build, so a review never has to be about braces.
+        run: ./gradlew spotlessCheck detekt --stacktrace
+
+      - name: Test the engine
+        run: ./gradlew :engine:check --stacktrace
+
+      - name: Keep the test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: engine-test-report
+          path: engine/build/reports/tests/test
+          if-no-files-found: ignore
+
+  app:
+    name: App
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          cache-read-only: ${{ github.ref != 'refs/heads/main' }}
+
+      - name: Unit tests
+        run: ./gradlew :app:testDebugUnitTest --stacktrace
+
+      - name: Lint
+        # Warnings are errors here, so this fails on a hardcoded string or a missing
+        # translation rather than filing it in a report nobody opens.
+        run: ./gradlew :app:lintDebug --stacktrace
+
+      - name: Build the release
+        run: ./gradlew :app:assembleRelease --stacktrace
+
+      - name: Keep the reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-reports
+          path: |
+            app/build/reports
+            app/build/outputs/apk/release
+          if-no-files-found: ignore
+
+  instrumented:
+    name: On a device
+    runs-on: ubuntu-latest
+    # The emulator is slow and needs hardware acceleration, so it runs on the default branch
+    # and on demand rather than on every pull request.
+    if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          cache-read-only: true
+
+      - name: Allow hardware acceleration
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libpulse0
+          echo "KVM_GROUP=$(getent group kvm | cut -d: -f3)" >> "$GITHUB_ENV"
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - name: Run the instrumented tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: google_apis
+          arch: x86_64
+          disable-animations: true
+          script: ./gradlew :app:connectedDebugAndroidTest --stacktrace

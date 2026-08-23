@@ -14,10 +14,7 @@ import java.util.zip.GZIPInputStream
 import java.util.zip.GZIPOutputStream
 
 /** A batch of rated puzzles, as read back from disk. */
-public data class PuzzleCatalog(
-    val dims: Dimensions,
-    val puzzles: List<RatedPuzzle>,
-) {
+public data class PuzzleCatalog(val dims: Dimensions, val puzzles: List<RatedPuzzle>) {
     public fun byGrade(grade: Grade): List<RatedPuzzle> = puzzles.filter { it.grade == grade }
 
     public val counts: Map<Grade, Int>
@@ -91,11 +88,7 @@ public object PuzzleFormat {
      * of three thousand. Records are a fixed width, so puzzle `n` starts at a known offset
      * and nothing before it has to be looked at.
      */
-    internal class Body(
-        val dims: Dimensions,
-        val count: Int,
-        private val bytes: ByteArray,
-    ) {
+    internal class Body(val dims: Dimensions, val count: Int, private val bytes: ByteArray) {
         private val width = recordBytes(dims)
         private val solutionBytes = solutionBytes(dims)
         private val maskBytes = maskBytes(dims)

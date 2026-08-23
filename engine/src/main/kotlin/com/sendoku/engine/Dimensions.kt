@@ -29,8 +29,7 @@ public data class Dimensions(val boxWidth: Int, val boxHeight: Int) {
     public val allDigits: Int get() = (1 shl size) - 1
 
     /** Index of the box that contains ([row], [col]). */
-    public fun boxOf(row: Int, col: Int): Int =
-        (row / boxHeight) * boxHeight + (col / boxWidth)
+    public fun boxOf(row: Int, col: Int): Int = (row / boxHeight) * boxHeight + (col / boxWidth)
 
     public companion object {
         /** Digits live in the bits of an Int, so 16 is the ceiling. */

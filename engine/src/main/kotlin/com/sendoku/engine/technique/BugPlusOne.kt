@@ -25,10 +25,12 @@ public object BugPlusOne : Technique {
             if (!grid.isEmpty(cell)) continue
             when (grid.candidatesAt(cell).size) {
                 2 -> Unit
+
                 3 -> {
                     if (extraCell != -1) return null
                     extraCell = cell
                 }
+
                 else -> return null
             }
         }
@@ -67,7 +69,11 @@ public object BugPlusOne : Technique {
                 // the same digit every time.
                 if (count != 3 || house !in ownHouses) return null
                 if (digit !in grid.candidatesAt(extraCell)) return null
-                if (odd == -1) odd = digit else if (odd != digit) return null
+                if (odd == -1) {
+                    odd = digit
+                } else if (odd != digit) {
+                    return null
+                }
             }
         }
         return if (odd == -1) null else odd

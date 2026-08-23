@@ -1,9 +1,9 @@
 package com.sendoku.app.data
 
-import java.io.File
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import java.io.File
 
 /**
  * The guard that makes a migration impossible to forget.

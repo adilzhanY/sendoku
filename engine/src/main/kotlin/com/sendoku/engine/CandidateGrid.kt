@@ -87,8 +87,7 @@ public class CandidateGrid private constructor(
         a != b && (rowOf(a) == rowOf(b) || colOf(a) == colOf(b) || boxOf(a) == boxOf(b))
 
     /** True when [digit] is already placed somewhere in [house]. */
-    public fun isPlacedIn(house: House, digit: Int): Boolean =
-        topology.cellsOf(house).any { digits[it] == digit }
+    public fun isPlacedIn(house: House, digit: Int): Boolean = topology.cellsOf(house).any { digits[it] == digit }
 
     public fun indexOf(row: Int, col: Int): Int {
         require(row in 0 until size && col in 0 until size) { "cell ($row, $col) is off the grid" }
@@ -123,8 +122,7 @@ public class CandidateGrid private constructor(
         return true
     }
 
-    public fun copy(): CandidateGrid =
-        CandidateGrid(dims, digits.copyOf(), masks.copyOf(), placedCount)
+    public fun copy(): CandidateGrid = CandidateGrid(dims, digits.copyOf(), masks.copyOf(), placedCount)
 
     /** The placed digits, with the pencil marks dropped. */
     public fun toBoard(): Board = Board.wrap(dims, digits.copyOf())
@@ -178,6 +176,5 @@ public class CandidateGrid private constructor(
 
             return CandidateGrid(dims, digits, masks, placed)
         }
-
     }
 }

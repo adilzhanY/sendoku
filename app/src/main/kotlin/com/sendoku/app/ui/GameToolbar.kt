@@ -4,23 +4,23 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
-import androidx.compose.ui.res.stringResource
-import com.sendoku.app.R
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import com.sendoku.app.R
 import com.sendoku.app.game.GameState
 import com.sendoku.app.theme.Sendoku
 
@@ -56,9 +56,24 @@ public fun GameToolbar(
         modifier = modifier.fillMaxWidth().height(IntrinsicSize.Min),
         horizontalArrangement = Arrangement.spacedBy(dimens.padGap),
     ) {
-        ToolButton(stringResource(R.string.tool_undo), enabled = state.canUndo, onClick = onUndo, modifier = Modifier.weight(1f))
-        ToolButton(stringResource(R.string.tool_redo), enabled = state.canRedo, onClick = onRedo, modifier = Modifier.weight(1f))
-        ToolButton(stringResource(R.string.tool_erase), enabled = state.selected != null, onClick = onErase, modifier = Modifier.weight(1f))
+        ToolButton(
+            stringResource(R.string.tool_undo),
+            enabled = state.canUndo,
+            onClick = onUndo,
+            modifier = Modifier.weight(1f),
+        )
+        ToolButton(
+            stringResource(R.string.tool_redo),
+            enabled = state.canRedo,
+            onClick = onRedo,
+            modifier = Modifier.weight(1f),
+        )
+        ToolButton(
+            stringResource(R.string.tool_erase),
+            enabled = state.selected != null,
+            onClick = onErase,
+            modifier = Modifier.weight(1f),
+        )
         ToolButton(
             label = stringResource(R.string.tool_notes),
             enabled = true,
@@ -66,7 +81,13 @@ public fun GameToolbar(
             onClick = onTogglePencil,
             modifier = Modifier.weight(1f),
         )
-        ToolButton(stringResource(R.string.tool_hint), enabled = !state.isOver, accent = true, onClick = onHint, modifier = Modifier.weight(1f))
+        ToolButton(
+            stringResource(R.string.tool_hint),
+            enabled = !state.isOver,
+            accent = true,
+            onClick = onHint,
+            modifier = Modifier.weight(1f),
+        )
     }
 }
 

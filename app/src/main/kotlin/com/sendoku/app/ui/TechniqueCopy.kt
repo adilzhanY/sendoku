@@ -116,7 +116,9 @@ public object TechniqueCopy {
     @ReadOnlyComposable
     public fun where(deduction: Deduction): String? = when (deduction.houses.size) {
         0 -> null
+
         1 -> stringResource(R.string.hint_in_region, name(deduction.houses[0]))
+
         else -> stringResource(
             R.string.hint_in_regions,
             name(deduction.houses[0]),

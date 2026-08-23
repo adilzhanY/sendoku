@@ -10,11 +10,7 @@ import com.sendoku.engine.House
  * Take any one candidate away and the set becomes locked, meaning its cells use up every
  * digit it holds. A single bivalue cell is the smallest one.
  */
-internal class Als(
-    val house: House,
-    val cells: List<Int>,
-    val candidates: Candidates,
-)
+internal class Als(val house: House, val cells: List<Int>, val candidates: Candidates)
 
 /**
  * ALS-XZ. Two almost locked sets, joined by a digit that can only live in one of them.

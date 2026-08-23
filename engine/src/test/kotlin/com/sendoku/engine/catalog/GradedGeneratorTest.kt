@@ -6,12 +6,14 @@ import com.sendoku.engine.Solver
 import com.sendoku.engine.Symmetry
 import com.sendoku.engine.technique.SolveOutcome
 import com.sendoku.engine.technique.TechniqueSolver
+import org.junit.jupiter.api.Tag
 import kotlin.random.Random
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
 
+@Tag("slow")
 class GradedGeneratorTest {
 
     private val classic = Dimensions.CLASSIC

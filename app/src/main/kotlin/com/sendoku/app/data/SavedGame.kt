@@ -5,8 +5,8 @@ import com.sendoku.app.game.GameSettings
 import com.sendoku.app.game.GameState
 import com.sendoku.engine.Board
 import com.sendoku.engine.Candidates
-import com.sendoku.engine.Dimensions
 import com.sendoku.engine.Digits
+import com.sendoku.engine.Dimensions
 import com.sendoku.engine.Grade
 import com.sendoku.engine.technique.TechniqueId
 import kotlin.time.Duration
@@ -138,7 +138,7 @@ public data class SavedGame(
 
         private const val RADIX = 32
         private const val MARK_WIDTH = 3
-        private const val EMPTY_CHAR = '.' 
+        private const val EMPTY_CHAR = '.'
     }
 }
 

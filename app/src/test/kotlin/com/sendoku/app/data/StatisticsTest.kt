@@ -2,24 +2,23 @@ package com.sendoku.app.data
 
 import com.sendoku.engine.Grade
 import com.sendoku.engine.technique.TechniqueId
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
+import org.junit.Test
 import java.time.LocalDate
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Duration.Companion.seconds
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNull
-import org.junit.Assert.assertTrue
-import org.junit.Test
 
 class StatisticsTest {
 
     private val zone: ZoneId = ZoneId.of("UTC")
     private val today: LocalDate = LocalDate.of(2026, 8, 23)
 
-    private fun at(date: LocalDate): Long =
-        date.atStartOfDay(zone).plusHours(12).toInstant().toEpochMilli()
+    private fun at(date: LocalDate): Long = date.atStartOfDay(zone).plusHours(12).toInstant().toEpochMilli()
 
     private fun game(
         grade: Grade = Grade.GENTLE,

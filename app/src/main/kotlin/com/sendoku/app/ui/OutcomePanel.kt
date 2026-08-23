@@ -12,13 +12,13 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
-import androidx.compose.ui.res.stringResource
-import com.sendoku.app.R
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import com.sendoku.app.R
 import com.sendoku.app.game.GameState
 import com.sendoku.app.theme.Sendoku
 
@@ -65,7 +65,11 @@ public fun OutcomePanel(
                 color = colors.given,
             )
             Text(
-                text = stringResource(R.string.outcome_rated, stringResource(gradeName(state.grade)), "%.2f".format(state.rating)),
+                text = stringResource(
+                    R.string.outcome_rated,
+                    stringResource(gradeName(state.grade)),
+                    "%.2f".format(state.rating),
+                ),
                 style = Sendoku.type.body,
                 color = colors.muted,
             )
@@ -84,7 +88,10 @@ public fun OutcomePanel(
                     // Taken from the rating rather than from what the player did, because a
                     // player may well have found a longer way round. This describes the
                     // puzzle, not the solve.
-                    text = stringResource(R.string.outcome_needed, stringResource(TechniqueCopy.nameOf(technique)).lowercase()),
+                    text = stringResource(
+                        R.string.outcome_needed,
+                        stringResource(TechniqueCopy.nameOf(technique)).lowercase(),
+                    ),
                     style = Sendoku.type.body,
                     color = colors.muted,
                     textAlign = TextAlign.Center,
@@ -95,7 +102,12 @@ public fun OutcomePanel(
                 modifier = Modifier.fillMaxWidth().padding(top = dimens.spaceM),
                 horizontalArrangement = Arrangement.spacedBy(dimens.padGap),
             ) {
-                OutcomeButton(stringResource(R.string.outcome_home), accent = false, onClick = onHome, modifier = Modifier.weight(1f))
+                OutcomeButton(
+                    stringResource(R.string.outcome_home),
+                    accent = false,
+                    onClick = onHome,
+                    modifier = Modifier.weight(1f),
+                )
                 OutcomeButton(
                     label = stringResource(R.string.outcome_another, stringResource(gradeName(state.grade))),
                     accent = true,
@@ -116,12 +128,7 @@ private fun Stat(label: String, value: String) {
 }
 
 @Composable
-private fun OutcomeButton(
-    label: String,
-    accent: Boolean,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
+private fun OutcomeButton(label: String, accent: Boolean, onClick: () -> Unit, modifier: Modifier = Modifier) {
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
     Box(

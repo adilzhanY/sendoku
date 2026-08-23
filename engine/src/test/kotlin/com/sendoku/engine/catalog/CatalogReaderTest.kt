@@ -2,6 +2,7 @@ package com.sendoku.engine.catalog
 
 import com.sendoku.engine.Dimensions
 import com.sendoku.engine.Grade
+import org.junit.jupiter.api.Tag
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import kotlin.test.Test
@@ -17,6 +18,7 @@ import kotlin.test.assertTrue
  * approved. So it is checked both ways: against the batch as generated, and against the
  * batch as actually shipped.
  */
+@Tag("slow")
 class CatalogReaderTest {
 
     private val classic = Dimensions.CLASSIC
@@ -99,9 +101,13 @@ class CatalogReaderTest {
     @Test
     fun `a batch whose length does not match its own header is refused`() {
         val bytes = ByteArrayOutputStream().also {
-            PuzzleFormat.write(it, classic, BatchRun.run(
-                BatchRequest(targets = mapOf(Grade.GENTLE to 3), seed = 603, workers = 2),
-            ).puzzles)
+            PuzzleFormat.write(
+                it,
+                classic,
+                BatchRun.run(
+                    BatchRequest(targets = mapOf(Grade.GENTLE to 3), seed = 603, workers = 2),
+                ).puzzles,
+            )
         }.toByteArray()
         assertFailsWith<java.io.IOException> {
             CatalogReader.from(ByteArrayInputStream(bytes.copyOf(bytes.size - 30)))

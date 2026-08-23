@@ -47,10 +47,8 @@ public interface GameRepository {
 }
 
 /** The real one, over Room. */
-public class RoomGameRepository(
-    private val inProgress: InProgressDao,
-    private val finished: FinishedDao,
-) : GameRepository {
+public class RoomGameRepository(private val inProgress: InProgressDao, private val finished: FinishedDao) :
+    GameRepository {
 
     override suspend fun loadInProgress(settings: GameSettings): GameState? =
         inProgress.load()?.toSaved()?.toState(settings)
@@ -64,8 +62,7 @@ public class RoomGameRepository(
         inProgress.save(SavedGame.of(state).toRow(savedAt = System.currentTimeMillis()))
     }
 
-    override fun watchInProgress(): Flow<SavedGame?> =
-        inProgress.watch().map { row -> row?.toSaved() }
+    override fun watchInProgress(): Flow<SavedGame?> = inProgress.watch().map { row -> row?.toSaved() }
 
     override suspend fun clearInProgress() {
         inProgress.clear()
@@ -76,8 +73,7 @@ public class RoomGameRepository(
         inProgress.clear()
     }
 
-    override fun history(): Flow<List<FinishedGame>> =
-        finished.watchAll().map { rows -> rows.map { it.toFinished() } }
+    override fun history(): Flow<List<FinishedGame>> = finished.watchAll().map { rows -> rows.map { it.toFinished() } }
 
     override fun statistics(): Flow<Statistics> =
         finished.watchAll().map { rows -> Statistics.of(rows.map { it.toFinished() }) }
@@ -86,10 +82,9 @@ public class RoomGameRepository(
         finished.clear()
     }
 
-    override fun solvedByGrade(): Flow<Map<Grade, Int>> =
-        finished.watchAll().map { rows ->
-            rows.filter { it.solved }
-                .groupingBy { Grade.valueOf(it.grade) }
-                .eachCount()
-        }
+    override fun solvedByGrade(): Flow<Map<Grade, Int>> = finished.watchAll().map { rows ->
+        rows.filter { it.solved }
+            .groupingBy { Grade.valueOf(it.grade) }
+            .eachCount()
+    }
 }

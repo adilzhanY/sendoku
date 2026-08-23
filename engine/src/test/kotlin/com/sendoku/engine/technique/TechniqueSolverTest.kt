@@ -201,8 +201,7 @@ class TechniqueSolverTest {
         }
     }
 
-    private fun step(id: TechniqueId) =
-        Deduction(technique = id, placements = listOf(CellDigit(0, 1)))
+    private fun step(id: TechniqueId) = Deduction(technique = id, placements = listOf(CellDigit(0, 1)))
 
     private companion object {
         const val EASY =

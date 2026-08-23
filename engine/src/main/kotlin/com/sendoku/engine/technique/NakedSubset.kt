@@ -35,10 +35,7 @@ public object NakedQuad : Technique by NakedSubset(TechniqueId.NAKED_QUAD, size 
  * digits. Pair, triple and quad are the same argument at different sizes, so they are
  * the same code at different sizes.
  */
-internal class NakedSubset(
-    override val id: TechniqueId,
-    private val size: Int,
-) : Technique {
+internal class NakedSubset(override val id: TechniqueId, private val size: Int) : Technique {
 
     init {
         require(size >= 2) { "a naked subset needs at least two cells" }

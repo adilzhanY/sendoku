@@ -1,21 +1,21 @@
 package com.sendoku.app.ui
 
+import androidx.compose.ui.input.key.Key
 import com.sendoku.app.game.GameSettings
 import com.sendoku.app.game.GameState
-import androidx.compose.ui.input.key.Key
 import com.sendoku.engine.Dimensions
 import com.sendoku.engine.Geometry
 import com.sendoku.engine.Symmetry
 import com.sendoku.engine.catalog.GradedGenerator
 import com.sendoku.engine.catalog.RatedPuzzle
-import kotlin.random.Random
-import kotlin.time.Duration.Companion.minutes
-import kotlin.time.Duration.Companion.seconds
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertSame
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import kotlin.random.Random
+import kotlin.time.Duration.Companion.minutes
+import kotlin.time.Duration.Companion.seconds
 
 /**
  * The screen sends events and the state answers them.

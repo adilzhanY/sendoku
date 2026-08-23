@@ -50,7 +50,7 @@ android {
         unitTests.isReturnDefaultValues = true
     }
 
-    /**
+    /*
      * Lint, taken seriously.
      *
      * Hardcoded text and a missing translation both fail the build rather than warn. Both are
@@ -109,7 +109,7 @@ dependencies {
     testImplementation(libs.kotlinx.coroutines.test)
 }
 
-/**
+/*
  * Writes the list of everything the app is built out of, for the licences screen.
  *
  * Generated from the resolved dependency graph rather than typed by hand, so it cannot fall
@@ -117,16 +117,16 @@ dependencies {
  * every POM would be more machinery than four entries deserve, and everything here is either
  * Apache 2.0 or the font's own open licence.
  */
-val licenceNames = mapOf(
-    "androidx" to "Apache License 2.0",
-    "com.google" to "Apache License 2.0",
-    "org.jetbrains" to "Apache License 2.0",
-    "com.squareup" to "Apache License 2.0",
-    "junit" to "Eclipse Public License 1.0",
-)
+val licenceNames =
+    mapOf(
+        "androidx" to "Apache License 2.0",
+        "com.google" to "Apache License 2.0",
+        "org.jetbrains" to "Apache License 2.0",
+        "com.squareup" to "Apache License 2.0",
+        "junit" to "Eclipse Public License 1.0",
+    )
 
 abstract class GenerateLicences : DefaultTask() {
-
     @get:Input
     abstract val artifacts: SetProperty<String>
 
@@ -138,13 +138,17 @@ abstract class GenerateLicences : DefaultTask() {
 
     @TaskAction
     fun generate() {
-        val lines = artifacts.get().sorted().map { artifact ->
-            val licence = names.get().entries
-                .firstOrNull { artifact.startsWith(it.key) }
-                ?.value
-                ?: "see the project page"
-            "$artifact|$licence"
-        }
+        val lines =
+            artifacts.get().sorted().map { artifact ->
+                val licence =
+                    names
+                        .get()
+                        .entries
+                        .firstOrNull { artifact.startsWith(it.key) }
+                        ?.value
+                        ?: "see the project page"
+                "$artifact|$licence"
+            }
         val directory = output.get().asFile
         directory.mkdirs()
         val file = File(directory, "licences.txt")
@@ -155,20 +159,22 @@ abstract class GenerateLicences : DefaultTask() {
     }
 }
 
-val generateLicences = tasks.register<GenerateLicences>("generateLicences") {
-    group = "sendoku"
-    description = "Writes the open source licence list the about screen reads."
-    val resolved = configurations.named("releaseRuntimeClasspath").map { configuration ->
-        configuration.incoming.resolutionResult.allComponents
-            .map { it.id.displayName }
-            .filter { it.contains(':') && !it.startsWith("project ") }
-            .map { it.substringBeforeLast(':') }
-            .toSet()
+val generateLicences =
+    tasks.register<GenerateLicences>("generateLicences") {
+        group = "sendoku"
+        description = "Writes the open source licence list the about screen reads."
+        val resolved =
+            configurations.named("releaseRuntimeClasspath").map { configuration ->
+                configuration.incoming.resolutionResult.allComponents
+                    .map { it.id.displayName }
+                    .filter { it.contains(':') && !it.startsWith("project ") }
+                    .map { it.substringBeforeLast(':') }
+                    .toSet()
+            }
+        artifacts.set(resolved)
+        names.set(licenceNames)
+        output.set(layout.buildDirectory.dir("generated/licences"))
     }
-    artifacts.set(resolved)
-    names.set(licenceNames)
-    output.set(layout.buildDirectory.dir("generated/licences"))
-}
 
 androidComponents {
     onVariants { variant ->

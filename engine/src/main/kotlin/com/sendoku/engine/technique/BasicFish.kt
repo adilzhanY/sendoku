@@ -44,10 +44,7 @@ public object Jellyfish : Technique by BasicFish(TechniqueId.JELLYFISH, size = 4
  * `2..n` rather than insisting on exactly `n`. Fewer than two homes would be a hidden
  * single, which a far cheaper rule already handles.
  */
-internal class BasicFish(
-    override val id: TechniqueId,
-    private val size: Int,
-) : Technique {
+internal class BasicFish(override val id: TechniqueId, private val size: Int) : Technique {
 
     init {
         require(size >= 2) { "a fish needs at least two lines" }
@@ -61,12 +58,7 @@ internal class BasicFish(
         return null
     }
 
-    private fun findFor(
-        grid: CandidateGrid,
-        digit: Int,
-        baseKind: HouseKind,
-        coverKind: HouseKind,
-    ): Deduction? {
+    private fun findFor(grid: CandidateGrid, digit: Int, baseKind: HouseKind, coverKind: HouseKind): Deduction? {
         val bases = ArrayList<House>(grid.size)
         val homes = ArrayList<List<Int>>(grid.size)
 

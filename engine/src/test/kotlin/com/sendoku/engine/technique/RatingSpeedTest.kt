@@ -2,6 +2,7 @@ package com.sendoku.engine.technique
 
 import com.sendoku.engine.Board
 import com.sendoku.engine.Dimensions
+import org.junit.jupiter.api.Tag
 import kotlin.system.measureNanoTime
 import kotlin.test.Test
 import kotlin.test.assertTrue
@@ -17,6 +18,7 @@ import kotlin.test.assertTrue
  * times faster than that, so the bound here is set well under it and the real number is
  * printed, which is what makes a slow regression visible before it ships.
  */
+@Tag("slow")
 class RatingSpeedTest {
 
     private val classic = Dimensions.CLASSIC
@@ -43,7 +45,11 @@ class RatingSpeedTest {
         }
         val averageMs = total / boards.size / 1_000_000.0
         val worstMs = worst / 1_000_000.0
-        println("RATING average ${"%.2f".format(averageMs)} ms, worst ${"%.2f".format(worstMs)} ms over ${boards.size} puzzles")
+        println(
+            "RATING average ${"%.2f".format(
+                averageMs,
+            )} ms, worst ${"%.2f".format(worstMs)} ms over ${boards.size} puzzles",
+        )
 
         assertTrue(averageMs < 10.0, "average rating took $averageMs ms, budget is 10")
         assertTrue(worstMs < 50.0, "worst rating took $worstMs ms, budget is 50")

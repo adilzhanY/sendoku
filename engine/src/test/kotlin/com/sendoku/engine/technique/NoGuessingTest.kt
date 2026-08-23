@@ -5,6 +5,7 @@ import com.sendoku.engine.CandidateGrid
 import com.sendoku.engine.Dimensions
 import com.sendoku.engine.Generator
 import com.sendoku.engine.Solver
+import org.junit.jupiter.api.Tag
 import kotlin.random.Random
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -18,6 +19,7 @@ import kotlin.test.assertTrue
  * reached the end by luck, or by a rule that quietly assumed something, the app would be
  * shipping puzzles that cannot be honestly hinted. This is the test that says otherwise.
  */
+@Tag("slow")
 class NoGuessingTest {
 
     private val classic = Dimensions.CLASSIC

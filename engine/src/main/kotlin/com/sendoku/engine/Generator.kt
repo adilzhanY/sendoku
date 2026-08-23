@@ -31,10 +31,7 @@ public enum class Symmetry {
 }
 
 /** A puzzle and the single grid it resolves to. */
-public data class Puzzle(
-    val givens: Board,
-    val solution: Board,
-) {
+public data class Puzzle(val givens: Board, val solution: Board) {
     val clueCount: Int get() = givens.clueCount
 }
 
@@ -61,10 +58,7 @@ public class Generator(
      * [minClues] stops the dig early, which is useful for easy levels. It is a floor,
      * not a target, so the result usually has a few more clues than asked for.
      */
-    public fun generate(
-        symmetry: Symmetry = Symmetry.ROTATIONAL,
-        minClues: Int = 0,
-    ): Puzzle {
+    public fun generate(symmetry: Symmetry = Symmetry.ROTATIONAL, minClues: Int = 0): Puzzle {
         val solution = completeGrid()
         val working = solution.copy()
 

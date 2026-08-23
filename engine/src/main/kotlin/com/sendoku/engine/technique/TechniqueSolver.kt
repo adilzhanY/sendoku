@@ -53,9 +53,7 @@ public data class SolveReport(
  * the rules run out, the honest answer is that this puzzle is beyond the ladder, and
  * Sendoku will not ship a puzzle it cannot explain.
  */
-public class TechniqueSolver(
-    private val ladder: List<Technique> = Techniques.ladder,
-) {
+public class TechniqueSolver(private val ladder: List<Technique> = Techniques.ladder) {
 
     /** Runs the ladder over [board] until it is solved or nothing applies. */
     public fun solve(board: Board): SolveReport {

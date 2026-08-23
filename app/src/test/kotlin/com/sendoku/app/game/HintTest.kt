@@ -4,11 +4,11 @@ import com.sendoku.engine.Dimensions
 import com.sendoku.engine.Symmetry
 import com.sendoku.engine.catalog.GradedGenerator
 import com.sendoku.engine.catalog.RatedPuzzle
-import kotlin.random.Random
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import kotlin.random.Random
 
 /**
  * The hint system is the reason the technique ladder exists, so it is held to the ladder's
@@ -67,7 +67,12 @@ class HintTest {
             state = state.applyHint(hint.deduction)
             guard++
         }
-        assertTrue("the hints could not finish it, stopping at ${state.cells.count { it.isEmpty }} empty", state.isSolved)
+        assertTrue(
+            "the hints could not finish it, stopping at ${state.cells.count {
+                it.isEmpty
+            }} empty",
+            state.isSolved,
+        )
         assertEquals(0, state.mistakes)
     }
 
@@ -146,5 +151,4 @@ class HintTest {
         }
         assertTrue(guard > 5)
     }
-
 }

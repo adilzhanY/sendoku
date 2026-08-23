@@ -34,8 +34,11 @@ public object SendokuThemes {
 
     public fun colors(id: SendokuThemeId, dark: Boolean): SendokuColors = when (id) {
         SendokuThemeId.DEEP_FIELD -> if (dark) DeepFieldDark else DeepFieldLight
+
         SendokuThemeId.INK -> if (dark) InkDark else InkLight
+
         SendokuThemeId.ZEN -> if (dark) ZenDark else ZenLight
+
         // Terminal is dark whatever the system says. A terminal in light mode is a text
         // editor, and looking nothing like a phone app is the entire point of it.
         SendokuThemeId.TERMINAL -> TerminalDark
@@ -107,16 +110,20 @@ internal val LocalSendokuMotion = staticCompositionLocalOf { DefaultMotion }
 public object Sendoku {
 
     public val colors: SendokuColors
-        @Composable @ReadOnlyComposable get() = LocalSendokuColors.current
+        @Composable @ReadOnlyComposable
+        get() = LocalSendokuColors.current
 
     public val type: SendokuType
-        @Composable @ReadOnlyComposable get() = LocalSendokuType.current
+        @Composable @ReadOnlyComposable
+        get() = LocalSendokuType.current
 
     public val dimens: SendokuDimens
-        @Composable @ReadOnlyComposable get() = LocalSendokuDimens.current
+        @Composable @ReadOnlyComposable
+        get() = LocalSendokuDimens.current
 
     public val motion: SendokuMotion
-        @Composable @ReadOnlyComposable get() = LocalSendokuMotion.current
+        @Composable @ReadOnlyComposable
+        get() = LocalSendokuMotion.current
 }
 
 /**

@@ -1,13 +1,13 @@
 package com.sendoku.app.theme
 
 import androidx.compose.ui.graphics.Color
-import kotlin.math.max
-import kotlin.math.min
-import kotlin.math.pow
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import kotlin.math.max
+import kotlin.math.min
+import kotlin.math.pow
 
 /**
  * Every colour that carries text is checked against WCAG AA.

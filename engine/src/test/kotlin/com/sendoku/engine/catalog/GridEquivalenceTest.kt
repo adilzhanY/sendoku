@@ -3,12 +3,14 @@ package com.sendoku.engine.catalog
 import com.sendoku.engine.Board
 import com.sendoku.engine.Dimensions
 import com.sendoku.engine.Generator
+import org.junit.jupiter.api.Tag
 import kotlin.random.Random
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
+@Tag("slow")
 class GridEquivalenceTest {
 
     private val classic = Dimensions.CLASSIC

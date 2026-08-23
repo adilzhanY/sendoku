@@ -6,6 +6,7 @@ import com.sendoku.engine.Solver
 import com.sendoku.engine.technique.TechniqueId
 import com.sendoku.engine.technique.TechniqueSolver
 import com.sendoku.engine.technique.Techniques
+import org.junit.jupiter.api.Tag
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
@@ -21,6 +22,7 @@ import kotlin.test.assertTrue
  * It solves all two thousand puzzles twice over, by brute force and by the ladder, which
  * costs a few seconds. That is the right trade for the one artefact the player receives.
  */
+@Tag("slow")
 class ShippedCatalogTest {
 
     private val classic = Dimensions.CLASSIC
@@ -65,7 +67,10 @@ class ShippedCatalogTest {
                 }
             }
         }
-        println("DUPLICATES ${byPrint.size} fingerprints over ${catalog.puzzles.size} puzzles, $compared pairs checked in full")
+        println(
+            "DUPLICATES ${byPrint.size} fingerprints over ${catalog.puzzles.size} " +
+                "puzzles, $compared pairs checked in full",
+        )
     }
 
     @Test

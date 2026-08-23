@@ -38,12 +38,7 @@ public enum class MoveKind {
  * eventually get it wrong.
  */
 @Immutable
-public data class Move(
-    val kind: MoveKind,
-    val cell: Int,
-    val before: Map<Int, Cell>,
-    val after: Map<Int, Cell>,
-)
+public data class Move(val kind: MoveKind, val cell: Int, val before: Map<Int, Cell>, val after: Map<Int, Cell>)
 
 /**
  * Everything about a game in progress.
@@ -274,8 +269,7 @@ public data class GameState(
     }
 
     /** Adds [delta] to the clock, when the clock is running and the game is not over. */
-    public fun tick(delta: Duration): GameState =
-        if (!isRunning || isOver) this else copy(elapsed = elapsed + delta)
+    public fun tick(delta: Duration): GameState = if (!isRunning || isOver) this else copy(elapsed = elapsed + delta)
 
     public fun pause(): GameState = copy(isRunning = false)
 

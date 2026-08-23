@@ -15,11 +15,7 @@ import com.sendoku.engine.Grade
  * discovering it was easy. [digFloor] stops the generator hollowing the easy grades out,
  * and [clues] throws away the stragglers that still come out wrong.
  */
-public data class GradeSpec(
-    val grade: Grade,
-    val clues: IntRange,
-    val digFloor: Int,
-) {
+public data class GradeSpec(val grade: Grade, val clues: IntRange, val digFloor: Int) {
     init {
         require(!clues.isEmpty()) { "${grade.displayName} has an empty clue range" }
         require(digFloor >= 0) { "${grade.displayName} has a negative dig floor" }
