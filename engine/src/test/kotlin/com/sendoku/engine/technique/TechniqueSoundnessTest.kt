@@ -41,6 +41,8 @@ class TechniqueSoundnessTest {
         UniqueRectangle,
         BugPlusOne,
         RemotePairs,
+        XChain,
+        XYChain,
     )
 
     @Test
