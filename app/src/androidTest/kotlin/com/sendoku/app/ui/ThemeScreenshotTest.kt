@@ -127,7 +127,10 @@ class ThemeScreenshotTest {
         val different = compare(golden, actual)
         if (different > allowedFraction) {
             write(name, actual)
-            error("$name differs in ${"%.3f".format(different * 100)} percent of its pixels")
+            error(
+                "$name differs in ${"%.3f".format(different * 100)} percent of its pixels, " +
+                    describe(golden, actual),
+            )
         }
     }
 
@@ -159,19 +162,44 @@ class ThemeScreenshotTest {
         }
     }
 
+    /**
+     * How much of the picture is wrong, and enough detail to tell why.
+     *
+     * A bare "one hundred percent" says nothing, and this test spent a day failing in CI with
+     * exactly that. A size mismatch and a colour shift both come out as everything differing,
+     * and they need opposite fixes, so the message names which one it was.
+     */
+    private fun describe(golden: Bitmap, actual: Bitmap): String {
+        if (golden.width != actual.width || golden.height != actual.height) {
+            return "the sizes differ: reference ${golden.width}x${golden.height}, " +
+                "rendered ${actual.width}x${actual.height}"
+        }
+        var worst = 0
+        var total = 0L
+        for (x in 0 until golden.width) {
+            for (y in 0 until golden.height) {
+                val apart = apart(golden.getPixel(x, y), actual.getPixel(x, y))
+                if (apart > worst) worst = apart
+                total += apart
+            }
+        }
+        val mean = total.toDouble() / (golden.width * golden.height)
+        return "same size, worst channel is $worst apart and the mean is ${"%.2f".format(mean)}, " +
+            "against a tolerance of $perPixelTolerance"
+    }
+
+    private fun apart(a: Int, b: Int): Int = maxOf(
+        abs(((a shr 16) and 0xFF) - ((b shr 16) and 0xFF)),
+        abs(((a shr 8) and 0xFF) - ((b shr 8) and 0xFF)),
+        abs((a and 0xFF) - (b and 0xFF)),
+    )
+
     private fun compare(golden: Bitmap, actual: Bitmap): Double {
         if (golden.width != actual.width || golden.height != actual.height) return 1.0
         var different = 0
         for (x in 0 until golden.width) {
             for (y in 0 until golden.height) {
-                val a = golden.getPixel(x, y)
-                val b = actual.getPixel(x, y)
-                val apart = maxOf(
-                    abs(((a shr 16) and 0xFF) - ((b shr 16) and 0xFF)),
-                    abs(((a shr 8) and 0xFF) - ((b shr 8) and 0xFF)),
-                    abs((a and 0xFF) - (b and 0xFF)),
-                )
-                if (apart > perPixelTolerance) different++
+                if (apart(golden.getPixel(x, y), actual.getPixel(x, y)) > perPixelTolerance) different++
             }
         }
         return different.toDouble() / (golden.width * golden.height)
