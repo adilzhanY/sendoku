@@ -53,6 +53,21 @@ detekt {
     source.setFrom(files("engine/src", "app/src"))
 }
 
+/*
+ * A warning nobody fixes is a warning nobody reads.
+ *
+ * Kotlin warnings fail the build in both modules, the same way lint warnings already do.
+ * The point is not that every warning matters. It is that once one is allowed to sit there,
+ * the next hundred are invisible.
+ */
+subprojects {
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+        compilerOptions {
+            allWarningsAsErrors.set(true)
+        }
+    }
+}
+
 tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
     jvmTarget = "21"
     reports {

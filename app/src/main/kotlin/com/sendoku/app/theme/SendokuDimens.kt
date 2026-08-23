@@ -44,6 +44,18 @@ public data class SendokuDimens(
 
     /** Gap between the keys of the number pad. */
     val padGap: Dp,
+
+    /**
+     * How wide the content is allowed to get on a tall screen.
+     *
+     * A tablet held upright has room for a board twice the size of a phone's, and a number
+     * pad stretched across all of it. Both are worse to use than the phone layout, so the
+     * spare width becomes margin instead.
+     */
+    val contentMaxWidth: Dp,
+
+    /** The same, for a screen wider than it is tall, where the layout puts the pad beside the board. */
+    val contentMaxWidthWide: Dp,
 )
 
 /** Deep Field: square cells, hairline rules, and one heavier line to mark the boxes. */
@@ -63,4 +75,6 @@ public val DefaultDimens: SendokuDimens = SendokuDimens(
     boardRadius = 2.dp,
     minTouchTarget = 48.dp,
     padGap = 6.dp,
+    contentMaxWidth = 600.dp,
+    contentMaxWidthWide = 1000.dp,
 )
