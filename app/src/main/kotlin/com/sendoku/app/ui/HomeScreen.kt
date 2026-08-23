@@ -63,6 +63,7 @@ public fun HomeScreen(
     onResume: () -> Unit,
     onDaily: () -> Unit,
     onSettings: () -> Unit,
+    onStats: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val colors = Sendoku.colors
@@ -79,6 +80,16 @@ public fun HomeScreen(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Text("Sendoku", style = Sendoku.type.title, color = colors.given)
+            Row(horizontalArrangement = Arrangement.spacedBy(dimens.spaceXs)) {
+            Text(
+                text = "STATS",
+                style = Sendoku.type.overline,
+                color = colors.muted,
+                modifier = Modifier
+                    .clip(RoundedCornerShape(dimens.radiusS))
+                    .clickable(onClick = onStats)
+                    .padding(dimens.spaceS),
+            )
             Text(
                 text = "SETTINGS",
                 style = Sendoku.type.overline,
@@ -88,6 +99,7 @@ public fun HomeScreen(
                     .clickable(onClick = onSettings)
                     .padding(dimens.spaceS),
             )
+            }
         }
 
         // The ladder scrolls and the buttons do not. Pinning them means the thing a player

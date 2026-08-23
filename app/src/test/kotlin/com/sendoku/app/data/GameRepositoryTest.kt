@@ -185,6 +185,38 @@ class GameRepositoryTest {
         assertEquals(puzzle.clueCount + 1, saved.placed)
     }
 
+
+    @Test
+    fun `statistics come from the history and clearing it empties them`() = runTest {
+        val repository = RoomGameRepository(FakeInProgress(), FakeFinished())
+        repository.recordFinished(solvedGame(), finishedAt = 1L)
+        repository.recordFinished(solvedGame(), finishedAt = 2L)
+
+        val before = repository.statistics().first()
+        assertEquals(2, before.totalSolved)
+        assertTrue(!before.isEmpty)
+
+        repository.clearHistory()
+
+        val after = repository.statistics().first()
+        assertEquals(0, after.totalSolved)
+        assertTrue(after.isEmpty)
+    }
+
+    @Test
+    fun `clearing the history leaves the game in progress alone`() = runTest {
+        val repository = RoomGameRepository(FakeInProgress(), FakeFinished())
+        // Finishing clears the game in progress, since they are the same game. So the one
+        // being protected here has to be started afterwards.
+        repository.recordFinished(solvedGame(), finishedAt = 1L)
+        repository.saveInProgress(played())
+
+        repository.clearHistory()
+
+        assertTrue(repository.history().first().isEmpty())
+        assertEquals(puzzle.grade, repository.loadInProgress(GameSettings())?.grade)
+    }
+
     private fun solvedGame(): GameState {
         var state = GameState.start(puzzle)
         for (at in 0 until 81) {

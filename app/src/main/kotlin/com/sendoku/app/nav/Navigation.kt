@@ -33,6 +33,8 @@ public sealed interface Destination {
 
     /** Every technique the app knows, for somebody who has just met one. */
     public data object Glossary : Destination
+
+    public data object Stats : Destination
 }
 
 /**
@@ -94,6 +96,7 @@ public class Navigator(stack: List<Destination> = listOf(Destination.Home)) {
             is Destination.Daily -> "daily:$epochDay"
             Destination.Settings -> "settings"
             Destination.Glossary -> "glossary"
+            Destination.Stats -> "stats"
         }
 
         private fun decode(value: String): Destination = when {
@@ -101,6 +104,7 @@ public class Navigator(stack: List<Destination> = listOf(Destination.Home)) {
             value == "resume" -> Destination.Resume
             value == "settings" -> Destination.Settings
             value == "glossary" -> Destination.Glossary
+            value == "stats" -> Destination.Stats
             value.startsWith("play:") -> Destination.Play(Grade.valueOf(value.removePrefix("play:")))
             value.startsWith("daily:") -> Destination.Daily(value.removePrefix("daily:").toLong())
             else -> Destination.Home

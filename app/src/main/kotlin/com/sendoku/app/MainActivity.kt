@@ -86,6 +86,8 @@ class MainActivity : ComponentActivity() {
                             lifecycleScope.launch { settings.update { changed } }
                         },
                         solvedByGrade = repository.solvedByGrade(),
+                        statistics = repository.statistics(),
+                        onResetStats = { lifecycleScope.launch { repository.clearHistory() } },
                         savedGame = repository.watchInProgress().map { saved ->
                             saved?.let {
                                 InProgressSummary(

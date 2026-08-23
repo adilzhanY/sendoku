@@ -68,6 +68,11 @@ class GameViewModelTest {
 
         override fun solvedByGrade(): Flow<Map<Grade, Int>> =
             finished.map { list -> list.filter { it.solved }.groupingBy { it.grade }.eachCount() }
+
+        override fun statistics(): Flow<com.sendoku.app.data.Statistics> =
+            finished.map { com.sendoku.app.data.Statistics.of(it) }
+
+        override suspend fun clearHistory() { finished.value = emptyList() }
     }
 
     private class FixedSettings(settings: GameSettings = GameSettings()) : SettingsStore {

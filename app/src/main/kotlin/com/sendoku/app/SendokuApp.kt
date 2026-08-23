@@ -18,7 +18,9 @@ import com.sendoku.app.nav.Destination
 import com.sendoku.app.nav.Navigator
 import com.sendoku.app.theme.Sendoku
 import com.sendoku.app.ui.GameScreen
+import com.sendoku.app.data.Statistics
 import com.sendoku.app.ui.GlossaryScreen
+import com.sendoku.app.ui.StatsScreen
 import com.sendoku.app.ui.HomeScreen
 import com.sendoku.app.ui.HomeState
 import com.sendoku.app.ui.InProgressSummary
@@ -42,6 +44,8 @@ public fun SendokuApp(
     onSettingsChange: (GameSettings) -> Unit,
     solvedByGrade: Flow<Map<Grade, Int>>,
     savedGame: Flow<InProgressSummary?>,
+    statistics: Flow<Statistics>,
+    onResetStats: () -> Unit,
     scope: CoroutineScope,
     modifier: Modifier = Modifier,
 ) {
@@ -49,6 +53,7 @@ public fun SendokuApp(
     val loading by model.loading.collectAsState()
     val counts by solvedByGrade.collectAsState(initial = emptyMap())
     val saved by savedGame.collectAsState(initial = null)
+    val stats by statistics.collectAsState(initial = Statistics.of(emptyList()))
     val currentSettings by settings.collectAsState(initial = GameSettings())
 
     // Back from anywhere except home goes back a screen. Home itself lets the system take it,
@@ -80,12 +85,22 @@ public fun SendokuApp(
                     navigator.go(Destination.Daily(todayEpochDay()))
                 },
                 onSettings = { navigator.go(Destination.Settings) },
+                onStats = { navigator.go(Destination.Stats) },
                 modifier = modifier,
             )
         }
 
         is Destination.Play, Destination.Resume, is Destination.Daily ->
             PlayHost(model, loading, navigator, scope, modifier)
+
+        Destination.Stats -> {
+            StatsScreen(
+                statistics = stats,
+                onBack = { navigator.back() },
+                onReset = onResetStats,
+                modifier = modifier,
+            )
+        }
 
         Destination.Glossary -> {
             GlossaryScreen(onBack = { navigator.back() }, modifier = modifier)

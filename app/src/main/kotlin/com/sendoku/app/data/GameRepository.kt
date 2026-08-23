@@ -38,6 +38,12 @@ public interface GameRepository {
 
     /** How many puzzles of each grade the player has solved. */
     public fun solvedByGrade(): Flow<Map<Grade, Int>>
+
+    /** Everything the statistics screen shows. */
+    public fun statistics(): Flow<Statistics>
+
+    /** Throws the history away. Never called without asking first. */
+    public suspend fun clearHistory()
 }
 
 /** The real one, over Room. */
@@ -72,6 +78,13 @@ public class RoomGameRepository(
 
     override fun history(): Flow<List<FinishedGame>> =
         finished.watchAll().map { rows -> rows.map { it.toFinished() } }
+
+    override fun statistics(): Flow<Statistics> =
+        finished.watchAll().map { rows -> Statistics.of(rows.map { it.toFinished() }) }
+
+    override suspend fun clearHistory() {
+        finished.clear()
+    }
 
     override fun solvedByGrade(): Flow<Map<Grade, Int>> =
         finished.watchAll().map { rows ->
