@@ -77,6 +77,13 @@ android {
         textReport = true
     }
 
+    // The exported schemas are also test assets, which is how MigrationTestHelper gets hold
+    // of version 1 to upgrade from. Without this the migration test fails with a missing file
+    // rather than a broken migration, which is a confusing way to learn nothing.
+    sourceSets.getByName("androidTest") {
+        assets.srcDirs(files("$projectDir/schemas"))
+    }
+
     // Room writes the schema of every version here, and they are committed. Without the old
     // schema on disk there is nothing for a migration to migrate from.
     ksp {
@@ -103,6 +110,17 @@ if (project.hasProperty("composeMetrics")) {
 
 dependencies {
     implementation(project(":engine"))
+
+    /*
+     * Room's migration test helper reads the exported schema with kotlinx serialization, and
+     * it needs a newer one than AndroidX lifecycle drags in. Because the test classpath is
+     * resolved consistently with the app's, bumping it here is the only place that works: pin
+     * it on the test side alone and the app still wins with 1.7.3, and the helper dies with an
+     * AbstractMethodError on an interface that changed shape.
+     */
+    constraints {
+        implementation(libs.kotlinx.serialization.core)
+    }
 
     // Debug only. A sudoku app holds one board and one view model, so a leak here would have
     // to be something structural, and structural is exactly the kind that survives to release.
@@ -132,6 +150,8 @@ dependencies {
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     androidTestImplementation(libs.androidx.test.runner)
+    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.androidx.room.testing)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     testImplementation(libs.kotlinx.coroutines.test)
 }

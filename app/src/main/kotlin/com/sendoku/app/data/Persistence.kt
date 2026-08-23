@@ -8,6 +8,9 @@ import androidx.room.OnConflictStrategy
 import androidx.room.PrimaryKey
 import androidx.room.Query
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.SQLiteConnection
+import androidx.sqlite.execSQL
 import com.sendoku.engine.Grade
 import com.sendoku.engine.technique.TechniqueId
 import kotlinx.coroutines.flow.Flow
@@ -35,6 +38,8 @@ public data class InProgressRow(
     val mistakes: Int,
     val hintsUsed: Int,
     val savedAt: Long,
+    /** The day this puzzle belongs to, when it came from the calendar rather than the ladder. */
+    val dailyEpochDay: Long? = null,
 ) {
     public companion object {
         public const val ONLY_ROW: Int = 1
@@ -54,6 +59,14 @@ public data class FinishedRow(
     val mistakes: Int,
     val solved: Boolean,
     val finishedAt: Long,
+    /**
+     * Which day's puzzle this was, or null for one off the ladder.
+     *
+     * The day, not the timestamp. A player in Auckland who solves Tuesday's puzzle is on
+     * Tuesday's puzzle whatever the clock says in London, and the calendar has to mark the
+     * square they played rather than the square their timezone happens to fall in.
+     */
+    val dailyEpochDay: Long? = null,
 )
 
 @Dao
@@ -90,6 +103,14 @@ public interface FinishedDao {
     @Query("SELECT MIN(elapsedSeconds) FROM finished WHERE solved = 1 AND grade = :grade")
     public suspend fun bestSeconds(grade: String): Long?
 
+    /** Which days have been solved, for marking up the calendar. */
+    @Query("SELECT DISTINCT dailyEpochDay FROM finished WHERE solved = 1 AND dailyEpochDay IS NOT NULL")
+    public fun watchSolvedDays(): Flow<List<Long>>
+
+    /** Which days have been played but not finished. */
+    @Query("SELECT DISTINCT dailyEpochDay FROM finished WHERE solved = 0 AND dailyEpochDay IS NOT NULL")
+    public fun watchAttemptedDays(): Flow<List<Long>>
+
     @Query("DELETE FROM finished")
     public suspend fun clear()
 }
@@ -114,8 +135,24 @@ public abstract class SendokuDatabase : RoomDatabase() {
     public abstract fun finished(): FinishedDao
 
     public companion object {
-        public const val VERSION: Int = 1
+        public const val VERSION: Int = 2
         public const val NAME: String = "sendoku.db"
+
+        /**
+         * Version 1 to 2: which day a puzzle belonged to.
+         *
+         * Nullable and with no default, because every game already recorded was played off
+         * the ladder rather than from the calendar, and saying otherwise would put marks on a
+         * calendar the player never opened.
+         */
+        public val MIGRATION_1_2: Migration = object : Migration(1, 2) {
+            override fun migrate(connection: SQLiteConnection) {
+                connection.execSQL("ALTER TABLE finished ADD COLUMN dailyEpochDay INTEGER")
+                connection.execSQL("ALTER TABLE in_progress ADD COLUMN dailyEpochDay INTEGER")
+            }
+        }
+
+        public val MIGRATIONS: Array<Migration> = arrayOf(MIGRATION_1_2)
     }
 }
 
@@ -133,6 +170,7 @@ internal fun InProgressRow.toSaved(): SavedGame = SavedGame(
     elapsed = elapsedSeconds.toDuration(),
     mistakes = mistakes,
     hintsUsed = hintsUsed,
+    dailyEpochDay = dailyEpochDay,
 )
 
 internal fun SavedGame.toRow(savedAt: Long): InProgressRow = InProgressRow(
@@ -149,6 +187,7 @@ internal fun SavedGame.toRow(savedAt: Long): InProgressRow = InProgressRow(
     mistakes = mistakes,
     hintsUsed = hintsUsed,
     savedAt = savedAt,
+    dailyEpochDay = dailyEpochDay,
 )
 
 internal fun FinishedRow.toFinished(): FinishedGame = FinishedGame(
@@ -161,6 +200,7 @@ internal fun FinishedRow.toFinished(): FinishedGame = FinishedGame(
     mistakes = mistakes,
     solved = solved,
     finishedAt = finishedAt,
+    dailyEpochDay = dailyEpochDay,
 )
 
 internal fun FinishedGame.toRow(): FinishedRow = FinishedRow(
@@ -173,4 +213,5 @@ internal fun FinishedGame.toRow(): FinishedRow = FinishedRow(
     mistakes = mistakes,
     solved = solved,
     finishedAt = finishedAt,
+    dailyEpochDay = dailyEpochDay,
 )

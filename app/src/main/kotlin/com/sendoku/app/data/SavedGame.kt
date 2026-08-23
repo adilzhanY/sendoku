@@ -38,6 +38,7 @@ public data class SavedGame(
     val elapsed: Duration,
     val mistakes: Int,
     val hintsUsed: Int,
+    val dailyEpochDay: Long? = null,
 ) {
 
     /** How many cells hold a digit, clues and entries together. */
@@ -73,6 +74,7 @@ public data class SavedGame(
             elapsed = elapsed,
             mistakes = mistakes,
             hintsUsed = hintsUsed,
+            dailyEpochDay = dailyEpochDay,
             settings = settings,
         )
     }
@@ -101,6 +103,7 @@ public data class SavedGame(
             elapsed = state.elapsed,
             mistakes = state.mistakes,
             hintsUsed = state.hintsUsed,
+            dailyEpochDay = state.dailyEpochDay,
         )
 
         /**
@@ -153,6 +156,7 @@ public data class FinishedGame(
     val mistakes: Int,
     val solved: Boolean,
     val finishedAt: Long,
+    val dailyEpochDay: Long? = null,
 ) {
     public companion object {
         public fun of(state: GameState, finishedAt: Long): FinishedGame = FinishedGame(
@@ -169,6 +173,7 @@ public data class FinishedGame(
             mistakes = state.mistakes,
             solved = state.isSolved,
             finishedAt = finishedAt,
+            dailyEpochDay = state.dailyEpochDay,
         )
     }
 }

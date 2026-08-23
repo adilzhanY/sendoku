@@ -62,7 +62,9 @@ class MainActivity : ComponentActivity() {
     }
 
     private val database by lazy {
-        Room.databaseBuilder(applicationContext, SendokuDatabase::class.java, SendokuDatabase.NAME).build()
+        Room.databaseBuilder(applicationContext, SendokuDatabase::class.java, SendokuDatabase.NAME)
+            .addMigrations(*SendokuDatabase.MIGRATIONS)
+            .build()
     }
     private val repository by lazy { RoomGameRepository(database.inProgress(), database.finished()) }
     private val settings by lazy { DataStoreSettings(preferences) }
@@ -121,6 +123,7 @@ class MainActivity : ComponentActivity() {
                         },
                         solvedByGrade = repository.solvedByGrade(),
                         statistics = repository.statistics(),
+                        dailyDays = repository.dailyDays(),
                         appearance = settings.appearance,
                         onAppearanceChange = { changed ->
                             lifecycleScope.launch { settings.updateAppearance { changed } }

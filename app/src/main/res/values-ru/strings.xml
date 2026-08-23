@@ -270,4 +270,21 @@
     <string name="technique_x_chain">X-цепочка</string>
     <string name="technique_xy_chain">XY-цепочка</string>
     <string name="technique_als_xz">ALS XZ</string>
+    <string name="daily_title">Ежедневная</string>
+    <string name="daily_no_streak">Серии пока нет. Решите сегодняшнюю головоломку, чтобы начать.</string>
+    <string name="daily_previous_month">РАНЬШЕ</string>
+    <string name="daily_next_month">ПОЗЖЕ</string>
+    <string name="daily_cell_solved">решено</string>
+    <string name="daily_cell_attempted">начато, но не закончено</string>
+    <string name="daily_cell_unplayed">не играли</string>
+    <string name="daily_cell_future">ещё не время</string>
+    <string name="daily_play_today">Играть сегодня</string>
+    <plurals name="daily_streak">
+        <item quantity="one">%1$d день подряд</item>
+        <item quantity="few">%1$d дня подряд</item>
+        <item quantity="many">%1$d дней подряд</item>
+        <item quantity="other">%1$d дня подряд</item>
+    </plurals>
+    <string name="daily_cell">%1$d, %2$s, %3$s</string>
+    <string name="daily_cell_today">сегодня, %1$d, %2$s, %3$s</string>
 </resources>

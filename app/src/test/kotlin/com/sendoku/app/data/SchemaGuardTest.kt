@@ -26,6 +26,7 @@ class SchemaGuardTest {
      */
     private val knownHashes = mapOf(
         1 to "984c295e58d33ea092ed847f8e285097",
+        2 to "fcaf9351619be1300598cb1a60f15054",
     )
 
     @Test

@@ -4,6 +4,7 @@ import com.sendoku.app.game.GameSettings
 import com.sendoku.app.game.GameState
 import com.sendoku.engine.Grade
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 
 /**
@@ -42,6 +43,9 @@ public interface GameRepository {
     /** Everything the statistics screen shows. */
     public fun statistics(): Flow<Statistics>
 
+    /** Which days of the calendar have been solved, and which were played and left. */
+    public fun dailyDays(): Flow<DailyDays>
+
     /** Throws the history away. Never called without asking first. */
     public suspend fun clearHistory()
 }
@@ -78,6 +82,12 @@ public class RoomGameRepository(private val inProgress: InProgressDao, private v
     override fun statistics(): Flow<Statistics> =
         finished.watchAll().map { rows -> Statistics.of(rows.map { it.toFinished() }) }
 
+    override fun dailyDays(): Flow<DailyDays> =
+        combine(finished.watchSolvedDays(), finished.watchAttemptedDays()) { solved, attempted ->
+            val done = solved.toSet()
+            DailyDays(solved = done, attempted = attempted.toSet() - done)
+        }
+
     override suspend fun clearHistory() {
         finished.clear()
     }
@@ -88,3 +98,11 @@ public class RoomGameRepository(private val inProgress: InProgressDao, private v
             .eachCount()
     }
 }
+
+/**
+ * The calendar's view of history.
+ *
+ * A day that was solved outranks a day that was only attempted, because a player who came
+ * back and finished it should not see the square that says they gave up.
+ */
+public data class DailyDays(val solved: Set<Long> = emptySet(), val attempted: Set<Long> = emptySet())

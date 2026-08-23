@@ -29,6 +29,9 @@ public sealed interface Destination {
     /** Today's puzzle, the same one everybody gets. */
     public data class Daily(val epochDay: Long) : Destination
 
+    /** The month view, from which a day is chosen. */
+    public data object Calendar : Destination
+
     public data object Settings : Destination
 
     /** Every technique the app knows, for somebody who has just met one. */
@@ -98,6 +101,7 @@ public class Navigator(stack: List<Destination> = listOf(Destination.Home)) {
             is Destination.Play -> "play:${grade.name}"
             Destination.Resume -> "resume"
             is Destination.Daily -> "daily:$epochDay"
+            Destination.Calendar -> "calendar"
             Destination.Settings -> "settings"
             Destination.Glossary -> "glossary"
             Destination.Stats -> "stats"
@@ -114,6 +118,7 @@ public class Navigator(stack: List<Destination> = listOf(Destination.Home)) {
             value == "about" -> Destination.About
             value == "licences" -> Destination.Licences
             value.startsWith("play:") -> Destination.Play(Grade.valueOf(value.removePrefix("play:")))
+            value == "calendar" -> Destination.Calendar
             value.startsWith("daily:") -> Destination.Daily(value.removePrefix("daily:").toLong())
             else -> Destination.Home
         }

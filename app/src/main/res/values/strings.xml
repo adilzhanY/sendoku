@@ -277,4 +277,19 @@
     <string name="technique_x_chain">X-Chain</string>
     <string name="technique_xy_chain">XY-Chain</string>
     <string name="technique_als_xz">ALS XZ</string>
+    <string name="daily_title">Daily</string>
+    <string name="daily_no_streak">No streak yet. Solve today\'s puzzle to start one.</string>
+    <string name="daily_previous_month">EARLIER</string>
+    <string name="daily_next_month">LATER</string>
+    <string name="daily_cell_solved">solved</string>
+    <string name="daily_cell_attempted">played but not finished</string>
+    <string name="daily_cell_unplayed">not played</string>
+    <string name="daily_cell_future">not yet</string>
+    <string name="daily_play_today">Play today</string>
+    <plurals name="daily_streak">
+        <item quantity="one">%1$d day in a row</item>
+        <item quantity="other">%1$d days in a row</item>
+    </plurals>
+    <string name="daily_cell">%1$d, %2$s, %3$s</string>
+    <string name="daily_cell_today">today, %1$d, %2$s, %3$s</string>
 </resources>

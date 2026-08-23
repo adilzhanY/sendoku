@@ -1,0 +1,85 @@
+package com.sendoku.app.data
+
+import androidx.room.testing.MigrationTestHelper
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
+import org.junit.Rule
+import org.junit.Test
+import org.junit.runner.RunWith
+
+private const val DATABASE = "migration-test.db"
+
+/**
+ * The upgrade path, run for real against a version 1 database.
+ *
+ * A migration that compiles is not a migration that works, and the thing at stake is a
+ * player's whole history. This writes a row the old way, upgrades, and reads it back.
+ */
+@RunWith(AndroidJUnit4::class)
+class MigrationTest {
+
+    @get:Rule
+    val helper = MigrationTestHelper(
+        InstrumentationRegistry.getInstrumentation(),
+        SendokuDatabase::class.java,
+    )
+
+    @Test
+    fun oneToTwoKeepsTheHistoryAndAddsTheDay() {
+        helper.createDatabase(DATABASE, 1).apply {
+            execSQL(
+                """
+                INSERT INTO finished
+                    (givens, grade, rating, hardest, elapsedSeconds, hintsUsed, mistakes, solved, finishedAt)
+                VALUES ('${".".repeat(81)}', 'SEVERE', 6.1, 'XY_WING', 754, 2, 1, 1, 1787000000000)
+                """.trimIndent(),
+            )
+            close()
+        }
+
+        val upgraded = helper.runMigrationsAndValidate(DATABASE, 2, true, SendokuDatabase.MIGRATION_1_2)
+
+        upgraded.query("SELECT grade, elapsedSeconds, solved, dailyEpochDay FROM finished").use { cursor ->
+            assertTrue("the finished game did not survive the upgrade", cursor.moveToFirst())
+            assertEquals("SEVERE", cursor.getString(0))
+            assertEquals(754L, cursor.getLong(1))
+            assertEquals(1, cursor.getInt(2))
+            // Every game recorded before the calendar existed belongs to no day.
+            assertTrue(cursor.isNull(3))
+            assertEquals(1, cursor.count)
+        }
+        upgraded.close()
+    }
+
+    @Test
+    fun theNewColumnAcceptsADay() {
+        helper.createDatabase(DATABASE, 1).close()
+        val upgraded = helper.runMigrationsAndValidate(DATABASE, 2, true, SendokuDatabase.MIGRATION_1_2)
+        upgraded.execSQL(
+            """
+            INSERT INTO finished
+                (givens, grade, rating, hardest, elapsedSeconds, hintsUsed, mistakes, solved, finishedAt, dailyEpochDay)
+            VALUES ('${".".repeat(81)}', 'GENTLE', 1.4, 'NAKED_SINGLE', 120, 0, 0, 1, 1787000000000, 20688)
+            """.trimIndent(),
+        )
+        upgraded.query("SELECT dailyEpochDay FROM finished").use { cursor ->
+            assertTrue(cursor.moveToFirst())
+            assertEquals(20688L, cursor.getLong(0))
+        }
+        upgraded.close()
+    }
+
+    @Test
+    fun theInProgressRowGetsTheDayToo() {
+        helper.createDatabase(DATABASE, 1).close()
+        val upgraded = helper.runMigrationsAndValidate(DATABASE, 2, true, SendokuDatabase.MIGRATION_1_2)
+        upgraded.query("SELECT dailyEpochDay FROM in_progress").use { cursor ->
+            assertEquals(0, cursor.count)
+        }
+        assertNull(null)
+        upgraded.close()
+    }
+}

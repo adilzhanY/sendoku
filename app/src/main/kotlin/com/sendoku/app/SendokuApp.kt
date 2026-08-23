@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.sendoku.app.data.Appearance
+import com.sendoku.app.data.DailyDays
 import com.sendoku.app.data.Statistics
 import com.sendoku.app.game.GameSettings
 import com.sendoku.app.game.GameViewModel
@@ -21,6 +22,7 @@ import com.sendoku.app.nav.Destination
 import com.sendoku.app.nav.Navigator
 import com.sendoku.app.theme.Sendoku
 import com.sendoku.app.ui.AboutScreen
+import com.sendoku.app.ui.DailyScreen
 import com.sendoku.app.ui.GameScreen
 import com.sendoku.app.ui.GlossaryScreen
 import com.sendoku.app.ui.HomeScreen
@@ -50,6 +52,7 @@ public fun SendokuApp(
     solvedByGrade: Flow<Map<Grade, Int>>,
     savedGame: Flow<InProgressSummary?>,
     statistics: Flow<Statistics>,
+    dailyDays: Flow<DailyDays>,
     appearance: Flow<Appearance>,
     onAppearanceChange: (Appearance) -> Unit,
     onResetStats: () -> Unit,
@@ -62,6 +65,7 @@ public fun SendokuApp(
     val counts by solvedByGrade.collectAsState(initial = emptyMap())
     val saved by savedGame.collectAsState(initial = null)
     val stats by statistics.collectAsState(initial = Statistics.of(emptyList()))
+    val calendar by dailyDays.collectAsState(initial = DailyDays())
     val currentSettings by settings.collectAsState(initial = GameSettings())
     val look by appearance.collectAsState(initial = Appearance())
 
@@ -80,6 +84,7 @@ public fun SendokuApp(
             currentSettings = currentSettings,
             look = look,
             loading = loading,
+            dailyDays = calendar,
             settingsChange = onSettingsChange,
             appearanceChange = onAppearanceChange,
             resetStats = onResetStats,
@@ -100,6 +105,7 @@ private fun Screens(
     currentSettings: GameSettings,
     look: Appearance,
     loading: Boolean,
+    dailyDays: DailyDays,
     settingsChange: (GameSettings) -> Unit,
     appearanceChange: (Appearance) -> Unit,
     resetStats: () -> Unit,
@@ -126,10 +132,9 @@ private fun Screens(
                     model.resumeOrStart()
                     navigator.go(Destination.Resume)
                 },
-                onDaily = {
-                    model.startDaily(todayEpochDay())
-                    navigator.go(Destination.Daily(todayEpochDay()))
-                },
+                // The calendar, not straight into today. A daily is only worth having if a
+                // missed day is visible and a caught up day is possible, and both live there.
+                onDaily = { navigator.go(Destination.Calendar) },
                 onSettings = { navigator.go(Destination.Settings) },
                 onStats = { navigator.go(Destination.Stats) },
                 modifier = modifier,
@@ -138,6 +143,19 @@ private fun Screens(
 
         is Destination.Play, Destination.Resume, is Destination.Daily ->
             PlayHost(model, loading, navigator, scope, modifier)
+
+        Destination.Calendar -> {
+            DailyScreen(
+                today = java.time.LocalDate.now(),
+                days = dailyDays,
+                onPlay = { epochDay ->
+                    model.startDaily(epochDay)
+                    navigator.go(Destination.Daily(epochDay))
+                },
+                onBack = { navigator.back() },
+                modifier = modifier,
+            )
+        }
 
         Destination.Stats -> {
             StatsScreen(

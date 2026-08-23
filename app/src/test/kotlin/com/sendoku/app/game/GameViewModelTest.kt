@@ -60,6 +60,13 @@ class GameViewModelTest {
             saved = null
         }
 
+        override fun dailyDays(): Flow<com.sendoku.app.data.DailyDays> = finished.map { games ->
+            com.sendoku.app.data.DailyDays(
+                solved = games.filter { it.solved }.mapNotNull { it.dailyEpochDay }.toSet(),
+                attempted = games.filterNot { it.solved }.mapNotNull { it.dailyEpochDay }.toSet(),
+            )
+        }
+
         override suspend fun recordFinished(state: GameState, finishedAt: Long) {
             finished.value = finished.value + FinishedGame.of(state, finishedAt)
             saved = null

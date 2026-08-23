@@ -69,6 +69,14 @@ public data class GameState(
     val hintsUsed: Int = 0,
     val past: List<Move> = emptyList(),
     val future: List<Move> = emptyList(),
+    /**
+     * Which day's puzzle this is, when it came from the calendar rather than the ladder.
+     *
+     * Carried so the calendar can mark the square that was actually played. Without it a
+     * finished daily is indistinguishable from any other game, and replaying an old day
+     * would mark today.
+     */
+    val dailyEpochDay: Long? = null,
     val settings: GameSettings = GameSettings(),
     /**
      * Candidates that hints have already ruled out, this session only.
@@ -388,7 +396,11 @@ public data class GameState(
     public companion object {
 
         /** Starts a game from a rated puzzle. */
-        public fun start(rated: RatedPuzzle, settings: GameSettings = GameSettings()): GameState {
+        public fun start(
+            rated: RatedPuzzle,
+            settings: GameSettings = GameSettings(),
+            dailyEpochDay: Long? = null,
+        ): GameState {
             val givens = rated.puzzle.givens
             val dims = givens.dims
             return GameState(
@@ -401,6 +413,7 @@ public data class GameState(
                     val digit = givens.atIndex(index)
                     Cell(digit = digit, isGiven = digit != Board.EMPTY)
                 },
+                dailyEpochDay = dailyEpochDay,
                 settings = settings,
             )
         }

@@ -76,7 +76,7 @@ public class GameViewModel(
         scope.launch {
             _loading.value = true
             val settings = settingsStore.settings.first()
-            _state.value = GameState.start(puzzles.daily(epochDay), settings)
+            _state.value = GameState.start(puzzles.daily(epochDay), settings, dailyEpochDay = epochDay)
             _loading.value = false
         }
     }
