@@ -88,6 +88,8 @@ class GameViewModelTest {
     private inner class RotatingPuzzles : PuzzleSource {
         var handedOut = 0
         override suspend fun next(grade: Grade): RatedPuzzle = puzzles[handedOut++ % puzzles.size]
+        override suspend fun daily(epochDay: Long): RatedPuzzle =
+            puzzles[(epochDay % puzzles.size).toInt()]
     }
 
     @Test
@@ -258,6 +260,35 @@ class GameViewModelTest {
         assertTrue(!model.state.value!!.isRunning)
         assertNotNull(repository.saved)
         assertTrue(!repository.saved!!.isRunning)
+    }
+
+
+    @Test
+    fun `the daily is the same puzzle however many times it is opened`() = runTest {
+        val source = RotatingPuzzles()
+        val model = GameViewModel(MemoryRepository(), FixedSettings(), source, viewModelScope())
+
+        model.startDaily(20_688L)
+        advanceUntilIdle()
+        val first = model.state.value!!.solution
+
+        model.startDaily(20_688L)
+        advanceUntilIdle()
+        assertEquals(first, model.state.value!!.solution)
+    }
+
+    @Test
+    fun `a different day is a different puzzle`() = runTest {
+        val source = RotatingPuzzles()
+        val model = GameViewModel(MemoryRepository(), FixedSettings(), source, viewModelScope())
+
+        model.startDaily(20_688L)
+        advanceUntilIdle()
+        val sunday = model.state.value!!.solution
+
+        model.startDaily(20_689L)
+        advanceUntilIdle()
+        assertTrue(sunday != model.state.value!!.solution)
     }
 
     private fun mistakeLimit() = GameSettings(mistakeLimit = 1)

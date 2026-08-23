@@ -1,116 +1,99 @@
 package com.sendoku.app
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
+import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleEventObserver
-import com.sendoku.app.game.GameState
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.room.Room
+import com.sendoku.app.data.CatalogPuzzleSource
+import com.sendoku.app.data.DataStoreSettings
+import com.sendoku.app.data.RoomGameRepository
+import com.sendoku.app.data.SendokuDatabase
+import com.sendoku.app.game.GameViewModel
 import com.sendoku.app.theme.Sendoku
 import com.sendoku.app.theme.SendokuTheme
-import com.sendoku.app.ui.GameEvent
-import com.sendoku.app.ui.GameScreen
-import com.sendoku.app.ui.reduce
-import com.sendoku.engine.Grade
-import com.sendoku.engine.catalog.CatalogReader
-import kotlin.random.Random
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.launch
+
+private val Context.preferences: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 /**
- * One screen, for now.
+ * The one activity.
  *
- * The game state lives in a `remember` rather than a ViewModel, and the puzzle is picked at
- * random on every launch. Both are temporary: saving a game, restoring it after the process
- * dies, and navigating between screens are their own pieces of work and are next. What is
- * here is enough to actually play a puzzle end to end.
+ * Wiring is done by hand rather than by an injection framework. There are four things to
+ * build and they are built once, so a container would be more code than it replaced. If
+ * that stops being true, this is the single place that has to change.
  */
 class MainActivity : ComponentActivity() {
 
+    private lateinit var model: GameViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Holds the system splash until the first game is ready, so the app never shows an
+        // empty board on the way in.
+        val splash = installSplashScreen()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        val database = Room.databaseBuilder(applicationContext, SendokuDatabase::class.java, SendokuDatabase.NAME)
+            .build()
+        val repository = RoomGameRepository(database.inProgress(), database.finished())
+        val settings = DataStoreSettings(preferences)
+        model = GameViewModel(
+            repository = repository,
+            settingsStore = settings,
+            puzzles = CatalogPuzzleSource.fromResources(),
+            scope = lifecycleScope,
+        )
+
+        splash.setKeepOnScreenCondition { false }
+
         setContent {
             SendokuTheme {
-                androidx.compose.material3.Scaffold(
+                Scaffold(
                     containerColor = Sendoku.colors.background,
                     // Draw behind the bars, but keep every control clear of them and of any
-                    // camera cutout. safeDrawing is the one that covers both, and a board
-                    // with a corner under a cutout is a board with an unreachable cell.
+                    // camera cutout. A board with a corner under a cutout has an unreachable
+                    // cell in it.
                     contentWindowInsets = WindowInsets.safeDrawing,
                     modifier = Modifier.fillMaxSize(),
                 ) { insets ->
-                    Game(modifier = Modifier.padding(insets))
+                    SendokuApp(
+                        model = model,
+                        settings = settings.settings,
+                        onSettingsChange = { changed ->
+                            lifecycleScope.launch { settings.update { changed } }
+                        },
+                        solvedByGrade = repository.solvedByGrade(),
+                        scope = lifecycleScope,
+                        modifier = Modifier.padding(insets),
+                    )
+                }
+            }
+        }
+
+        // Stop the clock when the app goes away, and write the game down while we still can.
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                try {
+                    kotlinx.coroutines.awaitCancellation()
+                } finally {
+                    model.pause()
                 }
             }
         }
     }
-}
-
-@Composable
-private fun Game(modifier: Modifier = Modifier) {
-    var state by remember { mutableStateOf<GameState?>(null) }
-
-    // Reading the batch inflates a hundred and fifty kilobytes, which is not something to do
-    // on the frame that draws the first screen.
-    LaunchedEffect(Unit) {
-        state = withContext(Dispatchers.IO) { loadGame(Grade.STEADY) }
-    }
-
-    // A puzzle should not keep ticking in the app switcher.
-    val lifecycleOwner = LocalLifecycleOwner.current
-    LaunchedEffect(lifecycleOwner) {
-        val observer = LifecycleEventObserver { _, event ->
-            if (event == Lifecycle.Event.ON_STOP) state = state?.pause()
-        }
-        lifecycleOwner.lifecycle.addObserver(observer)
-    }
-
-    val game = state
-    if (game == null) {
-        Box(
-            modifier = modifier.fillMaxSize().background(Sendoku.colors.background),
-            contentAlignment = Alignment.Center,
-        ) {
-            Text("Sendoku", style = Sendoku.type.title, color = Sendoku.colors.muted)
-        }
-        return
-    }
-
-    GameScreen(
-        state = game,
-        onEvent = { event -> state = game.reduce(event) },
-        // Both of these get somewhere to go once there is more than one screen.
-        onNextPuzzle = { state = loadGame(game.grade) },
-        onHome = { state = loadGame(game.grade) },
-        modifier = modifier,
-    )
-}
-
-/** Picks a puzzle out of the batch that ships inside the app. */
-private fun loadGame(grade: Grade): GameState {
-    val reader = checkNotNull(GameState::class.java.getResourceAsStream("/catalog/classic.sdkb")) {
-        "the puzzle batch is missing from the app"
-    }.use { CatalogReader.from(it) }
-
-    val indices = reader.indicesOf(grade)
-    val index = indices[Random.nextInt(indices.size)]
-    return GameState.start(reader.puzzleAt(index))
 }

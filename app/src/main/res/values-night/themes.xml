@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- True black behind the first frame, and light icons on top of it. -->
-    <style name="Theme.Sendoku" parent="android:Theme.Material.NoActionBar">
+    <style name="Theme.Sendoku" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/sendoku_window</item>
+        <!-- No icon yet. The background colour alone is a valid splash, and a
+             placeholder glyph would be worse than none. Set this when the launcher icon
+             is designed. -->
+        <item name="postSplashScreenTheme">@style/Theme.Sendoku.Main</item>
+    </style>
+
+    <style name="Theme.Sendoku.Main" parent="android:Theme.Material.NoActionBar">
         <item name="android:windowBackground">@color/sendoku_window</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>

@@ -4,6 +4,7 @@ import android.content.Context
 import com.sendoku.engine.Dimensions
 import com.sendoku.engine.Grade
 import com.sendoku.engine.catalog.CatalogReader
+import com.sendoku.engine.catalog.DailyPuzzle
 import com.sendoku.engine.catalog.GradedGenerator
 import com.sendoku.engine.catalog.PuzzleSupply
 import com.sendoku.engine.catalog.RatedPuzzle
@@ -15,6 +16,9 @@ import kotlinx.coroutines.withContext
 /** Where the next puzzle comes from. */
 public interface PuzzleSource {
     public suspend fun next(grade: Grade): RatedPuzzle
+
+    /** The puzzle for a given day, which is the same one on every device. */
+    public suspend fun daily(epochDay: Long): RatedPuzzle
 }
 
 /**
@@ -29,7 +33,6 @@ public class CatalogPuzzleSource(
 ) : PuzzleSource {
 
     private val supply: PuzzleSupply by lazy {
-        val reader = open().use { CatalogReader.from(it) }
         PuzzleSupply(reader, GradedGenerator(Dimensions.CLASSIC, Random.Default))
     }
 
@@ -41,10 +44,20 @@ public class CatalogPuzzleSource(
      */
     private val played = HashSet<Int>()
 
+    private val reader: CatalogReader by lazy { open().use { CatalogReader.from(it) } }
+
     override suspend fun next(grade: Grade): RatedPuzzle = withContext(Dispatchers.Default) {
         val supplied = supply.take(grade, played, Random.Default)
         if (supplied is Supplied.FromCatalog) played.add(supplied.index)
         supplied.puzzle
+    }
+
+    override suspend fun daily(epochDay: Long): RatedPuzzle = withContext(Dispatchers.Default) {
+        // Never from the live generator and never marked as played: the daily is chosen by
+        // the date, and it has to be the same grid whether or not this device has met it.
+        val grade = DailyPuzzle.gradeFor(epochDay)
+        val choices = reader.indicesOf(grade)
+        reader.puzzleAt(choices[DailyPuzzle.indexFor(epochDay, choices.size)])
     }
 
     public companion object {

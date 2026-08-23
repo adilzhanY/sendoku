@@ -62,6 +62,16 @@ public class GameViewModel(
         }
     }
 
+    /** Today's puzzle, the one everybody on this version gets. */
+    public fun startDaily(epochDay: Long) {
+        scope.launch {
+            _loading.value = true
+            val settings = settingsStore.settings.first()
+            _state.value = GameState.start(puzzles.daily(epochDay), settings)
+            _loading.value = false
+        }
+    }
+
     public fun startNew(grade: Grade) {
         scope.launch {
             _loading.value = true
