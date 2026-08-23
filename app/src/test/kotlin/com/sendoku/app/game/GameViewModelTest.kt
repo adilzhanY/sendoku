@@ -14,6 +14,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.test.StandardTestDispatcher
@@ -342,6 +343,52 @@ class GameViewModelTest {
         advanceUntilIdle()
 
         assertTrue(!model.state.value!!.isRunning)
+    }
+
+    @Test
+    fun `finishing a daily marks that day and nothing else`() = runTest {
+        val repository = MemoryRepository()
+        val model = GameViewModel(repository, FixedSettings(), RotatingPuzzles(), viewModelScope())
+        val day = 20_688L
+
+        model.startDaily(day)
+        advanceUntilIdle()
+        assertEquals(day, model.state.value!!.dailyEpochDay)
+
+        solve(model)
+        advanceUntilIdle()
+
+        val filed = repository.finished.value.single()
+        assertTrue(filed.solved)
+        assertEquals(day, filed.dailyEpochDay)
+        assertEquals(setOf(day), repository.dailyDays().first().solved)
+    }
+
+    @Test
+    fun `a game off the ladder belongs to no day`() = runTest {
+        val repository = MemoryRepository()
+        val model = GameViewModel(repository, FixedSettings(), RotatingPuzzles(), viewModelScope())
+
+        model.startNew(Grade.GENTLE)
+        advanceUntilIdle()
+        solve(model)
+        advanceUntilIdle()
+
+        // Otherwise every puzzle played on a Tuesday would tick Tuesday off the calendar.
+        assertNull(repository.finished.value.single().dailyEpochDay)
+        assertTrue(repository.dailyDays().first().solved.isEmpty())
+    }
+
+    /** Fills in every empty cell with the right digit, which is the shortest honest win. */
+    private fun solve(model: GameViewModel) {
+        var state = model.state.value!!
+        for (at in state.cells.indices) {
+            if (state.cells[at].isEmpty) {
+                model.onEvent(GameEvent.Select(at))
+                model.onEvent(GameEvent.Digit(state.solution.atIndex(at)))
+                state = model.state.value!!
+            }
+        }
     }
 
     private fun mistakeLimit() = GameSettings(mistakeLimit = 1)
