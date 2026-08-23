@@ -80,6 +80,12 @@ jobs:
       - name: Build the release
         run: ./gradlew :app:assembleRelease --stacktrace
 
+      - name: Check the release artefact
+        # Size, and the 16 KB page alignment of the native libraries that arrive with
+        # AndroidX. Neither is something a compiler warning would catch, and both are a
+        # dependency bump away from breaking.
+        run: ./tools/check-release.sh
+
       - name: Keep the reports
         if: always()
         uses: actions/upload-artifact@v4
