@@ -193,6 +193,7 @@
     <string name="about_hints">Hints that teach</string>
     <string name="about_hints_detail">A hint names the technique and explains the reasoning. It never just fills in a digit, and it is never held back.</string>
     <string name="about_rating">Difficulty is rated by the hardest technique a puzzle actually needs, worked out by solving it the way a person would. That is why a Severe here means the same thing as the last Severe.</string>
+    <string name="about_privacy">The privacy policy says the same thing in the form the store asks for, at adilzhany.github.io/sendoku/privacy</string>
     <string name="about_licences">OPEN SOURCE LICENCES</string>
     <string name="licences_title">Licences</string>
 
