@@ -14,6 +14,13 @@ import java.io.File
  * ./gradlew :engine:generateCatalog --args="engine/src/main/resources/catalog/classic.sdkb 500"
  * ```
  *
+ * With no arguments at all it rebuilds the shipped batch exactly: 500 of every grade,
+ * rotational, seed 1.
+ *
+ * ```sh
+ * ./gradlew :engine:generateCatalog
+ * ```
+ *
  * Arguments, all optional after the first: output file, puzzles per grade, the grades to
  * fill, the symmetry, and the seed. The seed is what makes a batch reproducible, so the
  * same command always writes the same file.
@@ -21,7 +28,7 @@ import java.io.File
 public fun main(args: Array<String>) {
     val output = File(args.getOrElse(0) { "engine/src/main/resources/catalog/classic.sdkb" })
     val perGrade = args.getOrElse(1) { "500" }.toInt()
-    val grades = args.getOrElse(2) { "GENTLE,STEADY,TRICKY,SEVERE" }
+    val grades = args.getOrElse(2) { Grade.entries.joinToString(",") { it.name } }
         .split(",").map { Grade.valueOf(it.trim().uppercase()) }
     val symmetry = Symmetry.valueOf(args.getOrElse(3) { "ROTATIONAL" }.uppercase())
     val seed = args.getOrElse(4) { "1" }.toLong()
