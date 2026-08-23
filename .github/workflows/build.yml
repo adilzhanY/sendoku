@@ -10,6 +10,10 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+  schedule:
+    # Half past three in the morning UTC. The device tests run here rather than on every push,
+    # see the note on the job itself.
+    - cron: '30 3 * * *'
 
 concurrency:
   # A newer push makes an older run pointless.
@@ -99,9 +103,18 @@ jobs:
   instrumented:
     name: On a device
     runs-on: ubuntu-latest
-    # The emulator is slow and needs hardware acceleration, so it runs on the default branch
-    # and on demand rather than on every pull request.
-    if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
+    #
+    # Not on push, on purpose.
+    #
+    # An emulator on a shared runner is the least reliable thing in this build by a wide
+    # margin, and a check that is red for reasons of its own teaches everybody to ignore the
+    # colour. That is worse than not having the check: a real failure then goes unread too.
+    #
+    # So it runs nightly and on demand, where a flake costs nothing and a real break is still
+    # found within a day. The tests themselves have to pass before anything is pushed, which
+    # is a person running ./gradlew :app:connectedDebugAndroidTest, and that is enforced by
+    # habit rather than by a gate. Move it back onto push once it has been green for a week.
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     steps:
       - uses: actions/checkout@v4
 
