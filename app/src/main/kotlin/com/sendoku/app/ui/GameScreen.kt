@@ -1,19 +1,38 @@
 package com.sendoku.app.ui
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.KeyEventType
+import androidx.compose.ui.input.key.key
+import androidx.compose.ui.input.key.onKeyEvent
+import androidx.compose.ui.input.key.type
+import androidx.compose.ui.unit.dp
 import com.sendoku.app.game.GameState
 import com.sendoku.app.theme.Sendoku
 import kotlin.time.Duration
@@ -25,15 +44,23 @@ import kotlinx.coroutines.delay
  *
  * State comes in and events go out. Nothing here decides anything about the game, which is
  * what lets every rule about pencil marks, undo and mistakes be tested without an emulator.
+ *
+ * The layout has two shapes rather than a dozen breakpoints. When the window is wider than
+ * it is tall the pad moves beside the board, because a board that has to shrink to leave
+ * room underneath is the single worst thing that happens to a sudoku app in landscape.
  */
 @Composable
 public fun GameScreen(
     state: GameState,
     onEvent: (GameEvent) -> Unit,
+    onNextPuzzle: () -> Unit,
+    onHome: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
+    var longPressed by remember { mutableStateOf<Int?>(null) }
+    var confirmLeaving by remember { mutableStateOf(false) }
 
     // One tick a second is enough for a clock that shows seconds, and it stops the moment
     // the game is paused or finished rather than spinning in the background.
@@ -44,44 +71,139 @@ public fun GameScreen(
         }
     }
 
-    Column(
+    // Walking away from a finished puzzle costs nothing, so only ask when it would.
+    BackHandler(enabled = state.hasProgress && !state.isOver) { confirmLeaving = true }
+
+    val focus = remember { FocusRequester() }
+    LaunchedEffect(Unit) { runCatching { focus.requestFocus() } }
+
+    BoxWithConstraints(
         modifier = modifier
             .fillMaxSize()
             .background(colors.background)
-            .padding(dimens.spaceM),
-        verticalArrangement = Arrangement.spacedBy(dimens.spaceM),
+            .focusRequester(focus)
+            .focusable()
+            .onKeyEvent { event -> handleKey(event.key, event.type == KeyEventType.KeyDown, onEvent) },
     ) {
-        GameHeader(state, onEvent)
+        val sideBySide = maxWidth > maxHeight
+        // A board wider than this stops being a board and becomes a wall. On a tablet the
+        // extra room goes to the margins instead.
+        val boardCap = 560.dp
 
-        Box(Modifier.fillMaxWidth()) {
-            SudokuBoard(
-                state = state,
-                onSelect = { onEvent(GameEvent.Select(it)) },
-                modifier = Modifier.fillMaxWidth(),
-            )
-            if (!state.isRunning && !state.isOver) {
-                PauseOverlay(
-                    elapsed = state.elapsed.clock(),
-                    onResume = { onEvent(GameEvent.Resume) },
-                )
+        val content: @Composable () -> Unit = {
+            if (sideBySide) {
+                Row(
+                    modifier = Modifier.fillMaxSize().padding(dimens.spaceM),
+                    horizontalArrangement = Arrangement.spacedBy(dimens.spaceL),
+                ) {
+                    Box(Modifier.fillMaxHeight().weight(1f), contentAlignment = Alignment.Center) {
+                        BoardArea(state, onEvent, onNextPuzzle, onHome, { longPressed = it }, boardCap)
+                    }
+                    Column(
+                        modifier = Modifier.fillMaxHeight().weight(1f),
+                        verticalArrangement = Arrangement.spacedBy(dimens.spaceM, Alignment.CenterVertically),
+                    ) {
+                        GameHeader(state, onEvent)
+                        Controls(state, onEvent)
+                    }
+                }
+            } else {
+                Column(
+                    modifier = Modifier.fillMaxSize().padding(dimens.spaceM),
+                    verticalArrangement = Arrangement.spacedBy(dimens.spaceM),
+                ) {
+                    GameHeader(state, onEvent)
+                    Box(
+                        modifier = Modifier.fillMaxWidth().weight(1f),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        BoardArea(state, onEvent, onNextPuzzle, onHome, { longPressed = it }, boardCap)
+                    }
+                    Controls(state, onEvent)
+                }
             }
         }
+        content()
+    }
 
+    longPressed?.let { cell ->
+        CellActionSheet(
+            state = state,
+            cell = cell,
+            onAction = { event ->
+                onEvent(GameEvent.Select(cell))
+                onEvent(event)
+                longPressed = null
+            },
+            onDismiss = { longPressed = null },
+        )
+    }
+
+    if (confirmLeaving) {
+        AlertDialog(
+            onDismissRequest = { confirmLeaving = false },
+            containerColor = colors.surfaceRaised,
+            title = { Text("Leave this puzzle?", style = Sendoku.type.title, color = colors.given) },
+            text = {
+                Text(
+                    "It will be waiting where you left it.",
+                    style = Sendoku.type.body,
+                    color = colors.muted,
+                )
+            },
+            confirmButton = {
+                TextButton(onClick = { confirmLeaving = false; onHome() }) {
+                    Text("Leave", color = colors.accent, style = Sendoku.type.label)
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { confirmLeaving = false }) {
+                    Text("Stay", color = colors.muted, style = Sendoku.type.label)
+                }
+            },
+        )
+    }
+}
+
+@Composable
+private fun BoardArea(
+    state: GameState,
+    onEvent: (GameEvent) -> Unit,
+    onNextPuzzle: () -> Unit,
+    onHome: () -> Unit,
+    onLongPress: (Int) -> Unit,
+    cap: androidx.compose.ui.unit.Dp,
+) {
+    Box(Modifier.widthIn(max = cap)) {
+        SudokuBoard(
+            state = state,
+            onSelect = { onEvent(GameEvent.Select(it)) },
+            onLongPress = onLongPress,
+            modifier = Modifier.fillMaxWidth(),
+        )
         if (state.isOver) {
-            GameOutcome(state)
-        }
-
-        Column(verticalArrangement = Arrangement.spacedBy(dimens.spaceS)) {
-            NumberPad(state = state, onDigit = { onEvent(GameEvent.Digit(it)) })
-            GameToolbar(
-                state = state,
-                onUndo = { onEvent(GameEvent.Undo) },
-                onRedo = { onEvent(GameEvent.Redo) },
-                onErase = { onEvent(GameEvent.Erase) },
-                onTogglePencil = { onEvent(GameEvent.TogglePencil) },
-                onHint = { onEvent(GameEvent.Hint) },
+            OutcomePanel(state = state, onNextPuzzle = onNextPuzzle, onHome = onHome)
+        } else if (!state.isRunning) {
+            PauseOverlay(
+                elapsed = state.elapsed.clock(),
+                onResume = { onEvent(GameEvent.Resume) },
             )
         }
+    }
+}
+
+@Composable
+private fun Controls(state: GameState, onEvent: (GameEvent) -> Unit) {
+    Column(verticalArrangement = Arrangement.spacedBy(Sendoku.dimens.spaceS)) {
+        NumberPad(state = state, onDigit = { onEvent(GameEvent.Digit(it)) })
+        GameToolbar(
+            state = state,
+            onUndo = { onEvent(GameEvent.Undo) },
+            onRedo = { onEvent(GameEvent.Redo) },
+            onErase = { onEvent(GameEvent.Erase) },
+            onTogglePencil = { onEvent(GameEvent.TogglePencil) },
+            onHint = { onEvent(GameEvent.Hint) },
+        )
     }
 }
 
@@ -121,18 +243,47 @@ private fun GameHeader(state: GameState, onEvent: (GameEvent) -> Unit) {
     }
 }
 
-@Composable
-private fun GameOutcome(state: GameState) {
-    val colors = Sendoku.colors
-    Text(
-        text = if (state.isSolved) {
-            "Solved in ${state.elapsed.clock()}"
-        } else {
-            "Out of mistakes"
-        },
-        style = Sendoku.type.title,
-        color = if (state.isSolved) colors.accent else colors.conflict,
-    )
+/**
+ * Turns a keypress into a move, for tablets and Chromebooks.
+ *
+ * A physical keyboard makes a sudoku app dramatically faster to play, and almost nobody
+ * supports one. Arrows move, digits fill, backspace clears, space flips into pencil mode.
+ */
+internal fun handleKey(key: Key, isDown: Boolean, onEvent: (GameEvent) -> Unit): Boolean {
+    if (!isDown) return false
+    val digit = digitOf(key)
+    if (digit != null) {
+        onEvent(GameEvent.Digit(digit))
+        return true
+    }
+    val event = when (key) {
+        Key.DirectionUp -> GameEvent.Nudge(-1, 0)
+        Key.DirectionDown -> GameEvent.Nudge(1, 0)
+        Key.DirectionLeft -> GameEvent.Nudge(0, -1)
+        Key.DirectionRight -> GameEvent.Nudge(0, 1)
+        Key.Backspace, Key.Delete -> GameEvent.Erase
+        Key.Spacebar, Key.P -> GameEvent.TogglePencil
+        Key.Z, Key.U -> GameEvent.Undo
+        Key.Y, Key.R -> GameEvent.Redo
+        Key.H -> GameEvent.Hint
+        else -> null
+    } ?: return false
+    onEvent(event)
+    return true
+}
+
+/** Digits from the number row and from the keypad both count. */
+private fun digitOf(key: Key): Int? = when (key) {
+    Key.One, Key.NumPad1 -> 1
+    Key.Two, Key.NumPad2 -> 2
+    Key.Three, Key.NumPad3 -> 3
+    Key.Four, Key.NumPad4 -> 4
+    Key.Five, Key.NumPad5 -> 5
+    Key.Six, Key.NumPad6 -> 6
+    Key.Seven, Key.NumPad7 -> 7
+    Key.Eight, Key.NumPad8 -> 8
+    Key.Nine, Key.NumPad9 -> 9
+    else -> null
 }
 
 /** Minutes and seconds, which is the only format a puzzle timer ever needs. */
@@ -148,6 +299,7 @@ public sealed interface GameEvent {
     public data class Select(val cell: Int) : GameEvent
     public data class Digit(val digit: Int) : GameEvent
     public data class Tick(val delta: Duration) : GameEvent
+    public data class Nudge(val rows: Int, val columns: Int) : GameEvent
     public data object Erase : GameEvent
     public data object Undo : GameEvent
     public data object Redo : GameEvent
@@ -155,6 +307,8 @@ public sealed interface GameEvent {
     public data object Hint : GameEvent
     public data object Pause : GameEvent
     public data object Resume : GameEvent
+    public data object FillMarks : GameEvent
+    public data object ClearMarks : GameEvent
 }
 
 /** Applies an event to the state. Kept next to the events so neither drifts from the other. */
@@ -162,6 +316,7 @@ public fun GameState.reduce(event: GameEvent): GameState = when (event) {
     is GameEvent.Select -> select(event.cell)
     is GameEvent.Digit -> enter(event.digit)
     is GameEvent.Tick -> tick(event.delta)
+    is GameEvent.Nudge -> moveSelection(event.rows, event.columns)
     GameEvent.Erase -> erase()
     GameEvent.Undo -> undo()
     GameEvent.Redo -> redo()
@@ -169,4 +324,6 @@ public fun GameState.reduce(event: GameEvent): GameState = when (event) {
     GameEvent.Hint -> countHint()
     GameEvent.Pause -> pause()
     GameEvent.Resume -> resume()
+    GameEvent.FillMarks -> fillMarks()
+    GameEvent.ClearMarks -> clearMarks()
 }

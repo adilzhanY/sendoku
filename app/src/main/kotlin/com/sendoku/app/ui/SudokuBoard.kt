@@ -4,7 +4,8 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -51,6 +52,7 @@ public fun SudokuBoard(
     state: GameState,
     onSelect: (Int) -> Unit,
     modifier: Modifier = Modifier,
+    onLongPress: (Int) -> Unit = {},
 ) {
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
@@ -86,6 +88,7 @@ public fun SudokuBoard(
                             digitSize = digitSize,
                             markSize = markSize,
                             onClick = { onSelect(index) },
+                            onLongClick = { onLongPress(index) },
                             modifier = Modifier.weight(1f).fillMaxSize(),
                         )
                     }
@@ -150,6 +153,7 @@ private fun GridLines(state: GameState, modifier: Modifier = Modifier) {
     }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun BoardCell(
     cell: Cell,
@@ -160,6 +164,7 @@ private fun BoardCell(
     digitSize: TextUnit,
     markSize: TextUnit,
     onClick: () -> Unit,
+    onLongClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val colors = Sendoku.colors
@@ -189,12 +194,13 @@ private fun BoardCell(
     Box(
         modifier = modifier
             .background(wash)
-            .clickable(
+            .combinedClickable(
                 interactionSource = remember { MutableInteractionSource() },
                 // No ripple. A ripple spreading past a cell edge onto its neighbours reads
                 // as though two cells were selected.
                 indication = null,
                 onClick = onClick,
+                onLongClick = onLongClick,
             ),
         contentAlignment = Alignment.Center,
     ) {

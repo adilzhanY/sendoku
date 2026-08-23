@@ -7,6 +7,7 @@ import com.sendoku.engine.Dimensions
 import com.sendoku.engine.Geometry
 import com.sendoku.engine.Grade
 import com.sendoku.engine.catalog.RatedPuzzle
+import com.sendoku.engine.technique.TechniqueId
 import kotlin.time.Duration
 
 /** One square of the board, as the player has left it. */
@@ -60,6 +61,8 @@ public data class GameState(
     val solution: Board,
     val grade: Grade,
     val rating: Double,
+    /** The hardest rule the puzzle was rated as needing. What the win screen reports. */
+    val hardest: TechniqueId?,
     val cells: List<Cell>,
     val selected: Int? = null,
     val pencilMode: Boolean = false,
@@ -188,6 +191,58 @@ public data class GameState(
             .stopIfOver()
     }
 
+    /**
+     * Moves the selection by whole cells, wrapping at the edges.
+     *
+     * For a keyboard, which a tablet or a Chromebook will have. Wrapping rather than
+     * stopping at the edge, because a player holding an arrow key wants to keep going and
+     * a silent stop reads as a dropped keypress.
+     */
+    public fun moveSelection(rows: Int, columns: Int): GameState {
+        val from = selected ?: return select(0)
+        val row = Math.floorMod(from / size + rows, size)
+        val column = Math.floorMod(from % size + columns, size)
+        return select(row * size + column)
+    }
+
+    /**
+     * The digits [cell] could still take, going by what its peers already hold.
+     *
+     * This is the player's own bookkeeping done for them, not a hint. It says nothing the
+     * board is not already showing, which is why it can be offered without touching the
+     * hint counter.
+     */
+    public fun candidatesAt(cell: Int): Candidates {
+        if (!cells[cell].isEmpty) return Candidates.EMPTY
+        var possible = Candidates.all(dims)
+        for (peer in geometry.peersOf(cell)) {
+            val digit = cells[peer].digit
+            if (digit != Board.EMPTY) possible -= digit
+        }
+        return possible
+    }
+
+    /** Pencils in every digit the selected cell could still take. */
+    public fun fillMarks(): GameState {
+        val at = selected ?: return this
+        val cell = cells[at]
+        if (cell.isGiven || !cell.isEmpty || isOver) return this
+        val possible = candidatesAt(at)
+        if (possible == cell.marks) return this
+        return apply(MoveKind.MARK, at, mapOf(at to cell.copy(marks = possible)))
+    }
+
+    /** Rubs out the pencil marks in the selected cell, leaving any digit alone. */
+    public fun clearMarks(): GameState {
+        val at = selected ?: return this
+        val cell = cells[at]
+        if (cell.marks.isEmpty || isOver) return this
+        return apply(MoveKind.MARK, at, mapOf(at to cell.copy(marks = Candidates.EMPTY)))
+    }
+
+    /** True once the player has changed anything, so leaving would cost them something. */
+    public val hasProgress: Boolean get() = past.isNotEmpty()
+
     /** Clears the digit and every pencil mark from the selected cell. */
     public fun erase(): GameState {
         val at = selected ?: return this
@@ -272,6 +327,7 @@ public data class GameState(
                 solution = rated.puzzle.solution,
                 grade = rated.grade,
                 rating = rated.rating,
+                hardest = rated.hardest,
                 cells = (0 until dims.cellCount).map { index ->
                     val digit = givens.atIndex(index)
                     Cell(digit = digit, isGiven = digit != Board.EMPTY)

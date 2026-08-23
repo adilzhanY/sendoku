@@ -7,7 +7,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -49,6 +51,10 @@ class MainActivity : ComponentActivity() {
             SendokuTheme {
                 androidx.compose.material3.Scaffold(
                     containerColor = Sendoku.colors.background,
+                    // Draw behind the bars, but keep every control clear of them and of any
+                    // camera cutout. safeDrawing is the one that covers both, and a board
+                    // with a corner under a cutout is a board with an unreachable cell.
+                    contentWindowInsets = WindowInsets.safeDrawing,
                     modifier = Modifier.fillMaxSize(),
                 ) { insets ->
                     Game(modifier = Modifier.padding(insets))
@@ -65,7 +71,7 @@ private fun Game(modifier: Modifier = Modifier) {
     // Reading the batch inflates a hundred and fifty kilobytes, which is not something to do
     // on the frame that draws the first screen.
     LaunchedEffect(Unit) {
-        state = withContext(Dispatchers.IO) { loadGame() }
+        state = withContext(Dispatchers.IO) { loadGame(Grade.STEADY) }
     }
 
     // A puzzle should not keep ticking in the app switcher.
@@ -91,17 +97,20 @@ private fun Game(modifier: Modifier = Modifier) {
     GameScreen(
         state = game,
         onEvent = { event -> state = game.reduce(event) },
+        // Both of these get somewhere to go once there is more than one screen.
+        onNextPuzzle = { state = loadGame(game.grade) },
+        onHome = { state = loadGame(game.grade) },
         modifier = modifier,
     )
 }
 
 /** Picks a puzzle out of the batch that ships inside the app. */
-private fun loadGame(): GameState {
+private fun loadGame(grade: Grade): GameState {
     val reader = checkNotNull(GameState::class.java.getResourceAsStream("/catalog/classic.sdkb")) {
         "the puzzle batch is missing from the app"
     }.use { CatalogReader.from(it) }
 
-    val indices = reader.indicesOf(Grade.STEADY)
+    val indices = reader.indicesOf(grade)
     val index = indices[Random.nextInt(indices.size)]
     return GameState.start(reader.puzzleAt(index))
 }
