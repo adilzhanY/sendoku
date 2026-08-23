@@ -24,3 +24,4 @@ rootProject.name = "sendoku"
 
 include(":engine")
 include(":app")
+include(":benchmark")

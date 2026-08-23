@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.baselineprofile)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.ksp)
 }
@@ -28,6 +29,11 @@ android {
             // language nobody on the team reads.
             isPseudoLocalesEnabled = true
         }
+
+        // The baseline profile plugin adds two more build types of its own, benchmarkRelease
+        // and nonMinifiedRelease. Both are release with the debug signature and profiling
+        // left on, which is what Macrobenchmark needs and what a hand written benchmark build
+        // type would have duplicated.
 
         release {
             isMinifyEnabled = true
@@ -63,9 +69,6 @@ android {
         checkDependencies = true
         error += listOf("HardcodedText", "MissingTranslation", "ExtraTranslation")
         // The pseudo locales are generated for testing and are deliberately not translated.
-        // The launcher icon is a design job that has not happened yet, tracked as its own
-        // item. It is a release blocker rather than something to paper over with a
-        // placeholder, so it is silenced here and nowhere else.
         disable += listOf("MissingQuantity")
         sarifReport = true
         textReport = true
@@ -101,6 +104,7 @@ dependencies {
     // Debug only. A sudoku app holds one board and one view model, so a leak here would have
     // to be something structural, and structural is exactly the kind that survives to release.
     debugImplementation(libs.leakcanary)
+    baselineProfile(project(":benchmark"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.core.splashscreen)

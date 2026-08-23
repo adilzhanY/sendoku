@@ -27,6 +27,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
@@ -81,6 +82,7 @@ public fun SudokuBoard(
 
     BoxWithConstraints(
         modifier = modifier
+            .testTag("game:board")
             .aspectRatio(1f)
             .clip(RoundedCornerShape(dimens.boardRadius))
             .background(colors.surface),
@@ -107,6 +109,7 @@ public fun SudokuBoard(
                             onClick = { onSelect(index) },
                             onLongClick = { onLongPress(index) },
                             description = describe(state, index, index in conflicts || index in wrong),
+                            testTag = "game:cell:$index",
                             modifier = Modifier.weight(1f).fillMaxSize(),
                         )
                     }
@@ -186,6 +189,7 @@ private fun BoardCell(
     onClick: () -> Unit,
     onLongClick: () -> Unit,
     description: String,
+    testTag: String,
     modifier: Modifier = Modifier,
 ) {
     val colors = Sendoku.colors
@@ -234,7 +238,8 @@ private fun BoardCell(
                 contentDescription = description
                 this.selected = isSelected
                 role = Role.Button
-            },
+            }
+            .testTag(testTag),
         contentAlignment = Alignment.Center,
     ) {
         when {

@@ -23,6 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.sendoku.app.R
@@ -100,6 +101,7 @@ public fun HomeScreen(
         // opens the app to press is always under their thumb, whatever the screen height.
         Column(
             modifier = Modifier
+                .testTag("home:ladder")
                 .weight(1f)
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = dimens.spaceM),

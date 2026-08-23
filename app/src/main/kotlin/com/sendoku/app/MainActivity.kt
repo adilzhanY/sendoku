@@ -15,6 +15,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
@@ -127,7 +129,13 @@ class MainActivity : ComponentActivity() {
                         version = BuildConfig.VERSION_NAME,
                         savedGame = savedSummary,
                         scope = lifecycleScope,
-                        modifier = Modifier.padding(insets),
+                        // Test tags become view ids, which is the only way UI Automator, and
+                        // therefore the benchmark module, can find a Compose node reliably.
+                        // Matching on the accessibility text instead would break the moment
+                        // somebody runs the app in Russian.
+                        modifier = Modifier
+                            .padding(insets)
+                            .semantics { testTagsAsResourceId = true },
                     )
                 }
             }
