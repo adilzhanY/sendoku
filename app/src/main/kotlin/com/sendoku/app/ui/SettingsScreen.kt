@@ -74,7 +74,7 @@ public fun SettingsScreen(
             checked = settings.highlightSameDigit,
         ) { onChange(settings.copy(highlightSameDigit = it)) }
         Toggle(
-            label = "Rub out pencil marks a placement rules out",
+            label = "Rub out pencil marks that a placement rules out",
             checked = settings.autoClearMarks,
         ) { onChange(settings.copy(autoClearMarks = it)) }
         Toggle(

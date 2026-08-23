@@ -26,7 +26,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import com.sendoku.app.theme.Sendoku
 import com.sendoku.engine.Grade
-import com.sendoku.engine.technique.TechniqueId
 import kotlin.time.Duration
 
 /** What the home screen needs to know. */
@@ -70,16 +69,12 @@ public fun HomeScreen(
     val dimens = Sendoku.dimens
     val reached = state.reachedGrade()
 
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .background(colors.background)
-            .verticalScroll(rememberScrollState())
-            .padding(dimens.spaceM),
-        verticalArrangement = Arrangement.spacedBy(dimens.spaceS),
-    ) {
+    Column(modifier = modifier.fillMaxSize().background(colors.background)) {
         Row(
-            modifier = Modifier.fillMaxWidth().padding(bottom = dimens.spaceS),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = dimens.spaceM)
+                .padding(top = dimens.spaceM, bottom = dimens.spaceS),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
         ) {
@@ -95,29 +90,43 @@ public fun HomeScreen(
             )
         }
 
-        // Hardest first, so the eye starts at the ceiling and travels down to where it is.
-        for (grade in Grade.entries.reversed()) {
-            GradeRow(
-                grade = grade,
-                solved = state.solvedByGrade[grade] ?: 0,
-                aheadOfYou = grade.ordinal > reached.ordinal,
-                onClick = { onPlay(grade) },
+        // The ladder scrolls and the buttons do not. Pinning them means the thing a player
+        // opens the app to press is always under their thumb, whatever the screen height.
+        Column(
+            modifier = Modifier
+                .weight(1f)
+                .verticalScroll(rememberScrollState())
+                .padding(horizontal = dimens.spaceM),
+            verticalArrangement = Arrangement.spacedBy(dimens.spaceS),
+        ) {
+            Text(
+                text = "THE CLIMB",
+                style = Sendoku.type.overline,
+                color = colors.muted,
+                modifier = Modifier.padding(bottom = dimens.spaceXs),
             )
-        }
 
-        Text(
-            text = "THE CLIMB",
-            style = Sendoku.type.overline,
-            color = colors.muted,
-            modifier = Modifier.fillMaxWidth().padding(vertical = dimens.spaceS),
-        )
+            // Hardest first, so the eye starts at the ceiling and travels down to where it is.
+            for (grade in Grade.entries.reversed()) {
+                GradeRow(
+                    grade = grade,
+                    solved = state.solvedByGrade[grade] ?: 0,
+                    aheadOfYou = grade.ordinal > reached.ordinal,
+                    onClick = { onPlay(grade) },
+                )
+            }
 
-        state.inProgress?.let { summary ->
-            ContinueCard(summary, onResume)
+            state.inProgress?.let { summary ->
+                Box(Modifier.padding(top = dimens.spaceS)) {
+                    ContinueCard(summary, onResume)
+                }
+            }
         }
 
         Row(
-            modifier = Modifier.fillMaxWidth().padding(top = dimens.spaceS),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(dimens.spaceM),
             horizontalArrangement = Arrangement.spacedBy(dimens.padGap),
         ) {
             HomeButton("Daily", accent = false, onClick = onDaily, modifier = Modifier.weight(1f))
@@ -177,16 +186,19 @@ private fun GradeRow(grade: Grade, solved: Int, aheadOfYou: Boolean, onClick: ()
 }
 
 /**
- * The hardest thing a grade will ask of you, in the words the hints use.
+ * What a grade will ask of you, in words rather than in technique names.
  *
- * Taken from the rating bands rather than written by hand, so it cannot drift away from
- * what the rater actually does.
+ * The first version generated this from the rating bands, which produced "up to als xz"
+ * and "up to bug plus one". Both are accurate and both are gibberish to anybody who has
+ * not already read the glossary, which is exactly the person reading a grade list.
  */
-internal fun Grade.gate(): String {
-    val hardest = TechniqueId.entries
-        .filter { com.sendoku.engine.Grade.of(it.cost) == this }
-        .maxByOrNull { it.cost }
-    return hardest?.let { "up to ${it.displayName.lowercase()}" } ?: "singles only"
+internal fun Grade.gate(): String = when (this) {
+    Grade.GENTLE -> "one clear digit at a time"
+    Grade.STEADY -> "pairs, and digits locked to a line"
+    Grade.TRICKY -> "triples, and patterns across the grid"
+    Grade.SEVERE -> "wings, colouring and rectangles"
+    Grade.DIABOLICAL -> "chains of reasoning"
+    Grade.BEYOND -> "further than most apps go"
 }
 
 @Composable

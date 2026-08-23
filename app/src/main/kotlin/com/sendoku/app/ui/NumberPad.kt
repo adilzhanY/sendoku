@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
@@ -70,15 +69,17 @@ private fun PadKey(
 
     Column(
         modifier = modifier
-            .heightIn(min = dimens.minTouchTarget)
-            .aspectRatio(0.85f)
+            // No fixed aspect ratio. Nine keys across a narrow phone gives each one about
+            // thirty seven density pixels of width, and a ratio then caps the height below
+            // what a digit plus its count needs, which clipped the count in half.
+            .heightIn(min = dimens.minTouchTarget + dimens.spaceS)
             .clip(RoundedCornerShape(dimens.radiusM))
             .background(if (pencilMode) colors.surfaceRaised else colors.surface)
             // Still tappable when exhausted: tapping it clears that digit from the selected
             // cell, which is a real thing to want and costs nothing to allow.
             .clickable(onClick = onClick)
             .alpha(if (exhausted) 0.35f else 1f)
-            .padding(vertical = dimens.spaceXs),
+            .padding(vertical = dimens.spaceS),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {

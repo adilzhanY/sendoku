@@ -50,8 +50,9 @@ public fun HintPanel(
             is Hint.Step -> StepBody(hint, onGlossary)
             is Hint.Mistake -> {
                 Text("SOMETHING IS WRONG", style = Sendoku.type.overline, color = colors.conflict)
+                val one = hint.cells.size == 1
                 Text(
-                    text = if (hint.cells.size == 1) {
+                    text = if (one) {
                         "One of the digits you have placed cannot be right. It is highlighted."
                     } else {
                         "${hint.cells.size} of the digits you have placed cannot be right. " +
@@ -61,7 +62,11 @@ public fun HintPanel(
                     color = colors.muted,
                 )
                 Text(
-                    text = "Nothing else can be worked out until they are fixed.",
+                    text = if (one) {
+                        "Nothing else can be worked out until it is fixed."
+                    } else {
+                        "Nothing else can be worked out until they are fixed."
+                    },
                     style = Sendoku.type.body,
                     color = colors.muted,
                 )

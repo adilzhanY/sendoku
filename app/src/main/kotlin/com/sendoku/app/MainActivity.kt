@@ -3,6 +3,7 @@ package com.sendoku.app
 import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.viewModels
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.WindowInsets
@@ -16,6 +17,8 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.room.Room
@@ -26,6 +29,8 @@ import com.sendoku.app.data.SendokuDatabase
 import com.sendoku.app.game.GameViewModel
 import com.sendoku.app.theme.Sendoku
 import com.sendoku.app.theme.SendokuTheme
+import com.sendoku.app.ui.InProgressSummary
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 private val Context.preferences: DataStore<Preferences> by preferencesDataStore(name = "settings")
@@ -39,7 +44,21 @@ private val Context.preferences: DataStore<Preferences> by preferencesDataStore(
  */
 class MainActivity : ComponentActivity() {
 
-    private lateinit var model: GameViewModel
+    private val model: GameViewModel by viewModels {
+        // Built once and retained across a rotation, which is the point of a view model and
+        // is what stops turning the phone from losing the game.
+        object : ViewModelProvider.Factory {
+            @Suppress("UNCHECKED_CAST")
+            override fun <T : ViewModel> create(modelClass: Class<T>): T =
+                GameViewModel(repository, settings, CatalogPuzzleSource.fromResources()) as T
+        }
+    }
+
+    private val database by lazy {
+        Room.databaseBuilder(applicationContext, SendokuDatabase::class.java, SendokuDatabase.NAME).build()
+    }
+    private val repository by lazy { RoomGameRepository(database.inProgress(), database.finished()) }
+    private val settings by lazy { DataStoreSettings(preferences) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // Holds the system splash until the first game is ready, so the app never shows an
@@ -47,17 +66,6 @@ class MainActivity : ComponentActivity() {
         val splash = installSplashScreen()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-
-        val database = Room.databaseBuilder(applicationContext, SendokuDatabase::class.java, SendokuDatabase.NAME)
-            .build()
-        val repository = RoomGameRepository(database.inProgress(), database.finished())
-        val settings = DataStoreSettings(preferences)
-        model = GameViewModel(
-            repository = repository,
-            settingsStore = settings,
-            puzzles = CatalogPuzzleSource.fromResources(),
-            scope = lifecycleScope,
-        )
 
         splash.setKeepOnScreenCondition { false }
 
@@ -78,6 +86,16 @@ class MainActivity : ComponentActivity() {
                             lifecycleScope.launch { settings.update { changed } }
                         },
                         solvedByGrade = repository.solvedByGrade(),
+                        savedGame = repository.watchInProgress().map { saved ->
+                            saved?.let {
+                                InProgressSummary(
+                                    grade = it.grade,
+                                    placed = it.placed,
+                                    total = it.total,
+                                    elapsed = it.elapsed,
+                                )
+                            }
+                        },
                         scope = lifecycleScope,
                         modifier = Modifier.padding(insets),
                     )

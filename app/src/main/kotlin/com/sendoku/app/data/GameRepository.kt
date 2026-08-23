@@ -18,6 +18,15 @@ public interface GameRepository {
     /** The game the player left, if there is one. */
     public suspend fun loadInProgress(settings: GameSettings): GameState?
 
+    /**
+     * The saved game, as it changes.
+     *
+     * The home screen needs this rather than the live game, because on a cold start there is
+     * no live game: nothing has been loaded yet, and asking the view model would say there is
+     * nothing to resume when there plainly is.
+     */
+    public fun watchInProgress(): Flow<SavedGame?>
+
     public suspend fun saveInProgress(state: GameState)
 
     public suspend fun clearInProgress()
@@ -46,8 +55,11 @@ public class RoomGameRepository(
             inProgress.clear()
             return
         }
-        inProgress.save(SavedGame.of(state).toRow(savedAt = state.elapsed.toSeconds()))
+        inProgress.save(SavedGame.of(state).toRow(savedAt = System.currentTimeMillis()))
     }
+
+    override fun watchInProgress(): Flow<SavedGame?> =
+        inProgress.watch().map { row -> row?.toSaved() }
 
     override suspend fun clearInProgress() {
         inProgress.clear()

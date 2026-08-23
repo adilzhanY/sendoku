@@ -54,6 +54,9 @@ class GameViewModelTest {
             saved = if (state.isOver) null else state
         }
 
+        override fun watchInProgress(): Flow<com.sendoku.app.data.SavedGame?> =
+            MutableStateFlow(saved?.let { com.sendoku.app.data.SavedGame.of(it) })
+
         override suspend fun clearInProgress() { saved = null }
 
         override suspend fun recordFinished(state: GameState, finishedAt: Long) {

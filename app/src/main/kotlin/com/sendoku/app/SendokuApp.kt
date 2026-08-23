@@ -6,10 +6,10 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.sendoku.app.game.GameSettings
@@ -23,7 +23,6 @@ import com.sendoku.app.ui.HomeScreen
 import com.sendoku.app.ui.HomeState
 import com.sendoku.app.ui.InProgressSummary
 import com.sendoku.app.ui.SettingsScreen
-import com.sendoku.engine.Board
 import com.sendoku.engine.Grade
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
@@ -42,13 +41,14 @@ public fun SendokuApp(
     settings: Flow<GameSettings>,
     onSettingsChange: (GameSettings) -> Unit,
     solvedByGrade: Flow<Map<Grade, Int>>,
+    savedGame: Flow<InProgressSummary?>,
     scope: CoroutineScope,
     modifier: Modifier = Modifier,
 ) {
-    val navigator = remember { Navigator() }
-    val state by model.state.collectAsState()
+    val navigator = rememberSaveable(saver = Navigator.Saver) { Navigator() }
     val loading by model.loading.collectAsState()
     val counts by solvedByGrade.collectAsState(initial = emptyMap())
+    val saved by savedGame.collectAsState(initial = null)
     val currentSettings by settings.collectAsState(initial = GameSettings())
 
     // Back from anywhere except home goes back a screen. Home itself lets the system take it,
@@ -60,30 +60,32 @@ public fun SendokuApp(
             HomeScreen(
                 state = HomeState(
                     solvedByGrade = counts,
-                    inProgress = state?.takeIf { !it.isOver }?.summarise(),
+                    // Read from storage, not from the live game. On a cold start there is no
+                    // live game yet, and the home screen would say there is nothing to resume.
+                    inProgress = saved,
                 ),
-                onPlay = { grade -> navigator.go(Destination.Play(grade)) },
-                onResume = { navigator.go(Destination.Resume) },
-                onDaily = { navigator.go(Destination.Daily(todayEpochDay())) },
+                // Starting a game is an effect of navigating, not of drawing. Doing it in a
+                // LaunchedEffect on the play screen meant that coming back from the glossary
+                // recomposed it and silently dealt a brand new puzzle.
+                onPlay = { grade ->
+                    model.startNew(grade)
+                    navigator.go(Destination.Play(grade))
+                },
+                onResume = {
+                    model.resumeOrStart()
+                    navigator.go(Destination.Resume)
+                },
+                onDaily = {
+                    model.startDaily(todayEpochDay())
+                    navigator.go(Destination.Daily(todayEpochDay()))
+                },
                 onSettings = { navigator.go(Destination.Settings) },
                 modifier = modifier,
             )
         }
 
-        is Destination.Play -> {
-            LaunchedEffect(destination) { model.startNew(destination.grade) }
+        is Destination.Play, Destination.Resume, is Destination.Daily ->
             PlayHost(model, loading, navigator, scope, modifier)
-        }
-
-        Destination.Resume -> {
-            LaunchedEffect(destination) { model.resumeOrStart() }
-            PlayHost(model, loading, navigator, scope, modifier)
-        }
-
-        is Destination.Daily -> {
-            LaunchedEffect(destination) { model.startDaily(destination.epochDay) }
-            PlayHost(model, loading, navigator, scope, modifier)
-        }
 
         Destination.Glossary -> {
             GlossaryScreen(onBack = { navigator.back() }, modifier = modifier)
@@ -133,13 +135,6 @@ private fun Loading(modifier: Modifier = Modifier) {
         Text("Sendoku", style = Sendoku.type.title, color = Sendoku.colors.muted)
     }
 }
-
-private fun com.sendoku.app.game.GameState.summarise(): InProgressSummary = InProgressSummary(
-    grade = grade,
-    placed = cells.count { it.digit != Board.EMPTY },
-    total = cellCount,
-    elapsed = elapsed,
-)
 
 /**
  * Today, as a count of days since 1970.

@@ -160,6 +160,31 @@ class GameRepositoryTest {
         assertTrue(repository.history().first().isNotEmpty())
     }
 
+
+    @Test
+    fun `the saved game can be watched, which is how the home screen learns about it`() = runTest {
+        val repository = RoomGameRepository(FakeInProgress(), FakeFinished())
+        assertNull(repository.watchInProgress().first())
+
+        repository.saveInProgress(played())
+        val saved = repository.watchInProgress().first()
+        assertEquals(puzzle.grade, saved?.grade)
+        assertEquals(81, saved?.total)
+        assertTrue((saved?.placed ?: 0) > puzzle.clueCount)
+
+        repository.clearInProgress()
+        assertNull(repository.watchInProgress().first())
+    }
+
+    @Test
+    fun `a saved game counts the clues and the entries together`() = runTest {
+        val repository = RoomGameRepository(FakeInProgress(), FakeFinished())
+        repository.saveInProgress(played())
+        val saved = repository.watchInProgress().first()!!
+        // One digit was entered on top of the clues.
+        assertEquals(puzzle.clueCount + 1, saved.placed)
+    }
+
     private fun solvedGame(): GameState {
         var state = GameState.start(puzzle)
         for (at in 0 until 81) {

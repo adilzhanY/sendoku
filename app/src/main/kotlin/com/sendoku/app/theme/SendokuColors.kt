@@ -55,7 +55,14 @@ public data class SendokuColors(
     /** The wash behind the selected cell. */
     val selection: Color,
 
-    /** The wash behind cells sharing a row, column or box with the selection. */
+    /**
+     * The wash behind cells sharing a row, column or box with the selection.
+     *
+     * Has to be quieter than the selection and louder than nothing. The first version was
+     * seven percent of a blue grey, which on a true black background is four levels of RGB
+     * and is simply not there. Peer highlighting is one of the two things that make a board
+     * scannable, so it being almost invisible made the whole feature pointless.
+     */
     val peer: Color,
 
     /** The wash behind other cells holding the same digit as the selection. */
@@ -98,8 +105,8 @@ public val DeepFieldDark: SendokuColors = SendokuColors(
     accent = Color(0xFF35E0D0),
     onAccent = Color(0xFF00201D),
     selection = Color(0x2935E0D0),
-    peer = Color(0x1278A0BE),
-    match = Color(0x1A35E0D0),
+    peer = Color(0x2E7FA6C4),
+    match = Color(0x2635E0D0),
     conflict = Color(0xFFFF5C7A),
     conflictWash = Color(0x24FF5C7A),
     hintLogic = Color(0x4235E0D0),
@@ -136,7 +143,7 @@ public val DeepFieldLight: SendokuColors = SendokuColors(
     accent = Color(0xFF00695E),
     onAccent = Color(0xFFFFFFFF),
     selection = Color(0x2900695E),
-    peer = Color(0x1233454F),
+    peer = Color(0x2233454F),
     match = Color(0x1A00695E),
     conflict = Color(0xFF8A0B22),
     conflictWash = Color(0x1F8A0B22),

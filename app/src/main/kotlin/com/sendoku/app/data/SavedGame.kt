@@ -40,6 +40,12 @@ public data class SavedGame(
     val hintsUsed: Int,
 ) {
 
+    /** How many cells hold a digit, clues and entries together. */
+    public val placed: Int
+        get() = givens.count { it != EMPTY_CHAR } + entries.count { it != EMPTY_CHAR }
+
+    public val total: Int get() = givens.length
+
     /** Rebuilds a playable game. */
     public fun toState(settings: GameSettings): GameState {
         val dims = dimensionsFor(givens.length)
@@ -132,6 +138,7 @@ public data class SavedGame(
 
         private const val RADIX = 32
         private const val MARK_WIDTH = 3
+        private const val EMPTY_CHAR = '.' 
     }
 }
 

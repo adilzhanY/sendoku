@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Text
@@ -189,7 +190,12 @@ private fun BoardArea(
 ) {
     val step = hint as? Hint.Step
     val showCells = step != null && step.level != HintLevel.NAME
-    Box(Modifier.widthIn(max = cap)) {
+    // The board is square, so it is limited by whichever side is shorter. Sizing it by width
+    // alone is right in portrait and wrong in landscape, where it pushed most of the grid off
+    // the bottom of the screen.
+    BoxWithConstraints {
+        val side = minOf(maxWidth, maxHeight, cap)
+        Box(Modifier.size(side)) {
         SudokuBoard(
             state = state,
             onSelect = { onEvent(GameEvent.Select(it)) },
@@ -206,6 +212,7 @@ private fun BoardArea(
                 elapsed = state.elapsed.clock(),
                 onResume = { onEvent(GameEvent.Resume) },
             )
+        }
         }
     }
 }

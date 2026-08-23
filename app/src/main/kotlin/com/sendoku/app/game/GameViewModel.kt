@@ -30,9 +30,18 @@ public class GameViewModel(
     private val repository: GameRepository,
     private val settingsStore: SettingsStore,
     private val puzzles: PuzzleSource,
-    private val scope: CoroutineScope,
+    /**
+     * Where the coroutines run.
+     *
+     * Null in the app, where [viewModelScope] is correct: it is cancelled when the view
+     * model is finally cleared rather than when the activity is recreated, which is the
+     * whole reason a rotation no longer throws the game away. Tests pass their own.
+     */
+    externalScope: CoroutineScope? = null,
     private val now: () -> Long = System::currentTimeMillis,
 ) : ViewModel() {
+
+    private val scope: CoroutineScope = externalScope ?: viewModelScope
 
     private val _state = MutableStateFlow<GameState?>(null)
     public val state: StateFlow<GameState?> = _state.asStateFlow()
