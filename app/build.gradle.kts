@@ -34,6 +34,13 @@ android {
     testOptions {
         unitTests.isReturnDefaultValues = true
     }
+
+    // Room writes the schema of every version here, and they are committed. Without the old
+    // schema on disk there is nothing for a migration to migrate from.
+    ksp {
+        arg("room.schemaLocation", "$projectDir/schemas")
+        arg("room.generateKotlin", "true")
+    }
 }
 
 dependencies {

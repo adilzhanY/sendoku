@@ -1,2 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<full-backup-content />
+<!--
+  What survives a new phone, on Android 11 and below.
+
+  Everything Sendoku knows about a player is their own history and their own preferences,
+  and neither is worth losing to a broken screen. There is no account to sign into and no
+  server holding a copy, so this file is the only thing standing between a reinstall and
+  starting from nothing.
+
+  Nothing is excluded, because nothing here is a secret or a cache.
+-->
+<full-backup-content>
+    <include domain="database" path="sendoku.db" />
+    <include domain="file" path="datastore/" />
+</full-backup-content>

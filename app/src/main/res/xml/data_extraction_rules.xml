@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  The same, for Android 12 and above, where cloud backup and a direct transfer to a new
+  phone are configured separately.
+
+  Both get the lot. A player moving to a new phone should find their streak intact.
+-->
 <data-extraction-rules>
     <cloud-backup>
-        <include domain="sharedpref" path="." />
+        <include domain="database" path="sendoku.db" />
+        <include domain="file" path="datastore/" />
     </cloud-backup>
     <device-transfer>
-        <include domain="sharedpref" path="." />
+        <include domain="database" path="sendoku.db" />
+        <include domain="file" path="datastore/" />
     </device-transfer>
 </data-extraction-rules>
