@@ -31,7 +31,7 @@ class BaselineProfileGenerator {
         startActivityAndWait()
         device.wait(Until.hasObject(By.res("home:ladder")), WAIT_MILLIS)
 
-        device.findObject(By.text("Gentle"))?.click()
+        device.findObject(By.res("home:grade:GENTLE"))?.click()
         device.wait(Until.hasObject(By.res("game:board")), WAIT_MILLIS)
 
         device.findObject(By.res("game:cell:1"))?.click()

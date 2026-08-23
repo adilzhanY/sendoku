@@ -19,6 +19,16 @@ android {
         minSdk = 28
         targetSdk = 37
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        /*
+         * Macrobenchmark refuses to run on an emulator, and it is right to: a number from a
+         * virtual machine on a desktop says nothing about a phone. Pass -PbenchmarkOnEmulator
+         * to get it to run anyway, which is worth doing to prove the harness works and to see
+         * a change move the number, never to check a figure against a target.
+         */
+        if (project.hasProperty("benchmarkOnEmulator")) {
+            testInstrumentationRunnerArguments["androidx.benchmark.suppressErrors"] = "EMULATOR"
+        }
     }
 
     // Macrobenchmark needs a build of the app that is optimised like release but readable by

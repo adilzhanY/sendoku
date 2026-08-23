@@ -65,7 +65,9 @@ class StartupBenchmark {
         ladder?.fling(androidx.test.uiautomator.Direction.DOWN)
         ladder?.fling(androidx.test.uiautomator.Direction.UP)
 
-        device.findObject(By.text("Gentle"))?.click()
+        // By the tag, not by the word. The clickable is the row, the word is a text node
+        // inside it, and UI Automator will happily click the text and achieve nothing.
+        device.findObject(By.res("home:grade:GENTLE"))?.click()
         device.wait(Until.hasObject(By.res("game:board")), WAIT_MILLIS)
         repeat(6) { index ->
             device.findObject(By.res("game:cell:$index"))?.click()

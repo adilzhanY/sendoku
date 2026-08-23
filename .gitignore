@@ -12,7 +12,9 @@ local.properties
 *.class
 captures/
 .cxx/
-release/
+# No blanket release/ rule here. It used to be one, and it silently swallowed
+# app/src/release/generated/baselineProfiles, which has to be committed or the release build
+# ships without the profile it was measured with. build/ already covers the real outputs.
 
 # IDE
 .idea/

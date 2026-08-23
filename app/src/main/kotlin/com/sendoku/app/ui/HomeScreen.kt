@@ -178,6 +178,7 @@ private fun GradeRow(grade: Grade, solved: Int, aheadOfYou: Boolean, onClick: ()
         modifier = Modifier
             .fillMaxWidth()
             .heightIn(min = dimens.minTouchTarget)
+            .testTag("home:grade:${'$'}{grade.name}")
             .clip(RoundedCornerShape(dimens.radiusM))
             .background(if (aheadOfYou) colors.surface else colors.surfaceRaised)
             .clickable(onClick = onClick)
