@@ -77,6 +77,15 @@ public class CandidateGrid private constructor(
 
     public fun boxOf(index: Int): Int = dims.boxOf(index / size, index % size)
 
+    /**
+     * True when the two cells share a row, column or box, so one constrains the other.
+     *
+     * Computed rather than looked up, because the wings and the chains ask this question
+     * far more often than they ask for a whole peer list.
+     */
+    public fun sees(a: Int, b: Int): Boolean =
+        a != b && (rowOf(a) == rowOf(b) || colOf(a) == colOf(b) || boxOf(a) == boxOf(b))
+
     /** True when [digit] is already placed somewhere in [house]. */
     public fun isPlacedIn(house: House, digit: Int): Boolean =
         topology.cellsOf(house).any { digits[it] == digit }

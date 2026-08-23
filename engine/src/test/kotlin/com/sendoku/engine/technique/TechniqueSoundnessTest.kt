@@ -31,6 +31,11 @@ class TechniqueSoundnessTest {
         NakedQuad,
         HiddenQuad,
         XWing,
+        Swordfish,
+        Jellyfish,
+        XYWing,
+        XYZWing,
+        WWing,
     )
 
     @Test
@@ -80,17 +85,35 @@ class TechniqueSoundnessTest {
         assertTrue(eliminations > 0)
     }
 
+    /**
+     * Just the two singles, and deliberately no more.
+     *
+     * Running a wing or a fish straight off the givens is useless, because almost no cell
+     * has two candidates yet and the rule never fires. Reducing with the full cheap set is
+     * useless the other way: the cheap rules finish the job and the rule under test never
+     * gets a position either. Singles only is the setting where every rule on the ladder
+     * finds real work, which is what makes this test worth running.
+     */
+    private val basics = listOf(NakedSingle, HiddenSingle)
+
+    /** Applies the basics, minus [except] so the rule under test still has work to do. */
+    private fun reduce(grid: CandidateGrid, except: Technique) {
+        val rules = basics.filter { it !== except }
+        while (true) {
+            val step = rules.firstNotNullOfOrNull { it.find(grid) } ?: return
+            grid.apply(step)
+        }
+    }
+
     @Test
     fun `each technique on its own never contradicts the real solution`() {
-        // Running a rule alone is the only way to give the harder ones real exercise. In a
-        // cheapest-first loop a quad or a fish almost never gets the chance to fire, because
-        // the singles have already resolved whatever it would have seen.
         for (technique in techniques) {
             var fired = 0
-            repeat(30) { seed ->
+            repeat(40) { seed ->
                 val puzzle = Generator(Dimensions.CLASSIC, Random(2000L + seed)).generate()
                 val grid = CandidateGrid.of(puzzle.givens)
                 while (true) {
+                    reduce(grid, technique)
                     val step = technique.find(grid) ?: break
                     for ((cell, digit) in step.placements) {
                         assertEquals(
@@ -117,7 +140,7 @@ class TechniqueSoundnessTest {
                     )
                 }
             }
-            assertTrue(fired > 0, "${technique.id} never fired on any of thirty puzzles")
+            assertTrue(fired > 0, "${technique.id} never fired on any of forty puzzles")
         }
     }
 
