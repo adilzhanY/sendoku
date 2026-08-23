@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The navigation bar icon colour, which only exists from API 27. The app supports 26, so it
+  lives here rather than being set unconditionally and quietly ignored on the oldest phones.
+-->
+<resources>
+    <style name="Theme.Sendoku.Main" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/sendoku_window</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+</resources>

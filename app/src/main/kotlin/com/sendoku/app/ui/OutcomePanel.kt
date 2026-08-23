@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
+import androidx.compose.ui.res.stringResource
+import com.sendoku.app.R
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -53,7 +55,7 @@ public fun OutcomePanel(
             verticalArrangement = Arrangement.spacedBy(dimens.spaceS),
         ) {
             Text(
-                text = if (won) "SOLVED" else "OUT OF MISTAKES",
+                text = stringResource(if (won) R.string.outcome_solved else R.string.outcome_lost),
                 style = Sendoku.type.overline,
                 color = if (won) colors.accent else colors.conflict,
             )
@@ -63,7 +65,7 @@ public fun OutcomePanel(
                 color = colors.given,
             )
             Text(
-                text = "${state.grade.displayName}, rated ${"%.2f".format(state.rating)}",
+                text = stringResource(R.string.outcome_rated, stringResource(gradeName(state.grade)), "%.2f".format(state.rating)),
                 style = Sendoku.type.body,
                 color = colors.muted,
             )
@@ -72,9 +74,9 @@ public fun OutcomePanel(
                 modifier = Modifier.fillMaxWidth().padding(vertical = dimens.spaceM),
                 horizontalArrangement = Arrangement.SpaceEvenly,
             ) {
-                Stat("HINTS", state.hintsUsed.toString())
-                Stat("MISTAKES", state.mistakes.toString())
-                Stat("MOVES", state.past.size.toString())
+                Stat(stringResource(R.string.outcome_hints), state.hintsUsed.toString())
+                Stat(stringResource(R.string.outcome_mistakes), state.mistakes.toString())
+                Stat(stringResource(R.string.outcome_moves), state.past.size.toString())
             }
 
             state.hardest?.let { technique ->
@@ -82,7 +84,7 @@ public fun OutcomePanel(
                     // Taken from the rating rather than from what the player did, because a
                     // player may well have found a longer way round. This describes the
                     // puzzle, not the solve.
-                    text = "Needed a ${technique.displayName.lowercase()}",
+                    text = stringResource(R.string.outcome_needed, stringResource(TechniqueCopy.nameOf(technique)).lowercase()),
                     style = Sendoku.type.body,
                     color = colors.muted,
                     textAlign = TextAlign.Center,
@@ -93,9 +95,9 @@ public fun OutcomePanel(
                 modifier = Modifier.fillMaxWidth().padding(top = dimens.spaceM),
                 horizontalArrangement = Arrangement.spacedBy(dimens.padGap),
             ) {
-                OutcomeButton("Home", accent = false, onClick = onHome, modifier = Modifier.weight(1f))
+                OutcomeButton(stringResource(R.string.outcome_home), accent = false, onClick = onHome, modifier = Modifier.weight(1f))
                 OutcomeButton(
-                    label = "Another ${state.grade.displayName}",
+                    label = stringResource(R.string.outcome_another, stringResource(gradeName(state.grade))),
                     accent = true,
                     onClick = onNextPuzzle,
                     modifier = Modifier.weight(1.6f),

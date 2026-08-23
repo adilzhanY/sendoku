@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
+import androidx.compose.ui.res.stringResource
+import com.sendoku.app.R
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -51,10 +53,10 @@ public fun PauseOverlay(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(dimens.spaceS),
         ) {
-            Text("PAUSED", style = Sendoku.type.overline, color = colors.muted)
+            Text(stringResource(R.string.paused), style = Sendoku.type.overline, color = colors.muted)
             Text(elapsed, style = Sendoku.type.display, color = colors.given)
             Text(
-                "Tap anywhere to carry on",
+                stringResource(R.string.paused_tap),
                 style = Sendoku.type.body,
                 color = colors.muted,
                 modifier = Modifier.padding(top = dimens.spaceS),

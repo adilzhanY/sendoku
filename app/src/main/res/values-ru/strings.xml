@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Russian.
+
+  The technique names follow the terms Russian sudoku players actually use, which are mostly
+  the English ones transliterated: an X-Wing is an X-Wing, not a translated description. The
+  explanations are translated properly, because they are the part that teaches.
+-->
+<resources>
+    <string name="app_name">Sendoku</string>
+
+    <string name="home_the_climb">ВОСХОЖДЕНИЕ</string>
+    <string name="home_settings">НАСТРОЙКИ</string>
+    <string name="home_stats">СТАТИСТИКА</string>
+    <string name="home_daily">Сегодня</string>
+    <string name="home_new_puzzle">Новая</string>
+    <string name="home_resume">Продолжить</string>
+    <string name="home_in_progress">НЕЗАКОНЧЕННАЯ</string>
+    <string name="home_percent">%1$s, %2$d%%</string>
+    <string name="home_placed">Заполнено: %1$d из %2$d</string>
+
+    <string name="grade_gentle">Простой</string>
+    <string name="grade_steady">Спокойный</string>
+    <string name="grade_tricky">Хитрый</string>
+    <string name="grade_severe">Сложный</string>
+    <string name="grade_diabolical">Дьявольский</string>
+    <string name="grade_beyond">За гранью</string>
+    <string name="gate_gentle">по одной понятной цифре</string>
+    <string name="gate_steady">пары и цифры, запертые на линии</string>
+    <string name="gate_tricky">тройки и узоры по всей сетке</string>
+    <string name="gate_severe">крылья, раскраска и прямоугольники</string>
+    <string name="gate_diabolical">цепочки рассуждений</string>
+    <string name="gate_beyond">дальше, чем идёт большинство приложений</string>
+
+    <string name="tool_undo">Назад</string>
+    <string name="tool_redo">Вперёд</string>
+    <string name="tool_erase">Стереть</string>
+    <string name="tool_notes">Пометки</string>
+    <string name="tool_hint">Подсказка</string>
+    <string name="paused">ПАУЗА</string>
+    <string name="paused_tap">Нажмите в любом месте, чтобы продолжить</string>
+    <string name="mistakes_of">%1$d из %2$d</string>
+
+    <string name="cell_position">Строка %1$d, столбец %2$d</string>
+    <string name="cell_clue">%1$s, %2$d, подсказка</string>
+    <string name="cell_digit">%1$s, %2$d</string>
+    <string name="cell_empty">%1$s, пусто</string>
+    <string name="cell_noted">%1$s, пусто, пометки %2$s</string>
+    <string name="cell_repeated">%1$s, повтор</string>
+    <string name="pad_all_placed">%1$d, все расставлены</string>
+    <string name="pad_one_left">%1$d, осталась одна</string>
+    <plurals name="pad_left">
+        <item quantity="one">%1$d, осталась %2$d</item>
+        <item quantity="few">%1$d, осталось %2$d</item>
+        <item quantity="many">%1$d, осталось %2$d</item>
+        <item quantity="other">%1$d, осталось %2$d</item>
+    </plurals>
+    <string name="pad_notes_mode">%1$s, режим пометок</string>
+
+    <string name="cell_actions_title">СТРОКА %1$d, СТОЛБЕЦ %2$d</string>
+    <string name="cell_actions_clue">Эта цифра была в условии, её нельзя изменить.</string>
+    <plurals name="cell_actions_note_all">
+        <item quantity="one">Пометить %1$d кандидата</item>
+        <item quantity="few">Пометить всех %1$d кандидатов</item>
+        <item quantity="many">Пометить всех %1$d кандидатов</item>
+        <item quantity="other">Пометить всех %1$d кандидатов</item>
+    </plurals>
+    <string name="cell_actions_clear_notes">Стереть пометки</string>
+    <string name="cell_actions_clear">Очистить клетку</string>
+
+    <string name="leave_title">Выйти из этой судоку?</string>
+    <string name="leave_body">Она останется там, где вы её оставили.</string>
+    <string name="leave_confirm">Выйти</string>
+    <string name="leave_cancel">Остаться</string>
+
+    <string name="outcome_solved">РЕШЕНО</string>
+    <string name="outcome_lost">ОШИБКИ ЗАКОНЧИЛИСЬ</string>
+    <string name="outcome_rated">%1$s, оценка %2$s</string>
+    <string name="outcome_hints">ПОДСКАЗКИ</string>
+    <string name="outcome_mistakes">ОШИБКИ</string>
+    <string name="outcome_moves">ХОДЫ</string>
+    <string name="outcome_needed">Потребовалась техника: %1$s</string>
+    <string name="outcome_home">На главную</string>
+    <string name="outcome_another">Ещё одна: %1$s</string>
+
+    <string name="hint_close">Закрыть</string>
+    <string name="hint_where">Показать где</string>
+    <string name="hint_explain">Объяснить</string>
+    <string name="hint_do_it">Сделать</string>
+    <string name="hint_what_is_this">ЧТО ЭТО ТАКОЕ?</string>
+    <string name="hint_wrong_title">ЧТО-ТО НЕ ТАК</string>
+    <string name="hint_wrong_one">Одна из поставленных вами цифр не может быть верной. Она выделена.</string>
+    <string name="hint_wrong_many">Поставленных вами цифр, которые не могут быть верными: %1$d. Они выделены.</string>
+    <string name="hint_wrong_until_one">Пока она не исправлена, дальше рассуждать невозможно.</string>
+    <string name="hint_wrong_until_many">Пока они не исправлены, дальше рассуждать невозможно.</string>
+    <string name="hint_done_title">ГОТОВО</string>
+    <string name="hint_done_body">Судоку решена.</string>
+    <string name="hint_stuck_title">НЕЧЕГО ПРЕДЛОЖИТЬ</string>
+    <string name="hint_stuck_body">Эта сетка не нарушает правил, но ни одна из известных Sendoku техник к ней не подходит. С судоку из приложения такого быть не должно.</string>
+    <string name="hint_in_region">в области: %1$s</string>
+    <string name="hint_in_regions">в областях: %1$s и %2$s</string>
+    <string name="hint_outcome_place">Значит, в строке %1$d, столбце %2$d стоит %3$d.</string>
+    <string name="hint_outcome_strike_one">Значит, %1$d можно убрать отсюда: %2$s.</string>
+    <string name="hint_outcome_strike_two">Значит, %1$d и %2$d можно убрать отсюда: %3$s.</string>
+    <plurals name="hint_cells">
+        <item quantity="one">%1$d клетка</item>
+        <item quantity="few">%1$d клетки</item>
+        <item quantity="many">%1$d клеток</item>
+        <item quantity="other">%1$d клетки</item>
+    </plurals>
+
+    <string name="house_row">строка %1$d</string>
+    <string name="house_column">столбец %1$d</string>
+    <string name="house_box">блок %1$d</string>
+
+    <string name="glossary_title">Техники</string>
+    <string name="back">НАЗАД</string>
+
+    <string name="settings_title">Настройки</string>
+    <string name="settings_look">Оформление</string>
+    <string name="settings_light_or_dark">Светлая или тёмная</string>
+    <string name="settings_terminal_is_dark">Terminal всегда тёмная, как бы ни был настроен телефон. Так задумано.</string>
+    <string name="settings_board">Сетка</string>
+    <string name="settings_highlight_peers">Подсвечивать строку, столбец и блок</string>
+    <string name="settings_highlight_same">Подсвечивать такую же цифру в других клетках</string>
+    <string name="settings_auto_clear">Убирать пометки, которые исключает поставленная цифра</string>
+    <string name="settings_flag_conflicts">Отмечать цифру, которая повторяется в строке, столбце или блоке</string>
+    <string name="settings_clock">Часы</string>
+    <string name="settings_show_timer">Показывать таймер</string>
+    <string name="settings_feedback">Отклик</string>
+    <string name="settings_haptics">Вибрация при вводе цифры</string>
+    <string name="settings_sound">Щелчок при вводе цифры</string>
+    <string name="settings_mistakes">Ошибки</string>
+    <string name="settings_mistake_limit">Заканчивать игру после трёх ошибок</string>
+    <string name="settings_mistake_note">По умолчанию выключено. Сложные уровни занимают столько времени, что потерять час из-за одной оплошности было бы обидно.</string>
+    <string name="settings_about">О ПРИЛОЖЕНИИ</string>
+
+    <string name="theme_deep_field">Deep Field</string>
+    <string name="theme_deep_field_summary">Чистый чёрный, один бирюзовый акцент, больше ничего</string>
+    <string name="theme_ink">Ink and Paper</string>
+    <string name="theme_ink_summary">Газетный сборник головоломок на тёплой бумаге</string>
+    <string name="theme_zen">Slate Zen</string>
+    <string name="theme_zen_summary">Шалфей и камень, и как можно меньше всего остального</string>
+    <string name="theme_terminal">Terminal</string>
+    <string name="theme_terminal_summary">Моноширинный шрифт, острые углы, только тёмная</string>
+    <string name="mode_system">Как в системе</string>
+    <string name="mode_light">Всегда светлая</string>
+    <string name="mode_dark">Всегда тёмная</string>
+
+    <string name="stats_title">Статистика</string>
+    <string name="stats_solved">РЕШЕНО</string>
+    <string name="stats_streak">СЕРИЯ</string>
+    <string name="stats_hardest">РЕКОРД</string>
+    <string name="stats_hardest_note">Самая сложная решённая: %1$s.</string>
+    <plurals name="stats_longest_run">
+        <item quantity="one">Самая длинная серия: %1$d день.</item>
+        <item quantity="few">Самая длинная серия: %1$d дня.</item>
+        <item quantity="many">Самая длинная серия: %1$d дней.</item>
+        <item quantity="other">Самая длинная серия: %1$d дней.</item>
+    </plurals>
+    <string name="stats_totals">Потрачено %1$s, взято подсказок: %2$d.</string>
+    <string name="stats_by_grade">По уровням</string>
+    <string name="stats_needed">Что потребовалось вашим судоку</string>
+    <string name="stats_solved_count">Решено: %1$d</string>
+    <string name="stats_solved_and_lost">Решено: %1$d, проиграно: %2$d</string>
+    <string name="stats_average">в среднем %1$s</string>
+    <string name="stats_reset">СБРОСИТЬ СТАТИСТИКУ</string>
+    <string name="stats_reset_title">Удалить всю историю?</string>
+    <string name="stats_reset_body">Все решённые судоку, все серии и все лучшие результаты. Копии нигде нет, отменить это будет нельзя.</string>
+    <string name="stats_reset_confirm">Сбросить</string>
+    <string name="stats_reset_cancel">Оставить</string>
+    <string name="stats_empty_title">Пока пусто</string>
+    <string name="stats_empty_body">Решите судоку, и здесь появится: сколько времени занимает каждый уровень, как высоко вы поднялись и какие техники вам понадобились.</string>
+
+    <string name="about_title">О приложении</string>
+    <string name="about_version">Sendoku %1$s</string>
+    <string name="about_tagline">Судоку для тех, у кого закончились сложные судоку.</string>
+    <string name="about_no_ads">Без рекламы</string>
+    <string name="about_no_ads_detail">Ни между судоку, ни за подсказки, никогда.</string>
+    <string name="about_no_tracking">Без слежки</string>
+    <string name="about_no_tracking_detail">Ничего не измеряется и никуда не отправляется. Сервера нет.</string>
+    <string name="about_no_purchases">Без покупок</string>
+    <string name="about_no_purchases_detail">Все судоку и все подсказки уже здесь.</string>
+    <string name="about_offline">Работает без интернета</string>
+    <string name="about_offline_detail">Весь набор судоку лежит внутри приложения.</string>
+    <string name="about_hints">Подсказки, которые учат</string>
+    <string name="about_hints_detail">Подсказка называет технику и объясняет рассуждение. Она никогда не просто вписывает цифру и никогда не придерживается.</string>
+    <string name="about_rating">Сложность определяется по самой трудной технике, которая действительно нужна, и вычисляется решением судоку так, как решал бы человек. Поэтому Сложный здесь означает то же самое, что и прошлый Сложный.</string>
+    <string name="about_licences">ЛИЦЕНЗИИ ОТКРЫТОГО КОДА</string>
+    <string name="licences_title">Лицензии</string>
+
+    <!-- Что искать, показывается при первом нажатии подсказки -->
+    <string name="look_naked_single">Есть клетка, в которую подходит только одна цифра.</string>
+    <string name="look_hidden_single">Есть цифра, для которой осталось только одно место.</string>
+    <string name="look_locked_candidates_pointing">В одном блоке цифра может стоять только на одной строке или в одном столбце.</string>
+    <string name="look_locked_candidates_claiming">На одной линии цифра может стоять только внутри одного блока.</string>
+    <string name="look_naked_pair">Две клетки в одной области содержат одни и те же две цифры и больше ничего.</string>
+    <string name="look_hidden_pair">Двум цифрам в одной области некуда встать, кроме тех же двух клеток.</string>
+    <string name="look_naked_triple">Три клетки в одной области делят между собой три цифры.</string>
+    <string name="look_hidden_triple">Три цифры ограничены одними и теми же тремя клетками.</string>
+    <string name="look_naked_quad">Четыре клетки в одной области делят между собой четыре цифры.</string>
+    <string name="look_hidden_quad">Четыре цифры ограничены одними и теми же четырьмя клетками.</string>
+    <string name="look_x_wing">В двух строках цифра стоит в одних и тех же двух столбцах, или наоборот.</string>
+    <string name="look_swordfish">В трёх строках цифра стоит внутри одних и тех же трёх столбцов.</string>
+    <string name="look_jellyfish">В четырёх строках цифра стоит внутри одних и тех же четырёх столбцов.</string>
+    <string name="look_xy_wing">Три клетки по две цифры каждая, расставленные так, что одна цифра оказывается вытеснена.</string>
+    <string name="look_xyz_wing">Как XY-Wing, но в средней клетке есть и третья цифра.</string>
+    <string name="look_w_wing">Две клетки с одной и той же парой, соединённые цифрой, у которой всего два места.</string>
+    <string name="look_simple_colouring">Одна цифра образует цепочку, которая чередуется по всей длине.</string>
+    <string name="look_multi_colouring">Две отдельные цепочки на одной цифре, сыгранные друг против друга.</string>
+    <string name="look_remote_pairs">Цепочка клеток, в каждой из которых стоят одни и те же две цифры.</string>
+    <string name="look_unique_rectangle">Четыре клетки образуют прямоугольник, который дал бы судоку два решения.</string>
+    <string name="look_bug_plus_one">Во всех клетках, кроме одной, осталось по две цифры.</string>
+    <string name="look_x_chain">Цепочка на одной цифре, чередующая «обязана» и «не может».</string>
+    <string name="look_xy_chain">Цепочка клеток по две цифры, каждая из которых вынуждает следующую.</string>
+    <string name="look_als_xz">Две группы клеток, каждой из которых до запертого набора не хватает одной цифры.</string>
+
+    <!-- Почему это работает, показывается после того, как игрок увидел клетки -->
+    <string name="because_naked_single">Все остальные цифры уже стоят в её строке, столбце или блоке, так что остаётся только одна. Она и должна стоять здесь.</string>
+    <string name="because_hidden_single">Эта цифра обязана где-то стоять в области, а все остальные клетки в ней исключены, так что это единственное оставшееся место.</string>
+    <string name="because_locked_candidates_pointing">Блок обязан где-то содержать эту цифру, и все места, где она может стоять, лежат на одной линии. Значит, цифра на этой линии, и больше нигде вдоль неё быть не может.</string>
+    <string name="because_locked_candidates_claiming">Линия обязана где-то содержать эту цифру, и все места, где она может стоять, лежат внутри одного блока. Значит, цифра в этом блоке, и в других его клетках её быть не может.</string>
+    <string name="because_naked_pair">Эти две клетки заберут эти две цифры себе, по одной каждая. Ни одна другая клетка области не может содержать ни ту, ни другую.</string>
+    <string name="because_hidden_pair">Области нужны обе цифры, а взять их могут только эти две клетки, значит, каждая возьмёт по одной. Всё остальное в этих клетках исключается.</string>
+    <string name="because_naked_triple">Три клетки, три цифры, по одной в каждую. Ничто другое в области не может их использовать, даже если ни в одной клетке нет всех трёх сразу.</string>
+    <string name="because_hidden_triple">Три цифры, которым больше некуда встать, займут между собой три клетки, так что всё остальное в этих клетках невозможно.</string>
+    <string name="because_naked_quad">Четыре клетки забирают четыре цифры между собой, и это запирает все четыре для остальной части области.</string>
+    <string name="because_hidden_quad">Четыре цифры, ограниченные четырьмя клетками, заполнят их между собой, так что больше там ничего стоять не может.</string>
+    <string name="because_x_wing">Каждой из двух строк эта цифра нужна один раз, и обе могут поставить её только в те же два столбца. Вместе они занимают оба столбца, так что ни одна другая строка не может содержать эту цифру в них.</string>
+    <string name="because_swordfish">Три строки, которым нужна эта цифра, и всего три столбца, куда её можно поставить. Три строки занимают все три столбца, так что ничто другое в этих столбцах её содержать не может.</string>
+    <string name="because_jellyfish">Четыре строки и четыре столбца, то же самое рассуждение ещё раз. Четыре строки заполняют между собой все четыре столбца.</string>
+    <string name="because_xy_wing">Средняя клетка содержит одну из своих двух цифр. В любом случае одна из двух крайних клеток вынуждена принять общую цифру, так что ничто, видящее обе крайние клетки, ею быть не может.</string>
+    <string name="because_xyz_wing">Средняя клетка тоже может оказаться общей цифрой, поэтому вывод слабее: цифру теряет только та клетка, которая видит все три.</string>
+    <string name="because_w_wing">Если бы ни одна из двух клеток не была второй цифрой, обе были бы первой, и связанной области стало бы некуда её поставить. Значит, одна из них равна второй цифре.</string>
+    <string name="because_simple_colouring">Раскрасьте цепочку через одну, и ровно один цвет окажется верным. Либо один цвет попадает дважды в одну область и потому неверен, либо клетка вне цепочки видит оба цвета и теряет цифру при любом исходе.</string>
+    <string name="because_multi_colouring">Один цвет первой цепочки конфликтует с цветом второй, и это загоняет цифру в один из двух противоположных цветов. Ничто, видящее оба этих цвета, содержать её не может.</string>
+    <string name="because_remote_pairs">Соседи в цепочке видят друг друга, поэтому чередуются. Два конца отстоят на нечётное число шагов и потому содержат по одной цифре каждый, так что ничто, видящее оба конца, не может быть ни той, ни другой.</string>
+    <string name="because_unique_rectangle">Если бы в этих четырёх клетках не было ничего, кроме двух одних и тех же цифр, их можно было бы поменять местами по кругу, и у судоку стало бы два решения. Решение одно, значит, такое расположение невозможно.</string>
+    <string name="because_bug_plus_one">Если убрать лишнего кандидата, каждая цифра встречалась бы ровно дважды в каждой области, а у такой сетки всегда чётное число решений. У этой судоку решение одно, значит, лишний кандидат и есть ответ.</string>
+    <string name="because_x_chain">Цепочка чередует места, где цифра обязана быть, и места, где её быть не может. Оба конца не могут одновременно остаться без неё, так что всё, что видит оба конца, её теряет.</string>
+    <string name="because_xy_chain">Предположим, что первая клетка не равна нужной цифре. Пройдите по цепочке, и последняя клетка окажется вынуждена ею быть. Значит, ею является либо один конец, либо другой.</string>
+    <string name="because_als_xz">Одна общая цифра может появиться только в одной из двух групп, что запирает вторую и вынуждает её использовать все свои цифры. Значит, вторая общая цифра попадает в одну группу или в другую.</string>
+
+    <!-- Названия техник -->
+    <string name="technique_naked_single">Единственный кандидат</string>
+    <string name="technique_hidden_single">Единственное место</string>
+    <string name="technique_locked_candidates_pointing">Указывающая пара</string>
+    <string name="technique_locked_candidates_claiming">Запертая пара</string>
+    <string name="technique_naked_pair">Голая пара</string>
+    <string name="technique_hidden_pair">Скрытая пара</string>
+    <string name="technique_naked_triple">Голая тройка</string>
+    <string name="technique_hidden_triple">Скрытая тройка</string>
+    <string name="technique_naked_quad">Голая четвёрка</string>
+    <string name="technique_hidden_quad">Скрытая четвёрка</string>
+    <string name="technique_x_wing">X-Wing</string>
+    <string name="technique_swordfish">Swordfish</string>
+    <string name="technique_jellyfish">Jellyfish</string>
+    <string name="technique_xy_wing">XY-Wing</string>
+    <string name="technique_xyz_wing">XYZ-Wing</string>
+    <string name="technique_w_wing">W-Wing</string>
+    <string name="technique_simple_colouring">Простая раскраска</string>
+    <string name="technique_multi_colouring">Множественная раскраска</string>
+    <string name="technique_remote_pairs">Удалённые пары</string>
+    <string name="technique_unique_rectangle">Уникальный прямоугольник</string>
+    <string name="technique_bug_plus_one">BUG плюс один</string>
+    <string name="technique_x_chain">X-цепочка</string>
+    <string name="technique_xy_chain">XY-цепочка</string>
+    <string name="technique_als_xz">ALS XZ</string>
+</resources>

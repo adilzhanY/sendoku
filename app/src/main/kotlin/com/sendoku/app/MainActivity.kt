@@ -65,6 +65,25 @@ class MainActivity : ComponentActivity() {
     private val repository by lazy { RoomGameRepository(database.inProgress(), database.finished()) }
     private val settings by lazy { DataStoreSettings(preferences) }
 
+    /**
+     * Built once, not per frame.
+     *
+     * Mapping the flow inside the composable rebuilt it on every recomposition, which
+     * restarts the collection and throws away whatever it had.
+     */
+    private val savedSummary by lazy {
+        repository.watchInProgress().map { saved ->
+            saved?.let {
+                InProgressSummary(
+                    grade = it.grade,
+                    placed = it.placed,
+                    total = it.total,
+                    elapsed = it.elapsed,
+                )
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         // Holds the system splash until the first game is ready, so the app never shows an
         // empty board on the way in.
@@ -106,16 +125,7 @@ class MainActivity : ComponentActivity() {
                         },
                         onResetStats = { lifecycleScope.launch { repository.clearHistory() } },
                         version = BuildConfig.VERSION_NAME,
-                        savedGame = repository.watchInProgress().map { saved ->
-                            saved?.let {
-                                InProgressSummary(
-                                    grade = it.grade,
-                                    placed = it.placed,
-                                    total = it.total,
-                                    elapsed = it.elapsed,
-                                )
-                            }
-                        },
+                        savedGame = savedSummary,
                         scope = lifecycleScope,
                         modifier = Modifier.padding(insets),
                     )

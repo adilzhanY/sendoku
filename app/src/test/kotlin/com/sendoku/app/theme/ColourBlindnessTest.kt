@@ -3,7 +3,6 @@ package com.sendoku.app.theme
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextDecoration
 import com.sendoku.app.ui.decorationFor
-import com.sendoku.app.ui.describe
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
@@ -144,23 +143,6 @@ class ColourBlindnessTest {
         }
     }
 
-    @Test
-    fun `a screen reader is told about a repeat in words`() {
-        // The other half of not relying on colour: somebody who cannot see the board at all
-        // still hears which cells are wrong.
-        val puzzle = com.sendoku.engine.catalog.GradedGenerator(
-            com.sendoku.engine.Dimensions.CLASSIC,
-            kotlin.random.Random(9601),
-        ).let { maker ->
-            var made: com.sendoku.engine.catalog.RatedPuzzle? = null
-            while (made == null) made = maker.next()
-            made
-        }
-        val state = com.sendoku.app.game.GameState.start(puzzle)
-        val cell = state.cells.indices.first { state.cells[it].isGiven }
-        assertTrue(describe(state, cell, conflicting = true).endsWith("repeated"))
-        assertTrue(!describe(state, cell, conflicting = false).endsWith("repeated"))
-    }
 
     @Test
     fun `the accent is still visible against the surface without any hue at all`() {

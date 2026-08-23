@@ -1,4 +1,276 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<!--
+  Every word the app says.
+
+  Nothing user facing is written in Kotlin any more, which is enforced by lint rather than by
+  discipline. The technique explanations are the hard part of this file: they are the whole
+  teaching value of the app, and a translator who does not play sudoku will produce something
+  that is grammatical and useless.
+-->
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Sendoku</string>
+
+    <!-- Home -->
+    <string name="home_the_climb">THE CLIMB</string>
+    <string name="home_settings">SETTINGS</string>
+    <string name="home_stats">STATS</string>
+    <string name="home_daily">Daily</string>
+    <string name="home_new_puzzle">New puzzle</string>
+    <string name="home_resume">Resume</string>
+    <string name="home_in_progress">IN PROGRESS</string>
+    <string name="home_percent">%1$s, %2$d%%</string>
+    <string name="home_placed">Placed: %1$d of %2$d</string>
+
+    <!-- Grades -->
+    <string name="grade_gentle">Gentle</string>
+    <string name="grade_steady">Steady</string>
+    <string name="grade_tricky">Tricky</string>
+    <string name="grade_severe">Severe</string>
+    <string name="grade_diabolical">Diabolical</string>
+    <string name="grade_beyond">Beyond</string>
+    <string name="gate_gentle">one clear digit at a time</string>
+    <string name="gate_steady">pairs, and digits locked to a line</string>
+    <string name="gate_tricky">triples, and patterns across the grid</string>
+    <string name="gate_severe">wings, colouring and rectangles</string>
+    <string name="gate_diabolical">chains of reasoning</string>
+    <string name="gate_beyond">further than most apps go</string>
+
+    <!-- Playing -->
+    <string name="tool_undo">Undo</string>
+    <string name="tool_redo">Redo</string>
+    <string name="tool_erase">Erase</string>
+    <string name="tool_notes">Notes</string>
+    <string name="tool_hint">Hint</string>
+    <string name="paused">PAUSED</string>
+    <string name="paused_tap">Tap anywhere to carry on</string>
+    <string name="mistakes_of">%1$d of %2$d</string>
+
+    <!-- The board, read aloud -->
+    <string name="cell_position">Row %1$d, column %2$d</string>
+    <string name="cell_clue">%1$s, %2$d, a clue</string>
+    <string name="cell_digit">%1$s, %2$d</string>
+    <string name="cell_empty">%1$s, empty</string>
+    <string name="cell_noted">%1$s, empty, noted %2$s</string>
+    <string name="cell_repeated">%1$s, repeated</string>
+    <string name="pad_all_placed">%1$d, all placed</string>
+    <string name="pad_one_left">%1$d, one left</string>
+    <plurals name="pad_left">
+        <item quantity="one">%1$d, %2$d left</item>
+        <item quantity="other">%1$d, %2$d left</item>
+    </plurals>
+    <string name="pad_notes_mode">%1$s, notes mode</string>
+
+    <!-- Long press -->
+    <string name="cell_actions_title">ROW %1$d, COLUMN %2$d</string>
+    <string name="cell_actions_clue">This one came with the puzzle, so it cannot be changed.</string>
+    <plurals name="cell_actions_note_all">
+        <item quantity="one">Note the only candidate</item>
+        <item quantity="other">Note all %1$d candidates</item>
+    </plurals>
+    <string name="cell_actions_clear_notes">Rub out the notes</string>
+    <string name="cell_actions_clear">Clear the cell</string>
+
+    <!-- Leaving -->
+    <string name="leave_title">Leave this puzzle?</string>
+    <string name="leave_body">It will be waiting where you left it.</string>
+    <string name="leave_confirm">Leave</string>
+    <string name="leave_cancel">Stay</string>
+
+    <!-- Finishing -->
+    <string name="outcome_solved">SOLVED</string>
+    <string name="outcome_lost">OUT OF MISTAKES</string>
+    <string name="outcome_rated">%1$s, rated %2$s</string>
+    <string name="outcome_hints">HINTS</string>
+    <string name="outcome_mistakes">MISTAKES</string>
+    <string name="outcome_moves">MOVES</string>
+    <string name="outcome_needed">Needed a %1$s</string>
+    <string name="outcome_home">Home</string>
+    <string name="outcome_another">Another %1$s</string>
+
+    <!-- Hints -->
+    <string name="hint_close">Close</string>
+    <string name="hint_where">Show me where</string>
+    <string name="hint_explain">Explain it</string>
+    <string name="hint_do_it">Do it</string>
+    <string name="hint_what_is_this">WHAT IS THIS?</string>
+    <string name="hint_wrong_title">SOMETHING IS WRONG</string>
+    <string name="hint_wrong_one">One of the digits you have placed cannot be right. It is highlighted.</string>
+    <string name="hint_wrong_many">%1$d of the digits you have placed cannot be right. They are highlighted.</string>
+    <string name="hint_wrong_until_one">Nothing else can be worked out until it is fixed.</string>
+    <string name="hint_wrong_until_many">Nothing else can be worked out until they are fixed.</string>
+    <string name="hint_done_title">DONE</string>
+    <string name="hint_done_body">The puzzle is finished.</string>
+    <string name="hint_stuck_title">NOTHING TO SUGGEST</string>
+    <string name="hint_stuck_body">This board is legal, but none of the techniques Sendoku knows apply to it. That should not happen on a puzzle from the app.</string>
+    <string name="hint_in_region">in %1$s</string>
+    <string name="hint_in_regions">in %1$s and %2$s</string>
+    <string name="hint_outcome_place">So row %1$d, column %2$d is a %3$d.</string>
+    <string name="hint_outcome_strike_one" tools:ignore="PluralsCandidate">So the %1$d can go from %2$s.</string>
+    <string name="hint_outcome_strike_two" tools:ignore="PluralsCandidate">So the %1$d and the %2$d can go from %3$s.</string>
+    <plurals name="hint_cells">
+        <item quantity="one">one cell</item>
+        <item quantity="other">%1$d cells</item>
+    </plurals>
+
+    <!-- Regions, as a hint names them -->
+    <string name="house_row">row %1$d</string>
+    <string name="house_column">column %1$d</string>
+    <string name="house_box">box %1$d</string>
+
+    <!-- Glossary -->
+    <string name="glossary_title">Techniques</string>
+    <string name="back">BACK</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_look">Look</string>
+    <string name="settings_light_or_dark">Light or dark</string>
+    <string name="settings_terminal_is_dark">Terminal is dark whichever way the phone is set. That is deliberate.</string>
+    <string name="settings_board">The board</string>
+    <string name="settings_highlight_peers">Highlight the row, column and box</string>
+    <string name="settings_highlight_same">Highlight the same digit elsewhere</string>
+    <string name="settings_auto_clear">Rub out notes that a placement rules out</string>
+    <string name="settings_flag_conflicts">Mark a digit that repeats in a row, column or box</string>
+    <string name="settings_clock">The clock</string>
+    <string name="settings_show_timer">Show the timer</string>
+    <string name="settings_feedback">Feedback</string>
+    <string name="settings_haptics">Buzz when a digit goes in</string>
+    <string name="settings_sound">Click when a digit goes in</string>
+    <string name="settings_mistakes">Mistakes</string>
+    <string name="settings_mistake_limit">End the game after three mistakes</string>
+    <string name="settings_mistake_note">Off by default. The hard grades take long enough that losing an hour to one slip would be miserable.</string>
+    <string name="settings_about">ABOUT SENDOKU</string>
+
+    <!-- Themes -->
+    <string name="theme_deep_field">Deep Field</string>
+    <string name="theme_deep_field_summary">True black, one cyan accent, nothing else</string>
+    <string name="theme_ink">Ink and Paper</string>
+    <string name="theme_ink_summary">A newspaper puzzle book, printed on warm paper</string>
+    <string name="theme_zen">Slate Zen</string>
+    <string name="theme_zen_summary">Sage and stone, and as little else as possible</string>
+    <string name="theme_terminal">Terminal</string>
+    <string name="theme_terminal_summary">Monospace, hard edges, dark only</string>
+    <string name="mode_system">Follow the system</string>
+    <string name="mode_light">Always light</string>
+    <string name="mode_dark">Always dark</string>
+
+    <!-- Statistics -->
+    <string name="stats_title">Statistics</string>
+    <string name="stats_solved">SOLVED</string>
+    <string name="stats_streak">STREAK</string>
+    <string name="stats_hardest">HARDEST</string>
+    <string name="stats_hardest_note">The hardest you have finished is a %1$s.</string>
+    <plurals name="stats_longest_run">
+        <item quantity="one">Your longest run was one day.</item>
+        <item quantity="other">Your longest run was %1$d days.</item>
+    </plurals>
+    <string name="stats_totals">%1$s spent, hints taken: %2$d.</string>
+    <string name="stats_by_grade">By grade</string>
+    <string name="stats_needed">What your puzzles needed</string>
+    <string name="stats_solved_count">Solved: %1$d</string>
+    <string name="stats_solved_and_lost">Solved: %1$d, lost: %2$d</string>
+    <string name="stats_average">avg %1$s</string>
+    <string name="stats_reset">RESET STATISTICS</string>
+    <string name="stats_reset_title">Throw away your history?</string>
+    <string name="stats_reset_body">Every finished puzzle, every streak and every best time. There is no copy anywhere else, so this cannot be undone.</string>
+    <string name="stats_reset_confirm">Reset</string>
+    <string name="stats_reset_cancel">Keep it</string>
+    <string name="stats_empty_title">Nothing yet</string>
+    <string name="stats_empty_body">Finish a puzzle and this fills up: how long each grade takes you, how far you have climbed, and which techniques your puzzles have needed.</string>
+
+    <!-- About -->
+    <string name="about_title">About</string>
+    <string name="about_version">Sendoku %1$s</string>
+    <string name="about_tagline">A sudoku app for people who have run out of hard sudoku.</string>
+    <string name="about_no_ads">No advertisements</string>
+    <string name="about_no_ads_detail">Not between puzzles, not for hints, not ever.</string>
+    <string name="about_no_tracking">No tracking</string>
+    <string name="about_no_tracking_detail">Nothing is measured and nothing is sent. There is no server.</string>
+    <string name="about_no_purchases">No purchases</string>
+    <string name="about_no_purchases_detail">Every puzzle and every hint is here already.</string>
+    <string name="about_offline">Works offline</string>
+    <string name="about_offline_detail">The whole batch ships inside the app.</string>
+    <string name="about_hints">Hints that teach</string>
+    <string name="about_hints_detail">A hint names the technique and explains the reasoning. It never just fills in a digit, and it is never held back.</string>
+    <string name="about_rating">Difficulty is rated by the hardest technique a puzzle actually needs, worked out by solving it the way a person would. That is why a Severe here means the same thing as the last Severe.</string>
+    <string name="about_licences">OPEN SOURCE LICENCES</string>
+    <string name="licences_title">Licences</string>
+
+    <!-- What to look for, shown at the first tap of a hint -->
+    <string name="look_naked_single">There is a cell with only one digit left that can go in it.</string>
+    <string name="look_hidden_single">There is a digit with only one place left to go.</string>
+    <string name="look_locked_candidates_pointing">In one box, a digit is stuck on a single row or column.</string>
+    <string name="look_locked_candidates_claiming">On one line, a digit can only sit inside a single box.</string>
+    <string name="look_naked_pair">Two cells in one region hold the same two digits and nothing else.</string>
+    <string name="look_hidden_pair">Two digits have nowhere to go in one region except the same two cells.</string>
+    <string name="look_naked_triple">Three cells in one region share three digits between them.</string>
+    <string name="look_hidden_triple">Three digits are confined to the same three cells.</string>
+    <string name="look_naked_quad">Four cells in one region share four digits between them.</string>
+    <string name="look_hidden_quad">Four digits are confined to the same four cells.</string>
+    <string name="look_x_wing">Two rows hold a digit in the same two columns, or the other way round.</string>
+    <string name="look_swordfish">Three rows hold a digit inside the same three columns.</string>
+    <string name="look_jellyfish">Four rows hold a digit inside the same four columns.</string>
+    <string name="look_xy_wing">Three cells of two digits each, arranged so one digit is squeezed out.</string>
+    <string name="look_xyz_wing">Like an XY-Wing, but the middle cell has a third digit too.</string>
+    <string name="look_w_wing">Two cells holding the same pair, joined by a digit with only two homes.</string>
+    <string name="look_simple_colouring">One digit forms a chain that alternates all the way along.</string>
+    <string name="look_multi_colouring">Two separate chains on one digit, played off against each other.</string>
+    <string name="look_remote_pairs">A chain of cells all holding the very same two digits.</string>
+    <string name="look_unique_rectangle">Four cells form a rectangle that would give the puzzle two answers.</string>
+    <string name="look_bug_plus_one">Every cell but one is down to two digits.</string>
+    <string name="look_x_chain">A chain on one digit, alternating between must and cannot.</string>
+    <string name="look_xy_chain">A chain of two digit cells, each one forcing the next.</string>
+    <string name="look_als_xz">Two groups of cells, each one digit away from being locked.</string>
+
+    <!-- Why it works, shown once the player has seen the cells -->
+    <string name="because_naked_single">Every other digit already appears in its row, its column or its box, so only one is left. It has to go here.</string>
+    <string name="because_hidden_single">The region needs this digit somewhere, and every other cell in it is ruled out, so this is the only place left.</string>
+    <string name="because_locked_candidates_pointing">The box has to hold this digit somewhere, and every place it could go lies on one line. So the digit is on that line, and it cannot be anywhere else along it.</string>
+    <string name="because_locked_candidates_claiming">The line has to hold this digit somewhere, and every place it could go is inside one box. So the digit is in that box, and it cannot be elsewhere in the box.</string>
+    <string name="because_naked_pair">Those two cells will take those two digits between them, one each. No other cell in the region can have either.</string>
+    <string name="because_hidden_pair">The region needs both digits, and only these two cells can take them, so they take one each. Everything else in those two cells is out.</string>
+    <string name="because_naked_triple">Three cells, three digits, one each. Nothing else in the region can use them, even though no single cell holds all three.</string>
+    <string name="because_hidden_triple">Three digits with nowhere else to go fill three cells between them, so anything else in those cells is impossible.</string>
+    <string name="because_naked_quad">Four cells take four digits between them, which locks all four out of the rest of the region.</string>
+    <string name="because_hidden_quad">Four digits confined to four cells fill them between them, so nothing else can live there.</string>
+    <string name="because_x_wing">Each of the two rows needs the digit once, and both can only place it in the same two columns. Between them they use up both columns, so no other row can have the digit there.</string>
+    <string name="because_swordfish">Three rows needing the digit, and only three columns to put it in. The three rows use up all three columns, so nothing else in those columns can have it.</string>
+    <string name="because_jellyfish">Four rows and four columns, the same argument again. The four rows fill all four columns between them.</string>
+    <string name="because_xy_wing">The middle cell is one of its two digits. Either way, one of the two outer cells is forced to the shared digit, so anything seeing both of them cannot be it.</string>
+    <string name="because_xyz_wing">The middle cell can also be the shared digit, so the conclusion is weaker: only a cell that sees all three loses it.</string>
+    <string name="because_w_wing">If neither of the pair cells took the second digit, both would take the first, and the linked region would have nowhere left to put it. So one of them is the second digit.</string>
+    <string name="because_simple_colouring">Colour the chain alternately and exactly one colour is true. Either a colour lands twice in one region and is therefore false, or a cell outside sees both colours and loses the digit whichever way it falls.</string>
+    <string name="because_multi_colouring">One colour of the first chain clashes with a colour of the second, which forces the digit into one of the two opposite colours. Anything seeing both of those cannot hold it.</string>
+    <string name="because_remote_pairs">Neighbours in the chain see each other, so they alternate. The two ends are an odd number of steps apart and therefore hold one digit each, and anything seeing both can have neither.</string>
+    <string name="because_unique_rectangle">If those four cells held nothing but the same two digits, they could be swapped around the rectangle and the puzzle would have two answers. It has one, so that arrangement is impossible.</string>
+    <string name="because_bug_plus_one">If the extra candidate were removed, every digit would appear exactly twice in every region, and a grid like that always has an even number of answers. This puzzle has one, so the extra candidate is the answer.</string>
+    <string name="because_x_chain">The chain alternates between places the digit must be and places it cannot be. The two ends cannot both be empty of it, so anything seeing both loses it.</string>
+    <string name="because_xy_chain">Suppose the first cell is not the digit. Follow the chain along and the last cell is forced to be it. So one end or the other holds it.</string>
+    <string name="because_als_xz">One shared digit can only appear in one of the two groups, which locks the other group and forces it to use every digit it has. So the second shared digit lands in one group or the other.</string>
+
+    <!-- Technique names -->
+    <string name="technique_naked_single">Naked single</string>
+    <string name="technique_hidden_single">Hidden single</string>
+    <string name="technique_locked_candidates_pointing">Pointing pair or triple</string>
+    <string name="technique_locked_candidates_claiming">Claiming pair or triple</string>
+    <string name="technique_naked_pair">Naked pair</string>
+    <string name="technique_hidden_pair">Hidden pair</string>
+    <string name="technique_naked_triple">Naked triple</string>
+    <string name="technique_hidden_triple">Hidden triple</string>
+    <string name="technique_naked_quad">Naked quad</string>
+    <string name="technique_hidden_quad">Hidden quad</string>
+    <string name="technique_x_wing">X-Wing</string>
+    <string name="technique_simple_colouring">Simple colouring</string>
+    <string name="technique_xy_wing">XY-Wing</string>
+    <string name="technique_xyz_wing">XYZ-Wing</string>
+    <string name="technique_w_wing">W-Wing</string>
+    <string name="technique_swordfish">Swordfish</string>
+    <string name="technique_remote_pairs">Remote pairs</string>
+    <string name="technique_unique_rectangle">Unique rectangle</string>
+    <string name="technique_bug_plus_one">BUG plus one</string>
+    <string name="technique_jellyfish">Jellyfish</string>
+    <string name="technique_multi_colouring">Multi colouring</string>
+    <string name="technique_x_chain">X-Chain</string>
+    <string name="technique_xy_chain">XY-Chain</string>
+    <string name="technique_als_xz">ALS XZ</string>
 </resources>

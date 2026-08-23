@@ -16,6 +16,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
+import com.sendoku.app.R
 import com.sendoku.app.theme.Sendoku
 import com.sendoku.engine.Grade
 import com.sendoku.engine.technique.TechniqueId
@@ -44,7 +46,7 @@ public fun GlossaryScreen(
             horizontalArrangement = Arrangement.spacedBy(dimens.spaceM),
         ) {
             Text(
-                text = "BACK",
+                text = stringResource(R.string.back),
                 style = Sendoku.type.overline,
                 color = colors.muted,
                 modifier = Modifier
@@ -52,7 +54,7 @@ public fun GlossaryScreen(
                     .clickable(onClick = onBack)
                     .padding(dimens.spaceS),
             )
-            Text("Techniques", style = Sendoku.type.title, color = colors.given)
+            Text(stringResource(R.string.glossary_title), style = Sendoku.type.title, color = colors.given)
         }
 
         LazyColumn(
@@ -74,20 +76,20 @@ public fun GlossaryScreen(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        Text(technique.displayName, style = Sendoku.type.label, color = colors.given)
+                        Text(stringResource(TechniqueCopy.nameOf(technique)), style = Sendoku.type.label, color = colors.given)
                         Text(
-                            text = Grade.of(technique.cost).displayName.uppercase(),
+                            text = stringResource(gradeName(Grade.of(technique.cost))).uppercase(),
                             style = Sendoku.type.overline,
                             color = colors.accent,
                         )
                     }
                     Text(
-                        text = TechniqueCopy.lookFor(technique),
+                        text = stringResource(TechniqueCopy.lookFor(technique)),
                         style = Sendoku.type.body,
                         color = colors.given,
                     )
                     Text(
-                        text = TechniqueCopy.because(technique),
+                        text = stringResource(TechniqueCopy.because(technique)),
                         style = Sendoku.type.body,
                         color = colors.muted,
                     )

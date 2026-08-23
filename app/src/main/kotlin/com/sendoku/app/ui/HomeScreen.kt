@@ -18,6 +18,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
+import androidx.compose.ui.res.stringResource
+import com.sendoku.app.R
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -79,10 +81,10 @@ public fun HomeScreen(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Text("Sendoku", style = Sendoku.type.title, color = colors.given)
+            Text(stringResource(R.string.app_name), style = Sendoku.type.title, color = colors.given)
             Row(horizontalArrangement = Arrangement.spacedBy(dimens.spaceXs)) {
             Text(
-                text = "STATS",
+                text = stringResource(R.string.home_stats),
                 style = Sendoku.type.overline,
                 color = colors.muted,
                 modifier = Modifier
@@ -91,7 +93,7 @@ public fun HomeScreen(
                     .padding(dimens.spaceS),
             )
             Text(
-                text = "SETTINGS",
+                text = stringResource(R.string.home_settings),
                 style = Sendoku.type.overline,
                 color = colors.muted,
                 modifier = Modifier
@@ -112,7 +114,7 @@ public fun HomeScreen(
             verticalArrangement = Arrangement.spacedBy(dimens.spaceS),
         ) {
             Text(
-                text = "THE CLIMB",
+                text = stringResource(R.string.home_the_climb),
                 style = Sendoku.type.overline,
                 color = colors.muted,
                 modifier = Modifier.padding(bottom = dimens.spaceXs),
@@ -141,9 +143,9 @@ public fun HomeScreen(
                 .padding(dimens.spaceM),
             horizontalArrangement = Arrangement.spacedBy(dimens.padGap),
         ) {
-            HomeButton("Daily", accent = false, onClick = onDaily, modifier = Modifier.weight(1f))
+            HomeButton(stringResource(R.string.home_daily), accent = false, onClick = onDaily, modifier = Modifier.weight(1f))
             HomeButton(
-                label = if (state.inProgress != null) "Resume" else "New puzzle",
+                label = stringResource(if (state.inProgress != null) R.string.home_resume else R.string.home_new_puzzle),
                 accent = true,
                 onClick = { if (state.inProgress != null) onResume() else onPlay(reached) },
                 modifier = Modifier.weight(1.4f),
@@ -186,8 +188,8 @@ private fun GradeRow(grade: Grade, solved: Int, aheadOfYou: Boolean, onClick: ()
                 .background(if (aheadOfYou) colors.hairline else colors.accent),
         )
         Column(Modifier.weight(1f)) {
-            Text(grade.displayName, style = Sendoku.type.label, color = colors.given)
-            Text(grade.gate(), style = Sendoku.type.body, color = colors.muted)
+            Text(stringResource(gradeName(grade)), style = Sendoku.type.label, color = colors.given)
+            Text(stringResource(gradeGate(grade)), style = Sendoku.type.body, color = colors.muted)
         }
         Text(
             text = if (solved == 0) "" else solved.toString(),
@@ -197,21 +199,7 @@ private fun GradeRow(grade: Grade, solved: Int, aheadOfYou: Boolean, onClick: ()
     }
 }
 
-/**
- * What a grade will ask of you, in words rather than in technique names.
- *
- * The first version generated this from the rating bands, which produced "up to als xz"
- * and "up to bug plus one". Both are accurate and both are gibberish to anybody who has
- * not already read the glossary, which is exactly the person reading a grade list.
- */
-internal fun Grade.gate(): String = when (this) {
-    Grade.GENTLE -> "one clear digit at a time"
-    Grade.STEADY -> "pairs, and digits locked to a line"
-    Grade.TRICKY -> "triples, and patterns across the grid"
-    Grade.SEVERE -> "wings, colouring and rectangles"
-    Grade.DIABOLICAL -> "chains of reasoning"
-    Grade.BEYOND -> "further than most apps go"
-}
+
 
 @Composable
 private fun ContinueCard(summary: InProgressSummary, onResume: () -> Unit) {
@@ -231,11 +219,11 @@ private fun ContinueCard(summary: InProgressSummary, onResume: () -> Unit) {
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
-            Text("IN PROGRESS", style = Sendoku.type.overline, color = colors.accent)
+            Text(stringResource(R.string.home_in_progress), style = Sendoku.type.overline, color = colors.accent)
             Text(summary.elapsed.clock(), style = Sendoku.type.timer, color = colors.muted)
         }
         Text(
-            text = "${summary.grade.displayName}, ${(summary.fraction * 100).toInt()} percent",
+            text = stringResource(R.string.home_percent, stringResource(gradeName(summary.grade)), (summary.fraction * 100).toInt()),
             style = Sendoku.type.title,
             color = colors.given,
         )
@@ -255,7 +243,7 @@ private fun ContinueCard(summary: InProgressSummary, onResume: () -> Unit) {
             )
         }
         Text(
-            text = "${summary.placed} of ${summary.total} placed",
+            text = stringResource(R.string.home_placed, summary.placed, summary.total),
             style = Sendoku.type.body,
             color = colors.muted,
         )

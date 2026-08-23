@@ -19,6 +19,8 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.ui.res.stringResource
+import com.sendoku.app.R
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -174,22 +176,22 @@ public fun GameScreen(
         AlertDialog(
             onDismissRequest = { confirmLeaving = false },
             containerColor = colors.surfaceRaised,
-            title = { Text("Leave this puzzle?", style = Sendoku.type.title, color = colors.given) },
+            title = { Text(stringResource(R.string.leave_title), style = Sendoku.type.title, color = colors.given) },
             text = {
                 Text(
-                    "It will be waiting where you left it.",
+                    stringResource(R.string.leave_body),
                     style = Sendoku.type.body,
                     color = colors.muted,
                 )
             },
             confirmButton = {
                 TextButton(onClick = { confirmLeaving = false; onHome() }) {
-                    Text("Leave", color = colors.accent, style = Sendoku.type.label)
+                    Text(stringResource(R.string.leave_confirm), color = colors.accent, style = Sendoku.type.label)
                 }
             },
             dismissButton = {
                 TextButton(onClick = { confirmLeaving = false }) {
-                    Text("Stay", color = colors.muted, style = Sendoku.type.label)
+                    Text(stringResource(R.string.leave_cancel), color = colors.muted, style = Sendoku.type.label)
                 }
             },
         )
@@ -284,7 +286,7 @@ private fun GameHeader(state: GameState, onEvent: (GameEvent) -> Unit) {
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Text(
-            text = state.grade.displayName.uppercase(),
+            text = stringResource(gradeName(state.grade)).uppercase(),
             style = Sendoku.type.overline,
             color = colors.accent,
         )
@@ -294,7 +296,7 @@ private fun GameHeader(state: GameState, onEvent: (GameEvent) -> Unit) {
         ) {
             if (state.settings.mistakeLimit != null) {
                 Text(
-                    text = "${state.mistakes} of ${state.settings.mistakeLimit}",
+                    text = stringResource(R.string.mistakes_of, state.mistakes, state.settings.mistakeLimit),
                     style = Sendoku.type.label,
                     color = if (state.mistakes > 0) colors.conflict else colors.muted,
                 )

@@ -12,6 +12,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
+import androidx.compose.ui.res.stringResource
+import com.sendoku.app.R
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -48,7 +50,7 @@ public fun AboutScreen(
             horizontalArrangement = Arrangement.spacedBy(dimens.spaceM),
         ) {
             Text(
-                text = "BACK",
+                text = stringResource(R.string.back),
                 style = Sendoku.type.overline,
                 color = colors.muted,
                 modifier = Modifier
@@ -56,37 +58,31 @@ public fun AboutScreen(
                     .clickable(onClick = onBack)
                     .padding(dimens.spaceS),
             )
-            Text("About", style = Sendoku.type.title, color = colors.given)
+            Text(stringResource(R.string.about_title), style = Sendoku.type.title, color = colors.given)
         }
 
-        Text("Sendoku $version", style = Sendoku.type.display, color = colors.given)
+        Text(stringResource(R.string.about_version, version), style = Sendoku.type.display, color = colors.given)
 
         Text(
-            text = "A sudoku app for people who have run out of hard sudoku.",
+            text = stringResource(R.string.about_tagline),
             style = Sendoku.type.body,
             color = colors.given,
         )
 
-        Promise("No advertisements", "Not between puzzles, not for hints, not ever.")
-        Promise("No tracking", "Nothing is measured and nothing is sent. There is no server.")
-        Promise("No purchases", "Every puzzle and every hint is here already.")
-        Promise("Works offline", "The whole batch ships inside the app.")
-        Promise(
-            "Hints that teach",
-            "A hint names the technique and explains the reasoning. It never just fills in " +
-                "a digit, and it is never held back.",
-        )
+        Promise(stringResource(R.string.about_no_ads), stringResource(R.string.about_no_ads_detail))
+        Promise(stringResource(R.string.about_no_tracking), stringResource(R.string.about_no_tracking_detail))
+        Promise(stringResource(R.string.about_no_purchases), stringResource(R.string.about_no_purchases_detail))
+        Promise(stringResource(R.string.about_offline), stringResource(R.string.about_offline_detail))
+        Promise(stringResource(R.string.about_hints), stringResource(R.string.about_hints_detail))
 
         Text(
-            text = "Difficulty is rated by the hardest technique a puzzle actually needs, " +
-                "worked out by solving it the way a person would. That is why a Severe here " +
-                "means the same thing as the last Severe.",
+            text = stringResource(R.string.about_rating),
             style = Sendoku.type.body,
             color = colors.muted,
         )
 
         Text(
-            text = "OPEN SOURCE LICENCES",
+            text = stringResource(R.string.about_licences),
             style = Sendoku.type.overline,
             color = colors.accent,
             modifier = Modifier

@@ -1,6 +1,13 @@
 package com.sendoku.app.ui
 
+import androidx.annotation.StringRes
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.ReadOnlyComposable
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
+import com.sendoku.app.R
 import com.sendoku.engine.House
+import com.sendoku.engine.HouseKind
 import com.sendoku.engine.technique.Deduction
 import com.sendoku.engine.technique.TechniqueId
 
@@ -11,159 +18,143 @@ import com.sendoku.engine.technique.TechniqueId
  * you. "Hidden pair" means nothing to somebody who does not already know what it means, so
  * each one says what to look for, and then why it works.
  *
- * The text lives here rather than in the engine because it is language, and the engine has
- * none. It will move into string resources when the app is translated, and the technique
- * names will need a translator who plays sudoku rather than one who does not.
+ * The words live in `strings.xml`; this only says which string belongs to which rule. That
+ * split matters more here than anywhere else in the app: these are the hardest strings to
+ * translate, and a translator needs to see them together, in a file, in order.
  */
 public object TechniqueCopy {
 
+    /** The name of a technique, as a hint says it. */
+    @StringRes
+    public fun nameOf(id: TechniqueId): Int = when (id) {
+        TechniqueId.NAKED_SINGLE -> R.string.technique_naked_single
+        TechniqueId.HIDDEN_SINGLE -> R.string.technique_hidden_single
+        TechniqueId.LOCKED_CANDIDATES_POINTING -> R.string.technique_locked_candidates_pointing
+        TechniqueId.LOCKED_CANDIDATES_CLAIMING -> R.string.technique_locked_candidates_claiming
+        TechniqueId.NAKED_PAIR -> R.string.technique_naked_pair
+        TechniqueId.HIDDEN_PAIR -> R.string.technique_hidden_pair
+        TechniqueId.NAKED_TRIPLE -> R.string.technique_naked_triple
+        TechniqueId.HIDDEN_TRIPLE -> R.string.technique_hidden_triple
+        TechniqueId.NAKED_QUAD -> R.string.technique_naked_quad
+        TechniqueId.HIDDEN_QUAD -> R.string.technique_hidden_quad
+        TechniqueId.X_WING -> R.string.technique_x_wing
+        TechniqueId.SIMPLE_COLOURING -> R.string.technique_simple_colouring
+        TechniqueId.XY_WING -> R.string.technique_xy_wing
+        TechniqueId.XYZ_WING -> R.string.technique_xyz_wing
+        TechniqueId.W_WING -> R.string.technique_w_wing
+        TechniqueId.SWORDFISH -> R.string.technique_swordfish
+        TechniqueId.REMOTE_PAIRS -> R.string.technique_remote_pairs
+        TechniqueId.UNIQUE_RECTANGLE -> R.string.technique_unique_rectangle
+        TechniqueId.BUG_PLUS_ONE -> R.string.technique_bug_plus_one
+        TechniqueId.JELLYFISH -> R.string.technique_jellyfish
+        TechniqueId.MULTI_COLOURING -> R.string.technique_multi_colouring
+        TechniqueId.X_CHAIN -> R.string.technique_x_chain
+        TechniqueId.XY_CHAIN -> R.string.technique_xy_chain
+        TechniqueId.ALS_XZ -> R.string.technique_als_xz
+    }
+
     /** One line: what kind of thing to go and look for. Shown at the first tap. */
-    public fun lookFor(id: TechniqueId): String = when (id) {
-        TechniqueId.NAKED_SINGLE -> "There is a cell with only one digit left that can go in it."
-        TechniqueId.HIDDEN_SINGLE -> "There is a digit with only one place left to go."
-        TechniqueId.LOCKED_CANDIDATES_POINTING ->
-            "In one box, a digit is stuck on a single row or column."
-        TechniqueId.LOCKED_CANDIDATES_CLAIMING ->
-            "On one line, a digit can only sit inside a single box."
-        TechniqueId.NAKED_PAIR -> "Two cells in one region hold the same two digits and nothing else."
-        TechniqueId.HIDDEN_PAIR -> "Two digits have nowhere to go in one region except the same two cells."
-        TechniqueId.NAKED_TRIPLE -> "Three cells in one region share three digits between them."
-        TechniqueId.HIDDEN_TRIPLE -> "Three digits are confined to the same three cells."
-        TechniqueId.NAKED_QUAD -> "Four cells in one region share four digits between them."
-        TechniqueId.HIDDEN_QUAD -> "Four digits are confined to the same four cells."
-        TechniqueId.X_WING -> "Two rows hold a digit in the same two columns, or the other way round."
-        TechniqueId.SWORDFISH -> "Three rows hold a digit inside the same three columns."
-        TechniqueId.JELLYFISH -> "Four rows hold a digit inside the same four columns."
-        TechniqueId.XY_WING -> "Three cells of two digits each, arranged so one digit is squeezed out."
-        TechniqueId.XYZ_WING -> "Like an XY-Wing, but the middle cell has a third digit too."
-        TechniqueId.W_WING -> "Two cells holding the same pair, joined by a digit with only two homes."
-        TechniqueId.SIMPLE_COLOURING -> "One digit forms a chain that alternates all the way along."
-        TechniqueId.MULTI_COLOURING -> "Two separate chains on one digit, played off against each other."
-        TechniqueId.REMOTE_PAIRS -> "A chain of cells all holding the very same two digits."
-        TechniqueId.UNIQUE_RECTANGLE ->
-            "Four cells form a rectangle that would give the puzzle two answers."
-        TechniqueId.BUG_PLUS_ONE -> "Every cell but one is down to two digits."
-        TechniqueId.X_CHAIN -> "A chain on one digit, alternating between must and cannot."
-        TechniqueId.XY_CHAIN -> "A chain of two digit cells, each one forcing the next."
-        TechniqueId.ALS_XZ -> "Two groups of cells, each one digit away from being locked."
+    @StringRes
+    public fun lookFor(id: TechniqueId): Int = when (id) {
+        TechniqueId.NAKED_SINGLE -> R.string.look_naked_single
+        TechniqueId.HIDDEN_SINGLE -> R.string.look_hidden_single
+        TechniqueId.LOCKED_CANDIDATES_POINTING -> R.string.look_locked_candidates_pointing
+        TechniqueId.LOCKED_CANDIDATES_CLAIMING -> R.string.look_locked_candidates_claiming
+        TechniqueId.NAKED_PAIR -> R.string.look_naked_pair
+        TechniqueId.HIDDEN_PAIR -> R.string.look_hidden_pair
+        TechniqueId.NAKED_TRIPLE -> R.string.look_naked_triple
+        TechniqueId.HIDDEN_TRIPLE -> R.string.look_hidden_triple
+        TechniqueId.NAKED_QUAD -> R.string.look_naked_quad
+        TechniqueId.HIDDEN_QUAD -> R.string.look_hidden_quad
+        TechniqueId.X_WING -> R.string.look_x_wing
+        TechniqueId.SIMPLE_COLOURING -> R.string.look_simple_colouring
+        TechniqueId.XY_WING -> R.string.look_xy_wing
+        TechniqueId.XYZ_WING -> R.string.look_xyz_wing
+        TechniqueId.W_WING -> R.string.look_w_wing
+        TechniqueId.SWORDFISH -> R.string.look_swordfish
+        TechniqueId.REMOTE_PAIRS -> R.string.look_remote_pairs
+        TechniqueId.UNIQUE_RECTANGLE -> R.string.look_unique_rectangle
+        TechniqueId.BUG_PLUS_ONE -> R.string.look_bug_plus_one
+        TechniqueId.JELLYFISH -> R.string.look_jellyfish
+        TechniqueId.MULTI_COLOURING -> R.string.look_multi_colouring
+        TechniqueId.X_CHAIN -> R.string.look_x_chain
+        TechniqueId.XY_CHAIN -> R.string.look_xy_chain
+        TechniqueId.ALS_XZ -> R.string.look_als_xz
     }
 
     /** Why it works. Shown at the last tap, once the player has seen the cells. */
-    public fun because(id: TechniqueId): String = when (id) {
-        TechniqueId.NAKED_SINGLE ->
-            "Every other digit already appears in its row, its column or its box, so only " +
-                "one is left. It has to go here."
-        TechniqueId.HIDDEN_SINGLE ->
-            "The region needs this digit somewhere, and every other cell in it is ruled out, " +
-                "so this is the only place left."
-        TechniqueId.LOCKED_CANDIDATES_POINTING ->
-            "The box has to hold this digit somewhere, and every place it could go lies on " +
-                "one line. So the digit is on that line, and it cannot be anywhere else along it."
-        TechniqueId.LOCKED_CANDIDATES_CLAIMING ->
-            "The line has to hold this digit somewhere, and every place it could go is inside " +
-                "one box. So the digit is in that box, and it cannot be elsewhere in the box."
-        TechniqueId.NAKED_PAIR ->
-            "Those two cells will take those two digits between them, one each. No other cell " +
-                "in the region can have either."
-        TechniqueId.HIDDEN_PAIR ->
-            "The region needs both digits, and only these two cells can take them, so they " +
-                "take one each. Everything else in those two cells is out."
-        TechniqueId.NAKED_TRIPLE ->
-            "Three cells, three digits, one each. Nothing else in the region can use them, " +
-                "even though no single cell holds all three."
-        TechniqueId.HIDDEN_TRIPLE ->
-            "Three digits with nowhere else to go fill three cells between them, so anything " +
-                "else in those cells is impossible."
-        TechniqueId.NAKED_QUAD ->
-            "Four cells take four digits between them, which locks all four out of the rest " +
-                "of the region."
-        TechniqueId.HIDDEN_QUAD ->
-            "Four digits confined to four cells fill them between them, so nothing else can " +
-                "live there."
-        TechniqueId.X_WING ->
-            "Each of the two rows needs the digit once, and both can only place it in the same " +
-                "two columns. Between them they use up both columns, so no other row can have " +
-                "the digit there."
-        TechniqueId.SWORDFISH ->
-            "Three rows needing the digit, and only three columns to put it in. The three rows " +
-                "use up all three columns, so nothing else in those columns can have it."
-        TechniqueId.JELLYFISH ->
-            "Four rows and four columns, the same argument again. The four rows fill all four " +
-                "columns between them."
-        TechniqueId.XY_WING ->
-            "The middle cell is one of its two digits. Either way, one of the two outer cells " +
-                "is forced to the shared digit, so anything seeing both of them cannot be it."
-        TechniqueId.XYZ_WING ->
-            "The middle cell can also be the shared digit, so the conclusion is weaker: only a " +
-                "cell that sees all three loses it."
-        TechniqueId.W_WING ->
-            "If neither of the pair cells took the second digit, both would take the first, and " +
-                "the linked region would have nowhere left to put it. So one of them is the " +
-                "second digit."
-        TechniqueId.SIMPLE_COLOURING ->
-            "Colour the chain alternately and exactly one colour is true. Either a colour lands " +
-                "twice in one region and is therefore false, or a cell outside sees both " +
-                "colours and loses the digit whichever way it falls."
-        TechniqueId.MULTI_COLOURING ->
-            "One colour of the first chain clashes with a colour of the second, which forces " +
-                "the digit into one of the two opposite colours. Anything seeing both of those " +
-                "cannot hold it."
-        TechniqueId.REMOTE_PAIRS ->
-            "Neighbours in the chain see each other, so they alternate. The two ends are an odd " +
-                "number of steps apart and therefore hold one digit each, and anything seeing " +
-                "both can have neither."
-        TechniqueId.UNIQUE_RECTANGLE ->
-            "If those four cells held nothing but the same two digits, they could be swapped " +
-                "around the rectangle and the puzzle would have two answers. It has one, so " +
-                "that arrangement is impossible."
-        TechniqueId.BUG_PLUS_ONE ->
-            "If the extra candidate were removed, every digit would appear exactly twice in " +
-                "every region, and a grid like that always has an even number of answers. This " +
-                "puzzle has one, so the extra candidate is the answer."
-        TechniqueId.X_CHAIN ->
-            "The chain alternates between places the digit must be and places it cannot be. " +
-                "The two ends cannot both be empty of it, so anything seeing both loses it."
-        TechniqueId.XY_CHAIN ->
-            "Suppose the first cell is not the digit. Follow the chain along and the last cell " +
-                "is forced to be it. So one end or the other holds it."
-        TechniqueId.ALS_XZ ->
-            "One shared digit can only appear in one of the two groups, which locks the other " +
-                "group and forces it to use every digit it has. So the second shared digit " +
-                "lands in one group or the other."
+    @StringRes
+    public fun because(id: TechniqueId): Int = when (id) {
+        TechniqueId.NAKED_SINGLE -> R.string.because_naked_single
+        TechniqueId.HIDDEN_SINGLE -> R.string.because_hidden_single
+        TechniqueId.LOCKED_CANDIDATES_POINTING -> R.string.because_locked_candidates_pointing
+        TechniqueId.LOCKED_CANDIDATES_CLAIMING -> R.string.because_locked_candidates_claiming
+        TechniqueId.NAKED_PAIR -> R.string.because_naked_pair
+        TechniqueId.HIDDEN_PAIR -> R.string.because_hidden_pair
+        TechniqueId.NAKED_TRIPLE -> R.string.because_naked_triple
+        TechniqueId.HIDDEN_TRIPLE -> R.string.because_hidden_triple
+        TechniqueId.NAKED_QUAD -> R.string.because_naked_quad
+        TechniqueId.HIDDEN_QUAD -> R.string.because_hidden_quad
+        TechniqueId.X_WING -> R.string.because_x_wing
+        TechniqueId.SIMPLE_COLOURING -> R.string.because_simple_colouring
+        TechniqueId.XY_WING -> R.string.because_xy_wing
+        TechniqueId.XYZ_WING -> R.string.because_xyz_wing
+        TechniqueId.W_WING -> R.string.because_w_wing
+        TechniqueId.SWORDFISH -> R.string.because_swordfish
+        TechniqueId.REMOTE_PAIRS -> R.string.because_remote_pairs
+        TechniqueId.UNIQUE_RECTANGLE -> R.string.because_unique_rectangle
+        TechniqueId.BUG_PLUS_ONE -> R.string.because_bug_plus_one
+        TechniqueId.JELLYFISH -> R.string.because_jellyfish
+        TechniqueId.MULTI_COLOURING -> R.string.because_multi_colouring
+        TechniqueId.X_CHAIN -> R.string.because_x_chain
+        TechniqueId.XY_CHAIN -> R.string.because_xy_chain
+        TechniqueId.ALS_XZ -> R.string.because_als_xz
     }
 
     /** The region a hint is about, if it is about one. */
-    public fun where(deduction: Deduction): String? = when {
-        deduction.houses.isEmpty() -> null
-        deduction.houses.size == 1 -> "in ${deduction.houses.first()}"
-        else -> "in " + deduction.houses.joinToString(" and ") { it.toString() }
+    @Composable
+    @ReadOnlyComposable
+    public fun where(deduction: Deduction): String? = when (deduction.houses.size) {
+        0 -> null
+        1 -> stringResource(R.string.hint_in_region, name(deduction.houses[0]))
+        else -> stringResource(
+            R.string.hint_in_regions,
+            name(deduction.houses[0]),
+            name(deduction.houses[1]),
+        )
     }
 
     /** What the step actually does, in one line. */
+    @Composable
+    @ReadOnlyComposable
     public fun outcome(deduction: Deduction): String {
         val placement = deduction.placements.firstOrNull()
         if (placement != null) {
-            return "So ${cellName(deduction, placement.cell)} is a ${placement.digit}."
+            return stringResource(
+                R.string.hint_outcome_place,
+                placement.cell / 9 + 1,
+                placement.cell % 9 + 1,
+                placement.digit,
+            )
         }
         val digits = deduction.eliminations.map { it.digit }.distinct().sorted()
-        val cells = deduction.eliminations.map { it.cell }.distinct()
-        val digitText = when (digits.size) {
-            1 -> "the ${digits.first()}"
-            2 -> "the ${digits[0]} and the ${digits[1]}"
-            else -> "the " + digits.dropLast(1).joinToString(", ") + " and the " + digits.last()
+        val cells = deduction.eliminations.map { it.cell }.distinct().size
+        val where = pluralStringResource(R.plurals.hint_cells, cells, cells)
+        return if (digits.size == 1) {
+            stringResource(R.string.hint_outcome_strike_one, digits[0], where)
+        } else {
+            stringResource(R.string.hint_outcome_strike_two, digits[0], digits[1], where)
         }
-        val cellText = if (cells.size == 1) "one cell" else "${cells.size} cells"
-        return "So $digitText can go from $cellText."
     }
 
-    private fun cellName(deduction: Deduction, cell: Int): String {
-        // Nine by nine is the only shape shipping, and the copy reads better with real
-        // coordinates than with an index.
-        val row = cell / 9 + 1
-        val column = cell % 9 + 1
-        return "row $row, column $column"
-    }
+    @Composable
+    @ReadOnlyComposable
+    private fun name(house: House): String = stringResource(
+        when (house.kind) {
+            HouseKind.ROW -> R.string.house_row
+            HouseKind.COLUMN -> R.string.house_column
+            HouseKind.BOX -> R.string.house_box
+        },
+        house.index + 1,
+    )
 }
-
-/** Reads as `row 4`, counting from one the way a player would. */
-internal fun House.readable(): String = toString()

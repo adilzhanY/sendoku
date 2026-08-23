@@ -13,6 +13,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
+import androidx.compose.ui.res.stringResource
+import com.sendoku.app.R
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -49,7 +51,7 @@ public fun LicencesScreen(
             horizontalArrangement = Arrangement.spacedBy(dimens.spaceM),
         ) {
             Text(
-                text = "BACK",
+                text = stringResource(R.string.back),
                 style = Sendoku.type.overline,
                 color = colors.muted,
                 modifier = Modifier
@@ -57,7 +59,7 @@ public fun LicencesScreen(
                     .clickable(onClick = onBack)
                     .padding(dimens.spaceS),
             )
-            Text("Licences", style = Sendoku.type.title, color = colors.given)
+            Text(stringResource(R.string.licences_title), style = Sendoku.type.title, color = colors.given)
         }
 
         LazyColumn(

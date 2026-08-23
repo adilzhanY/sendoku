@@ -18,6 +18,7 @@ import com.sendoku.app.nav.Destination
 import com.sendoku.app.nav.Navigator
 import com.sendoku.app.theme.Sendoku
 import com.sendoku.app.ui.GameScreen
+import androidx.compose.ui.res.stringResource
 import com.sendoku.app.data.Appearance
 import com.sendoku.app.data.Statistics
 import com.sendoku.app.ui.AboutScreen
@@ -170,7 +171,7 @@ private fun Loading(modifier: Modifier = Modifier) {
         modifier = modifier.fillMaxSize().background(Sendoku.colors.background),
         contentAlignment = Alignment.Center,
     ) {
-        Text("Sendoku", style = Sendoku.type.title, color = Sendoku.colors.muted)
+        Text(stringResource(R.string.app_name), style = Sendoku.type.title, color = Sendoku.colors.muted)
     }
 }
 

@@ -16,6 +16,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
+import com.sendoku.app.R
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.role
@@ -72,10 +75,11 @@ private fun PadKey(
     val dimens = Sendoku.dimens
 
     val spoken = when {
-        exhausted -> "$digit, all placed"
-        remaining == 1 -> "$digit, one left"
-        else -> "$digit, $remaining left"
+        exhausted -> stringResource(R.string.pad_all_placed, digit)
+        remaining == 1 -> stringResource(R.string.pad_one_left, digit)
+        else -> pluralStringResource(R.plurals.pad_left, remaining, digit, remaining)
     }
+    val label = if (pencilMode) stringResource(R.string.pad_notes_mode, spoken) else spoken
 
     Column(
         modifier = modifier
@@ -92,7 +96,7 @@ private fun PadKey(
             // After the click, not before it. Put ahead of it, the label lands on a different
             // node from the one a screen reader focuses, and the focused one says nothing.
             .semantics(mergeDescendants = true) {
-                contentDescription = if (pencilMode) "$spoken, notes mode" else spoken
+                contentDescription = label
                 role = Role.Button
             }
             .padding(vertical = dimens.spaceS),

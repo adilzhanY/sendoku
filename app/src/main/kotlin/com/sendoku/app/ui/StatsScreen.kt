@@ -17,6 +17,9 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
+import com.sendoku.app.R
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -63,7 +66,7 @@ public fun StatsScreen(
             horizontalArrangement = Arrangement.spacedBy(dimens.spaceM),
         ) {
             Text(
-                text = "BACK",
+                text = stringResource(R.string.back),
                 style = Sendoku.type.overline,
                 color = colors.muted,
                 modifier = Modifier
@@ -71,7 +74,7 @@ public fun StatsScreen(
                     .clickable(onClick = onBack)
                     .padding(dimens.spaceS),
             )
-            Text("Statistics", style = Sendoku.type.title, color = colors.given)
+            Text(stringResource(R.string.stats_title), style = Sendoku.type.title, color = colors.given)
         }
 
         if (statistics.isEmpty) {
@@ -83,20 +86,20 @@ public fun StatsScreen(
             modifier = Modifier.fillMaxWidth().padding(vertical = dimens.spaceS),
             horizontalArrangement = Arrangement.SpaceEvenly,
         ) {
-            Headline(statistics.totalSolved.toString(), "SOLVED")
-            Headline(statistics.currentStreak.toString(), "STREAK")
-            Headline(statistics.hardestRating?.let { "%.1f".format(it) } ?: "-", "HARDEST")
+            Headline(statistics.totalSolved.toString(), stringResource(R.string.stats_solved))
+            Headline(statistics.currentStreak.toString(), stringResource(R.string.stats_streak))
+            Headline(statistics.hardestRating?.let { "%.1f".format(it) } ?: "-", stringResource(R.string.stats_hardest))
         }
 
         statistics.hardestGrade?.let { grade ->
-            Note("The hardest you have finished is a ${grade.displayName.lowercase()}.")
+            Note(stringResource(R.string.stats_hardest_note, stringResource(gradeName(grade)).lowercase()))
         }
         if (statistics.longestStreak > statistics.currentStreak) {
-            Note("Your longest run was ${statistics.longestStreak} days.")
+            Note(pluralStringResource(R.plurals.stats_longest_run, statistics.longestStreak, statistics.longestStreak))
         }
-        Note("${statistics.totalTime.readable()} spent, ${statistics.totalHints} hints taken.")
+        Note(stringResource(R.string.stats_totals, statistics.totalTime.readable(), statistics.totalHints))
 
-        Section("By grade")
+        Section(stringResource(R.string.stats_by_grade))
         for (grade in Grade.entries.reversed()) {
             val record = statistics.byGrade.getValue(grade)
             if (record.played == 0) continue
@@ -104,7 +107,7 @@ public fun StatsScreen(
         }
 
         if (statistics.hardestTechnique.isNotEmpty()) {
-            Section("What your puzzles needed")
+            Section(stringResource(R.string.stats_needed))
             val most = statistics.hardestTechnique.values.max()
             for ((technique, count) in statistics.hardestTechnique.entries.sortedBy { it.key.cost }) {
                 Row(
@@ -113,7 +116,7 @@ public fun StatsScreen(
                     horizontalArrangement = Arrangement.spacedBy(dimens.spaceS),
                 ) {
                     Text(
-                        text = technique.displayName,
+                        text = stringResource(TechniqueCopy.nameOf(technique)),
                         style = Sendoku.type.body,
                         color = colors.given,
                         modifier = Modifier.fillMaxWidth(0.45f),
@@ -131,7 +134,7 @@ public fun StatsScreen(
         }
 
         Text(
-            text = "RESET STATISTICS",
+            text = stringResource(R.string.stats_reset),
             style = Sendoku.type.overline,
             color = colors.conflict,
             modifier = Modifier
@@ -146,23 +149,22 @@ public fun StatsScreen(
         AlertDialog(
             onDismissRequest = { confirmReset = false },
             containerColor = colors.surfaceRaised,
-            title = { Text("Throw away your history?", style = Sendoku.type.title, color = colors.given) },
+            title = { Text(stringResource(R.string.stats_reset_title), style = Sendoku.type.title, color = colors.given) },
             text = {
                 Text(
-                    "Every finished puzzle, every streak and every best time. There is no " +
-                        "copy anywhere else, so this cannot be undone.",
+                    stringResource(R.string.stats_reset_body),
                     style = Sendoku.type.body,
                     color = colors.muted,
                 )
             },
             confirmButton = {
                 TextButton(onClick = { confirmReset = false; onReset() }) {
-                    Text("Reset", color = colors.conflict, style = Sendoku.type.label)
+                    Text(stringResource(R.string.stats_reset_confirm), color = colors.conflict, style = Sendoku.type.label)
                 }
             },
             dismissButton = {
                 TextButton(onClick = { confirmReset = false }) {
-                    Text("Keep it", color = colors.muted, style = Sendoku.type.label)
+                    Text(stringResource(R.string.stats_reset_cancel), color = colors.muted, style = Sendoku.type.label)
                 }
             },
         )
@@ -175,10 +177,9 @@ private fun EmptyState() {
         modifier = Modifier.fillMaxWidth().padding(vertical = Sendoku.dimens.spaceXl),
         verticalArrangement = Arrangement.spacedBy(Sendoku.dimens.spaceS),
     ) {
-        Text("Nothing yet", style = Sendoku.type.title, color = Sendoku.colors.given)
+        Text(stringResource(R.string.stats_empty_title), style = Sendoku.type.title, color = Sendoku.colors.given)
         Text(
-            text = "Finish a puzzle and this fills up: how long each grade takes you, how " +
-                "far you have climbed, and which techniques your puzzles have needed.",
+            text = stringResource(R.string.stats_empty_body),
             style = Sendoku.type.body,
             color = Sendoku.colors.muted,
         )
@@ -221,12 +222,12 @@ private fun GradeStat(record: GradeRecord) {
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Column(Modifier.fillMaxWidth(0.5f)) {
-            Text(record.grade.displayName, style = Sendoku.type.label, color = colors.given)
+            Text(stringResource(gradeName(record.grade)), style = Sendoku.type.label, color = colors.given)
             Text(
                 text = if (record.abandoned == 0) {
-                    "${record.solved} solved"
+                    stringResource(R.string.stats_solved_count, record.solved)
                 } else {
-                    "${record.solved} solved, ${record.abandoned} lost"
+                    stringResource(R.string.stats_solved_and_lost, record.solved, record.abandoned)
                 },
                 style = Sendoku.type.body,
                 color = colors.muted,
@@ -235,7 +236,7 @@ private fun GradeStat(record: GradeRecord) {
         Column(horizontalAlignment = Alignment.End, modifier = Modifier.fillMaxWidth()) {
             Text(record.best?.readable() ?: "-", style = Sendoku.type.timer, color = colors.accent)
             Text(
-                text = record.average?.let { "avg ${it.readable()}" } ?: "",
+                text = record.average?.let { stringResource(R.string.stats_average, it.readable()) } ?: "",
                 style = Sendoku.type.body,
                 color = colors.muted,
             )

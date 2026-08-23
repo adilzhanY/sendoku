@@ -19,7 +19,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.res.stringResource
+import com.sendoku.app.R
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -297,33 +300,23 @@ internal fun decorationFor(isConflict: Boolean): TextDecoration? =
  * what is in it. Pencil marks are read out in full: they are the working, and hiding them
  * from a screen reader would make the board unplayable rather than merely harder.
  */
+@Composable
+@ReadOnlyComposable
 internal fun describe(state: GameState, index: Int, conflicting: Boolean): String {
     val cell = state.cells[index]
-    val row = index / state.size + 1
-    val column = index % state.size + 1
-    return buildString {
-        append("Row ")
-        append(row)
-        append(", column ")
-        append(column)
-        when {
-            cell.isGiven -> {
-                append(", ")
-                append(cell.digit)
-                append(", a clue")
-            }
-            !cell.isEmpty -> {
-                append(", ")
-                append(cell.digit)
-            }
-            cell.marks.isNotEmpty -> {
-                append(", empty, noted ")
-                append(cell.marks.toList().joinToString(", "))
-            }
-            else -> append(", empty")
-        }
-        if (conflicting) append(", repeated")
+    val position = stringResource(
+        R.string.cell_position,
+        index / state.size + 1,
+        index % state.size + 1,
+    )
+    val body = when {
+        cell.isGiven -> stringResource(R.string.cell_clue, position, cell.digit)
+        !cell.isEmpty -> stringResource(R.string.cell_digit, position, cell.digit)
+        cell.marks.isNotEmpty ->
+            stringResource(R.string.cell_noted, position, cell.marks.toList().joinToString(", "))
+        else -> stringResource(R.string.cell_empty, position)
     }
+    return if (conflicting) stringResource(R.string.cell_repeated, body) else body
 }
 
 /** Scales a text size to the cell, so one board fits a small phone and a tablet. */

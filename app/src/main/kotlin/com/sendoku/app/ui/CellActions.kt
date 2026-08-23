@@ -12,6 +12,9 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
+import com.sendoku.app.R
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -52,7 +55,7 @@ public fun CellActionSheet(
             verticalArrangement = Arrangement.spacedBy(dimens.spaceXs),
         ) {
             Text(
-                text = "ROW $row, COLUMN $column",
+                text = stringResource(R.string.cell_actions_title, row, column),
                 style = Sendoku.type.overline,
                 color = colors.muted,
                 modifier = Modifier.padding(vertical = dimens.spaceS),
@@ -60,7 +63,7 @@ public fun CellActionSheet(
 
             if (target.isGiven) {
                 Text(
-                    text = "This one came with the puzzle, so it cannot be changed.",
+                    text = stringResource(R.string.cell_actions_clue),
                     style = Sendoku.type.body,
                     color = colors.muted,
                     modifier = Modifier.padding(bottom = dimens.spaceM),
@@ -68,15 +71,15 @@ public fun CellActionSheet(
             } else {
                 val possible = state.candidatesAt(cell)
                 SheetAction(
-                    label = "Note all ${possible.size} candidates",
+                    label = pluralStringResource(R.plurals.cell_actions_note_all, possible.size, possible.size),
                     enabled = target.isEmpty && possible.isNotEmpty && possible != target.marks,
                 ) {
                     onAction(GameEvent.FillMarks)
                 }
-                SheetAction("Rub out the notes", enabled = target.marks.isNotEmpty) {
+                SheetAction(stringResource(R.string.cell_actions_clear_notes), enabled = target.marks.isNotEmpty) {
                     onAction(GameEvent.ClearMarks)
                 }
-                SheetAction("Clear the cell", enabled = !target.isEmpty || target.marks.isNotEmpty) {
+                SheetAction(stringResource(R.string.cell_actions_clear), enabled = !target.isEmpty || target.marks.isNotEmpty) {
                     onAction(GameEvent.Erase)
                 }
             }

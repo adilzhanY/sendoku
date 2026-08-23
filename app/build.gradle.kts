@@ -15,9 +15,20 @@ android {
         versionCode = 1
         versionName = "0.1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        // en-XA doubles the length of every string and ar-XB mirrors the layout, both without
+        // needing a translator. They are the cheapest way to find a layout that only breaks in
+        // German or only breaks in Arabic.
+        resourceConfigurations += listOf("en", "ru", "en-rXA", "ar-rXB")
     }
 
     buildTypes {
+        debug {
+            // Generates en-XA, which doubles the length of every string, and ar-XB, which
+            // mirrors the layout. Between them they find the layouts that only break in a
+            // language nobody on the team reads.
+            isPseudoLocalesEnabled = true
+        }
+
         release {
             isMinifyEnabled = true
             isShrinkResources = true
@@ -37,6 +48,27 @@ android {
 
     testOptions {
         unitTests.isReturnDefaultValues = true
+    }
+
+    /**
+     * Lint, taken seriously.
+     *
+     * Hardcoded text and a missing translation both fail the build rather than warn. Both are
+     * invisible until somebody switches language, and by then the app is shipped. The rest of
+     * lint runs as warnings that also fail, so a warning cannot quietly become the norm.
+     */
+    lint {
+        warningsAsErrors = true
+        abortOnError = true
+        checkDependencies = true
+        error += listOf("HardcodedText", "MissingTranslation", "ExtraTranslation")
+        // The pseudo locales are generated for testing and are deliberately not translated.
+        // The launcher icon is a design job that has not happened yet, tracked as its own
+        // item. It is a release blocker rather than something to paper over with a
+        // placeholder, so it is silenced here and nowhere else.
+        disable += listOf("MissingQuantity", "MissingApplicationIcon")
+        sarifReport = true
+        textReport = true
     }
 
     // Room writes the schema of every version here, and they are committed. Without the old

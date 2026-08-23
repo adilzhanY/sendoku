@@ -17,6 +17,8 @@ import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
+import androidx.compose.ui.res.stringResource
+import com.sendoku.app.R
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -62,7 +64,7 @@ public fun SettingsScreen(
             horizontalArrangement = Arrangement.spacedBy(dimens.spaceM),
         ) {
             Text(
-                text = "BACK",
+                text = stringResource(R.string.back),
                 style = Sendoku.type.overline,
                 color = colors.muted,
                 modifier = Modifier
@@ -70,82 +72,81 @@ public fun SettingsScreen(
                     .clickable(onClick = onBack)
                     .padding(dimens.spaceS),
             )
-            Text("Settings", style = Sendoku.type.title, color = colors.given)
+            Text(stringResource(R.string.settings_title), style = Sendoku.type.title, color = colors.given)
         }
 
-        SectionLabel("Look")
+        SectionLabel(stringResource(R.string.settings_look))
         for (theme in SendokuThemeId.entries) {
             Choice(
-                label = theme.displayName,
-                detail = theme.summary,
+                label = stringResource(themeName(theme)),
+                detail = stringResource(themeSummary(theme)),
                 selected = appearance.theme == theme,
             ) { onAppearanceChange(appearance.copy(theme = theme)) }
         }
 
         if (!SendokuThemes.isFixed(appearance.theme)) {
-            SectionLabel("Light or dark")
+            SectionLabel(stringResource(R.string.settings_light_or_dark))
             for (mode in ThemeMode.entries) {
                 Choice(
-                    label = mode.displayName,
+                    label = stringResource(modeName(mode)),
                     detail = null,
                     selected = appearance.mode == mode,
                 ) { onAppearanceChange(appearance.copy(mode = mode)) }
             }
         } else {
             Text(
-                text = "Terminal is dark whichever way the phone is set. That is deliberate.",
+                text = stringResource(R.string.settings_terminal_is_dark),
                 style = Sendoku.type.body,
                 color = colors.muted,
                 modifier = Modifier.padding(vertical = dimens.spaceS),
             )
         }
 
-        SectionLabel("The board")
+        SectionLabel(stringResource(R.string.settings_board))
         Toggle(
-            label = "Highlight the row, column and box",
+            label = stringResource(R.string.settings_highlight_peers),
             checked = settings.highlightPeers,
         ) { onChange(settings.copy(highlightPeers = it)) }
         Toggle(
-            label = "Highlight the same digit elsewhere",
+            label = stringResource(R.string.settings_highlight_same),
             checked = settings.highlightSameDigit,
         ) { onChange(settings.copy(highlightSameDigit = it)) }
         Toggle(
-            label = "Rub out notes that a placement rules out",
+            label = stringResource(R.string.settings_auto_clear),
             checked = settings.autoClearMarks,
         ) { onChange(settings.copy(autoClearMarks = it)) }
         Toggle(
-            label = "Mark a digit that repeats in a row, column or box",
+            label = stringResource(R.string.settings_flag_conflicts),
             checked = settings.flagConflicts,
         ) { onChange(settings.copy(flagConflicts = it)) }
 
-        SectionLabel("The clock")
-        Toggle(label = "Show the timer", checked = settings.showTimer) {
+        SectionLabel(stringResource(R.string.settings_clock))
+        Toggle(label = stringResource(R.string.settings_show_timer), checked = settings.showTimer) {
             onChange(settings.copy(showTimer = it))
         }
 
-        SectionLabel("Feedback")
-        Toggle(label = "Buzz when a digit goes in", checked = settings.haptics) {
+        SectionLabel(stringResource(R.string.settings_feedback))
+        Toggle(label = stringResource(R.string.settings_haptics), checked = settings.haptics) {
             onChange(settings.copy(haptics = it))
         }
-        Toggle(label = "Click when a digit goes in", checked = settings.sound) {
+        Toggle(label = stringResource(R.string.settings_sound), checked = settings.sound) {
             onChange(settings.copy(sound = it))
         }
 
-        SectionLabel("Mistakes")
+        SectionLabel(stringResource(R.string.settings_mistakes))
         Toggle(
-            label = "End the game after three mistakes",
+            label = stringResource(R.string.settings_mistake_limit),
             checked = settings.mistakeLimit != null,
         ) { onChange(settings.copy(mistakeLimit = if (it) 3 else null)) }
         Text(
-            text = "Off by default. The hard grades take long enough that losing an hour to " +
-                "one slip would be miserable.",
+            text = stringResource(R.string.settings_mistake_note),
             style = Sendoku.type.body,
             color = colors.muted,
             modifier = Modifier.padding(vertical = dimens.spaceS),
         )
 
         Text(
-            text = "ABOUT SENDOKU",
+            text = stringResource(R.string.settings_about),
             style = Sendoku.type.overline,
             color = colors.accent,
             modifier = Modifier

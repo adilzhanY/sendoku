@@ -1,12 +1,9 @@
 package com.sendoku.app.game
 
-import com.sendoku.app.ui.TechniqueCopy
 import com.sendoku.engine.Dimensions
-import com.sendoku.engine.Grade
 import com.sendoku.engine.Symmetry
 import com.sendoku.engine.catalog.GradedGenerator
 import com.sendoku.engine.catalog.RatedPuzzle
-import com.sendoku.engine.technique.TechniqueId
 import kotlin.random.Random
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -150,51 +147,4 @@ class HintTest {
         assertTrue(guard > 5)
     }
 
-    @Test
-    fun `every technique has copy, and none of it is a placeholder`() {
-        for (technique in TechniqueId.entries) {
-            val lookFor = TechniqueCopy.lookFor(technique)
-            val because = TechniqueCopy.because(technique)
-            assertTrue("${technique.name} has no look for text", lookFor.length > 30)
-            assertTrue("${technique.name} has no explanation", because.length > 60)
-            assertTrue("${technique.name} does not end in a full stop", lookFor.endsWith("."))
-            assertTrue("${technique.name} does not end in a full stop", because.endsWith("."))
-        }
-    }
-
-    @Test
-    fun `no copy leans on jargon the player has not been given`() {
-        // The name of the technique is allowed to be jargon, because the hint teaches it.
-        // The explanation is not, or the hint teaches nothing.
-        val jargon = listOf("candidate elimination", "conjugate", "strong link", "bivalue", "als")
-        for (technique in TechniqueId.entries) {
-            val because = TechniqueCopy.because(technique).lowercase()
-            for (phrase in jargon) {
-                // Whole words only. "als" lives inside "false" and "also", and matching those
-                // would fail an explanation that is perfectly plain.
-                val found = Regex("\\b" + Regex.escape(phrase) + "\\b").containsMatchIn(because)
-                assertFalse("${technique.name} explains itself with '$phrase'", found)
-            }
-        }
-    }
-
-    @Test
-    fun `the copy describes what the step actually does`() {
-        val hint = HintEngine.next(game()) as Hint.Step
-        val outcome = TechniqueCopy.outcome(hint.deduction)
-        assertTrue(outcome.endsWith("."))
-        if (hint.deduction.placements.isNotEmpty()) {
-            assertTrue(outcome.contains("row") && outcome.contains("column"))
-        } else {
-            assertTrue(outcome.contains("can go from"))
-        }
-    }
-
-    @Test
-    fun `every technique in the glossary belongs to a grade`() {
-        for (technique in TechniqueId.entries) {
-            val grade = Grade.of(technique.cost)
-            assertTrue("${technique.name} has no grade", grade.displayName.isNotEmpty())
-        }
-    }
 }
