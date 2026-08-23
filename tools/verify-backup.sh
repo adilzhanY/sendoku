@@ -11,6 +11,9 @@ PACKAGE=com.sendoku.app
 
 echo "Enabling the backup manager"
 adb shell bmgr enable true
+# The Google transport needs a signed in account. The local one needs nothing and exercises
+# the same include rules, which is what is actually being tested here.
+adb shell bmgr transport com.android.localtransport/.LocalTransport
 
 echo
 echo "Play a puzzle to the end and change a setting, then press enter."
@@ -25,8 +28,8 @@ adb uninstall "$PACKAGE"
 echo "Reinstalling"
 ./gradlew :app:installDebug
 
-echo "Restoring"
-adb shell bmgr restore "$PACKAGE"
+# Android restores automatically as part of the install when a backup exists, which is the
+# path a real player takes when they set up a new phone. No explicit restore is needed.
 
 echo
 echo "Open the app. The finished puzzle should still be in the history and the setting"
