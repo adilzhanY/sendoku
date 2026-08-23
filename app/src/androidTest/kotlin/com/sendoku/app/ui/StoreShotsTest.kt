@@ -1,8 +1,6 @@
 package com.sendoku.app.ui
 
 import android.graphics.Bitmap
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asAndroidBitmap
@@ -69,10 +67,11 @@ class StoreShotsTest {
         }
     }
 
+    /** The same frame the app puts around a screen, so a tablet shot is framed like a tablet. */
     @Composable
-    private fun Scene(dark: Boolean = true, content: @Composable () -> Unit) {
+    private fun Scene(dark: Boolean = true, content: @Composable (Modifier) -> Unit) {
         SendokuTheme(themeId = SendokuThemeId.DEEP_FIELD, dark = dark) {
-            Box(Modifier.fillMaxSize()) { content() }
+            ReadableWidth { pane -> content(pane) }
         }
     }
 
@@ -107,7 +106,7 @@ class StoreShotsTest {
     @Test
     fun home() {
         compose.setContent {
-            Scene {
+            Scene { pane ->
                 HomeScreen(
                     state = HomeState(
                         solvedByGrade = mapOf(
@@ -129,26 +128,28 @@ class StoreShotsTest {
                     onDaily = {},
                     onSettings = {},
                     onStats = {},
+                    modifier = pane,
                 )
             }
         }
-        shot("1-home")
+        shot("2-home")
     }
 
     @Test
     fun beyond() {
         compose.setContent {
-            Scene {
+            Scene { pane ->
                 GameScreen(
                     state = midGame(Grade.BEYOND, seed = 91, placed = 14),
                     onEvent = {},
                     onNextPuzzle = {},
                     onHome = {},
                     onGlossary = {},
+                    modifier = pane,
                 )
             }
         }
-        shot("2-beyond")
+        shot("3-beyond")
     }
 
     /**
@@ -161,11 +162,13 @@ class StoreShotsTest {
      */
     private fun untilHard(grade: Grade, seed: Int, minimumCost: Double): GameState {
         var state = GameState.start(puzzle(grade, seed))
-        repeat(200) {
+        repeat(400) {
             val hint = HintEngine.next(state)
             if (hint !is Hint.Step) return state
             if (hint.deduction.technique.cost >= minimumCost) return state
+            val before = state
             state = state.applyHint(hint.deduction)
+            if (state == before) return state
         }
         return state
     }
@@ -173,14 +176,15 @@ class StoreShotsTest {
     @Test
     fun hint() {
         compose.setContent {
-            Scene {
+            Scene { pane ->
                 GameScreen(
-                    state = untilHard(Grade.BEYOND, seed = 7, minimumCost = 6.0)
+                    state = untilHard(Grade.BEYOND, seed = 7, minimumCost = 4.2)
                         .tick(14.minutes + 30.seconds),
                     onEvent = {},
                     onNextPuzzle = {},
                     onHome = {},
                     onGlossary = {},
+                    modifier = pane,
                 )
             }
         }
@@ -191,41 +195,44 @@ class StoreShotsTest {
         compose.onNodeWithText("Show me where", ignoreCase = true).performClick()
         compose.waitForIdle()
         compose.onNodeWithText("Explain it", ignoreCase = true).performClick()
-        shot("3-hint")
+        shot("1-hint")
     }
 
     @Test
     fun light() {
         compose.setContent {
-            Scene(dark = false) {
+            Scene(dark = false) { pane ->
                 GameScreen(
                     state = midGame(Grade.TRICKY, seed = 4, placed = 30),
                     onEvent = {},
                     onNextPuzzle = {},
                     onHome = {},
                     onGlossary = {},
+                    modifier = pane,
                 )
             }
         }
-        shot("4-light")
+        shot("5-light")
     }
 
     @Test
     fun glossary() {
-        compose.setContent { Scene { GlossaryScreen(onBack = {}) } }
-        shot("5-glossary")
+        compose.setContent { Scene { pane -> GlossaryScreen(onBack = {}, modifier = pane) } }
+        shot("4-glossary")
     }
 
     @Test
     fun stats() {
-        compose.setContent { Scene { StatsScreen(statistics = history(), onBack = {}, onReset = {}) } }
+        compose.setContent {
+            Scene { pane -> StatsScreen(statistics = history(), onBack = {}, onReset = {}, modifier = pane) }
+        }
         shot("6-stats")
     }
 
     @Test
     fun settings() {
         compose.setContent {
-            Scene {
+            Scene { pane ->
                 SettingsScreen(
                     settings = GameSettings(),
                     appearance = Appearance(theme = SendokuThemeId.DEEP_FIELD, mode = ThemeMode.DARK),
@@ -233,6 +240,7 @@ class StoreShotsTest {
                     onAppearanceChange = {},
                     onBack = {},
                     onAbout = {},
+                    modifier = pane,
                 )
             }
         }
@@ -247,13 +255,14 @@ class StoreShotsTest {
         }
         val finished = state.tick(27.minutes + 41.seconds)
         compose.setContent {
-            Scene {
+            Scene { pane ->
                 GameScreen(
                     state = finished,
                     onEvent = {},
                     onNextPuzzle = {},
                     onHome = {},
                     onGlossary = {},
+                    modifier = pane,
                 )
             }
         }
