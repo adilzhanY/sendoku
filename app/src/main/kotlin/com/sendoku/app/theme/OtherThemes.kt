@@ -11,9 +11,13 @@ import androidx.compose.ui.unit.sp
 /**
  * Ink and Paper: the newspaper puzzle book.
  *
- * Warm paper, printed digits, and one red that only ever means a mistake. It is the theme
- * that reads oldest and the easiest on the eyes for a long sitting, which is not a small
- * thing for a grade that takes forty minutes.
+ * Warm paper, printed clues in black, your own digits in ink blue, and red kept back for a
+ * mistake. It is the theme that reads oldest and the easiest on the eyes for a long sitting,
+ * which is not a small thing for a grade that takes forty minutes.
+ *
+ * The blue is not decoration. The first version wrote entries in the same red family as the
+ * mistakes, which under red green colour blindness made a wrong digit look exactly like a
+ * right one. Writing in blue and correcting in red is what a puzzle book does anyway.
  */
 public val InkLight: SendokuColors = SendokuColors(
     background = Color(0xFFF4EDE0),
@@ -22,14 +26,14 @@ public val InkLight: SendokuColors = SendokuColors(
     hairline = Color(0x4D2B2620),
     boxLine = Color(0xFF2B2620),
     given = Color(0xFF2B2620),
-    entry = Color(0xFF8E2418),
+    entry = Color(0xFF1B3260),
     pencil = Color(0xD0544C41),
     muted = Color(0xFF5F5747),
-    accent = Color(0xFF8E2418),
+    accent = Color(0xFF1B3260),
     onAccent = Color(0xFFF4EDE0),
-    selection = Color(0x2E8E2418),
+    selection = Color(0x2E1B3260),
     peer = Color(0x1F2B2620),
-    match = Color(0x1F8E2418),
+    match = Color(0x1F1B3260),
     conflict = Color(0xFFA1160F),
     conflictWash = Color(0x24A1160F),
     hintLogic = Color(0x3D4A5A47),
@@ -45,14 +49,14 @@ public val InkDark: SendokuColors = SendokuColors(
     hairline = Color(0x40D8CBB2),
     boxLine = Color(0xFF6B5F49),
     given = Color(0xFFEFE6D5),
-    entry = Color(0xFFE8896F),
+    entry = Color(0xFF9CC0F5),
     pencil = Color(0xB3C4B69A),
     muted = Color(0xFFA1957C),
-    accent = Color(0xFFE8896F),
-    onAccent = Color(0xFF2B1009),
-    selection = Color(0x33E8896F),
+    accent = Color(0xFF9CC0F5),
+    onAccent = Color(0xFF0A1830),
+    selection = Color(0x339CC0F5),
     peer = Color(0x24D8CBB2),
-    match = Color(0x24E8896F),
+    match = Color(0x249CC0F5),
     conflict = Color(0xFFFF7A6B),
     conflictWash = Color(0x26FF7A6B),
     hintLogic = Color(0x30A9BF8F),
@@ -149,9 +153,10 @@ public val TerminalType: SendokuType = DefaultType.copy(
     body = DefaultType.body.copy(fontFamily = FontFamily.Monospace, fontSize = 14.sp),
     label = DefaultType.label.copy(fontFamily = FontFamily.Monospace),
     overline = DefaultType.overline.copy(fontFamily = FontFamily.Monospace, letterSpacing = 0.1.em),
-    // The grid keeps the bundled digits. A monospace zero with a slash through it is a
-    // liability on a sudoku board, and the platform monospace is whatever the phone says.
-    gridGiven = DefaultType.gridGiven.copy(fontWeight = FontWeight.Normal),
+    // The grid keeps the bundled digits and keeps the weight difference. A monospace zero
+    // with a slash through it is a liability on a sudoku board, and the platform monospace is
+    // whatever the phone happens to have. The clue staying heavier than the entry is the only
+    // thing telling them apart for a player who cannot use the colour.
 )
 
 /** Terminal has no rounding anywhere, and heavier rules. */

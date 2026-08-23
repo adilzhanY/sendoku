@@ -21,8 +21,8 @@ import com.sendoku.app.theme.Sendoku
 /**
  * The sheet a long press on a cell brings up.
  *
- * Only the things that are tedious by hand. Pencilling in every candidate a cell can take
- * is arithmetic the player can already do and would rather not do forty times, and it gives
+ * Only the things that are tedious by hand. Noting every candidate a cell can take is
+ * arithmetic the player can already do and would rather not do forty times, and it gives
  * away nothing the board is not showing, so it is not a hint and does not count as one.
  */
 @OptIn(ExperimentalMaterial3Api::class)
@@ -68,12 +68,12 @@ public fun CellActionSheet(
             } else {
                 val possible = state.candidatesAt(cell)
                 SheetAction(
-                    label = "Pencil in all ${possible.size} candidates",
+                    label = "Note all ${possible.size} candidates",
                     enabled = target.isEmpty && possible.isNotEmpty && possible != target.marks,
                 ) {
                     onAction(GameEvent.FillMarks)
                 }
-                SheetAction("Rub out the pencil marks", enabled = target.marks.isNotEmpty) {
+                SheetAction("Rub out the notes", enabled = target.marks.isNotEmpty) {
                     onAction(GameEvent.ClearMarks)
                 }
                 SheetAction("Clear the cell", enabled = !target.isEmpty || target.marks.isNotEmpty) {

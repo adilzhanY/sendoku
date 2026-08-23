@@ -16,6 +16,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.sendoku.app.game.GameState
 import com.sendoku.app.theme.Sendoku
@@ -67,6 +71,12 @@ private fun PadKey(
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
 
+    val spoken = when {
+        exhausted -> "$digit, all placed"
+        remaining == 1 -> "$digit, one left"
+        else -> "$digit, $remaining left"
+    }
+
     Column(
         modifier = modifier
             // No fixed aspect ratio. Nine keys across a narrow phone gives each one about
@@ -79,6 +89,12 @@ private fun PadKey(
             // cell, which is a real thing to want and costs nothing to allow.
             .clickable(onClick = onClick)
             .alpha(if (exhausted) 0.35f else 1f)
+            // After the click, not before it. Put ahead of it, the label lands on a different
+            // node from the one a screen reader focuses, and the focused one says nothing.
+            .semantics(mergeDescendants = true) {
+                contentDescription = if (pencilMode) "$spoken, notes mode" else spoken
+                role = Role.Button
+            }
             .padding(vertical = dimens.spaceS),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,

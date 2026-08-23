@@ -64,6 +64,34 @@ public object SendokuThemes {
     }
 }
 
+/**
+ * True when the player has turned animation off in the system settings.
+ *
+ * Accessibility settings and battery savers both set the animator scale to zero, and an app
+ * that keeps animating anyway is ignoring somebody who asked it not to. Read once: it needs
+ * a restart to change, which is what the platform does too.
+ */
+@Composable
+@ReadOnlyComposable
+private fun motionIsOff(): Boolean {
+    val context = androidx.compose.ui.platform.LocalContext.current
+    return android.provider.Settings.Global.getFloat(
+        context.contentResolver,
+        android.provider.Settings.Global.ANIMATOR_DURATION_SCALE,
+        1f,
+    ) == 0f
+}
+
+/** Everything at once, for when motion is switched off. */
+private val Still: SendokuMotion = SendokuMotion(
+    instant = 0,
+    quick = 0,
+    settle = 0,
+    celebrate = 0,
+    easing = androidx.compose.animation.core.LinearEasing,
+    enter = androidx.compose.animation.core.LinearEasing,
+)
+
 internal val LocalSendokuColors = staticCompositionLocalOf { DeepFieldDark }
 internal val LocalSendokuType = staticCompositionLocalOf { DefaultType }
 internal val LocalSendokuDimens = staticCompositionLocalOf { DefaultDimens }
@@ -106,6 +134,7 @@ public fun SendokuTheme(
 ) {
     val colors = SendokuThemes.colors(themeId, dark)
     val type = SendokuThemes.type(themeId)
+    val motion = SendokuThemes.motion(themeId).takeUnless { motionIsOff() } ?: Still
 
     val material = if (dark) {
         darkColorScheme(
@@ -139,7 +168,7 @@ public fun SendokuTheme(
         LocalSendokuColors provides colors,
         LocalSendokuType provides type,
         LocalSendokuDimens provides SendokuThemes.dimens(themeId),
-        LocalSendokuMotion provides SendokuThemes.motion(themeId),
+        LocalSendokuMotion provides motion,
     ) {
         MaterialTheme(
             colorScheme = material,

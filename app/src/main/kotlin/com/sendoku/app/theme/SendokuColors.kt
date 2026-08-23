@@ -91,6 +91,10 @@ public data class SendokuColors(
  * power over a forty minute puzzle. One cyan accent carries every meaning the grid needs
  * to express, and rose appears only when something is wrong, so a red cell is impossible
  * to miss precisely because nothing else is warm.
+ *
+ * The cyan is lighter than it first was. Simulating deuteranopia, which takes the green out
+ * of it, dropped the original to just under the readable threshold, and the accent is the
+ * colour a player's own digits are written in.
  */
 public val DeepFieldDark: SendokuColors = SendokuColors(
     background = Color(0xFF000000),
@@ -99,18 +103,18 @@ public val DeepFieldDark: SendokuColors = SendokuColors(
     hairline = Color(0x33788CA0),
     boxLine = Color(0xFF2F3B46),
     given = Color(0xFFE8F0F5),
-    entry = Color(0xFF35E0D0),
+    entry = Color(0xFF4FE8DA),
     pencil = Color(0xA8A0B9CD),
     muted = Color(0xFF7D95A5),
-    accent = Color(0xFF35E0D0),
+    accent = Color(0xFF4FE8DA),
     onAccent = Color(0xFF00201D),
-    selection = Color(0x2935E0D0),
+    selection = Color(0x294FE8DA),
     peer = Color(0x2E7FA6C4),
-    match = Color(0x2635E0D0),
+    match = Color(0x264FE8DA),
     conflict = Color(0xFFFF5C7A),
     conflictWash = Color(0x24FF5C7A),
-    hintLogic = Color(0x4235E0D0),
-    hintStrike = Color(0x1A35E0D0),
+    hintLogic = Color(0x424FE8DA),
+    hintStrike = Color(0x1A4FE8DA),
     isDark = true,
 )
 

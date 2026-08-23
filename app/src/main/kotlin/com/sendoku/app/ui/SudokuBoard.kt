@@ -26,7 +26,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.selected
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
@@ -97,6 +103,7 @@ public fun SudokuBoard(
                             markSize = markSize,
                             onClick = { onSelect(index) },
                             onLongClick = { onLongPress(index) },
+                            description = describe(state, index, index in conflicts || index in wrong),
                             modifier = Modifier.weight(1f).fillMaxSize(),
                         )
                     }
@@ -175,6 +182,7 @@ private fun BoardCell(
     markSize: TextUnit,
     onClick: () -> Unit,
     onLongClick: () -> Unit,
+    description: String,
     modifier: Modifier = Modifier,
 ) {
     val colors = Sendoku.colors
@@ -215,7 +223,15 @@ private fun BoardCell(
                 indication = null,
                 onClick = onClick,
                 onLongClick = onLongClick,
-            ),
+            )
+            // One description per cell, read as a whole, and applied after the click so it
+            // lands on the node a screen reader actually focuses. Without merging, a
+            // pencilled cell is announced as nine separate characters.
+            .semantics(mergeDescendants = true) {
+                contentDescription = description
+                this.selected = isSelected
+                role = Role.Button
+            },
         contentAlignment = Alignment.Center,
     ) {
         when {
@@ -224,6 +240,7 @@ private fun BoardCell(
                 style = if (cell.isGiven) Sendoku.type.gridGiven else Sendoku.type.gridEntry,
                 color = ink,
                 fontSize = digitSize,
+                textDecoration = decorationFor(isConflict),
             )
 
             cell.marks.isNotEmpty -> PencilMarks(cell, markSize)
@@ -260,6 +277,52 @@ private fun PencilMarks(cell: Cell, markSize: TextUnit) {
                 }
             }
         }
+    }
+}
+
+/**
+ * The line under a digit that repeats.
+ *
+ * Colour is not the only cue for a mistake, and cannot be: rose and cyan land at almost the
+ * same brightness for somebody with red green colour blindness, and identically in
+ * greyscale. The underline is what actually carries it.
+ */
+internal fun decorationFor(isConflict: Boolean): TextDecoration? =
+    if (isConflict) TextDecoration.Underline else null
+
+/**
+ * What a screen reader says about a cell.
+ *
+ * Coordinates first, because that is what orients somebody who cannot see the grid, then
+ * what is in it. Pencil marks are read out in full: they are the working, and hiding them
+ * from a screen reader would make the board unplayable rather than merely harder.
+ */
+internal fun describe(state: GameState, index: Int, conflicting: Boolean): String {
+    val cell = state.cells[index]
+    val row = index / state.size + 1
+    val column = index % state.size + 1
+    return buildString {
+        append("Row ")
+        append(row)
+        append(", column ")
+        append(column)
+        when {
+            cell.isGiven -> {
+                append(", ")
+                append(cell.digit)
+                append(", a clue")
+            }
+            !cell.isEmpty -> {
+                append(", ")
+                append(cell.digit)
+            }
+            cell.marks.isNotEmpty -> {
+                append(", empty, noted ")
+                append(cell.marks.toList().joinToString(", "))
+            }
+            else -> append(", empty")
+        }
+        if (conflicting) append(", repeated")
     }
 }
 
