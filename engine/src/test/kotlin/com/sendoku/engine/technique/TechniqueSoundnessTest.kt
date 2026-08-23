@@ -43,6 +43,7 @@ class TechniqueSoundnessTest {
         RemotePairs,
         XChain,
         XYChain,
+        AlsXz,
     )
 
     @Test
