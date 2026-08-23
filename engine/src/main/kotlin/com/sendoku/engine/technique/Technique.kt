@@ -4,40 +4,42 @@ import com.sendoku.engine.CandidateGrid
 import com.sendoku.engine.House
 
 /**
- * Every human technique the solver knows, in rough order of difficulty.
+ * Every human technique the solver knows, with what it costs a player to see.
  *
- * The order is the ladder. A solver that tries techniques in declaration order is
- * trying them cheapest first, and the hardest id a puzzle needs is what gives that
- * puzzle its grade.
+ * The cost is the whole point. It is what turns a solve path into a difficulty rating, so
+ * the numbers are not decoration: they decide which grade a puzzle ships under. They are
+ * calibrated against the published difficulty tables that solvers like Sudoku Explainer
+ * use, on the same rough one to nine scale, so a Sendoku rating means something to anyone
+ * who already knows those.
  *
- * Most of these have no implementation yet. They are declared up front because the
- * order matters more than the code: adding one later must not renumber the rest.
+ * Declaration order below is grouping, not difficulty. The ladder the solver actually
+ * walks is sorted by [cost], see `Techniques.ladder`.
  */
-public enum class TechniqueId(public val displayName: String) {
-    NAKED_SINGLE("Naked single"),
-    HIDDEN_SINGLE("Hidden single"),
-    LOCKED_CANDIDATES_POINTING("Pointing pair or triple"),
-    LOCKED_CANDIDATES_CLAIMING("Claiming pair or triple"),
-    NAKED_PAIR("Naked pair"),
-    HIDDEN_PAIR("Hidden pair"),
-    NAKED_TRIPLE("Naked triple"),
-    HIDDEN_TRIPLE("Hidden triple"),
-    NAKED_QUAD("Naked quad"),
-    HIDDEN_QUAD("Hidden quad"),
-    X_WING("X-Wing"),
-    SIMPLE_COLOURING("Simple colouring"),
-    XY_WING("XY-Wing"),
-    XYZ_WING("XYZ-Wing"),
-    W_WING("W-Wing"),
-    SWORDFISH("Swordfish"),
-    REMOTE_PAIRS("Remote pairs"),
-    UNIQUE_RECTANGLE("Unique rectangle"),
-    BUG_PLUS_ONE("BUG plus one"),
-    JELLYFISH("Jellyfish"),
-    MULTI_COLOURING("Multi colouring"),
-    X_CHAIN("X-Chain"),
-    XY_CHAIN("XY-Chain"),
-    ALS_XZ("ALS XZ"),
+public enum class TechniqueId(public val displayName: String, public val cost: Double) {
+    NAKED_SINGLE("Naked single", 1.0),
+    HIDDEN_SINGLE("Hidden single", 1.5),
+    LOCKED_CANDIDATES_POINTING("Pointing pair or triple", 2.6),
+    LOCKED_CANDIDATES_CLAIMING("Claiming pair or triple", 2.8),
+    NAKED_PAIR("Naked pair", 3.0),
+    HIDDEN_PAIR("Hidden pair", 3.4),
+    NAKED_TRIPLE("Naked triple", 3.6),
+    HIDDEN_TRIPLE("Hidden triple", 4.0),
+    NAKED_QUAD("Naked quad", 5.0),
+    HIDDEN_QUAD("Hidden quad", 5.4),
+    X_WING("X-Wing", 3.2),
+    SIMPLE_COLOURING("Simple colouring", 4.8),
+    XY_WING("XY-Wing", 4.2),
+    XYZ_WING("XYZ-Wing", 4.4),
+    W_WING("W-Wing", 4.4),
+    SWORDFISH("Swordfish", 3.8),
+    REMOTE_PAIRS("Remote pairs", 5.0),
+    UNIQUE_RECTANGLE("Unique rectangle", 4.6),
+    BUG_PLUS_ONE("BUG plus one", 5.6),
+    JELLYFISH("Jellyfish", 5.2),
+    MULTI_COLOURING("Multi colouring", 5.6),
+    X_CHAIN("X-Chain", 6.6),
+    XY_CHAIN("XY-Chain", 6.8),
+    ALS_XZ("ALS XZ", 7.5),
 }
 
 /** One digit in one cell. The cell is a row-major index into the grid. */
