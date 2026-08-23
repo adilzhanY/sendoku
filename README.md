@@ -34,9 +34,19 @@ Needs JDK 21 and an Android SDK with platform 37 installed.
 
 ## Status
 
-Engine is done and tested. UI, technique solver, difficulty rating, hints, and the
-Killer variant are next. See the roadmap in the project notes.
+Engine, technique solver, difficulty rating, hints and the playable app are done. Next is
+the Play release, then the Killer variant.
+
+## Privacy
+
+Nothing is collected. There is no INTERNET permission in the merged manifest, which you can
+check in the built APK rather than take on trust. The policy is at
+https://adilzhany.github.io/sendoku/privacy.html
 
 ## Licence
 
-Not chosen yet.
+GNU General Public License version 3, see [LICENSE](LICENSE).
+
+The point of the licence is the same as the point of the app. The source is public so the
+"no tracking" claim can be checked, and the copyleft means a repackaged Sendoku with
+advertisements in it would have to publish its source too.

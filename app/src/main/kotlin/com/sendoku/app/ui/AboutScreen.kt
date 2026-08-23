@@ -76,13 +76,20 @@ public fun AboutScreen(version: String, onBack: () -> Unit, onLicences: () -> Un
             color = colors.muted,
         )
 
+        Text(
+            text = stringResource(R.string.about_licence),
+            style = Sendoku.type.body,
+            color = colors.muted,
+            modifier = Modifier.padding(top = dimens.spaceM),
+        )
+
         // Written out rather than linked. Opening a browser would be the app's only outward
         // action, and an app that claims to send nothing should not start by opening the web.
         Text(
             text = stringResource(R.string.about_privacy),
             style = Sendoku.type.body,
             color = colors.muted,
-            modifier = Modifier.padding(top = dimens.spaceM),
+            modifier = Modifier.padding(top = dimens.spaceXs),
         )
 
         Text(

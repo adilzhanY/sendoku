@@ -188,6 +188,7 @@
     <string name="about_hints">Подсказки, которые учат</string>
     <string name="about_hints_detail">Подсказка называет технику и объясняет рассуждение. Она никогда не просто вписывает цифру и никогда не придерживается.</string>
     <string name="about_rating">Сложность определяется по самой трудной технике, которая действительно нужна, и вычисляется решением судоку так, как решал бы человек. Поэтому Сложный здесь означает то же самое, что и прошлый Сложный.</string>
+    <string name="about_licence">Sendoku, свободная программа под лицензией GNU General Public License версии 3.</string>
     <string name="about_privacy">Политика конфиденциальности говорит то же самое в том виде, который требует магазин: adilzhany.github.io/sendoku/privacy</string>
     <string name="about_licences">ЛИЦЕНЗИИ ОТКРЫТОГО КОДА</string>
     <string name="licences_title">Лицензии</string>
