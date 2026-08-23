@@ -138,6 +138,11 @@ jobs:
           api-level: 36
           target: google_apis
           arch: x86_64
+          # A device profile, because without one the emulator comes up on a 320 by 640 screen,
+          # smaller than any phone sold this century. The screenshot scene is 720 by 800 and was
+          # being clipped to the window, which is why every reference image "differed in one
+          # hundred percent of its pixels" here while passing on a real profile locally.
+          profile: pixel_6
           disable-animations: true
           # No window, no audio, no camera, and the software renderer that actually works
           # headless. Left to its own devices the emulator tries for a GPU that is not there.
