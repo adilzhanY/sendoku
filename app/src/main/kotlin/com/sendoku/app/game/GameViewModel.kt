@@ -114,6 +114,28 @@ public class GameViewModel(
         saveNow()
     }
 
+    /**
+     * Who stopped the clock: the system, or the player.
+     *
+     * Lives here rather than in the activity because a rotation throws the activity away and
+     * keeps this. An activity flag was always false on the way back in, so every rotation
+     * left the game paused.
+     */
+    private var clockStoppedByBackground = false
+
+    /** The app left the screen. Stop the clock, and remember that we were the ones who did. */
+    public fun onBackground() {
+        clockStoppedByBackground = _state.value?.isRunning == true
+        pause()
+    }
+
+    /** The app came back. Start the clock again, unless the player paused it deliberately. */
+    public fun onForeground() {
+        if (!clockStoppedByBackground) return
+        clockStoppedByBackground = false
+        onEvent(GameEvent.Resume)
+    }
+
     public companion object {
         internal const val SAVE_AFTER_MILLIS = 400L
     }

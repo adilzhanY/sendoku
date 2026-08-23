@@ -142,12 +142,18 @@ class MainActivity : ComponentActivity() {
         }
 
         // Stop the clock when the app goes away, and write the game down while we still can.
+        //
+        // A rotation stops and restarts the activity too, and a player who turns the phone
+        // sideways has not walked away from the puzzle. So the clock only stops if it was
+        // running, and it starts again by itself when the screen comes back. A pause the
+        // player asked for, by tapping the clock, is left alone.
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
+                model.onForeground()
                 try {
                     kotlinx.coroutines.awaitCancellation()
                 } finally {
-                    model.pause()
+                    model.onBackground()
                 }
             }
         }

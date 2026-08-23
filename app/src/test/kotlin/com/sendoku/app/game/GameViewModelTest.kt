@@ -307,5 +307,35 @@ class GameViewModelTest {
         assertTrue(sunday != model.state.value!!.solution)
     }
 
+    @Test
+    fun `turning the phone does not leave the game paused`() = runTest {
+        val model = GameViewModel(MemoryRepository(), FixedSettings(), RotatingPuzzles(), viewModelScope())
+        model.resumeOrStart()
+        advanceUntilIdle()
+
+        // What a rotation looks like from here: the activity stops, then a new one starts.
+        model.onBackground()
+        advanceUntilIdle()
+        assertTrue(!model.state.value!!.isRunning)
+
+        model.onForeground()
+        advanceUntilIdle()
+        assertTrue(model.state.value!!.isRunning)
+    }
+
+    @Test
+    fun `a pause the player asked for survives coming back`() = runTest {
+        val model = GameViewModel(MemoryRepository(), FixedSettings(), RotatingPuzzles(), viewModelScope())
+        model.resumeOrStart()
+        advanceUntilIdle()
+
+        model.pause()
+        model.onBackground()
+        model.onForeground()
+        advanceUntilIdle()
+
+        assertTrue(!model.state.value!!.isRunning)
+    }
+
     private fun mistakeLimit() = GameSettings(mistakeLimit = 1)
 }

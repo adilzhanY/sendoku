@@ -156,6 +156,16 @@ public fun GameScreen(
             }
         }
         content()
+
+        // Over everything, not just the board. Covering the board alone left the number pad
+        // sitting there next to a screen that says tap anywhere to carry on, and in landscape
+        // it covered a third of the screen while the rest carried on looking playable.
+        if (!state.isOver && !state.isRunning) {
+            PauseOverlay(
+                elapsed = state.elapsed.clock(),
+                onResume = { onEvent(GameEvent.Resume) },
+            )
+        }
     }
 
     longPressed?.let { cell ->
@@ -229,11 +239,6 @@ private fun BoardArea(
             )
             if (state.isOver) {
                 OutcomePanel(state = state, onNextPuzzle = onNextPuzzle, onHome = onHome)
-            } else if (!state.isRunning) {
-                PauseOverlay(
-                    elapsed = state.elapsed.clock(),
-                    onResume = { onEvent(GameEvent.Resume) },
-                )
             }
         }
     }
