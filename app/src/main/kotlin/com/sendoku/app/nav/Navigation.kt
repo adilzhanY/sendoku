@@ -30,6 +30,9 @@ public sealed interface Destination {
     public data class Daily(val epochDay: Long) : Destination
 
     public data object Settings : Destination
+
+    /** Every technique the app knows, for somebody who has just met one. */
+    public data object Glossary : Destination
 }
 
 /**

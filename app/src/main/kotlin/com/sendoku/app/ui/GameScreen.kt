@@ -34,6 +34,11 @@ import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.input.key.type
 import androidx.compose.ui.unit.dp
 import com.sendoku.app.game.GameState
+import com.sendoku.app.game.Hint
+import com.sendoku.app.game.HintEngine
+import com.sendoku.app.game.HintLevel
+import com.sendoku.app.game.logicCells
+import com.sendoku.app.game.struckCells
 import com.sendoku.app.theme.Sendoku
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
@@ -55,15 +60,20 @@ public fun GameScreen(
     onEvent: (GameEvent) -> Unit,
     onNextPuzzle: () -> Unit,
     onHome: () -> Unit,
+    onGlossary: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
     var longPressed by remember { mutableStateOf<Int?>(null) }
     var confirmLeaving by remember { mutableStateOf(false) }
+    var hint by remember { mutableStateOf<Hint?>(null) }
 
     // One tick a second is enough for a clock that shows seconds, and it stops the moment
     // the game is paused or finished rather than spinning in the background.
+    // A hint describes the board it was asked about. Once the board moves on, it is stale.
+    LaunchedEffect(state.cells) { hint = null }
+
     LaunchedEffect(state.isRunning, state.isOver) {
         while (state.isRunning && !state.isOver) {
             delay(1000)
@@ -97,14 +107,15 @@ public fun GameScreen(
                     horizontalArrangement = Arrangement.spacedBy(dimens.spaceL),
                 ) {
                     Box(Modifier.fillMaxHeight().weight(1f), contentAlignment = Alignment.Center) {
-                        BoardArea(state, onEvent, onNextPuzzle, onHome, { longPressed = it }, boardCap)
+                        BoardArea(state, onEvent, onNextPuzzle, onHome, { longPressed = it }, boardCap, hint)
                     }
                     Column(
                         modifier = Modifier.fillMaxHeight().weight(1f),
                         verticalArrangement = Arrangement.spacedBy(dimens.spaceM, Alignment.CenterVertically),
                     ) {
                         GameHeader(state, onEvent)
-                        Controls(state, onEvent)
+                        HintArea(state, hint, onEvent, { hint = it }, onGlossary)
+                        Controls(state, onEvent) { hint = HintEngine.next(state) }
                     }
                 }
             } else {
@@ -117,9 +128,10 @@ public fun GameScreen(
                         modifier = Modifier.fillMaxWidth().weight(1f),
                         contentAlignment = Alignment.Center,
                     ) {
-                        BoardArea(state, onEvent, onNextPuzzle, onHome, { longPressed = it }, boardCap)
+                        BoardArea(state, onEvent, onNextPuzzle, onHome, { longPressed = it }, boardCap, hint)
                     }
-                    Controls(state, onEvent)
+                    HintArea(state, hint, onEvent, { hint = it }, onGlossary)
+                    Controls(state, onEvent) { hint = HintEngine.next(state) }
                 }
             }
         }
@@ -173,12 +185,18 @@ private fun BoardArea(
     onHome: () -> Unit,
     onLongPress: (Int) -> Unit,
     cap: androidx.compose.ui.unit.Dp,
+    hint: Hint?,
 ) {
+    val step = hint as? Hint.Step
+    val showCells = step != null && step.level != HintLevel.NAME
     Box(Modifier.widthIn(max = cap)) {
         SudokuBoard(
             state = state,
             onSelect = { onEvent(GameEvent.Select(it)) },
             onLongPress = onLongPress,
+            hintLogic = if (showCells) step.deduction.logicCells() else emptySet(),
+            hintStrike = if (showCells) step.deduction.struckCells() else emptySet(),
+            wrong = (hint as? Hint.Mistake)?.cells.orEmpty(),
             modifier = Modifier.fillMaxWidth(),
         )
         if (state.isOver) {
@@ -193,7 +211,7 @@ private fun BoardArea(
 }
 
 @Composable
-private fun Controls(state: GameState, onEvent: (GameEvent) -> Unit) {
+private fun Controls(state: GameState, onEvent: (GameEvent) -> Unit, onHint: () -> Unit) {
     Column(verticalArrangement = Arrangement.spacedBy(Sendoku.dimens.spaceS)) {
         NumberPad(state = state, onDigit = { onEvent(GameEvent.Digit(it)) })
         GameToolbar(
@@ -202,9 +220,34 @@ private fun Controls(state: GameState, onEvent: (GameEvent) -> Unit) {
             onRedo = { onEvent(GameEvent.Redo) },
             onErase = { onEvent(GameEvent.Erase) },
             onTogglePencil = { onEvent(GameEvent.TogglePencil) },
-            onHint = { onEvent(GameEvent.Hint) },
+            onHint = {
+                onEvent(GameEvent.Hint)
+                onHint()
+            },
         )
     }
+}
+
+/** The hint panel, when there is one to show. */
+@Composable
+private fun HintArea(
+    state: GameState,
+    hint: Hint?,
+    onEvent: (GameEvent) -> Unit,
+    onHint: (Hint?) -> Unit,
+    onGlossary: () -> Unit,
+) {
+    if (hint == null) return
+    HintPanel(
+        hint = hint,
+        onMore = { if (hint is Hint.Step) onHint(hint.copy(level = hint.level.next)) },
+        onApply = {
+            if (hint is Hint.Step) onEvent(GameEvent.Accept(hint.deduction))
+            onHint(null)
+        },
+        onDismiss = { onHint(null) },
+        onGlossary = onGlossary,
+    )
 }
 
 @Composable
@@ -309,6 +352,9 @@ public sealed interface GameEvent {
     public data object Resume : GameEvent
     public data object FillMarks : GameEvent
     public data object ClearMarks : GameEvent
+
+    /** The player accepted a hint and asked the app to carry it out. */
+    public data class Accept(val deduction: com.sendoku.engine.technique.Deduction) : GameEvent
 }
 
 /** Applies an event to the state. Kept next to the events so neither drifts from the other. */
@@ -326,4 +372,5 @@ public fun GameState.reduce(event: GameEvent): GameState = when (event) {
     GameEvent.Resume -> resume()
     GameEvent.FillMarks -> fillMarks()
     GameEvent.ClearMarks -> clearMarks()
+    is GameEvent.Accept -> applyHint(event.deduction)
 }

@@ -7,6 +7,7 @@ import com.sendoku.engine.Dimensions
 import com.sendoku.engine.Geometry
 import com.sendoku.engine.Grade
 import com.sendoku.engine.catalog.RatedPuzzle
+import com.sendoku.engine.technique.Deduction
 import com.sendoku.engine.technique.TechniqueId
 import kotlin.time.Duration
 
@@ -288,6 +289,27 @@ public data class GameState(
      * already frozen by [tick], but a player reads the state of the clock, not the code.
      */
     private fun stopIfOver(): GameState = if (isOver && isRunning) copy(isRunning = false) else this
+
+    /**
+     * Carries out a hint the player accepted.
+     *
+     * The struck pencil marks come out in one move and any placement follows in another, so
+     * both can be undone. A hint that could not be taken back would be a trap for anyone who
+     * tapped it by accident, and accepting help should never cost more than doing it by hand.
+     */
+    public fun applyHint(deduction: Deduction): GameState {
+        val struck = HashMap<Int, Cell>()
+        for ((cell, digit) in deduction.eliminations) {
+            val current = struck[cell] ?: cells[cell]
+            if (digit in current.marks) struck[cell] = current.copy(marks = current.marks - digit)
+        }
+
+        var next = if (struck.isEmpty()) this else apply(MoveKind.MARK, deduction.focusCells.firstOrNull() ?: 0, struck)
+        for ((cell, digit) in deduction.placements) {
+            next = next.select(cell).enter(digit)
+        }
+        return next
+    }
 
     /** Records that the player asked for help. The hint itself belongs to the hint system. */
     public fun countHint(): GameState = copy(hintsUsed = hintsUsed + 1)

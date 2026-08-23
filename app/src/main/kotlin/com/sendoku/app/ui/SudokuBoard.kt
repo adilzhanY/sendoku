@@ -53,6 +53,12 @@ public fun SudokuBoard(
     onSelect: (Int) -> Unit,
     modifier: Modifier = Modifier,
     onLongPress: (Int) -> Unit = {},
+    /** Cells a hint's argument rests on. */
+    hintLogic: Set<Int> = emptySet(),
+    /** Cells a hint is about to strike a candidate from. */
+    hintStrike: Set<Int> = emptySet(),
+    /** Digits the player has placed that cannot be right. */
+    wrong: Set<Int> = emptySet(),
 ) {
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
@@ -84,7 +90,9 @@ public fun SudokuBoard(
                             isSelected = state.selected == index,
                             isPeer = index in peers,
                             isMatch = index in matches,
-                            isConflict = index in conflicts,
+                            isConflict = index in conflicts || index in wrong,
+                            isHintLogic = index in hintLogic,
+                            isHintStrike = index in hintStrike,
                             digitSize = digitSize,
                             markSize = markSize,
                             onClick = { onSelect(index) },
@@ -161,6 +169,8 @@ private fun BoardCell(
     isPeer: Boolean,
     isMatch: Boolean,
     isConflict: Boolean,
+    isHintLogic: Boolean,
+    isHintStrike: Boolean,
     digitSize: TextUnit,
     markSize: TextUnit,
     onClick: () -> Unit,
@@ -172,7 +182,11 @@ private fun BoardCell(
 
     // The order matters: a conflict has to beat every other wash, and the selected cell has
     // to beat the peers it is highlighting.
+    // A hint outranks everything. It is the only thing on screen the player explicitly asked
+    // to be shown, and a selection wash sitting on top of it would hide the argument.
     val target = when {
+        isHintLogic -> colors.hintLogic
+        isHintStrike -> colors.hintStrike
         isConflict -> colors.conflictWash
         isSelected -> colors.selection
         isMatch -> colors.match

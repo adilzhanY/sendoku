@@ -18,6 +18,7 @@ import com.sendoku.app.nav.Destination
 import com.sendoku.app.nav.Navigator
 import com.sendoku.app.theme.Sendoku
 import com.sendoku.app.ui.GameScreen
+import com.sendoku.app.ui.GlossaryScreen
 import com.sendoku.app.ui.HomeScreen
 import com.sendoku.app.ui.HomeState
 import com.sendoku.app.ui.InProgressSummary
@@ -84,6 +85,10 @@ public fun SendokuApp(
             PlayHost(model, loading, navigator, scope, modifier)
         }
 
+        Destination.Glossary -> {
+            GlossaryScreen(onBack = { navigator.back() }, modifier = modifier)
+        }
+
         Destination.Settings -> {
             SettingsScreen(
                 settings = currentSettings,
@@ -114,6 +119,7 @@ private fun PlayHost(
         onEvent = model::onEvent,
         onNextPuzzle = { scope.launch { model.startNew(game.grade) } },
         onHome = { navigator.home() },
+        onGlossary = { navigator.go(Destination.Glossary) },
         modifier = modifier,
     )
 }
