@@ -7,11 +7,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asAndroidBitmap
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.test.captureToImage
 import androidx.compose.ui.test.junit4.v2.createComposeRule
 import androidx.compose.ui.test.onRoot
+import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
 import androidx.test.platform.app.InstrumentationRegistry
 import com.sendoku.app.game.GameState
@@ -128,16 +131,30 @@ class ThemeScreenshotTest {
         }
     }
 
+    /**
+     * The scene, pinned to a density of its own.
+     *
+     * The size below is in density pixels, so without this the picture comes out a different
+     * number of real pixels on every device: 945 by 1050 on a 420 dpi phone, something else on
+     * a 480 dpi one. The comparison then fails on all one hundred percent of the pixels,
+     * which is what it did in CI on every push while passing here.
+     *
+     * Two is chosen because it is a round number, not because any particular phone uses it.
+     * The font scale is pinned for the same reason: a device left at 1.15 would rewrite every
+     * reference image the first time somebody ran this on it.
+     */
     @Composable
     private fun Scene(theme: SendokuThemeId, dark: Boolean) {
-        SendokuTheme(themeId = theme, dark = dark) {
-            Box(
-                Modifier
-                    .size(360.dp, 400.dp)
-                    .background(Sendoku.colors.background)
-                    .padding(12.dp),
-            ) {
-                SudokuBoard(state = scene(), onSelect = {}, modifier = Modifier.fillMaxSize())
+        CompositionLocalProvider(LocalDensity provides Density(density = 2f, fontScale = 1f)) {
+            SendokuTheme(themeId = theme, dark = dark) {
+                Box(
+                    Modifier
+                        .size(360.dp, 400.dp)
+                        .background(Sendoku.colors.background)
+                        .padding(12.dp),
+                ) {
+                    SudokuBoard(state = scene(), onSelect = {}, modifier = Modifier.fillMaxSize())
+                }
             }
         }
     }
