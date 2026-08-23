@@ -64,6 +64,10 @@ public sealed interface Hint {
  *
  * Works from the digits alone, never from the player's pencil marks. Their marks may be
  * out of date or simply wrong, and a hint built on a wrong premise is worse than no hint.
+ *
+ * The one thing it does carry over is what earlier hints have ruled out, held in the state
+ * and thrown away the moment the player touches the board. Without it an elimination hint
+ * can never lead anywhere: the next call rebuilds the same board and says the same thing.
  */
 public object HintEngine {
 
@@ -79,9 +83,17 @@ public object HintEngine {
         if (wrong.isNotEmpty()) return Hint.Mistake(wrong.toSet())
 
         val grid = CandidateGrid.ofOrNull(state.toBoard()) ?: return Hint.Mistake(state.conflicts)
+        for ((cell, digit) in state.eliminated) grid.eliminate(cell, digit)
         if (grid.hasContradiction) return Hint.Mistake(state.conflicts)
 
-        val deduction = Techniques.ladder.firstNotNullOfOrNull { it.find(grid) } ?: return Hint.Stuck
+        // Skip anything that would change nothing. A deduction whose eliminations are all
+        // already known is true and useless, and offering it again is how the loop started.
+        val deduction = Techniques.ladder.firstNotNullOfOrNull { technique ->
+            technique.find(grid)?.takeIf {
+                it.placements.isNotEmpty() ||
+                    it.eliminations.any { e -> e !in state.eliminated }
+            }
+        } ?: return Hint.Stuck
         return Hint.Step(deduction, level)
     }
 }

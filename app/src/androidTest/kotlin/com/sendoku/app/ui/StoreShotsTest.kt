@@ -19,6 +19,8 @@ import com.sendoku.app.data.Statistics
 import com.sendoku.app.data.ThemeMode
 import com.sendoku.app.game.GameSettings
 import com.sendoku.app.game.GameState
+import com.sendoku.app.game.Hint
+import com.sendoku.app.game.HintEngine
 import com.sendoku.app.theme.SendokuTheme
 import com.sendoku.app.theme.SendokuThemeId
 import com.sendoku.engine.Dimensions
@@ -81,17 +83,23 @@ class StoreShotsTest {
         return made
     }
 
-    /** A board part solved, with a selection and some notes, so it looks played rather than dealt. */
+    /**
+     * A board part solved, with a selection and some notes, so it looks played rather than dealt.
+     *
+     * The filled cells are scattered rather than taken in index order. Filling the first N
+     * empties solves the top three rows and leaves the rest untouched, which no player has
+     * ever done and which looks exactly as manufactured as it is.
+     */
     private fun midGame(grade: Grade, seed: Int, placed: Int): GameState {
         var state = GameState.start(puzzle(grade, seed))
-        val empties = state.cells.indices.filter { state.cells[it].isEmpty }
+        val empties = state.cells.indices.filter { state.cells[it].isEmpty }.shuffled(Random(seed))
         for (index in empties.take(placed)) {
             state = state.select(index).enter(state.solution.atIndex(index))
         }
         val notes = empties.drop(placed)
         state = state.setPencilMode(true)
-        for (index in notes.take(3)) {
-            state = state.select(index).enter(2).enter(6).enter(9)
+        for ((offset, index) in notes.take(4).withIndex()) {
+            state = state.select(index).enter(1 + offset).enter(4).enter(if (offset % 2 == 0) 7 else 9)
         }
         return state.setPencilMode(false).select(notes.first()).tick(11.minutes + 4.seconds)
     }
@@ -143,12 +151,32 @@ class StoreShotsTest {
         shot("2-beyond")
     }
 
+    /**
+     * Solves the board with the app's own hint engine until it reaches a position where the
+     * cheapest thing that works is genuinely hard.
+     *
+     * A hint screenshot taken on a fresh board says NAKED SINGLE, which is the opposite of the
+     * pitch. This walks the puzzle forward to the first place a wing or a chain is needed, so
+     * the picture shows the app doing the thing nobody else does.
+     */
+    private fun untilHard(grade: Grade, seed: Int, minimumCost: Double): GameState {
+        var state = GameState.start(puzzle(grade, seed))
+        repeat(200) {
+            val hint = HintEngine.next(state)
+            if (hint !is Hint.Step) return state
+            if (hint.deduction.technique.cost >= minimumCost) return state
+            state = state.applyHint(hint.deduction)
+        }
+        return state
+    }
+
     @Test
     fun hint() {
         compose.setContent {
             Scene {
                 GameScreen(
-                    state = midGame(Grade.SEVERE, seed = 7, placed = 22),
+                    state = untilHard(Grade.BEYOND, seed = 7, minimumCost = 6.0)
+                        .tick(14.minutes + 30.seconds),
                     onEvent = {},
                     onNextPuzzle = {},
                     onHome = {},
@@ -156,11 +184,13 @@ class StoreShotsTest {
                 )
             }
         }
-        // Three taps: name the technique, show the cells, then explain the elimination.
-        repeat(3) {
-            compose.onNodeWithText("Hint", ignoreCase = true).performClick()
-            compose.waitForIdle()
-        }
+        // Open the hint, then walk it up to the full explanation. The panel's own buttons,
+        // not the toolbar: tapping the toolbar again just asks the same question over.
+        compose.onNodeWithText("Hint", ignoreCase = true).performClick()
+        compose.waitForIdle()
+        compose.onNodeWithText("Show me where", ignoreCase = true).performClick()
+        compose.waitForIdle()
+        compose.onNodeWithText("Explain it", ignoreCase = true).performClick()
         shot("3-hint")
     }
 

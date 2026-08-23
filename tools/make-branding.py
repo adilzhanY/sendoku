@@ -149,7 +149,8 @@ def render(svg_path, png_path, width, height):
     print("wrote", os.path.relpath(png_path, ROOT))
 
 
-ALLOWED_CHUNKS = {"IHDR", "PLTE", "bKGD", "IDAT", "IEND", "tRNS", "sRGB", "gAMA", "pHYs"}
+# sBIT records how many bits per channel are meaningful. No text, no timestamp, no origin.
+ALLOWED_CHUNKS = {"IHDR", "PLTE", "bKGD", "IDAT", "IEND", "tRNS", "sRGB", "gAMA", "pHYs", "sBIT"}
 
 
 def check_clean(path):

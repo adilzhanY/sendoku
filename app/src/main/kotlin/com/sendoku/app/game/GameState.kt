@@ -7,6 +7,7 @@ import com.sendoku.engine.Dimensions
 import com.sendoku.engine.Geometry
 import com.sendoku.engine.Grade
 import com.sendoku.engine.catalog.RatedPuzzle
+import com.sendoku.engine.technique.CellDigit
 import com.sendoku.engine.technique.Deduction
 import com.sendoku.engine.technique.TechniqueId
 import kotlin.time.Duration
@@ -69,6 +70,20 @@ public data class GameState(
     val past: List<Move> = emptyList(),
     val future: List<Move> = emptyList(),
     val settings: GameSettings = GameSettings(),
+    /**
+     * Candidates that hints have already ruled out, this session only.
+     *
+     * A technique like a pointing pair does not place a digit, it removes possibilities. The
+     * hint engine works from the placed digits alone, so without this it re-derives the same
+     * board every time, offers the same elimination again, and a player following hints on a
+     * Severe puzzle is handed the identical hint forever at about half a board.
+     *
+     * Any move the player makes by hand clears it, because an erased digit can bring a ruled
+     * out candidate back and a hint built on a stale premise is worse than no hint at all. It
+     * is deliberately not saved: on a fresh start the chain is simply rebuilt, which costs a
+     * couple of cheap steps and can never be out of date.
+     */
+    val eliminated: Set<CellDigit> = emptySet(),
 ) {
 
     private val geometry: Geometry get() = Geometry.of(dims)
@@ -285,6 +300,7 @@ public data class GameState(
             selected = move.cell,
             past = past.dropLast(1),
             future = future + move,
+            eliminated = emptySet(),
         )
     }
 
@@ -295,6 +311,7 @@ public data class GameState(
             selected = move.cell,
             past = past + move,
             future = future.dropLast(1),
+            eliminated = emptySet(),
         )
     }
 
@@ -329,10 +346,13 @@ public data class GameState(
         }
 
         var next = if (struck.isEmpty()) this else apply(MoveKind.MARK, deduction.focusCells.firstOrNull() ?: 0, struck)
+        // Remembered before the placements, because entering a digit is a player move as far
+        // as apply is concerned and clears the set.
+        val known = eliminated + deduction.eliminations
         for ((cell, digit) in deduction.placements) {
             next = next.select(cell).enter(digit)
         }
-        return next
+        return next.copy(eliminated = known)
     }
 
     /** Records that the player asked for help. The hint itself belongs to the hint system. */
@@ -353,6 +373,9 @@ public data class GameState(
             past = past + Move(kind, at, before, changes),
             // Doing something new throws away the branch you had undone your way out of.
             future = emptyList(),
+            // A hand made move can put a ruled out candidate back, so what the hints had
+            // worked out no longer holds.
+            eliminated = emptySet(),
         )
     }
 

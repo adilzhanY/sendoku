@@ -44,7 +44,9 @@ echo
 echo "Checking for metadata"
 python3 - "$OUT" <<'PY'
 import os, struct, sys
-allowed = {"IHDR", "PLTE", "bKGD", "IDAT", "IEND", "tRNS", "sRGB", "gAMA", "pHYs"}
+# sBIT is written by Android's own PNG encoder and records how many bits per channel are
+# meaningful. It carries no text, no timestamp and no origin, so it is colour data, not a mark.
+allowed = {"IHDR", "PLTE", "bKGD", "IDAT", "IEND", "tRNS", "sRGB", "gAMA", "pHYs", "sBIT"}
 bad = []
 for root, _, files in os.walk(sys.argv[1]):
     for name in files:
