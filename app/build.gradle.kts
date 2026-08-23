@@ -66,7 +66,7 @@ android {
         // The launcher icon is a design job that has not happened yet, tracked as its own
         // item. It is a release blocker rather than something to paper over with a
         // placeholder, so it is silenced here and nowhere else.
-        disable += listOf("MissingQuantity", "MissingApplicationIcon")
+        disable += listOf("MissingQuantity")
         sarifReport = true
         textReport = true
     }

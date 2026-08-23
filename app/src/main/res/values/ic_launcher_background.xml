@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Deep Field's surface, not pure black. A pure black icon disappears into a dark
+         wallpaper, and the launcher gives it no border of its own. -->
+    <color name="ic_launcher_background">#0A0E12</color>
+</resources>

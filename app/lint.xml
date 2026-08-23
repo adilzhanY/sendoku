@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lint>
+    <!--
+      Lint says mipmap-anydpi-v26 is pointless because minSdk is already 26, and it is right
+      about the version. It is wrong about the fix: the resource merger does not accept a
+      plain mipmap-anydpi folder and drops the adaptive icons on the floor, so the build then
+      fails with "resource mipmap/ic_launcher not found". The qualifier stays.
+    -->
+    <issue id="ObsoleteSdkInt">
+        <ignore path="src/main/res/mipmap-anydpi-v26" />
+    </issue>
+</lint>
