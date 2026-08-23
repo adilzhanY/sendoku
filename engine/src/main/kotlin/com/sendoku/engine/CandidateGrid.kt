@@ -46,7 +46,7 @@ public class CandidateGrid private constructor(
             return false
         }
 
-    private val topology = Topology.of(dims)
+    private val topology = Geometry.of(dims)
 
     /** Every row, column and box, rows first. */
     public val houses: List<House> get() = topology.houses

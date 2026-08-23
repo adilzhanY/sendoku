@@ -2,6 +2,8 @@ package com.sendoku.engine
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertNotSame
+import kotlin.test.assertSame
 import kotlin.test.assertTrue
 
 class HouseTest {
@@ -87,5 +89,39 @@ class HouseTest {
     fun `a house prints the way a player counts`() {
         assertEquals("row 1", House(HouseKind.ROW, 0).toString())
         assertEquals("box 9", House(HouseKind.BOX, 8).toString())
+    }
+
+    @Test
+    fun `the geometry is shared rather than rebuilt`() {
+        assertSame(Geometry.of(Dimensions.CLASSIC), Geometry.of(Dimensions.CLASSIC))
+        assertNotSame(Geometry.of(Dimensions.CLASSIC), Geometry.of(Dimensions.SIX))
+    }
+
+    @Test
+    fun `the geometry answers the same questions as a grid does`() {
+        val geometry = Geometry.of(Dimensions.CLASSIC)
+        assertEquals(grid.houses, geometry.houses)
+        for (cell in 0 until 81) {
+            assertEquals(grid.housesOf(cell), geometry.housesOf(cell))
+            assertEquals(grid.peersOf(cell).toList(), geometry.peersOf(cell).toList())
+            assertEquals(grid.rowOf(cell), geometry.rowOf(cell))
+            assertEquals(grid.colOf(cell), geometry.colOf(cell))
+            assertEquals(grid.boxOf(cell), geometry.boxOf(cell))
+        }
+        for (house in geometry.houses) {
+            assertEquals(grid.cellsOf(house).toList(), geometry.cellsOf(house).toList())
+        }
+    }
+
+    @Test
+    fun `seeing another cell means sharing a house with it`() {
+        val geometry = Geometry.of(Dimensions.CLASSIC)
+        for (a in 0 until 81) {
+            assertTrue(!geometry.sees(a, a), "a cell should not see itself")
+            val peers = geometry.peersOf(a).toSet()
+            for (b in 0 until 81) {
+                assertEquals(b in peers, geometry.sees(a, b), "cells $a and $b")
+            }
+        }
     }
 }

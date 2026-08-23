@@ -24,19 +24,23 @@ public data class House(val kind: HouseKind, val index: Int) {
  * The geometry of one grid shape: which cells sit in which house, and which cells see
  * which others.
  *
- * None of this depends on the digits, only on [Dimensions], so it is built once per
- * shape and shared by every grid of that shape. Rebuilding it per puzzle would be pure
- * waste when a batch run rates thousands of grids.
+ * None of this depends on the digits, only on [Dimensions], so it is built once per shape
+ * and shared by every grid of that shape. Rebuilding it per puzzle would be pure waste
+ * when a batch run rates thousands of grids.
+ *
+ * It is public because the app needs the same answers as the solver does. Highlighting the
+ * peers of the selected cell is the same question as eliminating a candidate from them, and
+ * a second copy of this arithmetic living in the UI would eventually disagree with this one.
  */
-internal class Topology private constructor(val dims: Dimensions) {
+public class Geometry private constructor(public val dims: Dimensions) {
 
     private val size = dims.size
 
-    val rowCells: Array<IntArray> = Array(size) { row -> IntArray(size) { col -> row * size + col } }
+    internal val rowCells: Array<IntArray> = Array(size) { row -> IntArray(size) { col -> row * size + col } }
 
-    val colCells: Array<IntArray> = Array(size) { col -> IntArray(size) { row -> row * size + col } }
+    internal val colCells: Array<IntArray> = Array(size) { col -> IntArray(size) { row -> row * size + col } }
 
-    val boxCells: Array<IntArray> = run {
+    internal val boxCells: Array<IntArray> = run {
         val buckets = Array(size) { ArrayList<Int>(size) }
         for (index in 0 until dims.cellCount) {
             buckets[dims.boxOf(index / size, index % size)].add(index)
@@ -45,11 +49,11 @@ internal class Topology private constructor(val dims: Dimensions) {
     }
 
     /** Rows first, then columns, then boxes. Techniques scan in this order. */
-    val houses: List<House> = HouseKind.entries.flatMap { kind ->
+    public val houses: List<House> = HouseKind.entries.flatMap { kind ->
         List(size) { index -> House(kind, index) }
     }
 
-    val housesOfCell: Array<List<House>> = Array(dims.cellCount) { index ->
+    internal val housesOfCell: Array<List<House>> = Array(dims.cellCount) { index ->
         listOf(
             House(HouseKind.ROW, index / size),
             House(HouseKind.COLUMN, index % size),
@@ -57,22 +61,40 @@ internal class Topology private constructor(val dims: Dimensions) {
         )
     }
 
-    val peers: Array<IntArray> = Array(dims.cellCount) { index ->
+    internal val peers: Array<IntArray> = Array(dims.cellCount) { index ->
         val seen = LinkedHashSet<Int>()
         for (house in housesOfCell[index]) seen.addAll(cellsOf(house).asIterable())
         seen.remove(index)
         seen.toIntArray()
     }
 
-    fun cellsOf(house: House): IntArray = when (house.kind) {
+    /** The cells of one region, in row-major order. */
+    public fun cellsOf(house: House): IntArray = when (house.kind) {
         HouseKind.ROW -> rowCells[house.index]
         HouseKind.COLUMN -> colCells[house.index]
         HouseKind.BOX -> boxCells[house.index]
     }
 
-    companion object {
-        private val cache = java.util.concurrent.ConcurrentHashMap<Dimensions, Topology>()
+    /** The row, the column and the box that [cell] belongs to. */
+    public fun housesOf(cell: Int): List<House> = housesOfCell[cell]
 
-        fun of(dims: Dimensions): Topology = cache.getOrPut(dims) { Topology(dims) }
+    /** The cells sharing a row, column or box with [cell], excluding [cell] itself. */
+    public fun peersOf(cell: Int): IntArray = peers[cell]
+
+    public fun rowOf(cell: Int): Int = cell / size
+
+    public fun colOf(cell: Int): Int = cell % size
+
+    public fun boxOf(cell: Int): Int = dims.boxOf(cell / size, cell % size)
+
+    /** True when the two cells share a row, column or box, so one constrains the other. */
+    public fun sees(a: Int, b: Int): Boolean =
+        a != b && (rowOf(a) == rowOf(b) || colOf(a) == colOf(b) || boxOf(a) == boxOf(b))
+
+    public companion object {
+        private val cache = java.util.concurrent.ConcurrentHashMap<Dimensions, Geometry>()
+
+        /** The geometry of [dims], built once and shared. */
+        public fun of(dims: Dimensions): Geometry = cache.getOrPut(dims) { Geometry(dims) }
     }
 }
