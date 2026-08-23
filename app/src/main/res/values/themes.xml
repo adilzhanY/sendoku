@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.Sendoku" parent="android:Theme.Material.Light.NoActionBar" />
+    <!--
+      The theme the window wears before Compose takes over.
+
+      Its whole job is the launch. It paints the background Deep Field is about to paint,
+      keeps the system bars transparent so the app can draw behind them, and sets the status
+      bar icons dark, because in light mode the background is nearly white.
+    -->
+    <style name="Theme.Sendoku" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/sendoku_window</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
 </resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      The window background, and only that.
+
+      Everything the app draws takes its colours from the Compose theme. These two exist so
+      the very first frame, before any Compose code has run, is already the right colour.
+      Without them the app opens on a flash of white and then repaints, which on the dark
+      theme is the most visible thing about the whole launch.
+
+      They must be kept in step with SendokuColors by hand. There is no way to share a value
+      between an Android resource and Kotlin, so this is the one place a colour is written
+      down twice, and it is deliberately the only one.
+    -->
+    <color name="sendoku_window">#FFF7F9FA</color>
+</resources>
