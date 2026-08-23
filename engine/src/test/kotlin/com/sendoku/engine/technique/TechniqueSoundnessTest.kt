@@ -36,6 +36,8 @@ class TechniqueSoundnessTest {
         XYWing,
         XYZWing,
         WWing,
+        SimpleColouring,
+        MultiColouring,
     )
 
     @Test
