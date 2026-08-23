@@ -154,4 +154,83 @@ class BasicFishTest {
         val expected = (2..5).flatMap { row -> listOf(row * 6, row * 6 + 3) }.sorted()
         assertEquals(expected.map { CellDigit(it, 4) }, step.eliminations)
     }
+
+    @Test
+    fun `a swordfish claims three columns from three rows`() {
+        val grid = CandidateGrid.of(Board(classic))
+        grid.confine(row = 0, digit = 5, cols = intArrayOf(0, 3))
+        grid.confine(row = 1, digit = 5, cols = intArrayOf(3, 6))
+        grid.confine(row = 2, digit = 5, cols = intArrayOf(0, 6))
+
+        val step = assertNotNull(Swordfish.find(grid))
+        assertEquals(TechniqueId.SWORDFISH, step.technique)
+        assertEquals(listOf(0, 3, 12, 15, 18, 24), step.focusCells)
+        assertEquals(
+            listOf(House(HouseKind.ROW, 0), House(HouseKind.ROW, 1), House(HouseKind.ROW, 2)) +
+                listOf(House(HouseKind.COLUMN, 0), House(HouseKind.COLUMN, 3), House(HouseKind.COLUMN, 6)),
+            step.houses,
+        )
+        val expected = (3..8).flatMap { row -> listOf(0, 3, 6).map { row * 9 + it } }.sorted()
+        assertEquals(expected.map { CellDigit(it, 5) }, step.eliminations)
+    }
+
+    @Test
+    fun `no cell of a swordfish needs all three columns`() {
+        // Every base row holds only two of the three cover columns, which is the shape a
+        // player misses most often.
+        val grid = CandidateGrid.of(Board(classic))
+        grid.confine(row = 0, digit = 5, cols = intArrayOf(0, 3))
+        grid.confine(row = 1, digit = 5, cols = intArrayOf(3, 6))
+        grid.confine(row = 2, digit = 5, cols = intArrayOf(0, 6))
+        val step = assertNotNull(Swordfish.find(grid))
+        assertEquals(6, step.focusCells.size)
+    }
+
+    @Test
+    fun `the swordfish rule ignores a plain x wing`() {
+        val grid = CandidateGrid.of(Board(classic))
+        grid.confine(row = 0, digit = 5, cols = intArrayOf(0, 4))
+        grid.confine(row = 1, digit = 5, cols = intArrayOf(0, 4))
+        assertNull(Swordfish.find(grid))
+        assertNotNull(XWing.find(grid))
+    }
+
+    @Test
+    fun `three rows spanning four columns are not a swordfish`() {
+        val grid = CandidateGrid.of(Board(classic))
+        grid.confine(row = 0, digit = 5, cols = intArrayOf(0, 3))
+        grid.confine(row = 1, digit = 5, cols = intArrayOf(3, 6))
+        grid.confine(row = 2, digit = 5, cols = intArrayOf(0, 8))
+        assertNull(Swordfish.find(grid))
+    }
+
+    @Test
+    fun `a jellyfish claims four columns from four rows`() {
+        val grid = CandidateGrid.of(Board(classic))
+        grid.confine(row = 0, digit = 5, cols = intArrayOf(0, 2))
+        grid.confine(row = 1, digit = 5, cols = intArrayOf(2, 4))
+        grid.confine(row = 2, digit = 5, cols = intArrayOf(4, 6))
+        grid.confine(row = 3, digit = 5, cols = intArrayOf(6, 0))
+
+        val step = assertNotNull(Jellyfish.find(grid))
+        assertEquals(TechniqueId.JELLYFISH, step.technique)
+        assertEquals(8, step.focusCells.size)
+        val expected = (4..8).flatMap { row -> listOf(0, 2, 4, 6).map { row * 9 + it } }.sorted()
+        assertEquals(expected.map { CellDigit(it, 5) }, step.eliminations)
+    }
+
+    @Test
+    fun `the jellyfish rule ignores a plain swordfish`() {
+        val grid = CandidateGrid.of(Board(classic))
+        grid.confine(row = 0, digit = 5, cols = intArrayOf(0, 3))
+        grid.confine(row = 1, digit = 5, cols = intArrayOf(3, 6))
+        grid.confine(row = 2, digit = 5, cols = intArrayOf(0, 6))
+        assertNull(Jellyfish.find(grid))
+    }
+
+    @Test
+    fun `every fish reports its own id`() {
+        assertEquals(TechniqueId.SWORDFISH, Swordfish.id)
+        assertEquals(TechniqueId.JELLYFISH, Jellyfish.id)
+    }
 }

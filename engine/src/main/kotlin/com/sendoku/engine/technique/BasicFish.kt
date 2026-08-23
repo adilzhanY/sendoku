@@ -18,6 +18,21 @@ import com.sendoku.engine.HouseKind
 public object XWing : Technique by BasicFish(TechniqueId.X_WING, size = 2)
 
 /**
+ * Swordfish, the same argument as [XWing] over three lines instead of two.
+ *
+ * Three rows whose homes for a digit all fall inside the same three columns claim those
+ * columns. A base row is allowed only two of the three, which is what makes a swordfish
+ * hard to see: it does not look like a tidy rectangle.
+ */
+public object Swordfish : Technique by BasicFish(TechniqueId.SWORDFISH, size = 3)
+
+/**
+ * Jellyfish, four lines. The largest basic fish worth searching for, because a fish of
+ * five in a nine by nine grid is always mirrored by a smaller one on the other axis.
+ */
+public object Jellyfish : Technique by BasicFish(TechniqueId.JELLYFISH, size = 4)
+
+/**
  * The shared rule behind every basic fish. X-Wing is two, Swordfish is three, Jellyfish
  * is four, and the argument never changes.
  *
