@@ -452,4 +452,46 @@ class GameStateTest {
         assertNull(start.selected)
         assertEquals(0, start.mistakes)
     }
+
+    @Test
+    fun `the hint can take a wrong digit back off the board`() {
+        var state = GameState.start(puzzle)
+        val empty = state.cells.indices.first { state.cells[it].isEmpty }
+        val right = state.solution.atIndex(empty)
+        val wrong = (1..9).first { it != right }
+
+        state = state.select(empty).enter(wrong)
+        assertTrue(state.cells[empty].digit == wrong)
+
+        state = state.eraseAll(setOf(empty))
+        assertTrue(state.cells[empty].isEmpty)
+        // One move, so one undo puts it back.
+        assertTrue(state.undo().cells[empty].digit == wrong)
+    }
+
+    @Test
+    fun `taking digits off never touches a given`() {
+        val state = GameState.start(puzzle)
+        val given = state.cells.indices.first { state.cells[it].isGiven }
+        val digit = state.cells[given].digit
+
+        assertEquals(state, state.eraseAll(setOf(given)))
+        assertTrue(state.eraseAll(setOf(given)).cells[given].digit == digit)
+    }
+
+    @Test
+    fun `erase is only offered when it would do something`() {
+        var state = GameState.start(puzzle)
+        assertTrue(!state.canErase)
+
+        val given = state.cells.indices.first { state.cells[it].isGiven }
+        assertTrue(!state.select(given).canErase)
+
+        val empty = state.cells.indices.first { state.cells[it].isEmpty }
+        state = state.select(empty)
+        assertTrue(!state.canErase)
+
+        state = state.enter(state.solution.atIndex(empty))
+        assertTrue(state.canErase)
+    }
 }

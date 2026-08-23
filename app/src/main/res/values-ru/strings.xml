@@ -83,6 +83,8 @@
     <string name="outcome_home">На главную</string>
     <string name="outcome_another">Ещё одна: %1$s</string>
 
+    <string name="hint_remove_one">Убрать</string>
+    <string name="hint_remove_many">Убрать их</string>
     <string name="hint_close">Закрыть</string>
     <string name="hint_where">Показать где</string>
     <string name="hint_explain">Объяснить</string>

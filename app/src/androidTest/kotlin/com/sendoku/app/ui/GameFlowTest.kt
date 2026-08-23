@@ -158,4 +158,27 @@ class GameFlowTest {
         }
         return if (notes) "$base, notes mode" else base
     }
+
+    @Test
+    fun hintOffersToTakeAWrongDigitBackOffTheBoard() {
+        val start = GameState.start(puzzle)
+        val empty = start.cells.indices.first { start.cells[it].isEmpty }
+        val right = start.solution.atIndex(empty)
+        val wrong = (1..9).first { it != right }
+        val state = play(start.select(empty).enter(wrong))
+
+        compose.onNodeWithText("Hint", ignoreCase = true).performClick()
+        compose.onNodeWithText("Take it off", ignoreCase = true).assertIsDisplayed().performClick()
+
+        assertTrue(state().cells[empty].isEmpty)
+    }
+
+    @Test
+    fun eraseIsDeadUntilTheSelectedCellHoldsSomething() {
+        val start = GameState.start(puzzle)
+        val empty = start.cells.indices.first { start.cells[it].isEmpty }
+        play(start.select(empty))
+
+        compose.onNodeWithText("Erase", ignoreCase = true).assertIsNotEnabled()
+    }
 }

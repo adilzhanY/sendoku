@@ -91,6 +91,20 @@ public data class GameState(
 
     public val canRedo: Boolean get() = future.isNotEmpty()
 
+    /**
+     * Whether erase would do anything.
+     *
+     * A lit button that does nothing when pressed reads as a broken app, and this one had
+     * two ways to look lit and do nothing: an empty selected cell, and a given.
+     */
+    public val canErase: Boolean
+        get() {
+            val at = selected ?: return false
+            if (isOver) return false
+            val cell = cells[at]
+            return !cell.isGiven && (!cell.isEmpty || cell.marks.isNotEmpty)
+        }
+
     /** How many of [digit] are still to be placed. */
     public fun remaining(digit: Int): Int = size - cells.count { it.digit == digit }
 
@@ -246,6 +260,22 @@ public data class GameState(
         if (cell.isGiven || isOver) return this
         if (cell.isEmpty && cell.marks.isEmpty) return this
         return apply(MoveKind.ERASE, at, mapOf(at to Cell()))
+    }
+
+    /**
+     * Clears several cells at once, as one undoable move.
+     *
+     * This is what the hint offers when it has found a wrong digit. Telling somebody their
+     * board is broken and then leaving them to hunt for the cell is not a hint, it is a
+     * riddle, and the undo history is gone the moment they close the app.
+     */
+    public fun eraseAll(targets: Set<Int>): GameState {
+        if (isOver) return this
+        val changes = targets
+            .filter { it in cells.indices && !cells[it].isGiven && !cells[it].isEmpty }
+            .associateWith { Cell() }
+        if (changes.isEmpty()) return this
+        return apply(MoveKind.ERASE, changes.keys.first(), changes).copy(selected = changes.keys.first())
     }
 
     public fun undo(): GameState {

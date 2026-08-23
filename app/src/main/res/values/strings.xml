@@ -88,6 +88,8 @@
     <string name="outcome_another">Another %1$s</string>
 
     <!-- Hints -->
+    <string name="hint_remove_one">Take it off</string>
+    <string name="hint_remove_many">Take them off</string>
     <string name="hint_close">Close</string>
     <string name="hint_where">Show me where</string>
     <string name="hint_explain">Explain it</string>

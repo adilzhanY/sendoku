@@ -35,6 +35,7 @@ public fun HintPanel(
     onApply: () -> Unit,
     onDismiss: () -> Unit,
     onGlossary: () -> Unit,
+    onRemoveMistake: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val colors = Sendoku.colors
@@ -97,6 +98,18 @@ public fun HintPanel(
                 onClick = onDismiss,
                 modifier = Modifier.weight(1f),
             )
+            if (hint is Hint.Mistake) {
+                // Naming the broken cell and then offering nothing but Close is a dead end,
+                // and the undo history is gone once the app has been closed and reopened.
+                HintButton(
+                    label = stringResource(
+                        if (hint.cells.size == 1) R.string.hint_remove_one else R.string.hint_remove_many,
+                    ),
+                    accent = true,
+                    onClick = onRemoveMistake,
+                    modifier = Modifier.weight(1.6f),
+                )
+            }
             if (hint is Hint.Step) {
                 if (hint.level.hasMore) {
                     HintButton(

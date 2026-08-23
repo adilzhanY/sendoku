@@ -281,6 +281,10 @@ private fun HintArea(hint: Hint?, onEvent: (GameEvent) -> Unit, onHint: (Hint?) 
         },
         onDismiss = { onHint(null) },
         onGlossary = onGlossary,
+        onRemoveMistake = {
+            if (hint is Hint.Mistake) onEvent(GameEvent.EraseCells(hint.cells))
+            onHint(null)
+        },
     )
 }
 
@@ -403,6 +407,9 @@ public sealed interface GameEvent {
     public data object FillMarks : GameEvent
     public data object ClearMarks : GameEvent
 
+    /** The player asked the hint to take the wrong digits it found back off the board. */
+    public data class EraseCells(val cells: Set<Int>) : GameEvent
+
     /** The player accepted a hint and asked the app to carry it out. */
     public data class Accept(val deduction: com.sendoku.engine.technique.Deduction) : GameEvent
 }
@@ -414,6 +421,7 @@ public fun GameState.reduce(event: GameEvent): GameState = when (event) {
     is GameEvent.Tick -> tick(event.delta)
     is GameEvent.Nudge -> moveSelection(event.rows, event.columns)
     GameEvent.Erase -> erase()
+    is GameEvent.EraseCells -> eraseAll(event.cells)
     GameEvent.Undo -> undo()
     GameEvent.Redo -> redo()
     GameEvent.TogglePencil -> togglePencilMode()

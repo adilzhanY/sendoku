@@ -70,7 +70,7 @@ public fun GameToolbar(
         )
         ToolButton(
             stringResource(R.string.tool_erase),
-            enabled = state.selected != null,
+            enabled = state.canErase,
             onClick = onErase,
             modifier = Modifier.weight(1f),
         )
