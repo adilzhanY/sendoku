@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
@@ -19,7 +21,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import com.sendoku.app.data.Appearance
+import com.sendoku.app.data.ThemeMode
 import com.sendoku.app.game.GameSettings
+import com.sendoku.app.theme.SendokuThemeId
+import com.sendoku.app.theme.SendokuThemes
 import com.sendoku.app.theme.Sendoku
 
 /**
@@ -32,8 +38,11 @@ import com.sendoku.app.theme.Sendoku
 @Composable
 public fun SettingsScreen(
     settings: GameSettings,
+    appearance: Appearance,
     onChange: (GameSettings) -> Unit,
+    onAppearanceChange: (Appearance) -> Unit,
     onBack: () -> Unit,
+    onAbout: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val colors = Sendoku.colors
@@ -64,6 +73,33 @@ public fun SettingsScreen(
             Text("Settings", style = Sendoku.type.title, color = colors.given)
         }
 
+        SectionLabel("Look")
+        for (theme in SendokuThemeId.entries) {
+            Choice(
+                label = theme.displayName,
+                detail = theme.summary,
+                selected = appearance.theme == theme,
+            ) { onAppearanceChange(appearance.copy(theme = theme)) }
+        }
+
+        if (!SendokuThemes.isFixed(appearance.theme)) {
+            SectionLabel("Light or dark")
+            for (mode in ThemeMode.entries) {
+                Choice(
+                    label = mode.displayName,
+                    detail = null,
+                    selected = appearance.mode == mode,
+                ) { onAppearanceChange(appearance.copy(mode = mode)) }
+            }
+        } else {
+            Text(
+                text = "Terminal is dark whichever way the phone is set. That is deliberate.",
+                style = Sendoku.type.body,
+                color = colors.muted,
+                modifier = Modifier.padding(vertical = dimens.spaceS),
+            )
+        }
+
         SectionLabel("The board")
         Toggle(
             label = "Highlight the row, column and box",
@@ -87,6 +123,14 @@ public fun SettingsScreen(
             onChange(settings.copy(showTimer = it))
         }
 
+        SectionLabel("Feedback")
+        Toggle(label = "Buzz when a digit goes in", checked = settings.haptics) {
+            onChange(settings.copy(haptics = it))
+        }
+        Toggle(label = "Click when a digit goes in", checked = settings.sound) {
+            onChange(settings.copy(sound = it))
+        }
+
         SectionLabel("Mistakes")
         Toggle(
             label = "End the game after three mistakes",
@@ -101,11 +145,47 @@ public fun SettingsScreen(
         )
 
         Text(
-            text = "No advertisements, no tracking, no purchases, and nothing leaves this phone.",
-            style = Sendoku.type.body,
-            color = colors.muted,
-            modifier = Modifier.padding(top = dimens.spaceL),
+            text = "ABOUT SENDOKU",
+            style = Sendoku.type.overline,
+            color = colors.accent,
+            modifier = Modifier
+                .padding(top = dimens.spaceL)
+                .clip(RoundedCornerShape(dimens.radiusS))
+                .clickable(onClick = onAbout)
+                .padding(dimens.spaceS),
         )
+    }
+}
+
+/** A radio row. Used where the choices are exclusive rather than on and off. */
+@Composable
+private fun Choice(label: String, detail: String?, selected: Boolean, onSelect: () -> Unit) {
+    val colors = Sendoku.colors
+    val dimens = Sendoku.dimens
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(min = dimens.minTouchTarget)
+            .clip(RoundedCornerShape(dimens.radiusM))
+            .clickable(onClick = onSelect)
+            .padding(horizontal = dimens.spaceS, vertical = dimens.spaceXs),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(dimens.spaceM),
+    ) {
+        RadioButton(
+            selected = selected,
+            onClick = onSelect,
+            colors = RadioButtonDefaults.colors(
+                selectedColor = colors.accent,
+                unselectedColor = colors.muted,
+            ),
+        )
+        Column(Modifier.fillMaxWidth()) {
+            Text(label, style = Sendoku.type.label, color = colors.given)
+            if (detail != null) {
+                Text(detail, style = Sendoku.type.body, color = colors.muted)
+            }
+        }
     }
 }
 

@@ -22,7 +22,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.room.Room
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import com.sendoku.app.data.Appearance
 import com.sendoku.app.data.CatalogPuzzleSource
+import com.sendoku.app.data.ThemeMode
 import com.sendoku.app.data.DataStoreSettings
 import com.sendoku.app.data.RoomGameRepository
 import com.sendoku.app.data.SendokuDatabase
@@ -70,7 +75,15 @@ class MainActivity : ComponentActivity() {
         splash.setKeepOnScreenCondition { false }
 
         setContent {
-            SendokuTheme {
+            val look by settings.appearance.collectAsState(initial = Appearance())
+            SendokuTheme(
+                themeId = look.theme,
+                dark = when (look.mode) {
+                    ThemeMode.SYSTEM -> isSystemInDarkTheme()
+                    ThemeMode.LIGHT -> false
+                    ThemeMode.DARK -> true
+                },
+            ) {
                 Scaffold(
                     containerColor = Sendoku.colors.background,
                     // Draw behind the bars, but keep every control clear of them and of any
@@ -87,7 +100,12 @@ class MainActivity : ComponentActivity() {
                         },
                         solvedByGrade = repository.solvedByGrade(),
                         statistics = repository.statistics(),
+                        appearance = settings.appearance,
+                        onAppearanceChange = { changed ->
+                            lifecycleScope.launch { settings.updateAppearance { changed } }
+                        },
                         onResetStats = { lifecycleScope.launch { repository.clearHistory() } },
+                        version = BuildConfig.VERSION_NAME,
                         savedGame = repository.watchInProgress().map { saved ->
                             saved?.let {
                                 InProgressSummary(

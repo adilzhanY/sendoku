@@ -16,8 +16,11 @@ import androidx.compose.runtime.staticCompositionLocalOf
  * here rather than as changes anywhere else: Ink and Paper, Slate Zen, and Terminal. That
  * is the whole reason the tokens are shaped the way they are.
  */
-public enum class SendokuThemeId(public val displayName: String) {
-    DEEP_FIELD("Deep Field"),
+public enum class SendokuThemeId(public val displayName: String, public val summary: String) {
+    DEEP_FIELD("Deep Field", "True black, one cyan accent, nothing else"),
+    INK("Ink and Paper", "A newspaper puzzle book, printed on warm paper"),
+    ZEN("Slate Zen", "Sage and stone, and as little else as possible"),
+    TERMINAL("Terminal", "Monospace, hard edges, dark only"),
 }
 
 /**
@@ -31,18 +34,33 @@ public object SendokuThemes {
 
     public fun colors(id: SendokuThemeId, dark: Boolean): SendokuColors = when (id) {
         SendokuThemeId.DEEP_FIELD -> if (dark) DeepFieldDark else DeepFieldLight
+        SendokuThemeId.INK -> if (dark) InkDark else InkLight
+        SendokuThemeId.ZEN -> if (dark) ZenDark else ZenLight
+        // Terminal is dark whatever the system says. A terminal in light mode is a text
+        // editor, and looking nothing like a phone app is the entire point of it.
+        SendokuThemeId.TERMINAL -> TerminalDark
     }
 
+    /** True when a theme ignores the light and dark setting. */
+    public fun isFixed(id: SendokuThemeId): Boolean = id == SendokuThemeId.TERMINAL
+
     public fun type(id: SendokuThemeId): SendokuType = when (id) {
-        SendokuThemeId.DEEP_FIELD -> DefaultType
+        SendokuThemeId.DEEP_FIELD, SendokuThemeId.ZEN -> DefaultType
+        SendokuThemeId.INK -> InkType
+        SendokuThemeId.TERMINAL -> TerminalType
     }
 
     public fun dimens(id: SendokuThemeId): SendokuDimens = when (id) {
         SendokuThemeId.DEEP_FIELD -> DefaultDimens
+        SendokuThemeId.INK -> InkDimens
+        SendokuThemeId.ZEN -> ZenDimens
+        SendokuThemeId.TERMINAL -> TerminalDimens
     }
 
     public fun motion(id: SendokuThemeId): SendokuMotion = when (id) {
-        SendokuThemeId.DEEP_FIELD -> DefaultMotion
+        SendokuThemeId.DEEP_FIELD, SendokuThemeId.INK -> DefaultMotion
+        SendokuThemeId.ZEN -> ZenMotion
+        SendokuThemeId.TERMINAL -> TerminalMotion
     }
 }
 

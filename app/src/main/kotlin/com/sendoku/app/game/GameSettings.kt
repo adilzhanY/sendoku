@@ -34,6 +34,15 @@ public data class GameSettings(
      * grades here take long enough that losing an hour to a slip would be miserable.
      */
     val mistakeLimit: Int? = null,
+
+    /** A small buzz when a digit goes in. On, because a board gives no other feedback. */
+    val haptics: Boolean = true,
+
+    /**
+     * A click when a digit goes in. Off, because a puzzle app that makes noise in a quiet
+     * room is a puzzle app that gets uninstalled.
+     */
+    val sound: Boolean = false,
 ) {
     init {
         require(mistakeLimit == null || mistakeLimit > 0) {

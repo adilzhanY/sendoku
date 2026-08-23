@@ -18,8 +18,11 @@ import com.sendoku.app.nav.Destination
 import com.sendoku.app.nav.Navigator
 import com.sendoku.app.theme.Sendoku
 import com.sendoku.app.ui.GameScreen
+import com.sendoku.app.data.Appearance
 import com.sendoku.app.data.Statistics
+import com.sendoku.app.ui.AboutScreen
 import com.sendoku.app.ui.GlossaryScreen
+import com.sendoku.app.ui.LicencesScreen
 import com.sendoku.app.ui.StatsScreen
 import com.sendoku.app.ui.HomeScreen
 import com.sendoku.app.ui.HomeState
@@ -45,7 +48,10 @@ public fun SendokuApp(
     solvedByGrade: Flow<Map<Grade, Int>>,
     savedGame: Flow<InProgressSummary?>,
     statistics: Flow<Statistics>,
+    appearance: Flow<Appearance>,
+    onAppearanceChange: (Appearance) -> Unit,
     onResetStats: () -> Unit,
+    version: String,
     scope: CoroutineScope,
     modifier: Modifier = Modifier,
 ) {
@@ -55,6 +61,7 @@ public fun SendokuApp(
     val saved by savedGame.collectAsState(initial = null)
     val stats by statistics.collectAsState(initial = Statistics.of(emptyList()))
     val currentSettings by settings.collectAsState(initial = GameSettings())
+    val look by appearance.collectAsState(initial = Appearance())
 
     // Back from anywhere except home goes back a screen. Home itself lets the system take it,
     // because the way out of a home screen is out of the app.
@@ -102,6 +109,19 @@ public fun SendokuApp(
             )
         }
 
+        Destination.About -> {
+            AboutScreen(
+                version = version,
+                onBack = { navigator.back() },
+                onLicences = { navigator.go(Destination.Licences) },
+                modifier = modifier,
+            )
+        }
+
+        Destination.Licences -> {
+            LicencesScreen(onBack = { navigator.back() }, modifier = modifier)
+        }
+
         Destination.Glossary -> {
             GlossaryScreen(onBack = { navigator.back() }, modifier = modifier)
         }
@@ -109,8 +129,11 @@ public fun SendokuApp(
         Destination.Settings -> {
             SettingsScreen(
                 settings = currentSettings,
+                appearance = look,
                 onChange = onSettingsChange,
+                onAppearanceChange = onAppearanceChange,
                 onBack = { navigator.back() },
+                onAbout = { navigator.go(Destination.About) },
                 modifier = modifier,
             )
         }

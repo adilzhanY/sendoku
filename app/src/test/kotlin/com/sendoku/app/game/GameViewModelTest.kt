@@ -77,9 +77,16 @@ class GameViewModelTest {
 
     private class FixedSettings(settings: GameSettings = GameSettings()) : SettingsStore {
         val flow = MutableStateFlow(settings)
+        private val look = MutableStateFlow(com.sendoku.app.data.Appearance())
         override val settings: Flow<GameSettings> = flow
+        override val appearance: Flow<com.sendoku.app.data.Appearance> = look
         override suspend fun update(transform: (GameSettings) -> GameSettings) {
             flow.value = transform(flow.value)
+        }
+        override suspend fun updateAppearance(
+            transform: (com.sendoku.app.data.Appearance) -> com.sendoku.app.data.Appearance,
+        ) {
+            look.value = transform(look.value)
         }
     }
 

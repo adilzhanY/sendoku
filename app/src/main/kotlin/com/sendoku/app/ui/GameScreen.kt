@@ -1,5 +1,6 @@
 package com.sendoku.app.ui
 
+import android.view.SoundEffectConstants
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -33,6 +34,9 @@ import androidx.compose.ui.input.key.KeyEventType
 import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.input.key.type
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.unit.dp
 import com.sendoku.app.game.GameState
 import com.sendoku.app.game.Hint
@@ -85,6 +89,20 @@ public fun GameScreen(
     // Walking away from a finished puzzle costs nothing, so only ask when it would.
     BackHandler(enabled = state.hasProgress && !state.isOver) { confirmLeaving = true }
 
+    // The board gives no feedback of its own when a digit lands, so a buzz and a click stand
+    // in for the feel of a pencil. Both are only ever fired for a real change, never for a
+    // tap that did nothing.
+    val haptics = LocalHapticFeedback.current
+    val view = LocalView.current
+    val feedback: (GameEvent) -> Unit = { event ->
+        val before = state
+        onEvent(event)
+        if (event is GameEvent.Digit || event is GameEvent.Erase) {
+            if (state.settings.haptics) haptics.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+            if (state.settings.sound) view.playSoundEffect(SoundEffectConstants.CLICK)
+        }
+    }
+
     val focus = remember { FocusRequester() }
     LaunchedEffect(Unit) { runCatching { focus.requestFocus() } }
 
@@ -94,7 +112,7 @@ public fun GameScreen(
             .background(colors.background)
             .focusRequester(focus)
             .focusable()
-            .onKeyEvent { event -> handleKey(event.key, event.type == KeyEventType.KeyDown, onEvent) },
+            .onKeyEvent { event -> handleKey(event.key, event.type == KeyEventType.KeyDown, feedback) },
     ) {
         val sideBySide = maxWidth > maxHeight
         // A board wider than this stops being a board and becomes a wall. On a tablet the
@@ -116,7 +134,7 @@ public fun GameScreen(
                     ) {
                         GameHeader(state, onEvent)
                         HintArea(state, hint, onEvent, { hint = it }, onGlossary)
-                        Controls(state, onEvent) { hint = HintEngine.next(state) }
+                        Controls(state, feedback) { hint = HintEngine.next(state) }
                     }
                 }
             } else {
@@ -132,7 +150,7 @@ public fun GameScreen(
                         BoardArea(state, onEvent, onNextPuzzle, onHome, { longPressed = it }, boardCap, hint)
                     }
                     HintArea(state, hint, onEvent, { hint = it }, onGlossary)
-                    Controls(state, onEvent) { hint = HintEngine.next(state) }
+                    Controls(state, feedback) { hint = HintEngine.next(state) }
                 }
             }
         }
@@ -145,7 +163,7 @@ public fun GameScreen(
             cell = cell,
             onAction = { event ->
                 onEvent(GameEvent.Select(cell))
-                onEvent(event)
+                feedback(event)
                 longPressed = null
             },
             onDismiss = { longPressed = null },

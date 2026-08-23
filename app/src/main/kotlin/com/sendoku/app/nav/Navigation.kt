@@ -35,6 +35,10 @@ public sealed interface Destination {
     public data object Glossary : Destination
 
     public data object Stats : Destination
+
+    public data object About : Destination
+
+    public data object Licences : Destination
 }
 
 /**
@@ -97,6 +101,8 @@ public class Navigator(stack: List<Destination> = listOf(Destination.Home)) {
             Destination.Settings -> "settings"
             Destination.Glossary -> "glossary"
             Destination.Stats -> "stats"
+            Destination.About -> "about"
+            Destination.Licences -> "licences"
         }
 
         private fun decode(value: String): Destination = when {
@@ -105,6 +111,8 @@ public class Navigator(stack: List<Destination> = listOf(Destination.Home)) {
             value == "settings" -> Destination.Settings
             value == "glossary" -> Destination.Glossary
             value == "stats" -> Destination.Stats
+            value == "about" -> Destination.About
+            value == "licences" -> Destination.Licences
             value.startsWith("play:") -> Destination.Play(Grade.valueOf(value.removePrefix("play:")))
             value.startsWith("daily:") -> Destination.Daily(value.removePrefix("daily:").toLong())
             else -> Destination.Home
