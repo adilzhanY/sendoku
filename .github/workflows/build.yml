@@ -121,7 +121,9 @@ jobs:
       - name: Run the instrumented tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 34
+          # Pinned to match the API level the screenshot reference images were captured on.
+          # A different one renders text differently enough to fail the comparison.
+          api-level: 36
           target: google_apis
           arch: x86_64
           disable-animations: true
