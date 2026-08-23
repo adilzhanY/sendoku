@@ -62,3 +62,17 @@ val checkNoAndroidImports = tasks.register<CheckNoAndroidImports>("checkNoAndroi
 }
 
 tasks.named("check") { dependsOn(checkNoAndroidImports) }
+
+/**
+ * Builds a batch of rated puzzles for shipping inside the app.
+ *
+ * This is an offline job. It runs across every core and takes a while, because the rare
+ * grades only turn up once in every fifty or so puzzles and the only way to find them is
+ * to rate everything and keep what lands.
+ */
+tasks.register<JavaExec>("generateCatalog") {
+    group = "sendoku"
+    description = "Generates a batch of rated puzzles and writes it to a compressed file."
+    mainClass.set("com.sendoku.engine.catalog.BatchMainKt")
+    classpath = sourceSets["main"].runtimeClasspath
+}
