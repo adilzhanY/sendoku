@@ -143,6 +143,7 @@ val licenceNames =
         "com.google" to "Apache License 2.0",
         "org.jetbrains" to "Apache License 2.0",
         "com.squareup" to "Apache License 2.0",
+        "org.jspecify" to "Apache License 2.0",
         "junit" to "Eclipse Public License 1.0",
     )
 
@@ -173,7 +174,7 @@ abstract class GenerateLicences : DefaultTask() {
         directory.mkdirs()
         val file = File(directory, "licences.txt")
         file.writeText(
-            (listOf("Inter (digits only), by Rasmus Andersson|SIL Open Font License 1.1") + lines)
+            (listOf("Inter (digits only), Copyright 2016 The Inter Project Authors|SIL Open Font License 1.1") + lines)
                 .joinToString("\n", postfix = "\n"),
         )
     }
