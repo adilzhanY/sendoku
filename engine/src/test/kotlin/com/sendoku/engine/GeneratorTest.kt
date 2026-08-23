@@ -70,4 +70,49 @@ class GeneratorTest {
             assertTrue(Solver(dims).hasUniqueSolution(puzzle.givens), "grid ${dims.size} was ambiguous")
         }
     }
+
+    @Test
+    fun `every symmetry produces a proper puzzle`() {
+        for (symmetry in Symmetry.entries) {
+            val puzzle = Generator(Dimensions.CLASSIC, Random(77)).generate(symmetry)
+            assertTrue(
+                Solver(Dimensions.CLASSIC).hasUniqueSolution(puzzle.givens),
+                "$symmetry produced an ambiguous puzzle",
+            )
+            assertTrue(puzzle.clueCount in 17..81, "$symmetry produced ${puzzle.clueCount} clues")
+        }
+    }
+
+    @Test
+    fun `a symmetric puzzle really is symmetric`() {
+        val size = 9
+        fun partnerOf(symmetry: Symmetry, index: Int): Int {
+            val row = index / size
+            val col = index % size
+            return when (symmetry) {
+                Symmetry.NONE -> index
+                Symmetry.ROTATIONAL -> (size - 1 - row) * size + (size - 1 - col)
+                Symmetry.MIRROR -> row * size + (size - 1 - col)
+                Symmetry.VERTICAL -> (size - 1 - row) * size + col
+                Symmetry.DIAGONAL -> col * size + row
+            }
+        }
+        for (symmetry in Symmetry.entries - Symmetry.NONE) {
+            val puzzle = Generator(Dimensions.CLASSIC, Random(78)).generate(symmetry)
+            for (index in 0 until 81) {
+                val empty = puzzle.givens.atIndex(index) == Board.EMPTY
+                val partnerEmpty = puzzle.givens.atIndex(partnerOf(symmetry, index)) == Board.EMPTY
+                assertEquals(empty, partnerEmpty, "$symmetry broke at cell $index")
+            }
+        }
+    }
+
+    @Test
+    fun `removing symmetry gives up fewer clues than keeping it`() {
+        // Not a hard rule for a single seed, so compare averages over a handful.
+        fun average(symmetry: Symmetry) = (0 until 12)
+            .map { Generator(Dimensions.CLASSIC, Random(90L + it)).generate(symmetry).clueCount }
+            .average()
+        assertTrue(average(Symmetry.NONE) < average(Symmetry.ROTATIONAL))
+    }
 }

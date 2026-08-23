@@ -2,9 +2,19 @@ package com.sendoku.engine
 
 import kotlin.random.Random
 
-/** How the removed cells are arranged. Symmetry costs clues but looks far better. */
+/**
+ * How the removed cells are arranged.
+ *
+ * Symmetry costs clues, because a cell can only come out if its partner can come out too,
+ * and it buys nothing except how the board looks. It buys a lot of that: a symmetric grid
+ * reads as designed rather than as randomly punched, which is most of why newspapers have
+ * printed them that way for decades.
+ *
+ * It has almost no effect on difficulty. See [Symmetry.NONE] if you want the fewest clues
+ * possible, and expect the grade to come out much the same either way.
+ */
 public enum class Symmetry {
-    /** Remove cells one at a time. Gives the fewest clues. */
+    /** Remove cells one at a time. Gives the fewest clues and the least tidy board. */
     NONE,
 
     /** Remove a cell together with its 180 degree partner. What newspapers print. */
@@ -12,6 +22,12 @@ public enum class Symmetry {
 
     /** Remove a cell together with its left to right mirror. */
     MIRROR,
+
+    /** Remove a cell together with its top to bottom mirror. */
+    VERTICAL,
+
+    /** Remove a cell together with its reflection across the leading diagonal. */
+    DIAGONAL,
 }
 
 /** A puzzle and the single grid it resolves to. */
@@ -86,6 +102,8 @@ public class Generator(
             Symmetry.NONE -> index
             Symmetry.ROTATIONAL -> (size - 1 - row) * size + (size - 1 - col)
             Symmetry.MIRROR -> row * size + (size - 1 - col)
+            Symmetry.VERTICAL -> (size - 1 - row) * size + col
+            Symmetry.DIAGONAL -> col * size + row
         }
         return if (mirror == index) listOf(index) else listOf(index, mirror)
     }
