@@ -93,6 +93,11 @@ public object BatchRun {
                             break
                         }
                         val spec = GradeSpec.defaults
+                        // No dig floor here, unlike GradedGenerator.generate. The floor is a
+                        // per grade setting and the grade is not known until after the puzzle
+                        // exists, so the batch digs fully and lets the clue range filter the
+                        // easy grades afterwards. It costs some throwaway puzzles and saves
+                        // running the whole job once per grade.
                         val rated = maker.next(request.symmetry, digFloor = 0)
                         if (rated == null) {
                             unrateable.incrementAndGet()

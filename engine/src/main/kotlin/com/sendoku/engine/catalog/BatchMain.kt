@@ -11,7 +11,7 @@ import java.io.File
  * Run it through the Gradle task rather than by hand:
  *
  * ```sh
- * ./gradlew :engine:generateCatalog --args="catalog/classic.sdkb 500 GENTLE,STEADY,TRICKY,SEVERE"
+ * ./gradlew :engine:generateCatalog --args="engine/src/main/resources/catalog/classic.sdkb 500"
  * ```
  *
  * Arguments, all optional after the first: output file, puzzles per grade, the grades to
@@ -19,7 +19,7 @@ import java.io.File
  * same command always writes the same file.
  */
 public fun main(args: Array<String>) {
-    val output = File(args.getOrElse(0) { "catalog/classic.sdkb" })
+    val output = File(args.getOrElse(0) { "engine/src/main/resources/catalog/classic.sdkb" })
     val perGrade = args.getOrElse(1) { "500" }.toInt()
     val grades = args.getOrElse(2) { "GENTLE,STEADY,TRICKY,SEVERE" }
         .split(",").map { Grade.valueOf(it.trim().uppercase()) }

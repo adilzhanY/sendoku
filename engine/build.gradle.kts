@@ -75,4 +75,7 @@ tasks.register<JavaExec>("generateCatalog") {
     description = "Generates a batch of rated puzzles and writes it to a compressed file."
     mainClass.set("com.sendoku.engine.catalog.BatchMainKt")
     classpath = sourceSets["main"].runtimeClasspath
+    // Paths in the arguments are repo relative, not module relative, or the default output
+    // path lands inside engine/engine and nobody notices until it is committed.
+    workingDir = rootProject.projectDir
 }
