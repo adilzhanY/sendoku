@@ -217,6 +217,7 @@ private fun PlayHost(
         onNextPuzzle = { scope.launch { model.startNew(game.grade) } },
         onHome = { navigator.home() },
         onGlossary = { navigator.go(Destination.Glossary) },
+        onSettings = { navigator.go(Destination.Settings) },
         modifier = modifier,
     )
 }

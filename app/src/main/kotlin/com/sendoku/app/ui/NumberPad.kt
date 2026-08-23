@@ -38,6 +38,10 @@ import com.sendoku.app.theme.Sendoku
  *
  * A digit with none left is dimmed rather than removed. Taking the key away would shuffle
  * the other eight along under a thumb that already knows where they are.
+ *
+ * The keys have no card behind them. Nine boxes in a row under a grid made of boxes was one
+ * pattern too many, and a large digit on the background is unmistakably a key without having
+ * to be drawn as one. The tap target is unchanged: it is the whole column, not the glyph.
  */
 @Composable
 public fun NumberPad(state: GameState, onDigit: (Int) -> Unit, modifier: Modifier = Modifier) {
@@ -85,7 +89,6 @@ private fun PadKey(
             // what a digit plus its count needs, which clipped the count in half.
             .heightIn(min = dimens.minTouchTarget + dimens.spaceS)
             .clip(RoundedCornerShape(dimens.radiusM))
-            .background(if (pencilMode) colors.surfaceRaised else colors.surface)
             // Still tappable when exhausted: tapping it clears that digit from the selected
             // cell, which is a real thing to want and costs nothing to allow.
             .clickable(onClick = onClick)
@@ -104,7 +107,10 @@ private fun PadKey(
         Text(
             text = digit.toString(),
             style = Sendoku.type.padDigit,
-            color = if (pencilMode) colors.pencil else colors.given,
+            // Ink normally, accent in pencil mode. Using the entry colour here was wrong in
+            // every theme where an entry is already the accent, which is most of them: both
+            // modes came out the same colour and the row said nothing.
+            color = if (pencilMode) colors.accent else colors.given,
         )
         Box(Modifier.padding(top = 1.dp)) {
             Text(

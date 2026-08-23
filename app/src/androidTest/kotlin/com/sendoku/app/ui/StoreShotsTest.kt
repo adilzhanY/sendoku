@@ -145,6 +145,7 @@ class StoreShotsTest {
                     onNextPuzzle = {},
                     onHome = {},
                     onGlossary = {},
+                    onSettings = {},
                     modifier = pane,
                 )
             }
@@ -184,6 +185,7 @@ class StoreShotsTest {
                     onNextPuzzle = {},
                     onHome = {},
                     onGlossary = {},
+                    onSettings = {},
                     modifier = pane,
                 )
             }
@@ -208,6 +210,7 @@ class StoreShotsTest {
                     onNextPuzzle = {},
                     onHome = {},
                     onGlossary = {},
+                    onSettings = {},
                     modifier = pane,
                 )
             }
@@ -262,6 +265,7 @@ class StoreShotsTest {
                     onNextPuzzle = {},
                     onHome = {},
                     onGlossary = {},
+                    onSettings = {},
                     modifier = pane,
                 )
             }

@@ -52,6 +52,7 @@ class GameFlowTest {
                     onNextPuzzle = {},
                     onHome = {},
                     onGlossary = {},
+                    onSettings = {},
                 )
             }
         }

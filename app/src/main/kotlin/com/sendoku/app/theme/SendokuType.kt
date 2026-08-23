@@ -53,6 +53,15 @@ public data class SendokuType(
     /** Small upper case labels, the quiet signposts of the dark theme. */
     val overline: TextStyle,
 
+    /** The word under a tool icon. Smaller than a label, and never upper case. */
+    val toolLabel: TextStyle,
+
+    /** The word above a number in the header strip. */
+    val statLabel: TextStyle,
+
+    /** The number itself. */
+    val statValue: TextStyle,
+
     /** A clue that came with the puzzle. */
     val gridGiven: TextStyle,
 
@@ -102,6 +111,21 @@ public val DefaultType: SendokuType = SendokuType(
         fontWeight = FontWeight.Bold,
         letterSpacing = 0.14.em,
     ),
+    toolLabel = TextStyle(
+        fontSize = 12.sp,
+        lineHeight = 15.sp,
+        fontWeight = FontWeight.Medium,
+    ),
+    statLabel = TextStyle(
+        fontSize = 11.sp,
+        lineHeight = 14.sp,
+        fontWeight = FontWeight.Medium,
+    ),
+    statValue = TextStyle(
+        fontSize = 16.sp,
+        lineHeight = 20.sp,
+        fontWeight = FontWeight.SemiBold,
+    ),
     gridGiven = TextStyle(
         fontFamily = DigitFont,
         fontWeight = FontWeight.SemiBold,
@@ -120,7 +144,9 @@ public val DefaultType: SendokuType = SendokuType(
     padDigit = TextStyle(
         fontFamily = DigitFont,
         fontWeight = FontWeight.Normal,
-        fontSize = 24.sp,
+        // Bigger than it was, because the card that used to say "this is a key" is gone and
+        // the digit has to say it instead.
+        fontSize = 30.sp,
     ),
     padCount = TextStyle(
         fontFamily = DigitFont,

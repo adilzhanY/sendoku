@@ -70,6 +70,7 @@ public fun GameScreen(
     onNextPuzzle: () -> Unit,
     onHome: () -> Unit,
     onGlossary: () -> Unit,
+    onSettings: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val colors = Sendoku.colors
@@ -139,7 +140,7 @@ public fun GameScreen(
                         modifier = Modifier.fillMaxHeight().weight(1f),
                         verticalArrangement = Arrangement.spacedBy(dimens.spaceM, Alignment.CenterVertically),
                     ) {
-                        GameHeader(state, onEvent, leave)
+                        GameHeader(state, leave, onSettings, onPause = { onEvent(GameEvent.Pause) })
                         HintArea(hint, onEvent, { hint = it }, onGlossary)
                         Controls(state, feedback) { hint = HintEngine.next(state) }
                     }
@@ -149,7 +150,7 @@ public fun GameScreen(
                     modifier = Modifier.fillMaxSize().padding(dimens.spaceM),
                     verticalArrangement = Arrangement.spacedBy(dimens.spaceM),
                 ) {
-                    GameHeader(state, onEvent, leave)
+                    GameHeader(state, leave, onSettings, onPause = { onEvent(GameEvent.Pause) })
                     Box(
                         modifier = Modifier.fillMaxWidth().weight(1f),
                         contentAlignment = Alignment.Center,
@@ -286,58 +287,6 @@ private fun HintArea(hint: Hint?, onEvent: (GameEvent) -> Unit, onHint: (Hint?) 
             onHint(null)
         },
     )
-}
-
-@Composable
-private fun GameHeader(state: GameState, onEvent: (GameEvent) -> Unit, onLeave: () -> Unit) {
-    val colors = Sendoku.colors
-    val dimens = Sendoku.dimens
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            // The way out, drawn rather than left to the system gesture. Every other screen
-            // has a visible back, and a player who cannot find one on the only screen they
-            // spend time in concludes the app has trapped them.
-            Text(
-                text = stringResource(R.string.back),
-                style = Sendoku.type.overline,
-                color = colors.muted,
-                modifier = Modifier
-                    .clip(RoundedCornerShape(dimens.radiusS))
-                    .clickable(onClick = onLeave)
-                    .padding(dimens.spaceS),
-            )
-            Text(
-                text = stringResource(gradeName(state.grade)).uppercase(),
-                style = Sendoku.type.overline,
-                color = colors.accent,
-                modifier = Modifier.padding(start = dimens.spaceXs),
-            )
-        }
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(Sendoku.dimens.spaceM),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            if (state.settings.mistakeLimit != null) {
-                Text(
-                    text = stringResource(R.string.mistakes_of, state.mistakes, state.settings.mistakeLimit),
-                    style = Sendoku.type.label,
-                    color = if (state.mistakes > 0) colors.conflict else colors.muted,
-                )
-            }
-            if (state.settings.showTimer) {
-                Text(
-                    text = state.elapsed.clock(),
-                    style = Sendoku.type.timer,
-                    color = colors.muted,
-                    modifier = Modifier.clickable { onEvent(GameEvent.Pause) },
-                )
-            }
-        }
-    }
 }
 
 /**
