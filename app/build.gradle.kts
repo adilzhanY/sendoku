@@ -16,6 +16,9 @@ android {
         versionCode = 1
         versionName = "0.1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        // The store screenshot renders are not checks and take a while. tools/store-shots.sh
+        // runs them on purpose; nothing else should have to wait for them.
+        testInstrumentationRunnerArguments["notAnnotation"] = "com.sendoku.app.StoreShot"
         // en-XA doubles the length of every string and ar-XB mirrors the layout, both without
         // needing a translator. They are the cheapest way to find a layout that only breaks in
         // German or only breaks in Arabic.
