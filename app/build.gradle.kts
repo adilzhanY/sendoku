@@ -79,8 +79,28 @@ android {
     }
 }
 
+/*
+ * Compose compiler stability reports, on request:
+ *
+ *   ./gradlew :app:assembleRelease -PcomposeMetrics
+ *
+ * They answer the one question that matters for the board: does entering a digit in one cell
+ * recompose that cell or all eighty one. A composable marked skippable with stable parameters
+ * is the machine telling you it will not.
+ */
+if (project.hasProperty("composeMetrics")) {
+    composeCompiler {
+        metricsDestination = layout.buildDirectory.dir("compose-metrics")
+        reportsDestination = layout.buildDirectory.dir("compose-reports")
+    }
+}
+
 dependencies {
     implementation(project(":engine"))
+
+    // Debug only. A sudoku app holds one board and one view model, so a leak here would have
+    // to be something structural, and structural is exactly the kind that survives to release.
+    debugImplementation(libs.leakcanary)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.core.splashscreen)
