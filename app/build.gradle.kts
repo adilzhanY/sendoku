@@ -1,8 +1,33 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.baselineprofile)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.ksp)
+}
+
+/*
+ * The upload key, read from outside the repository.
+ *
+ * Never from gradle.properties and never from an environment variable baked into a script:
+ * both end up in a shell history or a build log sooner or later. The file lives in the user's
+ * home with permissions 600, and its absence is not an error, it just leaves the release
+ * unsigned so anybody can still clone this and build it.
+ *
+ * Point SENDOKU_KEYSTORE at a different properties file to sign with another key.
+ */
+val keystoreProperties: Properties? = loadKeystoreProperties()
+
+fun loadKeystoreProperties(): Properties? {
+    val path =
+        providers.environmentVariable("SENDOKU_KEYSTORE").orNull
+            ?: "${System.getProperty("user.home")}/.sendoku/keystore.properties"
+    val file = File(path)
+    if (!file.isFile) return null
+    val properties = Properties()
+    file.inputStream().use { properties.load(it) }
+    return properties
 }
 
 android {
@@ -13,8 +38,10 @@ android {
         applicationId = "com.sendoku.app"
         minSdk = 26
         targetSdk = 37
+        // Launch. The code is what Play orders updates by and can only ever go up; the name
+        // is what a person reads. Bump the code on every upload, even a rejected one.
         versionCode = 1
-        versionName = "0.1.0"
+        versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         // The store screenshot renders are not checks and take a while. tools/store-shots.sh
         // runs them on purpose; nothing else should have to wait for them.
@@ -23,6 +50,22 @@ android {
         // needing a translator. They are the cheapest way to find a layout that only breaks in
         // German or only breaks in Arabic.
         resourceConfigurations += listOf("en", "ru", "en-rXA", "ar-rXB")
+    }
+
+    signingConfigs {
+        if (keystoreProperties != null) {
+            create("upload") {
+                storeFile = File(keystoreProperties.getProperty("storeFile"))
+                storePassword = keystoreProperties.getProperty("storePassword")
+                keyAlias = keystoreProperties.getProperty("keyAlias")
+                keyPassword = keystoreProperties.getProperty("keyPassword")
+                // v1 is the signature scheme from 2008 and minSdk here is 26, so the two
+                // schemes that phones actually verify are the only two worth writing.
+                enableV1Signing = false
+                enableV2Signing = true
+                enableV3Signing = true
+            }
+        }
     }
 
     buildTypes {
@@ -39,6 +82,7 @@ android {
         // type would have duplicated.
 
         release {
+            signingConfig = signingConfigs.findByName("upload")
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(

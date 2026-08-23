@@ -16,6 +16,14 @@ captures/
 # app/src/release/generated/baselineProfiles, which has to be committed or the release build
 # ships without the profile it was measured with. build/ already covers the real outputs.
 
+# Signing. The real keystore lives outside the repository entirely, in ~/.sendoku, which is
+# what actually keeps it out. These rules are here so that a copy dropped in the working tree
+# by accident, on the way to a backup or off another machine, cannot be committed.
+*.jks
+*.keystore
+keystore.properties
+!app/src/**/debug.keystore
+
 # IDE
 .idea/
 *.iml

@@ -7,14 +7,15 @@
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
-APK=app/build/outputs/apk/release/app-release-unsigned.apk
+APK=app/build/outputs/apk/release/app-release.apk
+[ -f "$APK" ] || APK=app/build/outputs/apk/release/app-release-unsigned.apk
 AAB=app/build/outputs/bundle/release/app-release.aab
 LIMIT_MB=10
 
 [ -f "$APK" ] || { echo "No release APK. Run ./gradlew :app:assembleRelease first."; exit 1; }
 
 apk_bytes=$(stat -c %s "$APK")
-echo "APK $((apk_bytes / 1024)) KB"
+echo "APK $((apk_bytes / 1024)) KB  $(basename "$APK")"
 [ -f "$AAB" ] && echo "AAB $(( $(stat -c %s "$AAB") / 1024 )) KB"
 if [ "$apk_bytes" -gt $((LIMIT_MB * 1024 * 1024)) ]; then
   echo "FAIL: over ${LIMIT_MB} MB"
@@ -41,6 +42,17 @@ else
     [ $ok = yes ] || fail=1
   done
   [ $fail -eq 0 ] || exit 1
+fi
+
+echo
+echo "Signature"
+apksigner=$(ls "${ANDROID_HOME:-$HOME/Android/Sdk}"/build-tools/*/apksigner | tail -1)
+if [ "$(basename "$APK")" = "app-release-unsigned.apk" ]; then
+  echo "  unsigned, no keystore was found"
+else
+  # 2>/dev/null because apksigner on a recent JDK prints a native access warning that has
+  # nothing to do with the signature and buries the four lines that matter.
+  "$apksigner" verify --print-certs "$APK" 2>/dev/null | sed 's/^/  /' | head -3
 fi
 
 echo
