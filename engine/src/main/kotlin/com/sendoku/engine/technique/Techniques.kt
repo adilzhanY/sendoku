@@ -38,5 +38,29 @@ public object Techniques {
         AlsXz,
     ).sortedBy { it.id.cost }
 
+    /**
+     * Rules that work by assuming the puzzle has exactly one solution.
+     *
+     * They are perfectly sound on anything Sendoku ships, because the generator never
+     * produces an ambiguous grid. They are not sound on an arbitrary grid: handed a puzzle
+     * with two answers, they will happily rule out one of them and reach a single answer
+     * that is not forced by logic at all.
+     *
+     * That matters wherever a grid arrives from outside the generator, and it is why the
+     * distinction is part of the API rather than a comment.
+     */
+    public val assumesUniqueSolution: Set<TechniqueId> = setOf(
+        TechniqueId.UNIQUE_RECTANGLE,
+        TechniqueId.BUG_PLUS_ONE,
+    )
+
+    /**
+     * The ladder with the uniqueness rules removed.
+     *
+     * Everything here follows from the grid alone. If this solves a puzzle, the puzzle is
+     * solvable by pure deduction whether or not its answer happens to be unique.
+     */
+    public val logicOnly: List<Technique> = ladder.filter { it.id !in assumesUniqueSolution }
+
     public fun byId(id: TechniqueId): Technique? = ladder.firstOrNull { it.id == id }
 }
