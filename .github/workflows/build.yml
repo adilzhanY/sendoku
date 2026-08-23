@@ -117,12 +117,18 @@ jobs:
           cache-read-only: true
 
       - name: Allow hardware acceleration
+        # The rule has to be written, not just reloaded. Reloading rules that do not exist
+        # leaves /dev/kvm readable only by the kvm group, the emulator quietly falls back to
+        # software emulation, and it is then slow enough that adb reports the device offline
+        # before it finishes booting. That is what was failing here on every push.
         run: |
-          sudo apt-get update
-          sudo apt-get install -y libpulse0
-          echo "KVM_GROUP=$(getent group kvm | cut -d: -f3)" >> "$GITHUB_ENV"
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' \
+            | sudo tee /etc/udev/rules.d/99-kvm4all.rules
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
+          sudo apt-get update
+          sudo apt-get install -y libpulse0
+          ls -l /dev/kvm
 
       - name: Run the instrumented tests
         uses: reactivecircus/android-emulator-runner@v2
@@ -133,4 +139,22 @@ jobs:
           target: google_apis
           arch: x86_64
           disable-animations: true
+          # No window, no audio, no camera, and the software renderer that actually works
+          # headless. Left to its own devices the emulator tries for a GPU that is not there.
+          emulator-options: >-
+            -no-window -no-audio -no-boot-anim -no-snapshot -camera-back none -camera-front none
+            -gpu swiftshader_indirect -memory 4096
+          emulator-boot-timeout: 900
           script: ./gradlew :app:connectedDebugAndroidTest --stacktrace
+
+      - name: Keep the device test report
+        # Without this a failure on a device is only readable by scrolling a log, which is how
+        # this job stayed red for a day without anybody reading it.
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: device-test-report
+          path: |
+            app/build/reports/androidTests/connected
+            app/build/outputs/androidTest-results/connected
+          if-no-files-found: ignore
