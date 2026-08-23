@@ -6,9 +6,7 @@ import com.sendoku.engine.Grade
 import com.sendoku.engine.Puzzle
 import com.sendoku.engine.Symmetry
 import com.sendoku.engine.technique.TechniqueId
-import java.io.DataInputStream
 import java.io.DataOutputStream
-import java.io.EOFException
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
@@ -80,27 +78,106 @@ public object PuzzleFormat {
 
     /** Reads a batch back. The stream is closed. */
     public fun read(input: InputStream): PuzzleCatalog {
-        DataInputStream(GZIPInputStream(input)).use { source ->
-            val magic = ByteArray(MAGIC.size)
-            source.readFully(magic)
-            if (!magic.contentEquals(MAGIC)) throw IOException("not a Sendoku batch")
+        val body = Body.inflate(input)
+        val puzzles = ArrayList<RatedPuzzle>(body.count)
+        repeat(body.count) { index -> puzzles.add(body.decode(index)) }
+        return PuzzleCatalog(body.dims, puzzles)
+    }
 
-            val version = source.readUnsignedByte()
-            if (version != VERSION) throw IOException("batch is version $version, this build reads $VERSION")
+    /**
+     * A decompressed batch, still in its packed form.
+     *
+     * Holding the bytes rather than the objects is what lets a caller read one puzzle out
+     * of three thousand. Records are a fixed width, so puzzle `n` starts at a known offset
+     * and nothing before it has to be looked at.
+     */
+    internal class Body(
+        val dims: Dimensions,
+        val count: Int,
+        private val bytes: ByteArray,
+    ) {
+        private val width = recordBytes(dims)
+        private val solutionBytes = solutionBytes(dims)
+        private val maskBytes = maskBytes(dims)
 
-            val dims = Dimensions(source.readUnsignedByte(), source.readUnsignedByte())
-            val count = source.readInt()
-            if (count < 0) throw IOException("batch claims $count puzzles")
+        private fun offsetOf(index: Int): Int {
+            require(index in 0 until count) { "puzzle $index is not in a batch of $count" }
+            return index * width
+        }
 
-            val puzzles = ArrayList<RatedPuzzle>(count)
-            repeat(count) { index ->
-                try {
-                    puzzles.add(readRecord(source, dims))
-                } catch (e: EOFException) {
-                    throw IOException("batch ended after $index of $count puzzles", e)
-                }
+        /** Two bytes at a known offset. Nothing else in the record is touched. */
+        fun ratingAt(index: Int): Double {
+            val at = offsetOf(index) + solutionBytes + maskBytes
+            val raw = ((bytes[at].toInt() and 0xFF) shl 8) or (bytes[at + 1].toInt() and 0xFF)
+            return raw / RATING_SCALE
+        }
+
+        fun decode(index: Int): RatedPuzzle {
+            var at = offsetOf(index)
+
+            val solution = Board(dims)
+            for (cell in 0 until dims.cellCount) {
+                val packed = bytes[at + cell / 2].toInt()
+                val digit = if (cell % 2 == 0) (packed shr 4) and 0xF else packed and 0xF
+                solution.setAtIndex(cell, digit)
             }
-            return PuzzleCatalog(dims, puzzles)
+            at += solutionBytes
+
+            val givens = Board(dims)
+            for (cell in 0 until dims.cellCount) {
+                val present = bytes[at + cell / 8].toInt() and (1 shl (cell % 8)) != 0
+                if (present) givens.setAtIndex(cell, solution.atIndex(cell))
+            }
+            at += maskBytes
+
+            val rating = (((bytes[at].toInt() and 0xFF) shl 8) or (bytes[at + 1].toInt() and 0xFF)) / RATING_SCALE
+            at += 2
+
+            val hardestOrdinal = bytes[at++].toInt() and 0xFF
+            val hardest = if (hardestOrdinal == 0) null else TechniqueId.entries[hardestOrdinal - 1]
+            val symmetry = Symmetry.entries[bytes[at++].toInt() and 0xFF]
+
+            val usage = LinkedHashMap<TechniqueId, Int>()
+            for (id in TechniqueId.entries) {
+                val used = bytes[at++].toInt() and 0xFF
+                if (used > 0) usage[id] = used
+            }
+
+            return RatedPuzzle(
+                puzzle = Puzzle(givens = givens, solution = solution),
+                rating = rating,
+                grade = Grade.of(rating),
+                hardest = hardest,
+                symmetry = symmetry,
+                usage = usage,
+            )
+        }
+
+        companion object {
+            /** Decompresses and validates the header. The stream is closed. */
+            fun inflate(input: InputStream): Body {
+                val raw = GZIPInputStream(input).use { it.readBytes() }
+                if (raw.size < HEADER_BYTES) throw IOException("batch is too short to hold a header")
+                if (!raw.copyOfRange(0, MAGIC.size).contentEquals(MAGIC)) {
+                    throw IOException("not a Sendoku batch")
+                }
+                val version = raw[4].toInt() and 0xFF
+                if (version != VERSION) {
+                    throw IOException("batch is version $version, this build reads $VERSION")
+                }
+                val dims = Dimensions(raw[5].toInt() and 0xFF, raw[6].toInt() and 0xFF)
+                val count = ((raw[7].toInt() and 0xFF) shl 24) or
+                    ((raw[8].toInt() and 0xFF) shl 16) or
+                    ((raw[9].toInt() and 0xFF) shl 8) or
+                    (raw[10].toInt() and 0xFF)
+                if (count < 0) throw IOException("batch claims $count puzzles")
+
+                val expected = HEADER_BYTES.toLong() + count.toLong() * recordBytes(dims)
+                if (raw.size.toLong() != expected) {
+                    throw IOException("batch is ${raw.size} bytes, expected $expected for $count puzzles")
+                }
+                return Body(dims, count, raw.copyOfRange(HEADER_BYTES, raw.size))
+            }
         }
     }
 
@@ -133,44 +210,5 @@ public object PuzzleFormat {
         for (id in TechniqueId.entries) {
             out.writeByte((rated.usage[id] ?: 0).coerceAtMost(255))
         }
-    }
-
-    private fun readRecord(source: DataInputStream, dims: Dimensions): RatedPuzzle {
-        val nibbles = ByteArray(solutionBytes(dims))
-        source.readFully(nibbles)
-        val solution = Board(dims)
-        for (cell in 0 until dims.cellCount) {
-            val packed = nibbles[cell / 2].toInt()
-            val digit = if (cell % 2 == 0) (packed shr 4) and 0xF else packed and 0xF
-            solution.setAtIndex(cell, digit)
-        }
-
-        val mask = ByteArray(maskBytes(dims))
-        source.readFully(mask)
-        val givens = Board(dims)
-        for (cell in 0 until dims.cellCount) {
-            val present = mask[cell / 8].toInt() and (1 shl (cell % 8)) != 0
-            if (present) givens.setAtIndex(cell, solution.atIndex(cell))
-        }
-
-        val rating = source.readUnsignedShort() / RATING_SCALE
-        val hardestOrdinal = source.readUnsignedByte()
-        val hardest = if (hardestOrdinal == 0) null else TechniqueId.entries[hardestOrdinal - 1]
-        val symmetry = Symmetry.entries[source.readUnsignedByte()]
-
-        val usage = LinkedHashMap<TechniqueId, Int>()
-        for (id in TechniqueId.entries) {
-            val count = source.readUnsignedByte()
-            if (count > 0) usage[id] = count
-        }
-
-        return RatedPuzzle(
-            puzzle = Puzzle(givens = givens, solution = solution),
-            rating = rating,
-            grade = Grade.of(rating),
-            hardest = hardest,
-            symmetry = symmetry,
-            usage = usage,
-        )
     }
 }
