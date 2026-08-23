@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -27,6 +28,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
@@ -88,7 +90,11 @@ public fun GameScreen(
         }
     }
 
-    // Walking away from a finished puzzle costs nothing, so only ask when it would.
+    // Walking away from a finished puzzle costs nothing, so only ask when it would. The back
+    // gesture and the back button on the screen go through the same decision.
+    val leave = {
+        if (state.hasProgress && !state.isOver) confirmLeaving = true else onHome()
+    }
     BackHandler(enabled = state.hasProgress && !state.isOver) { confirmLeaving = true }
 
     // The board gives no feedback of its own when a digit lands, so a buzz and a click stand
@@ -133,7 +139,7 @@ public fun GameScreen(
                         modifier = Modifier.fillMaxHeight().weight(1f),
                         verticalArrangement = Arrangement.spacedBy(dimens.spaceM, Alignment.CenterVertically),
                     ) {
-                        GameHeader(state, onEvent)
+                        GameHeader(state, onEvent, leave)
                         HintArea(hint, onEvent, { hint = it }, onGlossary)
                         Controls(state, feedback) { hint = HintEngine.next(state) }
                     }
@@ -143,7 +149,7 @@ public fun GameScreen(
                     modifier = Modifier.fillMaxSize().padding(dimens.spaceM),
                     verticalArrangement = Arrangement.spacedBy(dimens.spaceM),
                 ) {
-                    GameHeader(state, onEvent)
+                    GameHeader(state, onEvent, leave)
                     Box(
                         modifier = Modifier.fillMaxWidth().weight(1f),
                         contentAlignment = Alignment.Center,
@@ -279,18 +285,34 @@ private fun HintArea(hint: Hint?, onEvent: (GameEvent) -> Unit, onHint: (Hint?) 
 }
 
 @Composable
-private fun GameHeader(state: GameState, onEvent: (GameEvent) -> Unit) {
+private fun GameHeader(state: GameState, onEvent: (GameEvent) -> Unit, onLeave: () -> Unit) {
     val colors = Sendoku.colors
+    val dimens = Sendoku.dimens
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Text(
-            text = stringResource(gradeName(state.grade)).uppercase(),
-            style = Sendoku.type.overline,
-            color = colors.accent,
-        )
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            // The way out, drawn rather than left to the system gesture. Every other screen
+            // has a visible back, and a player who cannot find one on the only screen they
+            // spend time in concludes the app has trapped them.
+            Text(
+                text = stringResource(R.string.back),
+                style = Sendoku.type.overline,
+                color = colors.muted,
+                modifier = Modifier
+                    .clip(RoundedCornerShape(dimens.radiusS))
+                    .clickable(onClick = onLeave)
+                    .padding(dimens.spaceS),
+            )
+            Text(
+                text = stringResource(gradeName(state.grade)).uppercase(),
+                style = Sendoku.type.overline,
+                color = colors.accent,
+                modifier = Modifier.padding(start = dimens.spaceXs),
+            )
+        }
         Row(
             horizontalArrangement = Arrangement.spacedBy(Sendoku.dimens.spaceM),
             verticalAlignment = Alignment.CenterVertically,
