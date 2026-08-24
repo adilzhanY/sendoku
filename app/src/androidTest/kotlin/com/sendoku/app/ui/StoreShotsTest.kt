@@ -126,10 +126,6 @@ class StoreShotsTest {
                     onPlay = {},
                     onResume = {},
                     onDaily = {},
-                    onSettings = {},
-                    onStats = {},
-                    onLearn = {},
-                    learnProgress = 12 to 37,
                     modifier = pane,
                 )
             }

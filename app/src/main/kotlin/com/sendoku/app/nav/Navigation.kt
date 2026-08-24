@@ -35,6 +35,9 @@ public sealed interface Destination {
     /** The course map. */
     public data object Course : Destination
 
+    /** Everything about the player rather than about a puzzle: their record, their settings. */
+    public data object Account : Destination
+
     /** One lesson, by name. */
     public data class LessonAt(val lesson: String) : Destination
 
@@ -87,12 +90,31 @@ public class Navigator(stack: List<Destination> = listOf(Destination.Home)) {
     }
 
     public fun home() {
-        stack = listOf(stack.first())
+        stack = listOf(Destination.Home)
     }
+
+    /**
+     * Switches to a tab.
+     *
+     * A tab is a root, not a push. Tapping Learn from three screens deep inside Home should
+     * land on Learn with nothing behind it, and tapping Home again should show Home rather
+     * than unwinding whatever was on top of it. Tapping the tab you are already on goes back
+     * to that tab's own root, which is what every other app does and what a thumb expects.
+     */
+    public fun switchTo(root: Destination) {
+        stack = listOf(root)
+    }
+
+    /** True when this is one of the three roots, which is where the bar belongs. */
+    public val atRoot: Boolean get() = stack.size == 1 && current in TABS
 
     internal fun snapshot(): List<Destination> = stack
 
     public companion object {
+
+        /** The three tabs, in the order the bar shows them. */
+        public val TABS: List<Destination> = listOf(Destination.Home, Destination.Course, Destination.Account)
+
         /**
          * Saves the stack across a configuration change.
          *
@@ -112,6 +134,7 @@ public class Navigator(stack: List<Destination> = listOf(Destination.Home)) {
             is Destination.Daily -> "daily:$epochDay"
             Destination.Calendar -> "calendar"
             Destination.Course -> "course"
+            Destination.Account -> "account"
             is Destination.LessonAt -> "lesson:$lesson"
             is Destination.Practice -> "practice:$technique"
             Destination.Settings -> "settings"
@@ -132,6 +155,7 @@ public class Navigator(stack: List<Destination> = listOf(Destination.Home)) {
             value.startsWith("play:") -> Destination.Play(Grade.valueOf(value.removePrefix("play:")))
             value == "calendar" -> Destination.Calendar
             value == "course" -> Destination.Course
+            value == "account" -> Destination.Account
             value.startsWith("lesson:") -> Destination.LessonAt(value.removePrefix("lesson:"))
             value.startsWith("practice:") -> Destination.Practice(value.removePrefix("practice:"))
             value.startsWith("daily:") -> Destination.Daily(value.removePrefix("daily:").toLong())

@@ -79,7 +79,7 @@ public fun GameHeader(
             )
             BarIcon(
                 icon = SendokuIcons.Settings,
-                label = stringResource(R.string.home_settings),
+                label = stringResource(R.string.settings_title),
                 onClick = onSettings,
                 tag = "game:settings",
             )

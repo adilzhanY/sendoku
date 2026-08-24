@@ -150,6 +150,68 @@ public object SendokuIcons {
         }
     }
 
+    /** A grid of nine, which is what the app is about, rather than a house nobody lives in. */
+    public val Home: ImageVector = icon("Home") {
+        stroke {
+            moveTo(4.0f, 4.0f)
+            horizontalLineTo(20.0f)
+            verticalLineTo(20.0f)
+            horizontalLineTo(4.0f)
+            close()
+        }
+        stroke {
+            moveTo(9.33f, 4.0f)
+            verticalLineTo(20.0f)
+        }
+        stroke {
+            moveTo(14.67f, 4.0f)
+            verticalLineTo(20.0f)
+        }
+        stroke {
+            moveTo(4.0f, 9.33f)
+            horizontalLineTo(20.0f)
+        }
+        stroke {
+            moveTo(4.0f, 14.67f)
+            horizontalLineTo(20.0f)
+        }
+    }
+
+    /** An open book. The course is reading and doing, and reading is the half you can draw. */
+    public val Learn: ImageVector = icon("Learn") {
+        stroke {
+            moveTo(12.0f, 6.6f)
+            verticalLineTo(19.6f)
+        }
+        stroke {
+            moveTo(12.0f, 6.6f)
+            curveTo(10.4f, 5.2f, 8.2f, 4.6f, 4.0f, 4.6f)
+            verticalLineTo(17.6f)
+            curveTo(8.2f, 17.6f, 10.4f, 18.2f, 12.0f, 19.6f)
+        }
+        stroke {
+            moveTo(12.0f, 6.6f)
+            curveTo(13.6f, 5.2f, 15.8f, 4.6f, 20.0f, 4.6f)
+            verticalLineTo(17.6f)
+            curveTo(15.8f, 17.6f, 13.6f, 18.2f, 12.0f, 19.6f)
+        }
+    }
+
+    /** A person. Not a photograph and not initials, since the app knows neither. */
+    public val Account: ImageVector = icon("Account") {
+        stroke {
+            moveTo(12.0f, 11.2f)
+            arcTo(3.6f, 3.6f, 0f, isMoreThanHalf = true, isPositiveArc = true, 12.0f, 4.0f)
+            arcTo(3.6f, 3.6f, 0f, isMoreThanHalf = true, isPositiveArc = true, 12.0f, 11.2f)
+            close()
+        }
+        stroke {
+            moveTo(4.8f, 20.4f)
+            curveTo(4.8f, 16.6f, 8.0f, 14.4f, 12.0f, 14.4f)
+            curveTo(16.0f, 14.4f, 19.2f, 16.6f, 19.2f, 20.4f)
+        }
+    }
+
     /**
      * Settings. Sliders, not a cog.
      *

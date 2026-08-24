@@ -10,8 +10,6 @@
     <string name="app_name">Sendoku</string>
 
     <string name="home_the_climb">ВОСХОЖДЕНИЕ</string>
-    <string name="home_settings">НАСТРОЙКИ</string>
-    <string name="home_stats">СТАТИСТИКА</string>
     <string name="home_daily">Сегодня</string>
     <string name="home_new_puzzle">Новая</string>
     <string name="home_resume">Продолжить</string>
@@ -616,7 +614,6 @@
     <string name="course_lesson_done">пройден</string>
     <string name="course_lesson_next">следующий</string>
     <string name="course_lesson_todo">не начат</string>
-    <string name="home_learn">Учиться</string>
     <plurals name="course_progress">
         <item quantity="one">%1$d из %2$d урока</item>
         <item quantity="few">%1$d из %2$d уроков</item>
@@ -659,4 +656,17 @@
     <string name="settings_hints">Подсказки</string>
     <string name="settings_hint_limit">Заканчивать игру после трёх подсказок</string>
     <string name="settings_hint_note">Включено по умолчанию. Три подсказки бесплатны, а четвёртая стоит игры, и подсказка становится решением, а не рефлексом. Выключите, пока проходите курс.</string>
+    <string name="account_title">Вы</string>
+    <string name="account_no_account">Здесь нет аккаунта, в который нужно входить. Всё, что ниже, лежит на этом телефоне и больше нигде.</string>
+    <string name="account_solved">Решено</string>
+    <string name="account_streak">Серия</string>
+    <string name="account_time">В игре</string>
+    <string name="account_lessons">Уроки</string>
+    <string name="account_stats">Статистика</string>
+    <string name="account_stats_detail">Все уровни, лучшее время и техники, которые вы встретили</string>
+    <string name="account_settings_detail">Оформление, поле, ограничения и ваши данные</string>
+    <string name="account_about_detail">Что это приложение обещает и на каких лицензиях стоит</string>
+    <string name="tab_home">Главная</string>
+    <string name="tab_learn">Учиться</string>
+    <string name="tab_account">Вы</string>
 </resources>

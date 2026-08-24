@@ -3,6 +3,7 @@ package com.sendoku.app
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -30,6 +31,8 @@ import com.sendoku.app.nav.Destination
 import com.sendoku.app.nav.Navigator
 import com.sendoku.app.theme.Sendoku
 import com.sendoku.app.ui.AboutScreen
+import com.sendoku.app.ui.AccountScreen
+import com.sendoku.app.ui.BottomBar
 import com.sendoku.app.ui.DailyScreen
 import com.sendoku.app.ui.GameScreen
 import com.sendoku.app.ui.GlossaryScreen
@@ -92,31 +95,42 @@ public fun SendokuApp(
     BackHandler(enabled = navigator.canGoBack) { navigator.back() }
 
     ReadableWidth(modifier) { pane ->
-        Screens(
-            navigator = navigator,
-            model = model,
-            scope = scope,
-            counts = counts,
-            saved = saved,
-            stats = stats,
-            currentSettings = currentSettings,
-            look = look,
-            loading = loading,
-            dailyDays = calendar,
-            course = learning,
-            onLessonStep = onLessonStep,
-            onExport = onExport,
-            onImport = onImport,
-            onResetCourse = onResetCourse,
-            dataMessage = dataMessage,
-            onPractice = onPractice,
-            puzzles = puzzles,
-            settingsChange = onSettingsChange,
-            appearanceChange = onAppearanceChange,
-            resetStats = onResetStats,
-            version = version,
-            modifier = pane,
-        )
+        Column(Modifier.fillMaxSize()) {
+            Box(Modifier.weight(1f)) {
+                Screens(
+                    navigator = navigator,
+                    model = model,
+                    scope = scope,
+                    counts = counts,
+                    saved = saved,
+                    stats = stats,
+                    currentSettings = currentSettings,
+                    look = look,
+                    loading = loading,
+                    dailyDays = calendar,
+                    course = learning,
+                    onLessonStep = onLessonStep,
+                    onExport = onExport,
+                    onImport = onImport,
+                    onResetCourse = onResetCourse,
+                    dataMessage = dataMessage,
+                    onPractice = onPractice,
+                    puzzles = puzzles,
+                    settingsChange = onSettingsChange,
+                    appearanceChange = onAppearanceChange,
+                    resetStats = onResetStats,
+                    version = version,
+                    modifier = Modifier.fillMaxSize(),
+                )
+            }
+            // Only on the three roots. A puzzle or a lesson is somewhere you are in the middle
+            // of something, and a bar offering to leave is furniture in the way.
+            if (navigator.atRoot) {
+                BottomBar(current = navigator.current, onSelect = { navigator.switchTo(it) })
+            }
+        }
+        // Silences the unused warning on the pane modifier while the bar owns the width.
+        pane.let { }
     }
 }
 
@@ -169,10 +183,6 @@ private fun Screens(
                 // The calendar, not straight into today. A daily is only worth having if a
                 // missed day is visible and a caught up day is possible, and both live there.
                 onDaily = { navigator.go(Destination.Calendar) },
-                onSettings = { navigator.go(Destination.Settings) },
-                onStats = { navigator.go(Destination.Stats) },
-                onLearn = { navigator.go(Destination.Course) },
-                learnProgress = course.finishedCount to Curriculum.lessons.size,
                 modifier = modifier,
             )
         }
@@ -229,6 +239,17 @@ private fun Screens(
                 puzzles = puzzles,
                 onAnswer = onPractice,
                 onBack = { navigator.back() },
+                modifier = modifier,
+            )
+        }
+
+        Destination.Account -> {
+            AccountScreen(
+                statistics = stats,
+                course = course,
+                onStats = { navigator.go(Destination.Stats) },
+                onSettings = { navigator.go(Destination.Settings) },
+                onAbout = { navigator.go(Destination.About) },
                 modifier = modifier,
             )
         }

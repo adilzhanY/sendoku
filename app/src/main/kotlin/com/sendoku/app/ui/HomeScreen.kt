@@ -58,11 +58,6 @@ public fun HomeScreen(
     onPlay: (Grade) -> Unit,
     onResume: () -> Unit,
     onDaily: () -> Unit,
-    onSettings: () -> Unit,
-    onStats: () -> Unit,
-    onLearn: () -> Unit,
-    /** Lessons finished out of the whole course, for the line on the button. */
-    learnProgress: Pair<Int, Int>,
     modifier: Modifier = Modifier,
 ) {
     val colors = Sendoku.colors
@@ -79,26 +74,6 @@ public fun HomeScreen(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Text(stringResource(R.string.app_name), style = Sendoku.type.title, color = colors.given)
-            Row(horizontalArrangement = Arrangement.spacedBy(dimens.spaceXs)) {
-                Text(
-                    text = stringResource(R.string.home_stats),
-                    style = Sendoku.type.overline,
-                    color = colors.muted,
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(dimens.radiusS))
-                        .clickable(onClick = onStats)
-                        .padding(dimens.spaceS),
-                )
-                Text(
-                    text = stringResource(R.string.home_settings),
-                    style = Sendoku.type.overline,
-                    color = colors.muted,
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(dimens.radiusS))
-                        .clickable(onClick = onSettings)
-                        .padding(dimens.spaceS),
-                )
-            }
         }
 
         // The ladder scrolls and the buttons do not. Pinning them means the thing a player
@@ -133,11 +108,6 @@ public fun HomeScreen(
                     ContinueCard(summary, onResume)
                 }
             }
-
-            // Under the ladder rather than above it. Somebody opening the app to play should
-            // not have to scroll past a course to reach a puzzle, and somebody who wants the
-            // course will find it in the one place the app puts everything else.
-            LearnCard(finished = learnProgress.first, total = learnProgress.second, onClick = onLearn)
         }
 
         Row(
@@ -288,34 +258,5 @@ private fun HomeButton(label: String, accent: Boolean, onClick: () -> Unit, modi
             style = Sendoku.type.label,
             color = if (accent) colors.onAccent else colors.muted,
         )
-    }
-}
-
-/** The way into the course, with how far through it the player is. */
-@Composable
-private fun LearnCard(finished: Int, total: Int, onClick: () -> Unit) {
-    val colors = Sendoku.colors
-    val dimens = Sendoku.dimens
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = dimens.spaceS)
-            .heightIn(min = dimens.minTouchTarget)
-            .testTag("home:learn")
-            .clip(RoundedCornerShape(dimens.radiusM))
-            .background(colors.surface)
-            .clickable(onClick = onClick)
-            .padding(horizontal = dimens.spaceM, vertical = dimens.spaceM),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween,
-    ) {
-        Column(Modifier.weight(1f)) {
-            Text(stringResource(R.string.home_learn), style = Sendoku.type.label, color = colors.given)
-            Text(
-                text = pluralStringResource(R.plurals.course_progress, total, finished, total),
-                style = Sendoku.type.body,
-                color = colors.muted,
-            )
-        }
     }
 }
