@@ -29,7 +29,7 @@ class TechniqueSolverTest {
         val costs = Techniques.ladder.map { it.id.cost }
         assertEquals(costs.sorted(), costs)
         assertEquals(TechniqueId.NAKED_SINGLE, Techniques.ladder.first().id)
-        assertEquals(TechniqueId.ALS_XZ, Techniques.ladder.last().id)
+        assertEquals(TechniqueId.entries.maxOf { it.cost }, Techniques.ladder.last().id.cost)
     }
 
     @Test

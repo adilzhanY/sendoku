@@ -21,32 +21,14 @@ import kotlin.test.assertTrue
 @Tag("slow")
 class TechniqueSoundnessTest {
 
-    private val techniques = listOf(
-        NakedSingle,
-        HiddenSingle,
-        PointingCandidates,
-        ClaimingCandidates,
-        NakedPair,
-        HiddenPair,
-        NakedTriple,
-        HiddenTriple,
-        NakedQuad,
-        HiddenQuad,
-        XWing,
-        Swordfish,
-        Jellyfish,
-        XYWing,
-        XYZWing,
-        WWing,
-        SimpleColouring,
-        MultiColouring,
-        UniqueRectangle,
-        BugPlusOne,
-        RemotePairs,
-        XChain,
-        XYChain,
-        AlsXz,
-    )
+    /**
+     * The whole ladder, taken from the ladder itself.
+     *
+     * Listing the techniques here by hand meant a new one could be added to the solver and
+     * quietly skip the only test that checks it is not wrong. Reading the ladder means the
+     * opposite: a technique cannot reach a player without passing through here first.
+     */
+    private val techniques = Techniques.ladder
 
     @Test
     fun `no technique ever contradicts the real solution`() {

@@ -36,6 +36,7 @@ public object Techniques {
         XChain,
         XYChain,
         AlsXz,
+        SueDeCoq,
     ).sortedBy { it.id.cost }
 
     /**
@@ -61,6 +62,19 @@ public object Techniques {
      * solvable by pure deduction whether or not its answer happens to be unique.
      */
     public val logicOnly: List<Technique> = ladder.filter { it.id !in assumesUniqueSolution }
+
+    /**
+     * The rules that treat a group of cells as one thing.
+     *
+     * This is what the hardest grades are made of, and what mainstream apps stop short of.
+     * Every one of them starts from an almost locked set: a group one digit away from
+     * using up everything it holds. Naming the family here rather than listing it at each
+     * call site means a new one joins the top of the ladder by being added once.
+     */
+    public val setLogic: Set<TechniqueId> = setOf(
+        TechniqueId.ALS_XZ,
+        TechniqueId.SUE_DE_COQ,
+    )
 
     public fun byId(id: TechniqueId): Technique? = ladder.firstOrNull { it.id == id }
 }

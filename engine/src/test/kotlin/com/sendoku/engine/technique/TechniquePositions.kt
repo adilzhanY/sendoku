@@ -141,6 +141,16 @@ internal object TechniquePositions {
         TechniqueId.ALS_XZ to {
             blank().only(rc(0, 0), 1, 2).only(rc(4, 0), 1, 3).only(rc(4, 1), 2, 3)
         },
+
+        // Row 0 crosses the top left box in two cells holding four digits between them.
+        // A cell further along the row takes {1,2}, a cell lower in the box takes {3,4},
+        // and the two of them account for the whole pool.
+        TechniqueId.SUE_DE_COQ to {
+            blank()
+                .only(rc(0, 0), 1, 3).only(rc(0, 1), 2, 4)
+                .only(rc(0, 4), 1, 2)
+                .only(rc(1, 0), 3, 4)
+        },
     )
 
     /**

@@ -140,6 +140,7 @@ public enum class LessonId {
     X_CHAIN,
     XY_CHAIN,
     WRITING_A_CHAIN_DOWN,
+    SUE_DE_COQ,
     ALS_XZ,
     WHEN_NOTHING_APPLIES,
     WHAT_TO_LOOK_FOR_FIRST,

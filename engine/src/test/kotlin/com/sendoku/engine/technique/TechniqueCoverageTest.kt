@@ -46,6 +46,12 @@ class TechniqueCoverageTest {
         TechniqueId.XY_CHAIN to setOf(TechniqueId.XY_WING),
         // Small almost locked sets are wings and chains wearing a different name.
         TechniqueId.ALS_XZ to setOf(TechniqueId.XY_WING, TechniqueId.XY_CHAIN),
+        // The smallest crossing takes two cells and one cell in each outer set, which makes
+        // every cell of the pattern bivalue, and four bivalue cells in a ring are a chain.
+        // A bigger crossing would avoid it, but only by restricting so much of the line that
+        // the digits left over become a hidden quad, which is a worse position, not a better
+        // one.
+        TechniqueId.SUE_DE_COQ to setOf(TechniqueId.XY_CHAIN),
     )
 
     @Test

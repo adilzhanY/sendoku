@@ -223,6 +223,7 @@
     <string name="look_bug_plus_one">Every cell but one is down to two digits.</string>
     <string name="look_x_chain">A chain on one digit, alternating between must and cannot.</string>
     <string name="look_xy_chain">A chain of two digit cells, each one forcing the next.</string>
+    <string name="look_sue_de_coq">A box and a line crossing, where the shared cells hold two more digits than they have room for.</string>
     <string name="look_als_xz">Two groups of cells, each one digit away from being locked.</string>
 
     <!-- Why it works, shown once the player has seen the cells -->
@@ -249,6 +250,7 @@
     <string name="because_bug_plus_one">If the extra candidate were removed, every digit would appear exactly twice in every region, and a grid like that always has an even number of answers. This puzzle has one, so the extra candidate is the answer.</string>
     <string name="because_x_chain">The chain alternates between places the digit must be and places it cannot be. The two ends cannot both be empty of it, so anything seeing both loses it.</string>
     <string name="because_xy_chain">Suppose the first cell is not the digit. Follow the chain along and the last cell is forced to be it. So one end or the other holds it.</string>
+    <string name="because_sue_de_coq">The shared cells will use up all but two of their digits, and the two groups either side claim exactly those two. So every digit of the group in the line is spent inside the line, and every digit of the group in the box is spent inside the box. Nothing else in either one can have them.</string>
     <string name="because_als_xz">One shared digit can only appear in one of the two groups, which locks the other group and forces it to use every digit it has. So the second shared digit lands in one group or the other.</string>
 
     <!-- Technique names -->
@@ -276,6 +278,7 @@
     <string name="technique_x_chain">X-Chain</string>
     <string name="technique_xy_chain">XY-Chain</string>
     <string name="technique_als_xz">ALS XZ</string>
+    <string name="technique_sue_de_coq">Sue de Coq</string>
     <string name="daily_title">Daily</string>
     <string name="daily_no_streak">No streak yet. Solve today\'s puzzle to start one.</string>
     <string name="daily_previous_month">EARLIER</string>
@@ -575,14 +578,23 @@
     <string name="lesson_writing_chains_4">Then check the alternation. Strong, weak, strong, weak, and strong at both ends. A chain that starts or ends on a weak link proves nothing, and that is the most common way a chain goes wrong.</string>
     <string name="lesson_writing_chains_5">If you cannot write it down, you have not found it. That is not a rule about tidiness, it is the difference between a deduction and a hunch.</string>
 
+    <string name="lesson_sue_de_coq_title">Sue de Coq</string>
+    <string name="lesson_sue_de_coq_summary">Where a box crosses a line, and the crossing has more digits than room.</string>
+    <string name="lesson_sue_de_coq_1">A box and a column overlap in three cells. Those three cells belong to both at once, and that is what this technique lives on.</string>
+    <string name="lesson_sue_de_coq_2">Look at two of them here. Between them they hold 2, 6, 7 and 8: four digits for two cells. Two of those go in, and two are left over for somewhere else.</string>
+    <string name="lesson_sue_de_coq_3">Further down the same column sits a cell holding 6 and 7. Elsewhere in the same box sits a cell holding 2 and 8. Between them those two cells want exactly the four digits the crossing has, split evenly and with nothing shared.</string>
+    <string name="lesson_sue_de_coq_4">Count it. Three cells of the column now take three different digits out of the four, and three cells of the box do the same. There is only one way the arithmetic works: 6 and 7 are used up inside the column, and 2 and 8 inside the box.</string>
+    <string name="lesson_sue_de_coq_5">So nothing else in that column can be a 6 or a 7. Two cells lose one here.</string>
+    <string name="lesson_sue_de_coq_6">The same argument runs the other way for the box. One pattern, two houses, two separate sets of eliminations, and no chain anywhere in it.</string>
+
     <string name="lesson_als_title">ALS-XZ</string>
     <string name="lesson_als_summary">Two almost locked sets sharing a digit, and the elimination that follows.</string>
-    <string name="lesson_als_1">The last technique in the app, and the one that makes a Beyond a Beyond.</string>
+    <string name="lesson_als_1">The rule the hardest levels are built on. Everything above this stage is a variation of it.</string>
     <string name="lesson_als_2">An almost locked set is a group of cells in one house holding exactly one more digit than there are cells. Four cells with five digits between them. If it lost one digit it would be a locked set, hence the name.</string>
     <string name="lesson_als_3">Take two of them, sharing two digits. Call one of the shared digits the restricted one, and require that every place it appears in one set sees every place it appears in the other.</string>
     <string name="lesson_als_4">Then it can only be in one of the two sets. Whichever set does not get it becomes locked, which fixes the other shared digit inside it. And so any cell seeing that digit in both sets loses it.</string>
     <string name="lesson_als_5">Here is the elimination that comes out of it.</string>
-    <string name="lesson_als_6">This is the hardest thing the app will ever show you, and if it takes several readings, that is the normal number.</string>
+    <string name="lesson_als_6">If this takes several readings, that is the normal number. Every technique past this point is this one wearing a different shape.</string>
 
     <string name="lesson_nothing_applies_title">When nothing applies</string>
     <string name="lesson_nothing_applies_summary">Recheck before you guess, because a puzzle from this app always has a next step.</string>

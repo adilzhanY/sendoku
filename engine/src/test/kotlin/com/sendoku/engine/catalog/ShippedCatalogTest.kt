@@ -94,11 +94,11 @@ class ShippedCatalogTest {
         // reasons about a group of cells as one, which is further than mainstream apps go.
         val beyond = catalog.byGrade(Grade.BEYOND)
         assertEquals(500, beyond.size)
-        val withoutAls = TechniqueSolver(Techniques.ladder.filter { it.id != TechniqueId.ALS_XZ })
+        val withoutSetLogic = TechniqueSolver(Techniques.ladder.filter { it.id !in Techniques.setLogic })
         for ((index, rated) in beyond.withIndex()) {
-            assertEquals(TechniqueId.ALS_XZ, rated.hardest, "beyond puzzle $index")
+            assertTrue(rated.hardest in Techniques.setLogic, "beyond puzzle $index rests on ${rated.hardest}")
             assertTrue(
-                !withoutAls.solve(rated.puzzle.givens).isSolved,
+                !withoutSetLogic.solve(rated.puzzle.givens).isSolved,
                 "beyond puzzle $index can be solved without an almost locked set",
             )
         }

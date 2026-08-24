@@ -39,6 +39,7 @@ public enum class TechniqueId(public val displayName: String, public val cost: D
     MULTI_COLOURING("Multi colouring", 5.6),
     X_CHAIN("X-Chain", 6.6),
     XY_CHAIN("XY-Chain", 6.8),
+    SUE_DE_COQ("Sue de Coq", 7.4),
     ALS_XZ("ALS XZ", 7.5),
 }
 

@@ -110,6 +110,9 @@ public object Curriculum {
     /** A different grid, nearly finished, where a chain of one pair runs across it. */
     private const val REMOTE = "51863742997412.5633265941878...62...6.1...2.82..48...6185946372469...8..732815694"
 
+    /** A column crossing a box, with four digits crowded into two of the shared cells. */
+    private const val CROSSING = "5.9.6.732271..5...6.32.7.5.8.....51.9.5...4...645....93984.2..5...659348456.8...."
+
     /** One cell from being ambiguous, which is the whole of the BUG argument. */
     private const val ALMOST_BUG = "9..1.73..7.2396.853..4.2..9135729...8675412932946385174.1963.5.5892746316.38159.4"
 
@@ -662,6 +665,23 @@ public object Curriculum {
                 Step.Say(R.string.lesson_writing_chains_3),
                 Step.Say(R.string.lesson_writing_chains_4),
                 Step.Say(R.string.lesson_writing_chains_5),
+            ),
+        ),
+        Lesson(
+            id = LessonId.SUE_DE_COQ,
+            stage = Stage.THE_FAR_END,
+            title = R.string.lesson_sue_de_coq_title,
+            summary = R.string.lesson_sue_de_coq_summary,
+            teaches = listOf(TechniqueId.SUE_DE_COQ),
+            dims = Dimensions.CLASSIC,
+            board = CROSSING,
+            steps = listOf(
+                Step.Say(R.string.lesson_sue_de_coq_1),
+                Step.Show(R.string.lesson_sue_de_coq_2, focus = setOf(43, 52)),
+                Step.Show(R.string.lesson_sue_de_coq_3, focus = setOf(43, 51, 52, 61)),
+                Step.Say(R.string.lesson_sue_de_coq_4),
+                Step.Show(R.string.lesson_sue_de_coq_5, focus = setOf(43, 51, 52, 61), strike = setOf(16, 79)),
+                Step.Say(R.string.lesson_sue_de_coq_6),
             ),
         ),
         Lesson(
