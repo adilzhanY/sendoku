@@ -653,4 +653,5 @@
     <string name="glossary_learn_this">LEARN THIS</string>
     <string name="hint_learn_this">Teach me this</string>
     <string name="outcome_learn">Learn %1$s</string>
+    <string name="course_finished">All of it, done. Everything the app can name, you can name. The puzzles are the rest of it.</string>
 </resources>

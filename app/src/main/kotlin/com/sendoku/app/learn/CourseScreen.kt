@@ -87,15 +87,22 @@ public fun CourseScreen(
             )
         }
 
+        val allDone = progress.finishedCount == Curriculum.lessons.size
         Text(
-            text = pluralStringResource(
-                R.plurals.course_progress,
-                Curriculum.lessons.size,
-                progress.finishedCount,
-                Curriculum.lessons.size,
-            ),
+            text = if (allDone) {
+                // Quiet. No confetti, no badge, no trophy case. One sentence that treats
+                // finishing as the ordinary end of a book rather than an achievement unlocked.
+                stringResource(R.string.course_finished)
+            } else {
+                pluralStringResource(
+                    R.plurals.course_progress,
+                    Curriculum.lessons.size,
+                    progress.finishedCount,
+                    Curriculum.lessons.size,
+                )
+            },
             style = Sendoku.type.body,
-            color = colors.muted,
+            color = if (allDone) colors.accent else colors.muted,
             modifier = Modifier.padding(horizontal = dimens.spaceM, vertical = dimens.spaceXs),
         )
 

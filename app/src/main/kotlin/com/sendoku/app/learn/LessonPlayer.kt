@@ -2,6 +2,7 @@ package com.sendoku.app.learn
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -19,6 +20,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -29,6 +31,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.KeyEventType
+import androidx.compose.ui.input.key.key
+import androidx.compose.ui.input.key.onKeyEvent
+import androidx.compose.ui.input.key.type
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.LiveRegionMode
@@ -82,6 +91,9 @@ public fun LessonPlayer(
     val turn = step as? Step.YourTurn
     val waiting = turn != null && !answered
 
+    val focus = remember { FocusRequester() }
+    LaunchedEffect(lesson.id) { runCatching { focus.requestFocus() } }
+
     fun go(to: Int) {
         index = to.coerceIn(0, lesson.steps.lastIndex)
         answered = false
@@ -90,7 +102,38 @@ public fun LessonPlayer(
         onStep(index)
     }
 
-    BoxWithConstraints(modifier = modifier.fillMaxSize().background(colors.background)) {
+    BoxWithConstraints(
+        modifier = modifier
+            .fillMaxSize()
+            .background(colors.background)
+            .focusRequester(focus)
+            .focusable()
+            // The game screen has been playable from a keyboard since the start and a lesson
+            // was not, which made the course the one part of the app a keyboard could not
+            // reach. Same keys where they mean the same thing.
+            .onKeyEvent { event ->
+                if (event.type != KeyEventType.KeyDown) {
+                    false
+                } else {
+                    lessonKey(
+                        key = event.key,
+                        waiting = waiting,
+                        expected = turn?.digit,
+                        onDigit = { digit ->
+                            if (digit == turn?.digit) {
+                                answered = true
+                                wrongTold = false
+                            } else {
+                                wrongTold = true
+                            }
+                        },
+                        onNext = { if (index == lesson.steps.lastIndex) onFinished() else go(index + 1) },
+                        onBack = { go(index - 1) },
+                        onReplay = { go(0) },
+                    )
+                }
+            },
+    ) {
         // Beside the board when the screen is wider than it is tall, under it otherwise. A
         // lesson stacked vertically in landscape leaves the board the size of a stamp, which
         // is the one thing a lesson about a grid cannot afford.
@@ -406,3 +449,59 @@ private const val SPOKEN_CELL_LIMIT = 4
 
 private val DOT = 6.dp
 private val TEXT_MIN = 96.dp
+
+/**
+ * A key press in a lesson.
+ *
+ * Right and left step through, which is what an arrow key means everywhere else. A digit only
+ * does something when the lesson is waiting for one, so pressing 5 while reading does not
+ * silently answer a question three steps away.
+ */
+internal fun lessonKey(
+    key: Key,
+    waiting: Boolean,
+    expected: Int?,
+    onDigit: (Int) -> Unit,
+    onNext: () -> Unit,
+    onBack: () -> Unit,
+    onReplay: () -> Unit,
+): Boolean {
+    if (waiting && expected != null) {
+        val digit = digitOf(key)
+        if (digit != null) {
+            onDigit(digit)
+            return true
+        }
+    }
+    return when (key) {
+        Key.DirectionRight, Key.Enter, Key.Spacebar -> {
+            if (!waiting) onNext()
+            !waiting
+        }
+
+        Key.DirectionLeft -> {
+            onBack()
+            true
+        }
+
+        Key.R -> {
+            onReplay()
+            true
+        }
+
+        else -> false
+    }
+}
+
+private fun digitOf(key: Key): Int? = when (key) {
+    Key.One, Key.NumPad1 -> 1
+    Key.Two, Key.NumPad2 -> 2
+    Key.Three, Key.NumPad3 -> 3
+    Key.Four, Key.NumPad4 -> 4
+    Key.Five, Key.NumPad5 -> 5
+    Key.Six, Key.NumPad6 -> 6
+    Key.Seven, Key.NumPad7 -> 7
+    Key.Eight, Key.NumPad8 -> 8
+    Key.Nine, Key.NumPad9 -> 9
+    else -> null
+}

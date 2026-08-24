@@ -18,6 +18,9 @@ import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
 import androidx.test.platform.app.InstrumentationRegistry
 import com.sendoku.app.game.GameState
+import com.sendoku.app.learn.Curriculum
+import com.sendoku.app.learn.LessonId
+import com.sendoku.app.learn.LessonPlayer
 import com.sendoku.app.theme.Sendoku
 import com.sendoku.app.theme.SendokuTheme
 import com.sendoku.app.theme.SendokuThemeId
@@ -103,6 +106,67 @@ class ThemeScreenshotTest {
 
     @Test
     fun terminal() = check(SendokuThemeId.TERMINAL, dark = true)
+
+    @Test
+    fun lessonDeepFieldDark() = checkLesson(SendokuThemeId.DEEP_FIELD, dark = true)
+
+    @Test
+    fun lessonInkLight() = checkLesson(SendokuThemeId.INK, dark = false)
+
+    @Test
+    fun lessonTerminal() = checkLesson(SendokuThemeId.TERMINAL, dark = true)
+
+    /**
+     * A lesson, in the looks most likely to break it.
+     *
+     * Three rather than all seven: Deep Field dark is the default, Ink light is the only warm
+     * paper one, and Terminal has no rounding anywhere and so is where a corner radius baked
+     * into the course would show up. The board itself is already covered in every look above.
+     */
+    private fun checkLesson(theme: SendokuThemeId, dark: Boolean) {
+        val name = "lesson_" + if (SendokuThemes.isFixed(theme)) {
+            theme.name.lowercase()
+        } else {
+            "${theme.name.lowercase()}_${if (dark) "dark" else "light"}"
+        }
+        compose.setContent {
+            CompositionLocalProvider(LocalDensity provides Density(density = 2f, fontScale = 1f)) {
+                SendokuTheme(themeId = theme, dark = dark) {
+                    Box(Modifier.size(360.dp, 620.dp)) {
+                        LessonPlayer(
+                            lesson = Curriculum.byId(LessonId.NAKED_SINGLE),
+                            onFinished = {},
+                            onLeave = {},
+                            startAt = 2,
+                        )
+                    }
+                }
+            }
+        }
+        compareOrWrite(name)
+    }
+
+    private fun compareOrWrite(name: String) {
+        compose.waitForIdle()
+        val actual = compose.onRoot().captureToImage().asAndroidBitmap()
+        val context = InstrumentationRegistry.getInstrumentation().context
+        val golden = runCatching {
+            context.assets.open("screenshots/$name.png").use { android.graphics.BitmapFactory.decodeStream(it) }
+        }.getOrNull()
+
+        if (golden == null) {
+            write(name, actual)
+            error("no reference image for $name, one has been written to the device")
+        }
+        val different = compare(golden, actual)
+        if (different > allowedFraction) {
+            write(name, actual)
+            error(
+                "$name differs in ${"%.3f".format(different * 100)} percent of its pixels, " +
+                    describe(golden, actual),
+            )
+        }
+    }
 
     private fun check(theme: SendokuThemeId, dark: Boolean) {
         val name = if (SendokuThemes.isFixed(theme)) {

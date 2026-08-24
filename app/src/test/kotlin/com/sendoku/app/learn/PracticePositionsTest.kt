@@ -64,6 +64,16 @@ class PracticePositionsTest {
     }
 
     @Test
+    fun `every technique the app teaches can be practised`() {
+        // The claim behind the practice screen: whatever the course names, the app can hand
+        // you a real board with one on it. Not "and nothing cheaper applies", which is neither
+        // achievable on a digits only board nor desirable, since finding the X-Wing on a grid
+        // that also has a single in it is the actual skill.
+        val missing = TechniqueId.entries.filter { PracticePositions.find(it, puzzles(3000), dims) == null }
+        assertTrue("no practice position exists for: $missing", missing.isEmpty())
+    }
+
+    @Test
     fun `a technique that never appears returns nothing rather than looping`() {
         // One puzzle is not enough to contain every technique, and the search has to say so
         // instead of walking the same grid forever.

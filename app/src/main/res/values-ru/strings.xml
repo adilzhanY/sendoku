@@ -650,4 +650,5 @@
     <string name="glossary_learn_this">УЧИТЬ</string>
     <string name="hint_learn_this">Научи меня</string>
     <string name="outcome_learn">Изучить: %1$s</string>
+    <string name="course_finished">Курс пройден целиком. Всё, что приложение умеет называть, теперь умеете называть и вы. Дальше только головоломки.</string>
 </resources>
