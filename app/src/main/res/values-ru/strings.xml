@@ -594,4 +594,33 @@
     <string name="lesson_look_first_3">Потом дешёвые исключения: указывающие и захватывающие пары. Их быстро проверить по областям, и они часто сразу открывают одиночку.</string>
     <string name="lesson_look_first_4">Потом пары и тройки в областях с наименьшим числом пустых клеток. Потом рыбы, потом крылья. Цепочки в последнюю очередь, всегда, потому что они самые трудоёмкие и самые редкие.</string>
     <string name="lesson_look_first_5">Искать Jellyfish, не проверив одиночек, это судоку-эквивалент переписывания программы вместо чтения сообщения об ошибке. Приложение оценивает головоломки по самому трудному, что им нужно, но и Beyond, это в основном одиночки.</string>
+    <string name="lesson_together_title">Beyond, вместе</string>
+    <string name="lesson_together_summary">Сложная головоломка, это в основном простые шаги и несколько трудных.</string>
+    <string name="lesson_together_1">Последний урок. Это то же поле, по которому шёл весь курс, уровень Beyond, и вот всё решение, названное техника за техникой.</string>
+    <string name="lesson_together_2">Начинается с голого одиночки. Почти всё с него начинается.</string>
+    <string name="lesson_together_3">Потом скрытый одиночка, в соседнем блоке.</string>
+    <string name="lesson_together_4">Теперь затор, и указывающая пара чистит столбец, чтобы одиночки пошли снова. Обратите внимание: ни одной цифры этот шаг не поставил, а продвижение произошло.</string>
+    <string name="lesson_together_5">Чуть позже голая пара, делающая ту же работу внутри области.</string>
+    <string name="lesson_together_6">Глубже, X-Wing. К этому моменту поле заполнено наполовину, и работают пометки.</string>
+    <string name="lesson_together_7">А ближе к концу то, из-за чего уровень такой: ALS-XZ. Одно исключение, и дальше снова одиночки.</string>
+    <string name="lesson_together_8">Вот что здесь значит Beyond. Не восемьдесят один трудный шаг, а семьдесят простых и горстка тех, где нужно всё выученное.</string>
+    <string name="lesson_together_9">Вы встретили все техники, которые приложение умеет называть. Идите и сыграйте, и без стеснения нажимайте подсказку, когда поле встало. Она для этого и есть.</string>
+    <string name="lesson_step_of">%1$d из %2$d</string>
+    <string name="lesson_back">Назад</string>
+    <string name="lesson_next">Дальше</string>
+    <string name="lesson_done">Готово</string>
+    <string name="lesson_replay">Сначала</string>
+    <string name="lesson_show_me">Показать</string>
+    <string name="lesson_cell_at">Строка %1$d, столбец %2$d.</string>
+    <string name="course_title">Учиться</string>
+    <string name="course_lesson_done">пройден</string>
+    <string name="course_lesson_next">следующий</string>
+    <string name="course_lesson_todo">не начат</string>
+    <string name="home_learn">Учиться</string>
+    <plurals name="course_progress">
+        <item quantity="one">%1$d из %2$d урока</item>
+        <item quantity="few">%1$d из %2$d уроков</item>
+        <item quantity="many">%1$d из %2$d уроков</item>
+        <item quantity="other">%1$d из %2$d уроков</item>
+    </plurals>
 </resources>

@@ -24,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.sendoku.app.R
@@ -59,6 +60,9 @@ public fun HomeScreen(
     onDaily: () -> Unit,
     onSettings: () -> Unit,
     onStats: () -> Unit,
+    onLearn: () -> Unit,
+    /** Lessons finished out of the whole course, for the line on the button. */
+    learnProgress: Pair<Int, Int>,
     modifier: Modifier = Modifier,
 ) {
     val colors = Sendoku.colors
@@ -129,6 +133,11 @@ public fun HomeScreen(
                     ContinueCard(summary, onResume)
                 }
             }
+
+            // Under the ladder rather than above it. Somebody opening the app to play should
+            // not have to scroll past a course to reach a puzzle, and somebody who wants the
+            // course will find it in the one place the app puts everything else.
+            LearnCard(finished = learnProgress.first, total = learnProgress.second, onClick = onLearn)
         }
 
         Row(
@@ -279,5 +288,34 @@ private fun HomeButton(label: String, accent: Boolean, onClick: () -> Unit, modi
             style = Sendoku.type.label,
             color = if (accent) colors.onAccent else colors.muted,
         )
+    }
+}
+
+/** The way into the course, with how far through it the player is. */
+@Composable
+private fun LearnCard(finished: Int, total: Int, onClick: () -> Unit) {
+    val colors = Sendoku.colors
+    val dimens = Sendoku.dimens
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = dimens.spaceS)
+            .heightIn(min = dimens.minTouchTarget)
+            .testTag("home:learn")
+            .clip(RoundedCornerShape(dimens.radiusM))
+            .background(colors.surface)
+            .clickable(onClick = onClick)
+            .padding(horizontal = dimens.spaceM, vertical = dimens.spaceM),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween,
+    ) {
+        Column(Modifier.weight(1f)) {
+            Text(stringResource(R.string.home_learn), style = Sendoku.type.label, color = colors.given)
+            Text(
+                text = pluralStringResource(R.plurals.course_progress, total, finished, total),
+                style = Sendoku.type.body,
+                color = colors.muted,
+            )
+        }
     }
 }

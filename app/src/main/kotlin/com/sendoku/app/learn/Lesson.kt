@@ -143,4 +143,5 @@ public enum class LessonId {
     ALS_XZ,
     WHEN_NOTHING_APPLIES,
     WHAT_TO_LOOK_FOR_FIRST,
+    A_BEYOND_TOGETHER,
 }

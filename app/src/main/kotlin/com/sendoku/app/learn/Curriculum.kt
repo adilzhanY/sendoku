@@ -712,6 +712,26 @@ public object Curriculum {
                 Step.Say(R.string.lesson_look_first_5),
             ),
         ),
+        Lesson(
+            id = LessonId.A_BEYOND_TOGETHER,
+            stage = Stage.THE_FAR_END,
+            title = R.string.lesson_together_title,
+            summary = R.string.lesson_together_summary,
+            teaches = emptyList(),
+            dims = Dimensions.CLASSIC,
+            board = WALK,
+            steps = listOf(
+                Step.Say(R.string.lesson_together_1),
+                Step.Show(R.string.lesson_together_2, focus = setOf(13)),
+                Step.Show(R.string.lesson_together_3, focus = setOf(24)),
+                Step.Show(R.string.lesson_together_4, focus = setOf(38, 47), strike = setOf(65, 74)),
+                Step.Show(R.string.lesson_together_5, focus = setOf(36, 54), strike = setOf(72)),
+                Step.Show(R.string.lesson_together_6, focus = setOf(30, 33, 39, 42), strike = setOf(6, 15)),
+                Step.Show(R.string.lesson_together_7, focus = setOf(1, 10, 19, 28, 55), strike = setOf(64)),
+                Step.Say(R.string.lesson_together_8),
+                Step.Say(R.string.lesson_together_9),
+            ),
+        ),
     )
 
     /**

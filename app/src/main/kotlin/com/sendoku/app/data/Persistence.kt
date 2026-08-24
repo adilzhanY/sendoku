@@ -69,6 +69,70 @@ public data class FinishedRow(
     val dailyEpochDay: Long? = null,
 )
 
+/**
+ * How far through a lesson somebody is.
+ *
+ * One row per lesson they have opened. The step is where they left off, so a lesson closed
+ * halfway reopens halfway rather than at the beginning, which is the difference between a
+ * course you can do on a bus and one you have to sit down for.
+ */
+@Entity(tableName = "lesson_progress")
+public data class LessonProgressRow(
+    @PrimaryKey val lessonId: String,
+    val step: Int,
+    val finished: Boolean,
+    val lastSeenAt: Long,
+)
+
+/**
+ * How well a technique is known.
+ *
+ * Counted per technique rather than per lesson, because a lesson is read once and a technique
+ * is practised. [correct] is the run of correct answers since the last wrong one or the last
+ * reveal, which is what the mastery rule reads.
+ */
+@Entity(tableName = "technique_mastery")
+public data class TechniqueMasteryRow(
+    @PrimaryKey val technique: String,
+    val attempts: Int,
+    val correct: Int,
+    val streak: Int,
+    val mastered: Boolean,
+    val lastPractisedAt: Long,
+)
+
+@Dao
+public interface LessonProgressDao {
+
+    @Query("SELECT * FROM lesson_progress")
+    public fun watchAll(): Flow<List<LessonProgressRow>>
+
+    @Query("SELECT * FROM lesson_progress WHERE lessonId = :id")
+    public suspend fun of(id: String): LessonProgressRow?
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    public suspend fun save(row: LessonProgressRow)
+
+    @Query("DELETE FROM lesson_progress")
+    public suspend fun clear()
+}
+
+@Dao
+public interface TechniqueMasteryDao {
+
+    @Query("SELECT * FROM technique_mastery")
+    public fun watchAll(): Flow<List<TechniqueMasteryRow>>
+
+    @Query("SELECT * FROM technique_mastery WHERE technique = :id")
+    public suspend fun of(id: String): TechniqueMasteryRow?
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    public suspend fun save(row: TechniqueMasteryRow)
+
+    @Query("DELETE FROM technique_mastery")
+    public suspend fun clear()
+}
+
 @Dao
 public interface InProgressDao {
 
@@ -124,7 +188,12 @@ public interface FinishedDao {
  * before release rather than quietly delete a player's history after it.
  */
 @Database(
-    entities = [InProgressRow::class, FinishedRow::class],
+    entities = [
+        InProgressRow::class,
+        FinishedRow::class,
+        LessonProgressRow::class,
+        TechniqueMasteryRow::class,
+    ],
     version = SendokuDatabase.VERSION,
     exportSchema = true,
 )
@@ -134,8 +203,12 @@ public abstract class SendokuDatabase : RoomDatabase() {
 
     public abstract fun finished(): FinishedDao
 
+    public abstract fun lessonProgress(): LessonProgressDao
+
+    public abstract fun mastery(): TechniqueMasteryDao
+
     public companion object {
-        public const val VERSION: Int = 2
+        public const val VERSION: Int = 3
         public const val NAME: String = "sendoku.db"
 
         /**
@@ -152,7 +225,32 @@ public abstract class SendokuDatabase : RoomDatabase() {
             }
         }
 
-        public val MIGRATIONS: Array<Migration> = arrayOf(MIGRATION_1_2)
+        /**
+         * Version 2 to 3: the learning course.
+         *
+         * Two new tables and nothing touched. Course progress lives in the same database as
+         * everything else on purpose, so one backup covers a player's whole history and there
+         * is no second file to lose.
+         */
+        public val MIGRATION_2_3: Migration = object : Migration(2, 3) {
+            override fun migrate(connection: SQLiteConnection) {
+                connection.execSQL(
+                    "CREATE TABLE IF NOT EXISTS `lesson_progress` (" +
+                        "`lessonId` TEXT NOT NULL, `step` INTEGER NOT NULL, " +
+                        "`finished` INTEGER NOT NULL, `lastSeenAt` INTEGER NOT NULL, " +
+                        "PRIMARY KEY(`lessonId`))",
+                )
+                connection.execSQL(
+                    "CREATE TABLE IF NOT EXISTS `technique_mastery` (" +
+                        "`technique` TEXT NOT NULL, `attempts` INTEGER NOT NULL, " +
+                        "`correct` INTEGER NOT NULL, `streak` INTEGER NOT NULL, " +
+                        "`mastered` INTEGER NOT NULL, `lastPractisedAt` INTEGER NOT NULL, " +
+                        "PRIMARY KEY(`technique`))",
+                )
+            }
+        }
+
+        public val MIGRATIONS: Array<Migration> = arrayOf(MIGRATION_1_2, MIGRATION_2_3)
     }
 }
 

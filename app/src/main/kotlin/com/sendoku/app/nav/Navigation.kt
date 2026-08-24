@@ -32,6 +32,12 @@ public sealed interface Destination {
     /** The month view, from which a day is chosen. */
     public data object Calendar : Destination
 
+    /** The course map. */
+    public data object Course : Destination
+
+    /** One lesson, by name. */
+    public data class LessonAt(val lesson: String) : Destination
+
     public data object Settings : Destination
 
     /** Every technique the app knows, for somebody who has just met one. */
@@ -102,6 +108,8 @@ public class Navigator(stack: List<Destination> = listOf(Destination.Home)) {
             Destination.Resume -> "resume"
             is Destination.Daily -> "daily:$epochDay"
             Destination.Calendar -> "calendar"
+            Destination.Course -> "course"
+            is Destination.LessonAt -> "lesson:$lesson"
             Destination.Settings -> "settings"
             Destination.Glossary -> "glossary"
             Destination.Stats -> "stats"
@@ -119,6 +127,8 @@ public class Navigator(stack: List<Destination> = listOf(Destination.Home)) {
             value == "licences" -> Destination.Licences
             value.startsWith("play:") -> Destination.Play(Grade.valueOf(value.removePrefix("play:")))
             value == "calendar" -> Destination.Calendar
+            value == "course" -> Destination.Course
+            value.startsWith("lesson:") -> Destination.LessonAt(value.removePrefix("lesson:"))
             value.startsWith("daily:") -> Destination.Daily(value.removePrefix("daily:").toLong())
             else -> Destination.Home
         }

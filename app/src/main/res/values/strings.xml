@@ -599,4 +599,31 @@
     <string name="lesson_look_first_3">Then the cheap eliminations: pointing and claiming pairs. They are quick to check, house by house, and they often unlock a single straight away.</string>
     <string name="lesson_look_first_4">Then pairs and triples in the houses with the fewest empty cells. Then fish, then wings. Chains last, always, because they are the most work and the least common.</string>
     <string name="lesson_look_first_5">Hunting a Jellyfish before checking the singles is the sudoku equivalent of rewriting a program before reading the error message. The app grades puzzles by the hardest thing they need, but a Beyond is still mostly singles.</string>
+    <string name="lesson_together_title">A Beyond, together</string>
+    <string name="lesson_together_summary">A hard puzzle is mostly easy steps with a few hard ones in it.</string>
+    <string name="lesson_together_1">The last lesson. This is the grid the course has been walking through, at the Beyond grade, and here is the whole solve named technique by technique.</string>
+    <string name="lesson_together_2">It opens with a naked single. Almost everything does.</string>
+    <string name="lesson_together_3">Then a hidden single, in the box next door.</string>
+    <string name="lesson_together_4">Now it stalls, and a pointing pair clears a column so the singles can start again. Notice that no digit was placed by that step and progress was made anyway.</string>
+    <string name="lesson_together_5">A naked pair a little later, doing the same job in a house.</string>
+    <string name="lesson_together_6">Deeper in, an X-Wing. By now the grid is half full and the notes are doing the work.</string>
+    <string name="lesson_together_7">And near the end, the one that earns the grade: an ALS-XZ. One elimination, and the rest is singles again.</string>
+    <string name="lesson_together_8">That is what Beyond means here. Not eighty one hard steps, but seventy easy ones and a handful that need everything you have learned.</string>
+    <string name="lesson_together_9">You have met every technique this app can name. Go and play one, and use the hint button without embarrassment when a grid stops moving. That is what it is for.</string>
+    <string name="lesson_step_of">%1$d of %2$d</string>
+    <string name="lesson_back">Back</string>
+    <string name="lesson_next">Next</string>
+    <string name="lesson_done">Done</string>
+    <string name="lesson_replay">Again</string>
+    <string name="lesson_show_me">Show me</string>
+    <string name="lesson_cell_at">Row %1$d, column %2$d.</string>
+    <string name="course_title">Learn</string>
+    <string name="course_lesson_done">finished</string>
+    <string name="course_lesson_next">next</string>
+    <string name="course_lesson_todo">not started</string>
+    <string name="home_learn">Learn</string>
+    <plurals name="course_progress">
+        <item quantity="one">%1$d of %2$d lesson</item>
+        <item quantity="other">%1$d of %2$d lessons</item>
+    </plurals>
 </resources>

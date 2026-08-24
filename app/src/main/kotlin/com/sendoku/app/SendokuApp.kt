@@ -18,6 +18,11 @@ import com.sendoku.app.data.DailyDays
 import com.sendoku.app.data.Statistics
 import com.sendoku.app.game.GameSettings
 import com.sendoku.app.game.GameViewModel
+import com.sendoku.app.learn.CourseProgress
+import com.sendoku.app.learn.CourseScreen
+import com.sendoku.app.learn.Curriculum
+import com.sendoku.app.learn.LessonId
+import com.sendoku.app.learn.LessonPlayer
 import com.sendoku.app.nav.Destination
 import com.sendoku.app.nav.Navigator
 import com.sendoku.app.theme.Sendoku
@@ -53,6 +58,8 @@ public fun SendokuApp(
     savedGame: Flow<InProgressSummary?>,
     statistics: Flow<Statistics>,
     dailyDays: Flow<DailyDays>,
+    course: Flow<CourseProgress>,
+    onLessonStep: (LessonId, Int, Boolean) -> Unit,
     appearance: Flow<Appearance>,
     onAppearanceChange: (Appearance) -> Unit,
     onResetStats: () -> Unit,
@@ -66,6 +73,7 @@ public fun SendokuApp(
     val saved by savedGame.collectAsState(initial = null)
     val stats by statistics.collectAsState(initial = Statistics.of(emptyList()))
     val calendar by dailyDays.collectAsState(initial = DailyDays())
+    val learning by course.collectAsState(initial = CourseProgress())
     val currentSettings by settings.collectAsState(initial = GameSettings())
     val look by appearance.collectAsState(initial = Appearance())
 
@@ -85,6 +93,8 @@ public fun SendokuApp(
             look = look,
             loading = loading,
             dailyDays = calendar,
+            course = learning,
+            onLessonStep = onLessonStep,
             settingsChange = onSettingsChange,
             appearanceChange = onAppearanceChange,
             resetStats = onResetStats,
@@ -106,6 +116,8 @@ private fun Screens(
     look: Appearance,
     loading: Boolean,
     dailyDays: DailyDays,
+    course: CourseProgress,
+    onLessonStep: (LessonId, Int, Boolean) -> Unit,
     settingsChange: (GameSettings) -> Unit,
     appearanceChange: (Appearance) -> Unit,
     resetStats: () -> Unit,
@@ -137,6 +149,8 @@ private fun Screens(
                 onDaily = { navigator.go(Destination.Calendar) },
                 onSettings = { navigator.go(Destination.Settings) },
                 onStats = { navigator.go(Destination.Stats) },
+                onLearn = { navigator.go(Destination.Course) },
+                learnProgress = course.finishedCount to Curriculum.lessons.size,
                 modifier = modifier,
             )
         }
@@ -153,6 +167,32 @@ private fun Screens(
                     navigator.go(Destination.Daily(epochDay))
                 },
                 onBack = { navigator.back() },
+                modifier = modifier,
+            )
+        }
+
+        Destination.Course -> {
+            CourseScreen(
+                progress = course,
+                onOpen = { navigator.go(Destination.LessonAt(it.name)) },
+                onBack = { navigator.back() },
+                modifier = modifier,
+            )
+        }
+
+        is Destination.LessonAt -> {
+            val id = runCatching { LessonId.valueOf((navigator.current as Destination.LessonAt).lesson) }
+                .getOrDefault(LessonId.WHAT_A_SUDOKU_IS)
+            val lesson = Curriculum.byId(id)
+            LessonPlayer(
+                lesson = lesson,
+                startAt = course.lessons[id]?.step ?: 0,
+                onStep = { step -> onLessonStep(id, step, false) },
+                onFinished = {
+                    onLessonStep(id, lesson.steps.lastIndex, true)
+                    navigator.back()
+                },
+                onLeave = { navigator.back() },
                 modifier = modifier,
             )
         }

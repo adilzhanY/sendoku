@@ -34,6 +34,7 @@ import com.sendoku.app.data.RoomGameRepository
 import com.sendoku.app.data.SendokuDatabase
 import com.sendoku.app.data.ThemeMode
 import com.sendoku.app.game.GameViewModel
+import com.sendoku.app.learn.RoomLearningRepository
 import com.sendoku.app.theme.Sendoku
 import com.sendoku.app.theme.SendokuTheme
 import com.sendoku.app.ui.InProgressSummary
@@ -67,6 +68,7 @@ class MainActivity : ComponentActivity() {
             .build()
     }
     private val repository by lazy { RoomGameRepository(database.inProgress(), database.finished()) }
+    private val learning by lazy { RoomLearningRepository(database.lessonProgress(), database.mastery()) }
     private val settings by lazy { DataStoreSettings(preferences) }
 
     /**
@@ -124,6 +126,12 @@ class MainActivity : ComponentActivity() {
                         solvedByGrade = repository.solvedByGrade(),
                         statistics = repository.statistics(),
                         dailyDays = repository.dailyDays(),
+                        course = learning.progress(),
+                        onLessonStep = { lesson, step, finished ->
+                            lifecycleScope.launch {
+                                learning.record(lesson, step, finished, System.currentTimeMillis())
+                            }
+                        },
                         appearance = settings.appearance,
                         onAppearanceChange = { changed ->
                             lifecycleScope.launch { settings.updateAppearance { changed } }
