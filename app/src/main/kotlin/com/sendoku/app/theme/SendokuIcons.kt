@@ -197,6 +197,28 @@ public object SendokuIcons {
         }
     }
 
+    /**
+     * A padlock, shut.
+     *
+     * On a locked level, next to a line saying what opens it. A lock with no explanation is a
+     * closed door with nobody behind it, so the two are never drawn apart.
+     */
+    public val Locked: ImageVector = icon("Locked") {
+        stroke {
+            moveTo(8.4f, 10.4f)
+            verticalLineTo(7.6f)
+            arcTo(3.6f, 3.6f, 0f, isMoreThanHalf = false, isPositiveArc = true, 15.6f, 7.6f)
+            verticalLineTo(10.4f)
+        }
+        stroke {
+            moveTo(6.4f, 10.4f)
+            horizontalLineTo(17.6f)
+            verticalLineTo(19.6f)
+            horizontalLineTo(6.4f)
+            close()
+        }
+    }
+
     /** A person. Not a photograph and not initials, since the app knows neither. */
     public val Account: ImageVector = icon("Account") {
         stroke {

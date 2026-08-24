@@ -9,7 +9,7 @@
 <resources>
     <string name="app_name">Sendoku</string>
 
-    <string name="home_the_climb">ВОСХОЖДЕНИЕ</string>
+    <string name="home_choose_level">ВЫБЕРИТЕ УРОВЕНЬ</string>
     <string name="home_daily">Сегодня</string>
     <string name="home_new_puzzle">Новая</string>
     <string name="home_resume">Продолжить</string>
@@ -17,12 +17,13 @@
     <string name="home_percent">%1$s, %2$d%%</string>
     <string name="home_placed">Заполнено: %1$d из %2$d</string>
 
-    <string name="grade_gentle">Простой</string>
-    <string name="grade_steady">Спокойный</string>
-    <string name="grade_tricky">Хитрый</string>
-    <string name="grade_severe">Сложный</string>
-    <string name="grade_diabolical">Дьявольский</string>
-    <string name="grade_beyond">За гранью</string>
+    <string name="grade_gentle">Лёгкий</string>
+    <string name="grade_steady">Средний</string>
+    <string name="grade_tricky">Трудный</string>
+    <string name="grade_severe">Очень трудный</string>
+    <string name="grade_diabolical">Эксперт</string>
+    <string name="grade_beyond">Мастер</string>
+    <string name="grade_locked">Пройдите один уровень «%1$s», чтобы открыть этот</string>
     <string name="gate_gentle">по одной понятной цифре</string>
     <string name="gate_steady">пары и цифры, запертые на линии</string>
     <string name="gate_tricky">тройки и узоры по всей сетке</string>

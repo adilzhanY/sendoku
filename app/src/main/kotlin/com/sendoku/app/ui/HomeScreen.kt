@@ -17,6 +17,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -26,9 +27,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.disabled
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.sendoku.app.R
 import com.sendoku.app.theme.Sendoku
+import com.sendoku.app.theme.SendokuIcons
 import com.sendoku.engine.Grade
 import kotlin.time.Duration
 
@@ -41,16 +46,16 @@ public data class InProgressSummary(val grade: Grade, val placed: Int, val total
 }
 
 /**
- * The ascent.
+ * The levels, easiest first.
  *
- * The grades run bottom to top, hardest at the top, so the ladder reads as something you
- * climb rather than a list you pick from. The ones above where the player has reached are
- * dimmed, and that is all: they are still tappable.
+ * Plain names. The engine grades a puzzle by the hardest technique it needs, and the words
+ * that came out of that (Gentle, Tricky, Diabolical) describe the reasoning rather than the
+ * difficulty. Somebody opening the app for the first time cannot tell whether Severe is
+ * harder than Diabolical, and a list you cannot order is not a list of levels. Easy to
+ * Master says one thing and says it immediately.
  *
- * Locking them was the obvious alternative and it is the wrong one. This is a free app with
- * no advertisement in it, and there is nothing to gain by telling somebody who bought a
- * sudoku app that they may not play sudoku. A grade they are not ready for will beat them,
- * which is a far better teacher than a padlock.
+ * One level opens at a time, and only by winning the one before it. The order is top to
+ * bottom, easiest first, so the next thing to play is the first thing read.
  */
 @Composable
 public fun HomeScreen(
@@ -62,7 +67,7 @@ public fun HomeScreen(
 ) {
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
-    val reached = state.reachedGrade()
+    val open = state.highestOpen()
 
     Column(modifier = modifier.fillMaxSize().background(colors.background)) {
         Row(
@@ -87,18 +92,22 @@ public fun HomeScreen(
             verticalArrangement = Arrangement.spacedBy(dimens.spaceS),
         ) {
             Text(
-                text = stringResource(R.string.home_the_climb),
+                text = stringResource(R.string.home_choose_level),
                 style = Sendoku.type.overline,
                 color = colors.muted,
                 modifier = Modifier.padding(bottom = dimens.spaceXs),
             )
 
-            // Hardest first, so the eye starts at the ceiling and travels down to where it is.
-            for (grade in Grade.entries.reversed()) {
+            // Easiest first, so the level to play next is the first one read rather than the
+            // last. Reading a ladder from the top down and finding the bottom rung at the
+            // bottom of the screen is a puzzle nobody asked for.
+            for (grade in Grade.entries) {
+                val locked = grade.ordinal > open.ordinal
                 GradeRow(
                     grade = grade,
                     solved = state.solvedByGrade[grade] ?: 0,
-                    aheadOfYou = grade.ordinal > reached.ordinal,
+                    locked = locked,
+                    opensAfter = if (locked) Grade.entries[grade.ordinal - 1] else null,
                     onClick = { onPlay(grade) },
                 )
             }
@@ -133,7 +142,7 @@ public fun HomeScreen(
                     },
                 ),
                 accent = true,
-                onClick = { if (state.inProgress != null) onResume() else onPlay(reached) },
+                onClick = { if (state.inProgress != null) onResume() else onPlay(open) },
                 modifier = Modifier.weight(1.4f),
             )
         }
@@ -141,28 +150,50 @@ public fun HomeScreen(
 }
 
 /**
- * The highest grade the player has finished something at, or the easiest if they are new.
+ * The hardest level the player is allowed to start.
  *
- * Used only to decide what is dimmed. It is a description of where they have got to, not a
- * permission.
+ * Everything up to and including the first level they have not yet won. A new player has
+ * exactly one level open, and each win opens exactly one more. Winning a level twice opens
+ * nothing further, and losing opens nothing at all, so the only way down the list is
+ * through it.
+ *
+ * Deliberately derived from the solve counts rather than stored. A number in the database
+ * saying which level is open can drift away from the record of games played, and then a
+ * player either loses levels they earned or keeps ones they did not.
  */
-internal fun HomeState.reachedGrade(): Grade = Grade.entries.lastOrNull { (solvedByGrade[it] ?: 0) > 0 } ?: Grade.GENTLE
+internal fun HomeState.highestOpen(): Grade {
+    val firstUnwon = Grade.entries.indexOfFirst { (solvedByGrade[it] ?: 0) == 0 }
+    return if (firstUnwon < 0) Grade.entries.last() else Grade.entries[firstUnwon]
+}
 
 @Composable
-private fun GradeRow(grade: Grade, solved: Int, aheadOfYou: Boolean, onClick: () -> Unit) {
+private fun GradeRow(grade: Grade, solved: Int, locked: Boolean, opensAfter: Grade?, onClick: () -> Unit) {
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
+    val name = stringResource(gradeName(grade))
+    val below = opensAfter?.let { stringResource(gradeName(it)) }
+    val detail = if (below != null) {
+        stringResource(R.string.grade_locked, below)
+    } else {
+        stringResource(gradeGate(grade))
+    }
 
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .heightIn(min = dimens.minTouchTarget)
-            .testTag("home:grade:${'$'}{grade.name}")
+            .testTag("home:grade:${grade.name}")
             .clip(RoundedCornerShape(dimens.radiusM))
-            .background(if (aheadOfYou) colors.surface else colors.surfaceRaised)
-            .clickable(onClick = onClick)
-            .alpha(if (aheadOfYou) 0.45f else 1f)
-            .padding(horizontal = dimens.spaceM, vertical = dimens.spaceS),
+            .background(if (locked) colors.surface else colors.surfaceRaised)
+            .clickable(enabled = !locked, onClick = onClick)
+            .alpha(if (locked) 0.55f else 1f)
+            .padding(horizontal = dimens.spaceM, vertical = dimens.spaceS)
+            .semantics(mergeDescendants = true) {
+                if (locked) {
+                    disabled()
+                    contentDescription = "$name, $detail"
+                }
+            },
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(dimens.spaceM),
     ) {
@@ -171,17 +202,26 @@ private fun GradeRow(grade: Grade, solved: Int, aheadOfYou: Boolean, onClick: ()
                 .width(4.dp)
                 .height(26.dp)
                 .clip(CircleShape)
-                .background(if (aheadOfYou) colors.hairline else colors.accent),
+                .background(if (locked) colors.hairline else colors.accent),
         )
         Column(Modifier.weight(1f)) {
-            Text(stringResource(gradeName(grade)), style = Sendoku.type.label, color = colors.given)
-            Text(stringResource(gradeGate(grade)), style = Sendoku.type.body, color = colors.muted)
+            Text(name, style = Sendoku.type.label, color = colors.given)
+            Text(detail, style = Sendoku.type.body, color = colors.muted)
         }
-        Text(
-            text = if (solved == 0) "" else solved.toString(),
-            style = Sendoku.type.timer,
-            color = colors.accent,
-        )
+        if (locked) {
+            Icon(
+                imageVector = SendokuIcons.Locked,
+                contentDescription = null,
+                tint = colors.muted,
+                modifier = Modifier.size(20.dp),
+            )
+        } else {
+            Text(
+                text = if (solved == 0) "" else solved.toString(),
+                style = Sendoku.type.timer,
+                color = colors.accent,
+            )
+        }
     }
 }
 

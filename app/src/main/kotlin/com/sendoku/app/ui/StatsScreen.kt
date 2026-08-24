@@ -100,7 +100,9 @@ public fun StatsScreen(
         Note(stringResource(R.string.stats_totals, statistics.totalTime.readable(), statistics.totalHints))
 
         Section(stringResource(R.string.stats_by_grade))
-        for (grade in Grade.entries.reversed()) {
+        // Easiest first, the same order the home screen uses. Two lists of the same six
+        // things in opposite orders is a way to misread both.
+        for (grade in Grade.entries) {
             val record = statistics.byGrade.getValue(grade)
             if (record.played == 0) continue
             GradeStat(record)

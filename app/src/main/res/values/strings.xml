@@ -11,7 +11,7 @@
     <string name="app_name">Sendoku</string>
 
     <!-- Home -->
-    <string name="home_the_climb">THE CLIMB</string>
+    <string name="home_choose_level">CHOOSE A LEVEL</string>
     <string name="home_daily">Daily</string>
     <string name="home_new_puzzle">New puzzle</string>
     <string name="home_resume">Resume</string>
@@ -20,12 +20,13 @@
     <string name="home_placed">Placed: %1$d of %2$d</string>
 
     <!-- Grades -->
-    <string name="grade_gentle">Gentle</string>
-    <string name="grade_steady">Steady</string>
-    <string name="grade_tricky">Tricky</string>
-    <string name="grade_severe">Severe</string>
-    <string name="grade_diabolical">Diabolical</string>
-    <string name="grade_beyond">Beyond</string>
+    <string name="grade_gentle">Easy</string>
+    <string name="grade_steady">Medium</string>
+    <string name="grade_tricky">Hard</string>
+    <string name="grade_severe">Very hard</string>
+    <string name="grade_diabolical">Expert</string>
+    <string name="grade_beyond">Master</string>
+    <string name="grade_locked">Win one %1$s puzzle to open this</string>
     <string name="gate_gentle">one clear digit at a time</string>
     <string name="gate_steady">pairs, and digits locked to a line</string>
     <string name="gate_tricky">triples, and patterns across the grid</string>
