@@ -148,7 +148,7 @@ public fun GameScreen(
                     ) {
                         GameHeader(state, leave, onSettings, onPause = { onEvent(GameEvent.Pause) })
                         HintArea(hint, onEvent, { hint = it }, onGlossary)
-                        Controls(state, feedback) { hint = HintEngine.next(state) }
+                        Controls(state, feedback) { hint = askForHint(state, hint, feedback) }
                     }
                 }
             } else {
@@ -166,7 +166,7 @@ public fun GameScreen(
                         }, boardCap, hint, onGlossary)
                     }
                     HintArea(hint, onEvent, { hint = it }, onGlossary)
-                    Controls(state, feedback) { hint = HintEngine.next(state) }
+                    Controls(state, feedback) { hint = askForHint(state, hint, feedback) }
                 }
             }
         }
@@ -265,6 +265,30 @@ private fun BoardArea(
     }
 }
 
+/**
+ * The next hint, and whether it costs one.
+ *
+ * Tapping the button again while the same hint is still on screen is free. It has to be:
+ * hints are limited, and the panel is easy to lose track of on a small screen, so charging
+ * for a second look at something the app has already said would end games by accident. A
+ * hint costs when it tells the player something they have not been told yet.
+ */
+private fun askForHint(state: GameState, showing: Hint?, onEvent: (GameEvent) -> Unit): Hint {
+    val next = HintEngine.next(state)
+    val alreadySaid = when {
+        showing == null -> false
+        showing is Hint.Step && next is Hint.Step -> showing.deduction == next.deduction
+        else -> showing == next
+    }
+    if (alreadySaid) {
+        // Keep whatever level the player had already unfolded, or the panel would fold
+        // itself back up under them.
+        return checkNotNull(showing)
+    }
+    onEvent(GameEvent.Hint)
+    return next
+}
+
 @Composable
 private fun Controls(state: GameState, onEvent: (GameEvent) -> Unit, onHint: () -> Unit) {
     Column(verticalArrangement = Arrangement.spacedBy(Sendoku.dimens.spaceS)) {
@@ -275,10 +299,7 @@ private fun Controls(state: GameState, onEvent: (GameEvent) -> Unit, onHint: () 
             onRedo = { onEvent(GameEvent.Redo) },
             onErase = { onEvent(GameEvent.Erase) },
             onTogglePencil = { onEvent(GameEvent.TogglePencil) },
-            onHint = {
-                onEvent(GameEvent.Hint)
-                onHint()
-            },
+            onHint = onHint,
         )
     }
 }

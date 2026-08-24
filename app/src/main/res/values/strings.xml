@@ -99,6 +99,7 @@
     <string name="hint_where">Show me where</string>
     <string name="hint_explain">Explain it</string>
     <string name="hint_do_it">Do it</string>
+    <string name="hint_rests_on_earlier">Part of this rests on marks an earlier hint ruled out. They are pencilled in on the board, so you can follow it from there.</string>
     <string name="hint_what_is_this">WHAT IS THIS?</string>
     <string name="hint_wrong_title">SOMETHING IS WRONG</string>
     <string name="hint_wrong_one">One of the digits you have placed cannot be right. It is highlighted.</string>

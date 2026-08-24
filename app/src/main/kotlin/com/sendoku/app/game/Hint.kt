@@ -35,8 +35,16 @@ public enum class HintLevel {
 /** What the hint system has to say. */
 public sealed interface Hint {
 
-    /** A move that follows from the board, and the reasoning behind it. */
-    public data class Step(val deduction: Deduction, val level: HintLevel) : Hint
+    /**
+     * A move that follows from the board, and the reasoning behind it.
+     *
+     * [restsOnEarlierHints] is true when part of the argument is a candidate an earlier hint
+     * ruled out rather than something a player can read off the digits. The panel says so
+     * when it is, because a hint that quietly assumes its own earlier work reads as the app
+     * telling you to guess.
+     */
+    public data class Step(val deduction: Deduction, val level: HintLevel, val restsOnEarlierHints: Boolean = false) :
+        Hint
 
     /**
      * A digit on the board is wrong.
@@ -94,7 +102,25 @@ public object HintEngine {
                     it.eliminations.any { e -> e !in state.eliminated }
             }
         } ?: return Hint.Stuck
-        return Hint.Step(deduction, level)
+        return Hint.Step(deduction, level, restsOnEarlierHints(state, grid, deduction))
+    }
+
+    /**
+     * Whether the argument leans on a candidate the board alone does not rule out.
+     *
+     * Anything the deduction points at counts: the cells it rests on, the cells it strikes,
+     * and every cell of the houses it names, since a hidden single's argument is about the
+     * whole house rather than about one cell. If an earlier hint ruled a digit out of any of
+     * them, the player cannot check this one by reading the grid, and has to be told so.
+     */
+    private fun restsOnEarlierHints(state: GameState, grid: CandidateGrid, deduction: Deduction): Boolean {
+        if (state.eliminated.isEmpty()) return false
+        val relevant = buildSet {
+            addAll(deduction.focusCells)
+            addAll(deduction.eliminations.map { it.cell })
+            for (house in deduction.houses) addAll(grid.cellsOf(house).toList())
+        }
+        return state.eliminated.any { it.cell in relevant }
     }
 }
 

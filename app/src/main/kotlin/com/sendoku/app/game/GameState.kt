@@ -2,6 +2,7 @@ package com.sendoku.app.game
 
 import androidx.compose.runtime.Immutable
 import com.sendoku.engine.Board
+import com.sendoku.engine.CandidateGrid
 import com.sendoku.engine.Candidates
 import com.sendoku.engine.Dimensions
 import com.sendoku.engine.Geometry
@@ -352,18 +353,29 @@ public data class GameState(
      * The struck pencil marks come out in one move and any placement follows in another, so
      * both can be undone. A hint that could not be taken back would be a trap for anyone who
      * tapped it by accident, and accepting help should never cost more than doing it by hand.
+     *
+     * Every cell the hint strikes is left holding its true marks, not merely the ones the
+     * player happened to have written. This is the fix for a real and nasty bug: a hint
+     * would rule a digit out, the player had no marks in that cell so nothing on the board
+     * changed, and the next hint would announce that the cell had only one digit left. From
+     * where the player sat it had two, and the app was telling them to guess. Whatever a
+     * hint proves has to end up somewhere they can see it.
      */
     public fun applyHint(deduction: Deduction): GameState {
+        val known = eliminated + deduction.eliminations
         val struck = HashMap<Int, Cell>()
-        for ((cell, digit) in deduction.eliminations) {
-            val current = struck[cell] ?: cells[cell]
-            if (digit in current.marks) struck[cell] = current.copy(marks = current.marks - digit)
+        val grid = CandidateGrid.ofOrNull(toBoard())
+        for (cell in deduction.eliminations.map { it.cell }.distinct()) {
+            val current = cells[cell]
+            if (!current.isEmpty) continue
+            var truth = grid?.candidatesAt(cell) ?: current.marks
+            for ((at, digit) in known) if (at == cell) truth -= digit
+            if (truth != current.marks) struck[cell] = current.copy(marks = truth)
         }
 
         var next = if (struck.isEmpty()) this else apply(MoveKind.MARK, deduction.focusCells.firstOrNull() ?: 0, struck)
-        // Remembered before the placements, because entering a digit is a player move as far
-        // as apply is concerned and clears the set.
-        val known = eliminated + deduction.eliminations
+        // The set is rebuilt after the placements, because entering a digit is a player move
+        // as far as apply is concerned and clears it.
         for ((cell, digit) in deduction.placements) {
             next = next.select(cell).enter(digit)
         }

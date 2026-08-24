@@ -94,6 +94,7 @@
     <string name="hint_where">Показать где</string>
     <string name="hint_explain">Объяснить</string>
     <string name="hint_do_it">Сделать</string>
+    <string name="hint_rests_on_earlier">Часть этого опирается на пометки, которые убрала прошлая подсказка. Они вписаны на доске, так что дальше можно проследить оттуда.</string>
     <string name="hint_what_is_this">ЧТО ЭТО ТАКОЕ?</string>
     <string name="hint_wrong_title">ЧТО-ТО НЕ ТАК</string>
     <string name="hint_wrong_one">Одна из поставленных вами цифр не может быть верной. Она выделена.</string>

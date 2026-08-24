@@ -178,6 +178,15 @@ private fun StepBody(hint: Hint.Step, onGlossary: () -> Unit) {
         )
     }
 
+    if (hint.restsOnEarlierHints && hint.level != HintLevel.NAME) {
+        Text(
+            text = stringResource(R.string.hint_rests_on_earlier),
+            style = Sendoku.type.body,
+            color = colors.muted,
+            modifier = Modifier.testTag("hint:earlier"),
+        )
+    }
+
     if (hint.level == HintLevel.FULL) {
         Text(
             text = stringResource(TechniqueCopy.because(technique)),
