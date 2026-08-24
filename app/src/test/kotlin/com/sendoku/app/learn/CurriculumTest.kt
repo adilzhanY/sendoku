@@ -98,20 +98,42 @@ class CurriculumTest {
     }
 
     @Test
-    fun `techniques are taught in the order the engine costs them`() {
-        val taught = Curriculum.lessons.mapNotNull { it.teaches }
-        val expected = Curriculum.ladderOrder.filter { it in taught }
-        assertEquals(
-            "the course teaches techniques in a different order from the engine's ladder",
-            expected,
-            taught,
-        )
+    fun `inside a stage, techniques are taught in the order the engine costs them`() {
+        // Not one flat list. The ladder puts an X-Wing at 3.2 and a hidden pair at 3.4, so a
+        // strict reading would teach a fish in the middle of the subsets. Families are taught
+        // together and the stages are what the ladder orders.
+        for (stage in Stage.entries) {
+            val taught = Curriculum.of(stage).flatMap { it.teaches }
+            val expected = Curriculum.ladderOrder.filter { it in taught }
+            assertEquals("$stage teaches its techniques out of the engine's order", expected, taught)
+        }
+    }
+
+    @Test
+    fun `stages run in order of their cheapest technique`() {
+        val rungs = Stage.entries
+            .map { stage -> stage to Curriculum.of(stage).flatMap { it.teaches } }
+            .filter { it.second.isNotEmpty() }
+            .map { (stage, taught) -> stage to taught.minOf { Curriculum.ladderOrder.indexOf(it) } }
+        for ((earlier, later) in rungs.zipWithNext()) {
+            assertTrue(
+                "${later.first} starts cheaper than ${earlier.first}, so the course goes backwards",
+                later.second > earlier.second,
+            )
+        }
     }
 
     @Test
     fun `no technique is taught twice`() {
-        val taught = Curriculum.lessons.mapNotNull { it.teaches }
+        val taught = Curriculum.lessons.flatMap { it.teaches }
         assertEquals("a technique has two lessons", taught.distinct(), taught)
+    }
+
+    @Test
+    fun `every technique the engine knows has a lesson`() {
+        val taught = Curriculum.lessons.flatMap { it.teaches }.toSet()
+        val missing = Curriculum.ladderOrder.filterNot { it in taught }
+        assertTrue("the course never teaches: $missing", missing.isEmpty())
     }
 
     @Test
@@ -157,22 +179,24 @@ class CurriculumTest {
         // unless the solver, asked independently, finds the same one. Anything else is the app
         // teaching a rule its own hints would contradict.
         for (lesson in Curriculum.lessons) {
-            val technique = lesson.teaches ?: continue
+            if (lesson.teaches.isEmpty()) continue
             val grid = CandidateGrid.ofOrNull(Board.parse(lesson.dims, lesson.board))
             assertNotNull("${lesson.id} starts from a position with a contradiction in it", grid)
             requireNotNull(grid)
 
-            val finder = Techniques.ladder.first { it.id == technique }
-            val found = finder.find(grid)
-            assertNotNull("${lesson.id} teaches $technique on a board where it does not apply", found)
-            requireNotNull(found)
-
             val shown = lesson.steps.filterIsInstance<Step.Show>().flatMap { it.focus }.toSet()
-            val agreed = found.placements.map { it.cell }.toSet() + found.focusCells
-            assertTrue(
-                "${lesson.id} points at $shown, the engine's $technique is at $agreed",
-                shown.any { it in agreed },
-            )
+            for (technique in lesson.teaches) {
+                val finder = Techniques.ladder.first { it.id == technique }
+                val found = finder.find(grid)
+                assertNotNull("${lesson.id} teaches $technique on a board where it does not apply", found)
+                requireNotNull(found)
+
+                val agreed = found.placements.map { it.cell }.toSet() + found.focusCells
+                assertTrue(
+                    "${lesson.id} points at $shown, the engine's $technique is at $agreed",
+                    shown.any { it in agreed },
+                )
+            }
         }
     }
 
@@ -181,7 +205,7 @@ class CurriculumTest {
         val firstSteps = Curriculum.of(Stage.FIRST_STEPS)
         assertTrue("the course has no opening stage", firstSteps.isNotEmpty())
         for (lesson in firstSteps) {
-            assertEquals("${lesson.id} names a technique before the rules are taught", null, lesson.teaches)
+            assertTrue("${lesson.id} names a technique before the rules are taught", lesson.teaches.isEmpty())
         }
     }
 }

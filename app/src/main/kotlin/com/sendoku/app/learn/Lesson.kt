@@ -20,8 +20,8 @@ public enum class Stage(@StringRes public val title: Int) {
     GROUPS(com.sendoku.app.R.string.stage_groups),
     PATTERNS(com.sendoku.app.R.string.stage_patterns),
     WINGS(com.sendoku.app.R.string.stage_wings),
-    COLOURING(com.sendoku.app.R.string.stage_colouring),
     ONE_ANSWER(com.sendoku.app.R.string.stage_one_answer),
+    COLOURING(com.sendoku.app.R.string.stage_colouring),
     CHAINS(com.sendoku.app.R.string.stage_chains),
     THE_FAR_END(com.sendoku.app.R.string.stage_the_far_end),
 }
@@ -68,9 +68,16 @@ public sealed interface Step {
 /**
  * One lesson.
  *
- * [teaches] is the technique this lesson is about, or null for the lessons that come before
- * any technique does, which are about the rules themselves. Where it is set, the course order
- * has to agree with the engine's ladder, and a test enforces that rather than a convention.
+ * [teaches] is the techniques this lesson is about, and is empty for the lessons about the
+ * rules, about notes, and about how to look. It is a list because the quads lesson covers the
+ * naked and the hidden one together: they are the same idea and separating them would be two
+ * short lessons that each say half of it.
+ *
+ * The order the course teaches techniques in has to agree with the engine's ladder, and a test
+ * enforces it. Not as one flat list, though. The ladder costs an X-Wing at 3.2 and a hidden
+ * pair at 3.4, so a strict reading would teach a fish in the middle of the subsets, and that
+ * is a worse course than it is a faithful one. The rule is: stages run in order of their
+ * cheapest technique, and inside a stage the lessons follow the ladder exactly.
  *
  * [dims] is the grid the lesson is taught on. The first lessons are four by four on purpose.
  * A player who has never seen a sudoku can hold sixteen cells in their head and can see that
@@ -82,7 +89,7 @@ public data class Lesson(
     val stage: Stage,
     @StringRes val title: Int,
     @StringRes val summary: Int,
-    val teaches: TechniqueId?,
+    val teaches: List<TechniqueId>,
     val dims: Dimensions,
     /** The starting grid, as text the engine can parse. Empty means an empty grid. */
     val board: String,
@@ -106,4 +113,34 @@ public enum class LessonId {
     FIRST_SOLVE_FOUR,
     FIRST_SOLVE_SIX,
     NAKED_SINGLE,
+    HIDDEN_SINGLE,
+    SCANNING,
+    FIRST_SOLVE_NINE,
+    PENCIL_MARKS,
+    WHEN_TO_MARK,
+    KEEPING_MARKS_TRUE,
+    POINTING_PAIR,
+    CLAIMING_PAIR,
+    NAKED_PAIR,
+    HIDDEN_PAIR,
+    NAKED_TRIPLE,
+    HIDDEN_TRIPLE,
+    QUADS,
+    X_WING,
+    SWORDFISH,
+    JELLYFISH,
+    XY_WING,
+    XYZ_WING,
+    W_WING,
+    UNIQUE_RECTANGLE,
+    BUG_PLUS_ONE,
+    SIMPLE_COLOURING,
+    REMOTE_PAIRS,
+    MULTI_COLOURING,
+    X_CHAIN,
+    XY_CHAIN,
+    WRITING_A_CHAIN_DOWN,
+    ALS_XZ,
+    WHEN_NOTHING_APPLIES,
+    WHAT_TO_LOOK_FOR_FIRST,
 }

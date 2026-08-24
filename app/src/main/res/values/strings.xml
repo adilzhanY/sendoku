@@ -360,4 +360,243 @@
     <string name="lesson_naked_single_3">Every cell that rules something out is lit. Between its row, its column and its box, eight of the nine digits already appear somewhere it can see.</string>
     <string name="lesson_naked_single_4">So one digit is left, and the cell has to hold it. Nothing else is possible. That is a naked single: naked because you can see it by looking at one cell, single because one digit survives.</string>
     <string name="lesson_naked_single_5">The app calls this by name when it gives you a hint. Now you know what it means.</string>
+    <string name="lesson_hidden_single_title">The hidden single</string>
+    <string name="lesson_hidden_single_summary">A digit with only one place left in a house has to go there.</string>
+    <string name="lesson_hidden_single_1">The other kind of single, and the one that finds more cells. A naked single is a cell with one digit left. This is the mirror image: a digit with one cell left.</string>
+    <string name="lesson_hidden_single_2">Take a house, and pick a digit it still needs. Ask where in that house the digit could go.</string>
+    <string name="lesson_hidden_single_3">In this box the answer is one cell. Every other empty cell in the box is ruled out by its own row or column.</string>
+    <string name="lesson_hidden_single_4">So the digit goes there, even though that cell has several digits it could hold on its own. That is why it is called hidden: the digit is hiding among the others.</string>
+    <string name="lesson_hidden_single_5">This is the one worth learning properly. On most puzzles it is what keeps you moving after the naked singles run out.</string>
+    <string name="lesson_hidden_single_turn">Your turn. Place the digit that has nowhere else to go in this box.</string>
+    <string name="lesson_hidden_single_wrong">Not that one. Ask which digit the box still needs, then check where each of them could actually fit.</string>
+
+    <string name="lesson_scanning_title">How to look</string>
+    <string name="lesson_scanning_summary">Sweep a digit across the grid instead of studying cells one at a time.</string>
+    <string name="lesson_scanning_1">You now know two techniques. Knowing them is not the same as finding them, and finding them is what takes the time.</string>
+    <string name="lesson_scanning_2">Do not read the grid cell by cell. Take one digit, say the one that appears most often already, and look at the three boxes in a band.</string>
+    <string name="lesson_scanning_3">For each box ask a single question: where can this digit go? Rows and columns that already hold it cross out most of the answers, and often only one cell is left.</string>
+    <string name="lesson_scanning_4">Then move to the next band, and when the digit is exhausted, move to the next digit. That is scanning, and it is what fast solvers are doing when they look like they are just staring.</string>
+    <string name="lesson_scanning_5">It costs nothing to be systematic and it saves the feeling of being stuck, which is usually the feeling of having looked at the same corner four times.</string>
+
+    <string name="lesson_first_nine_title">A full grid, singles only</string>
+    <string name="lesson_first_nine_summary">Everything you have learned so far is enough to finish a whole puzzle.</string>
+    <string name="lesson_first_nine_1">A real nine by nine, at the Gentle grade. Every step in it is a single, naked or hidden, and there is nothing here you have not met.</string>
+    <string name="lesson_first_nine_2">Here is one to start you off. This cell has eight of the nine digits ruled out by what it can see.</string>
+    <string name="lesson_first_nine_3">That is the shape of a Gentle puzzle. Singles, all the way to the end, and no guessing at any point.</string>
+    <string name="lesson_first_nine_4">When you leave this lesson, play one. The next stage is about notes, and notes only start to earn their keep on puzzles harder than this.</string>
+    <string name="lesson_first_nine_turn">Your turn. One digit is possible here.</string>
+    <string name="lesson_first_nine_wrong">Look again at the row, the column and the box this cell is in, and list what they already hold.</string>
+
+    <string name="lesson_pencil_marks_title">Notes</string>
+    <string name="lesson_pencil_marks_summary">A note is a record of what you worked out, so you do not have to work it out again.</string>
+    <string name="lesson_pencil_marks_1">From here on the puzzles stop yielding to singles, and you will need to write things down. A note, or pencil mark, is a small digit in a cell saying that digit is still possible there.</string>
+    <string name="lesson_pencil_marks_2">Look at this cell. Working out that it can only be one of two digits takes a few seconds. Writing those two digits in means it takes no seconds the next time you look.</string>
+    <string name="lesson_pencil_marks_3">That is all a note is. It is not a guess and it is not a commitment. It is a record of a deduction you already made.</string>
+    <string name="lesson_pencil_marks_4">Every technique from here on is about patterns in the notes rather than patterns in the digits. Pairs, triples, fish and chains are all read off the notes.</string>
+    <string name="lesson_pencil_marks_5">Nobody solves a hard sudoku in their head, and a solver who writes nothing down on a Diabolical is not being clever, they are being slow.</string>
+
+    <string name="lesson_when_to_mark_title">When to write them</string>
+    <string name="lesson_when_to_mark_summary">Fill in notes when the singles run out, not before.</string>
+    <string name="lesson_when_to_mark_1">There are two ways to use notes, and the difference matters.</string>
+    <string name="lesson_when_to_mark_2">The first is to fill every empty cell with every possible digit, all at once, before doing anything else. It is thorough, it takes several minutes by hand, and on an easy puzzle most of it is wasted because singles would have finished the grid anyway.</string>
+    <string name="lesson_when_to_mark_3">The second is to mark only where you are working. These four cells are worth marking because something is going on among them. The rest of the grid is not.</string>
+    <string name="lesson_when_to_mark_4">The honest advice: solve the singles first, and start marking when you stop finding them. On paper that saves real time. In this app, filling every note is one tap, so the cost is smaller, but a grid full of numbers is still harder to read than a grid with notes only where they matter.</string>
+
+    <string name="lesson_marks_true_title">Keeping notes honest</string>
+    <string name="lesson_marks_true_summary">A note that is out of date is worse than no note at all.</string>
+    <string name="lesson_marks_true_1">Notes have one danger. Every digit you place makes some of them wrong, and a wrong note will send you down an argument that cannot be right.</string>
+    <string name="lesson_marks_true_2">Place a digit here, and every cell it can see loses that digit as a possibility. If those notes are not rubbed out, the next technique you spot might be built on one of them.</string>
+    <string name="lesson_marks_true_3">This app can do it for you. There is a setting called rub out notes that a placement rules out, and it is on by default. On paper you do it by hand, and it is where most mistakes come from.</string>
+    <string name="lesson_marks_true_4">When a puzzle goes wrong and you cannot see why, a stale note is the first thing to suspect. The hint button will tell you when a digit you have placed cannot be right.</string>
+
+    <string name="lesson_pointing_title">The pointing pair</string>
+    <string name="lesson_pointing_summary">If a digit in a box is stuck on one line, it leaves that line everywhere else.</string>
+    <string name="lesson_pointing_1">The first technique that removes possibilities rather than placing a digit. Most techniques from here on do that, and it takes some getting used to: you make progress without writing a single digit in.</string>
+    <string name="lesson_pointing_2">Look at where one digit can go in this box. Every place it could sit lies on the same column.</string>
+    <string name="lesson_pointing_3">The box has to contain that digit somewhere. So wherever it ends up, it is in that column.</string>
+    <string name="lesson_pointing_4">Which means the rest of the column cannot have it. These cells lose that digit as a possibility, even though they are nowhere near the box.</string>
+    <string name="lesson_pointing_5">It is called pointing because the pair inside the box points along the line and clears it.</string>
+
+    <string name="lesson_claiming_title">The claiming pair</string>
+    <string name="lesson_claiming_summary">If a digit on a line is stuck in one box, it leaves that box everywhere else.</string>
+    <string name="lesson_claiming_1">The same argument read the other way round, and worth doing separately because the eye finds it in a different place.</string>
+    <string name="lesson_claiming_2">This time start with a line. Look at where one digit can go along this row.</string>
+    <string name="lesson_claiming_3">Every place it could sit is inside the same box. The row must hold that digit somewhere, so the digit is in that box.</string>
+    <string name="lesson_claiming_4">Which means the rest of the box loses it. These cells cannot hold it any more.</string>
+    <string name="lesson_claiming_5">Pointing looks at a box and clears a line. Claiming looks at a line and clears a box. Two names, one idea, and you will see both in every hard puzzle.</string>
+
+    <string name="lesson_naked_pair_title">The naked pair</string>
+    <string name="lesson_naked_pair_summary">Two cells holding the same two digits own them both.</string>
+    <string name="lesson_naked_pair_1">Now the groups. This is the smallest of them and the pattern that makes the rest obvious.</string>
+    <string name="lesson_naked_pair_2">These two cells are in the same house, and each of them can only be one of the same two digits.</string>
+    <string name="lesson_naked_pair_3">Between them they will take both of those digits, one each. Which is which does not matter and you do not need to know.</string>
+    <string name="lesson_naked_pair_4">So no other cell in that house can hold either digit. This cell loses one of them.</string>
+    <string name="lesson_naked_pair_5">Naked, again, because you can see it by reading the two cells. Nothing is hidden and no other cell is involved in the argument.</string>
+
+    <string name="lesson_hidden_pair_title">The hidden pair</string>
+    <string name="lesson_hidden_pair_summary">Two digits with only the same two places left own those cells.</string>
+    <string name="lesson_hidden_pair_1">The mirror image of the naked pair, exactly as the hidden single mirrors the naked one.</string>
+    <string name="lesson_hidden_pair_2">In this house, two digits can each only go in the same two cells.</string>
+    <string name="lesson_hidden_pair_3">Those two digits will take those two cells between them. So whatever else those cells looked like they could hold, they cannot.</string>
+    <string name="lesson_hidden_pair_4">The two cells lose every other note. They are now a naked pair, and often that is what the pattern is for: turning a hidden pair into a naked one that clears the rest of the house.</string>
+    <string name="lesson_hidden_pair_5">Hidden pairs are harder to see than naked ones because you have to look at digits rather than cells. It is worth the effort on a grid that has stalled.</string>
+
+    <string name="lesson_naked_triple_title">The naked triple</string>
+    <string name="lesson_naked_triple_summary">Three cells sharing three digits own them, even if none holds all three.</string>
+    <string name="lesson_naked_triple_1">A pair with one more cell, and one wrinkle that catches everybody the first time.</string>
+    <string name="lesson_naked_triple_2">These three cells sit in the same house, and between them they use only three different digits.</string>
+    <string name="lesson_naked_triple_3">Here is the wrinkle: not one of them has to hold all three. Two digits in one cell, two in the next, two in the third is a triple, as long as only three digits appear across all of them.</string>
+    <string name="lesson_naked_triple_4">The three cells will take the three digits between them, so every other cell in the house loses all three. That is a lot of notes gone at once.</string>
+    <string name="lesson_naked_triple_5">When you are hunting, count the distinct digits across two or three cells rather than looking for identical notes. That is the habit that finds triples.</string>
+
+    <string name="lesson_hidden_triple_title">The hidden triple</string>
+    <string name="lesson_hidden_triple_summary">Three digits with only three places left own those cells.</string>
+    <string name="lesson_hidden_triple_1">The same relationship as the hidden pair, one size up, and genuinely hard to spot.</string>
+    <string name="lesson_hidden_triple_2">In this house, three digits can only go in the same three cells between them.</string>
+    <string name="lesson_hidden_triple_3">So those three cells hold those three digits, and every other note in them can go.</string>
+    <string name="lesson_hidden_triple_4">Do not hunt for these first. Look for them when a house has several cells left and nothing else has worked. Most of the time a naked pattern in the same house is easier to see.</string>
+
+    <string name="lesson_quads_title">Quads</string>
+    <string name="lesson_quads_summary">The same idea again with four, and worth knowing but rarely worth hunting.</string>
+    <string name="lesson_quads_1">Pairs, triples, and now quads. The argument does not change: four cells that between them use four digits own those digits, and four digits with only four places own those cells.</string>
+    <string name="lesson_quads_2">Here is a naked quad. Four cells, four digits between them, and the rest of the house loses all four.</string>
+    <string name="lesson_quads_3">And here is the honest advice. Quads are real and they are legal, but they are rare, and a quad in a house of five or six empty cells usually means there is a simpler pattern in the other cells that you have missed.</string>
+    <string name="lesson_quads_4">Here is a hidden quad, for completeness. Four digits with four places left.</string>
+    <string name="lesson_quads_5">Learn to recognise them so a hint naming one makes sense. Do not spend your time searching for them.</string>
+
+    <string name="lesson_x_wing_title">The X-Wing</string>
+    <string name="lesson_x_wing_summary">A digit fixed to two columns in two rows leaves those columns everywhere else.</string>
+    <string name="lesson_x_wing_1">The first pattern that spans the whole grid rather than sitting inside one house. It has a shape, and once you have seen the shape you will see it everywhere.</string>
+    <string name="lesson_x_wing_2">Take one digit. In these two rows, it can only go in two cells each, and those cells are in the same two columns. Four cells, in a rectangle.</string>
+    <string name="lesson_x_wing_3">Now think it through. Each row must hold the digit once. Whichever corner one row uses, the other row must use the opposite one. There is no third option.</string>
+    <string name="lesson_x_wing_4">So between them, the two rows take that digit in both of those columns. Anything else in those columns loses it.</string>
+    <string name="lesson_x_wing_5">It works with columns and rows swapped too. Two columns whose digit is confined to the same two rows clears those rows.</string>
+
+    <string name="lesson_swordfish_title">The Swordfish</string>
+    <string name="lesson_swordfish_summary">The same argument as an X-Wing, with three lines instead of two.</string>
+    <string name="lesson_swordfish_1">An X-Wing with a row added. The name is unhelpful but the pattern is a direct extension.</string>
+    <string name="lesson_swordfish_2">Three rows, one digit, and in each row that digit is confined to cells in the same three columns.</string>
+    <string name="lesson_swordfish_3">Not every row has to use all three columns. Two of the three is enough, as long as no row strays outside them.</string>
+    <string name="lesson_swordfish_4">The three rows take the digit in those three columns between them, so the rest of those columns loses it.</string>
+    <string name="lesson_swordfish_5">If you can follow the X-Wing you can follow this. Finding it is another matter: this is the point where filling in your notes stops being optional.</string>
+
+    <string name="lesson_jellyfish_title">The Jellyfish</string>
+    <string name="lesson_jellyfish_summary">Four lines. The same pattern again, and the last one worth learning.</string>
+    <string name="lesson_jellyfish_1">Four rows, one digit, four columns. The argument has not changed since the X-Wing and it will not change again.</string>
+    <string name="lesson_jellyfish_2">Here is one. Four rows, and the digit in each is confined to the same four columns.</string>
+    <string name="lesson_jellyfish_3">Beyond four there is nothing to learn. A five line version exists in theory, but on a nine by nine grid every one of them can be found as a smaller pattern in the four columns left over, so nobody looks for them.</string>
+    <string name="lesson_jellyfish_4">This is the far edge of what is worth hunting by pattern. Past here, chains are a better use of your attention.</string>
+
+    <string name="lesson_xy_wing_title">The XY-Wing</string>
+    <string name="lesson_xy_wing_summary">Three cells of two digits each, and one cell that loses out whichever way it goes.</string>
+    <string name="lesson_xy_wing_1">The wings need a different way of thinking. Up to now you have found a pattern and read off a conclusion. Here you argue by cases.</string>
+    <string name="lesson_xy_wing_2">Start with this cell. It holds exactly two possible digits, and it is the hinge of the pattern.</string>
+    <string name="lesson_xy_wing_3">It has two friends, each sharing a house with it, and each holding two digits: one shared with the hinge, one shared with each other.</string>
+    <string name="lesson_xy_wing_4">Now the argument. The hinge is one of its two digits. If it is the first, the left wing is forced to the shared digit. If it is the second, the right wing is forced to the same shared digit. Either way, one of the wings holds it.</string>
+    <string name="lesson_xy_wing_5">So any cell that can see both wings cannot hold that digit. This one loses it.</string>
+    <string name="lesson_xy_wing_6">You never learn what the hinge actually is. That is the point, and it is what makes wings feel different from everything before them.</string>
+
+    <string name="lesson_xyz_wing_title">The XYZ-Wing</string>
+    <string name="lesson_xyz_wing_summary">Like an XY-Wing, but the hinge can be the shared digit too, so the conclusion is weaker.</string>
+    <string name="lesson_xyz_wing_1">One change to the XY-Wing, and it makes the conclusion smaller.</string>
+    <string name="lesson_xyz_wing_2">Here the hinge holds three digits rather than two, and the shared digit is one of them.</string>
+    <string name="lesson_xyz_wing_3">So now there are three cases, not two. Either wing might hold the shared digit, or the hinge itself might.</string>
+    <string name="lesson_xyz_wing_4">That means a cell only loses the digit if it can see all three, not just the two wings. Fewer cells qualify, which is why this pattern eliminates less than its simpler cousin.</string>
+    <string name="lesson_xyz_wing_5">Worth knowing because the shape looks almost identical, and reading it as an XY-Wing would let you eliminate a digit you are not entitled to.</string>
+
+    <string name="lesson_w_wing_title">The W-Wing</string>
+    <string name="lesson_w_wing_summary">Two identical pairs joined by a line that must hold one of their digits.</string>
+    <string name="lesson_w_wing_1">The third wing, and the one that needs the least arithmetic.</string>
+    <string name="lesson_w_wing_2">Two cells, not sharing a house, each holding the same two digits.</string>
+    <string name="lesson_w_wing_3">Now find a house where one of those two digits can only go in two places, and those two places each see one of the pair cells. That house is the link.</string>
+    <string name="lesson_w_wing_4">The link house must hold that digit in one of its two places, and whichever it is, it forces one of the pair cells to take the other digit. So one of the pair holds the other digit, always.</string>
+    <string name="lesson_w_wing_5">Any cell seeing both pair cells loses it. This one does.</string>
+
+    <string name="lesson_rectangle_title">The unique rectangle</string>
+    <string name="lesson_rectangle_summary">A puzzle with one answer cannot contain a square that could rotate.</string>
+    <string name="lesson_rectangle_1">This technique is different in kind from every other one, and it is worth saying why before using it.</string>
+    <string name="lesson_rectangle_2">Look at these four cells. They sit in two rows, two columns and exactly two boxes, and each of them can hold the same two digits.</string>
+    <string name="lesson_rectangle_3">If that were the whole story, the puzzle would have two answers: fill the rectangle one way, or swap both diagonals, and both grids obey every rule. A properly made puzzle does not have two answers.</string>
+    <string name="lesson_rectangle_4">So it cannot be the whole story. One of those cells has to hold something else, and that is what lets you eliminate.</string>
+    <string name="lesson_rectangle_5">Here the extra possibilities survive and the shared pair is struck from these cells.</string>
+    <string name="lesson_rectangle_6">The catch, stated plainly: this argument assumes the puzzle is well made. It is true of every puzzle in this app, because the generator checks. Use it on a grid from an unknown source and it can mislead you.</string>
+
+    <string name="lesson_bug_title">BUG plus one</string>
+    <string name="lesson_bug_summary">If every cell but one had two candidates, the puzzle would be ambiguous. So that one is special.</string>
+    <string name="lesson_bug_1">The same assumption as the unique rectangle, wearing a different shape.</string>
+    <string name="lesson_bug_2">Suppose a grid reached a position where every unsolved cell held exactly two possibilities, and every digit appeared exactly twice in every house. Such a grid always has two answers.</string>
+    <string name="lesson_bug_3">So a properly made puzzle can never reach it. If you find a position that is one cell away, where exactly one cell holds three possibilities instead of two, that cell is what saves the puzzle from being ambiguous.</string>
+    <string name="lesson_bug_4">The digit that appears three times in its houses is the one it must hold. It is a rare pattern and a very fast finish when it turns up.</string>
+
+    <string name="lesson_colouring_title">Simple colouring</string>
+    <string name="lesson_colouring_summary">Follow one digit through the cells where it has only two homes, and look for a contradiction.</string>
+    <string name="lesson_colouring_1">Chains, gently. Colouring is the easiest way into them and the same reasoning underneath.</string>
+    <string name="lesson_colouring_2">Pick a digit. Find a house where it has only two possible cells. Those two are linked: exactly one of them is the digit.</string>
+    <string name="lesson_colouring_3">Colour one of the pair, then follow the links. Every cell connected this way ends up one of two colours, and one whole colour is right while the other is wrong. You do not know which.</string>
+    <string name="lesson_colouring_4">Now look for the contradiction. If a cell can see two cells of the same colour, that colour cannot be the right one, so the cell loses the digit. Here that is what happens.</string>
+    <string name="lesson_colouring_5">Two colours, one contradiction, and no guessing anywhere in it. That is the whole method.</string>
+
+    <string name="lesson_remote_pairs_title">Remote pairs</string>
+    <string name="lesson_remote_pairs_summary">A chain of identical pairs alternates, so the ends are opposites.</string>
+    <string name="lesson_remote_pairs_1">Colouring applied to cells rather than to a single digit.</string>
+    <string name="lesson_remote_pairs_2">Here is a chain of cells that all hold the same two digits, each linked to the next by a shared house.</string>
+    <string name="lesson_remote_pairs_3">Because each link is a pair, the digits alternate along the chain. First cell takes one, second takes the other, and so on.</string>
+    <string name="lesson_remote_pairs_4">So the two ends of an even length chain are opposites: they hold different digits. Any cell that can see both ends must lose both digits, because one of the ends holds each.</string>
+    <string name="lesson_remote_pairs_5">It is the easiest chain to spot, because every cell in it looks the same.</string>
+
+    <string name="lesson_multi_colouring_title">Multi colouring</string>
+    <string name="lesson_multi_colouring_summary">Two colouring chains that interact rule each other out.</string>
+    <string name="lesson_multi_colouring_1">Simple colouring uses one chain. Sometimes one chain has no contradiction in it but two chains together do.</string>
+    <string name="lesson_multi_colouring_2">Here are cells from two separate chains for the same digit.</string>
+    <string name="lesson_multi_colouring_3">If a colour in one chain sees a colour in the other, then those two colours cannot both be right. Following that through eliminates the digit from cells that see the two colours left over.</string>
+    <string name="lesson_multi_colouring_4">The conclusion lands here.</string>
+    <string name="lesson_multi_colouring_5">This is where colouring stops being something you can hold in your head and starts wanting a written note of which cell is which colour.</string>
+
+    <string name="lesson_x_chain_title">The X-Chain</string>
+    <string name="lesson_x_chain_summary">One digit, links that alternate between strong and weak, and an elimination at the ends.</string>
+    <string name="lesson_x_chain_1">The general form of everything in the last stage. One digit, and a chain of alternating links.</string>
+    <string name="lesson_x_chain_2">A strong link is two cells where at least one must hold the digit, which is what a house with only two places gives you. A weak link is two cells where at most one can, which is any two cells sharing a house.</string>
+    <string name="lesson_x_chain_3">Alternate them: strong, weak, strong, and so on, starting and ending with strong. Then whatever happens in the middle, one of the two ends holds the digit.</string>
+    <string name="lesson_x_chain_4">So any cell seeing both ends loses it.</string>
+    <string name="lesson_x_chain_5">Colouring is this chain drawn in two colours. The chain is more general because it can pass through cells colouring cannot reach.</string>
+
+    <string name="lesson_xy_chain_title">The XY-Chain</string>
+    <string name="lesson_xy_chain_summary">A chain of two candidate cells, where the ends share a digit.</string>
+    <string name="lesson_xy_chain_1">The same alternating idea, but stepping through cells rather than following one digit.</string>
+    <string name="lesson_xy_chain_2">Every cell in this chain holds exactly two possibilities, and each shares a house with the next.</string>
+    <string name="lesson_xy_chain_3">Within a cell, taking one digit forces the other, which is the strong link. Between cells, a shared house makes the weak one. Alternating them runs the argument along the chain.</string>
+    <string name="lesson_xy_chain_4">If both ends of the chain can hold the same digit, then one of them does, whichever way the chain falls. Any cell seeing both ends loses that digit.</string>
+    <string name="lesson_xy_chain_5">This is the technique that finishes most Diabolical puzzles, and finding one is mostly a matter of following bivalue cells patiently rather than being clever.</string>
+
+    <string name="lesson_writing_chains_title">Writing a chain down</string>
+    <string name="lesson_writing_chains_summary">A chain you cannot check is a guess with extra steps.</string>
+    <string name="lesson_writing_chains_1">One practical lesson before the last technique, because chains are where people convince themselves of things that are not true.</string>
+    <string name="lesson_writing_chains_2">A chain is a sequence of claims, and each one has to hold. On screen it looks like a set of highlighted cells, and highlighting is not an argument.</string>
+    <string name="lesson_writing_chains_3">Write it as a line: this cell is either 4 or 7; if it is 4 then that one is 9; if that one is 9 then this other one is 4. Each arrow is a link and each link has a reason.</string>
+    <string name="lesson_writing_chains_4">Then check the alternation. Strong, weak, strong, weak, and strong at both ends. A chain that starts or ends on a weak link proves nothing, and that is the most common way a chain goes wrong.</string>
+    <string name="lesson_writing_chains_5">If you cannot write it down, you have not found it. That is not a rule about tidiness, it is the difference between a deduction and a hunch.</string>
+
+    <string name="lesson_als_title">ALS-XZ</string>
+    <string name="lesson_als_summary">Two almost locked sets sharing a digit, and the elimination that follows.</string>
+    <string name="lesson_als_1">The last technique in the app, and the one that makes a Beyond a Beyond.</string>
+    <string name="lesson_als_2">An almost locked set is a group of cells in one house holding exactly one more digit than there are cells. Four cells with five digits between them. If it lost one digit it would be a locked set, hence the name.</string>
+    <string name="lesson_als_3">Take two of them, sharing two digits. Call one of the shared digits the restricted one, and require that every place it appears in one set sees every place it appears in the other.</string>
+    <string name="lesson_als_4">Then it can only be in one of the two sets. Whichever set does not get it becomes locked, which fixes the other shared digit inside it. And so any cell seeing that digit in both sets loses it.</string>
+    <string name="lesson_als_5">Here is the elimination that comes out of it.</string>
+    <string name="lesson_als_6">This is the hardest thing the app will ever show you, and if it takes several readings, that is the normal number.</string>
+
+    <string name="lesson_nothing_applies_title">When nothing applies</string>
+    <string name="lesson_nothing_applies_summary">Recheck before you guess, because a puzzle from this app always has a next step.</string>
+    <string name="lesson_nothing_applies_1">You will reach positions where you have looked at everything and found nothing. Here is what to do, and what not to.</string>
+    <string name="lesson_nothing_applies_2">What not to do is guess. Every puzzle in this app is solvable by reasoning, and a guess that happens to be right teaches you nothing while a guess that is wrong costs you the whole grid.</string>
+    <string name="lesson_nothing_applies_3">Recheck in this order. First, are all your notes true? A stale note is the most common cause of an impossible position, and this app will rub them out for you if you let it. Second, is a digit you placed actually right? Press hint and it will tell you.</string>
+    <string name="lesson_nothing_applies_4">Then look again for the cheap things. It is almost never a chain you missed. It is almost always a hidden single in a house you stopped looking at twenty moves ago.</string>
+
+    <string name="lesson_look_first_title">What to look for first</string>
+    <string name="lesson_look_first_summary">Cheap patterns first, always, because they are common and they open the grid up.</string>
+    <string name="lesson_look_first_1">You now know every technique this app can name. The last thing to learn is the order to look in.</string>
+    <string name="lesson_look_first_2">Singles first, every time. Naked, then hidden. They are the most common by a wide margin and each one you place makes every other technique easier to find.</string>
+    <string name="lesson_look_first_3">Then the cheap eliminations: pointing and claiming pairs. They are quick to check, house by house, and they often unlock a single straight away.</string>
+    <string name="lesson_look_first_4">Then pairs and triples in the houses with the fewest empty cells. Then fish, then wings. Chains last, always, because they are the most work and the least common.</string>
+    <string name="lesson_look_first_5">Hunting a Jellyfish before checking the singles is the sudoku equivalent of rewriting a program before reading the error message. The app grades puzzles by the hardest thing they need, but a Beyond is still mostly singles.</string>
 </resources>
