@@ -39,6 +39,7 @@ public object Techniques {
         SueDeCoq,
         AlsXyWing,
         DeathBlossom,
+        ForcingChain,
     ).sortedBy { it.id.cost }
 
     /**

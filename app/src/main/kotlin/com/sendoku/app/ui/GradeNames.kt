@@ -19,6 +19,8 @@ public fun gradeName(grade: Grade): Int = when (grade) {
     Grade.SEVERE -> R.string.grade_severe
     Grade.DIABOLICAL -> R.string.grade_diabolical
     Grade.BEYOND -> R.string.grade_beyond
+    Grade.INSANE -> R.string.grade_insane
+    Grade.NIGHTMARE -> R.string.grade_nightmare
 }
 
 /** What a grade will ask of you, in words rather than in technique names. */
@@ -30,6 +32,8 @@ public fun gradeGate(grade: Grade): Int = when (grade) {
     Grade.SEVERE -> R.string.gate_severe
     Grade.DIABOLICAL -> R.string.gate_diabolical
     Grade.BEYOND -> R.string.gate_beyond
+    Grade.INSANE -> R.string.gate_insane
+    Grade.NIGHTMARE -> R.string.gate_nightmare
 }
 
 /** The themes, in words rather than in enum names. */

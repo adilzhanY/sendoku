@@ -156,9 +156,10 @@ class TechniqueSolverTest {
     fun `every grade is reachable and the bands do not overlap`() {
         val bounds = Grade.entries.map { it.maxRating }
         assertEquals(bounds.sorted(), bounds)
-        assertEquals(Grade.BEYOND, Grade.of(Double.MAX_VALUE))
+        val hardest = Grade.entries.last()
+        assertEquals(hardest, Grade.of(Double.MAX_VALUE))
         for (grade in Grade.entries) {
-            val inside = if (grade == Grade.BEYOND) 99.0 else grade.maxRating - 0.01
+            val inside = if (grade == hardest) 99.0 else grade.maxRating - 0.01
             assertEquals(grade, Grade.of(inside), "${grade.displayName} does not contain its own top")
         }
     }

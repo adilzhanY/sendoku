@@ -142,6 +142,16 @@ internal object TechniquePositions {
             blank().only(rc(0, 0), 1, 2).only(rc(4, 0), 1, 3).only(rc(4, 1), 2, 3)
         },
 
+        // A fork with one dead end. Assume the 1 at r1c1 and the next three cells fall like
+        // dominoes: r1c5 must be 4, so r5c5 must be 5, so r5c1 has nothing left, because its
+        // 1 went with the assumption. So the 1 goes. The four cells are put in four
+        // different boxes so that none of the subset rules can see them as a group.
+        TechniqueId.FORCING_CHAIN to {
+            blank()
+                .only(rc(0, 0), 1, 2).only(rc(0, 4), 1, 4)
+                .only(rc(4, 4), 4, 5).only(rc(4, 0), 1, 5)
+        },
+
         // A stem at the centre holding {1,2}. The pair {1,5,7} and {1,7} along its row
         // answers for the 1, the pair {2,5,9} and {2,9} down its column answers for the 2,
         // and both hold a 5, which is what the top left cell loses. The cells holding the 5

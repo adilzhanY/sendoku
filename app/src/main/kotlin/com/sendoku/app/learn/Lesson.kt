@@ -149,4 +149,5 @@ public enum class LessonId {
     WHAT_THE_DEEP_END_ASKS,
     ALS_XY_WING,
     DEATH_BLOSSOM,
+    FORCING_CHAIN,
 }

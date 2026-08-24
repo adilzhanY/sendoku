@@ -171,7 +171,13 @@ private fun GradeRow(grade: Grade, solved: Int, locked: Boolean, opensAfter: Gra
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
     val name = stringResource(gradeName(grade))
+    // Red, and the same red a broken digit gets. These levels cannot be solved by spotting a
+    // shape, and somebody who opens one expecting the usual thing will decide the puzzle is
+    // broken rather than that it is hard. The word says so as well as the colour, because a
+    // colour on its own is nothing to a player who cannot tell red from grey.
+    val mark = if (grade.isAdvanced) colors.conflict else colors.accent
     val below = opensAfter?.let { stringResource(gradeName(it)) }
+    val advanced = stringResource(R.string.grade_advanced_talkback)
     val detail = if (below != null) {
         stringResource(R.string.grade_locked, below)
     } else {
@@ -189,10 +195,8 @@ private fun GradeRow(grade: Grade, solved: Int, locked: Boolean, opensAfter: Gra
             .alpha(if (locked) 0.55f else 1f)
             .padding(horizontal = dimens.spaceM, vertical = dimens.spaceS)
             .semantics(mergeDescendants = true) {
-                if (locked) {
-                    disabled()
-                    contentDescription = "$name, $detail"
-                }
+                if (locked) disabled()
+                contentDescription = if (grade.isAdvanced) "$name, $advanced, $detail" else "$name, $detail"
             },
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(dimens.spaceM),
@@ -202,10 +206,22 @@ private fun GradeRow(grade: Grade, solved: Int, locked: Boolean, opensAfter: Gra
                 .width(4.dp)
                 .height(26.dp)
                 .clip(CircleShape)
-                .background(if (locked) colors.hairline else colors.accent),
+                .background(if (locked) colors.hairline else mark),
         )
         Column(Modifier.weight(1f)) {
-            Text(name, style = Sendoku.type.label, color = colors.given)
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(dimens.spaceS),
+            ) {
+                Text(name, style = Sendoku.type.label, color = colors.given)
+                if (grade.isAdvanced) {
+                    Text(
+                        text = stringResource(R.string.grade_advanced),
+                        style = Sendoku.type.overline,
+                        color = colors.conflict,
+                    )
+                }
+            }
             Text(detail, style = Sendoku.type.body, color = colors.muted)
         }
         if (locked) {

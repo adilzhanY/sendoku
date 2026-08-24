@@ -89,30 +89,48 @@ class ShippedCatalogTest {
     }
 
     @Test
-    fun `every beyond puzzle really is beyond`() {
-        // The headline claim. Beyond means the puzzle cannot be finished without a rule that
-        // reasons about a group of cells as one, which is further than mainstream apps go.
-        val beyond = catalog.byGrade(Grade.BEYOND)
-        assertEquals(500, beyond.size)
-        val withoutSetLogic = TechniqueSolver(Techniques.ladder.filter { it.id !in Techniques.setLogic })
-        for ((index, rated) in beyond.withIndex()) {
-            assertTrue(rated.hardest in Techniques.setLogic, "beyond puzzle $index rests on ${rated.hardest}")
+    fun `the three hardest grades really do need the deep end`() {
+        // The headline claim. From Beyond upwards a puzzle cannot be finished without a rule
+        // that reasons about a group of cells as one, or takes a cell both ways, which is
+        // further than mainstream apps go at all.
+        val deepEnd = Techniques.setLogic + TechniqueId.FORCING_CHAIN
+        val without = TechniqueSolver(Techniques.ladder.filter { it.id !in deepEnd })
+        for (grade in listOf(Grade.BEYOND, Grade.INSANE, Grade.NIGHTMARE)) {
+            val puzzles = catalog.byGrade(grade)
+            assertEquals(500, puzzles.size, "${grade.displayName} count")
+            for ((index, rated) in puzzles.withIndex()) {
+                assertTrue(rated.hardest in deepEnd, "${grade.displayName} puzzle $index rests on ${rated.hardest}")
+                assertTrue(
+                    !without.solve(rated.puzzle.givens).isSolved,
+                    "${grade.displayName} puzzle $index falls to rules from below the deep end",
+                )
+            }
+        }
+    }
+
+    @Test
+    fun `a nightmare is a puzzle that needs a fork, and nothing softer`() {
+        // Nightmare is the one grade whose rule is not a pattern at all, so it gets its own
+        // check: take the fork away and every one of them stops dead.
+        val withoutForks = TechniqueSolver(Techniques.ladder.filter { it.id != TechniqueId.FORCING_CHAIN })
+        for ((index, rated) in catalog.byGrade(Grade.NIGHTMARE).withIndex()) {
+            assertEquals(TechniqueId.FORCING_CHAIN, rated.hardest, "nightmare puzzle $index")
             assertTrue(
-                !withoutSetLogic.solve(rated.puzzle.givens).isSolved,
-                "beyond puzzle $index can be solved without an almost locked set",
+                !withoutForks.solve(rated.puzzle.givens).isSolved,
+                "nightmare puzzle $index can be finished without a fork",
             )
         }
     }
 
     @Test
-    fun `a sample of beyond puzzles, printed for a human to look at`() {
+    fun `a sample of the hardest puzzles, printed for a human to look at`() {
         // Hand sampling, as the roadmap asks. The numbers above prove the claim; this exists
         // so a person can actually read a few and see what the hardest grade looks like.
-        for (rated in catalog.byGrade(Grade.BEYOND).take(3)) {
+        for (rated in catalog.byGrade(Grade.NIGHTMARE).take(3)) {
             val path = rated.usage.entries
                 .sortedByDescending { it.key.cost }
                 .joinToString(", ") { "${it.key.displayName} x${it.value}" }
-            println("BEYOND ${rated.clueCount} clues, rating ${"%.2f".format(rated.rating)}, $path")
+            println("NIGHTMARE ${rated.clueCount} clues, rating ${"%.2f".format(rated.rating)}, $path")
             println(rated.puzzle.givens.toString().replace("\n", "").chunked(9).joinToString("\n") { "  $it" })
         }
     }

@@ -26,6 +26,8 @@
     <string name="grade_severe">Very hard</string>
     <string name="grade_diabolical">Expert</string>
     <string name="grade_beyond">Master</string>
+    <string name="grade_insane">Insane</string>
+    <string name="grade_nightmare">Nightmare</string>
     <string name="grade_locked">Win one %1$s puzzle to open this</string>
     <string name="gate_gentle">one clear digit at a time</string>
     <string name="gate_steady">pairs, and digits locked to a line</string>
@@ -33,6 +35,10 @@
     <string name="gate_severe">wings, colouring and rectangles</string>
     <string name="gate_diabolical">chains of reasoning</string>
     <string name="gate_beyond">further than most apps go</string>
+    <string name="gate_insane">groups of cells chained together</string>
+    <string name="gate_nightmare">one cell taken both ways, on paper</string>
+    <string name="grade_advanced">ADVANCED</string>
+    <string name="grade_advanced_talkback">an advanced level, which needs a technique from the course</string>
 
     <!-- Playing -->
     <string name="tool_undo">Undo</string>
@@ -223,6 +229,7 @@
     <string name="look_bug_plus_one">Every cell but one is down to two digits.</string>
     <string name="look_x_chain">A chain on one digit, alternating between must and cannot.</string>
     <string name="look_xy_chain">A chain of two digit cells, each one forcing the next.</string>
+    <string name="look_forcing_chain">A cell with exactly two possibilities, when nothing else is left to find.</string>
     <string name="look_death_blossom">One cell, and a group for each digit it could be, where the cell can see that digit everywhere inside the group.</string>
     <string name="look_als_xy_wing">Three groups, each one digit short of being full, joined in a line by two different digits.</string>
     <string name="look_sue_de_coq">A box and a line crossing, where the shared cells hold two more digits than they have room for.</string>
@@ -252,6 +259,7 @@
     <string name="because_bug_plus_one">If the extra candidate were removed, every digit would appear exactly twice in every region, and a grid like that always has an even number of answers. This puzzle has one, so the extra candidate is the answer.</string>
     <string name="because_x_chain">The chain alternates between places the digit must be and places it cannot be. The two ends cannot both be empty of it, so anything seeing both loses it.</string>
     <string name="because_xy_chain">Suppose the first cell is not the digit. Follow the chain along and the last cell is forced to be it. So one end or the other holds it.</string>
+    <string name="because_forcing_chain">Follow both possibilities. If one of them leaves a cell with nothing to put in it, that possibility was never real and can go. If both of them put the same digit in the same place, that digit belongs there whichever one turns out to be true. Nothing here depends on the assumption being right, which is what makes it a proof and not a guess.</string>
     <string name="because_death_blossom">Whatever the cell turns out to be, it knocks its own digit out of the matching group, and that group is then full and must use every digit it has left. If all the groups hold the same spare digit, that digit lands in one of them no matter which way the cell falls. Anything that can see it in all of them loses it.</string>
     <string name="because_als_xy_wing">If the digit under threat is gone from the first group, that group is full and must take the digit it shares with the middle one. The middle group then loses that digit, so it is full too and takes the digit it shares with the third. The third group is then full as well, and has to use the digit under threat. So any cell that can see it in both outer groups cannot have it.</string>
     <string name="because_sue_de_coq">The shared cells will use up all but two of their digits, and the two groups either side claim exactly those two. So every digit of the group in the line is spent inside the line, and every digit of the group in the box is spent inside the box. Nothing else in either one can have them.</string>
@@ -285,6 +293,7 @@
     <string name="technique_sue_de_coq">Sue de Coq</string>
     <string name="technique_als_xy_wing">ALS XY-Wing</string>
     <string name="technique_death_blossom">Death blossom</string>
+    <string name="technique_forcing_chain">Forcing chain</string>
     <string name="daily_title">Daily</string>
     <string name="daily_no_streak">No streak yet. Solve today\'s puzzle to start one.</string>
     <string name="daily_previous_month">EARLIER</string>
@@ -629,6 +638,18 @@
     <string name="lesson_blossom_5">Now they are full, and three full cells use three digits: 2, 7 and 8. Only one of them can be the 8, so that is where the 8 goes.</string>
     <string name="lesson_blossom_6">Put the two cases together. Either there is an 8 at r1c7 or there is an 8 in that box, and there is no third case. Any cell that can see both places loses its 8, and two of them do.</string>
     <string name="lesson_blossom_7">Notice what you never had to know: which digit the stem actually is. Both roads end in an 8, so the answer does not depend on the fork.</string>
+
+    <string name="lesson_fork_title">Forcing chain</string>
+    <string name="lesson_fork_summary">Take a cell both ways and see which way survives. The hardest thing in the app.</string>
+    <string name="lesson_fork_1">The last technique, and the only one that is not a pattern. There is nothing here to spot. There is only work.</string>
+    <string name="lesson_fork_2">This cell is a 2 or a 7. Everything else on the board has been squeezed dry, and nothing says which of the two it is.</string>
+    <string name="lesson_fork_3">So try one. Say it is a 2, in pencil, and follow only the easy consequences: a cell with one digit left, or a digit with one home left in its house.</string>
+    <string name="lesson_fork_4">They come quickly. A 2 is forced here, then a 7 there, then a 3, a 5, a 9. Keep going. Fourteen digits later, look at the marked cell.</string>
+    <string name="lesson_fork_5">It has nothing left. Every digit that could have gone there has been taken by something else. That is not bad luck, it is a contradiction, and it means the 2 was never possible at all.</string>
+    <string name="lesson_fork_6">So rub it all out and write the 7. Not because the 7 looks better, but because the 2 has been proved impossible, and two possibilities minus one leaves one.</string>
+    <string name="lesson_fork_7">This is proof by cases, and it is what people mean by working a puzzle out on paper. Use paper. Nobody holds fourteen forced digits in their head, and needing to write them down is not a weakness.</string>
+    <string name="lesson_fork_8">Now place it.</string>
+    <string name="lesson_fork_wrong">The other digit is the one that died. The 2 led to a cell with nothing in it, so what is left is the 7.</string>
 
     <string name="lesson_nothing_applies_title">When nothing applies</string>
     <string name="lesson_nothing_applies_summary">Recheck before you guess, because a puzzle from this app always has a next step.</string>

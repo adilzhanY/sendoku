@@ -39,6 +39,8 @@ public data class GradeSpec(val grade: Grade, val clues: IntRange, val digFloor:
             GradeSpec(Grade.SEVERE, clues = 20..36, digFloor = 0),
             GradeSpec(Grade.DIABOLICAL, clues = 20..34, digFloor = 0),
             GradeSpec(Grade.BEYOND, clues = 20..34, digFloor = 0),
+            GradeSpec(Grade.INSANE, clues = 20..34, digFloor = 0),
+            GradeSpec(Grade.NIGHTMARE, clues = 20..34, digFloor = 0),
         ).associateBy { it.grade }
 
         public fun of(grade: Grade): GradeSpec = defaults.getValue(grade)

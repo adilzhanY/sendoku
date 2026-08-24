@@ -119,6 +119,9 @@ public object Curriculum {
     /** A stem with two petals in the top band, and an 8 that has to land in one of them. */
     private const val BLOSSOM = "92..41.7....9..1...5.3...6...423865.....1.....82..931..7..93.8.8.9..5....3.87..91"
 
+    /** A position with nothing left to spot, where one cell has to be taken both ways. */
+    private const val FORK = ".6...8..7..5..4.3..4.16....974.81.2...29.71...1..4.7.9....19....2.4..5..4..8...6."
+
     /** One cell from being ambiguous, which is the whole of the BUG argument. */
     private const val ALMOST_BUG = "9..1.73..7.2396.853..4.2..9135729...8675412932946385174.1963.5.5892746316.38159.4"
 
@@ -807,6 +810,25 @@ public object Curriculum {
                 Step.Say(R.string.lesson_blossom_5),
                 Step.Show(R.string.lesson_blossom_6, focus = setOf(3, 6, 14, 22, 23), strike = setOf(24, 26)),
                 Step.Say(R.string.lesson_blossom_7),
+            ),
+        ),
+        Lesson(
+            id = LessonId.FORCING_CHAIN,
+            stage = Stage.THE_DEEP_END,
+            title = R.string.lesson_fork_title,
+            summary = R.string.lesson_fork_summary,
+            teaches = listOf(TechniqueId.FORCING_CHAIN),
+            dims = Dimensions.CLASSIC,
+            board = FORK,
+            steps = listOf(
+                Step.Say(R.string.lesson_fork_1),
+                Step.Show(R.string.lesson_fork_2, focus = setOf(12)),
+                Step.Say(R.string.lesson_fork_3),
+                Step.Show(R.string.lesson_fork_4, focus = setOf(12, 61)),
+                Step.Show(R.string.lesson_fork_5, focus = setOf(61), strike = setOf(61)),
+                Step.Say(R.string.lesson_fork_6),
+                Step.Say(R.string.lesson_fork_7),
+                Step.YourTurn(R.string.lesson_fork_8, cell = 12, digit = 7, wrong = R.string.lesson_fork_wrong),
             ),
         ),
     )

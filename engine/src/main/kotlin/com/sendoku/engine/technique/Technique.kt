@@ -43,6 +43,7 @@ public enum class TechniqueId(public val displayName: String, public val cost: D
     ALS_XZ("ALS XZ", 7.5),
     ALS_XY_WING("ALS XY-Wing", 8.4),
     DEATH_BLOSSOM("Death blossom", 8.8),
+    FORCING_CHAIN("Forcing chain", 9.0),
 }
 
 /** One digit in one cell. The cell is a row-major index into the grid. */

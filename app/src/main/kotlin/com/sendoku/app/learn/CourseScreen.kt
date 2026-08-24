@@ -47,7 +47,7 @@ public fun CourseScreen(
     progress: CourseProgress,
     onOpen: (LessonId) -> Unit,
     onPractise: () -> Unit,
-    onBack: () -> Unit,
+    onBack: (() -> Unit)?,
     modifier: Modifier = Modifier,
 ) {
     val colors = Sendoku.colors
@@ -60,15 +60,19 @@ public fun CourseScreen(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(dimens.spaceM),
         ) {
-            Text(
-                text = stringResource(R.string.back),
-                style = Sendoku.type.overline,
-                color = colors.muted,
-                modifier = Modifier
-                    .clip(RoundedCornerShape(dimens.radiusS))
-                    .clickable(onClick = onBack)
-                    .padding(dimens.spaceS),
-            )
+            // Null when the course is a tab rather than a screen somebody navigated into.
+            // A back link with nowhere to go is a button that does nothing when pressed.
+            if (onBack != null) {
+                Text(
+                    text = stringResource(R.string.back),
+                    style = Sendoku.type.overline,
+                    color = colors.muted,
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(dimens.radiusS))
+                        .clickable(onClick = onBack)
+                        .padding(dimens.spaceS),
+                )
+            }
             Text(
                 text = stringResource(R.string.course_title),
                 style = Sendoku.type.title,

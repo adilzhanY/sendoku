@@ -208,7 +208,7 @@ private fun Screens(
                 progress = course,
                 onOpen = { navigator.go(Destination.LessonAt(it.name)) },
                 onPractise = { navigator.go(Destination.Practice("")) },
-                onBack = { navigator.back() },
+                onBack = if (navigator.canGoBack) ({ navigator.back() }) else null,
                 modifier = modifier,
             )
         }

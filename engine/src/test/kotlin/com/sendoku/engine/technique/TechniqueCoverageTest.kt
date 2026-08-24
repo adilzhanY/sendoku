@@ -61,6 +61,17 @@ class TechniqueCoverageTest {
         // its own petals, so stem and petal together are a fourth set that the cheaper set
         // rules can use directly.
         TechniqueId.DEATH_BLOSSOM to setOf(TechniqueId.ALS_XZ, TechniqueId.ALS_XY_WING),
+        // The smallest dead end a fork can run into is four bivalue cells in a ring, which
+        // is also the smallest XY-Chain, and every set rule can read a ring as sets. A fork
+        // that nothing else can follow needs a real puzzle behind it, and the shipped
+        // catalog is where those are proved.
+        TechniqueId.FORCING_CHAIN to setOf(
+            TechniqueId.XY_WING,
+            TechniqueId.XY_CHAIN,
+            TechniqueId.ALS_XZ,
+            TechniqueId.ALS_XY_WING,
+            TechniqueId.DEATH_BLOSSOM,
+        ),
     )
 
     @Test
