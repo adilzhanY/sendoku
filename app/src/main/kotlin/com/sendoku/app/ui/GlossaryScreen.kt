@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import com.sendoku.app.R
+import com.sendoku.app.learn.Curriculum
 import com.sendoku.app.theme.Sendoku
 import com.sendoku.engine.Grade
 import com.sendoku.engine.technique.TechniqueId
@@ -31,7 +32,7 @@ import com.sendoku.engine.technique.TechniqueId
  * never go.
  */
 @Composable
-public fun GlossaryScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
+public fun GlossaryScreen(onBack: () -> Unit, onLesson: (TechniqueId) -> Unit, modifier: Modifier = Modifier) {
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
     val ladder = TechniqueId.entries.sortedBy { it.cost }
@@ -60,11 +61,18 @@ public fun GlossaryScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
             contentPadding = androidx.compose.foundation.layout.PaddingValues(bottom = dimens.spaceXl),
         ) {
             items(ladder) { technique ->
+                val lesson = Curriculum.teaching(technique)
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
                         .clip(RoundedCornerShape(dimens.radiusM))
                         .background(colors.surface)
+                        .then(
+                            // The glossary says what a technique is. The lesson shows one on a
+                            // board and asks you to find the next. A definition is where you
+                            // start looking, not where you should have to stop.
+                            if (lesson == null) Modifier else Modifier.clickable { onLesson(technique) },
+                        )
                         .padding(dimens.spaceM),
                     verticalArrangement = Arrangement.spacedBy(dimens.spaceXs),
                 ) {
@@ -80,6 +88,13 @@ public fun GlossaryScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
                         )
                         Text(
                             text = stringResource(gradeName(Grade.of(technique.cost))).uppercase(),
+                            style = Sendoku.type.overline,
+                            color = colors.accent,
+                        )
+                    }
+                    if (lesson != null) {
+                        Text(
+                            text = stringResource(R.string.glossary_learn_this),
                             style = Sendoku.type.overline,
                             color = colors.accent,
                         )

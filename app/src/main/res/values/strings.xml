@@ -650,4 +650,7 @@
     <string name="practice_skip">Skip</string>
     <string name="practice_title">Practice</string>
     <string name="practice_none">Nothing to practise yet. Finish a lesson that teaches a technique first.</string>
+    <string name="glossary_learn_this">LEARN THIS</string>
+    <string name="hint_learn_this">Teach me this</string>
+    <string name="outcome_learn">Learn %1$s</string>
 </resources>

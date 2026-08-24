@@ -647,4 +647,7 @@
     <string name="practice_skip">Пропустить</string>
     <string name="practice_title">Практика</string>
     <string name="practice_none">Пока нечего отрабатывать. Сначала пройдите урок с техникой.</string>
+    <string name="glossary_learn_this">УЧИТЬ</string>
+    <string name="hint_learn_this">Научи меня</string>
+    <string name="outcome_learn">Изучить: %1$s</string>
 </resources>

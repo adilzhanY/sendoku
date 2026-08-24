@@ -69,7 +69,7 @@ public fun GameScreen(
     onEvent: (GameEvent) -> Unit,
     onNextPuzzle: () -> Unit,
     onHome: () -> Unit,
-    onGlossary: () -> Unit,
+    onGlossary: (com.sendoku.engine.technique.TechniqueId?) -> Unit,
     onSettings: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -134,7 +134,9 @@ public fun GameScreen(
                     horizontalArrangement = Arrangement.spacedBy(dimens.spaceL),
                 ) {
                     Box(Modifier.fillMaxHeight().weight(1f), contentAlignment = Alignment.Center) {
-                        BoardArea(state, onEvent, onNextPuzzle, onHome, { longPressed = it }, boardCap, hint)
+                        BoardArea(state, onEvent, onNextPuzzle, onHome, {
+                            longPressed = it
+                        }, boardCap, hint, onGlossary)
                     }
                     Column(
                         modifier = Modifier.fillMaxHeight().weight(1f),
@@ -155,7 +157,9 @@ public fun GameScreen(
                         modifier = Modifier.fillMaxWidth().weight(1f),
                         contentAlignment = Alignment.Center,
                     ) {
-                        BoardArea(state, onEvent, onNextPuzzle, onHome, { longPressed = it }, boardCap, hint)
+                        BoardArea(state, onEvent, onNextPuzzle, onHome, {
+                            longPressed = it
+                        }, boardCap, hint, onGlossary)
                     }
                     HintArea(hint, onEvent, { hint = it }, onGlossary)
                     Controls(state, feedback) { hint = HintEngine.next(state) }
@@ -226,6 +230,7 @@ private fun BoardArea(
     onLongPress: (Int) -> Unit,
     cap: androidx.compose.ui.unit.Dp,
     hint: Hint?,
+    onLearn: (com.sendoku.engine.technique.TechniqueId) -> Unit,
 ) {
     val step = hint as? Hint.Step
     val showCells = step != null && step.level != HintLevel.NAME
@@ -245,7 +250,12 @@ private fun BoardArea(
                 modifier = Modifier.fillMaxWidth(),
             )
             if (state.isOver) {
-                OutcomePanel(state = state, onNextPuzzle = onNextPuzzle, onHome = onHome)
+                OutcomePanel(
+                    state = state,
+                    onNextPuzzle = onNextPuzzle,
+                    onHome = onHome,
+                    onLearn = onLearn,
+                )
             }
         }
     }
@@ -271,7 +281,12 @@ private fun Controls(state: GameState, onEvent: (GameEvent) -> Unit, onHint: () 
 
 /** The hint panel, when there is one to show. */
 @Composable
-private fun HintArea(hint: Hint?, onEvent: (GameEvent) -> Unit, onHint: (Hint?) -> Unit, onGlossary: () -> Unit) {
+private fun HintArea(
+    hint: Hint?,
+    onEvent: (GameEvent) -> Unit,
+    onHint: (Hint?) -> Unit,
+    onGlossary: (com.sendoku.engine.technique.TechniqueId?) -> Unit,
+) {
     if (hint == null) return
     HintPanel(
         hint = hint,
@@ -281,7 +296,7 @@ private fun HintArea(hint: Hint?, onEvent: (GameEvent) -> Unit, onHint: (Hint?) 
             onHint(null)
         },
         onDismiss = { onHint(null) },
-        onGlossary = onGlossary,
+        onGlossary = { onGlossary((hint as? Hint.Step)?.deduction?.technique) },
         onRemoveMistake = {
             if (hint is Hint.Mistake) onEvent(GameEvent.EraseCells(hint.cells))
             onHint(null)

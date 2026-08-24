@@ -746,6 +746,15 @@ public object Curriculum {
     public fun byId(id: LessonId): Lesson = lessons.first { it.id == id }
 
     /**
+     * The lesson that teaches a technique, if the course has one.
+     *
+     * This is what turns "what is this?" in a hint from a page of definitions into the lesson
+     * itself. Every technique the engine knows has one, and a test says so, but this stays
+     * nullable because a technique added to the engine tomorrow will not.
+     */
+    public fun teaching(technique: TechniqueId): Lesson? = lessons.firstOrNull { technique in it.teaches }
+
+    /**
      * What the engine says the cost of each technique is, for the ordering test.
      *
      * Read from the ladder rather than copied, so adding a technique to the engine and

@@ -15,10 +15,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import com.sendoku.app.R
 import com.sendoku.app.game.Hint
 import com.sendoku.app.game.HintLevel
+import com.sendoku.app.learn.Curriculum
 import com.sendoku.app.theme.Sendoku
 
 /**
@@ -160,14 +162,19 @@ private fun StepBody(hint: Hint.Step, onGlossary: () -> Unit) {
     )
 
     if (hint.level != HintLevel.NAME) {
+        // Straight to the lesson that teaches this technique, not to a list of definitions.
+        // A player who has just been shown an XY-Wing and does not follow it wants the one
+        // that explains XY-Wings, and wants to come back to this grid afterwards.
+        val teaches = Curriculum.teaching(technique) != null
         Text(
-            text = stringResource(R.string.hint_what_is_this),
+            text = stringResource(if (teaches) R.string.hint_learn_this else R.string.hint_what_is_this),
             style = Sendoku.type.overline,
             color = colors.accent,
             modifier = Modifier
                 .clip(RoundedCornerShape(Sendoku.dimens.radiusS))
                 .clickable(onClick = onGlossary)
-                .padding(vertical = Sendoku.dimens.spaceXs),
+                .padding(vertical = Sendoku.dimens.spaceXs)
+                .testTag("hint:learn"),
         )
     }
 

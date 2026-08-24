@@ -146,7 +146,7 @@ class StoreShotsTest {
                     onEvent = {},
                     onNextPuzzle = {},
                     onHome = {},
-                    onGlossary = {},
+                    onGlossary = { _ -> },
                     onSettings = {},
                     modifier = pane,
                 )
@@ -186,7 +186,7 @@ class StoreShotsTest {
                     onEvent = {},
                     onNextPuzzle = {},
                     onHome = {},
-                    onGlossary = {},
+                    onGlossary = { _ -> },
                     onSettings = {},
                     modifier = pane,
                 )
@@ -211,7 +211,7 @@ class StoreShotsTest {
                     onEvent = {},
                     onNextPuzzle = {},
                     onHome = {},
-                    onGlossary = {},
+                    onGlossary = { _ -> },
                     onSettings = {},
                     modifier = pane,
                 )
@@ -222,7 +222,7 @@ class StoreShotsTest {
 
     @Test
     fun glossary() {
-        compose.setContent { Scene { pane -> GlossaryScreen(onBack = {}, modifier = pane) } }
+        compose.setContent { Scene { pane -> GlossaryScreen(onBack = {}, onLesson = {}, modifier = pane) } }
         shot("4-glossary")
     }
 
@@ -270,7 +270,7 @@ class StoreShotsTest {
                     onEvent = {},
                     onNextPuzzle = {},
                     onHome = {},
-                    onGlossary = {},
+                    onGlossary = { _ -> },
                     onSettings = {},
                     modifier = pane,
                 )

@@ -51,7 +51,7 @@ class GameFlowTest {
                     onEvent = { state = state.reduce(it) },
                     onNextPuzzle = {},
                     onHome = {},
-                    onGlossary = {},
+                    onGlossary = { _ -> },
                     onSettings = {},
                 )
             }

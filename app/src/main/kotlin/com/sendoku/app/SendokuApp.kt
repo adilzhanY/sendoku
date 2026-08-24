@@ -256,7 +256,14 @@ private fun Screens(
         }
 
         Destination.Glossary -> {
-            GlossaryScreen(onBack = { navigator.back() }, modifier = modifier)
+            GlossaryScreen(
+                onBack = { navigator.back() },
+                onLesson = { technique ->
+                    val lesson = Curriculum.teaching(technique)
+                    if (lesson != null) navigator.go(Destination.LessonAt(lesson.id.name))
+                },
+                modifier = modifier,
+            )
         }
 
         Destination.Settings -> {
@@ -296,7 +303,12 @@ private fun PlayHost(
         onEvent = model::onEvent,
         onNextPuzzle = { scope.launch { model.startNew(game.grade) } },
         onHome = { navigator.home() },
-        onGlossary = { navigator.go(Destination.Glossary) },
+        // A technique with a lesson goes to the lesson. One without, or a tap from somewhere
+        // that has no technique in hand, goes to the glossary as before.
+        onGlossary = { technique ->
+            val lesson = technique?.let { Curriculum.teaching(it) }
+            navigator.go(if (lesson == null) Destination.Glossary else Destination.LessonAt(lesson.id.name))
+        },
         onSettings = { navigator.go(Destination.Settings) },
         modifier = modifier,
     )

@@ -16,11 +16,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import com.sendoku.app.R
 import com.sendoku.app.game.GameState
+import com.sendoku.app.learn.Curriculum
 import com.sendoku.app.theme.Sendoku
+import com.sendoku.engine.technique.TechniqueId
 
 /**
  * What the player sees when the puzzle is finished, won or lost.
@@ -36,6 +39,8 @@ public fun OutcomePanel(
     state: GameState,
     onNextPuzzle: () -> Unit,
     onHome: () -> Unit,
+    /** Opens the lesson for the hardest technique the puzzle needed, when there is one. */
+    onLearn: (TechniqueId) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val colors = Sendoku.colors
@@ -84,6 +89,7 @@ public fun OutcomePanel(
             }
 
             state.hardest?.let { technique ->
+                val lesson = Curriculum.teaching(technique)
                 Text(
                     // Taken from the rating rather than from what the player did, because a
                     // player may well have found a longer way round. This describes the
@@ -96,6 +102,24 @@ public fun OutcomePanel(
                     color = colors.muted,
                     textAlign = TextAlign.Center,
                 )
+                // The moment a technique means something. The player has just met it, in a
+                // puzzle they finished, and the lesson is one tap away rather than a thing to
+                // remember to look for later.
+                if (lesson != null) {
+                    Text(
+                        text = stringResource(
+                            R.string.outcome_learn,
+                            stringResource(TechniqueCopy.nameOf(technique)),
+                        ),
+                        style = Sendoku.type.overline,
+                        color = colors.accent,
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(dimens.radiusS))
+                            .clickable { onLearn(technique) }
+                            .padding(dimens.spaceS)
+                            .testTag("outcome:learn"),
+                    )
+                }
             }
 
             Row(
