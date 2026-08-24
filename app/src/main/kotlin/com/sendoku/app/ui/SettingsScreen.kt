@@ -21,6 +21,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import com.sendoku.app.R
 import com.sendoku.app.data.Appearance
@@ -45,6 +46,11 @@ public fun SettingsScreen(
     onAppearanceChange: (Appearance) -> Unit,
     onBack: () -> Unit,
     onAbout: () -> Unit,
+    onExport: () -> Unit,
+    onImport: () -> Unit,
+    onResetCourse: () -> Unit,
+    /** What the last export or import did, shown until the screen is left. */
+    dataMessage: String?,
     modifier: Modifier = Modifier,
 ) {
     val colors = Sendoku.colors
@@ -145,6 +151,25 @@ public fun SettingsScreen(
             modifier = Modifier.padding(vertical = dimens.spaceS),
         )
 
+        SectionLabel(stringResource(R.string.settings_your_data))
+        Text(
+            text = stringResource(R.string.settings_data_note),
+            style = Sendoku.type.body,
+            color = colors.muted,
+            modifier = Modifier.padding(bottom = dimens.spaceS),
+        )
+        Action(stringResource(R.string.settings_export), "settings:export", onExport)
+        Action(stringResource(R.string.settings_import), "settings:import", onImport)
+        Action(stringResource(R.string.settings_reset_course), "settings:reset-course", onResetCourse)
+        if (dataMessage != null) {
+            Text(
+                text = dataMessage,
+                style = Sendoku.type.body,
+                color = colors.accent,
+                modifier = Modifier.padding(top = dimens.spaceS).testTag("settings:data-message"),
+            )
+        }
+
         Text(
             text = stringResource(R.string.settings_about),
             style = Sendoku.type.overline,
@@ -227,4 +252,23 @@ private fun Toggle(label: String, checked: Boolean, onChange: (Boolean) -> Unit)
             ),
         )
     }
+}
+
+/** A row that does something, rather than one that holds a setting. */
+@Composable
+private fun Action(label: String, tag: String, onClick: () -> Unit) {
+    val colors = Sendoku.colors
+    val dimens = Sendoku.dimens
+    Text(
+        text = label,
+        style = Sendoku.type.label,
+        color = colors.accent,
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(min = dimens.minTouchTarget)
+            .clip(RoundedCornerShape(dimens.radiusM))
+            .clickable(onClick = onClick)
+            .testTag(tag)
+            .padding(horizontal = dimens.spaceM, vertical = dimens.spaceM),
+    )
 }

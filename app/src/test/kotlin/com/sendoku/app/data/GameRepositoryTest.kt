@@ -53,6 +53,7 @@ class GameRepositoryTest {
         override fun watchSolvedCount(): Flow<Int> = rows.map { list -> list.count { it.solved } }
         override suspend fun bestSeconds(grade: String): Long? =
             rows.value.filter { it.solved && it.grade == grade }.minOfOrNull { it.elapsedSeconds }
+        override suspend fun all(): List<FinishedRow> = rows.value
         override fun watchSolvedDays(): Flow<List<Long>> =
             rows.map { list -> list.filter { it.solved }.mapNotNull { it.dailyEpochDay }.distinct() }
         override fun watchAttemptedDays(): Flow<List<Long>> =

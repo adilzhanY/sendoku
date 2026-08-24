@@ -128,6 +128,8 @@ class StoreShotsTest {
                     onDaily = {},
                     onSettings = {},
                     onStats = {},
+                    onLearn = {},
+                    learnProgress = 12 to 37,
                     modifier = pane,
                 )
             }
@@ -243,6 +245,10 @@ class StoreShotsTest {
                     onAppearanceChange = {},
                     onBack = {},
                     onAbout = {},
+                    onExport = {},
+                    onImport = {},
+                    onResetCourse = {},
+                    dataMessage = null,
                     modifier = pane,
                 )
             }

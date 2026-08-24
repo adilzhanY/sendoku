@@ -626,4 +626,17 @@
         <item quantity="one">%1$d of %2$d lesson</item>
         <item quantity="other">%1$d of %2$d lessons</item>
     </plurals>
+    <string name="settings_your_data">Your data</string>
+    <string name="settings_data_note">Everything this app knows about you is on this phone. Export writes it to a file you choose, so a new phone can pick up where this one left off. Nothing is sent anywhere.</string>
+    <string name="settings_export">Export my progress</string>
+    <string name="settings_import">Import from a file</string>
+    <string name="settings_reset_course">Reset the course, keeping my games</string>
+    <string name="settings_exported">Saved. Lessons: %1$d. Games: %2$d.</string>
+    <string name="settings_imported">Added. Lessons: %1$d. Games: %2$d.</string>
+    <string name="settings_imported_ignored">Added. Lessons: %1$d. Games: %2$d. Left out, because they came from a newer version: %3$d.</string>
+    <string name="settings_import_empty">That file is empty.</string>
+    <string name="settings_import_not_ours">That does not look like a Sendoku export.</string>
+    <string name="settings_import_future">That file was written by a newer version of Sendoku.</string>
+    <string name="settings_import_failed">That file could not be read, and nothing on this phone was changed.</string>
+    <string name="settings_course_reset">The course is back to the start. Your games are untouched.</string>
 </resources>

@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.baselineprofile)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 /*
@@ -171,6 +172,7 @@ dependencies {
     debugImplementation(libs.leakcanary)
     baselineProfile(project(":benchmark"))
 
+    implementation(libs.kotlinx.serialization.json)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.lifecycle.runtime.ktx)

@@ -107,6 +107,9 @@ public interface LessonProgressDao {
     @Query("SELECT * FROM lesson_progress")
     public fun watchAll(): Flow<List<LessonProgressRow>>
 
+    @Query("SELECT * FROM lesson_progress")
+    public suspend fun all(): List<LessonProgressRow>
+
     @Query("SELECT * FROM lesson_progress WHERE lessonId = :id")
     public suspend fun of(id: String): LessonProgressRow?
 
@@ -122,6 +125,9 @@ public interface TechniqueMasteryDao {
 
     @Query("SELECT * FROM technique_mastery")
     public fun watchAll(): Flow<List<TechniqueMasteryRow>>
+
+    @Query("SELECT * FROM technique_mastery")
+    public suspend fun all(): List<TechniqueMasteryRow>
 
     @Query("SELECT * FROM technique_mastery WHERE technique = :id")
     public suspend fun of(id: String): TechniqueMasteryRow?
@@ -157,6 +163,9 @@ public interface FinishedDao {
 
     @Query("SELECT * FROM finished ORDER BY finishedAt DESC")
     public fun watchAll(): Flow<List<FinishedRow>>
+
+    @Query("SELECT * FROM finished ORDER BY finishedAt DESC")
+    public suspend fun all(): List<FinishedRow>
 
     @Query("SELECT * FROM finished ORDER BY finishedAt DESC LIMIT :limit")
     public suspend fun recent(limit: Int): List<FinishedRow>

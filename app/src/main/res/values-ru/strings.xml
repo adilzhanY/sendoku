@@ -623,4 +623,17 @@
         <item quantity="many">%1$d из %2$d уроков</item>
         <item quantity="other">%1$d из %2$d уроков</item>
     </plurals>
+    <string name="settings_your_data">Ваши данные</string>
+    <string name="settings_data_note">Всё, что приложение о вас знает, лежит на этом телефоне. Экспорт запишет это в файл на ваш выбор, чтобы новый телефон продолжил с того же места. Никуда ничего не отправляется.</string>
+    <string name="settings_export">Экспортировать прогресс</string>
+    <string name="settings_import">Импортировать из файла</string>
+    <string name="settings_reset_course">Сбросить курс, оставив игры</string>
+    <string name="settings_exported">Сохранено. Уроков: %1$d. Игр: %2$d.</string>
+    <string name="settings_imported">Добавлено. Уроков: %1$d. Игр: %2$d.</string>
+    <string name="settings_imported_ignored">Добавлено. Уроков: %1$d. Игр: %2$d. Пропущено, так как из более новой версии: %3$d.</string>
+    <string name="settings_import_empty">Этот файл пуст.</string>
+    <string name="settings_import_not_ours">Это не похоже на экспорт Sendoku.</string>
+    <string name="settings_import_future">Файл записан более новой версией Sendoku.</string>
+    <string name="settings_import_failed">Файл не удалось прочитать, на телефоне ничего не изменилось.</string>
+    <string name="settings_course_reset">Курс сброшен. Игры не тронуты.</string>
 </resources>

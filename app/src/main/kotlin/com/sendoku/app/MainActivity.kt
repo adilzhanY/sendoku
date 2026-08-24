@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.WindowInsets
@@ -34,12 +35,19 @@ import com.sendoku.app.data.RoomGameRepository
 import com.sendoku.app.data.SendokuDatabase
 import com.sendoku.app.data.ThemeMode
 import com.sendoku.app.game.GameViewModel
+import com.sendoku.app.learn.BackupResult
+import com.sendoku.app.learn.BackupStore
+import com.sendoku.app.learn.CourseBackup
+import com.sendoku.app.learn.Problem
 import com.sendoku.app.learn.RoomLearningRepository
 import com.sendoku.app.theme.Sendoku
 import com.sendoku.app.theme.SendokuTheme
 import com.sendoku.app.ui.InProgressSummary
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 private val Context.preferences: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
@@ -69,6 +77,80 @@ class MainActivity : ComponentActivity() {
     }
     private val repository by lazy { RoomGameRepository(database.inProgress(), database.finished()) }
     private val learning by lazy { RoomLearningRepository(database.lessonProgress(), database.mastery()) }
+    private val backups by lazy { BackupStore(database, BuildConfig.VERSION_NAME) }
+
+    /**
+     * What the last export or import did.
+     *
+     * Held here rather than in the screen, because the answer arrives from a file picker that
+     * outlives the composition that started it.
+     */
+    private val dataMessage = MutableStateFlow<String?>(null)
+
+    /*
+     * The two file pickers.
+     *
+     * ACTION_CREATE_DOCUMENT and ACTION_OPEN_DOCUMENT, which hand back a single uri the app may
+     * read or write once. No storage permission is involved, which is what keeps the promise
+     * that this app asks for nothing: the player picks the file, and the system does the rest.
+     */
+    private val exportTo = registerForActivityResult(ActivityResultContracts.CreateDocument(BACKUP_MIME)) { uri ->
+        if (uri == null) return@registerForActivityResult
+        lifecycleScope.launch { writeBackup(uri) }
+    }
+
+    private val importFrom = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+        if (uri == null) return@registerForActivityResult
+        lifecycleScope.launch { readBackup(uri) }
+    }
+
+    private suspend fun writeBackup(uri: android.net.Uri) {
+        val backup = backups.export(System.currentTimeMillis())
+        val written = runCatching {
+            withContext(Dispatchers.IO) {
+                contentResolver.openOutputStream(uri)?.use { it.write(CourseBackup.encode(backup).toByteArray()) }
+                    ?: error("nothing to write to")
+            }
+        }
+        dataMessage.value = if (written.isSuccess) {
+            getString(R.string.settings_exported, backup.lessons.size, backup.games.size)
+        } else {
+            getString(R.string.settings_import_failed)
+        }
+    }
+
+    private suspend fun readBackup(uri: android.net.Uri) {
+        val text = runCatching {
+            withContext(Dispatchers.IO) {
+                contentResolver.openInputStream(uri)?.use { it.readBytes().decodeToString() } ?: error("no file")
+            }
+        }.getOrNull()
+
+        if (text == null) {
+            dataMessage.value = getString(R.string.settings_import_failed)
+            return
+        }
+
+        dataMessage.value = when (val result = CourseBackup.decode(text)) {
+            is BackupResult.Unreadable -> when (result.problem) {
+                Problem.EMPTY -> getString(R.string.settings_import_empty)
+                Problem.NOT_OURS -> getString(R.string.settings_import_not_ours)
+                Problem.FROM_THE_FUTURE -> getString(R.string.settings_import_future)
+            }
+
+            is BackupResult.Read -> {
+                val done = runCatching { backups.import(result.backup, System.currentTimeMillis()) }.getOrNull()
+                when {
+                    done == null -> getString(R.string.settings_import_failed)
+
+                    done.ignored > 0 ->
+                        getString(R.string.settings_imported_ignored, done.lessons, done.games, done.ignored)
+
+                    else -> getString(R.string.settings_imported, done.lessons, done.games)
+                }
+            }
+        }
+    }
     private val settings by lazy { DataStoreSettings(preferences) }
 
     /**
@@ -127,6 +209,21 @@ class MainActivity : ComponentActivity() {
                         statistics = repository.statistics(),
                         dailyDays = repository.dailyDays(),
                         course = learning.progress(),
+                        onExport = {
+                            dataMessage.value = null
+                            exportTo.launch(BACKUP_NAME)
+                        },
+                        onImport = {
+                            dataMessage.value = null
+                            importFrom.launch(arrayOf(BACKUP_MIME, "application/octet-stream", "text/plain"))
+                        },
+                        onResetCourse = {
+                            lifecycleScope.launch {
+                                learning.clear()
+                                dataMessage.value = getString(R.string.settings_course_reset)
+                            }
+                        },
+                        dataMessage = dataMessage.collectAsState().value,
                         onLessonStep = { lesson, step, finished ->
                             lifecycleScope.launch {
                                 learning.record(lesson, step, finished, System.currentTimeMillis())
@@ -170,3 +267,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+/** What an exported file is called and what it is. */
+private const val BACKUP_NAME = "sendoku-progress.json"
+private const val BACKUP_MIME = "application/json"
