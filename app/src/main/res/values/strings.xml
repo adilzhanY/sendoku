@@ -223,6 +223,7 @@
     <string name="look_bug_plus_one">Every cell but one is down to two digits.</string>
     <string name="look_x_chain">A chain on one digit, alternating between must and cannot.</string>
     <string name="look_xy_chain">A chain of two digit cells, each one forcing the next.</string>
+    <string name="look_als_xy_wing">Three groups, each one digit short of being full, joined in a line by two different digits.</string>
     <string name="look_sue_de_coq">A box and a line crossing, where the shared cells hold two more digits than they have room for.</string>
     <string name="look_als_xz">Two groups of cells, each one digit away from being locked.</string>
 
@@ -250,6 +251,7 @@
     <string name="because_bug_plus_one">If the extra candidate were removed, every digit would appear exactly twice in every region, and a grid like that always has an even number of answers. This puzzle has one, so the extra candidate is the answer.</string>
     <string name="because_x_chain">The chain alternates between places the digit must be and places it cannot be. The two ends cannot both be empty of it, so anything seeing both loses it.</string>
     <string name="because_xy_chain">Suppose the first cell is not the digit. Follow the chain along and the last cell is forced to be it. So one end or the other holds it.</string>
+    <string name="because_als_xy_wing">If the digit under threat is gone from the first group, that group is full and must take the digit it shares with the middle one. The middle group then loses that digit, so it is full too and takes the digit it shares with the third. The third group is then full as well, and has to use the digit under threat. So any cell that can see it in both outer groups cannot have it.</string>
     <string name="because_sue_de_coq">The shared cells will use up all but two of their digits, and the two groups either side claim exactly those two. So every digit of the group in the line is spent inside the line, and every digit of the group in the box is spent inside the box. Nothing else in either one can have them.</string>
     <string name="because_als_xz">One shared digit can only appear in one of the two groups, which locks the other group and forces it to use every digit it has. So the second shared digit lands in one group or the other.</string>
 
@@ -279,6 +281,7 @@
     <string name="technique_xy_chain">XY-Chain</string>
     <string name="technique_als_xz">ALS XZ</string>
     <string name="technique_sue_de_coq">Sue de Coq</string>
+    <string name="technique_als_xy_wing">ALS XY-Wing</string>
     <string name="daily_title">Daily</string>
     <string name="daily_no_streak">No streak yet. Solve today\'s puzzle to start one.</string>
     <string name="daily_previous_month">EARLIER</string>
@@ -312,6 +315,7 @@
     <string name="stage_one_answer">Assuming one answer</string>
     <string name="stage_chains">Chains</string>
     <string name="stage_the_far_end">The far end</string>
+    <string name="stage_the_deep_end">The deep end</string>
 
     <string name="lesson_what_is_title">What a sudoku is</string>
     <string name="lesson_what_is_summary">Every row, every column and every box holds each digit once.</string>
@@ -595,6 +599,23 @@
     <string name="lesson_als_4">Then it can only be in one of the two sets. Whichever set does not get it becomes locked, which fixes the other shared digit inside it. And so any cell seeing that digit in both sets loses it.</string>
     <string name="lesson_als_5">Here is the elimination that comes out of it.</string>
     <string name="lesson_als_6">If this takes several readings, that is the normal number. Every technique past this point is this one wearing a different shape.</string>
+
+    <string name="lesson_deep_end_title">What the deep end asks</string>
+    <string name="lesson_deep_end_summary">What changes at Insane and Nightmare, and why these levels need paper.</string>
+    <string name="lesson_deep_end_1">Everything up to here can be seen. You look at a row, a box, a pair of cells, and the answer is in front of you once you know the shape.</string>
+    <string name="lesson_deep_end_2">The two hardest levels are not like that. They ask you to follow an argument through three or four steps and hold all of it in your head at once, and almost nobody does that by looking.</string>
+    <string name="lesson_deep_end_3">So write it down. A pencil and the back of an envelope is not cheating and it is not a sign that you are bad at this. It is what everybody who solves these does.</string>
+    <string name="lesson_deep_end_4">The rules here are all the same idea: a group of cells one digit short of being full. Take that digit away and the group is forced, and a forced group makes the next one forced. That is the whole of the deep end.</string>
+    <string name="lesson_deep_end_5">Nothing below is a guess. Every step is proved, every hint will show you the proof, and if a puzzle here beats you, coming back to it in a week is the normal way it goes.</string>
+
+    <string name="lesson_als_xy_title">ALS-XY-Wing</string>
+    <string name="lesson_als_xy_summary">Three groups in a chain, and the digit that cannot survive at either end.</string>
+    <string name="lesson_als_xy_1">Three groups this time, joined in a line: one at each end and one in the middle holding them apart.</string>
+    <string name="lesson_als_xy_2">Start with the two on the left. r3c9 holds 1 and 3. r1c8 holds 3 and 7. They share a box, so only one of them can be the 3.</string>
+    <string name="lesson_als_xy_3">Now the group down column 8: three cells holding 1, 3, 7 and 9 between them. Four digits, three cells, so it is one digit short of being full. It shares the 7 with r1c8, and every 7 in it is in that same column, so again only one side can take it.</string>
+    <string name="lesson_als_xy_4">Suppose one of the two marked cells in column 9 is a 1. It sees r3c9, so r3c9 is not 1, so it is 3. Then r1c8 is not 3, so it is 7. Then the group has no 7 left, so it is full, and it has to use 1, 3 and 9.</string>
+    <string name="lesson_als_xy_5">But those cells also see every 1 in the group, so the group cannot have a 1 either. The argument eats itself, and the 1 goes.</string>
+    <string name="lesson_als_xy_6">Two joins, three groups, and each step forces the next. Read it twice: it is a chain, and chains only make sense one link at a time.</string>
 
     <string name="lesson_nothing_applies_title">When nothing applies</string>
     <string name="lesson_nothing_applies_summary">Recheck before you guess, because a puzzle from this app always has a next step.</string>

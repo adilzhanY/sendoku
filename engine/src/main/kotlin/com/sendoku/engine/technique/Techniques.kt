@@ -37,6 +37,7 @@ public object Techniques {
         XYChain,
         AlsXz,
         SueDeCoq,
+        AlsXyWing,
     ).sortedBy { it.id.cost }
 
     /**
@@ -74,6 +75,7 @@ public object Techniques {
     public val setLogic: Set<TechniqueId> = setOf(
         TechniqueId.ALS_XZ,
         TechniqueId.SUE_DE_COQ,
+        TechniqueId.ALS_XY_WING,
     )
 
     public fun byId(id: TechniqueId): Technique? = ladder.firstOrNull { it.id == id }

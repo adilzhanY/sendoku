@@ -142,6 +142,18 @@ internal object TechniquePositions {
             blank().only(rc(0, 0), 1, 2).only(rc(4, 0), 1, 3).only(rc(4, 1), 2, 3)
         },
 
+        // Three groups in a row. {1,5} and {1,7} in row 1 make the first, the cell {1,2}
+        // below is the hinge, and {2,5,9} with {2,9} further along row 2 make the third.
+        // The 1 joins the first two, the 2 joins the last two, and the 5 is what falls. The
+        // outer groups are two cells apiece on purpose: with one cell each the whole thing
+        // is an XY-Wing, which is a rule seven rungs cheaper.
+        TechniqueId.ALS_XY_WING to {
+            blank()
+                .only(rc(0, 0), 1, 5).only(rc(0, 1), 1, 7)
+                .only(rc(1, 0), 1, 2)
+                .only(rc(1, 4), 2, 5, 9).only(rc(1, 5), 2, 9)
+        },
+
         // Row 0 crosses the top left box in two cells holding four digits between them.
         // A cell further along the row takes {1,2}, a cell lower in the box takes {3,4},
         // and the two of them account for the whole pool.

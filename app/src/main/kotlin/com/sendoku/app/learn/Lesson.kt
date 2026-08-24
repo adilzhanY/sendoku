@@ -24,6 +24,7 @@ public enum class Stage(@StringRes public val title: Int) {
     COLOURING(com.sendoku.app.R.string.stage_colouring),
     CHAINS(com.sendoku.app.R.string.stage_chains),
     THE_FAR_END(com.sendoku.app.R.string.stage_the_far_end),
+    THE_DEEP_END(com.sendoku.app.R.string.stage_the_deep_end),
 }
 
 /**
@@ -145,4 +146,6 @@ public enum class LessonId {
     WHEN_NOTHING_APPLIES,
     WHAT_TO_LOOK_FOR_FIRST,
     A_BEYOND_TOGETHER,
+    WHAT_THE_DEEP_END_ASKS,
+    ALS_XY_WING,
 }

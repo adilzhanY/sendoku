@@ -113,6 +113,9 @@ public object Curriculum {
     /** A column crossing a box, with four digits crowded into two of the shared cells. */
     private const val CROSSING = "5.9.6.732271..5...6.32.7.5.8.....51.9.5...4...645....93984.2..5...659348456.8...."
 
+    /** Three groups in a chain down the right hand side, with a 1 that cannot survive. */
+    private const val THREE_GROUPS = "1....4..54....596.956.27.4.8....645.5..483....495.2..8.94.58127785241...2..7.9584"
+
     /** One cell from being ambiguous, which is the whole of the BUG argument. */
     private const val ALMOST_BUG = "9..1.73..7.2396.853..4.2..9135729...8675412932946385174.1963.5.5892746316.38159.4"
 
@@ -750,6 +753,39 @@ public object Curriculum {
                 Step.Show(R.string.lesson_together_7, focus = setOf(1, 10, 19, 28, 55), strike = setOf(64)),
                 Step.Say(R.string.lesson_together_8),
                 Step.Say(R.string.lesson_together_9),
+            ),
+        ),
+        Lesson(
+            id = LessonId.WHAT_THE_DEEP_END_ASKS,
+            stage = Stage.THE_DEEP_END,
+            title = R.string.lesson_deep_end_title,
+            summary = R.string.lesson_deep_end_summary,
+            teaches = emptyList(),
+            dims = Dimensions.CLASSIC,
+            board = THREE_GROUPS,
+            steps = listOf(
+                Step.Say(R.string.lesson_deep_end_1),
+                Step.Say(R.string.lesson_deep_end_2),
+                Step.Say(R.string.lesson_deep_end_3),
+                Step.Say(R.string.lesson_deep_end_4),
+                Step.Say(R.string.lesson_deep_end_5),
+            ),
+        ),
+        Lesson(
+            id = LessonId.ALS_XY_WING,
+            stage = Stage.THE_DEEP_END,
+            title = R.string.lesson_als_xy_title,
+            summary = R.string.lesson_als_xy_summary,
+            teaches = listOf(TechniqueId.ALS_XY_WING),
+            dims = Dimensions.CLASSIC,
+            board = THREE_GROUPS,
+            steps = listOf(
+                Step.Say(R.string.lesson_als_xy_1),
+                Step.Show(R.string.lesson_als_xy_2, focus = setOf(7, 26)),
+                Step.Show(R.string.lesson_als_xy_3, focus = setOf(7, 26, 43, 52, 70)),
+                Step.Show(R.string.lesson_als_xy_4, focus = setOf(7, 26, 43, 52, 70), strike = setOf(35, 44)),
+                Step.Say(R.string.lesson_als_xy_5),
+                Step.Say(R.string.lesson_als_xy_6),
             ),
         ),
     )

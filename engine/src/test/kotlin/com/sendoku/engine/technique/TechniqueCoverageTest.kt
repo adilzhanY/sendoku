@@ -52,6 +52,11 @@ class TechniqueCoverageTest {
         // the digits left over become a hidden quad, which is a worse position, not a better
         // one.
         TechniqueId.SUE_DE_COQ to setOf(TechniqueId.XY_CHAIN),
+        // Any two cells of the wing that share a house are themselves an almost locked set,
+        // so a hand built wing always contains an ALS-XZ. Only a real puzzle can show the
+        // wing doing work nothing cheaper can, and the shipped catalog is where that is
+        // checked: every puzzle it files under a technique is proved unsolvable without it.
+        TechniqueId.ALS_XY_WING to setOf(TechniqueId.ALS_XZ),
     )
 
     @Test
