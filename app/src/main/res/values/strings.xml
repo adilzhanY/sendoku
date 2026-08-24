@@ -297,4 +297,67 @@
     <string name="stat_hints">Hints</string>
     <string name="stat_time">Time</string>
     <string name="stat_pause">Pause</string>
+
+    <!-- The learning path. Stage names are what a player sees on the course map. -->
+    <string name="stage_first_steps">First steps</string>
+    <string name="stage_one_at_a_time">One digit at a time</string>
+    <string name="stage_notes">Notes</string>
+    <string name="stage_locked_to_a_line">Digits locked to a line</string>
+    <string name="stage_groups">Groups</string>
+    <string name="stage_patterns">Patterns across the grid</string>
+    <string name="stage_wings">Wings</string>
+    <string name="stage_colouring">Colouring</string>
+    <string name="stage_one_answer">Assuming one answer</string>
+    <string name="stage_chains">Chains</string>
+    <string name="stage_the_far_end">The far end</string>
+
+    <string name="lesson_what_is_title">What a sudoku is</string>
+    <string name="lesson_what_is_summary">Every row, every column and every box holds each digit once.</string>
+    <string name="lesson_what_is_1">This is a sudoku. A small one, four cells by four, so everything fits in your head at once. The full size grid works exactly the same way.</string>
+    <string name="lesson_what_is_2">This is a row. It has to hold the digits 1, 2, 3 and 4, each of them once. No repeats, and nothing left out.</string>
+    <string name="lesson_what_is_3">This is a column. Same rule: 1, 2, 3 and 4, each of them once.</string>
+    <string name="lesson_what_is_4">That is the whole game. There is no arithmetic in it, and nothing to add up. It is one rule about where a digit is allowed to be.</string>
+    <string name="lesson_what_is_5">These two cells are empty. Filling them in so the rule still holds is what solving means.</string>
+
+    <string name="lesson_houses_title">Rows, columns and boxes</string>
+    <string name="lesson_houses_summary">A cell sits in three houses at once, and shares a rule with all of them.</string>
+    <string name="lesson_houses_1">The rule mentioned rows and columns. There is a third kind of group, and it is the one that makes a sudoku worth solving.</string>
+    <string name="lesson_houses_2">Here is a row again.</string>
+    <string name="lesson_houses_3">Here is a column.</string>
+    <string name="lesson_houses_4">And here is a box, marked by the heavier lines. It holds each digit once too.</string>
+    <string name="lesson_houses_5">So this cell belongs to three groups at the same time. Every cell it shares a group with is lit up, and none of them can hold the same digit it does. Those three groups are called houses, and the word is used from here on.</string>
+
+    <string name="lesson_givens_title">Givens</string>
+    <string name="lesson_givens_summary">The digits printed at the start are fixed, and they are what makes the answer the only one.</string>
+    <string name="lesson_givens_1">These digits came with the puzzle. They are called givens, and they cannot be changed or erased.</string>
+    <string name="lesson_givens_2">They are drawn differently from the digits you place, so you can always tell which is which. In this app the givens are the heavier ones.</string>
+    <string name="lesson_givens_3">These are the cells you fill in.</string>
+    <string name="lesson_givens_4">A properly made puzzle has exactly one way to fill them. That is a promise about the puzzle, not about you: if you are stuck, there is still only one answer, and it can always be reasoned out. Every puzzle in this app is made that way.</string>
+
+    <string name="lesson_first_four_title">Your first solve</string>
+    <string name="lesson_first_four_summary">Look at what a cell cannot be, and sometimes only one digit is left.</string>
+    <string name="lesson_first_four_1">Now solve one. Two cells are empty, and the rule is enough to fill both.</string>
+    <string name="lesson_first_four_2">Start with this row. It already has a 1 and a 4, so the two empty cells hold 2 and 3 between them. The question is which way round.</string>
+    <string name="lesson_first_four_3">This cell cannot be 2, because its column already has one. So it is 3.</string>
+    <string name="lesson_first_four_4">That leaves one empty cell, and one digit unused in the row.</string>
+    <string name="lesson_first_four_5">Your turn. Place the digit that belongs here.</string>
+    <string name="lesson_first_four_wrong">Not quite. Look at the row: which digit from 1 to 4 is still missing from it?</string>
+    <string name="lesson_first_four_6">Solved. That is a sudoku, whatever the size of the grid.</string>
+
+    <string name="lesson_first_six_title">A bigger grid</string>
+    <string name="lesson_first_six_summary">Boxes are not always square, and the rule does not care.</string>
+    <string name="lesson_first_six_1">Six by six. The rule has not changed, but the boxes have: they are three wide and two tall.</string>
+    <string name="lesson_first_six_2">This is one box. Three across, two down, six cells, each digit from 1 to 6 once.</string>
+    <string name="lesson_first_six_3">That catches people out at first, because the eye expects a square. It is worth a moment: find the box that this cell is in before you look for anything else.</string>
+    <string name="lesson_first_six_4">Your turn. One digit is missing from the top left box.</string>
+    <string name="lesson_first_six_wrong">Not that one. Count what the box already holds, then find the digit from 1 to 6 that is not there.</string>
+    <string name="lesson_first_six_5">Good. From here on the grids are nine by nine and the boxes are square again, but the habit of checking all three houses is the one to keep.</string>
+
+    <string name="lesson_naked_single_title">The naked single</string>
+    <string name="lesson_naked_single_summary">A cell with only one digit left has to hold it.</string>
+    <string name="lesson_naked_single_1">A full size grid, and the first technique with a name. It is the simplest one there is, and even on the hardest puzzles it is what finishes most cells.</string>
+    <string name="lesson_naked_single_2">Look at this cell on its own. Ask what it could hold.</string>
+    <string name="lesson_naked_single_3">Every cell that rules something out is lit. Between its row, its column and its box, eight of the nine digits already appear somewhere it can see.</string>
+    <string name="lesson_naked_single_4">So one digit is left, and the cell has to hold it. Nothing else is possible. That is a naked single: naked because you can see it by looking at one cell, single because one digit survives.</string>
+    <string name="lesson_naked_single_5">The app calls this by name when it gives you a hint. Now you know what it means.</string>
 </resources>

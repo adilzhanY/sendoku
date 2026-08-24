@@ -292,4 +292,67 @@
     <string name="stat_hints">Подсказки</string>
     <string name="stat_time">Время</string>
     <string name="stat_pause">Пауза</string>
+
+    <!-- Учебный курс. -->
+    <string name="stage_first_steps">Первые шаги</string>
+    <string name="stage_one_at_a_time">По одной цифре</string>
+    <string name="stage_notes">Пометки</string>
+    <string name="stage_locked_to_a_line">Цифры, запертые на линии</string>
+    <string name="stage_groups">Группы</string>
+    <string name="stage_patterns">Узоры по всему полю</string>
+    <string name="stage_wings">Крылья</string>
+    <string name="stage_colouring">Раскраска</string>
+    <string name="stage_one_answer">Опираясь на единственность</string>
+    <string name="stage_chains">Цепочки</string>
+    <string name="stage_the_far_end">Дальний край</string>
+
+    <string name="lesson_what_is_title">Что такое судоку</string>
+    <string name="lesson_what_is_summary">В каждой строке, каждом столбце и каждом блоке каждая цифра встречается один раз.</string>
+    <string name="lesson_what_is_1">Это судоку. Маленькое, четыре на четыре, чтобы всё помещалось в голове сразу. Полное поле устроено точно так же.</string>
+    <string name="lesson_what_is_2">Это строка. В ней должны стоять цифры 1, 2, 3 и 4, каждая по одному разу. Без повторов и без пропусков.</string>
+    <string name="lesson_what_is_3">Это столбец. Правило то же: 1, 2, 3 и 4, каждая по одному разу.</string>
+    <string name="lesson_what_is_4">Вот и вся игра. Здесь нет арифметики и нечего складывать. Это одно правило о том, где цифре разрешено стоять.</string>
+    <string name="lesson_what_is_5">Эти две клетки пустые. Заполнить их так, чтобы правило осталось верным, и значит решить.</string>
+
+    <string name="lesson_houses_title">Строки, столбцы и блоки</string>
+    <string name="lesson_houses_summary">Клетка находится сразу в трёх областях и связана правилом со всеми.</string>
+    <string name="lesson_houses_1">В правиле были строки и столбцы. Есть третий вид групп, и именно он делает судоку интересным.</string>
+    <string name="lesson_houses_2">Вот снова строка.</string>
+    <string name="lesson_houses_3">Вот столбец.</string>
+    <string name="lesson_houses_4">А вот блок, он обведён жирными линиями. В нём каждая цифра тоже встречается один раз.</string>
+    <string name="lesson_houses_5">Значит, эта клетка принадлежит трём группам одновременно. Подсвечены все клетки, с которыми она делит группу, и ни в одной из них не может стоять та же цифра. Эти три группы называют областями, и дальше используется именно это слово.</string>
+
+    <string name="lesson_givens_title">Данные цифры</string>
+    <string name="lesson_givens_summary">Цифры, напечатанные вначале, неизменны, и именно они делают ответ единственным.</string>
+    <string name="lesson_givens_1">Эти цифры пришли вместе с головоломкой. Их называют данными, и их нельзя изменить или стереть.</string>
+    <string name="lesson_givens_2">Они нарисованы иначе, чем ваши цифры, поэтому их всегда видно. В этом приложении данные цифры более жирные.</string>
+    <string name="lesson_givens_3">А эти клетки заполняете вы.</string>
+    <string name="lesson_givens_4">У правильно составленной головоломки есть ровно один способ их заполнить. Это обещание про головоломку, а не про вас: если вы застряли, ответ всё равно один, и до него всегда можно дойти рассуждением. Все головоломки в этом приложении сделаны так.</string>
+
+    <string name="lesson_first_four_title">Первое решение</string>
+    <string name="lesson_first_four_summary">Посмотрите, чем клетка быть не может, и иногда останется одна цифра.</string>
+    <string name="lesson_first_four_1">Теперь решим. Пустых клеток две, и правила хватит на обе.</string>
+    <string name="lesson_first_four_2">Начнём с этой строки. В ней уже есть 1 и 4, значит в двух пустых клетках стоят 2 и 3. Вопрос только в порядке.</string>
+    <string name="lesson_first_four_3">В этой клетке не может быть 2, потому что в её столбце двойка уже есть. Значит, здесь 3.</string>
+    <string name="lesson_first_four_4">Остаётся одна пустая клетка и одна неиспользованная цифра в строке.</string>
+    <string name="lesson_first_four_5">Ваша очередь. Поставьте цифру, которая сюда подходит.</string>
+    <string name="lesson_first_four_wrong">Не совсем. Посмотрите на строку: какой цифры от 1 до 4 в ней ещё нет?</string>
+    <string name="lesson_first_four_6">Решено. Вот и всё судоку, независимо от размера поля.</string>
+
+    <string name="lesson_first_six_title">Поле побольше</string>
+    <string name="lesson_first_six_summary">Блоки не всегда квадратные, и правилу это неважно.</string>
+    <string name="lesson_first_six_1">Шесть на шесть. Правило не изменилось, а блоки да: они три в ширину и два в высоту.</string>
+    <string name="lesson_first_six_2">Это один блок. Три вдоль, два вниз, шесть клеток, каждая цифра от 1 до 6 по разу.</string>
+    <string name="lesson_first_six_3">Поначалу это сбивает, потому что глаз ждёт квадрат. Стоит потратить секунду: найдите блок, в котором стоит клетка, прежде чем искать что-то ещё.</string>
+    <string name="lesson_first_six_4">Ваша очередь. В левом верхнем блоке не хватает одной цифры.</string>
+    <string name="lesson_first_six_wrong">Не эта. Посчитайте, что в блоке уже есть, и найдите цифру от 1 до 6, которой там нет.</string>
+    <string name="lesson_first_six_5">Хорошо. Дальше поля будут девять на девять, и блоки снова станут квадратными, но привычку проверять все три области стоит сохранить.</string>
+
+    <string name="lesson_naked_single_title">Голый одиночка</string>
+    <string name="lesson_naked_single_summary">Если в клетке осталась одна возможная цифра, она там и стоит.</string>
+    <string name="lesson_naked_single_1">Полное поле и первая техника с названием. Она самая простая из всех, и даже в самых сложных головоломках именно ею закрывается большинство клеток.</string>
+    <string name="lesson_naked_single_2">Посмотрите на эту клетку отдельно. Спросите, что в ней может стоять.</string>
+    <string name="lesson_naked_single_3">Подсвечено всё, что что-то исключает. В её строке, столбце и блоке уже встречаются восемь цифр из девяти.</string>
+    <string name="lesson_naked_single_4">Значит, остаётся одна цифра, и клетка обязана её содержать. Ничего другого быть не может. Это и есть голый одиночка: голый, потому что видно по одной клетке, одиночка, потому что уцелела одна цифра.</string>
+    <string name="lesson_naked_single_5">Приложение называет технику по имени, когда даёт подсказку. Теперь вы знаете, что это значит.</string>
 </resources>
