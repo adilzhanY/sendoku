@@ -23,6 +23,9 @@ import com.sendoku.app.learn.CourseScreen
 import com.sendoku.app.learn.Curriculum
 import com.sendoku.app.learn.LessonId
 import com.sendoku.app.learn.LessonPlayer
+import com.sendoku.app.learn.PracticeHost
+import com.sendoku.app.learn.PracticePlan
+import com.sendoku.app.learn.met
 import com.sendoku.app.nav.Destination
 import com.sendoku.app.nav.Navigator
 import com.sendoku.app.theme.Sendoku
@@ -38,6 +41,7 @@ import com.sendoku.app.ui.ReadableWidth
 import com.sendoku.app.ui.SettingsScreen
 import com.sendoku.app.ui.StatsScreen
 import com.sendoku.engine.Grade
+import com.sendoku.engine.technique.TechniqueId
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
@@ -64,6 +68,8 @@ public fun SendokuApp(
     onImport: () -> Unit,
     onResetCourse: () -> Unit,
     dataMessage: String?,
+    onPractice: (TechniqueId, Boolean) -> Unit,
+    puzzles: () -> Sequence<com.sendoku.engine.catalog.RatedPuzzle>,
     appearance: Flow<Appearance>,
     onAppearanceChange: (Appearance) -> Unit,
     onResetStats: () -> Unit,
@@ -103,6 +109,8 @@ public fun SendokuApp(
             onImport = onImport,
             onResetCourse = onResetCourse,
             dataMessage = dataMessage,
+            onPractice = onPractice,
+            puzzles = puzzles,
             settingsChange = onSettingsChange,
             appearanceChange = onAppearanceChange,
             resetStats = onResetStats,
@@ -130,6 +138,8 @@ private fun Screens(
     onImport: () -> Unit,
     onResetCourse: () -> Unit,
     dataMessage: String?,
+    onPractice: (TechniqueId, Boolean) -> Unit,
+    puzzles: () -> Sequence<com.sendoku.engine.catalog.RatedPuzzle>,
     settingsChange: (GameSettings) -> Unit,
     appearanceChange: (Appearance) -> Unit,
     resetStats: () -> Unit,
@@ -187,6 +197,7 @@ private fun Screens(
             CourseScreen(
                 progress = course,
                 onOpen = { navigator.go(Destination.LessonAt(it.name)) },
+                onPractise = { navigator.go(Destination.Practice("")) },
                 onBack = { navigator.back() },
                 modifier = modifier,
             )
@@ -205,6 +216,19 @@ private fun Screens(
                     navigator.back()
                 },
                 onLeave = { navigator.back() },
+                modifier = modifier,
+            )
+        }
+
+        is Destination.Practice -> {
+            val asked = (navigator.current as Destination.Practice).technique
+            val technique = runCatching { TechniqueId.valueOf(asked) }.getOrNull()
+                ?: PracticePlan.next(course.met(), course.mastery, System.currentTimeMillis())
+            PracticeHost(
+                technique = technique,
+                puzzles = puzzles,
+                onAnswer = onPractice,
+                onBack = { navigator.back() },
                 modifier = modifier,
             )
         }

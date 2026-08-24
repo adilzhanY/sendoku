@@ -636,4 +636,15 @@
     <string name="settings_import_future">Файл записан более новой версией Sendoku.</string>
     <string name="settings_import_failed">Файл не удалось прочитать, на телефоне ничего не изменилось.</string>
     <string name="settings_course_reset">Курс сброшен. Игры не тронуты.</string>
+    <string name="practice_looking">Ищем позицию…</string>
+    <string name="practice_find">Найдите: %1$s.</string>
+    <string name="practice_keep_going">Одна есть. Продолжайте.</string>
+    <string name="practice_wrong">Не эта клетка. Перечитайте правило: %1$s на ней не держится.</string>
+    <string name="practice_right">Это и есть %1$s. Что она исключает, отмечено.</string>
+    <string name="practice_revealed">Вот %1$s и то, что она исключает.</string>
+    <string name="practice_show_me">Показать</string>
+    <string name="practice_another">Ещё</string>
+    <string name="practice_skip">Пропустить</string>
+    <string name="practice_title">Практика</string>
+    <string name="practice_none">Пока нечего отрабатывать. Сначала пройдите урок с техникой.</string>
 </resources>

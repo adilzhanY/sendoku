@@ -46,6 +46,7 @@ import com.sendoku.app.theme.Sendoku
 public fun CourseScreen(
     progress: CourseProgress,
     onOpen: (LessonId) -> Unit,
+    onPractise: () -> Unit,
     onBack: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -68,7 +69,22 @@ public fun CourseScreen(
                     .clickable(onClick = onBack)
                     .padding(dimens.spaceS),
             )
-            Text(stringResource(R.string.course_title), style = Sendoku.type.title, color = colors.given)
+            Text(
+                text = stringResource(R.string.course_title),
+                style = Sendoku.type.title,
+                color = colors.given,
+                modifier = Modifier.weight(1f),
+            )
+            Text(
+                text = stringResource(R.string.practice_title),
+                style = Sendoku.type.overline,
+                color = colors.accent,
+                modifier = Modifier
+                    .clip(RoundedCornerShape(dimens.radiusS))
+                    .clickable(onClick = onPractise)
+                    .padding(dimens.spaceS)
+                    .testTag("course:practise"),
+            )
         }
 
         Text(

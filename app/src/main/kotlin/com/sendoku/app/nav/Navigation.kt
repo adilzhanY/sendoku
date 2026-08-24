@@ -38,6 +38,9 @@ public sealed interface Destination {
     /** One lesson, by name. */
     public data class LessonAt(val lesson: String) : Destination
 
+    /** Practice, for one technique or for whatever comes next when the name is empty. */
+    public data class Practice(val technique: String) : Destination
+
     public data object Settings : Destination
 
     /** Every technique the app knows, for somebody who has just met one. */
@@ -110,6 +113,7 @@ public class Navigator(stack: List<Destination> = listOf(Destination.Home)) {
             Destination.Calendar -> "calendar"
             Destination.Course -> "course"
             is Destination.LessonAt -> "lesson:$lesson"
+            is Destination.Practice -> "practice:$technique"
             Destination.Settings -> "settings"
             Destination.Glossary -> "glossary"
             Destination.Stats -> "stats"
@@ -129,6 +133,7 @@ public class Navigator(stack: List<Destination> = listOf(Destination.Home)) {
             value == "calendar" -> Destination.Calendar
             value == "course" -> Destination.Course
             value.startsWith("lesson:") -> Destination.LessonAt(value.removePrefix("lesson:"))
+            value.startsWith("practice:") -> Destination.Practice(value.removePrefix("practice:"))
             value.startsWith("daily:") -> Destination.Daily(value.removePrefix("daily:").toLong())
             else -> Destination.Home
         }

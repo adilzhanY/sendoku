@@ -43,6 +43,7 @@ import com.sendoku.app.learn.RoomLearningRepository
 import com.sendoku.app.theme.Sendoku
 import com.sendoku.app.theme.SendokuTheme
 import com.sendoku.app.ui.InProgressSummary
+import com.sendoku.engine.catalog.CatalogReader
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.map
@@ -224,6 +225,19 @@ class MainActivity : ComponentActivity() {
                             }
                         },
                         dataMessage = dataMessage.collectAsState().value,
+                        onPractice = { technique, correct ->
+                            lifecycleScope.launch {
+                                learning.recordPractice(technique, correct, System.currentTimeMillis())
+                            }
+                        },
+                        // Read fresh each time rather than held, since a practice search walks
+                        // the batch and holding an inflated copy of it is a megabyte for nothing.
+                        puzzles = {
+                            val reader = CatalogReader.from(
+                                checkNotNull(javaClass.getResourceAsStream("/catalog/classic.sdkb")),
+                            )
+                            (0 until reader.size).asSequence().map { reader.puzzleAt(it) }
+                        },
                         onLessonStep = { lesson, step, finished ->
                             lifecycleScope.launch {
                                 learning.record(lesson, step, finished, System.currentTimeMillis())

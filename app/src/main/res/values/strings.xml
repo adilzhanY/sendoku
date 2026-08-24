@@ -639,4 +639,15 @@
     <string name="settings_import_future">That file was written by a newer version of Sendoku.</string>
     <string name="settings_import_failed">That file could not be read, and nothing on this phone was changed.</string>
     <string name="settings_course_reset">The course is back to the start. Your games are untouched.</string>
+    <string name="practice_looking">Looking for a position…</string>
+    <string name="practice_find">Find the %1$s.</string>
+    <string name="practice_keep_going">That is one of them. Keep going.</string>
+    <string name="practice_wrong">Not that cell. Read the rule again: a %1$s does not rest on it.</string>
+    <string name="practice_right">That is the %1$s. What it rules out is marked.</string>
+    <string name="practice_revealed">Here is the %1$s, and what it rules out.</string>
+    <string name="practice_show_me">Show me</string>
+    <string name="practice_another">Another</string>
+    <string name="practice_skip">Skip</string>
+    <string name="practice_title">Practice</string>
+    <string name="practice_none">Nothing to practise yet. Finish a lesson that teaches a technique first.</string>
 </resources>
