@@ -142,6 +142,18 @@ internal object TechniquePositions {
             blank().only(rc(0, 0), 1, 2).only(rc(4, 0), 1, 3).only(rc(4, 1), 2, 3)
         },
 
+        // A stem at the centre holding {1,2}. The pair {1,5,7} and {1,7} along its row
+        // answers for the 1, the pair {2,5,9} and {2,9} down its column answers for the 2,
+        // and both hold a 5, which is what the top left cell loses. The cells holding the 5
+        // carry a third mark so that the flower is not three bivalue cells, which would be
+        // an XY-Wing and nothing more.
+        TechniqueId.DEATH_BLOSSOM to {
+            blank()
+                .only(rc(4, 4), 1, 2)
+                .only(rc(4, 0), 1, 5, 7).only(rc(4, 1), 1, 7)
+                .only(rc(0, 4), 2, 5, 9).only(rc(1, 4), 2, 9)
+        },
+
         // Three groups in a row. {1,5} and {1,7} in row 1 make the first, the cell {1,2}
         // below is the hinge, and {2,5,9} with {2,9} further along row 2 make the third.
         // The 1 joins the first two, the 2 joins the last two, and the 5 is what falls. The

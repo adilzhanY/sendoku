@@ -38,6 +38,7 @@ public object Techniques {
         AlsXz,
         SueDeCoq,
         AlsXyWing,
+        DeathBlossom,
     ).sortedBy { it.id.cost }
 
     /**
@@ -76,6 +77,7 @@ public object Techniques {
         TechniqueId.ALS_XZ,
         TechniqueId.SUE_DE_COQ,
         TechniqueId.ALS_XY_WING,
+        TechniqueId.DEATH_BLOSSOM,
     )
 
     public fun byId(id: TechniqueId): Technique? = ladder.firstOrNull { it.id == id }

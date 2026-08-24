@@ -116,6 +116,9 @@ public object Curriculum {
     /** Three groups in a chain down the right hand side, with a 1 that cannot survive. */
     private const val THREE_GROUPS = "1....4..54....596.956.27.4.8....645.5..483....495.2..8.94.58127785241...2..7.9584"
 
+    /** A stem with two petals in the top band, and an 8 that has to land in one of them. */
+    private const val BLOSSOM = "92..41.7....9..1...5.3...6...423865.....1.....82..931..7..93.8.8.9..5....3.87..91"
+
     /** One cell from being ambiguous, which is the whole of the BUG argument. */
     private const val ALMOST_BUG = "9..1.73..7.2396.853..4.2..9135729...8675412932946385174.1963.5.5892746316.38159.4"
 
@@ -786,6 +789,24 @@ public object Curriculum {
                 Step.Show(R.string.lesson_als_xy_4, focus = setOf(7, 26, 43, 52, 70), strike = setOf(35, 44)),
                 Step.Say(R.string.lesson_als_xy_5),
                 Step.Say(R.string.lesson_als_xy_6),
+            ),
+        ),
+        Lesson(
+            id = LessonId.DEATH_BLOSSOM,
+            stage = Stage.THE_DEEP_END,
+            title = R.string.lesson_blossom_title,
+            summary = R.string.lesson_blossom_summary,
+            teaches = listOf(TechniqueId.DEATH_BLOSSOM),
+            dims = Dimensions.CLASSIC,
+            board = BLOSSOM,
+            steps = listOf(
+                Step.Say(R.string.lesson_blossom_1),
+                Step.Show(R.string.lesson_blossom_2, focus = setOf(3)),
+                Step.Show(R.string.lesson_blossom_3, focus = setOf(3, 6)),
+                Step.Show(R.string.lesson_blossom_4, focus = setOf(3, 14, 22, 23)),
+                Step.Say(R.string.lesson_blossom_5),
+                Step.Show(R.string.lesson_blossom_6, focus = setOf(3, 6, 14, 22, 23), strike = setOf(24, 26)),
+                Step.Say(R.string.lesson_blossom_7),
             ),
         ),
     )

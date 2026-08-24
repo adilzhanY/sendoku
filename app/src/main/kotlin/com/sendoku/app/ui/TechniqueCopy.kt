@@ -53,6 +53,7 @@ public object TechniqueCopy {
         TechniqueId.ALS_XZ -> R.string.technique_als_xz
         TechniqueId.SUE_DE_COQ -> R.string.technique_sue_de_coq
         TechniqueId.ALS_XY_WING -> R.string.technique_als_xy_wing
+        TechniqueId.DEATH_BLOSSOM -> R.string.technique_death_blossom
     }
 
     /** One line: what kind of thing to go and look for. Shown at the first tap. */
@@ -84,6 +85,7 @@ public object TechniqueCopy {
         TechniqueId.ALS_XZ -> R.string.look_als_xz
         TechniqueId.SUE_DE_COQ -> R.string.look_sue_de_coq
         TechniqueId.ALS_XY_WING -> R.string.look_als_xy_wing
+        TechniqueId.DEATH_BLOSSOM -> R.string.look_death_blossom
     }
 
     /** Why it works. Shown at the last tap, once the player has seen the cells. */
@@ -115,6 +117,7 @@ public object TechniqueCopy {
         TechniqueId.ALS_XZ -> R.string.because_als_xz
         TechniqueId.SUE_DE_COQ -> R.string.because_sue_de_coq
         TechniqueId.ALS_XY_WING -> R.string.because_als_xy_wing
+        TechniqueId.DEATH_BLOSSOM -> R.string.because_death_blossom
     }
 
     /** The region a hint is about, if it is about one. */

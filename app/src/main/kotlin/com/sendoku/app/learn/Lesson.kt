@@ -148,4 +148,5 @@ public enum class LessonId {
     A_BEYOND_TOGETHER,
     WHAT_THE_DEEP_END_ASKS,
     ALS_XY_WING,
+    DEATH_BLOSSOM,
 }

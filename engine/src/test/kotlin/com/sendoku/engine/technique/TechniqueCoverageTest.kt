@@ -57,6 +57,10 @@ class TechniqueCoverageTest {
         // wing doing work nothing cheaper can, and the shipped catalog is where that is
         // checked: every puzzle it files under a technique is proved unsolvable without it.
         TechniqueId.ALS_XY_WING to setOf(TechniqueId.ALS_XZ),
+        // Same story as the wing, and one step worse: the stem sits in a house with one of
+        // its own petals, so stem and petal together are a fourth set that the cheaper set
+        // rules can use directly.
+        TechniqueId.DEATH_BLOSSOM to setOf(TechniqueId.ALS_XZ, TechniqueId.ALS_XY_WING),
     )
 
     @Test
