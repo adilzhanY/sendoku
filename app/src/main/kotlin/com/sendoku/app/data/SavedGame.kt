@@ -41,11 +41,18 @@ public data class SavedGame(
     val dailyEpochDay: Long? = null,
 ) {
 
-    /** How many cells hold a digit, clues and entries together. */
+    /**
+     * How many cells the player has filled in.
+     *
+     * The clues do not count. A puzzle opened and closed again is nought per cent done, and
+     * counting the given digits made an untouched Gentle grid report itself as two fifths
+     * finished, which is both wrong and dispiriting in the same breath.
+     */
     public val placed: Int
-        get() = givens.count { it != EMPTY_CHAR } + entries.count { it != EMPTY_CHAR }
+        get() = entries.count { it != EMPTY_CHAR }
 
-    public val total: Int get() = givens.length
+    /** How many cells there were to fill, which is the blanks rather than the whole grid. */
+    public val total: Int get() = givens.count { it == EMPTY_CHAR }
 
     /** Rebuilds a playable game. */
     public fun toState(settings: GameSettings): GameState {

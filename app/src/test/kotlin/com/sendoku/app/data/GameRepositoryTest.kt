@@ -179,20 +179,29 @@ class GameRepositoryTest {
         repository.saveInProgress(played())
         val saved = repository.watchInProgress().first()
         assertEquals(puzzle.grade, saved?.grade)
-        assertEquals(81, saved?.total)
-        assertTrue((saved?.placed ?: 0) > puzzle.clueCount)
+        assertEquals(81 - puzzle.clueCount, saved?.total)
+        assertEquals(1, saved?.placed)
 
         repository.clearInProgress()
         assertNull(repository.watchInProgress().first())
     }
 
     @Test
-    fun `a saved game counts the clues and the entries together`() = runTest {
+    fun `a saved game counts what the player filled in, not the clues`() = runTest {
         val repository = RoomGameRepository(FakeInProgress(), FakeFinished())
         repository.saveInProgress(played())
         val saved = repository.watchInProgress().first()!!
-        // One digit was entered on top of the clues.
-        assertEquals(puzzle.clueCount + 1, saved.placed)
+        // One digit was entered. The clues were there before the player arrived.
+        assertEquals(1, saved.placed)
+        assertEquals(81 - puzzle.clueCount, saved.total)
+    }
+
+    @Test
+    fun `a puzzle nobody has touched is nought per cent done`() = runTest {
+        val repository = RoomGameRepository(FakeInProgress(), FakeFinished())
+        repository.saveInProgress(GameState.start(puzzle))
+        val saved = repository.watchInProgress().first()!!
+        assertEquals("the clues were counted as progress", 0, saved.placed)
     }
 
     @Test
