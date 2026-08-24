@@ -33,7 +33,19 @@ public data class GameSettings(
      * Null is the default on purpose. A limit turns a puzzle into a test, and the hardest
      * grades here take long enough that losing an hour to a slip would be miserable.
      */
-    val mistakeLimit: Int? = null,
+    val mistakeLimit: Int? = 3,
+
+    /**
+     * How many hints end the game, or null for as many as you like.
+     *
+     * A limit rather than a paywall. Nothing here is sold and nothing is held back behind an
+     * advertisement: three are given freely and the fourth is the one that costs the game,
+     * which makes a hint a decision rather than a reflex.
+     *
+     * Turn it off in settings and hints are unlimited again, which is the right setting for
+     * somebody working through the course.
+     */
+    val hintLimit: Int? = 3,
 
     /** A small buzz when a digit goes in. On, because a board gives no other feedback. */
     val haptics: Boolean = true,
@@ -47,6 +59,9 @@ public data class GameSettings(
     init {
         require(mistakeLimit == null || mistakeLimit > 0) {
             "a mistake limit of $mistakeLimit ends the game before it starts"
+        }
+        require(hintLimit == null || hintLimit > 0) {
+            "a hint limit of $hintLimit ends the game before it starts"
         }
     }
 }

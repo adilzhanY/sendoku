@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -46,6 +47,28 @@ public fun OutcomePanel(
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
     val won = state.isSolved
+    val context = LocalContext.current
+
+    // Read here rather than inside the click, because a click is not a composable and the card
+    // has to be written in whatever language the player is reading.
+    val appName = stringResource(R.string.app_name)
+    val chooser = stringResource(R.string.outcome_share)
+    val resultText = stringResource(if (won) R.string.card_solved else R.string.card_lost)
+    val gradeText = stringResource(gradeName(state.grade))
+    val labels = listOf(
+        stringResource(R.string.stat_time) to state.elapsed.clock(),
+        stringResource(R.string.stat_mistakes) to (
+            state.settings.mistakeLimit
+                ?.let { stringResource(R.string.mistakes_of, state.mistakes, it) }
+                ?: state.mistakes.toString()
+            ),
+        stringResource(R.string.stat_hints) to (
+            state.settings.hintLimit
+                ?.let { stringResource(R.string.mistakes_of, state.hintsUsed, it) }
+                ?: state.hintsUsed.toString()
+            ),
+    )
+    val footer = stringResource(R.string.card_footer)
 
     Box(
         modifier = modifier
@@ -60,7 +83,17 @@ public fun OutcomePanel(
             verticalArrangement = Arrangement.spacedBy(dimens.spaceS),
         ) {
             Text(
-                text = stringResource(if (won) R.string.outcome_solved else R.string.outcome_lost),
+                text = stringResource(
+                    when {
+                        won -> R.string.outcome_solved
+
+                        // Which way it went wrong. "Lost" alone leaves somebody staring at a
+                        // board wondering what they did.
+                        state.outOfHints -> R.string.outcome_lost_hints
+
+                        else -> R.string.outcome_lost
+                    },
+                ),
                 style = Sendoku.type.overline,
                 color = if (won) colors.accent else colors.conflict,
             )
@@ -83,8 +116,18 @@ public fun OutcomePanel(
                 modifier = Modifier.fillMaxWidth().padding(vertical = dimens.spaceM),
                 horizontalArrangement = Arrangement.SpaceEvenly,
             ) {
-                Stat(stringResource(R.string.outcome_hints), state.hintsUsed.toString())
-                Stat(stringResource(R.string.outcome_mistakes), state.mistakes.toString())
+                Stat(
+                    stringResource(R.string.outcome_hints),
+                    state.settings.hintLimit
+                        ?.let { stringResource(R.string.mistakes_of, state.hintsUsed, it) }
+                        ?: state.hintsUsed.toString(),
+                )
+                Stat(
+                    stringResource(R.string.outcome_mistakes),
+                    state.settings.mistakeLimit
+                        ?.let { stringResource(R.string.mistakes_of, state.mistakes, it) }
+                        ?: state.mistakes.toString(),
+                )
                 Stat(stringResource(R.string.outcome_moves), state.past.size.toString())
             }
 
@@ -127,6 +170,13 @@ public fun OutcomePanel(
                 horizontalArrangement = Arrangement.spacedBy(dimens.padGap),
             ) {
                 OutcomeButton(
+                    stringResource(R.string.outcome_share),
+                    accent = false,
+                    onClick = { shareCard(context, appName, chooser, resultText, gradeText, labels, footer) },
+                    modifier = Modifier.weight(1f),
+                    tag = "outcome:share",
+                )
+                OutcomeButton(
                     stringResource(R.string.outcome_home),
                     accent = false,
                     onClick = onHome,
@@ -152,7 +202,13 @@ private fun Stat(label: String, value: String) {
 }
 
 @Composable
-private fun OutcomeButton(label: String, accent: Boolean, onClick: () -> Unit, modifier: Modifier = Modifier) {
+private fun OutcomeButton(
+    label: String,
+    accent: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    tag: String? = null,
+) {
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
     Box(
@@ -160,7 +216,8 @@ private fun OutcomeButton(label: String, accent: Boolean, onClick: () -> Unit, m
             .heightIn(min = dimens.minTouchTarget)
             .clip(RoundedCornerShape(dimens.radiusM))
             .background(if (accent) colors.accent else colors.surface)
-            .clickable(onClick = onClick),
+            .clickable(onClick = onClick)
+            .then(if (tag == null) Modifier else Modifier.testTag(tag)),
         contentAlignment = Alignment.Center,
     ) {
         Text(
@@ -169,4 +226,29 @@ private fun OutcomeButton(label: String, accent: Boolean, onClick: () -> Unit, m
             color = if (accent) colors.onAccent else colors.muted,
         )
     }
+}
+
+/**
+ * Builds the card and offers it.
+ *
+ * Everything it needs arrives already translated, so this knows nothing about languages and
+ * the drawing code knows nothing about the app.
+ */
+private fun shareCard(
+    context: android.content.Context,
+    appName: String,
+    chooser: String,
+    title: String,
+    grade: String,
+    lines: List<Pair<String, String>>,
+    footer: String,
+) {
+    val card = ShareCard.draw(
+        appName = appName,
+        title = title,
+        grade = grade,
+        lines = lines.map { (label, value) -> ShareCard.Line(label, value) },
+        footer = footer,
+    )
+    ShareResult.share(context, card, chooser)
 }

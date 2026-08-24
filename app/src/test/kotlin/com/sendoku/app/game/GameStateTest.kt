@@ -30,7 +30,7 @@ class GameStateTest {
         made
     }
 
-    private fun game() = GameState.start(puzzle)
+    private fun game(settings: GameSettings = GameSettings()) = GameState.start(puzzle, settings)
 
     /** The first empty cell, which is where most of these tests do their work. */
     private fun GameState.firstEmpty(): Int = cells.indices.first { cells[it].isEmpty }
@@ -120,7 +120,9 @@ class GameStateTest {
 
     @Test
     fun `no limit means the game never ends on mistakes`() {
-        var state = game()
+        // Explicit, now that the default is three. The test was passing on the default before,
+        // which meant it was testing the default rather than the absence of a limit.
+        var state = game(GameSettings(mistakeLimit = null, hintLimit = null))
         for (at in state.cells.indices.filter { state.cells[it].isEmpty }.take(12)) {
             state = state.select(at).enter(state.wrongFor(at))
         }

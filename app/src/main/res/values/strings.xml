@@ -140,7 +140,7 @@
     <string name="settings_sound">Click when a digit goes in</string>
     <string name="settings_mistakes">Mistakes</string>
     <string name="settings_mistake_limit">End the game after three mistakes</string>
-    <string name="settings_mistake_note">Off by default. The hard grades take long enough that losing an hour to one slip would be miserable.</string>
+    <string name="settings_mistake_note">On by default, at three. Turn it off for the hard grades, where losing an hour to one slip is miserable.</string>
     <string name="settings_about">ABOUT SENDOKU</string>
 
     <!-- Themes -->
@@ -193,7 +193,7 @@
     <string name="about_offline">Works offline</string>
     <string name="about_offline_detail">The whole batch ships inside the app.</string>
     <string name="about_hints">Hints that teach</string>
-    <string name="about_hints_detail">A hint names the technique and explains the reasoning. It never just fills in a digit, and it is never held back.</string>
+    <string name="about_hints_detail">A hint names the technique and explains the reasoning. It never just fills in a digit, and it is never sold: three come with every puzzle, and you can turn the limit off in settings.</string>
     <string name="about_rating">Difficulty is rated by the hardest technique a puzzle actually needs, worked out by solving it the way a person would. That is why a Severe here means the same thing as the last Severe.</string>
     <string name="about_licence">Sendoku is free software under the GNU General Public License version 3.</string>
     <string name="about_privacy">The privacy policy says the same thing in the form the store asks for, at adilzhany.github.io/sendoku/privacy</string>
@@ -609,7 +609,7 @@
     <string name="lesson_together_6">Deeper in, an X-Wing. By now the grid is half full and the notes are doing the work.</string>
     <string name="lesson_together_7">And near the end, the one that earns the grade: an ALS-XZ. One elimination, and the rest is singles again.</string>
     <string name="lesson_together_8">That is what Beyond means here. Not eighty one hard steps, but seventy easy ones and a handful that need everything you have learned.</string>
-    <string name="lesson_together_9">You have met every technique this app can name. Go and play one, and use the hint button without embarrassment when a grid stops moving. That is what it is for.</string>
+    <string name="lesson_together_9">You have met every technique this app can name. Go and play one. Three hints come with every puzzle and there is no shame in spending them, and if you would rather have as many as you like, the limit is a switch in settings.</string>
     <string name="lesson_step_of">%1$d of %2$d</string>
     <string name="lesson_back">Back</string>
     <string name="lesson_next">Next</string>
@@ -654,4 +654,12 @@
     <string name="hint_learn_this">Teach me this</string>
     <string name="outcome_learn">Learn %1$s</string>
     <string name="course_finished">All of it, done. Everything the app can name, you can name. The puzzles are the rest of it.</string>
+    <string name="outcome_lost_hints">OUT OF HINTS</string>
+    <string name="outcome_share">Share</string>
+    <string name="card_solved">Solved</string>
+    <string name="card_lost">Beaten by</string>
+    <string name="card_footer">Free. No ads. No tracking.</string>
+    <string name="settings_hints">Hints</string>
+    <string name="settings_hint_limit">End the game after three hints</string>
+    <string name="settings_hint_note">On by default. Three hints are free, and the fourth costs the game, which makes a hint a decision rather than a reflex. Turn it off while you are working through the course.</string>
 </resources>

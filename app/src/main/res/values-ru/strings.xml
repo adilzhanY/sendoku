@@ -134,7 +134,7 @@
     <string name="settings_sound">Щелчок при вводе цифры</string>
     <string name="settings_mistakes">Ошибки</string>
     <string name="settings_mistake_limit">Заканчивать игру после трёх ошибок</string>
-    <string name="settings_mistake_note">По умолчанию выключено. Сложные уровни занимают столько времени, что потерять час из-за одной оплошности было бы обидно.</string>
+    <string name="settings_mistake_note">Включено по умолчанию, три ошибки. Выключите на сложных уровнях, где потерять час из-за одной оплошности обидно.</string>
     <string name="settings_about">О ПРИЛОЖЕНИИ</string>
 
     <string name="theme_deep_field">Deep Field</string>
@@ -186,7 +186,7 @@
     <string name="about_offline">Работает без интернета</string>
     <string name="about_offline_detail">Весь набор судоку лежит внутри приложения.</string>
     <string name="about_hints">Подсказки, которые учат</string>
-    <string name="about_hints_detail">Подсказка называет технику и объясняет рассуждение. Она никогда не просто вписывает цифру и никогда не придерживается.</string>
+    <string name="about_hints_detail">Подсказка называет технику и объясняет рассуждение. Она никогда не просто вписывает цифру и никогда не продаётся: три идут с каждой головоломкой, а ограничение можно выключить в настройках.</string>
     <string name="about_rating">Сложность определяется по самой трудной технике, которая действительно нужна, и вычисляется решением судоку так, как решал бы человек. Поэтому Сложный здесь означает то же самое, что и прошлый Сложный.</string>
     <string name="about_licence">Sendoku, свободная программа под лицензией GNU General Public License версии 3.</string>
     <string name="about_privacy">Политика конфиденциальности говорит то же самое в том виде, который требует магазин: adilzhany.github.io/sendoku/privacy</string>
@@ -604,7 +604,7 @@
     <string name="lesson_together_6">Глубже, X-Wing. К этому моменту поле заполнено наполовину, и работают пометки.</string>
     <string name="lesson_together_7">А ближе к концу то, из-за чего уровень такой: ALS-XZ. Одно исключение, и дальше снова одиночки.</string>
     <string name="lesson_together_8">Вот что здесь значит Beyond. Не восемьдесят один трудный шаг, а семьдесят простых и горстка тех, где нужно всё выученное.</string>
-    <string name="lesson_together_9">Вы встретили все техники, которые приложение умеет называть. Идите и сыграйте, и без стеснения нажимайте подсказку, когда поле встало. Она для этого и есть.</string>
+    <string name="lesson_together_9">Вы встретили все техники, которые приложение умеет называть. Идите и сыграйте. С каждой головоломкой идут три подсказки, тратить их не стыдно, а если хочется сколько угодно, ограничение выключается в настройках.</string>
     <string name="lesson_step_of">%1$d из %2$d</string>
     <string name="lesson_back">Назад</string>
     <string name="lesson_next">Дальше</string>
@@ -651,4 +651,12 @@
     <string name="hint_learn_this">Научи меня</string>
     <string name="outcome_learn">Изучить: %1$s</string>
     <string name="course_finished">Курс пройден целиком. Всё, что приложение умеет называть, теперь умеете называть и вы. Дальше только головоломки.</string>
+    <string name="outcome_lost_hints">ПОДСКАЗКИ ЗАКОНЧИЛИСЬ</string>
+    <string name="outcome_share">Поделиться</string>
+    <string name="card_solved">Решено</string>
+    <string name="card_lost">Не сдалась</string>
+    <string name="card_footer">Бесплатно. Без рекламы. Без слежки.</string>
+    <string name="settings_hints">Подсказки</string>
+    <string name="settings_hint_limit">Заканчивать игру после трёх подсказок</string>
+    <string name="settings_hint_note">Включено по умолчанию. Три подсказки бесплатны, а четвёртая стоит игры, и подсказка становится решением, а не рефлексом. Выключите, пока проходите курс.</string>
 </resources>

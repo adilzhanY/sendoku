@@ -11,6 +11,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sendoku">
 
+        <!--
+          Hands one file to whichever app the player picks, with a read grant that lasts for
+          that one share. No permission is involved, on either side.
+        -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.shared"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/shared_files" />
+        </provider>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

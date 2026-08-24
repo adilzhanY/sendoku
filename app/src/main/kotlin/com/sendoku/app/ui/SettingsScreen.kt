@@ -151,6 +151,18 @@ public fun SettingsScreen(
             modifier = Modifier.padding(vertical = dimens.spaceS),
         )
 
+        SectionLabel(stringResource(R.string.settings_hints))
+        Toggle(
+            stringResource(R.string.settings_hint_limit),
+            settings.hintLimit != null,
+        ) { onChange(settings.copy(hintLimit = if (it) 3 else null)) }
+        Text(
+            text = stringResource(R.string.settings_hint_note),
+            style = Sendoku.type.body,
+            color = colors.muted,
+            modifier = Modifier.padding(vertical = dimens.spaceS),
+        )
+
         SectionLabel(stringResource(R.string.settings_your_data))
         Text(
             text = stringResource(R.string.settings_data_note),

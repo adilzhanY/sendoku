@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Exactly one folder, holding exactly one kind of thing: the result card the player asked to
+  share. Nothing else in the app's storage is reachable through this provider, and the grant
+  handed to the other app is read only and for one file at a time.
+-->
+<paths>
+    <cache-path name="shared" path="shared/" />
+</paths>

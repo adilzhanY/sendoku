@@ -84,6 +84,10 @@ public fun GameScreen(
     // A hint describes the board it was asked about. Once the board moves on, it is stale.
     LaunchedEffect(state.cells) { hint = null }
 
+    // And a finished game has nothing left to hint at. Without this the panel sat under the
+    // result still offering to show you where, on a board that was already over.
+    LaunchedEffect(state.isOver) { if (state.isOver) hint = null }
+
     LaunchedEffect(state.isRunning, state.isOver) {
         while (state.isRunning && !state.isOver) {
             delay(1000)

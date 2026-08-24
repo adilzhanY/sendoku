@@ -66,6 +66,7 @@ internal object SettingsKeys {
     val flagConflicts = booleanPreferencesKey("flag_conflicts")
     val showTimer = booleanPreferencesKey("show_timer")
     val mistakeLimit = intPreferencesKey("mistake_limit")
+    val hintLimit = intPreferencesKey("hint_limit")
     val haptics = booleanPreferencesKey("haptics")
     val sound = booleanPreferencesKey("sound")
     val theme = stringPreferencesKey("theme")
@@ -80,7 +81,13 @@ internal object SettingsKeys {
  */
 internal fun Preferences.toSettings(): GameSettings {
     val defaults = GameSettings()
-    val limit = this[SettingsKeys.mistakeLimit]
+    // Absent means the default, present means what it says, and zero means switched off.
+    // Reading an absent key as null would have quietly ignored the default on a fresh install,
+    // which is exactly what it did the first time the limits were turned on.
+    val mistakes = this[SettingsKeys.mistakeLimit]?.takeIf { it > 0 } ?: defaults.mistakeLimit
+        .takeIf { SettingsKeys.mistakeLimit !in this }
+    val hints = this[SettingsKeys.hintLimit]?.takeIf { it > 0 } ?: defaults.hintLimit
+        .takeIf { SettingsKeys.hintLimit !in this }
     return GameSettings(
         highlightPeers = this[SettingsKeys.highlightPeers] ?: defaults.highlightPeers,
         highlightSameDigit = this[SettingsKeys.highlightSameDigit] ?: defaults.highlightSameDigit,
@@ -88,7 +95,8 @@ internal fun Preferences.toSettings(): GameSettings {
         flagConflicts = this[SettingsKeys.flagConflicts] ?: defaults.flagConflicts,
         showTimer = this[SettingsKeys.showTimer] ?: defaults.showTimer,
         // Zero is how "no limit" is stored, since a preferences int cannot be null.
-        mistakeLimit = limit?.takeIf { it > 0 },
+        mistakeLimit = mistakes,
+        hintLimit = hints,
         haptics = this[SettingsKeys.haptics] ?: defaults.haptics,
         sound = this[SettingsKeys.sound] ?: defaults.sound,
     )
@@ -122,6 +130,7 @@ internal fun MutablePreferences.write(settings: GameSettings) {
     this[SettingsKeys.flagConflicts] = settings.flagConflicts
     this[SettingsKeys.showTimer] = settings.showTimer
     this[SettingsKeys.mistakeLimit] = settings.mistakeLimit ?: 0
+    this[SettingsKeys.hintLimit] = settings.hintLimit ?: 0
     this[SettingsKeys.haptics] = settings.haptics
     this[SettingsKeys.sound] = settings.sound
 }

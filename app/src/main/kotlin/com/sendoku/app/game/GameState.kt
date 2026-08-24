@@ -105,8 +105,15 @@ public data class GameState(
         get() = cells.indices.all { cells[it].digit == solution.atIndex(it) }
 
     /** True when the player has run out of allowed mistakes. */
-    public val isFailed: Boolean
+    public val outOfMistakes: Boolean
         get() = settings.mistakeLimit?.let { mistakes >= it } ?: false
+
+    /** True when the player has used up their hints. */
+    public val outOfHints: Boolean
+        get() = settings.hintLimit?.let { hintsUsed >= it } ?: false
+
+    /** Lost, either way. Which way it was is what the win screen has to say. */
+    public val isFailed: Boolean get() = outOfMistakes || outOfHints
 
     public val isOver: Boolean get() = isSolved || isFailed
 
@@ -364,7 +371,12 @@ public data class GameState(
     }
 
     /** Records that the player asked for help. The hint itself belongs to the hint system. */
-    public fun countHint(): GameState = copy(hintsUsed = hintsUsed + 1)
+    public fun countHint(): GameState {
+        // A hint asked for after the game is over is not a hint, and must not be the thing
+        // that pushes the count past the limit on a board already finished.
+        if (isOver) return this
+        return copy(hintsUsed = hintsUsed + 1)
+    }
 
     /** The board as the engine sees it, for handing to the solver. */
     public fun toBoard(): Board {

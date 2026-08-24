@@ -94,17 +94,22 @@ public fun GameHeader(
                 value = stringResource(gradeName(state.grade)),
                 modifier = Modifier.weight(1f),
             )
-            if (state.settings.mistakeLimit != null) {
-                Stat(
-                    label = stringResource(R.string.stat_mistakes),
-                    value = stringResource(R.string.mistakes_of, state.mistakes, state.settings.mistakeLimit),
-                    warn = state.mistakes > 0,
-                    modifier = Modifier.weight(1f),
-                )
-            }
+            // Both, always. A count that appears only when a setting is on is a count nobody
+            // learns to read, and these two are now the two ways to lose.
+            Stat(
+                label = stringResource(R.string.stat_mistakes),
+                value = state.settings.mistakeLimit
+                    ?.let { stringResource(R.string.mistakes_of, state.mistakes, it) }
+                    ?: state.mistakes.toString(),
+                warn = state.mistakes > 0,
+                modifier = Modifier.weight(1f),
+            )
             Stat(
                 label = stringResource(R.string.stat_hints),
-                value = state.hintsUsed.toString(),
+                value = state.settings.hintLimit
+                    ?.let { stringResource(R.string.mistakes_of, state.hintsUsed, it) }
+                    ?: state.hintsUsed.toString(),
+                warn = state.settings.hintLimit != null && state.hintsUsed > 0,
                 modifier = Modifier.weight(1f),
             )
             if (state.settings.showTimer) {
