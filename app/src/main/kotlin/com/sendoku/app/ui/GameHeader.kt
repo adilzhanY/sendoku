@@ -55,6 +55,14 @@ public fun GameHeader(
     onSettings: () -> Unit,
     onPause: () -> Unit,
     modifier: Modifier = Modifier,
+    /**
+     * False while a hint is on screen.
+     *
+     * Pausing hides the board, and hiding the board under an explanation of that board is
+     * not something anybody meant to do. Leaving and the settings stay: those are deliberate,
+     * and a player must never be trapped in a panel.
+     */
+    canPause: Boolean = true,
 ) {
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
@@ -118,7 +126,7 @@ public fun GameHeader(
                     value = state.elapsed.clock(),
                     modifier = Modifier.weight(1f),
                 )
-                PauseButton(onPause)
+                if (canPause) PauseButton(onPause)
             }
         }
     }

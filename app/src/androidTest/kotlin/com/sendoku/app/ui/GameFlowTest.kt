@@ -6,6 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.junit4.v2.createComposeRule
+import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
@@ -134,6 +135,33 @@ class GameFlowTest {
         compose.onNodeWithText("Close").performClick()
         compose.onNodeWithText("Show me where").assertDoesNotExistNow()
     }
+
+    @Test
+    fun whileHelpIsOnScreenThereIsNothingElseToPress() {
+        // A hint is read with a thumb resting where the keys were, so leaving them live is a
+        // wrong digit waiting to happen, and a wrong digit ends the explanation it was about
+        // to follow. The board stops taking taps for the same reason: a hint describes the
+        // board it was asked about.
+        val state = play()
+        val before = state()
+        val cell = before.cells.indices.first { before.cells[it].isEmpty }
+
+        compose.onNodeWithText("Hint").performClick()
+        compose.waitForIdle()
+
+        assertTrue("the number pad was still there", compose.missing("pad:1"))
+        assertTrue("the tools were still there", compose.missing("tool:Notes"))
+        compose.onNodeWithTag("game:cell:$cell").performClick()
+        compose.waitForIdle()
+        assertEquals("the board took a tap while a hint was up", before.selected, state().selected)
+
+        compose.onNodeWithTag("hint:menu:close").performClick()
+        compose.waitForIdle()
+        assertTrue("the number pad did not come back", !compose.missing("pad:1"))
+    }
+
+    private fun androidx.compose.ui.test.junit4.ComposeTestRule.missing(tag: String): Boolean =
+        onAllNodesWithTag(tag).fetchSemanticsNodes().isEmpty()
 
     @Test
     fun askingWhetherAnythingIsWrongCostsNoHint() {

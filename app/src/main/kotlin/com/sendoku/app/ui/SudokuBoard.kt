@@ -87,6 +87,15 @@ public fun SudokuBoard(
      * would answer the question they were asked.
      */
     spotlight: Boolean = false,
+    /**
+     * Whether the board takes taps at all.
+     *
+     * False while a hint is being read. A hint describes the board it was asked about, so a
+     * tap that changes the board makes the explanation on screen stale, and a tap that only
+     * moves the selection moves the highlight out from under the argument. Everything stays
+     * drawn and everything stays readable by a screen reader; it simply stops listening.
+     */
+    live: Boolean = true,
 ) {
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
@@ -132,8 +141,8 @@ public fun SudokuBoard(
                             isHintStrike = index in hintStrike,
                             digitSize = digitSize,
                             markSize = markSize,
-                            onClick = { onSelect(index) },
-                            onLongClick = { onLongPress(index) },
+                            onClick = if (live) ({ onSelect(index) }) else null,
+                            onLongClick = if (live) ({ onLongPress(index) }) else null,
                             struck = struckMarks.filter { it.cell == index }.map { it.digit }.toSet(),
                             description = describe(
                                 state = state,
@@ -331,14 +340,15 @@ private fun BoardCell(
     struck: Set<Int>,
     digitSize: TextUnit,
     markSize: TextUnit,
-    onClick: () -> Unit,
-    onLongClick: () -> Unit,
+    onClick: (() -> Unit)?,
+    onLongClick: (() -> Unit)?,
     description: String,
     testTag: String,
     modifier: Modifier = Modifier,
 ) {
     val colors = Sendoku.colors
     val motion = Sendoku.motion
+    val interaction = remember { MutableInteractionSource() }
 
     // The order matters: a conflict has to beat every other wash, and the selected cell has
     // to beat the peers it is highlighting.
@@ -368,13 +378,19 @@ private fun BoardCell(
     Box(
         modifier = modifier
             .background(wash)
-            .combinedClickable(
-                interactionSource = remember { MutableInteractionSource() },
-                // No ripple. A ripple spreading past a cell edge onto its neighbours reads
-                // as though two cells were selected.
-                indication = null,
-                onClick = onClick,
-                onLongClick = onLongClick,
+            .then(
+                if (onClick == null) {
+                    Modifier
+                } else {
+                    Modifier.combinedClickable(
+                        interactionSource = interaction,
+                        // No ripple. A ripple spreading past a cell edge onto its neighbours
+                        // reads as though two cells were selected.
+                        indication = null,
+                        onClick = onClick,
+                        onLongClick = onLongClick,
+                    )
+                },
             )
             // One description per cell, read as a whole, and applied after the click so it
             // lands on the node a screen reader actually focuses. Without merging, a
@@ -382,7 +398,7 @@ private fun BoardCell(
             .semantics(mergeDescendants = true) {
                 contentDescription = description
                 this.selected = isSelected
-                role = Role.Button
+                if (onClick != null) role = Role.Button
             }
             .testTag(testTag),
         contentAlignment = Alignment.Center,

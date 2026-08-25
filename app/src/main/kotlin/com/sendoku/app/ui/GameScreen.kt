@@ -156,18 +156,32 @@ public fun GameScreen(
                     Box(Modifier.fillMaxHeight().weight(1f), contentAlignment = Alignment.Center) {
                         BoardArea(state, onEvent, onNextPuzzle, onHome, {
                             longPressed = it
-                        }, boardCap, hint, onGlossary, onPath)
+                        }, boardCap, hint, onGlossary, onPath, live = hint == null && !menuOpen)
                     }
                     Column(
                         modifier = Modifier.fillMaxHeight().weight(1f),
                         verticalArrangement = Arrangement.spacedBy(dimens.spaceM, Alignment.CenterVertically),
                     ) {
-                        GameHeader(state, leave, onSettings, onPause = { onEvent(GameEvent.Pause) })
-                        HintArea(hint, onEvent, { hint = it }, onGlossary)
-                        HintMenuArea(state, menuOpen, checked, { checked = it }, { menuOpen = it }) {
-                            hint = askForHint(state, hint, it, feedback, onSpend)
-                        }
-                        Controls(state, feedback) { menuOpen = true }
+                        GameHeader(
+                            state = state,
+                            onLeave = leave,
+                            onSettings = onSettings,
+                            onPause = { onEvent(GameEvent.Pause) },
+                            canPause = hint == null && !menuOpen,
+                        )
+                        HelpOrControls(
+                            state = state,
+                            hint = hint,
+                            menuOpen = menuOpen,
+                            checked = checked,
+                            onEvent = onEvent,
+                            onHint = { hint = it },
+                            onChecked = { checked = it },
+                            onOpen = { menuOpen = it },
+                            onGlossary = onGlossary,
+                            onAsk = { hint = askForHint(state, hint, it, feedback, onSpend) },
+                            feedback = feedback,
+                        )
                     }
                 }
             } else {
@@ -175,20 +189,34 @@ public fun GameScreen(
                     modifier = Modifier.fillMaxSize().padding(dimens.spaceM),
                     verticalArrangement = Arrangement.spacedBy(dimens.spaceM),
                 ) {
-                    GameHeader(state, leave, onSettings, onPause = { onEvent(GameEvent.Pause) })
+                    GameHeader(
+                        state = state,
+                        onLeave = leave,
+                        onSettings = onSettings,
+                        onPause = { onEvent(GameEvent.Pause) },
+                        canPause = hint == null && !menuOpen,
+                    )
                     Box(
                         modifier = Modifier.fillMaxWidth().weight(1f),
                         contentAlignment = Alignment.Center,
                     ) {
                         BoardArea(state, onEvent, onNextPuzzle, onHome, {
                             longPressed = it
-                        }, boardCap, hint, onGlossary, onPath)
+                        }, boardCap, hint, onGlossary, onPath, live = hint == null && !menuOpen)
                     }
-                    HintArea(hint, onEvent, { hint = it }, onGlossary)
-                    HintMenuArea(state, menuOpen, checked, { checked = it }, { menuOpen = it }) {
-                        hint = askForHint(state, hint, it, feedback, onSpend)
-                    }
-                    Controls(state, feedback) { menuOpen = true }
+                    HelpOrControls(
+                        state = state,
+                        hint = hint,
+                        menuOpen = menuOpen,
+                        checked = checked,
+                        onEvent = onEvent,
+                        onHint = { hint = it },
+                        onChecked = { checked = it },
+                        onOpen = { menuOpen = it },
+                        onGlossary = onGlossary,
+                        onAsk = { hint = askForHint(state, hint, it, feedback, onSpend) },
+                        feedback = feedback,
+                    )
                 }
             }
         }
@@ -258,6 +286,7 @@ private fun BoardArea(
     hint: Hint?,
     onLearn: (com.sendoku.engine.technique.TechniqueId) -> Unit,
     onPath: () -> Unit,
+    live: Boolean,
 ) {
     val step = hint as? Hint.Step
     // The cells come out one level later than the region does. The quiet level exists to say
@@ -282,6 +311,7 @@ private fun BoardArea(
                 // Auto check puts the same red under a digit the answer does not want, the
                 // moment it goes in, rather than only when a hint is asked for.
                 wrong = (hint as? Hint.Mistake)?.cells.orEmpty() + state.flaggedWrong,
+                live = live,
                 modifier = Modifier.fillMaxWidth(),
             )
             if (state.isOver) {
@@ -345,6 +375,40 @@ private fun Controls(state: GameState, onEvent: (GameEvent) -> Unit, onHint: () 
             onFillNotes = { onEvent(GameEvent.FillAllMarks) },
             onHint = onHint,
         )
+    }
+}
+
+/**
+ * The controls, or the help that has replaced them.
+ *
+ * While the app is explaining something there is nothing else to press. The pad, the tools
+ * and the pause button all go, the board stops taking taps, and what is left is the panel
+ * and its own buttons. Two reasons, and the second is the important one. A hint is read
+ * with a thumb resting where the keys were, so leaving them live is a wrong digit waiting
+ * to happen, and a wrong digit ends the explanation it was about to follow. And a hint
+ * describes the board it was asked about: touch the board and the hint is stale, so the
+ * only honest thing to do is not take the touch.
+ *
+ * They swap in place rather than stacking, so the board does not jump when a hint opens.
+ */
+@Composable
+private fun HelpOrControls(
+    state: GameState,
+    hint: Hint?,
+    menuOpen: Boolean,
+    checked: Int?,
+    onEvent: (GameEvent) -> Unit,
+    onHint: (Hint?) -> Unit,
+    onChecked: (Int?) -> Unit,
+    onOpen: (Boolean) -> Unit,
+    onGlossary: (com.sendoku.engine.technique.TechniqueId?) -> Unit,
+    onAsk: (HintLevel) -> Unit,
+    feedback: (GameEvent) -> Unit,
+) {
+    when {
+        hint != null -> HintArea(hint, onEvent, onHint, onGlossary)
+        menuOpen -> HintMenuArea(state, true, checked, onChecked, onOpen, onAsk)
+        else -> Controls(state, feedback) { onOpen(true) }
     }
 }
 
