@@ -1,11 +1,15 @@
 package com.sendoku.app.ui
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.size
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.v2.createComposeRule
 import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.unit.dp
 import com.sendoku.app.game.GameState
 import com.sendoku.app.game.Hint
 import com.sendoku.app.game.HintEngine
@@ -53,6 +57,34 @@ class HintDisciplineTest {
                 )
             }
         }
+    }
+
+    @Test
+    fun theButtonsSurviveAnExplanationTallerThanTheScreen() {
+        // The panel used to grow until Close and Do it were off the bottom of the phone,
+        // which left a player stuck inside it. The words scroll now; the buttons do not
+        // move. Two hundred and twenty density pixels is shorter than any phone, and if it
+        // holds here it holds anywhere.
+        val state = GameState.start(puzzle)
+        val hint = HintEngine.next(state, HintLevel.FULL) as Hint.Step
+        compose.setContent {
+            SendokuTheme {
+                Box(Modifier.size(320.dp, 220.dp)) {
+                    HintPanel(
+                        hint = hint,
+                        onMore = {},
+                        onApply = {},
+                        onDismiss = {},
+                        onGlossary = {},
+                        onRemoveMistake = {},
+                    )
+                }
+            }
+        }
+        compose.waitForIdle()
+
+        compose.onNodeWithTag("hint:close").assertIsDisplayed()
+        compose.onNodeWithTag("hint:apply").assertIsDisplayed()
     }
 
     @Test

@@ -231,12 +231,14 @@ public fun GameScreen(
                         onGlossary = onGlossary,
                         onAsk = { hint = askForHint(state, hint, it, feedback, onSpend) },
                         feedback = feedback,
-                        modifier = Modifier.padding(horizontal = dimens.spaceS),
+                        // Takes what is left under the board and no more, and is not stretched
+                        // to fill it. The slack ends up at the bottom, under the keys, which
+                        // is where a thumb wants it, and a hint long enough to run past the
+                        // bottom of the screen is stopped here and scrolls instead.
+                        modifier = Modifier
+                            .weight(1f, fill = false)
+                            .padding(horizontal = dimens.spaceS),
                     )
-                    // The slack goes at the bottom, under the keys, rather than between the
-                    // board and them. A pad pinned to the bottom edge of a tall phone is a
-                    // stretch for a thumb, and the space it leaves above helps nobody.
-                    Spacer(Modifier.weight(1f))
                 }
             }
         }

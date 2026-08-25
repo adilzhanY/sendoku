@@ -9,7 +9,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -51,42 +53,60 @@ public fun HintPanel(
             .padding(dimens.spaceM),
         verticalArrangement = Arrangement.spacedBy(dimens.spaceS),
     ) {
-        when (hint) {
-            is Hint.Step -> StepBody(hint, onGlossary)
+        // The words scroll and the buttons do not. A full explanation of an ALS-XY-Wing is
+        // several paragraphs, and on a small phone it used to push Close and Do it off the
+        // bottom of the screen, which left the player stuck inside a panel with no way out.
+        Column(
+            modifier = Modifier
+                .weight(1f, fill = false)
+                .verticalScroll(rememberScrollState()),
+            verticalArrangement = Arrangement.spacedBy(dimens.spaceS),
+        ) {
+            when (hint) {
+                is Hint.Step -> StepBody(hint, onGlossary)
 
-            is Hint.Mistake -> {
-                Text(stringResource(R.string.hint_wrong_title), style = Sendoku.type.overline, color = colors.conflict)
-                val one = hint.cells.size == 1
-                Text(
-                    text = if (one) {
-                        stringResource(R.string.hint_wrong_one)
-                    } else {
-                        stringResource(R.string.hint_wrong_many, hint.cells.size)
-                    },
-                    style = Sendoku.type.body,
-                    color = colors.muted,
-                )
-                Text(
-                    text = stringResource(
-                        if (one) R.string.hint_wrong_until_one else R.string.hint_wrong_until_many,
-                    ),
-                    style = Sendoku.type.body,
-                    color = colors.muted,
-                )
-            }
+                is Hint.Mistake -> {
+                    Text(
+                        text = stringResource(R.string.hint_wrong_title),
+                        style = Sendoku.type.overline,
+                        color = colors.conflict,
+                    )
+                    val one = hint.cells.size == 1
+                    Text(
+                        text = if (one) {
+                            stringResource(R.string.hint_wrong_one)
+                        } else {
+                            stringResource(R.string.hint_wrong_many, hint.cells.size)
+                        },
+                        style = Sendoku.type.body,
+                        color = colors.muted,
+                    )
+                    Text(
+                        text = stringResource(
+                            if (one) R.string.hint_wrong_until_one else R.string.hint_wrong_until_many,
+                        ),
+                        style = Sendoku.type.body,
+                        color = colors.muted,
+                    )
+                }
 
-            Hint.Solved -> {
-                Text(stringResource(R.string.hint_done_title), style = Sendoku.type.overline, color = colors.accent)
-                Text(stringResource(R.string.hint_done_body), style = Sendoku.type.body, color = colors.muted)
-            }
+                Hint.Solved -> {
+                    Text(stringResource(R.string.hint_done_title), style = Sendoku.type.overline, color = colors.accent)
+                    Text(stringResource(R.string.hint_done_body), style = Sendoku.type.body, color = colors.muted)
+                }
 
-            Hint.Stuck -> {
-                Text(stringResource(R.string.hint_stuck_title), style = Sendoku.type.overline, color = colors.muted)
-                Text(
-                    text = stringResource(R.string.hint_stuck_body),
-                    style = Sendoku.type.body,
-                    color = colors.muted,
-                )
+                Hint.Stuck -> {
+                    Text(
+                        text = stringResource(R.string.hint_stuck_title),
+                        style = Sendoku.type.overline,
+                        color = colors.muted,
+                    )
+                    Text(
+                        text = stringResource(R.string.hint_stuck_body),
+                        style = Sendoku.type.body,
+                        color = colors.muted,
+                    )
+                }
             }
         }
 
