@@ -1,7 +1,7 @@
 package com.sendoku.app.ui
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -54,6 +54,7 @@ public fun GameToolbar(
     onRedo: () -> Unit,
     onErase: () -> Unit,
     onTogglePencil: () -> Unit,
+    onFillNotes: () -> Unit,
     onHint: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -88,6 +89,10 @@ public fun GameToolbar(
             enabled = true,
             active = state.pencilMode,
             onClick = onTogglePencil,
+            // Holding the notes key pencils the whole board in. It is the one piece of help
+            // that makes the hardest levels playable at all, and it is hidden behind a long
+            // press rather than a sixth key because it is used once a game, not once a move.
+            onLongClick = onFillNotes,
             modifier = Modifier.weight(1f),
         )
         ToolButton(
@@ -110,6 +115,7 @@ private fun ToolButton(
     modifier: Modifier = Modifier,
     active: Boolean = false,
     accent: Boolean = false,
+    onLongClick: (() -> Unit)? = null,
 ) {
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
@@ -122,7 +128,7 @@ private fun ToolButton(
         modifier = modifier
             .heightIn(min = dimens.minTouchTarget)
             .clip(RoundedCornerShape(dimens.radiusM))
-            .clickable(enabled = enabled, onClick = onClick)
+            .combinedClickable(enabled = enabled, onClick = onClick, onLongClick = onLongClick)
             .alpha(if (enabled) 1f else 0.3f)
             .padding(vertical = dimens.spaceS)
             .testTag("tool:$label")

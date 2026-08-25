@@ -63,6 +63,9 @@ internal object SettingsKeys {
     val highlightPeers = booleanPreferencesKey("highlight_peers")
     val highlightSameDigit = booleanPreferencesKey("highlight_same_digit")
     val autoClearMarks = booleanPreferencesKey("auto_clear_marks")
+    val autoNotes = booleanPreferencesKey("auto_notes")
+    val autoCheck = booleanPreferencesKey("auto_check")
+    val highlightHomes = booleanPreferencesKey("highlight_homes")
     val flagConflicts = booleanPreferencesKey("flag_conflicts")
     val showTimer = booleanPreferencesKey("show_timer")
     val mistakeLimit = intPreferencesKey("mistake_limit")
@@ -92,6 +95,9 @@ internal fun Preferences.toSettings(): GameSettings {
         highlightPeers = this[SettingsKeys.highlightPeers] ?: defaults.highlightPeers,
         highlightSameDigit = this[SettingsKeys.highlightSameDigit] ?: defaults.highlightSameDigit,
         autoClearMarks = this[SettingsKeys.autoClearMarks] ?: defaults.autoClearMarks,
+        autoNotes = this[SettingsKeys.autoNotes] ?: defaults.autoNotes,
+        autoCheck = this[SettingsKeys.autoCheck] ?: defaults.autoCheck,
+        highlightHomes = this[SettingsKeys.highlightHomes] ?: defaults.highlightHomes,
         flagConflicts = this[SettingsKeys.flagConflicts] ?: defaults.flagConflicts,
         showTimer = this[SettingsKeys.showTimer] ?: defaults.showTimer,
         // Zero is how "no limit" is stored, since a preferences int cannot be null.
@@ -127,6 +133,9 @@ internal fun MutablePreferences.write(settings: GameSettings) {
     this[SettingsKeys.highlightPeers] = settings.highlightPeers
     this[SettingsKeys.highlightSameDigit] = settings.highlightSameDigit
     this[SettingsKeys.autoClearMarks] = settings.autoClearMarks
+    this[SettingsKeys.autoNotes] = settings.autoNotes
+    this[SettingsKeys.autoCheck] = settings.autoCheck
+    this[SettingsKeys.highlightHomes] = settings.highlightHomes
     this[SettingsKeys.flagConflicts] = settings.flagConflicts
     this[SettingsKeys.showTimer] = settings.showTimer
     this[SettingsKeys.mistakeLimit] = settings.mistakeLimit ?: 0

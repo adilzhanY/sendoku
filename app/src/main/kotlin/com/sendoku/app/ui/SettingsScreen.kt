@@ -122,6 +122,20 @@ public fun SettingsScreen(
             checked = settings.autoClearMarks,
         ) { onChange(settings.copy(autoClearMarks = it)) }
         Toggle(
+            label = stringResource(R.string.settings_auto_notes),
+            checked = settings.autoNotes,
+            note = stringResource(R.string.settings_auto_notes_note),
+        ) { onChange(settings.copy(autoNotes = it)) }
+        Toggle(
+            label = stringResource(R.string.settings_highlight_homes),
+            checked = settings.highlightHomes,
+        ) { onChange(settings.copy(highlightHomes = it)) }
+        Toggle(
+            label = stringResource(R.string.settings_auto_check),
+            checked = settings.autoCheck,
+            note = stringResource(R.string.settings_auto_check_note),
+        ) { onChange(settings.copy(autoCheck = it)) }
+        Toggle(
             label = stringResource(R.string.settings_flag_conflicts),
             checked = settings.flagConflicts,
         ) { onChange(settings.copy(flagConflicts = it)) }
@@ -238,7 +252,7 @@ private fun SectionLabel(text: String) {
 }
 
 @Composable
-private fun Toggle(label: String, checked: Boolean, onChange: (Boolean) -> Unit) {
+private fun Toggle(label: String, checked: Boolean, note: String? = null, onChange: (Boolean) -> Unit) {
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
     Row(
@@ -251,7 +265,12 @@ private fun Toggle(label: String, checked: Boolean, onChange: (Boolean) -> Unit)
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(dimens.spaceM),
     ) {
-        Text(label, style = Sendoku.type.label, color = colors.given, modifier = Modifier.weight(1f))
+        Column(Modifier.weight(1f)) {
+            Text(label, style = Sendoku.type.label, color = colors.given)
+            // The line that says what a setting costs. Two of these change the game rather
+            // than the furniture, and finding that out by playing is finding out too late.
+            if (note != null) Text(note, style = Sendoku.type.body, color = colors.muted)
+        }
         Switch(
             checked = checked,
             onCheckedChange = onChange,

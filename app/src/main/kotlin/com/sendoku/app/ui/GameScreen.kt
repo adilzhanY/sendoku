@@ -250,7 +250,9 @@ private fun BoardArea(
                 onLongPress = onLongPress,
                 hintLogic = if (showCells) step.deduction.logicCells() else emptySet(),
                 hintStrike = if (showCells) step.deduction.struckCells() else emptySet(),
-                wrong = (hint as? Hint.Mistake)?.cells.orEmpty(),
+                // Auto check puts the same red under a digit the answer does not want, the
+                // moment it goes in, rather than only when a hint is asked for.
+                wrong = (hint as? Hint.Mistake)?.cells.orEmpty() + state.flaggedWrong,
                 modifier = Modifier.fillMaxWidth(),
             )
             if (state.isOver) {
@@ -299,6 +301,7 @@ private fun Controls(state: GameState, onEvent: (GameEvent) -> Unit, onHint: () 
             onRedo = { onEvent(GameEvent.Redo) },
             onErase = { onEvent(GameEvent.Erase) },
             onTogglePencil = { onEvent(GameEvent.TogglePencil) },
+            onFillNotes = { onEvent(GameEvent.FillAllMarks) },
             onHint = onHint,
         )
     }
@@ -394,6 +397,9 @@ public sealed interface GameEvent {
     public data object Pause : GameEvent
     public data object Resume : GameEvent
     public data object FillMarks : GameEvent
+
+    /** Pencil every empty cell in, which is the one piece of help the deep end needs. */
+    public data object FillAllMarks : GameEvent
     public data object ClearMarks : GameEvent
 
     /** The player asked the hint to take the wrong digits it found back off the board. */
@@ -418,6 +424,7 @@ public fun GameState.reduce(event: GameEvent): GameState = when (event) {
     GameEvent.Pause -> pause()
     GameEvent.Resume -> resume()
     GameEvent.FillMarks -> fillMarks()
+    GameEvent.FillAllMarks -> fillAllMarks()
     GameEvent.ClearMarks -> clearMarks()
     is GameEvent.Accept -> applyHint(event.deduction)
 }

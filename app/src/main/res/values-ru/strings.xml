@@ -132,6 +132,11 @@
     <string name="settings_highlight_peers">Подсвечивать строку, столбец и блок</string>
     <string name="settings_highlight_same">Подсвечивать такую же цифру в других клетках</string>
     <string name="settings_auto_clear">Убирать пометки, которые исключает поставленная цифра</string>
+    <string name="settings_auto_notes">Держать пометки во всех клетках</string>
+    <string name="settings_auto_notes_note">Приложение ведёт учёт за вас. Выше уровня «Эксперт» без этого почти не обойтись.</string>
+    <string name="settings_highlight_homes">Показывать, куда ещё может встать выбранная цифра</string>
+    <string name="settings_auto_check">Сразу говорить, что цифра неверная</string>
+    <string name="settings_auto_check_note">С этим ничего не теряешь, если просто попробовать, и задача теряет почти всё напряжение.</string>
     <string name="settings_flag_conflicts">Отмечать цифру, которая повторяется в строке, столбце или блоке</string>
     <string name="settings_clock">Часы</string>
     <string name="settings_show_timer">Показывать таймер</string>

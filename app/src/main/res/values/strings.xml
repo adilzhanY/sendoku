@@ -138,6 +138,11 @@
     <string name="settings_highlight_peers">Highlight the row, column and box</string>
     <string name="settings_highlight_same">Highlight the same digit elsewhere</string>
     <string name="settings_auto_clear">Rub out notes that a placement rules out</string>
+    <string name="settings_auto_notes">Keep every cell pencilled in</string>
+    <string name="settings_auto_notes_note">The app does the bookkeeping. Above Expert this is close to necessary.</string>
+    <string name="settings_highlight_homes">Show where the selected digit could still go</string>
+    <string name="settings_auto_check">Tell me straight away when a digit is wrong</string>
+    <string name="settings_auto_check_note">With this on there is nothing to lose by trying, so the puzzle loses most of its tension.</string>
     <string name="settings_flag_conflicts">Mark a digit that repeats in a row, column or box</string>
     <string name="settings_clock">The clock</string>
     <string name="settings_show_timer">Show the timer</string>

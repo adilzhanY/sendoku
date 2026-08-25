@@ -77,7 +77,7 @@ public fun SudokuBoard(
     // Recomputed once per state rather than once per cell, since each is a set lookup done
     // eighty one times.
     val peers = state.highlightedPeers
-    val matches = state.highlightedMatches
+    val matches = state.highlightedMatches + state.highlightedHomes
     val conflicts = state.conflicts
 
     BoxWithConstraints(

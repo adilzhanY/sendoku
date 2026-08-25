@@ -21,6 +21,42 @@ public data class GameSettings(
     /** Rub out a pencil mark when the digit it names is placed where it can see it. */
     val autoClearMarks: Boolean = true,
 
+    /**
+     * Keep every empty cell pencilled with the digits it could still take.
+     *
+     * Off by default, and the default is the interesting decision. Doing the bookkeeping by
+     * hand is most of what makes an easy puzzle take time, and skipping it is how most
+     * people play on a phone. But the whole grid covered in small digits is also how a
+     * beginner learns to stop looking at the board and start reading their own notes, and
+     * the notes are only right because the app wrote them.
+     *
+     * So it is offered, plainly, and not chosen for anybody. Anything above Expert is
+     * unplayable without it, and a player who reaches those levels will find it.
+     */
+    val autoNotes: Boolean = false,
+
+    /**
+     * Mark a digit that is not the one the answer wants, the moment it goes in.
+     *
+     * Different from [flagConflicts], which only catches a digit that repeats in a house.
+     * A wrong digit that breaks no rule yet is invisible until the puzzle falls apart
+     * twenty moves later, and finding out then is miserable.
+     *
+     * Off by default because it changes the game: with it on there is nothing to lose by
+     * trying a digit, and a puzzle you cannot get wrong is a puzzle with no tension in it.
+     * The settings screen says so rather than leaving somebody to discover it.
+     */
+    val autoCheck: Boolean = false,
+
+    /**
+     * Shade every cell that could still take the selected digit.
+     *
+     * The scanning aid. Selecting a 7 lights up everywhere a 7 could still go, which is the
+     * question a player is asking when they pick up a digit in the first place. Off by
+     * default: it is the strongest of these and it does a real part of the work.
+     */
+    val highlightHomes: Boolean = false,
+
     /** Mark a digit that repeats in a row, column or box. */
     val flagConflicts: Boolean = true,
 

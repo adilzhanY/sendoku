@@ -174,6 +174,37 @@ public data class GameState(
             return geometry.peersOf(at).toSet()
         }
 
+    /**
+     * Digits the player has placed that the answer does not want, when auto check is on.
+     *
+     * Only ever a mirror of the setting. The state always knows which digits are wrong,
+     * since it holds the solution, and the whole question is whether the player asked to be
+     * told. Reading it from anywhere else would leak the answer.
+     */
+    public val flaggedWrong: Set<Int>
+        get() {
+            if (!settings.autoCheck) return emptySet()
+            return cells.indices.filter {
+                val digit = cells[it].digit
+                digit != Board.EMPTY && !cells[it].isGiven && digit != solution.atIndex(it)
+            }.toSet()
+        }
+
+    /**
+     * Every cell that could still take the selected digit, when the setting allows it.
+     *
+     * The digit is the one in the selected cell, so selecting a 7 anywhere shows every
+     * other place a 7 could still go. That is the question a player is asking when they
+     * pick up a digit, and the answer is the whole of what scanning means.
+     */
+    public val highlightedHomes: Set<Int>
+        get() {
+            if (!settings.highlightHomes) return emptySet()
+            val at = selected ?: return emptySet()
+            val digit = cells[at].digit.takeIf { it != Board.EMPTY } ?: return emptySet()
+            return cells.indices.filter { cells[it].isEmpty && digit in candidatesAt(it) }.toSet()
+        }
+
     /** Other cells holding the same digit as the selection, when the setting allows it. */
     public val highlightedMatches: Set<Int>
         get() {
@@ -193,7 +224,8 @@ public data class GameState(
 
     public fun togglePencilMode(): GameState = copy(pencilMode = !pencilMode)
 
-    public fun withSettings(settings: GameSettings): GameState = copy(settings = settings)
+    public fun withSettings(settings: GameSettings): GameState =
+        copy(settings = settings).let { if (settings.autoNotes) it.fillAllMarks() else it }
 
     /**
      * Puts [digit] in the selected cell, or pencils it in when in pencil mode.
@@ -214,7 +246,7 @@ public data class GameState(
         }
 
         if (cell.digit == digit) {
-            return apply(MoveKind.ERASE, at, mapOf(at to cell.copy(digit = Board.EMPTY)))
+            return apply(MoveKind.ERASE, at, mapOf(at to cell.copy(digit = Board.EMPTY))).withAutoNotes()
         }
 
         val changes = HashMap<Int, Cell>()
@@ -229,6 +261,7 @@ public data class GameState(
         val wrong = digit != solution.atIndex(at)
         return apply(MoveKind.PLACE, at, changes)
             .copy(mistakes = mistakes + if (wrong) 1 else 0)
+            .withAutoNotes()
             .stopIfOver()
     }
 
@@ -261,6 +294,45 @@ public data class GameState(
             if (digit != Board.EMPTY) possible -= digit
         }
         return possible
+    }
+
+    /**
+     * Brings every pencil mark back up to date, as part of the move that just happened.
+     *
+     * Folded into the last move rather than added after it, so one tap is still one undo.
+     * A player who rubs out a digit and has to press undo twice to get back where they were
+     * will conclude the undo button is broken, and they will be right.
+     */
+    private fun withAutoNotes(): GameState {
+        if (!settings.autoNotes) return this
+        val changes = allMarks()
+        if (changes.isEmpty()) return this
+        val last = past.lastOrNull() ?: return fillAllMarks()
+        val before = changes.keys.filter { it !in last.before }.associateWith { cells[it] }
+        return copy(
+            cells = replaced(changes),
+            past = past.dropLast(1) + last.copy(before = last.before + before, after = last.after + changes),
+        )
+    }
+
+    /** Pencils in every digit every empty cell could still take, in one undoable move. */
+    public fun fillAllMarks(): GameState {
+        if (isOver) return this
+        val changes = allMarks()
+        if (changes.isEmpty()) return this
+        return apply(MoveKind.MARK, selected ?: 0, changes)
+    }
+
+    /** Every empty cell that is not already showing exactly the digits it could take. */
+    private fun allMarks(): Map<Int, Cell> {
+        val changes = HashMap<Int, Cell>()
+        for (at in cells.indices) {
+            val cell = cells[at]
+            if (!cell.isEmpty) continue
+            val possible = candidatesAt(at)
+            if (possible != cell.marks) changes[at] = cell.copy(marks = possible)
+        }
+        return changes
     }
 
     /** Pencils in every digit the selected cell could still take. */
