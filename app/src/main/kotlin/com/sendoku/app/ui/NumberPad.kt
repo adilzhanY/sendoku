@@ -9,7 +9,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -27,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import com.sendoku.app.R
 import com.sendoku.app.game.GameState
 import com.sendoku.app.theme.Sendoku
+import com.sendoku.app.theme.SendokuIcons
 
 /**
  * The nine keys.
@@ -69,6 +72,9 @@ public fun NumberPad(
         }
     }
 }
+
+/** The tick under a finished key. Small: it is a full stop, not an announcement. */
+private val DONE = 12.dp
 
 @Composable
 private fun PadKey(
@@ -128,11 +134,23 @@ private fun PadKey(
             color = if (pencilMode || scanning) colors.accent else colors.given,
         )
         Box(Modifier.padding(top = 1.dp)) {
-            Text(
-                text = if (exhausted) "" else remaining.toString(),
-                style = Sendoku.type.padCount,
-                color = if (scanning) colors.accent else colors.muted,
-            )
+            // A tick rather than a blank once the last one is placed. An empty space under a
+            // dimmed key says the key is broken; a tick says the digit is finished, which is
+            // a small thing to be told and a pleasant one.
+            if (exhausted) {
+                Icon(
+                    imageVector = SendokuIcons.Done,
+                    contentDescription = null,
+                    tint = colors.accent,
+                    modifier = Modifier.size(DONE),
+                )
+            } else {
+                Text(
+                    text = remaining.toString(),
+                    style = Sendoku.type.padCount,
+                    color = if (scanning) colors.accent else colors.muted,
+                )
+            }
         }
     }
 }

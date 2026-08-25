@@ -762,7 +762,6 @@
     <string name="outcome_share">Поделиться</string>
     <string name="card_solved">Решено</string>
     <string name="card_lost">Не сдалась</string>
-    <string name="card_footer">Бесплатно. Без рекламы. Без слежки.</string>
     <string name="settings_hints">Подсказки</string>
     <string name="settings_hint_limit">Заканчивать игру после трёх подсказок</string>
     <string name="settings_hint_note">Включено по умолчанию. Три подсказки бесплатны, а четвёртая стоит игры, и подсказка становится решением, а не рефлексом. Выключите, пока проходите курс.</string>
@@ -770,7 +769,8 @@
     <string name="account_no_account">Здесь нет аккаунта, в который нужно входить. Всё, что ниже, лежит на этом телефоне и больше нигде.</string>
     <string name="account_solved">Решено</string>
     <string name="account_streak">Серия</string>
-    <string name="account_time">В игре</string>
+    <string name="account_played">Сыграно</string>
+    <string name="account_time">Время</string>
     <string name="account_lessons">Уроки</string>
     <string name="account_stats">Статистика</string>
     <string name="account_stats_detail">Все уровни, лучшее время и техники, которые вы встретили</string>

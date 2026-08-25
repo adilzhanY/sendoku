@@ -70,7 +70,14 @@ public fun OutcomePanel(
                 ?: state.hintsUsed.toString()
             ),
     )
-    val footer = stringResource(R.string.card_footer)
+    // The board as it was left, so the picture shows the puzzle rather than describing it.
+    val grid = ShareCard.Grid(
+        size = state.size,
+        boxWidth = state.dims.boxWidth,
+        boxHeight = state.dims.boxHeight,
+        digits = state.cells.map { it.digit },
+        given = state.cells.indices.filter { state.cells[it].isGiven }.toSet(),
+    )
 
     Box(
         modifier = modifier
@@ -188,7 +195,7 @@ public fun OutcomePanel(
                 OutcomeButton(
                     stringResource(R.string.outcome_share),
                     accent = false,
-                    onClick = { shareCard(context, appName, chooser, resultText, gradeText, labels, footer) },
+                    onClick = { shareCard(context, appName, chooser, resultText, gradeText, labels, grid) },
                     modifier = Modifier.weight(1f),
                     tag = "outcome:share",
                 )
@@ -257,14 +264,14 @@ private fun shareCard(
     title: String,
     grade: String,
     lines: List<Pair<String, String>>,
-    footer: String,
+    grid: ShareCard.Grid,
 ) {
     val card = ShareCard.draw(
         appName = appName,
         title = title,
         grade = grade,
         lines = lines.map { (label, value) -> ShareCard.Line(label, value) },
-        footer = footer,
+        grid = grid,
     )
     ShareResult.share(context, card, chooser)
 }

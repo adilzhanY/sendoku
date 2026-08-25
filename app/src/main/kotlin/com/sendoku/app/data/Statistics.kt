@@ -34,6 +34,9 @@ public data class Statistics(
     /** How many puzzles topped out at each technique. */
     val hardestTechnique: Map<TechniqueId, Int>,
     val totalSolved: Int,
+
+    /** Every game that reached an end, won or lost. Solved on its own is a lonely number. */
+    val gamesPlayed: Int,
     val totalTime: Duration,
     val totalHints: Int,
 ) {
@@ -57,6 +60,7 @@ public data class Statistics(
                 hardestGrade = solved.maxByOrNull { it.rating }?.grade,
                 hardestTechnique = solved.mapNotNull { it.hardest }.groupingBy { it }.eachCount(),
                 totalSolved = solved.size,
+                gamesPlayed = games.size,
                 totalTime = solved.fold(Duration.ZERO) { sum, game -> sum + game.elapsed },
                 totalHints = solved.sumOf { it.hintsUsed },
             )

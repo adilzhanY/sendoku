@@ -197,6 +197,15 @@ public object SendokuIcons {
         }
     }
 
+    /** A tick. Drawn as two strokes rather than a glyph so it scales with the others. */
+    public val Done: ImageVector = icon("Done") {
+        stroke {
+            moveTo(5.0f, 12.8f)
+            lineTo(10.0f, 17.6f)
+            lineTo(19.0f, 6.8f)
+        }
+    }
+
     /**
      * A padlock, shut.
      *

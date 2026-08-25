@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -122,12 +123,17 @@ public fun GameScreen(
     // in for the feel of a pencil. Both are only ever fired for a real change, never for a
     // tap that did nothing.
     val haptics = LocalHapticFeedback.current
-    val view = LocalView.current
+    val sounds = rememberSoundBoard()
+
     val feedback: (GameEvent) -> Unit = { event ->
+        val before = state
+        val after = before.reduce(event)
         onEvent(event)
-        if (event is GameEvent.Digit || event is GameEvent.Erase) {
-            if (state.settings.haptics) haptics.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-            if (state.settings.sound) view.playSoundEffect(SoundEffectConstants.CLICK)
+        if (after !== before) {
+            if (before.settings.haptics && (event is GameEvent.Digit || event is GameEvent.Erase)) {
+                haptics.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+            }
+            if (before.settings.sound) soundFor(event, before, after)?.let(sounds::play)
         }
     }
 
@@ -154,9 +160,11 @@ public fun GameScreen(
                     horizontalArrangement = Arrangement.spacedBy(dimens.spaceL),
                 ) {
                     Box(Modifier.fillMaxHeight().weight(1f), contentAlignment = Alignment.Center) {
-                        BoardArea(state, onEvent, onNextPuzzle, onHome, {
+                        BoardArea(state, onNextPuzzle, onHome, {
                             longPressed = it
-                        }, boardCap, hint, onGlossary, onPath, live = hint == null && !menuOpen)
+                        }, boardCap, hint, onGlossary, onPath, live = hint == null && !menuOpen) {
+                            feedback(GameEvent.Select(it))
+                        }
                     }
                     Column(
                         modifier = Modifier.fillMaxHeight().weight(1f),
@@ -186,23 +194,30 @@ public fun GameScreen(
                 }
             } else {
                 Column(
-                    modifier = Modifier.fillMaxSize().padding(dimens.spaceM),
-                    verticalArrangement = Arrangement.spacedBy(dimens.spaceM),
+                    // Tight at the sides so the grid runs nearly the full width of the phone,
+                    // which is the difference between a digit you read and a digit you squint
+                    // at. The furniture keeps its own margins.
+                    modifier = Modifier.fillMaxSize().padding(horizontal = dimens.spaceXs, vertical = dimens.spaceS),
+                    verticalArrangement = Arrangement.spacedBy(dimens.spaceS),
                 ) {
-                    GameHeader(
-                        state = state,
-                        onLeave = leave,
-                        onSettings = onSettings,
-                        onPause = { onEvent(GameEvent.Pause) },
-                        canPause = hint == null && !menuOpen,
-                    )
+                    Box(Modifier.padding(horizontal = dimens.spaceS)) {
+                        GameHeader(
+                            state = state,
+                            onLeave = leave,
+                            onSettings = onSettings,
+                            onPause = { onEvent(GameEvent.Pause) },
+                            canPause = hint == null && !menuOpen,
+                        )
+                    }
                     Box(
-                        modifier = Modifier.fillMaxWidth().weight(1f),
+                        modifier = Modifier.fillMaxWidth(),
                         contentAlignment = Alignment.Center,
                     ) {
-                        BoardArea(state, onEvent, onNextPuzzle, onHome, {
+                        BoardArea(state, onNextPuzzle, onHome, {
                             longPressed = it
-                        }, boardCap, hint, onGlossary, onPath, live = hint == null && !menuOpen)
+                        }, boardCap, hint, onGlossary, onPath, live = hint == null && !menuOpen) {
+                            feedback(GameEvent.Select(it))
+                        }
                     }
                     HelpOrControls(
                         state = state,
@@ -216,7 +231,12 @@ public fun GameScreen(
                         onGlossary = onGlossary,
                         onAsk = { hint = askForHint(state, hint, it, feedback, onSpend) },
                         feedback = feedback,
+                        modifier = Modifier.padding(horizontal = dimens.spaceS),
                     )
+                    // The slack goes at the bottom, under the keys, rather than between the
+                    // board and them. A pad pinned to the bottom edge of a tall phone is a
+                    // stretch for a thumb, and the space it leaves above helps nobody.
+                    Spacer(Modifier.weight(1f))
                 }
             }
         }
@@ -278,7 +298,6 @@ public fun GameScreen(
 @Composable
 private fun BoardArea(
     state: GameState,
-    onEvent: (GameEvent) -> Unit,
     onNextPuzzle: () -> Unit,
     onHome: () -> Unit,
     onLongPress: (Int) -> Unit,
@@ -287,6 +306,7 @@ private fun BoardArea(
     onLearn: (com.sendoku.engine.technique.TechniqueId) -> Unit,
     onPath: () -> Unit,
     live: Boolean,
+    onSelect: (Int) -> Unit,
 ) {
     val step = hint as? Hint.Step
     // The cells come out one level later than the region does. The quiet level exists to say
@@ -301,7 +321,7 @@ private fun BoardArea(
         Box(Modifier.size(side)) {
             SudokuBoard(
                 state = state,
-                onSelect = { onEvent(GameEvent.Select(it)) },
+                onSelect = { onSelect(it) },
                 onLongPress = onLongPress,
                 hintLogic = if (showCells) step.deduction.logicCells() else emptySet(),
                 hintStrike = if (showCells) step.deduction.struckCells() else emptySet(),
@@ -360,12 +380,9 @@ private fun askForHint(
 
 @Composable
 private fun Controls(state: GameState, onEvent: (GameEvent) -> Unit, onHint: () -> Unit) {
+    // Tools above, digits below. The digits are pressed a hundred times a game and the tools
+    // five, so the digits get the place a thumb reaches without moving.
     Column(verticalArrangement = Arrangement.spacedBy(Sendoku.dimens.spaceS)) {
-        NumberPad(
-            state = state,
-            onDigit = { onEvent(GameEvent.Digit(it)) },
-            onScan = { onEvent(GameEvent.Scan(it)) },
-        )
         GameToolbar(
             state = state,
             onUndo = { onEvent(GameEvent.Undo) },
@@ -375,7 +392,31 @@ private fun Controls(state: GameState, onEvent: (GameEvent) -> Unit, onHint: () 
             onFillNotes = { onEvent(GameEvent.FillAllMarks) },
             onHint = onHint,
         )
+        NumberPad(
+            state = state,
+            onDigit = { onEvent(GameEvent.Digit(it)) },
+            onScan = { onEvent(GameEvent.Scan(it)) },
+        )
     }
+}
+
+/**
+ * What an action sounded like, decided from what it actually did.
+ *
+ * Read off the state either side rather than off the event, because the event says what was
+ * asked for and the state says what happened. Pressing a digit can place one, rub one out,
+ * toggle a pencil mark, make a mistake, finish the puzzle, or do nothing at all, and those
+ * are six different answers of which one is silence.
+ */
+private fun soundFor(event: GameEvent, before: GameState, after: GameState): Sound? = when {
+    after.isSolved -> Sound.WIN
+    after.mistakes > before.mistakes -> Sound.MISTAKE
+    event is GameEvent.TogglePencil -> if (after.pencilMode) Sound.NOTES_ON else Sound.NOTES_OFF
+    event is GameEvent.Erase || event is GameEvent.EraseCells -> Sound.ERASE
+    event is GameEvent.Undo || event is GameEvent.Redo -> Sound.ERASE
+    event is GameEvent.Digit -> Sound.PLACE
+    event is GameEvent.Select -> Sound.TAP
+    else -> null
 }
 
 /**
@@ -393,6 +434,7 @@ private fun Controls(state: GameState, onEvent: (GameEvent) -> Unit, onHint: () 
  */
 @Composable
 private fun HelpOrControls(
+    modifier: Modifier = Modifier,
     state: GameState,
     hint: Hint?,
     menuOpen: Boolean,
@@ -405,10 +447,12 @@ private fun HelpOrControls(
     onAsk: (HintLevel) -> Unit,
     feedback: (GameEvent) -> Unit,
 ) {
-    when {
-        hint != null -> HintArea(hint, onEvent, onHint, onGlossary)
-        menuOpen -> HintMenuArea(state, true, checked, onChecked, onOpen, onAsk)
-        else -> Controls(state, feedback) { onOpen(true) }
+    Box(modifier) {
+        when {
+            hint != null -> HintArea(hint, onEvent, onHint, onGlossary)
+            menuOpen -> HintMenuArea(state, true, checked, onChecked, onOpen, onAsk)
+            else -> Controls(state, feedback) { onOpen(true) }
+        }
     }
 }
 

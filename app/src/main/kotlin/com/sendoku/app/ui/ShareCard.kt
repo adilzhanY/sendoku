@@ -17,6 +17,14 @@ import androidx.core.graphics.createBitmap
  * and it is drawn at that size rather than scaled up to it, so the digits are sharp on a
  * desktop monitor as well as a phone.
  *
+ * The board is on it, and it is the point. A row of numbers says somebody finished a puzzle;
+ * the grid they finished says which one, and the digits they put in it are visibly theirs,
+ * darker than the clues they were given. That is the thing a person wants to show, and no
+ * amount of typography about hints and mistakes replaces it.
+ *
+ * There is nothing on here about the app being free, carrying no advertisements and tracking
+ * nobody. All three are true and none of them belongs on somebody's photograph.
+ *
  * The mark is the same five by five grid spelling an S that the launcher icon uses, drawn from
  * the same description rather than loaded from a bitmap, so it is crisp at any size and there
  * is no second copy of the logo to keep in step.
@@ -32,6 +40,7 @@ public object ShareCard {
     private const val PAPER = 0xFFE8F0F5.toInt()
     private const val MUTED = 0xFF7D95A5.toInt()
     private const val SLATE = 0xFF2A3540.toInt()
+    private const val ROSE = 0xFFFF5C7A.toInt()
 
     private val MARK = listOf(
         ".####",
@@ -45,13 +54,27 @@ public object ShareCard {
     public data class Line(val label: String, val value: String, val warn: Boolean = false)
 
     /**
+     * The finished grid, as it was left.
+     *
+     * [digits] is every cell in reading order, and [given] says which of them the puzzle came
+     * with. Anything not given is drawn brighter, because that is the half the player did.
+     */
+    public data class Grid(
+        val size: Int,
+        val boxWidth: Int,
+        val boxHeight: Int,
+        val digits: List<Int>,
+        val given: Set<Int>,
+    )
+
+    /**
      * Draws the card.
      *
      * [title] is what happened, [grade] the difficulty, and [lines] the numbers. Everything is
      * handed in as text already formatted and translated, because this file must not know how
      * to say "3 of 3" in Russian.
      */
-    public fun draw(appName: String, title: String, grade: String, lines: List<Line>, footer: String): Bitmap {
+    public fun draw(appName: String, title: String, grade: String, lines: List<Line>, grid: Grid?): Bitmap {
         val bitmap = createBitmap(WIDTH, HEIGHT)
         val canvas = Canvas(bitmap)
         canvas.drawColor(INK)
@@ -60,58 +83,101 @@ public object ShareCard {
         val bold = Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD)
         val plain = Typeface.SANS_SERIF
 
-        drawMark(canvas, paint, left = 96f, top = 110f, side = 190f)
+        drawMark(canvas, paint, left = 84f, top = 84f, side = 116f)
 
         paint.typeface = bold
         paint.color = PAPER
-        paint.textSize = 86f
-        canvas.drawText(appName, 330f, 205f, paint)
+        paint.textSize = 72f
+        canvas.drawText(appName, 232f, 152f, paint)
 
         paint.typeface = plain
         paint.color = MUTED
-        paint.textSize = 38f
+        paint.textSize = 34f
         paint.letterSpacing = 0.14f
-        canvas.drawText(footer.uppercase(), 332f, 268f, paint)
+        canvas.drawText(title.uppercase(), 234f, 200f, paint)
         paint.letterSpacing = 0f
 
-        // The headline: what happened, then the grade under it in the accent colour, because
-        // the grade is the thing worth bragging about and the app's whole pitch.
+        // The grade, on the right of the same line as the name, so the board can start high.
         paint.typeface = bold
-        paint.color = PAPER
-        paint.textSize = 76f
-        canvas.drawText(title, 96f, 470f, paint)
-
         paint.color = TEAL
-        paint.textSize = 130f
-        canvas.drawText(grade, 96f, 610f, paint)
+        paint.textSize = 62f
+        paint.textAlign = Paint.Align.RIGHT
+        canvas.drawText(grade, WIDTH - 84f, 168f, paint)
+        paint.textAlign = Paint.Align.LEFT
 
-        // Spread across what is left rather than stacked under the grade. The first draft left
-        // a fifth of the card empty at the bottom, which reads as a picture that failed to
-        // load rather than as space.
-        val top = 790f
-        val step = (HEIGHT - 150f - top) / lines.size
-        var y = top
-        for (line in lines) {
-            paint.typeface = plain
-            paint.color = MUTED
-            paint.textSize = 46f
-            canvas.drawText(line.label, 96f, y, paint)
+        if (grid != null) drawGrid(canvas, paint, grid, top = 250f, side = 880f)
+
+        val top = HEIGHT - 150f
+        val step = (WIDTH - 168f) / lines.size
+        for ((index, line) in lines.withIndex()) {
+            val centre = 84f + step * index + step / 2
+            paint.textAlign = Paint.Align.CENTER
 
             paint.typeface = bold
-            paint.color = if (line.warn) TEAL else PAPER
-            paint.textSize = 62f
-            paint.textAlign = Paint.Align.RIGHT
-            canvas.drawText(line.value, WIDTH - 96f, y + 6f, paint)
-            paint.textAlign = Paint.Align.LEFT
+            paint.color = if (line.warn) ROSE else PAPER
+            paint.textSize = 76f
+            canvas.drawText(line.value, centre, top + 36f, paint)
 
-            y += 46f
-            paint.color = SLATE
-            paint.strokeWidth = 2f
-            canvas.drawLine(96f, y, WIDTH - 96f, y, paint)
-            y += step - 46f
+            paint.typeface = plain
+            paint.color = MUTED
+            paint.textSize = 32f
+            paint.letterSpacing = 0.12f
+            canvas.drawText(line.label.uppercase(), centre, top + 92f, paint)
+            paint.letterSpacing = 0f
+            paint.textAlign = Paint.Align.LEFT
         }
 
         return bitmap
+    }
+
+    /**
+     * The board, with the player's own digits brighter than the clues.
+     *
+     * Box rules are drawn heavier than cell rules, the same way they are in the app, because a
+     * grid without them is a wall of eighty one numbers.
+     */
+    private fun drawGrid(canvas: Canvas, paint: Paint, grid: Grid, top: Float, side: Float) {
+        val left = (WIDTH - side) / 2
+        val cell = side / grid.size
+
+        paint.color = 0xFF121820.toInt()
+        canvas.drawRoundRect(RectF(left, top, left + side, top + side), 10f, 10f, paint)
+
+        paint.typeface = Typeface.SANS_SERIF
+        paint.textAlign = Paint.Align.CENTER
+        paint.textSize = cell * 0.58f
+        for (index in grid.digits.indices) {
+            val digit = grid.digits[index]
+            if (digit == 0) continue
+            val column = index % grid.size
+            val row = index / grid.size
+            paint.color = if (index in grid.given) MUTED else PAPER
+            paint.typeface =
+                if (index in grid.given) Typeface.SANS_SERIF else Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD)
+            canvas.drawText(
+                digit.toString(),
+                left + column * cell + cell / 2,
+                top + row * cell + cell * 0.71f,
+                paint,
+            )
+        }
+        paint.textAlign = Paint.Align.LEFT
+        paint.typeface = Typeface.SANS_SERIF
+
+        for (line in 0..grid.size) {
+            val heavy = line % grid.boxWidth == 0
+            paint.color = if (heavy) SLATE else 0xFF1B2530.toInt()
+            paint.strokeWidth = if (heavy) 4f else 2f
+            val at = left + line * cell
+            canvas.drawLine(at, top, at, top + side, paint)
+        }
+        for (line in 0..grid.size) {
+            val heavy = line % grid.boxHeight == 0
+            paint.color = if (heavy) SLATE else 0xFF1B2530.toInt()
+            paint.strokeWidth = if (heavy) 4f else 2f
+            val at = top + line * cell
+            canvas.drawLine(left, at, left + side, at, paint)
+        }
     }
 
     /** The S, as rounded squares on a five by five grid. */

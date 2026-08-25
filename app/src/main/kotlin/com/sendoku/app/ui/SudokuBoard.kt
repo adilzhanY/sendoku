@@ -36,6 +36,7 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.Dp
@@ -46,6 +47,7 @@ import com.sendoku.app.R
 import com.sendoku.app.game.Cell
 import com.sendoku.app.game.GameState
 import com.sendoku.app.theme.Sendoku
+import com.sendoku.engine.Board
 import com.sendoku.engine.House
 import com.sendoku.engine.HouseKind
 import com.sendoku.engine.technique.CellDigit
@@ -111,6 +113,11 @@ public fun SudokuBoard(
     // whatever the hint says: the one thing more urgent than the next step is the digit that
     // makes the next step pointless.
     val lit = hintLogic + hintStrike + struckMarks.map { it.cell } + conflicts + wrong
+    // The digit in hand: whatever is in the selected cell, or the one being held on the pad.
+    // Every pencil mark naming it is drawn heavier, which is how a player finds the places
+    // it could still go without reading the whole grid a cell at a time.
+    val inHand = state.scanning
+        ?: state.selected?.let { state.cells[it].digit.takeIf { digit -> digit != Board.EMPTY } }
     val geometry = com.sendoku.engine.Geometry.of(state.dims)
     val housed = hintHouses.flatMap { geometry.cellsOf(it).toList() }.toSet()
     val dimming = spotlight && (hintLogic.isNotEmpty() || hintHouses.isNotEmpty() || struckMarks.isNotEmpty())
@@ -144,6 +151,7 @@ public fun SudokuBoard(
                             onClick = if (live) ({ onSelect(index) }) else null,
                             onLongClick = if (live) ({ onLongPress(index) }) else null,
                             struck = struckMarks.filter { it.cell == index }.map { it.digit }.toSet(),
+                            emphasis = inHand,
                             description = describe(
                                 state = state,
                                 index = index,
@@ -338,6 +346,7 @@ private fun BoardCell(
     isHintLogic: Boolean,
     isHintStrike: Boolean,
     struck: Set<Int>,
+    emphasis: Int?,
     digitSize: TextUnit,
     markSize: TextUnit,
     onClick: (() -> Unit)?,
@@ -412,14 +421,14 @@ private fun BoardCell(
                 textDecoration = decorationFor(isConflict),
             )
 
-            cell.marks.isNotEmpty -> PencilMarks(cell, struck, markSize)
+            cell.marks.isNotEmpty -> PencilMarks(cell, struck, emphasis, markSize)
         }
     }
 }
 
 /** The candidate digits, laid out where they will be once they are placed. */
 @Composable
-private fun PencilMarks(cell: Cell, struck: Set<Int>, markSize: TextUnit) {
+private fun PencilMarks(cell: Cell, struck: Set<Int>, emphasis: Int?, markSize: TextUnit) {
     val colors = Sendoku.colors
     // Three across, always, so a mark keeps the same position as the player adds others.
     // A mark that moves when its neighbour appears is impossible to scan.
@@ -439,11 +448,17 @@ private fun PencilMarks(cell: Cell, struck: Set<Int>, markSize: TextUnit) {
                     // sevens. Tinting the whole cell instead says something is happening
                     // here and nothing at all about which digit is in trouble.
                     val dying = digit in struck
+                    val held = digit == emphasis
                     Text(
                         text = if (digit in cell.marks) digit.toString() else "",
                         style = Sendoku.type.pencilMark,
-                        color = if (dying) colors.conflict else colors.pencil,
+                        color = when {
+                            dying -> colors.conflict
+                            held -> colors.accent
+                            else -> colors.pencil
+                        },
                         fontSize = markSize,
+                        fontWeight = if (held) FontWeight.Bold else null,
                         textAlign = TextAlign.Center,
                         textDecoration = if (dying) TextDecoration.LineThrough else null,
                         modifier = Modifier.weight(1f),

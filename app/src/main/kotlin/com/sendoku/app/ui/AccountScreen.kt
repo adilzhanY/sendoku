@@ -71,7 +71,11 @@ public fun AccountScreen(
             modifier = Modifier.fillMaxWidth().padding(bottom = dimens.spaceM),
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
+            // Solved and played, side by side and never merged. A player who finished a
+            // puzzle and lost it wants to see that both things happened, and a page that
+            // only counts wins tells them nothing except nought.
             Figure(stringResource(R.string.account_solved), statistics.totalSolved.toString())
+            Figure(stringResource(R.string.account_played), statistics.gamesPlayed.toString())
             Figure(stringResource(R.string.account_streak), statistics.currentStreak.toString())
             Figure(stringResource(R.string.account_time), statistics.totalTime.short())
             Figure(

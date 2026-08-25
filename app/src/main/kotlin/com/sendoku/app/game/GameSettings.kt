@@ -97,10 +97,15 @@ public data class GameSettings(
     val haptics: Boolean = true,
 
     /**
-     * A click when a digit goes in. Off, because a puzzle app that makes noise in a quiet
-     * room is a puzzle app that gets uninstalled.
+     * The sounds. On, and quiet.
+     *
+     * They were off, on the argument that a puzzle app which makes noise in a quiet room is
+     * one that gets uninstalled. That argument was against the noise, not against sound: the
+     * set here is soft, short and tuned so that no two of them clash, and a board that
+     * answers when you touch it is a great deal nicer to play than one that says nothing.
+     * Off is one switch away, and the phone's own silent mode still wins over both.
      */
-    val sound: Boolean = false,
+    val sound: Boolean = true,
 ) {
     init {
         require(mistakeLimit == null || mistakeLimit > 0) {
