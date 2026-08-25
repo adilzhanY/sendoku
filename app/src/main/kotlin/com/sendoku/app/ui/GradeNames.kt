@@ -36,6 +36,23 @@ public fun gradeGate(grade: Grade): Int = when (grade) {
     Grade.NIGHTMARE -> R.string.gate_nightmare
 }
 
+/** How much a hint says, in words rather than in enum names. */
+@StringRes
+public fun hintDetailName(level: com.sendoku.app.game.HintLevel): Int = when (level) {
+    com.sendoku.app.game.HintLevel.REGION -> R.string.hint_detail_region
+    com.sendoku.app.game.HintLevel.NAME -> R.string.hint_detail_name
+    com.sendoku.app.game.HintLevel.CELLS -> R.string.hint_detail_cells
+    com.sendoku.app.game.HintLevel.FULL -> R.string.hint_detail_full
+}
+
+@StringRes
+public fun hintDetailNote(level: com.sendoku.app.game.HintLevel): Int = when (level) {
+    com.sendoku.app.game.HintLevel.REGION -> R.string.hint_detail_region_note
+    com.sendoku.app.game.HintLevel.NAME -> R.string.hint_detail_name_note
+    com.sendoku.app.game.HintLevel.CELLS -> R.string.hint_detail_cells_note
+    com.sendoku.app.game.HintLevel.FULL -> R.string.hint_detail_full_note
+}
+
 /** The themes, in words rather than in enum names. */
 @StringRes
 public fun themeName(theme: com.sendoku.app.theme.SendokuThemeId): Int = when (theme) {

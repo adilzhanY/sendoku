@@ -79,14 +79,27 @@ public fun GameScreen(
     var confirmLeaving by remember { mutableStateOf(false) }
     var hint by remember { mutableStateOf<Hint?>(null) }
 
+    // The chooser in front of a hint, and the answer to the free check when it has been
+    // asked for. Both belong to the screen rather than the game: neither changes the board.
+    var menuOpen by remember { mutableStateOf(false) }
+    var checked by remember { mutableStateOf<Int?>(null) }
+
     // One tick a second is enough for a clock that shows seconds, and it stops the moment
     // the game is paused or finished rather than spinning in the background.
     // A hint describes the board it was asked about. Once the board moves on, it is stale.
-    LaunchedEffect(state.cells) { hint = null }
+    LaunchedEffect(state.cells) {
+        hint = null
+        checked = null
+    }
 
     // And a finished game has nothing left to hint at. Without this the panel sat under the
     // result still offering to show you where, on a board that was already over.
-    LaunchedEffect(state.isOver) { if (state.isOver) hint = null }
+    LaunchedEffect(state.isOver) {
+        if (state.isOver) {
+            hint = null
+            menuOpen = false
+        }
+    }
 
     LaunchedEffect(state.isRunning, state.isOver) {
         while (state.isRunning && !state.isOver) {
@@ -148,7 +161,10 @@ public fun GameScreen(
                     ) {
                         GameHeader(state, leave, onSettings, onPause = { onEvent(GameEvent.Pause) })
                         HintArea(hint, onEvent, { hint = it }, onGlossary)
-                        Controls(state, feedback) { hint = askForHint(state, hint, feedback) }
+                        HintMenuArea(state, menuOpen, checked, { checked = it }, { menuOpen = it }) {
+                            hint = askForHint(state, hint, it, feedback)
+                        }
+                        Controls(state, feedback) { menuOpen = true }
                     }
                 }
             } else {
@@ -166,7 +182,10 @@ public fun GameScreen(
                         }, boardCap, hint, onGlossary)
                     }
                     HintArea(hint, onEvent, { hint = it }, onGlossary)
-                    Controls(state, feedback) { hint = askForHint(state, hint, feedback) }
+                    HintMenuArea(state, menuOpen, checked, { checked = it }, { menuOpen = it }) {
+                        hint = askForHint(state, hint, it, feedback)
+                    }
+                    Controls(state, feedback) { menuOpen = true }
                 }
             }
         }
@@ -275,8 +294,8 @@ private fun BoardArea(
  * for a second look at something the app has already said would end games by accident. A
  * hint costs when it tells the player something they have not been told yet.
  */
-private fun askForHint(state: GameState, showing: Hint?, onEvent: (GameEvent) -> Unit): Hint {
-    val next = HintEngine.next(state)
+private fun askForHint(state: GameState, showing: Hint?, level: HintLevel, onEvent: (GameEvent) -> Unit): Hint {
+    val next = HintEngine.next(state, level)
     val alreadySaid = when {
         showing == null -> false
         showing is Hint.Step && next is Hint.Step -> showing.deduction == next.deduction
@@ -309,6 +328,41 @@ private fun Controls(state: GameState, onEvent: (GameEvent) -> Unit, onHint: () 
             onHint = onHint,
         )
     }
+}
+
+/**
+ * The chooser, when the hint button has been pressed and nothing has been asked for yet.
+ *
+ * Kept beside the panel rather than inside it, because one of them costs a hint and the
+ * other does not, and a player has to be able to see which is which.
+ */
+@Composable
+private fun HintMenuArea(
+    state: GameState,
+    open: Boolean,
+    checked: Int?,
+    onChecked: (Int?) -> Unit,
+    onOpen: (Boolean) -> Unit,
+    onAsk: (HintLevel) -> Unit,
+) {
+    if (!open) return
+    HintMenu(
+        state = state,
+        checked = checked,
+        onCheck = { onChecked(state.wrongSoFar) },
+        onLook = {
+            onOpen(false)
+            onAsk(HintLevel.REGION)
+        },
+        onExplain = {
+            onOpen(false)
+            onAsk(state.settings.hintDetail)
+        },
+        onDismiss = {
+            onOpen(false)
+            onChecked(null)
+        },
+    )
 }
 
 /** The hint panel, when there is one to show. */

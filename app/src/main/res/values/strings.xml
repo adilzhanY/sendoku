@@ -101,6 +101,18 @@
     <!-- Hints -->
     <string name="hint_remove_one">Take it off</string>
     <string name="hint_remove_many">Take them off</string>
+    <string name="hint_look_here_title">LOOK HERE</string>
+    <string name="hint_look_here">There is something to find %1$s. That is all this one says.</string>
+    <string name="hint_look_around">There is a step to find. This one is spread across the grid rather than sitting in one region.</string>
+    <string name="hint_what_kind">What kind of step?</string>
+    <string name="hint_menu_title">HELP</string>
+    <string name="hint_menu_difficulty">The next step needs a technique at the %1$s level.</string>
+    <string name="hint_menu_broken">Something you have placed is wrong, so nothing else follows until it is fixed.</string>
+    <string name="hint_menu_check">Is anything wrong?</string>
+    <string name="hint_menu_look">Where should I look?</string>
+    <string name="hint_menu_explain">Explain the next step</string>
+    <string name="hint_menu_free">Asking costs nothing here. The limit is off.</string>
+    <string name="hint_check_clean">Nothing you have placed is wrong.</string>
     <string name="hint_close">Close</string>
     <string name="hint_where">Show me where</string>
     <string name="hint_explain">Explain it</string>
@@ -703,6 +715,15 @@
         <item quantity="one">%1$d of %2$d lesson</item>
         <item quantity="other">%1$d of %2$d lessons</item>
     </plurals>
+    <string name="settings_hint_detail">HOW MUCH A HINT SAYS</string>
+    <string name="hint_detail_region">Just the region</string>
+    <string name="hint_detail_region_note">Which box or line to look at, and nothing more.</string>
+    <string name="hint_detail_name">The technique</string>
+    <string name="hint_detail_name_note">What kind of step it is, so you know what to look for.</string>
+    <string name="hint_detail_cells">The cells</string>
+    <string name="hint_detail_cells_note">The cells the argument rests on, lit up on the board.</string>
+    <string name="hint_detail_full">The whole argument</string>
+    <string name="hint_detail_full_note">Everything, including the move. For working through the course.</string>
     <string name="settings_your_data">Your data</string>
     <string name="settings_data_note">Everything this app knows about you is on this phone. Export writes it to a file you choose, so a new phone can pick up where this one left off. Nothing is sent anywhere.</string>
     <string name="settings_export">Export my progress</string>
@@ -752,4 +773,12 @@
     <string name="tab_home">Home</string>
     <string name="tab_learn">Learn</string>
     <string name="tab_account">You</string>
+    <plurals name="hint_menu_left">
+        <item quantity="one">The last two cost a hint, and you have %1$d left.</item>
+        <item quantity="other">The last two cost a hint, and you have %1$d left.</item>
+    </plurals>
+    <plurals name="hint_check_wrong">
+        <item quantity="one">%1$d digit you have placed is wrong. Finding it is still yours.</item>
+        <item quantity="other">%1$d digits you have placed are wrong. Finding them is still yours.</item>
+    </plurals>
 </resources>

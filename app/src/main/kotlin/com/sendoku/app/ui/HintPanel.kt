@@ -116,7 +116,11 @@ public fun HintPanel(
                 if (hint.level.hasMore) {
                     HintButton(
                         label = stringResource(
-                            if (hint.level == HintLevel.NAME) R.string.hint_where else R.string.hint_explain,
+                            when (hint.level) {
+                                HintLevel.REGION -> R.string.hint_what_kind
+                                HintLevel.NAME -> R.string.hint_where
+                                else -> R.string.hint_explain
+                            },
                         ),
                         accent = true,
                         onClick = onMore,
@@ -140,6 +144,24 @@ private fun StepBody(hint: Hint.Step, onGlossary: () -> Unit) {
     val colors = Sendoku.colors
     val technique = hint.deduction.technique
     val region = TechniqueCopy.where(hint.deduction)
+
+    // The quietest level names a region and stops. Not the technique, not the cells, and
+    // certainly not the digit: somewhere to point your eyes, and the rest is still yours.
+    if (hint.level == HintLevel.REGION) {
+        Text(
+            text = stringResource(R.string.hint_look_here_title),
+            style = Sendoku.type.overline,
+            color = colors.accent,
+        )
+        Text(
+            text = region?.let { stringResource(R.string.hint_look_here, it) }
+                ?: stringResource(R.string.hint_look_around),
+            style = Sendoku.type.body,
+            color = colors.given,
+            modifier = Modifier.testTag("hint:region"),
+        )
+        return
+    }
 
     Row(
         horizontalArrangement = Arrangement.spacedBy(Sendoku.dimens.spaceS),
@@ -203,6 +225,18 @@ private fun StepBody(hint: Hint.Step, onGlossary: () -> Unit) {
 
 @Composable
 private fun HintButton(label: String, accent: Boolean, onClick: () -> Unit, modifier: Modifier = Modifier) {
+    HintChoice(label = label, accent = accent, tag = null, onClick = onClick, modifier = modifier)
+}
+
+/** One button in the hint panel or the menu in front of it. */
+@Composable
+internal fun HintChoice(
+    label: String,
+    accent: Boolean,
+    tag: String?,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
     Box(
@@ -210,7 +244,8 @@ private fun HintButton(label: String, accent: Boolean, onClick: () -> Unit, modi
             .heightIn(min = dimens.minTouchTarget)
             .clip(RoundedCornerShape(dimens.radiusM))
             .background(if (accent) colors.accent else colors.surface)
-            .clickable(onClick = onClick),
+            .clickable(onClick = onClick)
+            .then(if (tag == null) Modifier else Modifier.testTag(tag)),
         contentAlignment = Alignment.Center,
     ) {
         Text(

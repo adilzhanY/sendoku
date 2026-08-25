@@ -83,6 +83,16 @@ public data class GameSettings(
      */
     val hintLimit: Int? = 3,
 
+    /**
+     * How much a hint says when it opens.
+     *
+     * Somebody working through the course wants the whole argument and should not have to
+     * tap three times for it every time. Somebody who only ever wants a nudge should not
+     * have to look away quickly to avoid being told the answer. Neither of them is the
+     * default player, so the default is the middle: the name of the technique.
+     */
+    val hintDetail: HintLevel = HintLevel.NAME,
+
     /** A small buzz when a digit goes in. On, because a board gives no other feedback. */
     val haptics: Boolean = true,
 

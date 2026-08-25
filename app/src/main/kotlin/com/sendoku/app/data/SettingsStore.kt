@@ -8,6 +8,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import com.sendoku.app.game.GameSettings
+import com.sendoku.app.game.HintLevel
 import com.sendoku.app.theme.SendokuThemeId
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -64,6 +65,7 @@ internal object SettingsKeys {
     val highlightSameDigit = booleanPreferencesKey("highlight_same_digit")
     val autoClearMarks = booleanPreferencesKey("auto_clear_marks")
     val autoNotes = booleanPreferencesKey("auto_notes")
+    val hintDetail = stringPreferencesKey("hint_detail")
     val autoCheck = booleanPreferencesKey("auto_check")
     val highlightHomes = booleanPreferencesKey("highlight_homes")
     val flagConflicts = booleanPreferencesKey("flag_conflicts")
@@ -96,6 +98,9 @@ internal fun Preferences.toSettings(): GameSettings {
         highlightSameDigit = this[SettingsKeys.highlightSameDigit] ?: defaults.highlightSameDigit,
         autoClearMarks = this[SettingsKeys.autoClearMarks] ?: defaults.autoClearMarks,
         autoNotes = this[SettingsKeys.autoNotes] ?: defaults.autoNotes,
+        hintDetail = this[SettingsKeys.hintDetail]
+            ?.let { name -> HintLevel.entries.firstOrNull { it.name == name } }
+            ?: defaults.hintDetail,
         autoCheck = this[SettingsKeys.autoCheck] ?: defaults.autoCheck,
         highlightHomes = this[SettingsKeys.highlightHomes] ?: defaults.highlightHomes,
         flagConflicts = this[SettingsKeys.flagConflicts] ?: defaults.flagConflicts,
@@ -134,6 +139,7 @@ internal fun MutablePreferences.write(settings: GameSettings) {
     this[SettingsKeys.highlightSameDigit] = settings.highlightSameDigit
     this[SettingsKeys.autoClearMarks] = settings.autoClearMarks
     this[SettingsKeys.autoNotes] = settings.autoNotes
+    this[SettingsKeys.hintDetail] = settings.hintDetail.name
     this[SettingsKeys.autoCheck] = settings.autoCheck
     this[SettingsKeys.highlightHomes] = settings.highlightHomes
     this[SettingsKeys.flagConflicts] = settings.flagConflicts

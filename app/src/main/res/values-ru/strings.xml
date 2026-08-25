@@ -96,6 +96,18 @@
 
     <string name="hint_remove_one">Убрать</string>
     <string name="hint_remove_many">Убрать их</string>
+    <string name="hint_look_here_title">СМОТРИТЕ СЮДА</string>
+    <string name="hint_look_here">Здесь есть что найти: %1$s. Больше эта подсказка ничего не скажет.</string>
+    <string name="hint_look_around">Шаг есть, но он растянут по всей сетке, а не сидит в одном доме.</string>
+    <string name="hint_what_kind">Что за шаг?</string>
+    <string name="hint_menu_title">ПОМОЩЬ</string>
+    <string name="hint_menu_difficulty">Следующий шаг требует техники уровня «%1$s».</string>
+    <string name="hint_menu_broken">Одна из ваших цифр неверна, и дальше ничего не выводится, пока это не исправлено.</string>
+    <string name="hint_menu_check">Что-то не так?</string>
+    <string name="hint_menu_look">Куда смотреть?</string>
+    <string name="hint_menu_explain">Объяснить следующий шаг</string>
+    <string name="hint_menu_free">Спрашивать здесь ничего не стоит, лимит выключен.</string>
+    <string name="hint_check_clean">Из того, что вы поставили, всё верно.</string>
     <string name="hint_close">Закрыть</string>
     <string name="hint_where">Показать где</string>
     <string name="hint_explain">Объяснить</string>
@@ -700,6 +712,15 @@
         <item quantity="many">%1$d из %2$d уроков</item>
         <item quantity="other">%1$d из %2$d уроков</item>
     </plurals>
+    <string name="settings_hint_detail">СКОЛЬКО ГОВОРИТ ПОДСКАЗКА</string>
+    <string name="hint_detail_region">Только дом</string>
+    <string name="hint_detail_region_note">В какой блок или линию смотреть, и ничего больше.</string>
+    <string name="hint_detail_name">Техника</string>
+    <string name="hint_detail_name_note">Что это за шаг, чтобы знать, что искать.</string>
+    <string name="hint_detail_cells">Клетки</string>
+    <string name="hint_detail_cells_note">Клетки, на которых держится довод, подсвечены на доске.</string>
+    <string name="hint_detail_full">Весь довод</string>
+    <string name="hint_detail_full_note">Всё, включая сам ход. Для работы по курсу.</string>
     <string name="settings_your_data">Ваши данные</string>
     <string name="settings_data_note">Всё, что приложение о вас знает, лежит на этом телефоне. Экспорт запишет это в файл на ваш выбор, чтобы новый телефон продолжил с того же места. Никуда ничего не отправляется.</string>
     <string name="settings_export">Экспортировать прогресс</string>
@@ -749,4 +770,16 @@
     <string name="tab_home">Главная</string>
     <string name="tab_learn">Учиться</string>
     <string name="tab_account">Вы</string>
+    <plurals name="hint_menu_left">
+        <item quantity="one">Последние две стоят подсказки, у вас осталось %1$d.</item>
+        <item quantity="few">Последние две стоят подсказки, у вас осталось %1$d.</item>
+        <item quantity="many">Последние две стоят подсказки, у вас осталось %1$d.</item>
+        <item quantity="other">Последние две стоят подсказки, у вас осталось %1$d.</item>
+    </plurals>
+    <plurals name="hint_check_wrong">
+        <item quantity="one">Неверна %1$d ваша цифра. Найти её всё ещё вам.</item>
+        <item quantity="few">Неверны %1$d ваши цифры. Найти их всё ещё вам.</item>
+        <item quantity="many">Неверны %1$d ваших цифр. Найти их всё ещё вам.</item>
+        <item quantity="other">Неверно %1$d ваших цифр. Найти их всё ещё вам.</item>
+    </plurals>
 </resources>

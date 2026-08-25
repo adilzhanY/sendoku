@@ -184,6 +184,19 @@ public data class GameState(
         }
 
     /**
+     * How many placed digits the answer does not want.
+     *
+     * A count and nothing else. "Two of your digits are wrong" is what a stuck player
+     * actually wants to know first, and it costs no hint because it says nothing about
+     * where they are: the search is still theirs, and the board is unchanged either way.
+     */
+    public val wrongSoFar: Int
+        get() = cells.indices.count {
+            val digit = cells[it].digit
+            digit != Board.EMPTY && !cells[it].isGiven && digit != solution.atIndex(it)
+        }
+
+    /**
      * Digits the player has placed that the answer does not want, when auto check is on.
      *
      * Only ever a mirror of the setting. The state always knows which digits are wrong,

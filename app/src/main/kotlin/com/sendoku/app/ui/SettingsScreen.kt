@@ -27,6 +27,7 @@ import com.sendoku.app.R
 import com.sendoku.app.data.Appearance
 import com.sendoku.app.data.ThemeMode
 import com.sendoku.app.game.GameSettings
+import com.sendoku.app.game.HintLevel
 import com.sendoku.app.theme.Sendoku
 import com.sendoku.app.theme.SendokuThemeId
 import com.sendoku.app.theme.SendokuThemes
@@ -176,6 +177,19 @@ public fun SettingsScreen(
             color = colors.muted,
             modifier = Modifier.padding(vertical = dimens.spaceS),
         )
+        Text(
+            text = stringResource(R.string.settings_hint_detail),
+            style = Sendoku.type.overline,
+            color = colors.muted,
+            modifier = Modifier.padding(top = dimens.spaceS),
+        )
+        for (level in HintLevel.entries) {
+            Choice(
+                label = stringResource(hintDetailName(level)),
+                detail = stringResource(hintDetailNote(level)),
+                selected = settings.hintDetail == level,
+            ) { onChange(settings.copy(hintDetail = level)) }
+        }
 
         SectionLabel(stringResource(R.string.settings_your_data))
         Text(

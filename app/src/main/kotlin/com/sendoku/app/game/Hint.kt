@@ -17,6 +17,15 @@ import com.sendoku.engine.technique.Techniques
  * that is actually trying to make somebody better at sudoku.
  */
 public enum class HintLevel {
+    /**
+     * The region, and nothing else. "There is something in box four."
+     *
+     * The nudge before the nudge. Most of the time a player is not stuck on the reasoning,
+     * they are stuck on where to point their eyes, and being told which ninth of the grid to
+     * read gives them the whole of the rest to find for themselves.
+     */
+    REGION,
+
     /** The name of the technique and the region it applies to. */
     NAME,
 
