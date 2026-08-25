@@ -146,6 +146,9 @@ public fun LessonPlayer(
                     onSelect = {},
                     hintLogic = (step as? Step.Show)?.focus.orEmpty() + turnFocus(turn, answered),
                     hintStrike = (step as? Step.Show)?.strike.orEmpty(),
+                    // The same treatment a hint gets, for the same reason: a lesson that
+                    // highlights differently from a hint teaches the wrong thing twice.
+                    spotlight = true,
                     modifier = Modifier.testTag("lesson:board"),
                 )
             }

@@ -88,6 +88,7 @@ private fun motionIsOff(): Boolean {
 /** Everything at once, for when motion is switched off. */
 private val Still: SendokuMotion = SendokuMotion(
     instant = 0,
+    brief = 0,
     quick = 0,
     settle = 0,
     celebrate = 0,

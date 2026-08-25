@@ -56,6 +56,9 @@
     <string name="cell_digit">%1$s, %2$d</string>
     <string name="cell_empty">%1$s, empty</string>
     <string name="cell_noted">%1$s, empty, noted %2$s</string>
+    <string name="cell_hint_argument">%1$s. Part of the hint.</string>
+    <string name="cell_hint_struck">%1$s. The hint is ruling a mark out here.</string>
+    <string name="cell_hint_region">%1$s. In the region the hint is about.</string>
     <string name="cell_repeated">%1$s, repeated</string>
     <string name="pad_all_placed">%1$d, all placed</string>
     <string name="pad_one_left">%1$d, one left</string>

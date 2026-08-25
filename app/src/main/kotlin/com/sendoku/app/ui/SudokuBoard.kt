@@ -1,6 +1,7 @@
 package com.sendoku.app.ui
 
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -25,6 +26,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
@@ -44,6 +46,9 @@ import com.sendoku.app.R
 import com.sendoku.app.game.Cell
 import com.sendoku.app.game.GameState
 import com.sendoku.app.theme.Sendoku
+import com.sendoku.engine.House
+import com.sendoku.engine.HouseKind
+import com.sendoku.engine.technique.CellDigit
 
 /**
  * The board.
@@ -69,6 +74,19 @@ public fun SudokuBoard(
     hintStrike: Set<Int> = emptySet(),
     /** Digits the player has placed that cannot be right. */
     wrong: Set<Int> = emptySet(),
+    /** Houses the hint's argument is about, outlined on the board rather than only named. */
+    hintHouses: List<House> = emptyList(),
+    /** The exact pencil marks a hint is about to rule out, struck through where they are drawn. */
+    struckMarks: Set<CellDigit> = emptySet(),
+    /**
+     * Whether everything outside the argument should step back.
+     *
+     * Off by default, and deliberately not something the board decides for itself. In a hint
+     * or a lesson the player has asked to be shown one thing and the rest of the grid is in
+     * the way. In practice they are hunting for the pattern themselves, and dimming the board
+     * would answer the question they were asked.
+     */
+    spotlight: Boolean = false,
 ) {
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
@@ -79,6 +97,14 @@ public fun SudokuBoard(
     val peers = state.highlightedPeers
     val matches = state.highlightedMatches + state.highlightedHomes
     val conflicts = state.conflicts
+
+    // What the hint is about, and therefore what may not be dimmed. A wrong digit is in here
+    // whatever the hint says: the one thing more urgent than the next step is the digit that
+    // makes the next step pointless.
+    val lit = hintLogic + hintStrike + struckMarks.map { it.cell } + conflicts + wrong
+    val geometry = com.sendoku.engine.Geometry.of(state.dims)
+    val housed = hintHouses.flatMap { geometry.cellsOf(it).toList() }.toSet()
+    val dimming = spotlight && (hintLogic.isNotEmpty() || hintHouses.isNotEmpty() || struckMarks.isNotEmpty())
 
     BoxWithConstraints(
         modifier = modifier
@@ -108,7 +134,18 @@ public fun SudokuBoard(
                             markSize = markSize,
                             onClick = { onSelect(index) },
                             onLongClick = { onLongPress(index) },
-                            description = describe(state, index, index in conflicts || index in wrong),
+                            struck = struckMarks.filter { it.cell == index }.map { it.digit }.toSet(),
+                            description = describe(
+                                state = state,
+                                index = index,
+                                conflicting = index in conflicts || index in wrong,
+                                role = when {
+                                    index in hintLogic -> HintRole.ARGUMENT
+                                    struckMarks.any { it.cell == index } -> HintRole.STRUCK
+                                    index in housed -> HintRole.REGION
+                                    else -> HintRole.NONE
+                                },
+                            ),
                             testTag = "game:cell:$index",
                             modifier = Modifier.weight(1f).fillMaxSize(),
                         )
@@ -118,6 +155,113 @@ public fun SudokuBoard(
         }
 
         GridLines(state = state, modifier = Modifier.fillMaxSize())
+
+        // One pass over the top for everything a hint draws. Eighty one cells all changing
+        // their own brightness is eighty one recompositions for something that is really a
+        // single picture, and the outline has to land on one pixel the way the rules do.
+        HintOverlay(
+            state = state,
+            houses = hintHouses,
+            lit = lit + housed,
+            dimming = dimming,
+            modifier = Modifier.fillMaxSize(),
+        )
+    }
+}
+
+/** Which part of a hint a cell belongs to, for the screen reader and for nothing else. */
+internal enum class HintRole { NONE, ARGUMENT, STRUCK, REGION }
+
+/**
+ * The dim and the outline, drawn once over the finished board.
+ *
+ * The dim is the theme's own background laid over the cells that are not part of the
+ * argument, so it reads as those cells stepping back rather than as a grey sheet over the
+ * puzzle. It stops well short of hiding them: a player checking an X-Wing has to look along
+ * the row at cells the hint never mentions, and a board dimmed until it is unreadable turns
+ * a hint into something to obey rather than something to follow.
+ */
+@Composable
+private fun HintOverlay(
+    state: GameState,
+    houses: List<House>,
+    lit: Set<Int>,
+    dimming: Boolean,
+    modifier: Modifier = Modifier,
+) {
+    val colors = Sendoku.colors
+    val dimens = Sendoku.dimens
+    val motion = Sendoku.motion
+    val size = state.size
+
+    // Compose scales this with the system animation setting on its own, so somebody who has
+    // turned animations off gets the end state and no fade.
+    val veil by animateFloatAsState(
+        targetValue = if (dimming) DIM else 0f,
+        animationSpec = tween(motion.brief, easing = motion.easing),
+        label = "hint dim",
+    )
+    val edge by animateFloatAsState(
+        targetValue = if (houses.isEmpty()) 0f else 1f,
+        animationSpec = tween(motion.brief, easing = motion.easing),
+        label = "hint outline",
+    )
+    if (veil <= 0.01f && edge <= 0.01f) return
+
+    val outlineWidth = with(LocalDensity.current) { dimens.hintOutline.toPx() }
+    // The theme's own corner, not one of this file's choosing. Terminal rounds nothing at
+    // all, and a rounded box drawn on it is the one thing that would look imported.
+    val corner = with(LocalDensity.current) { dimens.cellRadius.toPx() }
+
+    Canvas(modifier) {
+        val cell = this.size.width / size
+
+        if (veil > 0.01f) {
+            for (index in 0 until size * size) {
+                if (index in lit) continue
+                drawRect(
+                    color = colors.background.copy(alpha = veil),
+                    topLeft = Offset((index % size) * cell, (index / size) * cell),
+                    size = androidx.compose.ui.geometry.Size(cell, cell),
+                )
+            }
+        }
+
+        if (edge > 0.01f) {
+            for (house in houses) {
+                val bounds = boundsOf(house, state.dims, cell)
+                drawRoundRect(
+                    color = colors.conflict.copy(alpha = edge),
+                    topLeft = Offset(bounds.left + outlineWidth / 2, bounds.top + outlineWidth / 2),
+                    size = androidx.compose.ui.geometry.Size(
+                        bounds.width - outlineWidth,
+                        bounds.height - outlineWidth,
+                    ),
+                    cornerRadius = androidx.compose.ui.geometry.CornerRadius(corner),
+                    style = androidx.compose.ui.graphics.drawscope.Stroke(width = outlineWidth),
+                )
+            }
+        }
+    }
+}
+
+/** How far back the rest of the board steps. Half, and no further. See [HintOverlay]. */
+private const val DIM = 0.55f
+
+/** The rectangle a house covers, in pixels, for a grid whose cells are [cell] wide. */
+private fun boundsOf(house: House, dims: com.sendoku.engine.Dimensions, cell: Float): Rect {
+    val size = dims.size
+    return when (house.kind) {
+        HouseKind.ROW -> Rect(0f, house.index * cell, size * cell, (house.index + 1) * cell)
+
+        HouseKind.COLUMN -> Rect(house.index * cell, 0f, (house.index + 1) * cell, size * cell)
+
+        HouseKind.BOX -> {
+            val perBand = size / dims.boxWidth
+            val left = (house.index % perBand) * dims.boxWidth * cell
+            val top = (house.index / perBand) * dims.boxHeight * cell
+            Rect(left, top, left + dims.boxWidth * cell, top + dims.boxHeight * cell)
+        }
     }
 }
 
@@ -184,6 +328,7 @@ private fun BoardCell(
     isConflict: Boolean,
     isHintLogic: Boolean,
     isHintStrike: Boolean,
+    struck: Set<Int>,
     digitSize: TextUnit,
     markSize: TextUnit,
     onClick: () -> Unit,
@@ -251,14 +396,14 @@ private fun BoardCell(
                 textDecoration = decorationFor(isConflict),
             )
 
-            cell.marks.isNotEmpty -> PencilMarks(cell, markSize)
+            cell.marks.isNotEmpty -> PencilMarks(cell, struck, markSize)
         }
     }
 }
 
 /** The candidate digits, laid out where they will be once they are placed. */
 @Composable
-private fun PencilMarks(cell: Cell, markSize: TextUnit) {
+private fun PencilMarks(cell: Cell, struck: Set<Int>, markSize: TextUnit) {
     val colors = Sendoku.colors
     // Three across, always, so a mark keeps the same position as the player adds others.
     // A mark that moves when its neighbour appears is impossible to scan.
@@ -274,12 +419,17 @@ private fun PencilMarks(cell: Cell, markSize: TextUnit) {
             ) {
                 for (column in 0 until perRow) {
                     val digit = row * perRow + column + 1
+                    // A hint that rules the seven out of three cells crosses out three
+                    // sevens. Tinting the whole cell instead says something is happening
+                    // here and nothing at all about which digit is in trouble.
+                    val dying = digit in struck
                     Text(
                         text = if (digit in cell.marks) digit.toString() else "",
                         style = Sendoku.type.pencilMark,
-                        color = colors.pencil,
+                        color = if (dying) colors.conflict else colors.pencil,
                         fontSize = markSize,
                         textAlign = TextAlign.Center,
+                        textDecoration = if (dying) TextDecoration.LineThrough else null,
                         modifier = Modifier.weight(1f),
                     )
                 }
@@ -306,7 +456,7 @@ internal fun decorationFor(isConflict: Boolean): TextDecoration? = if (isConflic
  */
 @Composable
 @ReadOnlyComposable
-internal fun describe(state: GameState, index: Int, conflicting: Boolean): String {
+internal fun describe(state: GameState, index: Int, conflicting: Boolean, role: HintRole = HintRole.NONE): String {
     val cell = state.cells[index]
     val position = stringResource(
         R.string.cell_position,
@@ -323,7 +473,15 @@ internal fun describe(state: GameState, index: Int, conflicting: Boolean): Strin
 
         else -> stringResource(R.string.cell_empty, position)
     }
-    return if (conflicting) stringResource(R.string.cell_repeated, body) else body
+    val said = if (conflicting) stringResource(R.string.cell_repeated, body) else body
+    // Colour is not a cue for everybody, and a dimmed board is nothing at all to somebody
+    // using a screen reader, so what the highlight means is said out loud.
+    return when (role) {
+        HintRole.ARGUMENT -> stringResource(R.string.cell_hint_argument, said)
+        HintRole.STRUCK -> stringResource(R.string.cell_hint_struck, said)
+        HintRole.REGION -> stringResource(R.string.cell_hint_region, said)
+        HintRole.NONE -> said
+    }
 }
 
 /** Scales a text size to the cell, so one board fits a small phone and a tablet. */

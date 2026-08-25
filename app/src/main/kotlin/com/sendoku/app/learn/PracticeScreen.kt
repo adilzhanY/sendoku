@@ -112,6 +112,9 @@ public fun PracticeScreen(
                     hintLogic = if (revealed) exercise.cells else picked,
                     hintStrike = if (solved || revealed) exercise.eliminations else emptySet(),
                     wrong = setOfNotNull(wrong),
+                    // Only once the answer is known. Dimming the board while somebody is
+                    // hunting for the pattern would answer the question they were asked.
+                    spotlight = solved || revealed,
                     modifier = Modifier.testTag("practice:board"),
                 )
             }

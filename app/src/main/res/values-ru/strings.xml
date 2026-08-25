@@ -51,6 +51,9 @@
     <string name="cell_digit">%1$s, %2$d</string>
     <string name="cell_empty">%1$s, пусто</string>
     <string name="cell_noted">%1$s, пусто, пометки %2$s</string>
+    <string name="cell_hint_argument">%1$s. Часть подсказки.</string>
+    <string name="cell_hint_struck">%1$s. Подсказка убирает здесь пометку.</string>
+    <string name="cell_hint_region">%1$s. В доме, о котором говорит подсказка.</string>
     <string name="cell_repeated">%1$s, повтор</string>
     <string name="pad_all_placed">%1$d, все расставлены</string>
     <string name="pad_one_left">%1$d, осталась одна</string>

@@ -260,7 +260,10 @@ private fun BoardArea(
     onPath: () -> Unit,
 ) {
     val step = hint as? Hint.Step
-    val showCells = step != null && step.level != HintLevel.NAME
+    // The cells come out one level later than the region does. The quiet level exists to say
+    // where to look, and lighting up the cells there would hand over the whole answer.
+    val showCells = step != null && (step.level == HintLevel.CELLS || step.level == HintLevel.FULL)
+    val showRegion = step != null && step.level != HintLevel.NAME
     // The board is square, so it is limited by whichever side is shorter. Sizing it by width
     // alone is right in portrait and wrong in landscape, where it pushed most of the grid off
     // the bottom of the screen.
@@ -273,6 +276,9 @@ private fun BoardArea(
                 onLongPress = onLongPress,
                 hintLogic = if (showCells) step.deduction.logicCells() else emptySet(),
                 hintStrike = if (showCells) step.deduction.struckCells() else emptySet(),
+                hintHouses = if (showRegion) step.deduction.houses else emptyList(),
+                struckMarks = if (showCells) step.deduction.eliminations.toSet() else emptySet(),
+                spotlight = true,
                 // Auto check puts the same red under a digit the answer does not want, the
                 // moment it goes in, rather than only when a hint is asked for.
                 wrong = (hint as? Hint.Mistake)?.cells.orEmpty() + state.flaggedWrong,

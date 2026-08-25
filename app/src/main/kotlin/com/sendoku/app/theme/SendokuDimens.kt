@@ -39,6 +39,14 @@ public data class SendokuDimens(
     /** Rounding on the board as a whole. */
     val boardRadius: Dp,
 
+    /**
+     * How heavy the line around a house a hint is talking about is.
+     *
+     * Heavier than the box rules, and it has to be. It is drawn over a board that is already
+     * a grid of lines, and a line the same weight as the furniture is furniture.
+     */
+    val hintOutline: Dp,
+
     /** Nothing tappable is ever smaller than this, however light it looks. */
     val minTouchTarget: Dp,
 
@@ -73,6 +81,7 @@ public val DefaultDimens: SendokuDimens = SendokuDimens(
     gridBorder = 2.dp,
     cellRadius = 0.dp,
     boardRadius = 2.dp,
+    hintOutline = 3.dp,
     minTouchTarget = 48.dp,
     padGap = 6.dp,
     contentMaxWidth = 600.dp,

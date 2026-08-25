@@ -22,6 +22,15 @@ public data class SendokuMotion(
     /** A digit appearing, a pencil mark toggling. */
     val quick: Int,
 
+    /**
+     * The board changing brightness under a hint.
+     *
+     * Long enough to read as a change rather than a glitch, short enough that a player who
+     * taps twice is not waiting for it. Compose scales this with the system animation
+     * setting, so turning animations off turns this off with them.
+     */
+    val brief: Int,
+
     /** A panel or sheet arriving. */
     val settle: Int,
 
@@ -38,6 +47,7 @@ public data class SendokuMotion(
 public val DefaultMotion: SendokuMotion = SendokuMotion(
     instant = 90,
     quick = 160,
+    brief = 150,
     settle = 280,
     celebrate = 520,
     easing = CubicBezierEasing(0.2f, 0f, 0f, 1f),

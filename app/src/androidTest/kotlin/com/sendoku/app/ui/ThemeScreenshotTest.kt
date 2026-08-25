@@ -18,6 +18,11 @@ import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
 import androidx.test.platform.app.InstrumentationRegistry
 import com.sendoku.app.game.GameState
+import com.sendoku.app.game.Hint
+import com.sendoku.app.game.HintEngine
+import com.sendoku.app.game.HintLevel
+import com.sendoku.app.game.logicCells
+import com.sendoku.app.game.struckCells
 import com.sendoku.app.learn.Curriculum
 import com.sendoku.app.learn.LessonId
 import com.sendoku.app.learn.LessonPlayer
@@ -106,6 +111,73 @@ class ThemeScreenshotTest {
 
     @Test
     fun terminal() = check(SendokuThemeId.TERMINAL, dark = true)
+
+    @Test
+    fun hintRegionDeepFieldDark() = checkHint(SendokuThemeId.DEEP_FIELD, dark = true, cells = false)
+
+    @Test
+    fun hintCellsDeepFieldDark() = checkHint(SendokuThemeId.DEEP_FIELD, dark = true, cells = true)
+
+    @Test
+    fun hintCellsInkLight() = checkHint(SendokuThemeId.INK, dark = false, cells = true)
+
+    @Test
+    fun hintCellsTerminal() = checkHint(SendokuThemeId.TERMINAL, dark = true, cells = true)
+
+    /**
+     * A board under a hint: the rest of it stepped back, and the house outlined.
+     *
+     * Two levels rather than four, since the two that draw nothing on the board are already
+     * covered by the plain board pictures above. The position is chosen so the hint names a
+     * house, because the outline is the part most likely to break and a naked single has no
+     * house to draw.
+     */
+    private fun checkHint(theme: SendokuThemeId, dark: Boolean, cells: Boolean) {
+        val name = "hint_" + (if (cells) "cells_" else "region_") + if (SendokuThemes.isFixed(theme)) {
+            theme.name.lowercase()
+        } else {
+            "${theme.name.lowercase()}_${if (dark) "dark" else "light"}"
+        }
+        val state = hinted()
+        val step = HintEngine.next(state, if (cells) HintLevel.CELLS else HintLevel.REGION) as Hint.Step
+        compose.setContent {
+            CompositionLocalProvider(LocalDensity provides Density(density = 2f, fontScale = 1f)) {
+                SendokuTheme(themeId = theme, dark = dark) {
+                    Box(
+                        Modifier
+                            .size(360.dp, 400.dp)
+                            .background(Sendoku.colors.background)
+                            .padding(12.dp),
+                    ) {
+                        SudokuBoard(
+                            state = state,
+                            onSelect = {},
+                            hintLogic = if (cells) step.deduction.logicCells() else emptySet(),
+                            hintStrike = if (cells) step.deduction.struckCells() else emptySet(),
+                            hintHouses = step.deduction.houses,
+                            struckMarks = if (cells) step.deduction.eliminations.toSet() else emptySet(),
+                            spotlight = true,
+                            modifier = Modifier.fillMaxSize(),
+                        )
+                    }
+                }
+            }
+        }
+        compareOrWrite(name)
+    }
+
+    /** A board whose next step is one that argues about a house, with notes to strike. */
+    private fun hinted(): GameState {
+        val maker = GradedGenerator(Dimensions.CLASSIC, Random(4_242))
+        var state: GameState? = null
+        while (state == null) {
+            val made = maker.next(Symmetry.ROTATIONAL) ?: continue
+            val start = GameState.start(made).fillAllMarks()
+            val step = HintEngine.next(start) as? Hint.Step ?: continue
+            if (step.deduction.houses.isNotEmpty()) state = start
+        }
+        return state
+    }
 
     @Test
     fun lessonDeepFieldDark() = checkLesson(SendokuThemeId.DEEP_FIELD, dark = true)
