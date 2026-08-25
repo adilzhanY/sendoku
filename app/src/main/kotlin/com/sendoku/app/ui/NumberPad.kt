@@ -1,7 +1,7 @@
 package com.sendoku.app.ui
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -44,7 +44,12 @@ import com.sendoku.app.theme.Sendoku
  * to be drawn as one. The tap target is unchanged: it is the whole column, not the glyph.
  */
 @Composable
-public fun NumberPad(state: GameState, onDigit: (Int) -> Unit, modifier: Modifier = Modifier) {
+public fun NumberPad(
+    state: GameState,
+    onDigit: (Int) -> Unit,
+    modifier: Modifier = Modifier,
+    onScan: (Int) -> Unit = {},
+) {
     val dimens = Sendoku.dimens
     Row(
         modifier = modifier.fillMaxWidth(),
@@ -56,7 +61,9 @@ public fun NumberPad(state: GameState, onDigit: (Int) -> Unit, modifier: Modifie
                 remaining = state.remaining(digit),
                 exhausted = state.isExhausted(digit),
                 pencilMode = state.pencilMode,
+                scanning = state.scanning == digit,
                 onClick = { onDigit(digit) },
+                onLongClick = { onScan(digit) },
                 modifier = Modifier.weight(1f),
             )
         }
@@ -69,7 +76,9 @@ private fun PadKey(
     remaining: Int,
     exhausted: Boolean,
     pencilMode: Boolean,
+    scanning: Boolean,
     onClick: () -> Unit,
+    onLongClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val colors = Sendoku.colors
@@ -80,7 +89,11 @@ private fun PadKey(
         remaining == 1 -> stringResource(R.string.pad_one_left, digit)
         else -> pluralStringResource(R.plurals.pad_left, remaining, digit, remaining)
     }
-    val label = if (pencilMode) stringResource(R.string.pad_notes_mode, spoken) else spoken
+    val label = when {
+        scanning -> stringResource(R.string.pad_scanning, spoken)
+        pencilMode -> stringResource(R.string.pad_notes_mode, spoken)
+        else -> spoken
+    }
 
     Column(
         modifier = modifier
@@ -91,7 +104,9 @@ private fun PadKey(
             .clip(RoundedCornerShape(dimens.radiusM))
             // Still tappable when exhausted: tapping it clears that digit from the selected
             // cell, which is a real thing to want and costs nothing to allow.
-            .clickable(onClick = onClick)
+            // Holding a key asks where the digit could still go, and lights up every cell
+            // that could take it. The count says how many are left; this says where.
+            .combinedClickable(onClick = onClick, onLongClick = onLongClick)
             .alpha(if (exhausted) 0.35f else 1f)
             // After the click, not before it. Put ahead of it, the label lands on a different
             // node from the one a screen reader focuses, and the focused one says nothing.
@@ -110,13 +125,13 @@ private fun PadKey(
             // Ink normally, accent in pencil mode. Using the entry colour here was wrong in
             // every theme where an entry is already the accent, which is most of them: both
             // modes came out the same colour and the row said nothing.
-            color = if (pencilMode) colors.accent else colors.given,
+            color = if (pencilMode || scanning) colors.accent else colors.given,
         )
         Box(Modifier.padding(top = 1.dp)) {
             Text(
                 text = if (exhausted) "" else remaining.toString(),
                 style = Sendoku.type.padCount,
-                color = colors.muted,
+                color = if (scanning) colors.accent else colors.muted,
             )
         }
     }

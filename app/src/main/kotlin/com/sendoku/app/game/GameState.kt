@@ -93,6 +93,15 @@ public data class GameState(
      * couple of cheap steps and can never be out of date.
      */
     val eliminated: Set<CellDigit> = emptySet(),
+
+    /**
+     * The digit the player is holding up to the board, if any.
+     *
+     * A different question from the selection. Selecting a cell asks what goes here; holding
+     * a key asks where does this go, which is how people actually solve a sudoku and which
+     * no part of the app could answer before. Never saved: it lasts as long as the finger.
+     */
+    val scanning: Int? = null,
 ) {
 
     private val geometry: Geometry get() = Geometry.of(dims)
@@ -199,9 +208,13 @@ public data class GameState(
      */
     public val highlightedHomes: Set<Int>
         get() {
-            if (!settings.highlightHomes) return emptySet()
-            val at = selected ?: return emptySet()
-            val digit = cells[at].digit.takeIf { it != Board.EMPTY } ?: return emptySet()
+            // A held key is an explicit question and is always answered. The setting only
+            // decides whether selecting a cell asks the same thing on its own.
+            val digit = scanning
+                ?: selected
+                    ?.takeIf { settings.highlightHomes }
+                    ?.let { cells[it].digit.takeIf { digit -> digit != Board.EMPTY } }
+                ?: return emptySet()
             return cells.indices.filter { cells[it].isEmpty && digit in candidatesAt(it) }.toSet()
         }
 
@@ -217,7 +230,13 @@ public data class GameState(
 
     public fun select(cell: Int?): GameState {
         require(cell == null || cell in 0 until cellCount) { "cell $cell is off the grid" }
-        return copy(selected = cell)
+        return copy(selected = cell, scanning = null)
+    }
+
+    /** Holds a digit up to the board, or puts it down again when [digit] is null. */
+    public fun scanFor(digit: Int?): GameState {
+        require(digit == null || digit in 1..size) { "$digit is not a digit on a $size by $size board" }
+        return copy(scanning = if (digit == scanning) null else digit)
     }
 
     public fun setPencilMode(on: Boolean): GameState = copy(pencilMode = on)

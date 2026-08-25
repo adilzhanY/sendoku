@@ -8,17 +8,29 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.LiveRegionMode
+import androidx.compose.ui.semantics.liveRegion
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.style.TextAlign
 import com.sendoku.app.R
 import com.sendoku.app.game.GameState
+import com.sendoku.app.game.WhyNot
 import com.sendoku.app.theme.Sendoku
 
 /**
@@ -82,7 +94,87 @@ public fun CellActionSheet(state: GameState, cell: Int, onAction: (GameEvent) ->
                     onAction(GameEvent.Erase)
                 }
             }
+
+            WhyNotPanel(state, cell)
         }
+    }
+}
+
+/**
+ * Why each digit cannot go in this cell.
+ *
+ * The question a beginner asks and nothing else answers. It says nothing the board is not
+ * already showing, so it costs no hint: every line is something the player could have found
+ * by looking along a row, and being told where to look is how somebody learns to look.
+ *
+ * A digit nothing rules out is listed as exactly that. It is not a promise that the digit
+ * belongs there, and the wording is careful about the difference.
+ */
+@Composable
+private fun WhyNotPanel(state: GameState, cell: Int) {
+    val colors = Sendoku.colors
+    val dimens = Sendoku.dimens
+    var asked by remember(cell) { mutableStateOf<Int?>(null) }
+    if (!state.cells[cell].isEmpty) return
+
+    Text(
+        text = stringResource(R.string.why_not_title),
+        style = Sendoku.type.overline,
+        color = colors.muted,
+        modifier = Modifier.padding(top = dimens.spaceM, bottom = dimens.spaceXs),
+    )
+    Row(
+        modifier = Modifier.fillMaxWidth().testTag("whynot:digits"),
+        horizontalArrangement = Arrangement.spacedBy(dimens.padGap),
+    ) {
+        for (digit in 1..state.size) {
+            val possible = digit in state.candidatesAt(cell)
+            Text(
+                text = digit.toString(),
+                style = Sendoku.type.label,
+                color = when {
+                    asked == digit -> colors.accent
+                    possible -> colors.given
+                    else -> colors.muted
+                },
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .weight(1f)
+                    .heightIn(min = dimens.minTouchTarget)
+                    .clip(RoundedCornerShape(dimens.radiusS))
+                    .clickable { asked = digit }
+                    .padding(vertical = dimens.spaceS)
+                    .testTag("whynot:$digit"),
+            )
+        }
+    }
+    Text(
+        text = asked?.let { answer(state, cell, it) } ?: stringResource(R.string.why_not_prompt),
+        style = Sendoku.type.body,
+        color = colors.given,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = dimens.spaceXs)
+            .semantics { liveRegion = LiveRegionMode.Polite }
+            .testTag("whynot:answer"),
+    )
+}
+
+@Composable
+private fun answer(state: GameState, cell: Int, digit: Int): String {
+    val size = state.size
+    return when (val reason = WhyNot.ask(state, cell, digit)) {
+        is WhyNot.Reason.Taken -> stringResource(
+            R.string.why_not_taken,
+            digit,
+            TechniqueCopy.name(reason.house),
+            reason.by / size + 1,
+            reason.by % size + 1,
+        )
+
+        is WhyNot.Reason.Filled -> stringResource(R.string.why_not_filled, reason.digit)
+
+        WhyNot.Reason.Possible -> stringResource(R.string.why_not_possible, digit)
     }
 }
 

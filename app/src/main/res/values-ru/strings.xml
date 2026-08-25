@@ -60,6 +60,7 @@
         <item quantity="many">%1$d, осталось %2$d</item>
         <item quantity="other">%1$d, осталось %2$d</item>
     </plurals>
+    <string name="pad_scanning">%1$s, показано, куда может встать</string>
     <string name="pad_notes_mode">%1$s, режим пометок</string>
 
     <string name="cell_actions_title">СТРОКА %1$d, СТОЛБЕЦ %2$d</string>
@@ -71,6 +72,11 @@
         <item quantity="other">Пометить всех %1$d кандидатов</item>
     </plurals>
     <string name="cell_actions_clear_notes">Стереть пометки</string>
+    <string name="why_not_title">ПОЧЕМУ НЕТ?</string>
+    <string name="why_not_prompt">Нажмите цифру, и мы скажем, что ей мешает.</string>
+    <string name="why_not_taken">Цифра %1$d уже есть в доме %2$s, в строке %3$d, столбце %4$d.</string>
+    <string name="why_not_filled">В этой клетке уже стоит %1$d. Сначала сотрите её.</string>
+    <string name="why_not_possible">Ничто на доске не запрещает %1$d. Это не значит, что цифра верная, только что она возможна.</string>
     <string name="cell_actions_clear">Очистить клетку</string>
 
     <string name="leave_title">Выйти из этой судоку?</string>

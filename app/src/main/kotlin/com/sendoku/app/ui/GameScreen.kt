@@ -294,7 +294,11 @@ private fun askForHint(state: GameState, showing: Hint?, onEvent: (GameEvent) ->
 @Composable
 private fun Controls(state: GameState, onEvent: (GameEvent) -> Unit, onHint: () -> Unit) {
     Column(verticalArrangement = Arrangement.spacedBy(Sendoku.dimens.spaceS)) {
-        NumberPad(state = state, onDigit = { onEvent(GameEvent.Digit(it)) })
+        NumberPad(
+            state = state,
+            onDigit = { onEvent(GameEvent.Digit(it)) },
+            onScan = { onEvent(GameEvent.Scan(it)) },
+        )
         GameToolbar(
             state = state,
             onUndo = { onEvent(GameEvent.Undo) },
@@ -396,6 +400,10 @@ public sealed interface GameEvent {
     public data object Hint : GameEvent
     public data object Pause : GameEvent
     public data object Resume : GameEvent
+
+    /** The player is holding a digit up to the board to see where it could go. */
+    public data class Scan(val digit: Int) : GameEvent
+
     public data object FillMarks : GameEvent
 
     /** Pencil every empty cell in, which is the one piece of help the deep end needs. */
@@ -423,6 +431,7 @@ public fun GameState.reduce(event: GameEvent): GameState = when (event) {
     GameEvent.Hint -> countHint()
     GameEvent.Pause -> pause()
     GameEvent.Resume -> resume()
+    is GameEvent.Scan -> scanFor(event.digit)
     GameEvent.FillMarks -> fillMarks()
     GameEvent.FillAllMarks -> fillAllMarks()
     GameEvent.ClearMarks -> clearMarks()

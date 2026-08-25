@@ -161,9 +161,10 @@ public object TechniqueCopy {
         }
     }
 
+    /** A house in words, for anything that has to name one. */
     @Composable
     @ReadOnlyComposable
-    private fun name(house: House): String = stringResource(
+    public fun name(house: House): String = stringResource(
         when (house.kind) {
             HouseKind.ROW -> R.string.house_row
             HouseKind.COLUMN -> R.string.house_column

@@ -63,6 +63,7 @@
         <item quantity="one">%1$d, %2$d left</item>
         <item quantity="other">%1$d, %2$d left</item>
     </plurals>
+    <string name="pad_scanning">%1$s, showing where it can go</string>
     <string name="pad_notes_mode">%1$s, notes mode</string>
 
     <!-- Long press -->
@@ -73,6 +74,11 @@
         <item quantity="other">Note all %1$d candidates</item>
     </plurals>
     <string name="cell_actions_clear_notes">Rub out the notes</string>
+    <string name="why_not_title">WHY NOT?</string>
+    <string name="why_not_prompt">Tap a digit to be told what is stopping it.</string>
+    <string name="why_not_taken">There is already a %1$d in %2$s, at row %3$d, column %4$d.</string>
+    <string name="why_not_filled">This cell already holds a %1$d. Rub it out first.</string>
+    <string name="why_not_possible">Nothing on the board rules out %1$d. That does not make it right, only possible.</string>
     <string name="cell_actions_clear">Clear the cell</string>
 
     <!-- Leaving -->
