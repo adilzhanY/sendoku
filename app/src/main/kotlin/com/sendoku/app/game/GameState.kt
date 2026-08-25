@@ -197,15 +197,25 @@ public data class GameState(
         }
 
     /**
-     * Digits the player has placed that the answer does not want, when auto check is on.
+     * Digits the player has placed that the answer does not want.
      *
-     * Only ever a mirror of the setting. The state always knows which digits are wrong,
-     * since it holds the solution, and the whole question is whether the player asked to be
-     * told. Reading it from anywhere else would leak the answer.
+     * Shown when the player asked to be told, and shown whether they asked or not while a
+     * mistake limit is running. That second rule is not a preference, it is the fix for the
+     * worst bug this app has had.
+     *
+     * A digit can be wrong and break no rule at all, and one of those used to sit on the
+     * board saying nothing. The counter in the header went up, so the game knew. Twenty
+     * moves later a cell could take no digit at all, every attempt at it cost another
+     * mistake, and the game ended over an error it had spotted at the time and kept to
+     * itself. Charging somebody for a mistake and then hiding it is indefensible: either
+     * the game does not judge the digit, or it says so at once.
+     *
+     * With the limit off and auto check off, nothing is marked and the board plays like
+     * paper, which is the mode where the app is not judging anything.
      */
     public val flaggedWrong: Set<Int>
         get() {
-            if (!settings.autoCheck) return emptySet()
+            if (!settings.autoCheck && settings.mistakeLimit == null) return emptySet()
             return cells.indices.filter {
                 val digit = cells[it].digit
                 digit != Board.EMPTY && !cells[it].isGiven && digit != solution.atIndex(it)
@@ -290,7 +300,7 @@ public data class GameState(
             }
         }
 
-        val wrong = digit != solution.atIndex(at)
+        val wrong = digit != solution.atIndex(at) && countable(at)
         return apply(MoveKind.PLACE, at, changes)
             .copy(mistakes = mistakes + if (wrong) 1 else 0)
             .withAutoNotes()
@@ -310,6 +320,20 @@ public data class GameState(
         val column = Math.floorMod(from % size + columns, size)
         return select(row * size + column)
     }
+
+    /**
+     * Whether a wrong digit here is a new mistake or the same old one being paid for twice.
+     *
+     * A cell is only charged for while its own answer can still be written in it. Once an
+     * earlier wrong digit has taken that answer away, the cell is beyond saving and every
+     * digit tried in it is wrong by arithmetic rather than by carelessness. Charging for
+     * those is what turned one hidden slip into a lost game: the cell at the end could take
+     * nothing at all, and three attempts at it finished a puzzle that had been unwinnable
+     * for twenty moves.
+     *
+     * The mistake is still real and still counted, once, at the cell where it was made.
+     */
+    private fun countable(cell: Int): Boolean = solution.atIndex(cell) in candidatesAt(cell)
 
     /**
      * The digits [cell] could still take, going by what its peers already hold.

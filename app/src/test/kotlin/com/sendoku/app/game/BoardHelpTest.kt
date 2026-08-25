@@ -77,7 +77,10 @@ class BoardHelpTest {
     fun `auto check says nothing until it is asked to`() {
         val wrongDigit = (1..9).first { it != puzzle.puzzle.solution.atIndex(firstEmpty()) }
 
-        val quiet = game().select(firstEmpty()).enter(wrongDigit)
+        // With the limit off as well. While a limit is running the marking is not optional,
+        // because a mistake that is charged for has to be one the player can see.
+        val paper = GameSettings(mistakeLimit = null, autoCheck = false)
+        val quiet = game(paper).select(firstEmpty()).enter(wrongDigit)
         assertTrue("a wrong digit was flagged with the setting off", quiet.flaggedWrong.isEmpty())
 
         val loud = game(GameSettings(autoCheck = true)).select(firstEmpty()).enter(wrongDigit)

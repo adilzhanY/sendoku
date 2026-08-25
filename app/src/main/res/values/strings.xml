@@ -164,6 +164,7 @@
     <string name="settings_highlight_homes">Show where the selected digit could still go</string>
     <string name="settings_auto_check">Tell me straight away when a digit is wrong</string>
     <string name="settings_auto_check_note">With this on there is nothing to lose by trying, so the puzzle loses most of its tension.</string>
+    <string name="settings_auto_check_forced">On while a mistake limit is running, because a mistake you are charged for has to be one you can see. Turn the limit off below to play without either.</string>
     <string name="settings_flag_conflicts">Mark a digit that repeats in a row, column or box</string>
     <string name="settings_clock">The clock</string>
     <string name="settings_show_timer">Show the timer</string>

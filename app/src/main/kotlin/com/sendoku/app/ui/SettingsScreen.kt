@@ -133,8 +133,14 @@ public fun SettingsScreen(
         ) { onChange(settings.copy(highlightHomes = it)) }
         Toggle(
             label = stringResource(R.string.settings_auto_check),
-            checked = settings.autoCheck,
-            note = stringResource(R.string.settings_auto_check_note),
+            checked = settings.autoCheck || settings.mistakeLimit != null,
+            note = stringResource(
+                if (settings.mistakeLimit != null) {
+                    R.string.settings_auto_check_forced
+                } else {
+                    R.string.settings_auto_check_note
+                },
+            ),
         ) { onChange(settings.copy(autoCheck = it)) }
         Toggle(
             label = stringResource(R.string.settings_flag_conflicts),
