@@ -30,6 +30,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.sendoku.app.R
 import com.sendoku.app.data.GradeRecord
+import com.sendoku.app.data.HintLog
 import com.sendoku.app.data.Statistics
 import com.sendoku.app.theme.Sendoku
 import com.sendoku.engine.Grade
@@ -44,6 +45,7 @@ import kotlin.time.Duration
 @Composable
 public fun StatsScreen(
     statistics: Statistics,
+    hints: HintLog,
     onBack: () -> Unit,
     onReset: () -> Unit,
     modifier: Modifier = Modifier,
@@ -106,6 +108,22 @@ public fun StatsScreen(
             val record = statistics.byGrade.getValue(grade)
             if (record.played == 0) continue
             GradeStat(record)
+        }
+
+        // What the player has actually asked for help with. The rule at the top of this list
+        // is the lesson they need, and it is the one number in the app that would be worth
+        // sending to a server if the app did that, which it does not.
+        if (hints.total > 0) {
+            Section(stringResource(R.string.stats_hints_title))
+            for ((technique, count) in hints.byTechnique.entries.sortedByDescending { it.value }.take(5)) {
+                Line(stringResource(TechniqueCopy.nameOf(technique)), count.toString())
+            }
+            for ((level, count) in hints.byLevel.entries.sortedBy { it.key.ordinal }) {
+                Line(stringResource(hintDetailName(level)), count.toString())
+            }
+            hints.hardest?.let { worst ->
+                Note(stringResource(R.string.stats_hints_note, stringResource(TechniqueCopy.nameOf(worst))))
+            }
         }
 
         if (statistics.hardestTechnique.isNotEmpty()) {
@@ -213,6 +231,18 @@ private fun Section(title: String) {
         color = Sendoku.colors.muted,
         modifier = Modifier.padding(top = Sendoku.dimens.spaceL, bottom = Sendoku.dimens.spaceXs),
     )
+}
+
+/** A label and a number, for the rows that are only ever a tally. */
+@Composable
+private fun Line(label: String, value: String) {
+    Row(
+        modifier = Modifier.fillMaxWidth().padding(vertical = Sendoku.dimens.spaceXs),
+        horizontalArrangement = Arrangement.SpaceBetween,
+    ) {
+        Text(label, style = Sendoku.type.body, color = Sendoku.colors.given)
+        Text(value, style = Sendoku.type.body, color = Sendoku.colors.muted)
+    }
 }
 
 @Composable

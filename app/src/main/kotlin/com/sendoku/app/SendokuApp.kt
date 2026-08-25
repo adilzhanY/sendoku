@@ -16,9 +16,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.sendoku.app.data.Appearance
 import com.sendoku.app.data.DailyDays
+import com.sendoku.app.data.HintLog
 import com.sendoku.app.data.Statistics
 import com.sendoku.app.game.GameSettings
 import com.sendoku.app.game.GameViewModel
+import com.sendoku.app.game.SolvePath
 import com.sendoku.app.learn.CourseProgress
 import com.sendoku.app.learn.CourseScreen
 import com.sendoku.app.learn.Curriculum
@@ -42,6 +44,7 @@ import com.sendoku.app.ui.InProgressSummary
 import com.sendoku.app.ui.LicencesScreen
 import com.sendoku.app.ui.ReadableWidth
 import com.sendoku.app.ui.SettingsScreen
+import com.sendoku.app.ui.SolvePathScreen
 import com.sendoku.app.ui.StatsScreen
 import com.sendoku.engine.Grade
 import com.sendoku.engine.technique.TechniqueId
@@ -76,6 +79,9 @@ public fun SendokuApp(
     appearance: Flow<Appearance>,
     onAppearanceChange: (Appearance) -> Unit,
     onResetStats: () -> Unit,
+    /** Records which rule a hint was about, for the stats screen. Nothing leaves the phone. */
+    onSpendHint: (com.sendoku.engine.technique.TechniqueId, com.sendoku.app.game.HintLevel) -> Unit,
+    hintLog: Flow<HintLog>,
     version: String,
     scope: CoroutineScope,
     modifier: Modifier = Modifier,
@@ -89,6 +95,7 @@ public fun SendokuApp(
     val learning by course.collectAsState(initial = CourseProgress())
     val currentSettings by settings.collectAsState(initial = GameSettings())
     val look by appearance.collectAsState(initial = Appearance())
+    val hintTally by hintLog.collectAsState(initial = HintLog())
 
     // Back from anywhere except home goes back a screen. Home itself lets the system take it,
     // because the way out of a home screen is out of the app.
@@ -119,6 +126,8 @@ public fun SendokuApp(
                     settingsChange = onSettingsChange,
                     appearanceChange = onAppearanceChange,
                     resetStats = onResetStats,
+                    onSpendHint = onSpendHint,
+                    hints = hintTally,
                     version = version,
                     modifier = Modifier.fillMaxSize(),
                 )
@@ -157,10 +166,12 @@ private fun Screens(
     settingsChange: (GameSettings) -> Unit,
     appearanceChange: (Appearance) -> Unit,
     resetStats: () -> Unit,
+    onSpendHint: (TechniqueId, com.sendoku.app.game.HintLevel) -> Unit,
+    hints: HintLog,
     version: String,
     modifier: Modifier = Modifier,
 ) {
-    when (navigator.current) {
+    when (val here = navigator.current) {
         Destination.Home -> {
             HomeScreen(
                 state = HomeState(
@@ -188,7 +199,7 @@ private fun Screens(
         }
 
         is Destination.Play, Destination.Resume, is Destination.Daily ->
-            PlayHost(model, loading, navigator, scope, modifier)
+            PlayHost(model, loading, navigator, scope, onSpendHint, modifier)
 
         Destination.Calendar -> {
             DailyScreen(
@@ -254,9 +265,17 @@ private fun Screens(
             )
         }
 
+        is Destination.Path -> {
+            val path = remember(here.givens) {
+                SolvePath.of(com.sendoku.engine.Board.parse(com.sendoku.engine.Dimensions.CLASSIC, here.givens))
+            }
+            SolvePathScreen(path = path, onBack = { navigator.back() }, modifier = modifier)
+        }
+
         Destination.Stats -> {
             StatsScreen(
                 statistics = stats,
+                hints = hints,
                 onBack = { navigator.back() },
                 onReset = resetStats,
                 modifier = modifier,
@@ -311,6 +330,7 @@ private fun PlayHost(
     loading: Boolean,
     navigator: Navigator,
     scope: CoroutineScope,
+    onSpendHint: (com.sendoku.engine.technique.TechniqueId, com.sendoku.app.game.HintLevel) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val state by model.state.collectAsState()
@@ -331,8 +351,17 @@ private fun PlayHost(
             navigator.go(if (lesson == null) Destination.Glossary else Destination.LessonAt(lesson.id.name))
         },
         onSettings = { navigator.go(Destination.Settings) },
+        onPath = { navigator.go(Destination.Path(givensOf(game))) },
+        onSpend = onSpendHint,
         modifier = modifier,
     )
+}
+
+/** The clues the game started from, as text, which is all the path screen needs. */
+private fun givensOf(game: com.sendoku.app.game.GameState): String = buildString {
+    for (cell in game.cells) {
+        append(if (cell.isGiven) com.sendoku.engine.Digits.toChar(cell.digit) else '.')
+    }
 }
 
 @Composable

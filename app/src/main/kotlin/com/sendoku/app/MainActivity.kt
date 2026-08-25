@@ -30,6 +30,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.room.Room
 import com.sendoku.app.data.Appearance
 import com.sendoku.app.data.CatalogPuzzleSource
+import com.sendoku.app.data.DataStoreHintLog
 import com.sendoku.app.data.DataStoreSettings
 import com.sendoku.app.data.RoomGameRepository
 import com.sendoku.app.data.SendokuDatabase
@@ -153,6 +154,7 @@ class MainActivity : ComponentActivity() {
         }
     }
     private val settings by lazy { DataStoreSettings(preferences) }
+    private val hints by lazy { DataStoreHintLog(preferences) }
 
     /**
      * Built once, not per frame.
@@ -247,7 +249,16 @@ class MainActivity : ComponentActivity() {
                         onAppearanceChange = { changed ->
                             lifecycleScope.launch { settings.updateAppearance { changed } }
                         },
-                        onResetStats = { lifecycleScope.launch { repository.clearHistory() } },
+                        onResetStats = {
+                            lifecycleScope.launch {
+                                repository.clearHistory()
+                                hints.clear()
+                            }
+                        },
+                        onSpendHint = { technique, level ->
+                            lifecycleScope.launch { hints.record(technique, level) }
+                        },
+                        hintLog = hints.log,
                         version = BuildConfig.VERSION_NAME,
                         savedGame = savedSummary,
                         scope = lifecycleScope,

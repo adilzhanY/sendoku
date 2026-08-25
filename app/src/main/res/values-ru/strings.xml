@@ -191,6 +191,8 @@
     </plurals>
     <string name="stats_totals">Потрачено %1$s, взято подсказок: %2$d.</string>
     <string name="stats_by_grade">По уровням</string>
+    <string name="stats_hints_title">О ЧЁМ ВЫ СПРАШИВАЛИ</string>
+    <string name="stats_hints_note">Чаще всего вы спрашиваете про %1$s. Это тот урок, к которому стоит вернуться.</string>
     <string name="stats_needed">Что потребовалось вашим судоку</string>
     <string name="stats_solved_count">Решено: %1$d</string>
     <string name="stats_solved_and_lost">Решено: %1$d, проиграно: %2$d</string>
@@ -721,6 +723,9 @@
     <string name="hint_detail_cells_note">Клетки, на которых держится довод, подсвечены на доске.</string>
     <string name="hint_detail_full">Весь довод</string>
     <string name="hint_detail_full_note">Всё, включая сам ход. Для работы по курсу.</string>
+    <string name="path_title">Как это решалось</string>
+    <string name="path_placed">Строка %1$d, столбец %2$d это %3$d.</string>
+    <string name="outcome_path">ПОКАЗАТЬ, КАК ЭТО РЕШАЛОСЬ</string>
     <string name="settings_your_data">Ваши данные</string>
     <string name="settings_data_note">Всё, что приложение о вас знает, лежит на этом телефоне. Экспорт запишет это в файл на ваш выбор, чтобы новый телефон продолжил с того же места. Никуда ничего не отправляется.</string>
     <string name="settings_export">Экспортировать прогресс</string>
@@ -781,5 +786,17 @@
         <item quantity="few">Неверны %1$d ваши цифры. Найти их всё ещё вам.</item>
         <item quantity="many">Неверны %1$d ваших цифр. Найти их всё ещё вам.</item>
         <item quantity="other">Неверно %1$d ваших цифр. Найти их всё ещё вам.</item>
+    </plurals>
+    <plurals name="path_summary">
+        <item quantity="one">%1$d шаг, от дешёвых правил к дорогим, ровно так, как приложение оценивало задачу.</item>
+        <item quantity="few">%1$d шага, от дешёвых правил к дорогим, ровно так, как приложение оценивало задачу.</item>
+        <item quantity="many">%1$d шагов, от дешёвых правил к дорогим, ровно так, как приложение оценивало задачу.</item>
+        <item quantity="other">%1$d шагов, от дешёвых правил к дорогим, ровно так, как приложение оценивало задачу.</item>
+    </plurals>
+    <plurals name="path_struck">
+        <item quantity="one">Убирает %1$d пометку.</item>
+        <item quantity="few">Убирает %1$d пометки.</item>
+        <item quantity="many">Убирает %1$d пометок.</item>
+        <item quantity="other">Убирает %1$d пометок.</item>
     </plurals>
 </resources>

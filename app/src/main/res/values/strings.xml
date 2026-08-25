@@ -197,6 +197,8 @@
     </plurals>
     <string name="stats_totals">%1$s spent, hints taken: %2$d.</string>
     <string name="stats_by_grade">By grade</string>
+    <string name="stats_hints_title">WHAT YOU HAVE ASKED ABOUT</string>
+    <string name="stats_hints_note">You ask about %1$s most. That is the lesson worth going back to.</string>
     <string name="stats_needed">What your puzzles needed</string>
     <string name="stats_solved_count">Solved: %1$d</string>
     <string name="stats_solved_and_lost">Solved: %1$d, lost: %2$d</string>
@@ -724,6 +726,9 @@
     <string name="hint_detail_cells_note">The cells the argument rests on, lit up on the board.</string>
     <string name="hint_detail_full">The whole argument</string>
     <string name="hint_detail_full_note">Everything, including the move. For working through the course.</string>
+    <string name="path_title">How it was solved</string>
+    <string name="path_placed">Row %1$d, column %2$d is a %3$d.</string>
+    <string name="outcome_path">SHOW HOW IT WAS SOLVED</string>
     <string name="settings_your_data">Your data</string>
     <string name="settings_data_note">Everything this app knows about you is on this phone. Export writes it to a file you choose, so a new phone can pick up where this one left off. Nothing is sent anywhere.</string>
     <string name="settings_export">Export my progress</string>
@@ -780,5 +785,13 @@
     <plurals name="hint_check_wrong">
         <item quantity="one">%1$d digit you have placed is wrong. Finding it is still yours.</item>
         <item quantity="other">%1$d digits you have placed are wrong. Finding them is still yours.</item>
+    </plurals>
+    <plurals name="path_summary">
+        <item quantity="one">%1$d step, cheapest rule first, exactly as the app rated it.</item>
+        <item quantity="other">%1$d steps, cheapest rule first, exactly as the app rated it.</item>
+    </plurals>
+    <plurals name="path_struck">
+        <item quantity="one">Rules out %1$d pencil mark.</item>
+        <item quantity="other">Rules out %1$d pencil marks.</item>
     </plurals>
 </resources>

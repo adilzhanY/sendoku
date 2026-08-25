@@ -71,6 +71,9 @@ public fun GameScreen(
     onHome: () -> Unit,
     onGlossary: (com.sendoku.engine.technique.TechniqueId?) -> Unit,
     onSettings: () -> Unit,
+    onPath: () -> Unit,
+    /** Records what was asked about, so the stats can say which rule a player leans on. */
+    onSpend: (com.sendoku.engine.technique.TechniqueId, HintLevel) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val colors = Sendoku.colors
@@ -153,7 +156,7 @@ public fun GameScreen(
                     Box(Modifier.fillMaxHeight().weight(1f), contentAlignment = Alignment.Center) {
                         BoardArea(state, onEvent, onNextPuzzle, onHome, {
                             longPressed = it
-                        }, boardCap, hint, onGlossary)
+                        }, boardCap, hint, onGlossary, onPath)
                     }
                     Column(
                         modifier = Modifier.fillMaxHeight().weight(1f),
@@ -162,7 +165,7 @@ public fun GameScreen(
                         GameHeader(state, leave, onSettings, onPause = { onEvent(GameEvent.Pause) })
                         HintArea(hint, onEvent, { hint = it }, onGlossary)
                         HintMenuArea(state, menuOpen, checked, { checked = it }, { menuOpen = it }) {
-                            hint = askForHint(state, hint, it, feedback)
+                            hint = askForHint(state, hint, it, feedback, onSpend)
                         }
                         Controls(state, feedback) { menuOpen = true }
                     }
@@ -179,11 +182,11 @@ public fun GameScreen(
                     ) {
                         BoardArea(state, onEvent, onNextPuzzle, onHome, {
                             longPressed = it
-                        }, boardCap, hint, onGlossary)
+                        }, boardCap, hint, onGlossary, onPath)
                     }
                     HintArea(hint, onEvent, { hint = it }, onGlossary)
                     HintMenuArea(state, menuOpen, checked, { checked = it }, { menuOpen = it }) {
-                        hint = askForHint(state, hint, it, feedback)
+                        hint = askForHint(state, hint, it, feedback, onSpend)
                     }
                     Controls(state, feedback) { menuOpen = true }
                 }
@@ -254,6 +257,7 @@ private fun BoardArea(
     cap: androidx.compose.ui.unit.Dp,
     hint: Hint?,
     onLearn: (com.sendoku.engine.technique.TechniqueId) -> Unit,
+    onPath: () -> Unit,
 ) {
     val step = hint as? Hint.Step
     val showCells = step != null && step.level != HintLevel.NAME
@@ -280,6 +284,7 @@ private fun BoardArea(
                     onNextPuzzle = onNextPuzzle,
                     onHome = onHome,
                     onLearn = onLearn,
+                    onPath = onPath,
                 )
             }
         }
@@ -294,7 +299,13 @@ private fun BoardArea(
  * for a second look at something the app has already said would end games by accident. A
  * hint costs when it tells the player something they have not been told yet.
  */
-private fun askForHint(state: GameState, showing: Hint?, level: HintLevel, onEvent: (GameEvent) -> Unit): Hint {
+private fun askForHint(
+    state: GameState,
+    showing: Hint?,
+    level: HintLevel,
+    onEvent: (GameEvent) -> Unit,
+    onSpend: (com.sendoku.engine.technique.TechniqueId, HintLevel) -> Unit,
+): Hint {
     val next = HintEngine.next(state, level)
     val alreadySaid = when {
         showing == null -> false
@@ -307,6 +318,7 @@ private fun askForHint(state: GameState, showing: Hint?, level: HintLevel, onEve
         return checkNotNull(showing)
     }
     onEvent(GameEvent.Hint)
+    if (next is Hint.Step) onSpend(next.deduction.technique, level)
     return next
 }
 

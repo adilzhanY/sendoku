@@ -42,6 +42,8 @@ public fun OutcomePanel(
     onHome: () -> Unit,
     /** Opens the lesson for the hardest technique the puzzle needed, when there is one. */
     onLearn: (TechniqueId) -> Unit,
+    /** Opens the whole solution, step by step. Only ever reachable once the game is over. */
+    onPath: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val colors = Sendoku.colors
@@ -164,6 +166,20 @@ public fun OutcomePanel(
                     )
                 }
             }
+
+            // Every step, in order, for the player who wants to know what they were meant
+            // to have seen. It is the question a beaten player actually asks, and no other
+            // app on the store answers it.
+            Text(
+                text = stringResource(R.string.outcome_path),
+                style = Sendoku.type.overline,
+                color = colors.muted,
+                modifier = Modifier
+                    .clip(RoundedCornerShape(dimens.radiusS))
+                    .clickable(onClick = onPath)
+                    .padding(dimens.spaceS)
+                    .testTag("outcome:path"),
+            )
 
             Row(
                 modifier = Modifier.fillMaxWidth().padding(top = dimens.spaceM),

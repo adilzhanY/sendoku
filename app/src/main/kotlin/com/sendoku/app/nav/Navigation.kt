@@ -49,6 +49,9 @@ public sealed interface Destination {
     /** Every technique the app knows, for somebody who has just met one. */
     public data object Glossary : Destination
 
+    /** How the puzzle just played was solved, every step of it. */
+    public data class Path(val givens: String) : Destination
+
     public data object Stats : Destination
 
     public data object About : Destination
@@ -139,6 +142,7 @@ public class Navigator(stack: List<Destination> = listOf(Destination.Home)) {
             is Destination.Practice -> "practice:$technique"
             Destination.Settings -> "settings"
             Destination.Glossary -> "glossary"
+            is Destination.Path -> "path:$givens"
             Destination.Stats -> "stats"
             Destination.About -> "about"
             Destination.Licences -> "licences"
@@ -156,6 +160,7 @@ public class Navigator(stack: List<Destination> = listOf(Destination.Home)) {
             value == "calendar" -> Destination.Calendar
             value == "course" -> Destination.Course
             value == "account" -> Destination.Account
+            value.startsWith("path:") -> Destination.Path(value.removePrefix("path:"))
             value.startsWith("lesson:") -> Destination.LessonAt(value.removePrefix("lesson:"))
             value.startsWith("practice:") -> Destination.Practice(value.removePrefix("practice:"))
             value.startsWith("daily:") -> Destination.Daily(value.removePrefix("daily:").toLong())
