@@ -144,6 +144,8 @@ class StoreShotsTest {
                     onHome = {},
                     onGlossary = { _ -> },
                     onSettings = {},
+                    onPath = {},
+                    onSpend = { _, _ -> },
                     modifier = pane,
                 )
             }
@@ -184,6 +186,8 @@ class StoreShotsTest {
                     onHome = {},
                     onGlossary = { _ -> },
                     onSettings = {},
+                    onPath = {},
+                    onSpend = { _, _ -> },
                     modifier = pane,
                 )
             }
@@ -209,6 +213,8 @@ class StoreShotsTest {
                     onHome = {},
                     onGlossary = { _ -> },
                     onSettings = {},
+                    onPath = {},
+                    onSpend = { _, _ -> },
                     modifier = pane,
                 )
             }
@@ -225,7 +231,15 @@ class StoreShotsTest {
     @Test
     fun stats() {
         compose.setContent {
-            Scene { pane -> StatsScreen(statistics = history(), onBack = {}, onReset = {}, modifier = pane) }
+            Scene { pane ->
+                StatsScreen(
+                    statistics = history(),
+                    hints = com.sendoku.app.data.HintLog(),
+                    onBack = {},
+                    onReset = {},
+                    modifier = pane,
+                )
+            }
         }
         shot("6-stats")
     }
@@ -268,6 +282,8 @@ class StoreShotsTest {
                     onHome = {},
                     onGlossary = { _ -> },
                     onSettings = {},
+                    onPath = {},
+                    onSpend = { _, _ -> },
                     modifier = pane,
                 )
             }

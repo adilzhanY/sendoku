@@ -99,6 +99,7 @@ public fun HintPanel(
                 accent = false,
                 onClick = onDismiss,
                 modifier = Modifier.weight(1f),
+                tag = "hint:close",
             )
             if (hint is Hint.Mistake) {
                 // Naming the broken cell and then offering nothing but Close is a dead end,
@@ -125,6 +126,7 @@ public fun HintPanel(
                         accent = true,
                         onClick = onMore,
                         modifier = Modifier.weight(1.6f),
+                        tag = "hint:more",
                     )
                 } else {
                     HintButton(
@@ -132,6 +134,7 @@ public fun HintPanel(
                         accent = true,
                         onClick = onApply,
                         modifier = Modifier.weight(1.6f),
+                        tag = "hint:apply",
                     )
                 }
             }
@@ -224,8 +227,14 @@ private fun StepBody(hint: Hint.Step, onGlossary: () -> Unit) {
 }
 
 @Composable
-private fun HintButton(label: String, accent: Boolean, onClick: () -> Unit, modifier: Modifier = Modifier) {
-    HintChoice(label = label, accent = accent, tag = null, onClick = onClick, modifier = modifier)
+private fun HintButton(
+    label: String,
+    accent: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    tag: String? = null,
+) {
+    HintChoice(label = label, accent = accent, tag = tag, onClick = onClick, modifier = modifier)
 }
 
 /** One button in the hint panel or the menu in front of it. */

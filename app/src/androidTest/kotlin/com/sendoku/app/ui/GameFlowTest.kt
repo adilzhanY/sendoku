@@ -7,6 +7,7 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.junit4.v2.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
+import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import com.sendoku.app.game.GameState
@@ -53,6 +54,8 @@ class GameFlowTest {
                     onHome = {},
                     onGlossary = { _ -> },
                     onSettings = {},
+                    onPath = {},
+                    onSpend = { _, _ -> },
                 )
             }
         }
@@ -121,11 +124,25 @@ class GameFlowTest {
 
     @Test
     fun askingForAHintShowsOneAndCanBeClosed() {
+        // The button opens a chooser now. Two of the things on it are free, and the hint
+        // itself is one deliberate tap further in.
         play()
         compose.onNodeWithText("Hint").performClick()
+        compose.onNodeWithTag("hint:menu").assertIsDisplayed()
+        compose.onNodeWithTag("hint:menu:explain").performClick()
         compose.onNodeWithText("Show me where").assertIsDisplayed()
         compose.onNodeWithText("Close").performClick()
         compose.onNodeWithText("Show me where").assertDoesNotExistNow()
+    }
+
+    @Test
+    fun askingWhetherAnythingIsWrongCostsNoHint() {
+        val state = play()
+        compose.onNodeWithText("Hint").performClick()
+        compose.onNodeWithTag("hint:menu:check").performClick()
+
+        compose.onNodeWithTag("hint:check").assertIsDisplayed()
+        assertEquals("a free question was charged for", 0, state().hintsUsed)
     }
 
     private fun androidx.compose.ui.test.SemanticsNodeInteraction.assertDoesNotExistNow() {
@@ -169,6 +186,7 @@ class GameFlowTest {
         val state = play(start.select(empty).enter(wrong))
 
         compose.onNodeWithText("Hint", ignoreCase = true).performClick()
+        compose.onNodeWithTag("hint:menu:explain").performClick()
         compose.onNodeWithText("Take it off", ignoreCase = true).assertIsDisplayed().performClick()
 
         assertTrue(state().cells[empty].isEmpty)
