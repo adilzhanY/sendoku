@@ -120,6 +120,7 @@
     <string name="hint_where">Show me where</string>
     <string name="hint_explain">Explain it</string>
     <string name="hint_do_it">Do it</string>
+    <string name="hint_evidence">Its row already has %1$s. Its column has %2$s. Its box has %3$s. Between them that is every digit except the %4$d.</string>
     <string name="hint_rests_on_earlier">Part of this rests on marks an earlier hint ruled out. They are pencilled in on the board, so you can follow it from there.</string>
     <string name="hint_what_is_this">WHAT IS THIS?</string>
     <string name="hint_wrong_title">SOMETHING IS WRONG</string>
@@ -170,7 +171,8 @@
     <string name="settings_show_timer">Show the timer</string>
     <string name="settings_feedback">Feedback</string>
     <string name="settings_haptics">Buzz when a digit goes in</string>
-    <string name="settings_sound">Click when a digit goes in</string>
+    <string name="settings_sound">Sounds</string>
+    <string name="settings_sound_note">Soft notes as you play. Off is one tap away, and the phone\'s own silent mode wins over both.</string>
     <string name="settings_mistakes">Mistakes</string>
     <string name="settings_mistake_limit">End the game after three mistakes</string>
     <string name="settings_mistake_note">On by default, at three. Turn it off for the hard grades, where losing an hour to one slip is miserable.</string>

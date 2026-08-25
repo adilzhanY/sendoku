@@ -212,6 +212,25 @@ private fun StepBody(hint: Hint.Step, onGlossary: () -> Unit) {
         )
     }
 
+    // The working, for the one rule where a player cannot check the claim by looking. Shown
+    // from the level that names the cells onwards, since before that there is no cell to
+    // check it against.
+    val evidence = hint.evidence
+    if (evidence != null && hint.level != HintLevel.NAME && hint.level != HintLevel.REGION) {
+        Text(
+            text = stringResource(
+                R.string.hint_evidence,
+                evidence.row.joinToString(", "),
+                evidence.column.joinToString(", "),
+                evidence.box.joinToString(", "),
+                evidence.digit,
+            ),
+            style = Sendoku.type.body,
+            color = colors.given,
+            modifier = Modifier.testTag("hint:evidence"),
+        )
+    }
+
     if (hint.level == HintLevel.FULL) {
         Text(
             text = stringResource(TechniqueCopy.because(technique)),

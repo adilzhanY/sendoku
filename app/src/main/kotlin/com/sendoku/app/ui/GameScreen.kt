@@ -408,13 +408,21 @@ private fun Controls(state: GameState, onEvent: (GameEvent) -> Unit, onHint: () 
  * toggle a pencil mark, make a mistake, finish the puzzle, or do nothing at all, and those
  * are six different answers of which one is silence.
  */
+private fun placedRightly(before: GameState, after: GameState): Boolean {
+    val at = after.selected ?: return false
+    val digit = after.cells[at].digit
+    return digit != com.sendoku.engine.Board.EMPTY &&
+        before.cells[at].digit != digit &&
+        digit == after.solution.atIndex(at)
+}
+
 private fun soundFor(event: GameEvent, before: GameState, after: GameState): Sound? = when {
     after.isSolved -> Sound.WIN
     after.mistakes > before.mistakes -> Sound.MISTAKE
     event is GameEvent.TogglePencil -> if (after.pencilMode) Sound.NOTES_ON else Sound.NOTES_OFF
     event is GameEvent.Erase || event is GameEvent.EraseCells -> Sound.ERASE
     event is GameEvent.Undo || event is GameEvent.Redo -> Sound.ERASE
-    event is GameEvent.Digit -> Sound.PLACE
+    event is GameEvent.Digit -> if (placedRightly(before, after)) Sound.CORRECT else Sound.PLACE
     event is GameEvent.Select -> Sound.TAP
     else -> null
 }

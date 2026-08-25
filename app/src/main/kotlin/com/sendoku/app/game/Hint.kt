@@ -2,8 +2,12 @@ package com.sendoku.app.game
 
 import com.sendoku.engine.Board
 import com.sendoku.engine.CandidateGrid
+import com.sendoku.engine.Geometry
+import com.sendoku.engine.House
+import com.sendoku.engine.HouseKind
 import com.sendoku.engine.technique.CellDigit
 import com.sendoku.engine.technique.Deduction
+import com.sendoku.engine.technique.TechniqueId
 import com.sendoku.engine.technique.Techniques
 
 /**
@@ -52,8 +56,27 @@ public sealed interface Hint {
      * when it is, because a hint that quietly assumes its own earlier work reads as the app
      * telling you to guess.
      */
-    public data class Step(val deduction: Deduction, val level: HintLevel, val restsOnEarlierHints: Boolean = false) :
-        Hint
+    public data class Step(
+        val deduction: Deduction,
+        val level: HintLevel,
+        val restsOnEarlierHints: Boolean = false,
+        /** The arithmetic behind a single, when the step is one. See [Evidence]. */
+        val evidence: Evidence? = null,
+    ) : Hint
+
+    /**
+     * What actually ruled the other digits out.
+     *
+     * A hint that says "only one digit is left here" and stops is asking to be believed. The
+     * player is looking at a grid where the digit in question could still go in thirty other
+     * cells, which is a different question with a different answer, and without the working
+     * there is no way to tell that both are true.
+     *
+     * So the working goes on screen: what the row already holds, what the column holds, what
+     * the box holds, and the one digit none of them has. Three lists a person can check in
+     * about four seconds, against a board that has the three houses outlined for them.
+     */
+    public data class Evidence(val digit: Int, val row: List<Int>, val column: List<Int>, val box: List<Int>)
 
     /**
      * A digit on the board is wrong.
@@ -111,7 +134,32 @@ public object HintEngine {
                     it.eliminations.any { e -> e !in state.eliminated }
             }
         } ?: return Hint.Stuck
-        return Hint.Step(deduction, level, restsOnEarlierHints(state, grid, deduction))
+        return Hint.Step(
+            deduction = deduction,
+            level = level,
+            restsOnEarlierHints = restsOnEarlierHints(state, grid, deduction),
+            evidence = evidenceFor(state, deduction),
+        )
+    }
+
+    /** The digits already spoken for in the three houses of a naked single's cell. */
+    private fun evidenceFor(state: GameState, deduction: Deduction): Hint.Evidence? {
+        if (deduction.technique != TechniqueId.NAKED_SINGLE) return null
+        val (cell, digit) = deduction.placements.firstOrNull() ?: return null
+        val size = state.size
+        val geometry = Geometry.of(state.dims)
+        fun digitsIn(house: House) = geometry.cellsOf(house)
+            .map { state.cells[it].digit }
+            .filter { it != Board.EMPTY }
+            .distinct()
+            .sorted()
+
+        return Hint.Evidence(
+            digit = digit,
+            row = digitsIn(House(HouseKind.ROW, cell / size)),
+            column = digitsIn(House(HouseKind.COLUMN, cell % size)),
+            box = digitsIn(House(HouseKind.BOX, state.dims.boxOf(cell / size, cell % size))),
+        )
     }
 
     /**

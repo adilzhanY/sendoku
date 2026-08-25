@@ -130,8 +130,11 @@ public fun SudokuBoard(
             .background(colors.surface),
     ) {
         val cellSize: Dp = maxWidth / size
-        val digitSize = cellSize.toSp(0.54f)
-        val markSize = cellSize.toSp(0.20f)
+        // Set against the cell rather than fixed, so one board fits a phone and a tablet.
+        // Both were raised after the grid grew: the digits were sized for a board with wide
+        // margins, and the pencil marks had become genuinely hard to read.
+        val digitSize = cellSize.toSp(0.62f)
+        val markSize = cellSize.toSp(0.27f)
 
         Column(Modifier.fillMaxSize()) {
             for (row in 0 until size) {

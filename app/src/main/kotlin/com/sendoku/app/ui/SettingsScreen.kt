@@ -82,6 +82,19 @@ public fun SettingsScreen(
             Text(stringResource(R.string.settings_title), style = Sendoku.type.title, color = colors.given)
         }
 
+        // Sound comes first, because it is the one setting somebody goes looking for in a
+        // hurry. A person who does not want noise wants it off now, not after scrolling
+        // past four themes, and if they cannot find it they turn the app off instead.
+        SectionLabel(stringResource(R.string.settings_feedback))
+        Toggle(
+            label = stringResource(R.string.settings_sound),
+            checked = settings.sound,
+            note = stringResource(R.string.settings_sound_note),
+        ) { onChange(settings.copy(sound = it)) }
+        Toggle(label = stringResource(R.string.settings_haptics), checked = settings.haptics) {
+            onChange(settings.copy(haptics = it))
+        }
+
         SectionLabel(stringResource(R.string.settings_look))
         for (theme in SendokuThemeId.entries) {
             Choice(
@@ -150,14 +163,6 @@ public fun SettingsScreen(
         SectionLabel(stringResource(R.string.settings_clock))
         Toggle(label = stringResource(R.string.settings_show_timer), checked = settings.showTimer) {
             onChange(settings.copy(showTimer = it))
-        }
-
-        SectionLabel(stringResource(R.string.settings_feedback))
-        Toggle(label = stringResource(R.string.settings_haptics), checked = settings.haptics) {
-            onChange(settings.copy(haptics = it))
-        }
-        Toggle(label = stringResource(R.string.settings_sound), checked = settings.sound) {
-            onChange(settings.copy(sound = it))
         }
 
         SectionLabel(stringResource(R.string.settings_mistakes))

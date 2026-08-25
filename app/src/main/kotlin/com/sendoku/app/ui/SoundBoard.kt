@@ -14,8 +14,11 @@ public enum class Sound {
     /** A cell taking the selection. The quietest of them by a long way. */
     TAP,
 
-    /** A digit going in. */
+    /** A digit going in, before anything is known about it. */
     PLACE,
+
+    /** A digit the answer wanted. Warmer than [PLACE], and the one worth hearing. */
+    CORRECT,
 
     /** Notes mode coming on, and going off again, which is the same shape backwards. */
     NOTES_ON,
@@ -36,9 +39,15 @@ public enum class Sound {
  *
  * Every one is a short note from a five note pentatonic set, which is the trick behind why
  * this does not become annoying: there is no pair of notes in that set that clashes, so a
- * fast run of taps comes out as a phrase rather than as noise. They are synthesised sine
- * tones with a fast attack and a quick decay, which is a marimba rather than a bell, and a
- * bell is what makes a phone sound like a slot machine.
+ * fast run of taps comes out as a phrase rather than as noise. They are sine tones with two
+ * quiet harmonics, a raised cosine attack and an exponential release, which is a wooden
+ * mallet rather than a bell, and a bell is what makes a phone sound like a slot machine.
+ * Every file is faded in and out over four milliseconds, because a waveform that starts at a
+ * non zero value is a click, and clicks are most of what makes an app sound cheap.
+ *
+ * Placing a digit and placing the right digit are different sounds. The first is one wooden
+ * note; the second adds the fifth above it, arriving a moment later, which is warm without
+ * being a fanfare. Getting it right forty times a game means the reward has to be small.
  *
  * Two of them earn their loudness and the rest are deliberately under it. Placing a digit is
  * the thing a player did on purpose and gets a clear note; selecting a cell happens forty
@@ -66,6 +75,7 @@ public class SoundBoard(context: Context) {
     private val ids = buildMap {
         put(Sound.TAP, pool.load(context, R.raw.tap, 1))
         put(Sound.PLACE, pool.load(context, R.raw.place, 1))
+        put(Sound.CORRECT, pool.load(context, R.raw.correct, 1))
         put(Sound.NOTES_ON, pool.load(context, R.raw.notes_on, 1))
         put(Sound.NOTES_OFF, pool.load(context, R.raw.notes_off, 1))
         put(Sound.ERASE, pool.load(context, R.raw.erase, 1))
@@ -76,7 +86,8 @@ public class SoundBoard(context: Context) {
     /** Volumes, so the mix is a decision rather than whatever the files happened to be. */
     private fun volumeOf(sound: Sound): Float = when (sound) {
         Sound.TAP -> 0.22f
-        Sound.PLACE -> 0.55f
+        Sound.PLACE -> 0.45f
+        Sound.CORRECT -> 0.55f
         Sound.NOTES_ON, Sound.NOTES_OFF -> 0.40f
         Sound.ERASE -> 0.35f
         Sound.MISTAKE -> 0.50f

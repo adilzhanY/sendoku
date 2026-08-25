@@ -23,6 +23,10 @@ public object NakedSingle : Technique {
                 technique = id,
                 focusCells = listOf(index),
                 focusCandidates = listOf(CellDigit(index, digit)),
+                // The three houses that did the ruling out. The rule itself does not need
+                // them, but a player being told a cell has one digit left needs to be shown
+                // where the other eight went, and these are the three places to look.
+                houses = grid.housesOf(index),
                 placements = listOf(CellDigit(index, digit)),
             )
         }
