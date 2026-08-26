@@ -33,6 +33,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.sendoku.app.R
 import com.sendoku.app.theme.Sendoku
+import com.sendoku.app.ui.shout
 
 /**
  * The course, as a list of what has been done and what is next.
@@ -143,7 +144,7 @@ private fun StageHeading(stage: Stage, done: Int, total: Int) {
         modifier = Modifier.fillMaxWidth().padding(top = dimens.spaceM, bottom = dimens.spaceXs),
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
-        Text(stringResource(stage.title).uppercase(), style = Sendoku.type.overline, color = colors.muted)
+        Text(stringResource(stage.title).shout(), style = Sendoku.type.overline, color = colors.muted)
         Text("$done/$total", style = Sendoku.type.overline, color = colors.muted)
     }
 }

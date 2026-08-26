@@ -11,6 +11,7 @@ room = "2.8.4"
 datastore = "1.2.1"
 coroutines = "1.10.2"
 splashscreen = "1.2.0"
+appcompat = "1.7.1"
 spotless = "8.10.0"
 ktlint = "1.8.0"
 detekt = "1.23.8"
@@ -21,6 +22,9 @@ uiautomator = "2.4.0"
 baselineprofile = "1.5.0-rc01"
 
 [libraries]
+# Taken for one class. AppCompatDelegate.setApplicationLocales is the only way to switch
+# language inside the app below Android 13, where per app languages do not exist yet.
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }

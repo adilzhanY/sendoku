@@ -25,7 +25,7 @@ class HintCopyTest {
     private fun context(language: String): Context {
         val base = InstrumentationRegistry.getInstrumentation().targetContext
         val configuration = Configuration(base.resources.configuration)
-        configuration.setLocale(Locale.forLanguageTag(language))
+        configuration.setLocales(android.os.LocaleList(Locale.forLanguageTag(language)))
         return base.createConfigurationContext(configuration)
     }
 

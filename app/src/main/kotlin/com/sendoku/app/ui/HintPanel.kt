@@ -191,7 +191,7 @@ private fun StepBody(hint: Hint.Step, onGlossary: () -> Unit) {
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Text(
-            text = stringResource(TechniqueCopy.nameOf(technique)).uppercase(),
+            text = stringResource(TechniqueCopy.nameOf(technique)).shout(),
             style = Sendoku.type.overline,
             color = colors.accent,
         )

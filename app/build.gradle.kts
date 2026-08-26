@@ -50,7 +50,10 @@ android {
         // en-XA doubles the length of every string and ar-XB mirrors the layout, both without
         // needing a translator. They are the cheapest way to find a layout that only breaks in
         // German or only breaks in Arabic.
-        resourceConfigurations += listOf("en", "ru", "en-rXA", "ar-rXB")
+        // Every language the app is written in, and nothing else. This list is what actually
+        // ends up in the APK: a translation missing from here is stripped at package time,
+        // and the app quietly falls back to English with no error anywhere.
+        resourceConfigurations += listOf("en", "ru", "de", "tr", "en-rXA", "ar-rXB")
     }
 
     signingConfigs {
@@ -175,6 +178,7 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.core.splashscreen)
+    implementation(libs.androidx.appcompat)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
 

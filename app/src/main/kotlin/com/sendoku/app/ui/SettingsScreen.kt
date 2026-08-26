@@ -18,6 +18,10 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -93,6 +97,21 @@ public fun SettingsScreen(
         ) { onChange(settings.copy(sound = it)) }
         Toggle(label = stringResource(R.string.settings_haptics), checked = settings.haptics) {
             onChange(settings.copy(haptics = it))
+        }
+
+        // Next to the sound switch, at the top, for the same reason: somebody who cannot
+        // read the app cannot go looking for the setting that fixes that.
+        SectionLabel(stringResource(R.string.settings_language))
+        var language by remember { mutableStateOf(Languages.current()) }
+        for (choice in Language.entries) {
+            Choice(
+                label = stringResource(choice.label),
+                detail = null,
+                selected = language == choice,
+            ) {
+                language = choice
+                Languages.choose(choice)
+            }
         }
 
         SectionLabel(stringResource(R.string.settings_look))
@@ -269,7 +288,7 @@ private fun Choice(label: String, detail: String?, selected: Boolean, onSelect: 
 @Composable
 private fun SectionLabel(text: String) {
     Text(
-        text = text.uppercase(),
+        text = text.shout(),
         style = Sendoku.type.overline,
         color = Sendoku.colors.muted,
         modifier = Modifier.padding(top = Sendoku.dimens.spaceM, bottom = Sendoku.dimens.spaceXs),

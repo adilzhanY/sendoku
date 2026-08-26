@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Every language Sendoku is written in. Android 13 and later read this to decide what to
+  offer in the per app language screen, and it is also what tells the Play Store which
+  languages the app supports.
+-->
+<locale-config xmlns:android="http://schemas.android.com/apk/res/android">
+    <locale android:name="en" />
+    <locale android:name="ru" />
+    <locale android:name="de" />
+    <locale android:name="tr" />
+</locale-config>

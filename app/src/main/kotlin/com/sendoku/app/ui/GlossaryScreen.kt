@@ -87,7 +87,7 @@ public fun GlossaryScreen(onBack: () -> Unit, onLesson: (TechniqueId) -> Unit, m
                             color = colors.given,
                         )
                         Text(
-                            text = stringResource(gradeName(Grade.of(technique.cost))).uppercase(),
+                            text = stringResource(gradeName(Grade.of(technique.cost))).shout(),
                             style = Sendoku.type.overline,
                             color = colors.accent,
                         )

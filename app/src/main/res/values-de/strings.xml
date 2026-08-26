@@ -1,0 +1,807 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Deutsch.
+
+  Zwei Entscheidungen, die überall gelten. Die beschreibenden Namen der Techniken sind
+  übersetzt, die erfundenen Eigennamen bleiben englisch: ein X-Wing heißt auch auf Deutsch
+  X-Wing, ein naked single aber nacktes Single. Und der Ton ist derselbe wie im Original:
+  ruhig, direkt, ohne Ausrufezeichen.
+-->
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Sendoku</string>
+    <string name="home_choose_level">STUFE WÄHLEN</string>
+    <string name="home_daily">Täglich</string>
+    <string name="home_new_puzzle">Neues Rätsel</string>
+    <string name="home_resume">Weiter</string>
+    <string name="home_in_progress">ANGEFANGEN</string>
+    <string name="home_percent">%1$s, %2$d %%</string>
+    <string name="home_placed">Gesetzt: %1$d von %2$d</string>
+
+    <string name="grade_gentle">Leicht</string>
+    <string name="grade_steady">Mittel</string>
+    <string name="grade_tricky">Schwer</string>
+    <string name="grade_severe">Sehr schwer</string>
+    <string name="grade_diabolical">Experte</string>
+    <string name="grade_beyond">Meister</string>
+    <string name="grade_insane">Wahnsinn</string>
+    <string name="grade_nightmare">Albtraum</string>
+    <string name="grade_locked">Gewinnen Sie ein Rätsel auf %1$s, um diese Stufe zu öffnen</string>
+    <string name="gate_gentle">eine eindeutige Ziffer nach der anderen</string>
+    <string name="gate_steady">Paare und Ziffern, die an eine Linie gebunden sind</string>
+    <string name="gate_tricky">Tripel und Muster quer über das Gitter</string>
+    <string name="gate_severe">Wings, Färben und Rechtecke</string>
+    <string name="gate_diabolical">Ketten von Schlüssen</string>
+    <string name="gate_beyond">weiter, als die meisten Apps gehen</string>
+    <string name="gate_insane">Zellgruppen, zu einer Kette verbunden</string>
+    <string name="gate_nightmare">eine Zelle in beide Richtungen, auf Papier</string>
+    <string name="grade_advanced">FORTGESCHRITTEN</string>
+    <string name="grade_advanced_talkback">eine fortgeschrittene Stufe, für die eine Technik aus dem Kurs nötig ist</string>
+
+    <string name="tool_undo">Zurück</string>
+    <string name="tool_redo">Vor</string>
+    <string name="tool_erase">Löschen</string>
+    <string name="tool_notes">Notizen</string>
+    <string name="tool_hint">Tipp</string>
+    <string name="paused">PAUSE</string>
+    <string name="paused_tap">Tippen Sie irgendwohin, um weiterzuspielen</string>
+    <string name="mistakes_of">%1$d von %2$d</string>
+
+    <string name="cell_position">Zeile %1$d, Spalte %2$d</string>
+    <string name="cell_clue">%1$s, %2$d, vorgegeben</string>
+    <string name="cell_digit">%1$s, %2$d</string>
+    <string name="cell_empty">%1$s, leer</string>
+    <string name="cell_noted">%1$s, leer, notiert %2$s</string>
+    <string name="cell_hint_argument">%1$s. Teil des Tipps.</string>
+    <string name="cell_hint_struck">%1$s. Der Tipp streicht hier eine Notiz.</string>
+    <string name="cell_hint_region">%1$s. In dem Bereich, um den es im Tipp geht.</string>
+    <string name="cell_repeated">%1$s, doppelt</string>
+
+    <string name="pad_all_placed">%1$d, alle gesetzt</string>
+    <string name="pad_one_left">%1$d, eine übrig</string>
+    <string name="pad_scanning">%1$s, zeigt, wohin sie noch passt</string>
+    <string name="pad_notes_mode">%1$s, Notizmodus</string>
+
+    <string name="cell_actions_title">ZEILE %1$d, SPALTE %2$d</string>
+    <string name="cell_actions_clue">Diese Ziffer kam mit dem Rätsel und lässt sich nicht ändern.</string>
+    <string name="cell_actions_clear_notes">Notizen wegradieren</string>
+    <string name="why_not_title">WARUM NICHT?</string>
+    <string name="why_not_prompt">Tippen Sie eine Ziffer an, und Sie erfahren, was ihr im Weg steht.</string>
+    <string name="why_not_taken">In %2$s steht bereits eine %1$d, in Zeile %3$d, Spalte %4$d.</string>
+    <string name="why_not_filled">In dieser Zelle steht schon eine %1$d. Radieren Sie sie zuerst weg.</string>
+    <string name="why_not_possible">Auf dem Brett spricht nichts gegen %1$d. Das macht sie nicht richtig, nur möglich.</string>
+    <string name="cell_actions_clear">Zelle leeren</string>
+
+    <string name="leave_title">Dieses Rätsel verlassen?</string>
+    <string name="leave_body">Es wartet da, wo Sie aufgehört haben.</string>
+    <string name="leave_confirm">Verlassen</string>
+    <string name="leave_cancel">Bleiben</string>
+
+    <string name="outcome_solved">GELÖST</string>
+    <string name="outcome_lost">KEINE FEHLER MEHR ÜBRIG</string>
+    <string name="outcome_rated">%1$s, bewertet mit %2$s</string>
+    <string name="outcome_hints">TIPPS</string>
+    <string name="outcome_mistakes">FEHLER</string>
+    <string name="outcome_moves">ZÜGE</string>
+    <string name="outcome_needed">Brauchte %1$s</string>
+    <string name="outcome_home">Start</string>
+    <string name="outcome_another">Noch ein %1$s</string>
+
+    <string name="hint_remove_one">Wegnehmen</string>
+    <string name="hint_remove_many">Alle wegnehmen</string>
+    <string name="hint_look_here_title">HIER SCHAUEN</string>
+    <string name="hint_look_here">%1$s gibt es etwas zu finden. Mehr sagt dieser Tipp nicht.</string>
+    <string name="hint_look_around">Es gibt einen Schritt zu finden. Dieser liegt quer über dem Gitter und nicht in einem einzelnen Bereich.</string>
+    <string name="hint_what_kind">Was für ein Schritt?</string>
+    <string name="hint_menu_title">HILFE</string>
+    <string name="hint_menu_difficulty">Der nächste Schritt braucht eine Technik der Stufe %1$s.</string>
+    <string name="hint_menu_broken">Etwas, das Sie gesetzt haben, ist falsch, und bis das behoben ist, folgt nichts weiter.</string>
+    <string name="hint_menu_check">Stimmt etwas nicht?</string>
+    <string name="hint_menu_look">Wo soll ich suchen?</string>
+    <string name="hint_menu_explain">Nächsten Schritt erklären</string>
+    <string name="hint_menu_free">Fragen kostet hier nichts. Das Limit ist aus.</string>
+    <string name="hint_check_clean">Alles, was Sie gesetzt haben, ist richtig.</string>
+    <string name="hint_close">Schließen</string>
+    <string name="hint_where">Zeig mir wo</string>
+    <string name="hint_explain">Erklär es</string>
+    <string name="hint_do_it">Mach das</string>
+    <string name="hint_evidence">In der Zeile stehen schon %1$s. In der Spalte stehen %2$s. Im Block stehen %3$s. Zusammen ist das jede Ziffer außer der %4$d.</string>
+    <string name="hint_rests_on_earlier">Ein Teil davon beruht auf Notizen, die ein früherer Tipp ausgeschlossen hat. Sie stehen auf dem Brett, Sie können also von dort weiterdenken.</string>
+    <string name="hint_what_is_this">WAS IST DAS?</string>
+    <string name="hint_wrong_title">ETWAS STIMMT NICHT</string>
+    <string name="hint_wrong_one">Eine der Ziffern, die Sie gesetzt haben, kann nicht stimmen. Sie ist hervorgehoben.</string>
+    <string name="hint_wrong_many">%1$d der Ziffern, die Sie gesetzt haben, können nicht stimmen. Sie sind hervorgehoben.</string>
+    <string name="hint_wrong_until_one">Bis das behoben ist, lässt sich nichts weiter herleiten.</string>
+    <string name="hint_wrong_until_many">Bis das behoben ist, lässt sich nichts weiter herleiten.</string>
+    <string name="hint_done_title">FERTIG</string>
+    <string name="hint_done_body">Das Rätsel ist gelöst.</string>
+    <string name="hint_stuck_title">NICHTS VORZUSCHLAGEN</string>
+    <string name="hint_stuck_body">Dieses Brett ist regelkonform, aber keine Technik, die Sendoku kennt, passt darauf. Bei einem Rätsel aus der App sollte das nicht vorkommen.</string>
+    <string name="hint_in_region">in %1$s</string>
+    <string name="hint_in_regions">in %1$s und %2$s</string>
+    <string name="hint_outcome_place">Also ist Zeile %1$d, Spalte %2$d eine %3$d.</string>
+    <string name="hint_outcome_strike_one">Also kann die %1$d aus %2$s weg.</string>
+    <string name="hint_outcome_strike_two">Also können die %1$d und die %2$d aus %3$s weg.</string>
+    <string name="house_row">Zeile %1$d</string>
+    <string name="house_column">Spalte %1$d</string>
+    <string name="house_box">Block %1$d</string>
+
+    <string name="glossary_title">Techniken</string>
+    <string name="back">ZURÜCK</string>
+    <string name="settings_title">Einstellungen</string>
+    <string name="settings_language">Sprache</string>
+    <string name="language_system">Wie das Telefon</string>
+    <string name="language_english">English</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_german">Deutsch</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="settings_look">Aussehen</string>
+    <string name="settings_light_or_dark">Hell oder dunkel</string>
+    <string name="settings_terminal_is_dark">Terminal ist dunkel, wie das Telefon auch eingestellt ist. Das ist Absicht.</string>
+    <string name="settings_board">Das Brett</string>
+    <string name="settings_highlight_peers">Zeile, Spalte und Block hervorheben</string>
+    <string name="settings_highlight_same">Dieselbe Ziffer anderswo hervorheben</string>
+    <string name="settings_auto_clear">Notizen wegradieren, die eine gesetzte Ziffer ausschließt</string>
+    <string name="settings_auto_notes">In jeder Zelle Notizen führen</string>
+    <string name="settings_auto_notes_note">Die App führt Buch. Ab Experte ist das fast unverzichtbar.</string>
+    <string name="settings_highlight_homes">Zeigen, wohin die gewählte Ziffer noch passt</string>
+    <string name="settings_auto_check">Sofort sagen, wenn eine Ziffer falsch ist</string>
+    <string name="settings_auto_check_note">Damit ist ein Versuch nie ein Risiko, und das Rätsel verliert fast seine ganze Spannung.</string>
+    <string name="settings_auto_check_forced">An, solange ein Fehlerlimit läuft, denn ein Fehler, der zählt, muss auch zu sehen sein. Schalten Sie das Limit unten aus, um ohne beides zu spielen.</string>
+    <string name="settings_flag_conflicts">Ziffer markieren, die sich in Zeile, Spalte oder Block wiederholt</string>
+    <string name="settings_clock">Die Uhr</string>
+    <string name="settings_show_timer">Uhr anzeigen</string>
+    <string name="settings_feedback">Rückmeldung</string>
+    <string name="settings_haptics">Vibrieren, wenn eine Ziffer gesetzt wird</string>
+    <string name="settings_sound">Töne</string>
+    <string name="settings_sound_note">Leise Töne beim Spielen. Aus ist einen Tipp entfernt, und der Lautlosmodus des Telefons zählt ohnehin mehr.</string>
+    <string name="settings_mistakes">Fehler</string>
+    <string name="settings_mistake_limit">Spiel nach drei Fehlern beenden</string>
+    <string name="settings_mistake_note">Standardmäßig an, bei drei. Für die schweren Stufen lieber aus, denn eine Stunde an einen Ausrutscher zu verlieren ist bitter.</string>
+    <string name="settings_about">ÜBER SENDOKU</string>
+
+    <string name="theme_deep_field">Deep Field</string>
+    <string name="theme_deep_field_summary">Echtes Schwarz, ein Cyan als Akzent, sonst nichts</string>
+    <string name="theme_ink">Tinte und Papier</string>
+    <string name="theme_ink_summary">Ein Rätselheft, gedruckt auf warmem Papier</string>
+    <string name="theme_zen">Schiefer-Zen</string>
+    <string name="theme_zen_summary">Salbei und Stein, und so wenig sonst wie möglich</string>
+    <string name="theme_terminal">Terminal</string>
+    <string name="theme_terminal_summary">Monospace, harte Kanten, nur dunkel</string>
+    <string name="mode_system">Wie das System</string>
+    <string name="mode_light">Immer hell</string>
+    <string name="mode_dark">Immer dunkel</string>
+
+    <string name="stats_title">Statistik</string>
+    <string name="stats_solved">GELÖST</string>
+    <string name="stats_streak">SERIE</string>
+    <string name="stats_hardest">SCHWERSTES</string>
+    <string name="stats_hardest_note">Das Schwerste, das Sie geschafft haben, ist ein %1$s.</string>
+    <string name="stats_totals">%1$s gespielt, Tipps genommen: %2$d.</string>
+    <string name="stats_by_grade">Nach Stufe</string>
+    <string name="stats_hints_title">WONACH SIE GEFRAGT HABEN</string>
+    <string name="stats_hints_note">Am häufigsten fragen Sie nach %1$s. Das ist die Lektion, zu der es sich zurückzukehren lohnt.</string>
+    <string name="stats_needed">Was Ihre Rätsel gebraucht haben</string>
+    <string name="stats_solved_count">Gelöst: %1$d</string>
+    <string name="stats_solved_and_lost">Gelöst: %1$d, verloren: %2$d</string>
+    <string name="stats_average">Ø %1$s</string>
+    <string name="stats_reset">STATISTIK ZURÜCKSETZEN</string>
+    <string name="stats_reset_title">Verlauf wegwerfen?</string>
+    <string name="stats_reset_body">Jedes gelöste Rätsel, jede Serie und jede Bestzeit. Es gibt nirgends eine Kopie, das lässt sich also nicht rückgängig machen.</string>
+    <string name="stats_reset_confirm">Zurücksetzen</string>
+    <string name="stats_reset_cancel">Behalten</string>
+    <string name="stats_empty_title">Noch nichts</string>
+    <string name="stats_empty_body">Lösen Sie ein Rätsel, und hier steht: wie lange Sie für jede Stufe brauchen, wie weit Sie gekommen sind und welche Techniken Ihre Rätsel gebraucht haben.</string>
+
+    <string name="about_title">Über</string>
+    <string name="about_version">Sendoku %1$s</string>
+    <string name="about_tagline">Eine Sudoku-App für alle, denen die schweren Sudokus ausgegangen sind.</string>
+    <string name="about_no_ads">Keine Werbung</string>
+    <string name="about_no_ads_detail">Nicht zwischen Rätseln, nicht für Tipps, nie.</string>
+    <string name="about_no_tracking">Kein Tracking</string>
+    <string name="about_no_tracking_detail">Nichts wird gemessen und nichts gesendet. Es gibt keinen Server.</string>
+    <string name="about_no_purchases">Keine Käufe</string>
+    <string name="about_no_purchases_detail">Jedes Rätsel und jeder Tipp ist schon da.</string>
+    <string name="about_offline">Läuft offline</string>
+    <string name="about_offline_detail">Der ganze Stapel steckt in der App.</string>
+    <string name="about_hints">Tipps, die etwas beibringen</string>
+    <string name="about_hints_detail">Ein Tipp nennt die Technik und erklärt den Gedanken. Er setzt nie einfach eine Ziffer ein, und er wird nie verkauft: drei gehören zu jedem Rätsel, und das Limit lässt sich in den Einstellungen abschalten.</string>
+    <string name="about_rating">Die Schwierigkeit richtet sich nach der schwersten Technik, die ein Rätsel wirklich braucht, ermittelt, indem es so gelöst wird, wie ein Mensch es täte. Deshalb bedeutet ein Sehr schwer hier dasselbe wie das letzte Sehr schwer.</string>
+    <string name="about_licence">Sendoku ist freie Software unter der GNU General Public License Version 3.</string>
+    <string name="about_privacy">Die Datenschutzerklärung sagt dasselbe in der Form, die der Store verlangt, unter adilzhany.github.io/sendoku/privacy</string>
+    <string name="about_licences">OPEN-SOURCE-LIZENZEN</string>
+    <string name="licences_title">Lizenzen</string>
+
+    <string name="look_naked_single">Es gibt eine Zelle, in die nur noch eine einzige Ziffer passt.</string>
+    <string name="look_hidden_single">Es gibt eine Ziffer, für die nur noch ein Platz übrig ist.</string>
+    <string name="look_locked_candidates_pointing">In einem Block sitzt eine Ziffer nur noch in einer Zeile oder Spalte.</string>
+    <string name="look_locked_candidates_claiming">Auf einer Linie kann eine Ziffer nur noch in einem Block stehen.</string>
+    <string name="look_naked_pair">Zwei Zellen eines Bereichs halten dieselben zwei Ziffern und sonst nichts.</string>
+    <string name="look_hidden_pair">Zwei Ziffern können in einem Bereich nirgends hin außer in dieselben zwei Zellen.</string>
+    <string name="look_naked_triple">Drei Zellen eines Bereichs teilen sich drei Ziffern.</string>
+    <string name="look_hidden_triple">Drei Ziffern sind auf dieselben drei Zellen beschränkt.</string>
+    <string name="look_naked_quad">Vier Zellen eines Bereichs teilen sich vier Ziffern.</string>
+    <string name="look_hidden_quad">Vier Ziffern sind auf dieselben vier Zellen beschränkt.</string>
+    <string name="look_x_wing">Zwei Zeilen halten eine Ziffer in denselben zwei Spalten, oder umgekehrt.</string>
+    <string name="look_swordfish">Drei Zeilen halten eine Ziffer in denselben drei Spalten.</string>
+    <string name="look_jellyfish">Vier Zeilen halten eine Ziffer in denselben vier Spalten.</string>
+    <string name="look_xy_wing">Drei Zellen mit je zwei Ziffern, so gestellt, dass eine Ziffer herausgedrückt wird.</string>
+    <string name="look_xyz_wing">Wie ein XY-Wing, nur hat die mittlere Zelle noch eine dritte Ziffer.</string>
+    <string name="look_w_wing">Zwei Zellen mit demselben Paar, verbunden durch eine Ziffer mit nur zwei Plätzen.</string>
+    <string name="look_simple_colouring">Eine Ziffer bildet eine Kette, die durchgehend abwechselt.</string>
+    <string name="look_multi_colouring">Zwei getrennte Ketten auf einer Ziffer, gegeneinander ausgespielt.</string>
+    <string name="look_remote_pairs">Eine Kette von Zellen, die alle genau dieselben zwei Ziffern halten.</string>
+    <string name="look_unique_rectangle">Vier Zellen bilden ein Rechteck, das dem Rätsel zwei Lösungen geben würde.</string>
+    <string name="look_bug_plus_one">Jede Zelle bis auf eine ist auf zwei Ziffern herunter.</string>
+    <string name="look_x_chain">Eine Kette auf einer Ziffer, abwechselnd muss und kann nicht.</string>
+    <string name="look_xy_chain">Eine Kette aus Zellen mit je zwei Ziffern, von denen jede die nächste erzwingt.</string>
+    <string name="look_forcing_chain">Eine Zelle mit genau zwei Möglichkeiten, wenn sonst nichts mehr zu finden ist.</string>
+    <string name="look_death_blossom">Eine Zelle, und zu jeder Ziffer, die sie sein kann, eine Gruppe, in der die Zelle diese Ziffer überall sieht.</string>
+    <string name="look_als_xy_wing">Drei Gruppen, denen je eine Ziffer zur Vollständigkeit fehlt, durch zwei verschiedene Ziffern zu einer Linie verbunden.</string>
+    <string name="look_sue_de_coq">Ein Block und eine Linie kreuzen sich, und die gemeinsamen Zellen halten zwei Ziffern mehr, als sie fassen können.</string>
+    <string name="look_als_xz">Zwei Zellgruppen, denen je eine Ziffer fehlt, um festgelegt zu sein.</string>
+
+    <string name="because_naked_single">Jede andere Ziffer steht bereits in ihrer Zeile, ihrer Spalte oder ihrem Block, also bleibt nur eine übrig. Die muss hierhin.</string>
+    <string name="because_hidden_single">Der Bereich braucht diese Ziffer irgendwo, und jede andere Zelle darin ist ausgeschlossen, also ist das der einzige Platz.</string>
+    <string name="because_locked_candidates_pointing">Der Block muss diese Ziffer irgendwo halten, und alle möglichen Plätze liegen auf einer Linie. Also steht die Ziffer auf dieser Linie und kann sonst nirgends darauf stehen.</string>
+    <string name="because_locked_candidates_claiming">Die Linie muss diese Ziffer irgendwo halten, und alle möglichen Plätze liegen in einem Block. Also steht die Ziffer in diesem Block und kann sonst nirgends darin stehen.</string>
+    <string name="because_naked_pair">Diese beiden Zellen nehmen die beiden Ziffern unter sich auf, je eine. Keine andere Zelle des Bereichs kann eine davon haben.</string>
+    <string name="because_hidden_pair">Der Bereich braucht beide Ziffern, und nur diese zwei Zellen können sie aufnehmen, also nehmen sie je eine. Alles andere in diesen beiden Zellen fällt weg.</string>
+    <string name="because_naked_triple">Drei Zellen, drei Ziffern, je eine. Nichts anderes im Bereich kann sie nutzen, auch wenn keine einzelne Zelle alle drei hält.</string>
+    <string name="because_hidden_triple">Drei Ziffern, die sonst nirgends hin können, füllen zusammen drei Zellen, also ist alles andere in diesen Zellen unmöglich.</string>
+    <string name="because_naked_quad">Vier Zellen nehmen zusammen vier Ziffern auf, was alle vier aus dem übrigen Bereich aussperrt.</string>
+    <string name="because_hidden_quad">Vier Ziffern, auf vier Zellen beschränkt, füllen diese zusammen aus, also kann dort nichts anderes wohnen.</string>
+    <string name="because_x_wing">Jede der beiden Zeilen braucht die Ziffer einmal, und beide können sie nur in dieselben zwei Spalten setzen. Zusammen verbrauchen sie beide Spalten, also kann keine andere Zeile die Ziffer dort haben.</string>
+    <string name="because_swordfish">Drei Zeilen brauchen die Ziffer, und es gibt nur drei Spalten dafür. Die drei Zeilen verbrauchen alle drei Spalten, also kann nichts anderes in diesen Spalten sie haben.</string>
+    <string name="because_jellyfish">Vier Zeilen und vier Spalten, wieder dasselbe Argument. Die vier Zeilen füllen zusammen alle vier Spalten.</string>
+    <string name="because_xy_wing">Die mittlere Zelle ist eine ihrer beiden Ziffern. So oder so wird eine der beiden äußeren Zellen auf die gemeinsame Ziffer gezwungen, also kann nichts, was beide sieht, diese Ziffer sein.</string>
+    <string name="because_xyz_wing">Die mittlere Zelle kann auch die gemeinsame Ziffer sein, deshalb ist der Schluss schwächer: nur eine Zelle, die alle drei sieht, verliert sie.</string>
+    <string name="because_w_wing">Nähme keine der beiden Paarzellen die zweite Ziffer, nähmen beide die erste, und der verbundene Bereich hätte keinen Platz mehr dafür. Also ist eine von beiden die zweite Ziffer.</string>
+    <string name="because_simple_colouring">Färben Sie die Kette abwechselnd, und genau eine Farbe ist wahr. Entweder landet eine Farbe zweimal in einem Bereich und ist damit falsch, oder eine Zelle außerhalb sieht beide Farben und verliert die Ziffer, wie es auch ausgeht.</string>
+    <string name="because_multi_colouring">Eine Farbe der ersten Kette widerspricht einer Farbe der zweiten, was die Ziffer in eine der beiden Gegenfarben zwingt. Alles, was beide sieht, kann sie nicht halten.</string>
+    <string name="because_remote_pairs">Nachbarn in der Kette sehen einander, also wechseln sie sich ab. Die beiden Enden liegen eine ungerade Zahl von Schritten auseinander und halten daher je eine Ziffer, und was beide sieht, kann keine davon haben.</string>
+    <string name="because_unique_rectangle">Hielten diese vier Zellen nichts als dieselben zwei Ziffern, ließen sie sich im Rechteck vertauschen und das Rätsel hätte zwei Lösungen. Es hat eine, also ist diese Anordnung unmöglich.</string>
+    <string name="because_bug_plus_one">Nähme man den zusätzlichen Kandidaten weg, käme jede Ziffer in jedem Bereich genau zweimal vor, und ein solches Gitter hat immer eine gerade Zahl von Lösungen. Dieses Rätsel hat eine, also ist der zusätzliche Kandidat die Antwort.</string>
+    <string name="because_x_chain">Die Kette wechselt zwischen Plätzen, an denen die Ziffer stehen muss, und solchen, an denen sie nicht stehen kann. Die beiden Enden können nicht beide leer davon sein, also verliert sie, was beide sieht.</string>
+    <string name="because_xy_chain">Angenommen, die erste Zelle ist nicht die Ziffer. Folgen Sie der Kette, und die letzte Zelle wird dazu gezwungen. Also hält das eine oder das andere Ende sie.</string>
+    <string name="because_forcing_chain">Verfolgen Sie beide Möglichkeiten. Lässt eine davon eine Zelle übrig, in die nichts mehr passt, war sie nie möglich und fällt weg. Setzen beide dieselbe Ziffer an dieselbe Stelle, gehört sie dorthin, welche von beiden auch zutrifft. Nichts hier hängt davon ab, dass die Annahme stimmt, und genau das macht es zu einem Beweis und nicht zu einer Vermutung.</string>
+    <string name="because_death_blossom">Was die Zelle am Ende auch ist, sie schlägt ihre eigene Ziffer aus der passenden Gruppe heraus, und diese Gruppe ist dann voll und muss jede Ziffer nutzen, die ihr bleibt. Halten alle Gruppen dieselbe übrige Ziffer, landet diese in einer von ihnen, wie die Zelle auch ausfällt. Alles, was sie in allen Gruppen sieht, verliert sie.</string>
+    <string name="because_als_xy_wing">Ist die bedrohte Ziffer aus der ersten Gruppe verschwunden, ist diese Gruppe voll und muss die Ziffer nehmen, die sie mit der mittleren teilt. Die mittlere Gruppe verliert daraufhin diese Ziffer, ist also ebenfalls voll und nimmt die Ziffer, die sie mit der dritten teilt. Die dritte Gruppe ist dann auch voll und muss die bedrohte Ziffer nutzen. Also kann keine Zelle, die sie in beiden äußeren Gruppen sieht, sie haben.</string>
+    <string name="because_sue_de_coq">Die gemeinsamen Zellen verbrauchen alle ihre Ziffern bis auf zwei, und die beiden Gruppen zu den Seiten beanspruchen genau diese zwei. Also wird jede Ziffer der Gruppe auf der Linie innerhalb der Linie verbraucht und jede Ziffer der Gruppe im Block innerhalb des Blocks. Sonst kann sie dort niemand mehr haben.</string>
+    <string name="because_als_xz">Eine gemeinsame Ziffer kann nur in einer der beiden Gruppen auftauchen, was die andere Gruppe festlegt und zwingt, jede Ziffer zu nutzen, die sie hat. Also landet die zweite gemeinsame Ziffer in der einen oder der anderen Gruppe.</string>
+
+    <string name="technique_naked_single">Nacktes Single</string>
+    <string name="technique_hidden_single">Verstecktes Single</string>
+    <string name="technique_locked_candidates_pointing">Zeigendes Paar oder Tripel</string>
+    <string name="technique_locked_candidates_claiming">Beanspruchendes Paar oder Tripel</string>
+    <string name="technique_naked_pair">Nacktes Paar</string>
+    <string name="technique_hidden_pair">Verstecktes Paar</string>
+    <string name="technique_naked_triple">Nacktes Tripel</string>
+    <string name="technique_hidden_triple">Verstecktes Tripel</string>
+    <string name="technique_naked_quad">Nacktes Quadrupel</string>
+    <string name="technique_hidden_quad">Verstecktes Quadrupel</string>
+    <string name="technique_x_wing">X-Wing</string>
+    <string name="technique_simple_colouring">Einfaches Färben</string>
+    <string name="technique_xy_wing">XY-Wing</string>
+    <string name="technique_xyz_wing">XYZ-Wing</string>
+    <string name="technique_w_wing">W-Wing</string>
+    <string name="technique_swordfish">Swordfish</string>
+    <string name="technique_remote_pairs">Entfernte Paare</string>
+    <string name="technique_unique_rectangle">Eindeutiges Rechteck</string>
+    <string name="technique_bug_plus_one">BUG plus eins</string>
+    <string name="technique_jellyfish">Jellyfish</string>
+    <string name="technique_multi_colouring">Mehrfaches Färben</string>
+    <string name="technique_x_chain">X-Chain</string>
+    <string name="technique_xy_chain">XY-Chain</string>
+    <string name="technique_als_xz">ALS XZ</string>
+    <string name="technique_sue_de_coq">Sue de Coq</string>
+    <string name="technique_als_xy_wing">ALS XY-Wing</string>
+    <string name="technique_death_blossom">Death Blossom</string>
+    <string name="technique_forcing_chain">Zwangskette</string>
+
+    <string name="daily_title">Täglich</string>
+    <string name="daily_no_streak">Noch keine Serie. Lösen Sie das heutige Rätsel, um eine zu beginnen.</string>
+    <string name="daily_previous_month">FRÜHER</string>
+    <string name="daily_next_month">SPÄTER</string>
+    <string name="daily_cell_solved">gelöst</string>
+    <string name="daily_cell_attempted">gespielt, aber nicht beendet</string>
+    <string name="daily_cell_unplayed">nicht gespielt</string>
+    <string name="daily_cell_future">noch nicht</string>
+    <string name="daily_play_today">Heutiges spielen</string>
+    <string name="daily_cell">%1$d, %2$s, %3$s</string>
+    <string name="daily_cell_today">heute, %1$d, %2$s, %3$s</string>
+
+    <string name="stat_difficulty">Stufe</string>
+    <string name="stat_mistakes">Fehler</string>
+    <string name="stat_hints">Tipps</string>
+    <string name="stat_time">Zeit</string>
+    <string name="stat_pause">Pause</string>
+
+    <string name="stage_first_steps">Erste Schritte</string>
+    <string name="stage_one_at_a_time">Eine Ziffer nach der anderen</string>
+    <string name="stage_notes">Notizen</string>
+    <string name="stage_locked_to_a_line">An eine Linie gebundene Ziffern</string>
+    <string name="stage_groups">Gruppen</string>
+    <string name="stage_patterns">Muster über das Gitter</string>
+    <string name="stage_wings">Wings</string>
+    <string name="stage_colouring">Färben</string>
+    <string name="stage_one_answer">Eine Lösung vorausgesetzt</string>
+    <string name="stage_chains">Ketten</string>
+    <string name="stage_the_far_end">Das andere Ende</string>
+    <string name="stage_the_deep_end">Ins tiefe Wasser</string>
+
+    <string name="course_title">Lernen</string>
+    <string name="course_lesson_done">abgeschlossen</string>
+    <string name="course_lesson_next">als Nächstes</string>
+    <string name="course_lesson_todo">nicht begonnen</string>
+
+    <string name="settings_hint_detail">WIE VIEL EIN TIPP SAGT</string>
+    <string name="hint_detail_region">Nur den Bereich</string>
+    <string name="hint_detail_region_note">Welcher Block oder welche Linie, und sonst nichts.</string>
+    <string name="hint_detail_name">Die Technik</string>
+    <string name="hint_detail_name_note">Was für ein Schritt es ist, damit Sie wissen, wonach Sie suchen.</string>
+    <string name="hint_detail_cells">Die Zellen</string>
+    <string name="hint_detail_cells_note">Die Zellen, auf denen das Argument ruht, auf dem Brett hervorgehoben.</string>
+    <string name="hint_detail_full">Das ganze Argument</string>
+    <string name="hint_detail_full_note">Alles, samt dem Zug. Zum Durcharbeiten des Kurses.</string>
+
+    <string name="path_title">Wie es gelöst wurde</string>
+    <string name="path_placed">Zeile %1$d, Spalte %2$d ist eine %3$d.</string>
+    <string name="outcome_path">ZEIGEN, WIE ES GELÖST WURDE</string>
+
+    <string name="settings_your_data">Ihre Daten</string>
+    <string name="settings_data_note">Alles, was diese App über Sie weiß, liegt auf diesem Telefon. Der Export schreibt es in eine Datei Ihrer Wahl, damit ein neues Telefon dort weitermachen kann, wo dieses aufgehört hat. Nichts wird irgendwohin gesendet.</string>
+    <string name="settings_export">Meinen Fortschritt exportieren</string>
+    <string name="settings_import">Aus einer Datei importieren</string>
+    <string name="settings_reset_course">Kurs zurücksetzen, Spiele behalten</string>
+    <string name="settings_exported">Gespeichert. Lektionen: %1$d. Spiele: %2$d.</string>
+    <string name="settings_imported">Übernommen. Lektionen: %1$d. Spiele: %2$d.</string>
+    <string name="settings_imported_ignored">Übernommen. Lektionen: %1$d. Spiele: %2$d. Ausgelassen, weil aus einer neueren Version: %3$d.</string>
+    <string name="settings_import_empty">Diese Datei ist leer.</string>
+    <string name="settings_import_not_ours">Das sieht nicht nach einem Sendoku-Export aus.</string>
+    <string name="settings_import_future">Diese Datei stammt aus einer neueren Version von Sendoku.</string>
+    <string name="settings_import_failed">Diese Datei ließ sich nicht lesen, und auf diesem Telefon wurde nichts geändert.</string>
+    <string name="settings_course_reset">Der Kurs steht wieder am Anfang. Ihre Spiele sind unberührt.</string>
+
+    <string name="practice_looking">Suche nach einer Stellung …</string>
+    <string name="practice_find">Finden Sie das %1$s.</string>
+    <string name="practice_keep_going">Das ist eine davon. Weiter so.</string>
+    <string name="practice_wrong">Diese Zelle nicht. Lesen Sie die Regel noch einmal: ein %1$s ruht nicht darauf.</string>
+    <string name="practice_right">Das ist das %1$s. Was es ausschließt, ist markiert.</string>
+    <string name="practice_revealed">Hier ist das %1$s, und was es ausschließt.</string>
+    <string name="practice_show_me">Zeig es mir</string>
+    <string name="practice_another">Noch eins</string>
+    <string name="practice_skip">Überspringen</string>
+    <string name="practice_title">Üben</string>
+    <string name="practice_none">Noch nichts zu üben. Schließen Sie zuerst eine Lektion ab, die eine Technik beibringt.</string>
+
+    <string name="glossary_learn_this">DAS LERNEN</string>
+    <string name="hint_learn_this">Bring mir das bei</string>
+    <string name="outcome_learn">%1$s lernen</string>
+    <string name="course_finished">Alles geschafft. Alles, was die App benennen kann, können Sie benennen. Der Rest sind die Rätsel.</string>
+    <string name="outcome_lost_hints">KEINE TIPPS MEHR ÜBRIG</string>
+    <string name="outcome_share">Teilen</string>
+    <string name="card_solved">Gelöst</string>
+    <string name="card_lost">Geschlagen von</string>
+
+    <string name="settings_hints">Tipps</string>
+    <string name="settings_hint_limit">Spiel nach drei Tipps beenden</string>
+    <string name="settings_hint_note">Standardmäßig an. Drei Tipps sind frei, der vierte kostet das Spiel, und das macht einen Tipp zu einer Entscheidung statt zu einem Reflex. Schalten Sie es aus, solange Sie den Kurs durcharbeiten.</string>
+
+    <string name="account_title">Sie</string>
+    <string name="account_no_account">Es gibt kein Konto, in das man sich einloggen könnte. Alles hier unten liegt auf diesem Telefon und sonst nirgends.</string>
+    <string name="account_solved">Gelöst</string>
+    <string name="account_streak">Serie</string>
+    <string name="account_played">Gespielt</string>
+    <string name="account_time">Zeit</string>
+    <string name="account_lessons">Lektionen</string>
+    <string name="account_stats">Statistik</string>
+    <string name="account_stats_detail">Jede Stufe, Ihre Bestzeiten und die Techniken, denen Sie begegnet sind</string>
+    <string name="account_settings_detail">Das Aussehen, das Brett, die Limits und Ihre Daten</string>
+    <string name="account_about_detail">Was diese App verspricht, und die Lizenzen, auf denen sie steht</string>
+
+    <string name="tab_home">Start</string>
+    <string name="tab_learn">Lernen</string>
+    <string name="tab_account">Sie</string>
+
+    <plurals name="pad_left">
+        <item quantity="one">%1$d, %2$d übrig</item>
+        <item quantity="other">%1$d, %2$d übrig</item>
+    </plurals>
+    <plurals name="cell_actions_note_all">
+        <item quantity="one">Den einzigen Kandidaten notieren</item>
+        <item quantity="other">Alle %1$d Kandidaten notieren</item>
+    </plurals>
+    <plurals name="hint_cells">
+        <item quantity="one">eine Zelle</item>
+        <item quantity="other">%1$d Zellen</item>
+    </plurals>
+    <plurals name="stats_longest_run" tools:ignore="Typos">
+        <item quantity="one">Ihre längste Serie war ein Tag.</item>
+        <item quantity="other">Ihre längste Serie waren %1$d Tage.</item>
+    </plurals>
+    <plurals name="daily_streak" tools:ignore="Typos">
+        <item quantity="one">%1$d Tag in Folge</item>
+        <item quantity="other">%1$d Tage in Folge</item>
+    </plurals>
+    <plurals name="course_progress">
+        <item quantity="one">%1$d von %2$d Lektion</item>
+        <item quantity="other">%1$d von %2$d Lektionen</item>
+    </plurals>
+    <plurals name="hint_menu_left">
+        <item quantity="one">Die letzten beiden kosten einen Tipp, und Sie haben noch %1$d.</item>
+        <item quantity="other">Die letzten beiden kosten einen Tipp, und Sie haben noch %1$d.</item>
+    </plurals>
+    <plurals name="hint_check_wrong">
+        <item quantity="one">%1$d Ziffer, die Sie gesetzt haben, ist falsch. Sie zu finden bleibt Ihre Sache.</item>
+        <item quantity="other">%1$d Ziffern, die Sie gesetzt haben, sind falsch. Sie zu finden bleibt Ihre Sache.</item>
+    </plurals>
+    <plurals name="path_summary">
+        <item quantity="one">%1$d Schritt, günstigste Regel zuerst, genau so, wie die App es bewertet hat.</item>
+        <item quantity="other">%1$d Schritte, günstigste Regel zuerst, genau so, wie die App es bewertet hat.</item>
+    </plurals>
+    <plurals name="path_struck">
+        <item quantity="one">Schließt %1$d Notiz aus.</item>
+        <item quantity="other">Schließt %1$d Notizen aus.</item>
+    </plurals>
+
+    <!-- Der Kurs. Erste Schritte. -->
+    <string name="lesson_what_is_title">Was ein Sudoku ist</string>
+    <string name="lesson_what_is_summary">Jede Zeile, jede Spalte und jeder Block enthält jede Ziffer genau einmal.</string>
+    <string name="lesson_what_is_1">Das ist ein Sudoku. Ein kleines, vier Zellen mal vier, damit alles auf einmal in den Kopf passt. Das große Gitter funktioniert genau gleich.</string>
+    <string name="lesson_what_is_2">Das ist eine Zeile. Sie muss die Ziffern 1, 2, 3 und 4 enthalten, jede genau einmal. Keine Wiederholung, und nichts fehlt.</string>
+    <string name="lesson_what_is_3">Das ist eine Spalte. Dieselbe Regel: 1, 2, 3 und 4, jede genau einmal.</string>
+    <string name="lesson_what_is_4">Das ist das ganze Spiel. Es wird nichts gerechnet und nichts addiert. Es ist eine einzige Regel darüber, wo eine Ziffer stehen darf.</string>
+    <string name="lesson_what_is_5">Diese beiden Zellen sind leer. Sie so zu füllen, dass die Regel weiter gilt, heißt lösen.</string>
+
+    <string name="lesson_houses_title">Zeilen, Spalten und Blöcke</string>
+    <string name="lesson_houses_summary">Eine Zelle liegt in drei Häusern zugleich und teilt mit allen dieselbe Regel.</string>
+    <string name="lesson_houses_1">Die Regel sprach von Zeilen und Spalten. Es gibt eine dritte Art von Gruppe, und sie ist es, die ein Sudoku überhaupt lohnend macht.</string>
+    <string name="lesson_houses_2">Hier ist wieder eine Zeile.</string>
+    <string name="lesson_houses_3">Hier ist eine Spalte.</string>
+    <string name="lesson_houses_4">Und hier ist ein Block, von den dickeren Linien begrenzt. Auch er enthält jede Ziffer genau einmal.</string>
+    <string name="lesson_houses_5">Diese Zelle gehört also zu drei Gruppen gleichzeitig. Jede Zelle, mit der sie eine Gruppe teilt, ist hervorgehoben, und keine davon kann dieselbe Ziffer halten wie sie. Diese drei Gruppen heißen Häuser, und so werden sie von hier an genannt.</string>
+
+    <string name="lesson_givens_title">Vorgaben</string>
+    <string name="lesson_givens_summary">Die zu Beginn gedruckten Ziffern stehen fest, und sie sind es, die die Lösung eindeutig machen.</string>
+    <string name="lesson_givens_1">Diese Ziffern kamen mit dem Rätsel. Sie heißen Vorgaben und lassen sich weder ändern noch löschen.</string>
+    <string name="lesson_givens_2" tools:ignore="Typos">Sie sind anders gezeichnet als die Ziffern, die Sie setzen, damit immer klar ist, was was ist. In dieser App sind die Vorgaben die kräftigeren.</string>
+    <string name="lesson_givens_3">Diese Zellen füllen Sie aus.</string>
+    <string name="lesson_givens_4">Ein sauber gebautes Rätsel lässt sich auf genau eine Art ausfüllen. Das ist ein Versprechen über das Rätsel, nicht über Sie: wenn Sie feststecken, gibt es trotzdem nur eine Lösung, und sie lässt sich immer herleiten. Jedes Rätsel in dieser App ist so gebaut.</string>
+
+    <string name="lesson_first_four_title">Ihre erste Lösung</string>
+    <string name="lesson_first_four_summary">Schauen Sie, was eine Zelle nicht sein kann, und manchmal bleibt nur eine Ziffer übrig.</string>
+    <string name="lesson_first_four_1">Jetzt lösen Sie eines. Zwei Zellen sind leer, und die Regel reicht für beide.</string>
+    <string name="lesson_first_four_2">Beginnen Sie mit dieser Zeile. Sie hat schon eine 1 und eine 4, die beiden leeren Zellen halten also 2 und 3 unter sich auf. Die Frage ist nur, herum.</string>
+    <string name="lesson_first_four_3">Diese Zelle kann keine 2 sein, denn ihre Spalte hat schon eine. Also ist sie eine 3.</string>
+    <string name="lesson_first_four_4">Damit bleibt eine leere Zelle, und eine Ziffer der Zeile ist noch ungenutzt.</string>
+    <string name="lesson_first_four_5">Sie sind dran. Setzen Sie die Ziffer, die hierher gehört.</string>
+    <string name="lesson_first_four_wrong">Nicht ganz. Schauen Sie auf die Zeile: welche Ziffer von 1 bis 4 fehlt ihr noch?</string>
+    <string name="lesson_first_four_6">Gelöst. Das ist ein Sudoku, gleich wie groß das Gitter ist.</string>
+
+    <string name="lesson_first_six_title">Ein größeres Gitter</string>
+    <string name="lesson_first_six_summary">Blöcke sind nicht immer quadratisch, und die Regel stört das nicht.</string>
+    <string name="lesson_first_six_1">Sechs mal sechs. Die Regel hat sich nicht geändert, die Blöcke schon: sie sind drei breit und zwei hoch.</string>
+    <string name="lesson_first_six_2">Das ist ein Block. Drei quer, zwei hoch, sechs Zellen, jede Ziffer von 1 bis 6 genau einmal.</string>
+    <string name="lesson_first_six_3">Das führt anfangs in die Irre, weil das Auge ein Quadrat erwartet. Es lohnt einen Moment: suchen Sie den Block, in dem diese Zelle liegt, bevor Sie sonst irgendwohin schauen.</string>
+    <string name="lesson_first_six_4">Sie sind dran. Im oberen linken Block fehlt eine Ziffer.</string>
+    <string name="lesson_first_six_wrong">Die nicht. Zählen Sie, was der Block schon hat, und suchen Sie dann die Ziffer von 1 bis 6, die fehlt.</string>
+    <string name="lesson_first_six_5">Gut. Von hier an sind die Gitter neun mal neun und die Blöcke wieder quadratisch, aber die Gewohnheit, alle drei Häuser zu prüfen, ist die, die bleiben sollte.</string>
+
+    <string name="lesson_naked_single_title">Das nackte Single</string>
+    <string name="lesson_naked_single_summary">Eine Zelle, in die nur noch eine Ziffer passt, muss sie auch halten.</string>
+    <string name="lesson_naked_single_1">Ein Gitter in voller Größe, und die erste Technik mit einem Namen. Sie ist die einfachste von allen, und selbst auf den schwersten Rätseln füllt sie die meisten Zellen.</string>
+    <string name="lesson_naked_single_2">Schauen Sie diese Zelle für sich an. Fragen Sie, was sie halten könnte.</string>
+    <string name="lesson_naked_single_3" tools:ignore="Typos">Jede Zelle, die etwas ausschließt, ist hervorgehoben. Zwischen ihrer Zeile, ihrer Spalte und ihrem Block stehen acht der neun Ziffern schon irgendwo, wo sie sie sehen kann.</string>
+    <string name="lesson_naked_single_4">Also bleibt eine Ziffer, und die Zelle muss sie halten. Etwas anderes ist nicht möglich. Das ist ein nacktes Single: nackt, weil man es an einer einzigen Zelle sieht, Single, weil eine Ziffer übrig bleibt.</string>
+    <string name="lesson_naked_single_5">Die App nennt das beim Namen, wenn sie Ihnen einen Tipp gibt. Jetzt wissen Sie, was gemeint ist.</string>
+
+    <string name="lesson_hidden_single_title">Das versteckte Single</string>
+    <string name="lesson_hidden_single_summary">Eine Ziffer, für die in einem Haus nur ein Platz bleibt, muss dorthin.</string>
+    <string name="lesson_hidden_single_1">Die andere Art von Single, und die, die mehr Zellen findet. Ein nacktes Single ist eine Zelle mit einer übrigen Ziffer. Das hier ist das Spiegelbild: eine Ziffer mit einer übrigen Zelle.</string>
+    <string name="lesson_hidden_single_2">Nehmen Sie ein Haus und suchen Sie sich eine Ziffer, die ihm noch fehlt. Fragen Sie, wo in diesem Haus die Ziffer stehen könnte.</string>
+    <string name="lesson_hidden_single_3">In diesem Block ist die Antwort eine einzige Zelle. Jede andere leere Zelle des Blocks ist durch ihre eigene Zeile oder Spalte ausgeschlossen.</string>
+    <string name="lesson_hidden_single_4">Also gehört die Ziffer dorthin, auch wenn diese Zelle für sich genommen mehrere Ziffern halten könnte. Deshalb heißt es versteckt: die Ziffer versteckt sich zwischen den anderen.</string>
+    <string name="lesson_hidden_single_5">Diese lohnt es sich richtig zu lernen. Auf den meisten Rätseln ist sie es, die Sie weiterbringt, wenn die nackten Singles ausgehen.</string>
+    <string name="lesson_hidden_single_turn">Sie sind dran. Setzen Sie die Ziffer, die in diesem Block nirgends sonst hin kann.</string>
+    <string name="lesson_hidden_single_wrong">Die nicht. Fragen Sie, welche Ziffer dem Block noch fehlt, und prüfen Sie dann, wo jede davon wirklich hinpasst.</string>
+
+    <string name="lesson_scanning_title">Wie man schaut</string>
+    <string name="lesson_scanning_summary">Fahren Sie mit einer Ziffer über das Gitter, statt Zelle für Zelle zu studieren.</string>
+    <string name="lesson_scanning_1">Sie kennen jetzt zwei Techniken. Sie zu kennen ist nicht dasselbe, wie sie zu finden, und das Finden kostet die Zeit.</string>
+    <string name="lesson_scanning_2">Lesen Sie das Gitter nicht Zelle für Zelle. Nehmen Sie eine Ziffer, am besten die, die schon am häufigsten vorkommt, und schauen Sie auf die drei Blöcke eines Bandes.</string>
+    <string name="lesson_scanning_3">Stellen Sie für jeden Block eine einzige Frage: wo kann diese Ziffer hin? Zeilen und Spalten, die sie schon enthalten, streichen die meisten Antworten weg, und oft bleibt nur eine Zelle.</string>
+    <string name="lesson_scanning_4">Dann weiter zum nächsten Band, und wenn die Ziffer erschöpft ist, zur nächsten Ziffer. Das ist Scannen, und genau das tun schnelle Löser, wenn es aussieht, als starrten sie nur.</string>
+    <string name="lesson_scanning_5">Systematisch zu sein kostet nichts und erspart das Gefühl, festzustecken, das meist nur das Gefühl ist, viermal in dieselbe Ecke geschaut zu haben.</string>
+
+    <string name="lesson_first_nine_title">Ein volles Gitter, nur mit Singles</string>
+    <string name="lesson_first_nine_summary">Alles, was Sie bisher gelernt haben, reicht für ein ganzes Rätsel.</string>
+    <string name="lesson_first_nine_1">Ein echtes Neun mal neun, auf der Stufe Leicht. Jeder Schritt darin ist ein Single, nackt oder versteckt, und es kommt nichts vor, das Sie nicht kennen.</string>
+    <string name="lesson_first_nine_2">Hier ist eines zum Anfangen. Bei dieser Zelle sind acht der neun Ziffern durch das ausgeschlossen, was sie sehen kann.</string>
+    <string name="lesson_first_nine_3">So sieht ein leichtes Rätsel aus. Singles, bis zum Schluss, und an keiner Stelle wird geraten.</string>
+    <string name="lesson_first_nine_4">Wenn Sie diese Lektion verlassen, spielen Sie eines. Die nächste Stufe handelt von Notizen, und Notizen lohnen sich erst bei Rätseln, die schwerer sind als dieses.</string>
+    <string name="lesson_first_nine_turn">Sie sind dran. Hier ist eine Ziffer möglich.</string>
+    <string name="lesson_first_nine_wrong">Schauen Sie noch einmal auf Zeile, Spalte und Block dieser Zelle und zählen Sie auf, was dort schon steht.</string>
+
+    <string name="lesson_pencil_marks_title">Notizen</string>
+    <string name="lesson_pencil_marks_summary">Eine Notiz hält fest, was Sie hergeleitet haben, damit Sie es nicht noch einmal herleiten müssen.</string>
+    <string name="lesson_pencil_marks_1">Von hier an geben die Rätsel den Singles nicht mehr nach, und Sie werden etwas aufschreiben müssen. Eine Notiz ist eine kleine Ziffer in einer Zelle, die sagt: diese Ziffer ist hier noch möglich.</string>
+    <string name="lesson_pencil_marks_2">Schauen Sie auf diese Zelle. Herzuleiten, dass sie nur eine von zwei Ziffern sein kann, dauert ein paar Sekunden. Schreibt man die beiden hinein, dauert es beim nächsten Blick keine.</string>
+    <string name="lesson_pencil_marks_3">Mehr ist eine Notiz nicht. Sie ist keine Vermutung und keine Festlegung. Sie ist die Aufzeichnung eines Schlusses, den Sie schon gezogen haben.</string>
+    <string name="lesson_pencil_marks_4">Jede Technik ab hier handelt von Mustern in den Notizen statt von Mustern in den Ziffern. Paare, Tripel, Fische und Ketten liest man alle aus den Notizen ab.</string>
+    <string name="lesson_pencil_marks_5">Niemand löst ein schweres Sudoku im Kopf, und wer bei einem Experte-Rätsel nichts aufschreibt, ist nicht clever, sondern langsam.</string>
+
+    <string name="lesson_when_to_mark_title">Wann man sie schreibt</string>
+    <string name="lesson_when_to_mark_summary">Notizen kommen dann, wenn die Singles ausgehen, nicht vorher.</string>
+    <string name="lesson_when_to_mark_1">Es gibt zwei Arten, Notizen zu benutzen, und der Unterschied ist wichtig.</string>
+    <string name="lesson_when_to_mark_2">Die erste ist, jede leere Zelle mit jeder möglichen Ziffer zu füllen, alles auf einmal, bevor sonst etwas geschieht. Das ist gründlich, dauert von Hand mehrere Minuten, und bei einem leichten Rätsel ist das meiste davon vergeudet, weil Singles das Gitter ohnehin fertig gemacht hätten.</string>
+    <string name="lesson_when_to_mark_3">Die zweite ist, nur dort zu notieren, wo Sie gerade arbeiten. Diese vier Zellen sind es wert, weil zwischen ihnen etwas vorgeht. Der Rest des Gitters nicht.</string>
+    <string name="lesson_when_to_mark_4">Der ehrliche Rat: lösen Sie zuerst die Singles und fangen Sie an zu notieren, wenn Sie keine mehr finden. Auf Papier spart das echte Zeit. In dieser App ist alle Notizen zu füllen ein einziger Tipp, der Preis ist also kleiner, aber ein Gitter voller kleiner Zahlen bleibt schwerer zu lesen als eines mit Notizen nur dort, wo sie zählen.</string>
+
+    <string name="lesson_marks_true_title">Notizen ehrlich halten</string>
+    <string name="lesson_marks_true_summary">Eine veraltete Notiz ist schlimmer als gar keine.</string>
+    <string name="lesson_marks_true_1">Notizen haben eine Gefahr. Jede Ziffer, die Sie setzen, macht einige davon falsch, und eine falsche Notiz schickt Sie in eine Argumentation, die nicht stimmen kann.</string>
+    <string name="lesson_marks_true_2">Setzen Sie hier eine Ziffer, und jede Zelle, die sie sehen kann, verliert diese Ziffer als Möglichkeit. Werden diese Notizen nicht weggeradiert, steht die nächste Technik, die Sie entdecken, womöglich auf einer davon.</string>
+    <string name="lesson_marks_true_3">Diese App kann das für Sie tun. Es gibt die Einstellung Notizen wegradieren, die eine gesetzte Ziffer ausschließt, und sie ist standardmäßig an. Auf Papier macht man es von Hand, und genau dort entstehen die meisten Fehler.</string>
+    <string name="lesson_marks_true_4">Wenn ein Rätsel schiefgeht und Sie nicht sehen, warum, ist eine veraltete Notiz der erste Verdacht. Der Tipp-Knopf sagt Ihnen, wenn eine gesetzte Ziffer nicht stimmen kann.</string>
+
+    <string name="lesson_pointing_title">Das zeigende Paar</string>
+    <string name="lesson_pointing_summary">Steckt eine Ziffer in einem Block auf einer Linie fest, verlässt sie diese Linie überall sonst.</string>
+    <string name="lesson_pointing_1">Die erste Technik, die Möglichkeiten wegnimmt, statt eine Ziffer zu setzen. Die meisten Techniken ab hier tun das, und man muss sich daran gewöhnen: Sie kommen voran, ohne eine einzige Ziffer zu schreiben.</string>
+    <string name="lesson_pointing_2">Schauen Sie, wohin eine Ziffer in diesem Block kann. Jeder mögliche Platz liegt in derselben Spalte.</string>
+    <string name="lesson_pointing_3">Der Block muss diese Ziffer irgendwo enthalten. Wo sie auch landet, sie liegt in dieser Spalte.</string>
+    <string name="lesson_pointing_4">Also kann der Rest der Spalte sie nicht haben. Diese Zellen verlieren die Ziffer als Möglichkeit, obwohl sie weit vom Block entfernt sind.</string>
+    <string name="lesson_pointing_5">Es heißt zeigend, weil das Paar im Block die Linie entlang zeigt und sie frei räumt.</string>
+
+    <string name="lesson_claiming_title">Das beanspruchende Paar</string>
+    <string name="lesson_claiming_summary">Steckt eine Ziffer auf einer Linie in einem Block fest, verlässt sie diesen Block überall sonst.</string>
+    <string name="lesson_claiming_1">Dasselbe Argument andersherum gelesen, und es lohnt sich getrennt, weil das Auge es an einer anderen Stelle findet.</string>
+    <string name="lesson_claiming_2">Beginnen Sie diesmal mit einer Linie. Schauen Sie, wohin eine Ziffer entlang dieser Zeile kann.</string>
+    <string name="lesson_claiming_3">Jeder mögliche Platz liegt in demselben Block. Die Zeile muss die Ziffer irgendwo halten, also liegt die Ziffer in diesem Block.</string>
+    <string name="lesson_claiming_4">Also verliert der Rest des Blocks sie. Diese Zellen können sie nicht mehr halten.</string>
+    <string name="lesson_claiming_5">Zeigend schaut auf einen Block und räumt eine Linie. Beanspruchend schaut auf eine Linie und räumt einen Block. Zwei Namen, ein Gedanke, und beide begegnen Ihnen in jedem schweren Rätsel.</string>
+
+    <string name="lesson_naked_pair_title">Das nackte Paar</string>
+    <string name="lesson_naked_pair_summary">Zwei Zellen mit denselben zwei Ziffern besitzen beide.</string>
+    <string name="lesson_naked_pair_1">Jetzt die Gruppen. Das hier ist die kleinste von ihnen und das Muster, das die anderen einleuchtend macht.</string>
+    <string name="lesson_naked_pair_2">Diese beiden Zellen liegen im selben Haus, und jede von ihnen kann nur eine von denselben zwei Ziffern sein.</string>
+
+    <string name="lesson_naked_pair_3">Zusammen nehmen sie beide Ziffern auf, je eine. Welche welche ist, spielt keine Rolle und Sie müssen es nicht wissen.</string>
+    <string name="lesson_naked_pair_4">Also kann keine andere Zelle dieses Hauses eine der beiden halten. Diese Zelle verliert eine davon.</string>
+    <string name="lesson_naked_pair_5">Wieder nackt, weil man es sieht, indem man die beiden Zellen liest. Nichts ist verborgen, und keine andere Zelle kommt in dem Argument vor.</string>
+
+    <string name="lesson_hidden_pair_title">Das versteckte Paar</string>
+    <string name="lesson_hidden_pair_summary">Zwei Ziffern, denen nur noch dieselben zwei Plätze bleiben, besitzen diese Zellen.</string>
+    <string name="lesson_hidden_pair_1">Das Spiegelbild des nackten Paars, genau wie das versteckte Single das nackte spiegelt.</string>
+    <string name="lesson_hidden_pair_2">In diesem Haus können zwei Ziffern jeweils nur in dieselben zwei Zellen.</string>
+    <string name="lesson_hidden_pair_3">Diese beiden Ziffern nehmen die beiden Zellen unter sich auf. Was diese Zellen sonst noch halten zu können schienen, können sie also nicht.</string>
+    <string name="lesson_hidden_pair_4">Die beiden Zellen verlieren jede andere Notiz. Sie sind jetzt ein nacktes Paar, und oft ist genau das der Zweck des Musters: aus einem versteckten Paar ein nacktes zu machen, das den Rest des Hauses räumt.</string>
+    <string name="lesson_hidden_pair_5">Versteckte Paare sind schwerer zu sehen als nackte, weil man auf Ziffern statt auf Zellen achten muss. Auf einem Gitter, das stockt, lohnt sich die Mühe.</string>
+
+    <string name="lesson_naked_triple_title">Das nackte Tripel</string>
+    <string name="lesson_naked_triple_summary">Drei Zellen, die sich drei Ziffern teilen, besitzen sie, auch wenn keine alle drei hält.</string>
+    <string name="lesson_naked_triple_1">Ein Paar mit einer Zelle mehr, und ein Haken, über den beim ersten Mal jeder stolpert.</string>
+    <string name="lesson_naked_triple_2">Diese drei Zellen liegen im selben Haus, und zusammen benutzen sie nur drei verschiedene Ziffern.</string>
+    <string name="lesson_naked_triple_3">Hier der Haken: keine von ihnen muss alle drei halten. Zwei Ziffern in der einen Zelle, zwei in der nächsten, zwei in der dritten ist ein Tripel, solange über alle drei hinweg nur drei Ziffern vorkommen.</string>
+    <string name="lesson_naked_triple_4">Die drei Zellen nehmen die drei Ziffern unter sich auf, also verliert jede andere Zelle des Hauses alle drei. Das sind viele Notizen auf einmal.</string>
+    <string name="lesson_naked_triple_5">Zählen Sie bei der Suche die verschiedenen Ziffern über zwei oder drei Zellen hinweg, statt nach gleichen Notizen zu suchen. Das ist die Gewohnheit, die Tripel findet.</string>
+
+    <string name="lesson_hidden_triple_title">Das versteckte Tripel</string>
+    <string name="lesson_hidden_triple_summary">Drei Ziffern, denen nur drei Plätze bleiben, besitzen diese Zellen.</string>
+    <string name="lesson_hidden_triple_1">Dieselbe Beziehung wie beim versteckten Paar, eine Nummer größer, und wirklich schwer zu entdecken.</string>
+    <string name="lesson_hidden_triple_2">In diesem Haus können drei Ziffern zusammen nur in dieselben drei Zellen.</string>
+    <string name="lesson_hidden_triple_3">Also halten diese drei Zellen diese drei Ziffern, und jede andere Notiz darin kann weg.</string>
+    <string name="lesson_hidden_triple_4">Suchen Sie nicht zuerst danach. Schauen Sie danach, wenn ein Haus noch mehrere Zellen offen hat und sonst nichts geholfen hat. Meistens ist ein nacktes Muster im selben Haus leichter zu sehen.</string>
+
+    <string name="lesson_quads_title">Quadrupel</string>
+    <string name="lesson_quads_summary">Derselbe Gedanke noch einmal mit vier, wissenswert, aber selten die Suche wert.</string>
+    <string name="lesson_quads_1">Paare, Tripel und jetzt Quadrupel. Das Argument ändert sich nicht: vier Zellen, die zusammen vier Ziffern benutzen, besitzen diese Ziffern, und vier Ziffern mit nur vier Plätzen besitzen diese Zellen.</string>
+    <string name="lesson_quads_2">Hier ist ein nacktes Quadrupel. Vier Zellen, vier Ziffern zusammen, und der Rest des Hauses verliert alle vier.</string>
+    <string name="lesson_quads_3">Und hier der ehrliche Rat. Quadrupel sind echt und sie sind erlaubt, aber sie sind selten, und ein Quadrupel in einem Haus mit fünf oder sechs leeren Zellen heißt meist, dass Sie in den übrigen Zellen ein einfacheres Muster übersehen haben.</string>
+    <string name="lesson_quads_4">Und hier der Vollständigkeit halber ein verstecktes Quadrupel. Vier Ziffern mit vier übrigen Plätzen.</string>
+    <string name="lesson_quads_5">Lernen Sie, sie zu erkennen, damit ein Tipp, der eines nennt, Sinn ergibt. Verbringen Sie keine Zeit mit der Suche danach.</string>
+
+    <string name="lesson_x_wing_title">Der X-Wing</string>
+    <string name="lesson_x_wing_summary">Eine Ziffer, die in zwei Zeilen an zwei Spalten gebunden ist, verlässt diese Spalten überall sonst.</string>
+    <string name="lesson_x_wing_1">Das erste Muster, das sich über das ganze Gitter zieht, statt in einem Haus zu sitzen. Es hat eine Form, und wenn Sie die Form einmal gesehen haben, sehen Sie sie überall.</string>
+    <string name="lesson_x_wing_2">Nehmen Sie eine Ziffer. In diesen beiden Zeilen kann sie jeweils nur in zwei Zellen, und diese Zellen liegen in denselben zwei Spalten. Vier Zellen, in einem Rechteck.</string>
+    <string name="lesson_x_wing_3">Jetzt denken Sie es durch. Jede Zeile muss die Ziffer einmal halten. Welche Ecke die eine Zeile auch nimmt, die andere muss die gegenüberliegende nehmen. Eine dritte Möglichkeit gibt es nicht.</string>
+    <string name="lesson_x_wing_4">Also nehmen die beiden Zeilen zusammen die Ziffer in beiden Spalten. Alles andere in diesen Spalten verliert sie.</string>
+    <string name="lesson_x_wing_5">Mit vertauschten Zeilen und Spalten funktioniert es genauso. Zwei Spalten, deren Ziffer auf dieselben zwei Zeilen beschränkt ist, räumen diese Zeilen.</string>
+
+    <string name="lesson_swordfish_title">Der Swordfish</string>
+    <string name="lesson_swordfish_summary">Dasselbe Argument wie beim X-Wing, mit drei Linien statt zwei.</string>
+    <string name="lesson_swordfish_1">Ein X-Wing mit einer zusätzlichen Zeile. Der Name hilft nicht weiter, das Muster ist eine direkte Erweiterung.</string>
+    <string name="lesson_swordfish_2">Drei Zeilen, eine Ziffer, und in jeder Zeile ist diese Ziffer auf Zellen in denselben drei Spalten beschränkt.</string>
+    <string name="lesson_swordfish_3">Nicht jede Zeile muss alle drei Spalten nutzen. Zwei von dreien reichen, solange keine Zeile darüber hinausgeht.</string>
+    <string name="lesson_swordfish_4">Die drei Zeilen nehmen die Ziffer zusammen in diesen drei Spalten, also verliert der Rest dieser Spalten sie.</string>
+    <string name="lesson_swordfish_5">Wer dem X-Wing folgen kann, kann auch dem hier folgen. Ihn zu finden ist etwas anderes: hier hört das Ausfüllen der Notizen auf, freiwillig zu sein.</string>
+
+    <string name="lesson_jellyfish_title">Der Jellyfish</string>
+    <string name="lesson_jellyfish_summary">Vier Linien. Wieder dasselbe Muster, und das letzte, das zu lernen sich lohnt.</string>
+    <string name="lesson_jellyfish_1" tools:ignore="Typos">Vier Zeilen, eine Ziffer, vier Spalten. Das Argument hat sich seit dem X-Wing nicht geändert und wird sich nicht mehr ändern.</string>
+    <string name="lesson_jellyfish_2">Hier ist einer. Vier Zeilen, und die Ziffer ist in jeder auf dieselben vier Spalten beschränkt.</string>
+    <string name="lesson_jellyfish_3">Über vier hinaus gibt es nichts zu lernen. Eine Fünf-Linien-Variante existiert in der Theorie, aber auf einem Neun-mal-neun-Gitter lässt sich jede davon als kleineres Muster in den vier übrigen Spalten finden, also sucht niemand danach.</string>
+    <string name="lesson_jellyfish_4">Das ist die äußerste Kante dessen, wonach sich die Mustersuche lohnt. Dahinter sind Ketten die bessere Verwendung Ihrer Aufmerksamkeit.</string>
+
+    <string name="lesson_xy_wing_title">Der XY-Wing</string>
+    <string name="lesson_xy_wing_summary">Drei Zellen mit je zwei Ziffern, und eine Zelle, die so oder so verliert.</string>
+    <string name="lesson_xy_wing_1">Die Wings verlangen eine andere Art zu denken. Bisher haben Sie ein Muster gefunden und die Folgerung abgelesen. Hier argumentieren Sie über Fälle.</string>
+    <string name="lesson_xy_wing_2">Beginnen Sie mit dieser Zelle. Sie hält genau zwei mögliche Ziffern und ist das Scharnier des Musters.</string>
+    <string name="lesson_xy_wing_3">Sie hat zwei Nachbarn, jeder teilt ein Haus mit ihr, und jeder hält zwei Ziffern: eine mit dem Scharnier gemeinsam, eine miteinander.</string>
+    <string name="lesson_xy_wing_4">Nun das Argument. Das Scharnier ist eine seiner beiden Ziffern. Ist es die erste, wird der linke Flügel auf die gemeinsame Ziffer gezwungen. Ist es die zweite, wird der rechte Flügel auf dieselbe gemeinsame Ziffer gezwungen. So oder so hält einer der Flügel sie.</string>
+    <string name="lesson_xy_wing_5">Also kann keine Zelle, die beide Flügel sieht, diese Ziffer halten. Diese hier verliert sie.</string>
+    <string name="lesson_xy_wing_6">Sie erfahren nie, was das Scharnier tatsächlich ist. Das ist der Kern, und deshalb fühlen sich Wings anders an als alles davor.</string>
+
+    <string name="lesson_xyz_wing_title">Der XYZ-Wing</string>
+    <string name="lesson_xyz_wing_summary">Wie ein XY-Wing, aber das Scharnier kann die gemeinsame Ziffer auch sein, also ist der Schluss schwächer.</string>
+    <string name="lesson_xyz_wing_1">Eine Änderung am XY-Wing, und sie macht die Folgerung kleiner.</string>
+    <string name="lesson_xyz_wing_2">Hier hält das Scharnier drei Ziffern statt zwei, und die gemeinsame Ziffer ist eine davon.</string>
+    <string name="lesson_xyz_wing_3">Also gibt es jetzt drei Fälle, nicht zwei. Einer der Flügel könnte die gemeinsame Ziffer halten, oder das Scharnier selbst.</string>
+    <string name="lesson_xyz_wing_4">Das heißt, eine Zelle verliert die Ziffer nur, wenn sie alle drei sieht, nicht bloß die beiden Flügel. Weniger Zellen kommen infrage, und deshalb streicht dieses Muster weniger als sein einfacherer Verwandter.</string>
+    <string name="lesson_xyz_wing_5">Wissenswert, weil die Form fast gleich aussieht, und wer sie als XY-Wing liest, streicht eine Ziffer, zu der er nicht berechtigt ist.</string>
+
+    <string name="lesson_w_wing_title">Der W-Wing</string>
+    <string name="lesson_w_wing_summary">Zwei gleiche Paare, verbunden durch eine Linie, die eine ihrer Ziffern halten muss.</string>
+    <string name="lesson_w_wing_1">Der dritte Wing, und der mit der wenigsten Rechnerei.</string>
+    <string name="lesson_w_wing_2">Zwei Zellen, die kein Haus teilen und jeweils dieselben zwei Ziffern halten.</string>
+    <string name="lesson_w_wing_3">Suchen Sie nun ein Haus, in dem eine der beiden Ziffern nur an zwei Stellen stehen kann, und in dem diese beiden Stellen je eine der Paarzellen sehen. Dieses Haus ist die Verbindung.</string>
+    <string name="lesson_w_wing_4">Das verbindende Haus muss die Ziffer an einer seiner beiden Stellen halten, und welche es auch ist, sie zwingt eine der Paarzellen auf die andere Ziffer. Also hält eine des Paars immer die andere Ziffer.</string>
+    <string name="lesson_w_wing_5">Jede Zelle, die beide Paarzellen sieht, verliert sie. Diese hier tut es.</string>
+
+    <string name="lesson_rectangle_title">Das eindeutige Rechteck</string>
+    <string name="lesson_rectangle_summary">Ein Rätsel mit einer Lösung kann kein Viereck enthalten, das sich drehen ließe.</string>
+    <string name="lesson_rectangle_1">Diese Technik ist grundsätzlich anders als alle anderen, und es lohnt sich, vorher zu sagen, warum.</string>
+    <string name="lesson_rectangle_2">Schauen Sie auf diese vier Zellen. Sie liegen in zwei Zeilen, zwei Spalten und genau zwei Blöcken, und jede von ihnen kann dieselben zwei Ziffern halten.</string>
+    <string name="lesson_rectangle_3">Wäre das die ganze Geschichte, hätte das Rätsel zwei Lösungen: füllen Sie das Rechteck so, oder tauschen Sie beide Diagonalen, und beide Gitter befolgen jede Regel. Ein sauber gebautes Rätsel hat keine zwei Lösungen.</string>
+    <string name="lesson_rectangle_4">Also kann das nicht die ganze Geschichte sein. Eine dieser Zellen muss etwas anderes halten, und genau das erlaubt das Streichen.</string>
+    <string name="lesson_rectangle_5">Hier überleben die zusätzlichen Möglichkeiten, und das gemeinsame Paar wird aus diesen Zellen gestrichen.</string>
+    <string name="lesson_rectangle_6">Der Haken, klar gesagt: dieses Argument setzt voraus, dass das Rätsel sauber gebaut ist. Für jedes Rätsel in dieser App gilt das, weil der Generator es prüft. Auf einem Gitter aus unbekannter Quelle kann es in die Irre führen.</string>
+
+    <string name="lesson_bug_title">BUG plus eins</string>
+    <string name="lesson_bug_summary">Hätte jede Zelle bis auf eine zwei Kandidaten, wäre das Rätsel mehrdeutig. Also ist diese eine besonders.</string>
+    <string name="lesson_bug_1">Dieselbe Annahme wie beim eindeutigen Rechteck, in anderer Gestalt.</string>
+    <string name="lesson_bug_2">Nehmen Sie an, ein Gitter erreichte eine Stellung, in der jede ungelöste Zelle genau zwei Möglichkeiten hielte und jede Ziffer in jedem Haus genau zweimal vorkäme. Ein solches Gitter hat immer zwei Lösungen.</string>
+    <string name="lesson_bug_3">Ein sauber gebautes Rätsel kann sie also nie erreichen. Finden Sie eine Stellung, die eine Zelle davon entfernt ist, in der genau eine Zelle drei statt zwei Möglichkeiten hält, dann ist diese Zelle es, die das Rätsel vor der Mehrdeutigkeit rettet.</string>
+    <string name="lesson_bug_4">Die Ziffer, die in ihren Häusern dreimal vorkommt, ist die, die sie halten muss. Ein seltenes Muster und ein sehr schneller Abschluss, wenn es auftaucht.</string>
+
+    <string name="lesson_colouring_title">Einfaches Färben</string>
+    <string name="lesson_colouring_summary">Verfolgen Sie eine Ziffer durch die Zellen, in denen sie nur zwei Plätze hat, und suchen Sie den Widerspruch.</string>
+    <string name="lesson_colouring_1">Ketten, sanft. Färben ist der einfachste Einstieg und darunter dieselbe Schlussweise.</string>
+    <string name="lesson_colouring_2">Wählen Sie eine Ziffer. Suchen Sie ein Haus, in dem sie nur zwei mögliche Zellen hat. Diese beiden sind verbunden: genau eine von ihnen ist die Ziffer.</string>
+    <string name="lesson_colouring_3">Färben Sie eine der beiden und folgen Sie dann den Verbindungen. Jede so verbundene Zelle bekommt eine von zwei Farben, und eine ganze Farbe ist richtig, während die andere falsch ist. Welche, wissen Sie nicht.</string>
+    <string name="lesson_colouring_4">Suchen Sie nun den Widerspruch. Sieht eine Zelle zwei Zellen derselben Farbe, kann diese Farbe nicht die richtige sein, also verliert die Zelle die Ziffer. Genau das passiert hier.</string>
+    <string name="lesson_colouring_5">Zwei Farben, ein Widerspruch, und nirgends wird geraten. Das ist die ganze Methode.</string>
+
+    <string name="lesson_remote_pairs_title">Entfernte Paare</string>
+    <string name="lesson_remote_pairs_summary">Eine Kette gleicher Paare wechselt sich ab, also sind die Enden entgegengesetzt.</string>
+    <string name="lesson_remote_pairs_1">Färben, auf Zellen angewandt statt auf eine einzelne Ziffer.</string>
+    <string name="lesson_remote_pairs_2">Hier ist eine Kette von Zellen, die alle dieselben zwei Ziffern halten und jeweils über ein gemeinsames Haus mit der nächsten verbunden sind.</string>
+    <string name="lesson_remote_pairs_3">Weil jede Verbindung ein Paar ist, wechseln sich die Ziffern entlang der Kette ab. Die erste Zelle nimmt die eine, die zweite die andere, und so weiter.</string>
+    <string name="lesson_remote_pairs_4">Also sind die beiden Enden einer Kette gerader Länge entgegengesetzt: sie halten verschiedene Ziffern. Jede Zelle, die beide Enden sieht, verliert beide Ziffern, denn eines der Enden hält jeweils eine davon.</string>
+    <string name="lesson_remote_pairs_5">Es ist die Kette, die am leichtesten auffällt, weil jede Zelle darin gleich aussieht.</string>
+
+    <string name="lesson_multi_colouring_title">Mehrfaches Färben</string>
+    <string name="lesson_multi_colouring_summary">Zwei Färbeketten, die sich berühren, schließen einander aus.</string>
+    <string name="lesson_multi_colouring_1">Einfaches Färben benutzt eine Kette. Manchmal hat eine Kette keinen Widerspruch in sich, zwei Ketten zusammen aber schon.</string>
+    <string name="lesson_multi_colouring_2">Hier sind Zellen aus zwei getrennten Ketten für dieselbe Ziffer.</string>
+    <string name="lesson_multi_colouring_3">Sieht eine Farbe der einen Kette eine Farbe der anderen, können diese beiden Farben nicht beide richtig sein. Verfolgt man das, verschwindet die Ziffer aus den Zellen, die die beiden übrigen Farben sehen.</string>
+    <string name="lesson_multi_colouring_4">Die Folgerung landet hier.</string>
+    <string name="lesson_multi_colouring_5">Hier hört Färben auf, etwas zu sein, das man im Kopf behält, und verlangt eine Notiz darüber, welche Zelle welche Farbe hat.</string>
+
+    <string name="lesson_x_chain_title">Die X-Chain</string>
+    <string name="lesson_x_chain_summary">Eine Ziffer, Verbindungen, die zwischen stark und schwach wechseln, und eine Streichung an den Enden.</string>
+    <string name="lesson_x_chain_1">Die allgemeine Form von allem aus der letzten Stufe. Eine Ziffer und eine Kette abwechselnder Verbindungen.</string>
+
+    <string name="lesson_x_chain_2">Eine starke Verbindung sind zwei Zellen, von denen mindestens eine die Ziffer halten muss, und genau das gibt ein Haus mit nur zwei Plätzen her. Eine schwache Verbindung sind zwei Zellen, von denen höchstens eine sie halten kann, also zwei beliebige Zellen eines gemeinsamen Hauses.</string>
+    <string name="lesson_x_chain_3">Wechseln Sie sie ab: stark, schwach, stark, und so weiter, mit stark am Anfang und am Ende. Was in der Mitte auch geschieht, eines der beiden Enden hält die Ziffer.</string>
+    <string name="lesson_x_chain_4">Also verliert sie jede Zelle, die beide Enden sieht.</string>
+    <string name="lesson_x_chain_5">Färben ist diese Kette in zwei Farben gezeichnet. Die Kette ist allgemeiner, weil sie durch Zellen laufen kann, die das Färben nicht erreicht.</string>
+
+    <string name="lesson_xy_chain_title">Die XY-Chain</string>
+    <string name="lesson_xy_chain_summary">Eine Kette von Zellen mit je zwei Kandidaten, deren Enden eine Ziffer teilen.</string>
+    <string name="lesson_xy_chain_1">Derselbe Wechselgedanke, aber Sie treten von Zelle zu Zelle, statt einer Ziffer zu folgen.</string>
+    <string name="lesson_xy_chain_2">Jede Zelle dieser Kette hält genau zwei Möglichkeiten, und jede teilt ein Haus mit der nächsten.</string>
+    <string name="lesson_xy_chain_3">Innerhalb einer Zelle erzwingt die eine Ziffer die andere, das ist die starke Verbindung. Zwischen Zellen macht ein gemeinsames Haus die schwache. Im Wechsel läuft das Argument die Kette entlang.</string>
+    <string name="lesson_xy_chain_4">Können beide Enden der Kette dieselbe Ziffer halten, dann hält eines von ihnen sie, wie die Kette auch ausfällt. Jede Zelle, die beide Enden sieht, verliert diese Ziffer.</string>
+    <string name="lesson_xy_chain_5">Das ist die Technik, die die meisten Experte-Rätsel abschließt, und eine zu finden heißt vor allem, bivalenten Zellen geduldig zu folgen, statt clever zu sein.</string>
+
+    <string name="lesson_writing_chains_title">Eine Kette aufschreiben</string>
+    <string name="lesson_writing_chains_summary">Eine Kette, die Sie nicht prüfen können, ist eine Vermutung mit Zwischenschritten.</string>
+    <string name="lesson_writing_chains_1">Eine praktische Lektion vor der letzten Technik, denn bei Ketten reden sich Menschen Dinge ein, die nicht stimmen.</string>
+    <string name="lesson_writing_chains_2">Eine Kette ist eine Folge von Behauptungen, und jede muss halten. Auf dem Bildschirm sieht sie aus wie ein paar hervorgehobene Zellen, und Hervorhebung ist kein Argument.</string>
+    <string name="lesson_writing_chains_3">Schreiben Sie sie als Zeile: diese Zelle ist 4 oder 7; ist sie 4, dann ist jene 9; ist jene 9, dann ist diese andere 4. Jeder Pfeil ist eine Verbindung, und jede Verbindung hat einen Grund.</string>
+    <string name="lesson_writing_chains_4">Prüfen Sie dann den Wechsel. Stark, schwach, stark, schwach, und stark an beiden Enden. Eine Kette, die mit einer schwachen Verbindung beginnt oder endet, beweist nichts, und das ist der häufigste Weg, auf dem eine Kette schiefgeht.</string>
+    <string name="lesson_writing_chains_5">Wenn Sie sie nicht aufschreiben können, haben Sie sie nicht gefunden. Das ist keine Regel über Ordnung, es ist der Unterschied zwischen einem Schluss und einem Gefühl.</string>
+
+    <string name="lesson_sue_de_coq_title">Sue de Coq</string>
+    <string name="lesson_sue_de_coq_summary">Wo ein Block eine Linie kreuzt und die Kreuzung mehr Ziffern hat als Platz.</string>
+    <string name="lesson_sue_de_coq_1">Ein Block und eine Spalte überlappen sich in drei Zellen. Diese drei gehören zu beiden zugleich, und davon lebt diese Technik.</string>
+    <string name="lesson_sue_de_coq_2">Schauen Sie hier auf zwei davon. Zusammen halten sie 2, 6, 7 und 8: vier Ziffern für zwei Zellen. Zwei davon kommen hinein, und zwei bleiben für anderswo übrig.</string>
+    <string name="lesson_sue_de_coq_3">Weiter unten in derselben Spalte sitzt eine Zelle mit 6 und 7. Anderswo im selben Block sitzt eine Zelle mit 2 und 8. Zusammen wollen diese beiden Zellen genau die vier Ziffern der Kreuzung, gleichmäßig geteilt und ohne Überschneidung.</string>
+    <string name="lesson_sue_de_coq_4">Rechnen Sie nach. Drei Zellen der Spalte nehmen jetzt drei verschiedene der vier Ziffern, und drei Zellen des Blocks tun dasselbe. Die Rechnung geht nur auf eine Weise auf: 6 und 7 werden innerhalb der Spalte verbraucht, 2 und 8 innerhalb des Blocks.</string>
+    <string name="lesson_sue_de_coq_5">Also kann sonst nichts in dieser Spalte eine 6 oder eine 7 sein. Zwei Zellen verlieren hier eine.</string>
+    <string name="lesson_sue_de_coq_6">Dasselbe Argument läuft andersherum für den Block. Ein Muster, zwei Häuser, zwei getrennte Streichungen, und nirgends eine Kette.</string>
+
+    <string name="lesson_als_title">ALS-XZ</string>
+    <string name="lesson_als_summary">Zwei fast festgelegte Mengen, die eine Ziffer teilen, und die Streichung, die daraus folgt.</string>
+    <string name="lesson_als_1">Die Regel, auf der die schwersten Stufen stehen. Alles oberhalb dieser Stufe ist eine Abwandlung davon.</string>
+    <string name="lesson_als_2">Eine fast festgelegte Menge ist eine Gruppe von Zellen in einem Haus, die genau eine Ziffer mehr hält, als sie Zellen hat. Vier Zellen mit fünf Ziffern zusammen. Verlöre sie eine Ziffer, wäre sie festgelegt, daher der Name.</string>
+    <string name="lesson_als_3">Nehmen Sie zwei davon, die zwei Ziffern teilen. Nennen Sie eine der geteilten Ziffern die eingeschränkte, und verlangen Sie, dass jeder Platz, an dem sie in der einen Menge vorkommt, jeden Platz in der anderen sieht.</string>
+    <string name="lesson_als_4">Dann kann sie nur in einer der beiden Mengen sein. Die Menge, die sie nicht bekommt, wird festgelegt, und das legt die andere geteilte Ziffer in ihr fest. Also verliert jede Zelle, die diese Ziffer in beiden Mengen sieht, sie.</string>
+    <string name="lesson_als_5">Hier ist die Streichung, die daraus folgt.</string>
+    <string name="lesson_als_6">Wenn das mehrere Durchgänge braucht, ist das die normale Zahl. Jede Technik jenseits dieses Punktes ist dieselbe in anderer Gestalt.</string>
+
+    <string name="lesson_deep_end_title">Was das tiefe Wasser verlangt</string>
+    <string name="lesson_deep_end_summary">Was sich bei Wahnsinn und Albtraum ändert, und warum diese Stufen Papier brauchen.</string>
+    <string name="lesson_deep_end_1">Alles bis hierher lässt sich sehen. Sie schauen auf eine Zeile, einen Block, ein Zellenpaar, und die Antwort liegt vor Ihnen, sobald Sie die Form kennen.</string>
+    <string name="lesson_deep_end_2">Die beiden schwersten Stufen sind nicht so. Sie verlangen, ein Argument über drei oder vier Schritte zu verfolgen und alles gleichzeitig im Kopf zu behalten, und das schafft durch bloßes Hinschauen fast niemand.</string>
+    <string name="lesson_deep_end_3">Also schreiben Sie es auf. Ein Bleistift und die Rückseite eines Umschlags sind kein Schummeln und kein Zeichen, dass Sie schlecht darin sind. Das tun alle, die so etwas lösen.</string>
+    <string name="lesson_deep_end_4">Die Regeln hier sind alle derselbe Gedanke: eine Gruppe von Zellen, der eine Ziffer zur Vollständigkeit fehlt. Nehmen Sie diese Ziffer weg, und die Gruppe ist gezwungen, und eine gezwungene Gruppe zwingt die nächste. Das ist das tiefe Wasser in einem Satz.</string>
+    <string name="lesson_deep_end_5">Nichts hier unten ist geraten. Jeder Schritt ist bewiesen, jeder Tipp zeigt Ihnen den Beweis, und wenn ein Rätsel Sie hier schlägt, ist es der normale Lauf der Dinge, in einer Woche zurückzukommen.</string>
+
+    <string name="lesson_als_xy_title">ALS-XY-Wing</string>
+    <string name="lesson_als_xy_summary">Drei Gruppen in einer Kette, und die Ziffer, die an keinem Ende überlebt.</string>
+    <string name="lesson_als_xy_1">Diesmal drei Gruppen, zu einer Linie verbunden: je eine an den Enden und eine in der Mitte, die sie auseinanderhält.</string>
+    <string name="lesson_als_xy_2">Beginnen Sie mit den beiden links. r3c9 hält 1 und 3. r1c8 hält 3 und 7. Sie teilen einen Block, also kann nur eine von beiden die 3 sein.</string>
+    <string name="lesson_als_xy_3">Jetzt die Gruppe in Spalte 8: drei Zellen, die zusammen 1, 3, 7 und 9 halten. Vier Ziffern, drei Zellen, ihr fehlt also eine Ziffer zur Vollständigkeit. Sie teilt die 7 mit r1c8, und jede 7 in ihr steht in derselben Spalte, also kann auch hier nur eine Seite sie nehmen.</string>
+    <string name="lesson_als_xy_4">Nehmen Sie an, eine der beiden markierten Zellen in Spalte 9 ist eine 1. Sie sieht r3c9, also ist r3c9 keine 1, also eine 3. Dann ist r1c8 keine 3, also eine 7. Dann bleibt der Gruppe keine 7, sie ist also voll und muss 1, 3 und 9 nutzen.</string>
+    <string name="lesson_als_xy_5">Aber diese Zellen sehen auch jede 1 in der Gruppe, die Gruppe kann also auch keine 1 haben. Das Argument frisst sich selbst, und die 1 fällt weg.</string>
+    <string name="lesson_als_xy_6">Zwei Verbindungen, drei Gruppen, und jeder Schritt erzwingt den nächsten. Lesen Sie es zweimal: es ist eine Kette, und Ketten ergeben nur Glied für Glied Sinn.</string>
+
+    <string name="lesson_blossom_title">Death Blossom</string>
+    <string name="lesson_blossom_summary">Eine Zelle, hinter jeder ihrer Ziffern wartet eine Gruppe.</string>
+    <string name="lesson_blossom_1">Diese hat eine Form, die man sehen kann: einen Stiel und ein Blütenblatt für jede Ziffer, die der Stiel sein könnte.</string>
+    <string name="lesson_blossom_2">Der Stiel ist r1c4. Er ist eine 5 oder eine 6, sonst nichts. Zwei Möglichkeiten heißt zwei Fälle, und diese Technik erledigt beide auf einmal.</string>
+    <string name="lesson_blossom_3">Sagen wir, er ist eine 5. Dann kann r1c7 in derselben Zeile, mit 5 und 8, nicht die 5 sein. Also ist er die 8.</string>
+    <string name="lesson_blossom_4">Sagen wir stattdessen, er ist eine 6. Schauen Sie auf diese drei Zellen im selben Block: zusammen halten sie 2, 6, 7 und 8. Vier Ziffern, drei Zellen, eine zu wenig für die Vollständigkeit. Der Stiel sieht alle drei, seine 6 nimmt ihnen also die 6 weg.</string>
+    <string name="lesson_blossom_5">Jetzt sind sie voll, und drei volle Zellen nutzen drei Ziffern: 2, 7 und 8. Nur eine von ihnen kann die 8 sein, dorthin geht die 8 also.</string>
+    <string name="lesson_blossom_6">Legen Sie die beiden Fälle nebeneinander. Entweder steht eine 8 in r1c7 oder eine 8 in jenem Block, und einen dritten Fall gibt es nicht. Jede Zelle, die beide Stellen sieht, verliert ihre 8, und zwei tun das.</string>
+    <string name="lesson_blossom_7">Beachten Sie, was Sie nie wissen mussten: welche Ziffer der Stiel tatsächlich ist. Beide Wege enden bei einer 8, die Antwort hängt also nicht von der Gabelung ab.</string>
+
+    <string name="lesson_fork_title">Zwangskette</string>
+    <string name="lesson_fork_summary">Nehmen Sie eine Zelle in beide Richtungen und sehen Sie, welche überlebt. Das Schwerste in der App.</string>
+    <string name="lesson_fork_1">Die letzte Technik, und die einzige, die kein Muster ist. Hier gibt es nichts zu entdecken. Hier gibt es nur Arbeit.</string>
+    <string name="lesson_fork_2">Diese Zelle ist eine 2 oder eine 7. Alles andere auf dem Brett ist ausgequetscht, und nichts sagt, welche von beiden es ist.</string>
+    <string name="lesson_fork_3">Also probieren Sie eine. Sagen wir, sie ist eine 2, mit Bleistift, und folgen Sie nur den leichten Folgen: eine Zelle mit einer übrigen Ziffer oder eine Ziffer mit einem übrigen Platz in ihrem Haus.</string>
+    <string name="lesson_fork_4">Sie kommen schnell. Hier wird eine 2 erzwungen, dort eine 7, dann eine 3, eine 5, eine 9. Machen Sie weiter. Vierzehn Ziffern später schauen Sie auf die markierte Zelle.</string>
+    <string name="lesson_fork_5">Ihr bleibt nichts. Jede Ziffer, die dort hätte stehen können, hat etwas anderes genommen. Das ist kein Pech, das ist ein Widerspruch, und er heißt, dass die 2 nie möglich war.</string>
+    <string name="lesson_fork_6">Also radieren Sie alles weg und schreiben die 7. Nicht weil die 7 besser aussieht, sondern weil die 2 als unmöglich bewiesen ist, und zwei Möglichkeiten minus eine ergeben eine.</string>
+    <string name="lesson_fork_7">Das ist ein Beweis über Fälle, und genau das meinen Leute, wenn sie sagen, ein Rätsel werde auf Papier gelöst. Nehmen Sie Papier. Niemand behält vierzehn erzwungene Ziffern im Kopf, und sie aufschreiben zu müssen ist keine Schwäche.</string>
+    <string name="lesson_fork_8">Jetzt setzen Sie sie.</string>
+    <string name="lesson_fork_wrong">Gestorben ist die andere Ziffer. Die 2 führte zu einer leeren Zelle, übrig bleibt also die 7.</string>
+
+    <string name="lesson_nothing_applies_title">Wenn nichts passt</string>
+    <string name="lesson_nothing_applies_summary">Prüfen Sie noch einmal, bevor Sie raten, denn ein Rätsel aus dieser App hat immer einen nächsten Schritt.</string>
+    <string name="lesson_nothing_applies_1">Sie werden Stellungen erreichen, in denen Sie alles angeschaut und nichts gefunden haben. Hier steht, was zu tun ist und was nicht.</string>
+    <string name="lesson_nothing_applies_2">Nicht zu tun ist: raten. Jedes Rätsel in dieser App lässt sich durch Nachdenken lösen, und eine Vermutung, die zufällig stimmt, bringt Ihnen nichts bei, während eine falsche das ganze Gitter kostet.</string>
+    <string name="lesson_nothing_applies_3">Prüfen Sie in dieser Reihenfolge nach. Erstens: stimmen alle Ihre Notizen? Eine veraltete Notiz ist die häufigste Ursache einer unmöglichen Stellung, und diese App radiert sie für Sie weg, wenn Sie es zulassen. Zweitens: stimmt eine gesetzte Ziffer wirklich? Drücken Sie auf Tipp, und die App sagt es Ihnen.</string>
+    <string name="lesson_nothing_applies_4">Schauen Sie dann noch einmal nach den billigen Dingen. Es ist fast nie eine übersehene Kette. Es ist fast immer ein verstecktes Single in einem Haus, das Sie vor zwanzig Zügen aufgegeben haben.</string>
+
+    <string name="lesson_look_first_title">Wonach zuerst suchen</string>
+    <string name="lesson_look_first_summary">Billige Muster zuerst, immer, weil sie häufig sind und das Gitter öffnen.</string>
+    <string name="lesson_look_first_1">Sie kennen jetzt jede Technik, die diese App benennen kann. Das Letzte, was zu lernen bleibt, ist die Reihenfolge.</string>
+    <string name="lesson_look_first_2">Singles zuerst, jedes Mal. Nackte, dann versteckte. Sie sind mit Abstand die häufigsten, und jede gesetzte Ziffer macht jede andere Technik leichter auffindbar.</string>
+    <string name="lesson_look_first_3">Dann die billigen Streichungen: zeigende und beanspruchende Paare. Sie sind schnell geprüft, Haus für Haus, und sie öffnen oft sofort ein Single.</string>
+    <string name="lesson_look_first_4">Dann Paare und Tripel in den Häusern mit den wenigsten leeren Zellen. Dann Fische, dann Wings. Ketten zuletzt, immer, weil sie die meiste Arbeit und die geringste Häufigkeit haben.</string>
+    <string name="lesson_look_first_5">Einen Jellyfish zu jagen, bevor die Singles geprüft sind, ist im Sudoku dasselbe wie ein Programm neu zu schreiben, bevor man die Fehlermeldung liest. Die App bewertet Rätsel nach dem Schwersten, was sie brauchen, aber ein Meister-Rätsel besteht immer noch überwiegend aus Singles.</string>
+
+    <string name="lesson_together_title">Ein Meister, gemeinsam</string>
+    <string name="lesson_together_summary">Ein schweres Rätsel besteht meist aus leichten Schritten mit ein paar schweren darin.</string>
+    <string name="lesson_together_1">Die letzte Lektion. Das ist das Gitter, durch das der Kurs gelaufen ist, auf der Stufe Meister, und hier ist die ganze Lösung, Technik für Technik benannt.</string>
+    <string name="lesson_together_2">Es beginnt mit einem nackten Single. Fast alles tut das.</string>
+    <string name="lesson_together_3">Dann ein verstecktes Single, im Block nebenan.</string>
+    <string name="lesson_together_4">Jetzt stockt es, und ein zeigendes Paar räumt eine Spalte, damit die Singles wieder anfangen können. Beachten Sie: dieser Schritt setzte keine Ziffer, und trotzdem ging es voran.</string>
+    <string name="lesson_together_5">Etwas später ein nacktes Paar, das dieselbe Arbeit in einem Haus tut.</string>
+    <string name="lesson_together_6">Tiefer drin ein X-Wing. Inzwischen ist das Gitter halb voll, und die Notizen tun die Arbeit.</string>
+    <string name="lesson_together_7">Und gegen Ende der Schritt, der die Stufe verdient: ein ALS-XZ. Eine Streichung, und der Rest sind wieder Singles.</string>
+    <string name="lesson_together_8">Das heißt Meister hier. Nicht einundachtzig schwere Schritte, sondern siebzig leichte und eine Handvoll, die alles verlangen, was Sie gelernt haben.</string>
+    <string name="lesson_together_9">Sie kennen jetzt jede Technik, die diese App benennen kann. Gehen Sie und spielen Sie eines. Zu jedem Rätsel gehören drei Tipps, und es ist keine Schande, sie auszugeben; wollen Sie lieber beliebig viele, ist das Limit ein Schalter in den Einstellungen.</string>
+
+    <string name="lesson_step_of">%1$d von %2$d</string>
+    <string name="lesson_back">Zurück</string>
+    <string name="lesson_next">Weiter</string>
+    <string name="lesson_done">Fertig</string>
+    <string name="lesson_replay">Noch einmal</string>
+    <string name="lesson_show_me">Zeig es mir</string>
+    <string name="lesson_cell_at">Zeile %1$d, Spalte %2$d.</string>
+</resources>

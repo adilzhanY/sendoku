@@ -180,6 +180,9 @@ class ThemeScreenshotTest {
     }
 
     @Test
+    fun lessonInGerman() = checkLesson(SendokuThemeId.DEEP_FIELD, dark = true, language = "de")
+
+    @Test
     fun lessonDeepFieldDark() = checkLesson(SendokuThemeId.DEEP_FIELD, dark = true)
 
     @Test
@@ -195,14 +198,27 @@ class ThemeScreenshotTest {
      * paper one, and Terminal has no rounding anywhere and so is where a corner radius baked
      * into the course would show up. The board itself is already covered in every look above.
      */
-    private fun checkLesson(theme: SendokuThemeId, dark: Boolean) {
-        val name = "lesson_" + if (SendokuThemes.isFixed(theme)) {
+    private fun checkLesson(theme: SendokuThemeId, dark: Boolean, language: String? = null) {
+        val name = (if (language == null) "lesson_" else "lesson_${language}_") + if (SendokuThemes.isFixed(theme)) {
             theme.name.lowercase()
         } else {
             "${theme.name.lowercase()}_${if (dark) "dark" else "light"}"
         }
+        // German runs about a third longer than English, so it is the language a layout
+        // breaks in first. One picture of the busiest screen in it is worth the kilobyte.
+        val context = language?.let { tag ->
+            val base = InstrumentationRegistry.getInstrumentation().targetContext
+            val configuration = android.content.res.Configuration(base.resources.configuration)
+            configuration.setLocales(android.os.LocaleList(java.util.Locale.forLanguageTag(tag)))
+            base.createConfigurationContext(configuration)
+        }
         compose.setContent {
-            CompositionLocalProvider(LocalDensity provides Density(density = 2f, fontScale = 1f)) {
+            val wrapped =
+                context?.let { arrayOf(androidx.compose.ui.platform.LocalContext provides it) } ?: emptyArray()
+            CompositionLocalProvider(
+                *wrapped,
+                LocalDensity provides Density(density = 2f, fontScale = 1f),
+            ) {
                 SendokuTheme(themeId = theme, dark = dark) {
                     Box(Modifier.size(360.dp, 620.dp)) {
                         LessonPlayer(

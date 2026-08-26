@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +10,9 @@
         android:fullBackupContent="@xml/backup_rules"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Sendoku">
+        android:theme="@style/Theme.Sendoku"
+        android:localeConfig="@xml/locales_config"
+        tools:targetApi="33">
 
         <!--
           Hands one file to whichever app the player picks, with a read grant that lasts for
@@ -24,6 +27,20 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/shared_files" />
         </provider>
+
+        <!--
+          What makes the language switch work below Android 13. On 13 and later the system
+          reads @xml/locales_config and offers Sendoku in its own per app language screen;
+          below that, this service is how AppCompat remembers the choice across launches.
+        -->
+        <service
+            android:name="androidx.appcompat.app.AppLocalesMetadataHolderService"
+            android:enabled="false"
+            android:exported="false">
+            <meta-data
+                android:name="autoStoreLocales"
+                android:value="true" />
+        </service>
 
         <activity
             android:name=".MainActivity"

@@ -94,7 +94,7 @@ public object ShareCard {
         paint.color = MUTED
         paint.textSize = 34f
         paint.letterSpacing = 0.14f
-        canvas.drawText(title.uppercase(), 234f, 200f, paint)
+        canvas.drawText(title.shout(), 234f, 200f, paint)
         paint.letterSpacing = 0f
 
         // The grade, on the right of the same line as the name, so the board can start high.
@@ -122,7 +122,7 @@ public object ShareCard {
             paint.color = MUTED
             paint.textSize = 32f
             paint.letterSpacing = 0.12f
-            canvas.drawText(line.label.uppercase(), centre, top + 92f, paint)
+            canvas.drawText(line.label.shout(), centre, top + 92f, paint)
             paint.letterSpacing = 0f
             paint.textAlign = Paint.Align.LEFT
         }

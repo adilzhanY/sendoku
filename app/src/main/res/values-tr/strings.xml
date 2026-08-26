@@ -1,0 +1,806 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Türkçe.
+
+  Her yerde geçerli iki karar. Tekniklerin tarif eden adları çevrildi, uydurulmuş özel adlar
+  İngilizce kaldı: X-Wing Türkçede de X-Wing, ama naked single açık tek. Ve üslup aslıyla
+  aynı: sakin, doğrudan, ünlem işareti yok.
+-->
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Sendoku</string>
+    <string name="home_choose_level">SEVİYE SEÇİN</string>
+    <string name="home_daily">Günlük</string>
+    <string name="home_new_puzzle">Yeni bulmaca</string>
+    <string name="home_resume">Devam et</string>
+    <string name="home_in_progress">DEVAM EDEN</string>
+    <string name="home_percent">%1$s, %%%2$d</string>
+    <string name="home_placed">Yerleşen: %2$d içinden %1$d</string>
+
+    <string name="grade_gentle">Kolay</string>
+    <string name="grade_steady">Orta</string>
+    <string name="grade_tricky">Zor</string>
+    <string name="grade_severe">Çok zor</string>
+    <string name="grade_diabolical">Uzman</string>
+    <string name="grade_beyond">Usta</string>
+    <string name="grade_insane">Çılgın</string>
+    <string name="grade_nightmare">Kâbus</string>
+    <string name="grade_locked">Bunu açmak için bir %1$s bulmaca kazanın</string>
+    <string name="gate_gentle">her seferinde tek bir apaçık rakam</string>
+    <string name="gate_steady">ikililer ve bir çizgiye kilitlenmiş rakamlar</string>
+    <string name="gate_tricky">üçlüler ve ızgaraya yayılan örüntüler</string>
+    <string name="gate_severe">kanatlar, renklendirme ve dikdörtgenler</string>
+    <string name="gate_diabolical">akıl yürütme zincirleri</string>
+    <string name="gate_beyond">çoğu uygulamanın gittiğinden daha ileri</string>
+    <string name="gate_insane">zincire bağlanmış hücre grupları</string>
+    <string name="gate_nightmare">bir hücre iki yönden birden, kâğıt üstünde</string>
+    <string name="grade_advanced">İLERİ</string>
+    <string name="grade_advanced_talkback">ileri düzey bir seviye, kurstan bir teknik gerektirir</string>
+
+    <string name="tool_undo">Geri al</string>
+    <string name="tool_redo">Yinele</string>
+    <string name="tool_erase">Sil</string>
+    <string name="tool_notes">Notlar</string>
+    <string name="tool_hint">İpucu</string>
+    <string name="paused">DURAKLADI</string>
+    <string name="paused_tap">Devam etmek için herhangi bir yere dokunun</string>
+    <string name="mistakes_of">%2$d içinden %1$d</string>
+
+    <string name="cell_position">Satır %1$d, sütun %2$d</string>
+    <string name="cell_clue">%1$s, %2$d, hazır verilmiş</string>
+    <string name="cell_digit">%1$s, %2$d</string>
+    <string name="cell_empty">%1$s, boş</string>
+    <string name="cell_noted">%1$s, boş, not edilen %2$s</string>
+    <string name="cell_hint_argument">%1$s. İpucunun parçası.</string>
+    <string name="cell_hint_struck">%1$s. İpucu burada bir notu eliyor.</string>
+    <string name="cell_hint_region">%1$s. İpucunun konu ettiği bölgede.</string>
+    <string name="cell_repeated">%1$s, tekrarlanmış</string>
+
+    <string name="pad_all_placed">%1$d, hepsi yerleşti</string>
+    <string name="pad_one_left">%1$d, bir tane kaldı</string>
+    <string name="pad_scanning">%1$s, nereye gidebileceği gösteriliyor</string>
+    <string name="pad_notes_mode">%1$s, not modu</string>
+
+    <string name="cell_actions_title">SATIR %1$d, SÜTUN %2$d</string>
+    <string name="cell_actions_clue">Bu rakam bulmacayla birlikte geldi, değiştirilemez.</string>
+    <string name="cell_actions_clear_notes">Notları sil</string>
+    <string name="why_not_title">NEDEN OLMAZ?</string>
+    <string name="why_not_prompt">Bir rakama dokunun, onu neyin engellediğini söyleyelim.</string>
+    <string name="why_not_taken">%2$s içinde zaten bir %1$d var, satır %3$d, sütun %4$d.</string>
+    <string name="why_not_filled">Bu hücrede zaten bir %1$d var. Önce onu silin.</string>
+    <string name="why_not_possible">Tahtada %1$d rakamını engelleyen bir şey yok. Bu onu doğru yapmaz, yalnızca mümkün kılar.</string>
+    <string name="cell_actions_clear">Hücreyi temizle</string>
+
+    <string name="leave_title">Bu bulmacadan çıkılsın mı?</string>
+    <string name="leave_body">Bıraktığınız yerde sizi bekler.</string>
+    <string name="leave_confirm">Çık</string>
+    <string name="leave_cancel">Kal</string>
+
+    <string name="outcome_solved">ÇÖZÜLDÜ</string>
+    <string name="outcome_lost">HATA HAKKI BİTTİ</string>
+    <string name="outcome_rated">%1$s, %2$s olarak derecelendirildi</string>
+    <string name="outcome_hints">İPUÇLARI</string>
+    <string name="outcome_mistakes">HATALAR</string>
+    <string name="outcome_moves">HAMLELER</string>
+    <string name="outcome_needed">%1$s gerekti</string>
+    <string name="outcome_home">Ana sayfa</string>
+    <string name="outcome_another">Bir %1$s daha</string>
+
+    <string name="hint_remove_one">Kaldır</string>
+    <string name="hint_remove_many">Hepsini kaldır</string>
+    <string name="hint_look_here_title">BURAYA BAKIN</string>
+    <string name="hint_look_here">%1$s bulunacak bir şey var. Bu ipucu bundan fazlasını söylemez.</string>
+    <string name="hint_look_around">Bulunacak bir adım var. Bu adım tek bir bölgede durmuyor, ızgaraya yayılmış.</string>
+    <string name="hint_what_kind">Ne tür bir adım?</string>
+    <string name="hint_menu_title">YARDIM</string>
+    <string name="hint_menu_difficulty">Sonraki adım %1$s seviyesinde bir teknik gerektiriyor.</string>
+    <string name="hint_menu_broken">Yerleştirdiğiniz bir şey yanlış, o düzeltilene kadar başka hiçbir şey çıkmaz.</string>
+    <string name="hint_menu_check">Bir yanlış var mı?</string>
+    <string name="hint_menu_look">Nereye bakmalıyım?</string>
+    <string name="hint_menu_explain">Sonraki adımı açıkla</string>
+    <string name="hint_menu_free">Burada sormanın bedeli yok. Sınır kapalı.</string>
+    <string name="hint_check_clean">Yerleştirdiklerinizin hepsi doğru.</string>
+    <string name="hint_close">Kapat</string>
+    <string name="hint_where">Nerede olduğunu göster</string>
+    <string name="hint_explain">Açıkla</string>
+    <string name="hint_do_it">Uygula</string>
+    <string name="hint_evidence">Satırında zaten %1$s var. Sütununda %2$s var. Kutusunda %3$s var. Hepsi birlikte %4$d dışındaki her rakamı kaplıyor.</string>
+    <string name="hint_rests_on_earlier">Bunun bir kısmı, önceki bir ipucunun elediği notlara dayanıyor. O notlar tahtaya yazılı, oradan takip edebilirsiniz.</string>
+    <string name="hint_what_is_this">BU NEDİR?</string>
+    <string name="hint_wrong_title">BİR ŞEY YANLIŞ</string>
+    <string name="hint_wrong_one">Yerleştirdiğiniz rakamlardan biri doğru olamaz. İşaretlendi.</string>
+    <string name="hint_wrong_many">Yerleştirdiğiniz rakamlardan %1$d tanesi doğru olamaz. İşaretlendiler.</string>
+    <string name="hint_wrong_until_one">O düzeltilene kadar başka hiçbir şey çıkarılamaz.</string>
+    <string name="hint_wrong_until_many">Onlar düzeltilene kadar başka hiçbir şey çıkarılamaz.</string>
+    <string name="hint_done_title">BİTTİ</string>
+    <string name="hint_done_body">Bulmaca tamamlandı.</string>
+    <string name="hint_stuck_title">ÖNERECEK BİR ŞEY YOK</string>
+    <string name="hint_stuck_body">Bu tahta kurallara uygun, ama Sendoku\'nun bildiği tekniklerin hiçbiri buna uymuyor. Uygulamadan gelen bir bulmacada bu olmamalı.</string>
+    <string name="hint_in_region">%1$s içinde</string>
+    <string name="hint_in_regions">%1$s ve %2$s içinde</string>
+    <string name="hint_outcome_place">Demek ki satır %1$d, sütun %2$d bir %3$d.</string>
+    <string name="hint_outcome_strike_one">Demek ki %1$d rakamı %2$s içinden çıkabilir.</string>
+    <string name="hint_outcome_strike_two">Demek ki %1$d ve %2$d rakamları %3$s içinden çıkabilir.</string>
+    <string name="house_row">satır %1$d</string>
+    <string name="house_column">sütun %1$d</string>
+    <string name="house_box">kutu %1$d</string>
+
+    <string name="glossary_title">Teknikler</string>
+    <string name="back">GERİ</string>
+    <string name="settings_title">Ayarlar</string>
+    <string name="settings_language">Dil</string>
+    <string name="language_system">Telefondaki gibi</string>
+    <string name="language_english">English</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_german">Deutsch</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="settings_look">Görünüm</string>
+    <string name="settings_light_or_dark">Açık ya da koyu</string>
+    <string name="settings_terminal_is_dark">Terminal, telefon nasıl ayarlı olursa olsun koyudur. Bu bilinçli bir tercih.</string>
+    <string name="settings_board">Tahta</string>
+    <string name="settings_highlight_peers">Satırı, sütunu ve kutuyu vurgula</string>
+    <string name="settings_highlight_same">Aynı rakamı başka yerlerde vurgula</string>
+    <string name="settings_auto_clear">Yerleşen bir rakamın elediği notları sil</string>
+    <string name="settings_auto_notes">Her hücrede notları güncel tut</string>
+    <string name="settings_auto_notes_note">Hesabı uygulama tutar. Uzman seviyesinin üstünde buna neredeyse mecbursunuz.</string>
+    <string name="settings_highlight_homes">Seçili rakamın daha nereye girebileceğini göster</string>
+    <string name="settings_auto_check">Bir rakam yanlışsa hemen söyle</string>
+    <string name="settings_auto_check_note">Bu açıkken denemenin bir bedeli kalmaz, bulmaca da gerilimini büyük ölçüde yitirir.</string>
+    <string name="settings_auto_check_forced">Hata sınırı çalışırken açıktır, çünkü bedelini ödediğiniz bir hatayı görebilmeniz gerekir. İkisi de olmadan oynamak için aşağıdaki sınırı kapatın.</string>
+    <string name="settings_flag_conflicts">Satırda, sütunda veya kutuda tekrarlanan rakamı işaretle</string>
+    <string name="settings_clock">Saat</string>
+    <string name="settings_show_timer">Süreyi göster</string>
+    <string name="settings_feedback">Geri bildirim</string>
+    <string name="settings_haptics">Rakam girildiğinde titret</string>
+    <string name="settings_sound">Sesler</string>
+    <string name="settings_sound_note">Oynarken duyulan yumuşak notalar. Kapatmak tek dokunuş, üstelik telefonun sessiz modu her ikisinden de önce gelir.</string>
+    <string name="settings_mistakes">Hatalar</string>
+    <string name="settings_mistake_limit">Üç hatadan sonra oyunu bitir</string>
+    <string name="settings_mistake_note">Varsayılan olarak açık, üç hatada. Zor seviyelerde kapatın: tek bir dalgınlığa bir saat kaybetmek can sıkıcıdır.</string>
+    <string name="settings_about">SENDOKU HAKKINDA</string>
+
+    <string name="theme_deep_field">Deep Field</string>
+    <string name="theme_deep_field_summary">Gerçek siyah, tek bir camgöbeği vurgu, başka bir şey yok</string>
+    <string name="theme_ink">Mürekkep ve kâğıt</string>
+    <string name="theme_ink_summary">Sıcak kâğıda basılmış bir bulmaca kitabı</string>
+    <string name="theme_zen">Arduvaz Zen</string>
+    <string name="theme_zen_summary">Adaçayı ve taş, mümkün olduğunca az şey</string>
+    <string name="theme_terminal">Terminal</string>
+    <string name="theme_terminal_summary">Eşaralıklı yazı, sert kenarlar, yalnızca koyu</string>
+    <string name="mode_system">Sistemi izle</string>
+    <string name="mode_light">Her zaman açık</string>
+    <string name="mode_dark">Her zaman koyu</string>
+
+    <string name="stats_title">İstatistikler</string>
+    <string name="stats_solved">ÇÖZÜLEN</string>
+    <string name="stats_streak">SERİ</string>
+    <string name="stats_hardest">EN ZORU</string>
+    <string name="stats_hardest_note">Bitirdiğiniz en zor bulmaca bir %1$s.</string>
+    <string name="stats_totals">%1$s oynandı, alınan ipucu: %2$d.</string>
+    <string name="stats_by_grade">Seviyeye göre</string>
+    <string name="stats_hints_title">NELERİ SORDUNUZ</string>
+    <string name="stats_hints_note">En çok %1$s tekniğini soruyorsunuz. Geri dönmeye değer ders o.</string>
+    <string name="stats_needed">Bulmacalarınızın gerektirdikleri</string>
+    <string name="stats_solved_count">Çözülen: %1$d</string>
+    <string name="stats_solved_and_lost">Çözülen: %1$d, kaybedilen: %2$d</string>
+    <string name="stats_average">ort. %1$s</string>
+    <string name="stats_reset">İSTATİSTİKLERİ SIFIRLA</string>
+    <string name="stats_reset_title">Geçmişiniz atılsın mı?</string>
+    <string name="stats_reset_body">Bitirilen her bulmaca, her seri ve her en iyi süre. Başka hiçbir yerde kopyası yok, bu yüzden geri alınamaz.</string>
+    <string name="stats_reset_confirm">Sıfırla</string>
+    <string name="stats_reset_cancel">Kalsın</string>
+    <string name="stats_empty_title">Henüz bir şey yok</string>
+    <string name="stats_empty_body">Bir bulmaca bitirin, burası dolsun: her seviyenin sizi ne kadar tuttuğu, ne kadar ilerlediğiniz ve bulmacalarınızın hangi teknikleri gerektirdiği.</string>
+
+    <string name="about_title">Hakkında</string>
+    <string name="about_version">Sendoku %1$s</string>
+    <string name="about_tagline">Zor sudokuları tükenmiş olanlar için bir sudoku uygulaması.</string>
+    <string name="about_no_ads">Reklam yok</string>
+    <string name="about_no_ads_detail">Bulmacalar arasında değil, ipucu için değil, hiçbir zaman.</string>
+    <string name="about_no_tracking">Takip yok</string>
+    <string name="about_no_tracking_detail">Hiçbir şey ölçülmüyor ve hiçbir şey gönderilmiyor. Sunucu yok.</string>
+    <string name="about_no_purchases">Satın alma yok</string>
+    <string name="about_no_purchases_detail">Her bulmaca ve her ipucu zaten burada.</string>
+    <string name="about_offline">Çevrimdışı çalışır</string>
+    <string name="about_offline_detail">Bütün bulmaca destesi uygulamanın içinde.</string>
+    <string name="about_hints">Öğreten ipuçları</string>
+    <string name="about_hints_detail">Bir ipucu tekniğin adını söyler ve akıl yürütmeyi açıklar. Asla öylece bir rakam doldurmaz ve asla satılmaz: her bulmacayla üç tane gelir, sınırı da ayarlardan kapatabilirsiniz.</string>
+    <string name="about_rating">Zorluk, bir bulmacanın gerçekten ihtiyaç duyduğu en zor tekniğe göre belirlenir; bu da bulmacayı bir insanın çözeceği gibi çözerek bulunur. Buradaki bir Çok zor, bir önceki Çok zor ile aynı anlama gelsin diye.</string>
+    <string name="about_licence">Sendoku, GNU General Public License sürüm 3 altında özgür yazılımdır.</string>
+    <string name="about_privacy">Gizlilik politikası aynı şeyi mağazanın istediği biçimde söyler: adilzhany.github.io/sendoku/privacy</string>
+    <string name="about_licences">AÇIK KAYNAK LİSANSLARI</string>
+    <string name="licences_title">Lisanslar</string>
+
+    <string name="look_naked_single">İçine yalnızca tek bir rakamın girebileceği bir hücre var.</string>
+    <string name="look_hidden_single">Gidecek tek bir yeri kalmış bir rakam var.</string>
+    <string name="look_locked_candidates_pointing">Bir kutuda, bir rakam tek bir satıra ya da sütuna sıkışmış.</string>
+    <string name="look_locked_candidates_claiming">Bir çizgide, bir rakam yalnızca tek bir kutunun içine girebiliyor.</string>
+    <string name="look_naked_pair">Bir bölgedeki iki hücre aynı iki rakamı tutuyor, başka bir şey tutmuyor.</string>
+    <string name="look_hidden_pair">İki rakamın bir bölgede aynı iki hücreden başka gidecek yeri yok.</string>
+    <string name="look_naked_triple">Bir bölgedeki üç hücre aralarında üç rakamı paylaşıyor.</string>
+    <string name="look_hidden_triple">Üç rakam aynı üç hücreye sıkışmış.</string>
+    <string name="look_naked_quad">Bir bölgedeki dört hücre aralarında dört rakamı paylaşıyor.</string>
+    <string name="look_hidden_quad">Dört rakam aynı dört hücreye sıkışmış.</string>
+    <string name="look_x_wing">İki satır bir rakamı aynı iki sütunda tutuyor ya da tersi.</string>
+    <string name="look_swordfish">Üç satır bir rakamı aynı üç sütunun içinde tutuyor.</string>
+    <string name="look_jellyfish">Dört satır bir rakamı aynı dört sütunun içinde tutuyor.</string>
+    <string name="look_xy_wing">İkişer rakamlı üç hücre, bir rakamı dışarı sıkıştıracak biçimde dizilmiş.</string>
+    <string name="look_xyz_wing">XY-Wing gibi, ama ortadaki hücrede bir de üçüncü rakam var.</string>
+    <string name="look_w_wing">Aynı ikiliyi tutan iki hücre, yalnızca iki yeri olan bir rakamla birbirine bağlı.</string>
+    <string name="look_simple_colouring">Bir rakam, boyunca dönüşümlü giden bir zincir oluşturuyor.</string>
+    <string name="look_multi_colouring">Tek bir rakam üzerinde iki ayrı zincir, birbirine karşı oynatılıyor.</string>
+    <string name="look_remote_pairs">Hepsi tam olarak aynı iki rakamı tutan bir hücre zinciri.</string>
+    <string name="look_unique_rectangle">Dört hücre, bulmacaya iki çözüm verecek bir dikdörtgen oluşturuyor.</string>
+    <string name="look_bug_plus_one">Biri dışında her hücre iki rakama inmiş.</string>
+    <string name="look_x_chain">Tek bir rakam üzerinde, olmalı ile olamaz arasında gidip gelen bir zincir.</string>
+    <string name="look_xy_chain">Her biri bir sonrakini zorlayan, ikişer rakamlı hücrelerden bir zincir.</string>
+    <string name="look_forcing_chain">Başka bulunacak bir şey kalmadığında, tam iki olasılığı olan bir hücre.</string>
+    <string name="look_death_blossom">Bir hücre ve olabileceği her rakam için bir grup; hücre o rakamı grubun içinde nerede olursa olsun görüyor.</string>
+    <string name="look_als_xy_wing">Her birine dolmak için bir rakam eksik olan üç grup, iki farklı rakamla bir çizgi hâlinde birbirine bağlı.</string>
+    <string name="look_sue_de_coq">Bir kutu ile bir çizginin kesiştiği yer; ortak hücreler sığdırabileceğinden iki rakam fazla tutuyor.</string>
+    <string name="look_als_xz">Her birine kilitlenmek için bir rakam eksik olan iki hücre grubu.</string>
+
+    <string name="because_naked_single">Diğer her rakam, kendi satırında, sütununda ya da kutusunda zaten var, geriye yalnızca bir tanesi kalıyor. O da buraya girmek zorunda.</string>
+    <string name="because_hidden_single">Bölgenin bu rakama bir yerde ihtiyacı var ve içindeki diğer bütün hücreler eleniyor, demek ki kalan tek yer burası.</string>
+    <string name="because_locked_candidates_pointing">Kutu bu rakamı bir yerde tutmak zorunda ve gidebileceği bütün yerler tek bir çizgi üzerinde. Demek ki rakam o çizgi üzerinde ve çizginin başka hiçbir yerinde olamaz.</string>
+    <string name="because_locked_candidates_claiming">Çizgi bu rakamı bir yerde tutmak zorunda ve gidebileceği bütün yerler tek bir kutunun içinde. Demek ki rakam o kutuda ve kutunun başka hiçbir yerinde olamaz.</string>
+    <string name="because_naked_pair" tools:ignore="Typos">O iki hücre, o iki rakamı aralarında birer birer alacak. Bölgedeki başka hiçbir hücre bunlardan birini alamaz.</string>
+    <string name="because_hidden_pair">Bölgenin iki rakama da ihtiyacı var ve onları yalnızca bu iki hücre alabiliyor, demek ki birer tane alıyorlar. O iki hücredeki her şey eleniyor.</string>
+    <string name="because_naked_triple">Üç hücre, üç rakam, her birine bir tane. Tek bir hücre üçünü birden tutmasa bile bölgedeki başka hiçbir şey onları kullanamaz.</string>
+    <string name="because_hidden_triple">Başka gidecek yeri olmayan üç rakam, aralarında üç hücreyi dolduruyor, demek ki o hücrelerdeki başka her şey imkânsız.</string>
+    <string name="because_naked_quad">Dört hücre aralarında dört rakamı alıyor, bu da dördünü bölgenin geri kalanından dışarıda bırakıyor.</string>
+    <string name="because_hidden_quad">Dört hücreye sıkışmış dört rakam, o hücreleri aralarında dolduruyor, orada başka hiçbir şey duramaz.</string>
+    <string name="because_x_wing">İki satırın her biri rakama bir kez ihtiyaç duyuyor ve ikisi de onu yalnızca aynı iki sütuna koyabiliyor. Aralarında iki sütunu da tüketiyorlar, demek ki başka hiçbir satır rakamı orada tutamaz.</string>
+    <string name="because_swordfish">Üç satırın rakama ihtiyacı var ve onu koyacak yalnızca üç sütun var. Üç satır, üç sütunun tamamını tüketiyor, demek ki o sütunlardaki başka hiçbir şey onu alamaz.</string>
+    <string name="because_jellyfish">Dört satır ve dört sütun, yine aynı akıl yürütme. Dört satır aralarında dört sütunun tamamını dolduruyor.</string>
+    <string name="because_xy_wing">Ortadaki hücre iki rakamından biridir. Her iki durumda da dıştaki iki hücreden biri ortak rakama zorlanır, demek ki ikisini birden gören hiçbir şey o rakam olamaz.</string>
+    <string name="because_xyz_wing">Ortadaki hücre ortak rakam da olabilir, bu yüzden sonuç daha zayıf: yalnızca üçünü birden gören bir hücre onu kaybeder.</string>
+    <string name="because_w_wing">İkili hücrelerden hiçbiri ikinci rakamı almasaydı, ikisi de birinciyi alırdı ve bağlı bölgede onu koyacak yer kalmazdı. Demek ki ikisinden biri ikinci rakamdır.</string>
+    <string name="because_simple_colouring">Zinciri dönüşümlü boyayın, tam olarak bir renk doğrudur. Ya bir renk bir bölgede iki kez düşer ve böylece yanlış olur, ya da dışarıdaki bir hücre iki rengi birden görür ve sonuç ne olursa olsun rakamı kaybeder.</string>
+    <string name="because_multi_colouring">Birinci zincirin bir rengi, ikincinin bir rengiyle çelişiyor; bu da rakamı karşıt iki renkten birine zorluyor. İkisini birden gören her şey onu tutamaz.</string>
+    <string name="because_remote_pairs">Zincirdeki komşular birbirini görür, bu yüzden sırayla değişirler. İki uç, tek sayıda adım uzaklıktadır ve bu yüzden birer rakam tutar; ikisini birden gören hiçbir şey bunlardan birini alamaz.</string>
+    <string name="because_unique_rectangle">O dört hücre aynı iki rakamdan başka bir şey tutmasaydı, rakamlar dikdörtgen boyunca yer değiştirebilir ve bulmacanın iki çözümü olurdu. Bir çözümü var, demek ki bu düzen imkânsız.</string>
+    <string name="because_bug_plus_one">Fazladan aday kaldırılsaydı, her rakam her bölgede tam iki kez görünürdü ve böyle bir ızgaranın çözüm sayısı her zaman çifttir. Bu bulmacanın bir çözümü var, demek ki fazladan aday cevabın kendisi.</string>
+    <string name="because_x_chain">Zincir, rakamın bulunmak zorunda olduğu yerlerle bulunamayacağı yerler arasında gidip gelir. İki uç birden ondan yoksun olamaz, demek ki ikisini de gören her şey onu kaybeder.</string>
+    <string name="because_xy_chain">Diyelim ki ilk hücre o rakam değil. Zinciri takip edin, son hücre o rakam olmaya zorlanır. Demek ki uçlardan biri onu tutuyor.</string>
+    <string name="because_forcing_chain">İki olasılığı da takip edin. Biri, içine koyacak bir şey kalmamış bir hücre bırakıyorsa, o olasılık zaten hiç mümkün değildi ve elenir. İkisi de aynı rakamı aynı yere koyuyorsa, hangisi doğru çıkarsa çıksın o rakam oraya aittir. Buradaki hiçbir şey varsayımın doğru olmasına bağlı değil, onu bir tahmin değil bir kanıt yapan da bu.</string>
+    <string name="because_death_blossom">Hücre sonunda ne çıkarsa çıksın, kendi rakamını eşleşen gruptan dışarı atar; o grup böylece dolar ve elinde kalan her rakamı kullanmak zorunda kalır. Bütün gruplar aynı yedek rakamı tutuyorsa, hücre hangi tarafa düşerse düşsün o rakam gruplardan birine iner. Onu bütün gruplarda gören her şey onu kaybeder.</string>
+    <string name="because_als_xy_wing">Tehdit altındaki rakam ilk gruptan gitmişse, o grup dolmuştur ve ortadaki grupla paylaştığı rakamı almak zorundadır. Ortadaki grup bu rakamı kaybeder, böylece o da dolar ve üçüncü grupla paylaştığı rakamı alır. Üçüncü grup da böylece dolar ve tehdit altındaki rakamı kullanmak zorunda kalır. Demek ki onu her iki dış grupta da gören hiçbir hücre onu alamaz.</string>
+    <string name="because_sue_de_coq">Ortak hücreler, rakamlarının ikisi dışında hepsini tüketecek; iki yandaki gruplar da tam olarak o iki rakamı sahipleniyor. Demek ki çizgideki grubun her rakamı çizginin içinde, kutudaki grubun her rakamı da kutunun içinde harcanıyor. İkisinde de başka hiçbir şey onları alamaz.</string>
+    <string name="because_als_xz">Ortak bir rakam iki gruptan yalnızca birinde görünebilir; bu da diğer grubu kilitler ve sahip olduğu her rakamı kullanmaya zorlar. Demek ki ikinci ortak rakam gruplardan birine ya da diğerine iner.</string>
+
+    <string name="technique_naked_single">Açık tek</string>
+    <string name="technique_hidden_single">Gizli tek</string>
+    <string name="technique_locked_candidates_pointing">İşaret eden ikili veya üçlü</string>
+    <string name="technique_locked_candidates_claiming">Sahiplenen ikili veya üçlü</string>
+    <string name="technique_naked_pair">Açık ikili</string>
+    <string name="technique_hidden_pair">Gizli ikili</string>
+    <string name="technique_naked_triple">Açık üçlü</string>
+    <string name="technique_hidden_triple">Gizli üçlü</string>
+    <string name="technique_naked_quad">Açık dörtlü</string>
+    <string name="technique_hidden_quad">Gizli dörtlü</string>
+    <string name="technique_x_wing">X-Wing</string>
+    <string name="technique_simple_colouring">Basit renklendirme</string>
+    <string name="technique_xy_wing">XY-Wing</string>
+    <string name="technique_xyz_wing">XYZ-Wing</string>
+    <string name="technique_w_wing">W-Wing</string>
+    <string name="technique_swordfish">Swordfish</string>
+    <string name="technique_remote_pairs">Uzak ikililer</string>
+    <string name="technique_unique_rectangle">Tek çözüm dikdörtgeni</string>
+    <string name="technique_bug_plus_one">BUG artı bir</string>
+    <string name="technique_jellyfish">Jellyfish</string>
+    <string name="technique_multi_colouring">Çoklu renklendirme</string>
+    <string name="technique_x_chain">X-Chain</string>
+    <string name="technique_xy_chain">XY-Chain</string>
+    <string name="technique_als_xz">ALS XZ</string>
+    <string name="technique_sue_de_coq">Sue de Coq</string>
+    <string name="technique_als_xy_wing">ALS XY-Wing</string>
+    <string name="technique_death_blossom">Death Blossom</string>
+    <string name="technique_forcing_chain">Zorlama zinciri</string>
+
+    <string name="daily_title">Günlük</string>
+    <string name="daily_no_streak">Henüz seri yok. Başlatmak için bugünün bulmacasını çözün.</string>
+    <string name="daily_previous_month">ÖNCEKİ</string>
+    <string name="daily_next_month">SONRAKİ</string>
+    <string name="daily_cell_solved">çözüldü</string>
+    <string name="daily_cell_attempted">oynandı ama bitirilmedi</string>
+    <string name="daily_cell_unplayed">oynanmadı</string>
+    <string name="daily_cell_future">henüz değil</string>
+    <string name="daily_play_today">Bugünkünü oyna</string>
+    <string name="daily_cell">%1$d, %2$s, %3$s</string>
+    <string name="daily_cell_today">bugün, %1$d, %2$s, %3$s</string>
+
+    <string name="stat_difficulty">Seviye</string>
+    <string name="stat_mistakes">Hatalar</string>
+    <string name="stat_hints">İpuçları</string>
+    <string name="stat_time">Süre</string>
+    <string name="stat_pause">Duraklat</string>
+
+    <string name="stage_first_steps">İlk adımlar</string>
+    <string name="stage_one_at_a_time">Her seferinde tek rakam</string>
+    <string name="stage_notes">Notlar</string>
+    <string name="stage_locked_to_a_line">Bir çizgiye kilitlenmiş rakamlar</string>
+    <string name="stage_groups">Gruplar</string>
+    <string name="stage_patterns">Izgaraya yayılan örüntüler</string>
+    <string name="stage_wings">Kanatlar</string>
+    <string name="stage_colouring">Renklendirme</string>
+    <string name="stage_one_answer">Tek çözüm varsayımı</string>
+    <string name="stage_chains">Zincirler</string>
+    <string name="stage_the_far_end">Uzak uç</string>
+    <string name="stage_the_deep_end">Derin uç</string>
+
+    <string name="course_title">Öğren</string>
+    <string name="course_lesson_done">tamamlandı</string>
+    <string name="course_lesson_next">sırada</string>
+    <string name="course_lesson_todo">başlanmadı</string>
+
+    <string name="settings_hint_detail">BİR İPUCU NE KADAR SÖYLER</string>
+    <string name="hint_detail_region">Yalnızca bölge</string>
+    <string name="hint_detail_region_note">Hangi kutuya ya da çizgiye bakılacağı, fazlası değil.</string>
+    <string name="hint_detail_name">Teknik</string>
+    <string name="hint_detail_name_note">Ne tür bir adım olduğu, ne arayacağınızı bilesiniz diye.</string>
+    <string name="hint_detail_cells">Hücreler</string>
+    <string name="hint_detail_cells_note">Akıl yürütmenin dayandığı hücreler, tahtada aydınlatılmış hâlde.</string>
+    <string name="hint_detail_full">Bütün akıl yürütme</string>
+    <string name="hint_detail_full_note">Hamle dâhil her şey. Kursu baştan sona çalışanlar için.</string>
+
+    <string name="path_title">Nasıl çözüldü</string>
+    <string name="path_placed">Satır %1$d, sütun %2$d bir %3$d.</string>
+    <string name="outcome_path">NASIL ÇÖZÜLDÜĞÜNÜ GÖSTER</string>
+
+    <string name="settings_your_data">Verileriniz</string>
+    <string name="settings_data_note">Bu uygulamanın sizin hakkınızda bildiği her şey bu telefonda. Dışa aktarma, bunu seçtiğiniz bir dosyaya yazar; böylece yeni bir telefon bu telefonun bıraktığı yerden devam edebilir. Hiçbir şey hiçbir yere gönderilmez.</string>
+    <string name="settings_export">İlerlememi dışa aktar</string>
+    <string name="settings_import">Bir dosyadan içe aktar</string>
+    <string name="settings_reset_course">Kursu sıfırla, oyunlarım kalsın</string>
+    <string name="settings_exported">Kaydedildi. Dersler: %1$d. Oyunlar: %2$d.</string>
+    <string name="settings_imported">Eklendi. Dersler: %1$d. Oyunlar: %2$d.</string>
+    <string name="settings_imported_ignored">Eklendi. Dersler: %1$d. Oyunlar: %2$d. Daha yeni bir sürümden geldiği için dışarıda bırakılan: %3$d.</string>
+    <string name="settings_import_empty">Bu dosya boş.</string>
+    <string name="settings_import_not_ours">Bu bir Sendoku dışa aktarımına benzemiyor.</string>
+    <string name="settings_import_future">Bu dosya Sendoku\'nun daha yeni bir sürümüyle yazılmış.</string>
+    <string name="settings_import_failed">Bu dosya okunamadı ve bu telefonda hiçbir şey değişmedi.</string>
+    <string name="settings_course_reset">Kurs başa döndü. Oyunlarınıza dokunulmadı.</string>
+
+    <string name="practice_looking">Bir konum aranıyor…</string>
+    <string name="practice_find">%1$s tekniğini bulun.</string>
+    <string name="practice_keep_going">Onlardan biri. Devam edin.</string>
+    <string name="practice_wrong">O hücre değil. Kuralı yeniden okuyun: %1$s tekniği ona dayanmıyor.</string>
+    <string name="practice_right">İşte %1$s tekniği. Neyi elediği işaretlendi.</string>
+    <string name="practice_revealed">İşte %1$s tekniği ve neyi elediği.</string>
+    <string name="practice_show_me">Göster</string>
+    <string name="practice_another">Bir tane daha</string>
+    <string name="practice_skip">Atla</string>
+    <string name="practice_title">Alıştırma</string>
+    <string name="practice_none">Henüz alıştırma yapılacak bir şey yok. Önce bir teknik öğreten bir dersi bitirin.</string>
+
+    <string name="glossary_learn_this">BUNU ÖĞREN</string>
+    <string name="hint_learn_this">Bunu bana öğret</string>
+    <string name="outcome_learn">%1$s öğren</string>
+    <string name="course_finished">Hepsi tamam. Uygulamanın adlandırabildiği her şeyi siz de adlandırabiliyorsunuz. Gerisi bulmacalar.</string>
+    <string name="outcome_lost_hints">İPUCU HAKKI BİTTİ</string>
+    <string name="outcome_share">Paylaş</string>
+    <string name="card_solved">Çözüldü</string>
+    <string name="card_lost">Yenildiği bulmaca</string>
+
+    <string name="settings_hints">İpuçları</string>
+    <string name="settings_hint_limit">Üç ipucundan sonra oyunu bitir</string>
+    <string name="settings_hint_note">Varsayılan olarak açık. Üç ipucu bedava, dördüncüsü oyuna mal olur; bu da ipucunu bir refleks değil bir karar hâline getirir. Kursu çalışırken kapatın.</string>
+
+    <string name="account_title">Siz</string>
+    <string name="account_no_account">Giriş yapılacak bir hesap yok. Aşağıdaki her şey bu telefonda, başka hiçbir yerde değil.</string>
+    <string name="account_solved">Çözülen</string>
+    <string name="account_streak">Seri</string>
+    <string name="account_played">Oynanan</string>
+    <string name="account_time">Süre</string>
+    <string name="account_lessons">Dersler</string>
+    <string name="account_stats">İstatistikler</string>
+    <string name="account_stats_detail">Her seviye, en iyi süreleriniz ve karşılaştığınız teknikler</string>
+    <string name="account_settings_detail">Görünüm, tahta, sınırlar ve verileriniz</string>
+    <string name="account_about_detail">Bu uygulamanın verdiği sözler ve dayandığı lisanslar</string>
+
+    <string name="tab_home">Ana sayfa</string>
+    <string name="tab_learn">Öğren</string>
+    <string name="tab_account">Siz</string>
+
+    <plurals name="pad_left">
+        <item quantity="one">%1$d, %2$d kaldı</item>
+        <item quantity="other">%1$d, %2$d kaldı</item>
+    </plurals>
+    <plurals name="cell_actions_note_all">
+        <item quantity="one">Tek adayı not et</item>
+        <item quantity="other">%1$d adayın hepsini not et</item>
+    </plurals>
+    <plurals name="hint_cells">
+        <item quantity="one">bir hücre</item>
+        <item quantity="other">%1$d hücre</item>
+    </plurals>
+    <plurals name="stats_longest_run">
+        <item quantity="one">En uzun seriniz bir gündü.</item>
+        <item quantity="other">En uzun seriniz %1$d gündü.</item>
+    </plurals>
+    <plurals name="daily_streak">
+        <item quantity="one">üst üste %1$d gün</item>
+        <item quantity="other">üst üste %1$d gün</item>
+    </plurals>
+    <plurals name="course_progress">
+        <item quantity="one">%2$d dersten %1$d tanesi</item>
+        <item quantity="other">%2$d dersten %1$d tanesi</item>
+    </plurals>
+    <plurals name="hint_menu_left">
+        <item quantity="one">Son ikisi bir ipucuna mal olur, %1$d hakkınız kaldı.</item>
+        <item quantity="other">Son ikisi bir ipucuna mal olur, %1$d hakkınız kaldı.</item>
+    </plurals>
+    <plurals name="hint_check_wrong">
+        <item quantity="one">Yerleştirdiğiniz %1$d rakam yanlış. Onu bulmak yine size kalmış.</item>
+        <item quantity="other">Yerleştirdiğiniz %1$d rakam yanlış. Onları bulmak yine size kalmış.</item>
+    </plurals>
+    <plurals name="path_summary">
+        <item quantity="one">%1$d adım, önce en ucuz kural, uygulamanın derecelendirdiği sırayla.</item>
+        <item quantity="other">%1$d adım, önce en ucuz kural, uygulamanın derecelendirdiği sırayla.</item>
+    </plurals>
+    <plurals name="path_struck">
+        <item quantity="one">%1$d notu eliyor.</item>
+        <item quantity="other">%1$d notu eliyor.</item>
+    </plurals>
+
+    <!-- Kurs. İlk adımlar. -->
+    <string name="lesson_what_is_title">Sudoku nedir</string>
+    <string name="lesson_what_is_summary">Her satır, her sütun ve her kutu, her rakamı bir kez içerir.</string>
+    <string name="lesson_what_is_1">Bu bir sudoku. Küçük olanı, dört hücreye dört, böylece hepsi aynı anda aklınıza sığar. Tam boy ızgara da tıpatıp aynı şekilde çalışır.</string>
+    <string name="lesson_what_is_2">Bu bir satır. 1, 2, 3 ve 4 rakamlarını, her birini bir kez içermek zorunda. Tekrar yok, eksik de yok.</string>
+    <string name="lesson_what_is_3">Bu bir sütun. Aynı kural: 1, 2, 3 ve 4, her biri bir kez.</string>
+    <string name="lesson_what_is_4">Oyunun tamamı bu. İçinde aritmetik yok, toplanacak bir şey yok. Bir rakamın nerede bulunabileceğine dair tek bir kural.</string>
+    <string name="lesson_what_is_5">Bu iki hücre boş. Kural bozulmadan onları doldurmak, çözmek demektir.</string>
+
+    <string name="lesson_houses_title">Satırlar, sütunlar ve kutular</string>
+    <string name="lesson_houses_summary">Bir hücre aynı anda üç evde bulunur ve hepsiyle aynı kuralı paylaşır.</string>
+    <string name="lesson_houses_1">Kural satırlardan ve sütunlardan söz etti. Üçüncü bir grup türü daha var ve sudokuyu çözmeye değer kılan da odur.</string>
+    <string name="lesson_houses_2">İşte yine bir satır.</string>
+    <string name="lesson_houses_3">İşte bir sütun.</string>
+    <string name="lesson_houses_4">Ve işte kalın çizgilerle belirtilmiş bir kutu. O da her rakamı bir kez içerir.</string>
+    <string name="lesson_houses_5">Yani bu hücre aynı anda üç gruba aittir. Onunla grup paylaşan her hücre aydınlatıldı ve hiçbiri onunla aynı rakamı tutamaz. Bu üç gruba ev denir ve bundan sonra bu sözcük kullanılacak.</string>
+
+    <string name="lesson_givens_title">Verilenler</string>
+    <string name="lesson_givens_summary">Başta basılı gelen rakamlar sabittir ve çözümü tek yapan da onlardır.</string>
+    <string name="lesson_givens_1">Bu rakamlar bulmacayla birlikte geldi. Onlara verilenler denir; değiştirilemez ve silinemezler.</string>
+    <string name="lesson_givens_2">Sizin yerleştirdiğiniz rakamlardan farklı çizilirler, böylece hangisinin ne olduğu her zaman bellidir. Bu uygulamada verilenler daha kalın olanlardır.</string>
+    <string name="lesson_givens_3">Doldurduğunuz hücreler bunlar.</string>
+    <string name="lesson_givens_4">Düzgün hazırlanmış bir bulmacanın doldurulacak tek bir yolu vardır. Bu, sizin hakkınızda değil bulmaca hakkında bir sözdür: tıkandığınızda da çözüm hâlâ tektir ve her zaman akıl yürütmeyle bulunabilir. Bu uygulamadaki her bulmaca böyle hazırlandı.</string>
+
+    <string name="lesson_first_four_title">İlk çözümünüz</string>
+    <string name="lesson_first_four_summary">Bir hücrenin ne olamayacağına bakın; bazen geriye tek bir rakam kalır.</string>
+    <string name="lesson_first_four_1">Şimdi bir tanesini çözün. İki hücre boş ve kural ikisi için de yeterli.</string>
+    <string name="lesson_first_four_2">Şu satırdan başlayın. İçinde zaten bir 1 ve bir 4 var, demek ki iki boş hücre aralarında 2 ve 3\'ü tutuyor. Soru hangisinin nereye gideceği.</string>
+    <string name="lesson_first_four_3">Bu hücre 2 olamaz, çünkü sütununda zaten bir 2 var. Demek ki 3.</string>
+    <string name="lesson_first_four_4">Geriye bir boş hücre ve satırda kullanılmamış bir rakam kalıyor.</string>
+    <string name="lesson_first_four_5">Sıra sizde. Buraya ait olan rakamı yerleştirin.</string>
+    <string name="lesson_first_four_wrong">Tam değil. Satıra bakın: 1 ile 4 arasındaki hangi rakam orada hâlâ eksik?</string>
+    <string name="lesson_first_four_6">Çözüldü. Izgaranın boyu ne olursa olsun sudoku budur.</string>
+
+    <string name="lesson_first_six_title">Daha büyük bir ızgara</string>
+    <string name="lesson_first_six_summary">Kutular her zaman kare değildir ve kuralın umurunda değildir.</string>
+    <string name="lesson_first_six_1">Altıya altı. Kural değişmedi, kutular değişti: üç geniş, iki yüksek.</string>
+    <string name="lesson_first_six_2">Bu bir kutu. Üç yatay, iki dikey, altı hücre, 1\'den 6\'ya her rakam bir kez.</string>
+    <string name="lesson_first_six_3">Bu başta yanıltır, çünkü göz kare bekler. Bir anınıza değer: başka bir yere bakmadan önce bu hücrenin hangi kutuda olduğunu bulun.</string>
+    <string name="lesson_first_six_4">Sıra sizde. Sol üstteki kutuda bir rakam eksik.</string>
+    <string name="lesson_first_six_wrong">O değil. Kutunun hâlihazırda ne tuttuğunu sayın, sonra 1 ile 6 arasında orada olmayan rakamı bulun.</string>
+    <string name="lesson_first_six_5">Güzel. Buradan sonra ızgaralar dokuza dokuz ve kutular yeniden kare, ama üç evi de kontrol etme alışkanlığı korunmaya değer olanıdır.</string>
+
+    <string name="lesson_naked_single_title">Açık tek</string>
+    <string name="lesson_naked_single_summary">İçine yalnızca bir rakamın girebildiği hücre onu tutmak zorundadır.</string>
+    <string name="lesson_naked_single_1" tools:ignore="Typos">Tam boy bir ızgara ve adı olan ilk teknik. Var olanların en basiti ve en zor bulmacalarda bile hücrelerin çoğunu bitiren o.</string>
+    <string name="lesson_naked_single_2">Şu hücreye tek başına bakın. Ne tutabileceğini sorun.</string>
+    <string name="lesson_naked_single_3">Bir şeyi eleyen her hücre aydınlatıldı. Satırı, sütunu ve kutusu arasında dokuz rakamın sekizi, hücrenin görebildiği bir yerde zaten duruyor.</string>
+    <string name="lesson_naked_single_4" tools:ignore="Typos">Demek ki tek bir rakam kalıyor ve hücre onu tutmak zorunda. Başka bir şey mümkün değil. Açık tek budur: açık, çünkü tek bir hücreye bakarak görülür; tek, çünkü geriye tek rakam kalır.</string>
+    <string name="lesson_naked_single_5">Uygulama size ipucu verirken bunu adıyla anar. Artık ne demek olduğunu biliyorsunuz.</string>
+
+    <string name="lesson_hidden_single_title">Gizli tek</string>
+    <string name="lesson_hidden_single_summary">Bir evde gidecek tek yeri kalan rakam oraya gitmek zorundadır.</string>
+    <string name="lesson_hidden_single_1" tools:ignore="Typos">Diğer tek türü ve daha çok hücre bulan olanı. Açık tek, tek rakamı kalmış bir hücredir. Bu ise onun aynadaki hâli: tek hücresi kalmış bir rakam.</string>
+    <string name="lesson_hidden_single_2">Bir ev alın ve hâlâ ihtiyaç duyduğu bir rakam seçin. O evde rakamın nereye gidebileceğini sorun.</string>
+    <string name="lesson_hidden_single_3">Bu kutuda cevap tek bir hücre. Kutudaki diğer bütün boş hücreler kendi satırı ya da sütunu yüzünden eleniyor.</string>
+    <string name="lesson_hidden_single_4">Demek ki rakam oraya gidiyor, o hücre tek başına birkaç rakam tutabilecek olsa bile. Gizli denmesinin nedeni bu: rakam diğerlerinin arasına saklanmış.</string>
+    <string name="lesson_hidden_single_5">Adamakıllı öğrenmeye değeni bu. Çoğu bulmacada açık tekler bittikten sonra sizi ilerleten odur.</string>
+    <string name="lesson_hidden_single_turn">Sıra sizde. Bu kutuda gidecek başka yeri olmayan rakamı yerleştirin.</string>
+    <string name="lesson_hidden_single_wrong">O değil. Kutunun hangi rakama hâlâ ihtiyacı olduğunu sorun, sonra her birinin gerçekte nereye sığdığına bakın.</string>
+
+    <string name="lesson_scanning_title">Nasıl bakmalı</string>
+    <string name="lesson_scanning_summary" tools:ignore="Typos">Hücreleri tek tek incelemek yerine bir rakamı ızgara boyunca tarayın.</string>
+    <string name="lesson_scanning_1">Artık iki teknik biliyorsunuz. Bilmek onları bulmakla aynı şey değil ve zamanı alan da bulmak.</string>
+    <string name="lesson_scanning_2" tools:ignore="Typos">Izgarayı hücre hücre okumayın. Bir rakam alın, tercihen zaten en çok görüneni, ve bir şeritteki üç kutuya bakın.</string>
+    <string name="lesson_scanning_3">Her kutu için tek bir soru sorun: bu rakam nereye gidebilir? Onu zaten içeren satır ve sütunlar cevapların çoğunu siler ve çoğu zaman geriye tek bir hücre kalır.</string>
+    <string name="lesson_scanning_4">Sonra bir sonraki şeride geçin; rakam tükendiğinde bir sonraki rakama. Buna tarama denir ve hızlı çözenler sadece bakıyor gibi göründüklerinde yaptıkları şey budur.</string>
+    <string name="lesson_scanning_5">Sistemli olmanın bedeli yok ve tıkanmışlık hissini önler; o his de çoğunlukla aynı köşeye dört kez bakmış olmanın hissidir.</string>
+
+    <string name="lesson_first_nine_title">Tam bir ızgara, yalnızca teklerle</string>
+    <string name="lesson_first_nine_summary">Şimdiye kadar öğrendikleriniz bütün bir bulmacayı bitirmeye yeter.</string>
+    <string name="lesson_first_nine_1">Gerçek bir dokuza dokuz, Kolay seviyesinde. İçindeki her adım açık ya da gizli bir tek ve burada karşılaşmadığınız hiçbir şey yok.</string>
+    <string name="lesson_first_nine_2">Başlamanız için bir tane. Bu hücrede dokuz rakamın sekizi, hücrenin görebildikleri yüzünden eleniyor.</string>
+    <string name="lesson_first_nine_3">Kolay bir bulmacanın biçimi budur. Baştan sona tekler ve hiçbir noktada tahmin yok.</string>
+    <string name="lesson_first_nine_4">Bu dersten çıkınca bir tane oynayın. Bir sonraki aşama notlarla ilgili ve notlar ancak bundan zor bulmacalarda hakkını vermeye başlar.</string>
+    <string name="lesson_first_nine_turn">Sıra sizde. Buraya tek bir rakam girebilir.</string>
+    <string name="lesson_first_nine_wrong">Bu hücrenin satırına, sütununa ve kutusuna yeniden bakın ve orada halihazırda ne olduğunu sayın.</string>
+
+    <string name="lesson_pencil_marks_title">Notlar</string>
+    <string name="lesson_pencil_marks_summary">Bir not, çıkardığınız sonucu saklar, böylece onu yeniden çıkarmanız gerekmez.</string>
+    <string name="lesson_pencil_marks_1">Buradan sonra bulmacalar teklere teslim olmaz ve bir şeyler yazmanız gerekir. Not, bir hücredeki küçük bir rakamdır ve o rakamın orada hâlâ mümkün olduğunu söyler.</string>
+    <string name="lesson_pencil_marks_2">Şu hücreye bakın. Yalnızca iki rakamdan biri olabileceğini çıkarmak birkaç saniye sürer. O ikisini yazarsanız, bir dahaki bakışta hiç sürmez.</string>
+    <string name="lesson_pencil_marks_3">Bir not bundan ibarettir. Ne tahmindir ne de bağlayıcıdır. Zaten çıkardığınız bir sonucun kaydıdır.</string>
+    <string name="lesson_pencil_marks_4">Buradan sonraki her teknik, rakamlardaki değil notlardaki örüntülerle ilgilidir. İkililer, üçlüler, balıklar ve zincirlerin hepsi notlardan okunur.</string>
+    <string name="lesson_pencil_marks_5">Kimse zor bir sudokuyu kafadan çözmez; Uzman seviyesinde hiçbir şey yazmayan biri zeki değil, yavaştır.</string>
+
+    <string name="lesson_when_to_mark_title">Ne zaman yazmalı</string>
+    <string name="lesson_when_to_mark_summary">Notları tekler bittiğinde doldurun, öncesinde değil.</string>
+    <string name="lesson_when_to_mark_1">Notları kullanmanın iki yolu var ve aradaki fark önemli.</string>
+    <string name="lesson_when_to_mark_2">Birincisi, başka hiçbir şey yapmadan önce her boş hücreyi olası her rakamla doldurmaktır. Titiz bir yoldur, elle birkaç dakika alır ve kolay bir bulmacada bunun çoğu boşa gider, çünkü tekler ızgarayı zaten bitirecekti.</string>
+    <string name="lesson_when_to_mark_3">İkincisi, yalnızca üzerinde çalıştığınız yeri işaretlemektir. Bu dört hücre işaretlemeye değer, çünkü aralarında bir şey dönüyor. Izgaranın geri kalanı değmez.</string>
+    <string name="lesson_when_to_mark_4">Dürüst tavsiye: önce tekleri çözün, bulamaz olduğunuzda not almaya başlayın. Kâğıt üstünde bu gerçek zaman kazandırır. Bu uygulamada bütün notları doldurmak tek dokunuş, yani bedeli daha az; yine de küçük rakamlarla dolu bir ızgarayı okumak, notların yalnızca gereken yerde olduğu bir ızgaradan zordur.</string>
+
+    <string name="lesson_marks_true_title">Notları dürüst tutmak</string>
+    <string name="lesson_marks_true_summary">Güncelliğini yitirmiş bir not, hiç not olmamasından kötüdür.</string>
+    <string name="lesson_marks_true_1">Notların tek bir tehlikesi var. Yerleştirdiğiniz her rakam bazılarını yanlış kılar ve yanlış bir not sizi doğru olamayacak bir akıl yürütmenin peşine takar.</string>
+    <string name="lesson_marks_true_2">Buraya bir rakam koyun; onu görebilen her hücre o rakamı bir olasılık olarak yitirir. O notlar silinmezse, fark edeceğiniz bir sonraki teknik onlardan birinin üstüne kurulabilir.</string>
+    <string name="lesson_marks_true_3">Bu uygulama bunu sizin için yapabilir. Yerleşen bir rakamın elediği notları sil diye bir ayar var ve varsayılan olarak açık. Kâğıt üstünde bunu elle yaparsınız ve hataların çoğu oradan çıkar.</string>
+    <string name="lesson_marks_true_4">Bir bulmaca ters gider ve nedenini göremezseniz, ilk şüpheli eski bir nottur. İpucu düğmesi, yerleştirdiğiniz bir rakamın doğru olamayacağını size söyler.</string>
+
+    <string name="lesson_pointing_title">İşaret eden ikili</string>
+    <string name="lesson_pointing_summary">Bir kutudaki rakam tek bir çizgiye sıkışmışsa, o çizgiyi başka her yerde terk eder.</string>
+    <string name="lesson_pointing_1">Rakam yerleştirmek yerine olasılık eleyen ilk teknik. Buradan sonraki tekniklerin çoğu bunu yapar ve alışmak gerekir: tek bir rakam yazmadan ilerlersiniz.</string>
+    <string name="lesson_pointing_2">Bu kutuda bir rakamın nereye gidebileceğine bakın. Durabileceği her yer aynı sütunda.</string>
+    <string name="lesson_pointing_3">Kutu o rakamı bir yerde içermek zorunda. Nereye düşerse düşsün, o sütundadır.</string>
+    <string name="lesson_pointing_4">Demek ki sütunun geri kalanı onu alamaz. Kutudan uzakta olsalar bile bu hücreler o rakamı bir olasılık olarak yitirir.</string>
+    <string name="lesson_pointing_5">İşaret eden denmesinin nedeni, kutudaki ikilinin çizgi boyunca işaret edip orayı temizlemesidir.</string>
+
+    <string name="lesson_claiming_title">Sahiplenen ikili</string>
+    <string name="lesson_claiming_summary">Bir çizgideki rakam tek bir kutuya sıkışmışsa, o kutuyu başka her yerde terk eder.</string>
+    <string name="lesson_claiming_1">Aynı akıl yürütmenin tersten okunuşu; ayrıca ele almaya değer, çünkü göz onu başka bir yerde bulur.</string>
+    <string name="lesson_claiming_2">Bu kez bir çizgiyle başlayın. Bir rakamın bu satır boyunca nereye gidebileceğine bakın.</string>
+    <string name="lesson_claiming_3">Durabileceği her yer aynı kutunun içinde. Satır o rakamı bir yerde tutmak zorunda, demek ki rakam o kutuda.</string>
+    <string name="lesson_claiming_4">Demek ki kutunun geri kalanı onu yitirir. Bu hücreler artık onu tutamaz.</string>
+    <string name="lesson_claiming_5">İşaret eden bir kutuya bakıp bir çizgiyi temizler. Sahiplenen bir çizgiye bakıp bir kutuyu temizler. İki ad, tek bir fikir ve ikisini de her zor bulmacada görürsünüz.</string>
+
+    <string name="lesson_naked_pair_title">Açık ikili</string>
+    <string name="lesson_naked_pair_summary">Aynı iki rakamı tutan iki hücre ikisine de sahiptir.</string>
+    <string name="lesson_naked_pair_1">Şimdi gruplar. Bu, en küçükleri ve gerisini apaçık kılan örüntü.</string>
+    <string name="lesson_naked_pair_2">Bu iki hücre aynı evde ve her biri yalnızca aynı iki rakamdan biri olabilir.</string>
+
+    <string name="lesson_naked_pair_3" tools:ignore="Typos">Aralarında o iki rakamı birer birer alacaklar. Hangisinin hangisi olduğu önemli değil ve bilmenize gerek yok.</string>
+    <string name="lesson_naked_pair_4">Demek ki o evdeki başka hiçbir hücre bu rakamlardan birini tutamaz. Bu hücre onlardan birini yitiriyor.</string>
+    <string name="lesson_naked_pair_5">Yine açık, çünkü iki hücreyi okuyunca görülüyor. Gizli bir şey yok ve akıl yürütmeye başka hiçbir hücre karışmıyor.</string>
+
+    <string name="lesson_hidden_pair_title">Gizli ikili</string>
+    <string name="lesson_hidden_pair_summary">Yalnızca aynı iki yeri kalmış iki rakam o hücrelere sahiptir.</string>
+    <string name="lesson_hidden_pair_1">Açık ikilinin aynadaki hâli; tıpkı gizli tekin açık teki yansıtması gibi.</string>
+    <string name="lesson_hidden_pair_2">Bu evde iki rakamın her biri yalnızca aynı iki hücreye girebiliyor.</string>
+    <string name="lesson_hidden_pair_3">O iki rakam, o iki hücreyi aralarında alacak. Demek ki o hücreler başka ne tutabiliyor görünürse görünsün, tutamaz.</string>
+    <string name="lesson_hidden_pair_4">İki hücre diğer bütün notlarını yitirir. Artık bir açık ikilidirler ve çoğu zaman örüntünün amacı da budur: gizli bir ikiliyi, evin geri kalanını temizleyen açık bir ikiliye çevirmek.</string>
+    <string name="lesson_hidden_pair_5">Gizli ikilileri görmek açık olanlardan zordur, çünkü hücrelere değil rakamlara bakmanız gerekir. Tıkanmış bir ızgarada zahmete değer.</string>
+
+    <string name="lesson_naked_triple_title">Açık üçlü</string>
+    <string name="lesson_naked_triple_summary">Üç rakamı paylaşan üç hücre onlara sahiptir, hiçbiri üçünü birden tutmasa bile.</string>
+    <string name="lesson_naked_triple_1">Bir hücre eklenmiş ikili ve ilk seferde herkesi yanıltan bir incelik.</string>
+    <string name="lesson_naked_triple_2">Bu üç hücre aynı evde ve aralarında yalnızca üç farklı rakam kullanıyorlar.</string>
+    <string name="lesson_naked_triple_3">İncelik şurada: hiçbirinin üçünü birden tutması gerekmiyor. Bir hücrede iki rakam, ötekinde iki, üçüncüsünde iki de üçlüdür; yeter ki hepsinin toplamında yalnızca üç rakam görünsün.</string>
+    <string name="lesson_naked_triple_4">Üç hücre, üç rakamı aralarında alacak, dolayısıyla evdeki diğer her hücre üçünü birden yitirir. Bu, bir anda çok sayıda not demektir.</string>
+    <string name="lesson_naked_triple_5">Ararken aynı notları aramak yerine iki ya da üç hücre boyunca farklı rakamları sayın. Üçlüleri bulduran alışkanlık budur.</string>
+
+    <string name="lesson_hidden_triple_title">Gizli üçlü</string>
+    <string name="lesson_hidden_triple_summary">Yalnızca üç yeri kalmış üç rakam o hücrelere sahiptir.</string>
+    <string name="lesson_hidden_triple_1">Gizli ikilideki ilişkinin bir beden büyüğü ve gerçekten fark etmesi zor olanı.</string>
+    <string name="lesson_hidden_triple_2">Bu evde üç rakam, aralarında yalnızca aynı üç hücreye girebiliyor.</string>
+    <string name="lesson_hidden_triple_3">Demek ki o üç hücre bu üç rakamı tutuyor ve içlerindeki diğer her not gidebilir.</string>
+    <string name="lesson_hidden_triple_4">Bunları ilk sırada aramayın. Bir evde birkaç hücre kaldıysa ve başka hiçbir şey işe yaramadıysa bakın. Çoğu zaman aynı evdeki açık bir örüntüyü görmek daha kolaydır.</string>
+
+    <string name="lesson_quads_title">Dörtlüler</string>
+    <string name="lesson_quads_summary">Aynı fikir dörtle; bilmeye değer, ama nadiren aramaya değer.</string>
+    <string name="lesson_quads_1">İkililer, üçlüler, şimdi de dörtlüler. Akıl yürütme değişmiyor: aralarında dört rakam kullanan dört hücre o rakamlara sahiptir ve yalnızca dört yeri olan dört rakam o hücrelere sahiptir.</string>
+    <string name="lesson_quads_2">İşte bir açık dörtlü. Dört hücre, aralarında dört rakam ve evin geri kalanı dördünü birden yitiriyor.</string>
+    <string name="lesson_quads_3">Ve işte dürüst tavsiye. Dörtlüler gerçektir ve kurallara uygundur, ama nadirdir; beş ya da altı boş hücreli bir evdeki dörtlü genellikle diğer hücrelerde gözden kaçırdığınız daha basit bir örüntü olduğu anlamına gelir.</string>
+    <string name="lesson_quads_4">Ve eksik kalmasın diye bir de gizli dörtlü. Dört rakam, dört yer.</string>
+    <string name="lesson_quads_5">Bir ipucu bunlardan birini andığında anlaşılsın diye tanımayı öğrenin. Aramak için vakit harcamayın.</string>
+
+    <string name="lesson_x_wing_title">X-Wing</string>
+    <string name="lesson_x_wing_summary">İki satırda iki sütuna sabitlenmiş bir rakam, o sütunları başka her yerde terk eder.</string>
+    <string name="lesson_x_wing_1">Tek bir evin içinde durmak yerine bütün ızgaraya yayılan ilk örüntü. Bir şekli var ve o şekli bir kez gördükten sonra her yerde görürsünüz.</string>
+    <string name="lesson_x_wing_2">Bir rakam alın. Şu iki satırda rakam yalnızca ikişer hücreye girebiliyor ve o hücreler aynı iki sütunda. Dört hücre, bir dikdörtgen.</string>
+    <string name="lesson_x_wing_3">Şimdi düşünün. Her satır rakamı bir kez tutmak zorunda. Bir satır hangi köşeyi kullanırsa, diğeri karşısındakini kullanmak zorunda. Üçüncü bir seçenek yok.</string>
+    <string name="lesson_x_wing_4">Demek ki iki satır, aralarında o rakamı iki sütunda da alıyor. O sütunlardaki başka her şey onu yitirir.</string>
+    <string name="lesson_x_wing_5">Satırla sütun yer değiştirdiğinde de çalışır. Rakamı aynı iki satıra sıkışmış iki sütun, o satırları temizler.</string>
+
+    <string name="lesson_swordfish_title">Swordfish</string>
+    <string name="lesson_swordfish_summary">X-Wing ile aynı akıl yürütme, iki yerine üç çizgiyle.</string>
+    <string name="lesson_swordfish_1">Bir satır eklenmiş X-Wing. Adı yardımcı olmuyor ama örüntü doğrudan bir genişleme.</string>
+    <string name="lesson_swordfish_2">Üç satır, bir rakam ve her satırda o rakam aynı üç sütundaki hücrelere sıkışmış.</string>
+    <string name="lesson_swordfish_3">Her satırın üç sütunu da kullanması gerekmiyor. Üçten ikisi yeter, yeter ki hiçbir satır dışarı taşmasın.</string>
+    <string name="lesson_swordfish_4">Üç satır, rakamı aralarında o üç sütunda alıyor, dolayısıyla o sütunların geri kalanı onu yitiriyor.</string>
+    <string name="lesson_swordfish_5">X-Wing\'i izleyebiliyorsanız bunu da izlersiniz. Bulmak ayrı mesele: notları doldurmanın isteğe bağlı olmaktan çıktığı nokta burasıdır.</string>
+
+    <string name="lesson_jellyfish_title">Jellyfish</string>
+    <string name="lesson_jellyfish_summary">Dört çizgi. Yine aynı örüntü ve öğrenmeye değer sonuncusu.</string>
+    <string name="lesson_jellyfish_1">Dört satır, bir rakam, dört sütun. Akıl yürütme X-Wing\'den beri değişmedi ve bir daha da değişmeyecek.</string>
+    <string name="lesson_jellyfish_2">İşte bir tane. Dört satır ve her birinde rakam aynı dört sütuna sıkışmış.</string>
+    <string name="lesson_jellyfish_3">Dörtten ötesinde öğrenilecek bir şey yok. Kuramda beş çizgili bir sürümü var, ama dokuza dokuz bir ızgarada bunların her biri, kalan dört sütunda daha küçük bir örüntü olarak bulunabilir; bu yüzden kimse aramaz.</string>
+    <string name="lesson_jellyfish_4">Örüntü avcılığının değdiği en uzak sınır burası. Ötesinde dikkatinizi zincirlere ayırmak daha iyidir.</string>
+
+    <string name="lesson_xy_wing_title">XY-Wing</string>
+    <string name="lesson_xy_wing_summary">İkişer rakamlı üç hücre ve nasıl olursa olsun kaybeden bir hücre.</string>
+    <string name="lesson_xy_wing_1" tools:ignore="Typos">Kanatlar başka türlü düşünmeyi gerektirir. Şimdiye kadar bir örüntü bulup sonucu okudunuz. Burada durumları tek tek ele alarak akıl yürütüyorsunuz.</string>
+    <string name="lesson_xy_wing_2">Şu hücreyle başlayın. Tam olarak iki olası rakam tutuyor ve örüntünün menteşesi o.</string>
+    <string name="lesson_xy_wing_3">İki arkadaşı var; her biri onunla bir ev paylaşıyor ve her biri iki rakam tutuyor: biri menteşeyle ortak, biri birbirleriyle ortak.</string>
+    <string name="lesson_xy_wing_4">Şimdi akıl yürütme. Menteşe, iki rakamından biridir. Birincisiyse sol kanat ortak rakama zorlanır. İkincisiyse sağ kanat aynı ortak rakama zorlanır. Her iki durumda da kanatlardan biri onu tutar.</string>
+    <string name="lesson_xy_wing_5">Demek ki iki kanadı birden gören hiçbir hücre o rakamı tutamaz. Bu hücre onu yitiriyor.</string>
+    <string name="lesson_xy_wing_6">Menteşenin gerçekte ne olduğunu hiç öğrenmezsiniz. İşin özü bu ve kanatların kendinden öncekilerden farklı hissettirmesinin nedeni de bu.</string>
+
+    <string name="lesson_xyz_wing_title">XYZ-Wing</string>
+    <string name="lesson_xyz_wing_summary">XY-Wing gibi, ama menteşe de ortak rakam olabilir, bu yüzden sonuç daha zayıftır.</string>
+    <string name="lesson_xyz_wing_1">XY-Wing\'de tek bir değişiklik ve bu, sonucu küçültüyor.</string>
+    <string name="lesson_xyz_wing_2">Burada menteşe iki yerine üç rakam tutuyor ve ortak rakam onlardan biri.</string>
+    <string name="lesson_xyz_wing_3">Yani artık iki değil üç durum var. Kanatlardan biri ortak rakamı tutabilir ya da menteşenin kendisi tutabilir.</string>
+    <string name="lesson_xyz_wing_4">Bu da demek oluyor ki bir hücre rakamı ancak üçünü birden görüyorsa yitirir, yalnızca iki kanadı görüyorsa değil. Daha az hücre uyar; bu örüntünün daha basit kuzeninden daha az eleme yapmasının nedeni budur.</string>
+    <string name="lesson_xyz_wing_5">Bilmeye değer, çünkü şekli neredeyse aynı görünür ve bunu XY-Wing diye okumak, hakkınız olmayan bir elemeyi yapmanıza yol açar.</string>
+
+    <string name="lesson_w_wing_title">W-Wing</string>
+    <string name="lesson_w_wing_summary">Aynı iki rakamlı iki hücre, rakamlarından birini tutmak zorunda olan bir çizgiyle bağlı.</string>
+    <string name="lesson_w_wing_1">Üçüncü kanat ve en az hesap gerektireni.</string>
+    <string name="lesson_w_wing_2">Ev paylaşmayan, her biri aynı iki rakamı tutan iki hücre.</string>
+    <string name="lesson_w_wing_3">Şimdi, bu iki rakamdan birinin yalnızca iki yere girebildiği ve o iki yerin ikili hücrelerden birini gördüğü bir ev bulun. Bağlantı o evdir.</string>
+    <string name="lesson_w_wing_4">Bağlantı evi o rakamı iki yerinden birinde tutmak zorunda ve hangisi olursa olsun, ikili hücrelerden birini öteki rakama zorlar. Demek ki ikiliden biri her zaman öteki rakamdır.</string>
+    <string name="lesson_w_wing_5">İki ikili hücreyi birden gören her hücre onu yitirir. Bu hücre de öyle.</string>
+
+    <string name="lesson_rectangle_title">Tek çözüm dikdörtgeni</string>
+    <string name="lesson_rectangle_summary">Tek çözümü olan bir bulmaca, döndürülebilecek bir dörtgen barındıramaz.</string>
+    <string name="lesson_rectangle_1">Bu teknik türü bakımından diğerlerinden farklı ve kullanmadan önce nedenini söylemeye değer.</string>
+    <string name="lesson_rectangle_2">Şu dört hücreye bakın. İki satırda, iki sütunda ve tam olarak iki kutuda duruyorlar ve her biri aynı iki rakamı tutabiliyor.</string>
+    <string name="lesson_rectangle_3">Hikâye bundan ibaret olsaydı, bulmacanın iki çözümü olurdu: dikdörtgeni bir şekilde doldurun ya da iki köşegeni de değiştirin, iki ızgara da bütün kurallara uyar. Düzgün hazırlanmış bir bulmacanın iki çözümü olmaz.</string>
+    <string name="lesson_rectangle_4">Demek ki hikâye bundan ibaret olamaz. O hücrelerden biri başka bir şey tutmak zorunda ve elemeye izin veren de budur.</string>
+    <string name="lesson_rectangle_5">Burada fazladan olasılıklar hayatta kalıyor ve ortak ikili bu hücrelerden siliniyor.</string>
+    <string name="lesson_rectangle_6">Açık açık söylenmiş kayıt: bu akıl yürütme, bulmacanın düzgün hazırlandığını varsayar. Bu uygulamadaki her bulmaca için doğrudur, çünkü üreteç bunu denetler. Kaynağı bilinmeyen bir ızgarada sizi yanıltabilir.</string>
+
+    <string name="lesson_bug_title">BUG artı bir</string>
+    <string name="lesson_bug_summary">Biri dışında her hücrenin iki adayı olsaydı bulmaca belirsiz olurdu. Demek ki o biri özeldir.</string>
+    <string name="lesson_bug_1">Tek çözüm dikdörtgeniyle aynı varsayım, başka bir kılıkta.</string>
+    <string name="lesson_bug_2">Diyelim ki bir ızgara, çözülmemiş her hücrenin tam iki olasılık tuttuğu ve her rakamın her evde tam iki kez göründüğü bir konuma geldi. Böyle bir ızgaranın her zaman iki çözümü vardır.</string>
+    <string name="lesson_bug_3">Demek ki düzgün hazırlanmış bir bulmaca oraya asla ulaşamaz. Buna bir hücre uzaklıkta bir konum bulursanız, yani tam olarak bir hücre iki yerine üç olasılık tutuyorsa, bulmacayı belirsizlikten kurtaran o hücredir.</string>
+    <string name="lesson_bug_4">Evlerinde üç kez görünen rakam, o hücrenin tutmak zorunda olduğu rakamdır. Nadir bir örüntüdür ve ortaya çıktığında bulmacayı çok hızlı bitirir.</string>
+
+    <string name="lesson_colouring_title">Basit renklendirme</string>
+    <string name="lesson_colouring_summary">Bir rakamı yalnızca iki yeri olduğu hücreler boyunca izleyin ve bir çelişki arayın.</string>
+    <string name="lesson_colouring_1">Zincirlere yumuşak bir giriş. Renklendirme en kolay yoldur ve altında yatan akıl yürütme aynıdır.</string>
+    <string name="lesson_colouring_2">Bir rakam seçin. Onun yalnızca iki olası hücresi olan bir ev bulun. O ikisi bağlıdır: tam olarak biri o rakamdır.</string>
+    <string name="lesson_colouring_3">İkiliden birini boyayın, sonra bağlantıları izleyin. Bu şekilde bağlanan her hücre iki renkten birini alır ve renklerden biri bütünüyle doğru, öteki bütünüyle yanlıştır. Hangisi olduğunu bilmezsiniz.</string>
+    <string name="lesson_colouring_4">Şimdi çelişkiyi arayın. Bir hücre aynı renkten iki hücreyi görüyorsa, o renk doğru olamaz ve hücre o rakamı yitirir. Burada olan tam olarak budur.</string>
+    <string name="lesson_colouring_5">İki renk, bir çelişki ve hiçbir yerinde tahmin yok. Yöntemin tamamı bu.</string>
+
+    <string name="lesson_remote_pairs_title">Uzak ikililer</string>
+    <string name="lesson_remote_pairs_summary">Aynı ikililerden oluşan bir zincir sırayla değişir, dolayısıyla uçlar birbirinin tersidir.</string>
+    <string name="lesson_remote_pairs_1">Tek bir rakama değil, hücrelere uygulanan renklendirme.</string>
+    <string name="lesson_remote_pairs_2">İşte hepsi aynı iki rakamı tutan ve her biri ortak bir evle bir sonrakine bağlanan bir hücre zinciri.</string>
+    <string name="lesson_remote_pairs_3">Her bağ bir ikili olduğu için rakamlar zincir boyunca sırayla değişir. Birinci hücre birini alır, ikincisi ötekini, böyle sürer.</string>
+    <string name="lesson_remote_pairs_4">Demek ki çift uzunlukta bir zincirin iki ucu birbirinin tersidir: farklı rakamlar tutarlar. İki ucu birden gören her hücre iki rakamı da yitirmek zorundadır, çünkü uçlardan biri her birini tutar.</string>
+    <string name="lesson_remote_pairs_5">Fark edilmesi en kolay zincirdir, çünkü içindeki her hücre birbirine benzer.</string>
+
+    <string name="lesson_multi_colouring_title">Çoklu renklendirme</string>
+    <string name="lesson_multi_colouring_summary">Birbirine değen iki renklendirme zinciri birbirini eler.</string>
+    <string name="lesson_multi_colouring_1">Basit renklendirme tek bir zincir kullanır. Bazen tek zincirde çelişki yoktur ama iki zincir birlikte çelişki verir.</string>
+    <string name="lesson_multi_colouring_2">İşte aynı rakam için iki ayrı zincirden hücreler.</string>
+    <string name="lesson_multi_colouring_3">Bir zincirdeki bir renk, ötekindeki bir rengi görüyorsa, o iki renk birden doğru olamaz. Bunu izlemek, kalan iki rengi gören hücrelerden rakamı eler.</string>
+    <string name="lesson_multi_colouring_4">Sonuç buraya iniyor.</string>
+    <string name="lesson_multi_colouring_5">Renklendirmenin kafada tutulabilir olmaktan çıkıp hangi hücrenin hangi renk olduğunu yazmayı istediği yer burasıdır.</string>
+
+    <string name="lesson_x_chain_title">X-Chain</string>
+    <string name="lesson_x_chain_summary">Tek bir rakam, güçlü ve zayıf arasında değişen bağlar ve uçlarda bir eleme.</string>
+    <string name="lesson_x_chain_1">Son aşamadaki her şeyin genel biçimi. Tek bir rakam ve dönüşümlü bağlardan bir zincir.</string>
+
+    <string name="lesson_x_chain_2">Güçlü bağ, en az birinin rakamı tutmak zorunda olduğu iki hücredir; yalnızca iki yeri olan bir ev size bunu verir. Zayıf bağ, en fazla birinin tutabildiği iki hücredir; yani bir ev paylaşan herhangi iki hücre.</string>
+    <string name="lesson_x_chain_3">Bunları dönüşümlü dizin: güçlü, zayıf, güçlü diye giden ve iki ucu da güçlü olan bir dizi. O zaman ortada ne olursa olsun, iki uçtan biri rakamı tutar.</string>
+    <string name="lesson_x_chain_4">Demek ki iki ucu birden gören her hücre onu yitirir.</string>
+    <string name="lesson_x_chain_5">Renklendirme, bu zincirin iki renkle çizilmiş hâlidir. Zincir daha geneldir, çünkü renklendirmenin ulaşamadığı hücrelerden de geçebilir.</string>
+
+    <string name="lesson_xy_chain_title">XY-Chain</string>
+    <string name="lesson_xy_chain_summary">Uçları bir rakamı paylaşan, ikişer adaylı hücrelerden bir zincir.</string>
+    <string name="lesson_xy_chain_1">Aynı dönüşümlü fikir, ama tek bir rakamı izlemek yerine hücreden hücreye adımlıyorsunuz.</string>
+    <string name="lesson_xy_chain_2">Bu zincirdeki her hücre tam olarak iki olasılık tutuyor ve her biri bir sonrakiyle bir ev paylaşıyor.</string>
+    <string name="lesson_xy_chain_3">Bir hücrenin içinde bir rakamı almak ötekini zorlar; güçlü bağ budur. Hücreler arasında ortak bir ev zayıf bağı verir. Bunları dönüşümlü kullanmak akıl yürütmeyi zincir boyunca yürütür.</string>
+    <string name="lesson_xy_chain_4">Zincirin iki ucu da aynı rakamı tutabiliyorsa, zincir nasıl düşerse düşsün onlardan biri onu tutar. İki ucu birden gören her hücre o rakamı yitirir.</string>
+    <string name="lesson_xy_chain_5">Uzman seviyesindeki bulmacaların çoğunu bitiren teknik budur ve birini bulmak zekilikten çok, iki adaylı hücreleri sabırla izlemek demektir.</string>
+
+    <string name="lesson_writing_chains_title">Bir zinciri yazmak</string>
+    <string name="lesson_writing_chains_summary">Denetleyemediğiniz bir zincir, araya adım serpiştirilmiş bir tahmindir.</string>
+    <string name="lesson_writing_chains_1">Son teknikten önce pratik bir ders, çünkü insanlar kendilerini doğru olmayan şeylere en çok zincirlerde inandırır.</string>
+    <string name="lesson_writing_chains_2">Zincir bir iddialar dizisidir ve her biri ayakta durmalıdır. Ekranda bir avuç vurgulanmış hücre gibi görünür, oysa vurgulama akıl yürütme değildir.</string>
+    <string name="lesson_writing_chains_3">Onu bir satır olarak yazın: bu hücre ya 4 ya 7; 4 ise şu 9; şu 9 ise beriki 4. Her ok bir bağdır ve her bağın bir gerekçesi vardır.</string>
+    <string name="lesson_writing_chains_4">Sonra dönüşümü denetleyin. Güçlü, zayıf, güçlü, zayıf ve iki uçta da güçlü. Zayıf bağla başlayan ya da biten bir zincir hiçbir şey kanıtlamaz; zincirlerin en sık bozulma biçimi de budur.</string>
+    <string name="lesson_writing_chains_5">Yazamıyorsanız, bulmuş değilsinizdir. Bu bir düzen kuralı değil, bir çıkarımla bir sezginin arasındaki farktır.</string>
+
+    <string name="lesson_sue_de_coq_title">Sue de Coq</string>
+    <string name="lesson_sue_de_coq_summary">Bir kutunun bir çizgiyi kestiği yer; kesişimde yerinden çok rakam var.</string>
+    <string name="lesson_sue_de_coq_1">Bir kutu ile bir sütun üç hücrede örtüşüyor. Bu üç hücre aynı anda ikisine de ait ve bu teknik bundan besleniyor.</string>
+    <string name="lesson_sue_de_coq_2">Buradaki ikisine bakın. Aralarında 2, 6, 7 ve 8\'i tutuyorlar: iki hücreye dört rakam. İkisi buraya girer, ikisi başka bir yere kalır.</string>
+    <string name="lesson_sue_de_coq_3">Aynı sütunda aşağıda 6 ile 7 tutan bir hücre var. Aynı kutuda başka bir yerde 2 ile 8 tutan bir hücre var. Bu iki hücre, kesişimdeki dört rakamın tam olarak hepsini istiyor, eşit bölünmüş ve ortak hiçbir rakam olmadan.</string>
+    <string name="lesson_sue_de_coq_4">Hesabı yapın. Sütunun üç hücresi dört rakamdan üçünü alıyor, kutunun üç hücresi de aynısını yapıyor. Hesabın tutmasının tek bir yolu var: 6 ile 7 sütunun içinde, 2 ile 8 kutunun içinde harcanıyor.</string>
+    <string name="lesson_sue_de_coq_5">Demek ki o sütunda başka hiçbir şey 6 ya da 7 olamaz. Burada iki hücre birer tane yitiriyor.</string>
+    <string name="lesson_sue_de_coq_6">Aynı akıl yürütme kutu için ters yönde işler. Tek örüntü, iki ev, iki ayrı eleme kümesi ve hiçbir yerinde zincir yok.</string>
+
+    <string name="lesson_als_title">ALS-XZ</string>
+    <string name="lesson_als_summary">Bir rakamı paylaşan iki neredeyse kilitli küme ve bunun getirdiği eleme.</string>
+    <string name="lesson_als_1">En zor seviyelerin üzerine kurulduğu kural. Bu aşamanın üstündeki her şey onun bir çeşitlemesi.</string>
+    <string name="lesson_als_2">Neredeyse kilitli küme, bir evdeki hücrelerden oluşan ve hücre sayısından tam olarak bir fazla rakam tutan bir gruptur. Dört hücre, aralarında beş rakam. Bir rakamını yitirse kilitli küme olurdu, adı da buradan gelir.</string>
+    <string name="lesson_als_3">İki rakam paylaşan iki tanesini alın. Paylaşılan rakamlardan birine kısıtlı olan deyin ve şunu isteyin: rakamın bir kümede göründüğü her yer, öteki kümede göründüğü her yeri görsün.</string>
+    <string name="lesson_als_4">O zaman rakam iki kümeden yalnızca birinde olabilir. Onu almayan küme kilitlenir ve bu da paylaşılan öteki rakamı o kümenin içine sabitler. Böylece o rakamı iki kümede de gören her hücre onu yitirir.</string>
+    <string name="lesson_als_5">İşte bundan çıkan eleme.</string>
+    <string name="lesson_als_6">Bunun birkaç okumaya ihtiyaç duyması normaldir. Bu noktadan sonraki her teknik, aynı fikrin başka bir kılığıdır.</string>
+
+    <string name="lesson_deep_end_title">Derin ucun istedikleri</string>
+    <string name="lesson_deep_end_summary">Çılgın ve Kâbus seviyelerinde ne değişir ve bu seviyeler neden kâğıt ister.</string>
+    <string name="lesson_deep_end_1">Buraya kadar olan her şey görülebilir. Bir satıra, bir kutuya, bir hücre ikilisine bakarsınız ve şekli bildiğinizde cevap önünüzdedir.</string>
+    <string name="lesson_deep_end_2">En zor iki seviye böyle değil. Bir akıl yürütmeyi üç dört adım boyunca izlemenizi ve hepsini aynı anda kafanızda tutmanızı ister; bunu sadece bakarak neredeyse kimse yapamaz.</string>
+    <string name="lesson_deep_end_3">O yüzden yazın. Bir kurşun kalem ve bir zarfın arkası ne hile ne de bu işte kötü olduğunuzun işaretidir. Bunları çözen herkes böyle yapar.</string>
+    <string name="lesson_deep_end_4">Buradaki kuralların hepsi aynı fikirde: dolmasına bir rakam kalmış bir hücre grubu. O rakamı alın, grup zorlanır; zorlanan bir grup da bir sonrakini zorlar. Derin ucun tamamı bu.</string>
+    <string name="lesson_deep_end_5">Aşağıdakilerin hiçbiri tahmin değil. Her adım kanıtlıdır, her ipucu size kanıtı gösterir; buradaki bir bulmaca sizi yenerse, bir hafta sonra dönmek işin olağan seyridir.</string>
+
+    <string name="lesson_als_xy_title">ALS-XY-Wing</string>
+    <string name="lesson_als_xy_summary">Zincir hâlinde üç grup ve iki uçta da hayatta kalamayan rakam.</string>
+    <string name="lesson_als_xy_1">Bu kez üç grup, bir çizgi hâlinde bağlı: uçlarda birer tane ve ortada onları ayrı tutan bir tane.</string>
+    <string name="lesson_als_xy_2">Soldaki ikisiyle başlayın. r3c9 1 ve 3 tutuyor. r1c8 3 ve 7 tutuyor. Bir kutuyu paylaşıyorlar, demek ki yalnızca biri 3 olabilir.</string>
+    <string name="lesson_als_xy_3">Şimdi 8. sütundaki gruba bakın: aralarında 1, 3, 7 ve 9 tutan üç hücre. Dört rakam, üç hücre, yani dolmasına bir rakam kalmış. 7\'yi r1c8 ile paylaşıyor ve içindeki her 7 aynı sütunda; demek ki yine yalnızca bir taraf onu alabilir.</string>
+    <string name="lesson_als_xy_4">Diyelim ki 9. sütunda işaretli iki hücreden biri 1. O hücre r3c9\'u görüyor, demek ki r3c9 1 değil, 3. O zaman r1c8 3 değil, 7. O zaman grupta 7 kalmaz, grup dolar ve 1, 3 ile 9\'u kullanmak zorunda kalır.</string>
+    <string name="lesson_als_xy_5">Ama o hücreler gruptaki her 1\'i de görüyor, yani grubun 1\'i de olamaz. Akıl yürütme kendini yiyor ve 1 gidiyor.</string>
+    <string name="lesson_als_xy_6" tools:ignore="Typos">İki bağ, üç grup ve her adım bir sonrakini zorluyor. İki kez okuyun: bu bir zincir ve zincirler ancak halka halka anlaşılır.</string>
+
+    <string name="lesson_blossom_title">Death Blossom</string>
+    <string name="lesson_blossom_summary">Her rakamının arkasında bir grubun beklediği tek bir hücre.</string>
+    <string name="lesson_blossom_1">Bunun görülebilir bir şekli var: bir sap ve sapın olabileceği her rakam için bir taçyaprağı.</string>
+    <string name="lesson_blossom_2">Sap r1c4. Ya 5 ya 6, başka bir şey değil. İki olasılık iki durum demektir ve bu teknik ikisini birden ele alır.</string>
+    <string name="lesson_blossom_3">Diyelim ki 5. O zaman aynı satırdaki, 5 ve 8 tutan r1c7 5 olamaz. Demek ki 8.</string>
+    <string name="lesson_blossom_4">Diyelim ki bunun yerine 6. Aynı kutudaki şu üç hücreye bakın: aralarında 2, 6, 7 ve 8 tutuyorlar. Dört rakam, üç hücre, dolmasına bir eksik. Sap üçünü de görüyor, yani 6\'sı onlardan 6\'yı alıyor.</string>
+    <string name="lesson_blossom_5">Şimdi doldular ve üç dolu hücre üç rakam kullanır: 2, 7 ve 8. Yalnızca biri 8 olabilir, demek ki 8 oraya gidiyor.</string>
+    <string name="lesson_blossom_6">İki durumu yan yana koyun. Ya r1c7\'de bir 8 var ya o kutuda bir 8 var; üçüncü bir durum yok. İki yeri birden gören her hücre 8\'ini yitirir, burada da iki hücre yitiriyor.</string>
+    <string name="lesson_blossom_7">Hiç bilmek zorunda kalmadığınız şeye dikkat edin: sapın gerçekte hangi rakam olduğu. İki yol da 8\'e çıkıyor, yani cevap çatala bağlı değil.</string>
+
+    <string name="lesson_fork_title">Zorlama zinciri</string>
+    <string name="lesson_fork_summary">Bir hücreyi iki yönden birden alın ve hangisinin ayakta kaldığına bakın. Uygulamadaki en zor şey.</string>
+    <string name="lesson_fork_1">Son teknik ve örüntü olmayan tek teknik. Burada fark edilecek bir şey yok. Burada yalnızca emek var.</string>
+    <string name="lesson_fork_2">Bu hücre ya 2 ya 7. Tahtadaki her şey sıkılıp suyu çıkarılmış ve hangisi olduğunu söyleyen bir şey yok.</string>
+    <string name="lesson_fork_3">O hâlde birini deneyin. Diyelim ki 2, kurşun kalemle, ve yalnızca kolay sonuçları izleyin: tek rakamı kalmış bir hücre ya da evinde tek yeri kalmış bir rakam.</string>
+    <string name="lesson_fork_4">Hızla gelirler. Burada bir 2 zorlanır, şurada bir 7, sonra bir 3, bir 5, bir 9. Devam edin. On dört rakam sonra işaretli hücreye bakın.</string>
+    <string name="lesson_fork_5">Ona hiçbir şey kalmadı. Oraya girebilecek her rakamı başka bir şey aldı. Bu şanssızlık değil, bir çelişki ve 2\'nin en baştan beri mümkün olmadığı anlamına geliyor.</string>
+    <string name="lesson_fork_6">O hâlde hepsini silin ve 7\'yi yazın. 7 daha iyi göründüğü için değil, 2\'nin imkânsız olduğu kanıtlandığı için; iki olasılıktan biri gidince geriye bir tane kalır.</string>
+    <string name="lesson_fork_7">Bu, durum ayrımıyla kanıttır ve insanlar bir bulmacayı kâğıt üstünde çözmekten söz ederken bunu kastederler. Kâğıt kullanın. Kimse on dört zorlanmış rakamı kafasında tutmaz ve onları yazmak zorunda olmak bir zayıflık değildir.</string>
+    <string name="lesson_fork_8">Şimdi yerleştirin.</string>
+    <string name="lesson_fork_wrong">Ölen öteki rakamdı. 2, içine hiçbir şey konulamayan bir hücreye götürdü; geriye 7 kalıyor.</string>
+
+    <string name="lesson_nothing_applies_title">Hiçbiri uymadığında</string>
+    <string name="lesson_nothing_applies_summary">Tahmin etmeden önce yeniden kontrol edin, çünkü bu uygulamadan gelen bir bulmacanın her zaman bir sonraki adımı vardır.</string>
+    <string name="lesson_nothing_applies_1">Her yere baktığınız ve hiçbir şey bulamadığınız konumlara geleceksiniz. İşte ne yapmalı ve ne yapmamalı.</string>
+    <string name="lesson_nothing_applies_2">Yapılmaması gereken tahmin etmek. Bu uygulamadaki her bulmaca akıl yürütmeyle çözülebilir; tutan bir tahmin size hiçbir şey öğretmez, tutmayan bir tahmin ise bütün ızgaraya mal olur.</string>
+    <string name="lesson_nothing_applies_3">Şu sırayla yeniden kontrol edin. Birincisi, bütün notlarınız doğru mu? Eski bir not, imkânsız bir konumun en sık nedenidir ve izin verirseniz bu uygulama onları sizin için siler. İkincisi, yerleştirdiğiniz bir rakam gerçekten doğru mu? İpucuna basın, size söyler.</string>
+    <string name="lesson_nothing_applies_4">Sonra ucuz olanlara yeniden bakın. Neredeyse hiçbir zaman kaçırdığınız bir zincir değildir. Neredeyse her zaman, yirmi hamledir bakmayı bıraktığınız bir evdeki gizli bir tektir.</string>
+
+    <string name="lesson_look_first_title">Önce neye bakmalı</string>
+    <string name="lesson_look_first_summary">Her zaman önce ucuz örüntüler, çünkü sık görülürler ve ızgarayı açarlar.</string>
+    <string name="lesson_look_first_1" tools:ignore="Typos">Artık bu uygulamanın adlandırabildiği her tekniği biliyorsunuz. Öğrenilecek son şey, bakma sırası.</string>
+    <string name="lesson_look_first_2">Her seferinde önce tekler. Önce açık, sonra gizli. Farkla en sık görülenler onlardır ve yerleştirdiğiniz her biri diğer bütün teknikleri bulmayı kolaylaştırır.</string>
+    <string name="lesson_look_first_3">Sonra ucuz elemeler: işaret eden ve sahiplenen ikililer. Ev ev bakmak hızlıdır ve çoğu zaman hemen bir teki açığa çıkarırlar.</string>
+    <string name="lesson_look_first_4">Sonra en az boş hücresi olan evlerdeki ikililer ve üçlüler. Sonra balıklar, sonra kanatlar. Zincirler her zaman en son, çünkü en çok emek isteyen ve en seyrek olanlar onlar.</string>
+    <string name="lesson_look_first_5">Tekleri kontrol etmeden Jellyfish avlamak, hata mesajını okumadan programı baştan yazmanın sudokudaki karşılığıdır. Uygulama bulmacaları ihtiyaç duydukları en zor şeye göre derecelendirir, ama bir Usta bulmacası da hâlâ çoğunlukla teklerden oluşur.</string>
+
+    <string name="lesson_together_title">Bir Usta, birlikte</string>
+    <string name="lesson_together_summary">Zor bir bulmaca, içinde birkaç zor adım olan çoğunlukla kolay adımlardan oluşur.</string>
+    <string name="lesson_together_1" tools:ignore="Typos">Son ders. Bu, kursun boyunca yürüdüğü ızgara, Usta seviyesinde; işte çözümün tamamı, teknik teknik adlandırılmış hâliyle.</string>
+    <string name="lesson_together_2">Açık bir tekle başlıyor. Neredeyse her şey öyle başlar.</string>
+    <string name="lesson_together_3">Sonra yan kutuda gizli bir tek.</string>
+    <string name="lesson_together_4">Şimdi tıkanıyor ve işaret eden bir ikili bir sütunu temizliyor, böylece tekler yeniden başlayabiliyor. Dikkat edin: o adımda hiçbir rakam yerleşmedi ve yine de ilerleme oldu.</string>
+    <string name="lesson_together_5">Biraz sonra açık bir ikili, bir evde aynı işi yapıyor.</string>
+    <string name="lesson_together_6">Daha derinde bir X-Wing. Artık ızgara yarı dolu ve işi notlar yapıyor.</string>
+    <string name="lesson_together_7">Ve sona yakın, seviyeyi hak ettiren adım: bir ALS-XZ. Tek bir eleme ve gerisi yine tekler.</string>
+    <string name="lesson_together_8">Usta seviyesinin anlamı bu. Seksen bir zor adım değil; yetmiş kolay adım ve öğrendiğiniz her şeyi isteyen bir avuç adım.</string>
+    <string name="lesson_together_9">Bu uygulamanın adlandırabildiği her teknikle karşılaştınız. Gidin ve bir tane oynayın. Her bulmacayla üç ipucu gelir ve onları harcamakta utanılacak bir şey yok; dilediğiniz kadar isterseniz, sınır ayarlardaki bir düğmeden ibarettir.</string>
+
+    <string name="lesson_step_of">%2$d / %1$d</string>
+    <string name="lesson_back">Geri</string>
+    <string name="lesson_next">İleri</string>
+    <string name="lesson_done">Bitti</string>
+    <string name="lesson_replay">Yeniden</string>
+    <string name="lesson_show_me">Göster</string>
+    <string name="lesson_cell_at">Satır %1$d, sütun %2$d.</string>
+</resources>

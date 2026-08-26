@@ -153,6 +153,12 @@
 
     <!-- Settings -->
     <string name="settings_title">Settings</string>
+    <string name="settings_language">Language</string>
+    <string name="language_system">Follow the phone</string>
+    <string name="language_english">English</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_german">Deutsch</string>
+    <string name="language_turkish">Türkçe</string>
     <string name="settings_look">Look</string>
     <string name="settings_light_or_dark">Light or dark</string>
     <string name="settings_terminal_is_dark">Terminal is dark whichever way the phone is set. That is deliberate.</string>

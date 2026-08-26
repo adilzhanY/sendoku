@@ -110,7 +110,7 @@ public fun AccountScreen(
 private fun Figure(label: String, value: String) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Text(value, style = Sendoku.type.display, color = Sendoku.colors.given)
-        Text(label.uppercase(), style = Sendoku.type.overline, color = Sendoku.colors.muted)
+        Text(label.shout(), style = Sendoku.type.overline, color = Sendoku.colors.muted)
     }
 }
 
