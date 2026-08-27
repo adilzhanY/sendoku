@@ -73,12 +73,37 @@ class ShareCardTest {
     }
 
     @Test
+    fun theCardCanBeWrittenInJapanese() {
+        // The card draws its own text on a canvas rather than going through Compose, so it
+        // resolves its own font. Nothing in res/font has a kana or a kanji in it, and the
+        // phone's fallback is what carries Japanese here as everywhere else. If that ever
+        // stopped working the card would come out with a row of empty boxes on it, which is
+        // the one thing nobody would notice until it had been sent to somebody.
+        val japanese = card(title = "クリア", grade = "エキスパート")
+        val english = card(title = "Solved", grade = "Expert")
+        var different = 0
+        for (x in 0 until japanese.width step 4) {
+            for (y in 0 until 260 step 4) {
+                if (japanese.getPixel(x, y) != english.getPixel(x, y)) different++
+            }
+        }
+        // The heading band is the only part that differs, and it has to differ: the two cards
+        // say different words in it. Equal pixels would mean nothing was drawn either time.
+        assertTrue("the Japanese card drew the same pixels as the English one", different > 200)
+    }
+
+    @Test
     fun writeOneToLookAt() {
         val directory = File(
             InstrumentationRegistry.getInstrumentation().targetContext.filesDir,
             "cards",
         ).apply { mkdirs() }
-        for ((name, made) in listOf("won" to card(), "lost" to card("Beaten by", "Beyond"))) {
+        val cards = listOf(
+            "won" to card(),
+            "lost" to card("Beaten by", "Beyond"),
+            "japanese" to card("クリア", "エキスパート"),
+        )
+        for ((name, made) in cards) {
             File(directory, "$name.png").outputStream().use { made.compress(Bitmap.CompressFormat.PNG, 100, it) }
         }
     }

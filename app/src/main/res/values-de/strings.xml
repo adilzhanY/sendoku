@@ -138,6 +138,7 @@
     <string name="language_turkish">Türkçe</string>
     <string name="language_spanish">Español</string>
     <string name="language_italian">Italiano</string>
+    <string name="language_japanese">日本語</string>
     <string name="settings_look">Aussehen</string>
     <string name="settings_light_or_dark">Hell oder dunkel</string>
     <string name="settings_terminal_is_dark">Terminal ist dunkel, wie das Telefon auch eingestellt ist. Das ist Absicht.</string>

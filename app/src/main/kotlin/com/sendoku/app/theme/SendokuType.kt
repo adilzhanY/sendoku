@@ -5,6 +5,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.LineBreak
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import com.sendoku.app.R
@@ -135,11 +136,19 @@ public val DefaultType: SendokuType = SendokuType(
         lineHeight = 26.sp,
         fontWeight = FontWeight.SemiBold,
         letterSpacing = (-0.01).em,
+        lineBreak = LineBreak.Heading,
     ),
     body = TextStyle(
         fontSize = 15.sp,
         lineHeight = 22.sp,
         fontWeight = FontWeight.Normal,
+        // Japanese writes without spaces, so where a line may break is decided by rules
+        // rather than by gaps: 禁則処理, which forbids a line starting with a full stop or a
+        // closing bracket, or ending with an opening one. Paragraph is the preset that asks
+        // for those rules strictly, and it improves the wrapping of the long lesson
+        // paragraphs in every other language too. Heading does the same for short headings,
+        // where it also keeps a Japanese phrase together rather than breaking it anywhere.
+        lineBreak = LineBreak.Paragraph,
     ),
     label = TextStyle(
         fontSize = 14.sp,

@@ -1,0 +1,793 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  日本語。
+
+  このファイル全体にかかる決めごとが3つあります。
+
+  ひとつ。このパズルは「ナンプレ」と呼びます。「数独」はニコリの登録商標なので、日本では
+  ニコリ以外がその名前で出すことはできません。一般名は「ナンバープレース」で、その略が
+  「ナンプレ」です。
+
+  ふたつ。テクニックの名前は、日本の解き手が実際に使っている言葉を使います。naked pair は
+  二国同盟、naked triple は三国同盟、X-Wing は井桁理論です。日本語の呼び名がないものだけ
+  カタカナにしています。英語を直訳した名前は使いません。
+
+  みっつ。調子は原文と同じです。落ち着いていて、まっすぐで、感嘆符を使いません。
+-->
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Sendoku</string>
+
+    <string name="home_choose_level">レベルを選ぶ</string>
+    <string name="home_daily">デイリー</string>
+    <string name="home_new_puzzle">新しい問題</string>
+    <string name="home_resume">続きから</string>
+    <string name="home_in_progress">途中の問題</string>
+    <string name="home_percent">%1$s、%2$d%%</string>
+    <string name="home_placed">記入 %1$d／%2$d</string>
+
+    <string name="grade_gentle">やさしい</string>
+    <string name="grade_steady">ふつう</string>
+    <string name="grade_tricky">むずかしい</string>
+    <string name="grade_severe">とてもむずかしい</string>
+    <string name="grade_diabolical">エキスパート</string>
+    <string name="grade_beyond">マスター</string>
+    <string name="grade_insane">狂気</string>
+    <string name="grade_nightmare">悪夢</string>
+    <string name="grade_locked">「%1$s」を1問クリアすると開きます</string>
+    <string name="gate_gentle">はっきり決まる数字をひとつずつ</string>
+    <string name="gate_steady">二国同盟と、1本の線に閉じこめられた数字</string>
+    <string name="gate_tricky">三国同盟と、盤面をまたぐ形</string>
+    <string name="gate_severe">ウィング、色分け、長方形</string>
+    <string name="gate_diabolical">論理のチェイン</string>
+    <string name="gate_beyond">ほとんどのアプリより先へ</string>
+    <string name="gate_insane">鎖でつながれたマスの集まり</string>
+    <string name="gate_nightmare">1マスを両方の場合で試す、紙の上で</string>
+    <string name="grade_advanced">上級</string>
+    <string name="grade_advanced_talkback">上級レベル。コースで学ぶテクニックが必要です</string>
+
+    <string name="tool_undo">戻す</string>
+    <string name="tool_redo">やり直す</string>
+    <string name="tool_erase">消す</string>
+    <string name="tool_notes">メモ</string>
+    <string name="tool_hint">ヒント</string>
+    <string name="paused">一時停止</string>
+    <string name="paused_tap">どこかをタップすると再開します</string>
+    <string name="mistakes_of">%1$d／%2$d</string>
+
+    <string name="cell_position">%1$d行%2$d列</string>
+    <string name="cell_clue">%1$s、%2$d、最初からある数字</string>
+    <string name="cell_digit">%1$s、%2$d</string>
+    <string name="cell_empty">%1$s、空</string>
+    <string name="cell_noted">%1$s、空、メモは%2$s</string>
+    <string name="cell_hint_argument">%1$s。ヒントの一部です。</string>
+    <string name="cell_hint_struck">%1$s。ヒントはここのメモを消しています。</string>
+    <string name="cell_hint_region">%1$s。ヒントが話している範囲の中です。</string>
+    <string name="cell_repeated">%1$s、重複</string>
+    <string name="pad_all_placed">%1$d、すべて記入済み</string>
+    <string name="pad_one_left">%1$d、残り1つ</string>
+    <plurals name="pad_left">
+        <item quantity="other">%1$d、残り%2$d</item>
+    </plurals>
+    <string name="pad_scanning">%1$s、入れる場所を表示中</string>
+    <string name="pad_notes_mode">%1$s、メモモード</string>
+
+    <string name="cell_actions_title">%1$d行%2$d列</string>
+    <string name="cell_actions_clue">これは問題に最初からある数字なので、変えられません。</string>
+    <plurals name="cell_actions_note_all">
+        <item quantity="other">候補%1$dつをメモする</item>
+    </plurals>
+    <string name="cell_actions_clear_notes">メモを消す</string>
+    <string name="why_not_title">なぜ入らない？</string>
+    <string name="why_not_prompt">数字をタップすると、何が邪魔しているかを教えます。</string>
+    <string name="why_not_taken">%2$sの%3$d行%4$d列に、すでに%1$dがあります。</string>
+    <string name="why_not_filled">このマスにはすでに%1$dが入っています。先に消してください。</string>
+    <string name="why_not_possible">盤面のどこも%1$dを否定していません。正しいという意味ではなく、入れられるというだけです。</string>
+    <string name="cell_actions_clear">マスを空にする</string>
+
+    <string name="leave_title">この問題をやめますか？</string>
+    <string name="leave_body">やめたところで待っています。</string>
+    <string name="leave_confirm">やめる</string>
+    <string name="leave_cancel">続ける</string>
+
+    <string name="outcome_solved">完成</string>
+    <string name="outcome_lost">ミスの上限に達しました</string>
+    <string name="outcome_rated">「%1$s」、評価%2$s</string>
+    <string name="outcome_hints">ヒント</string>
+    <string name="outcome_mistakes">ミス</string>
+    <string name="outcome_moves">手数</string>
+    <string name="outcome_needed">「%1$s」が必要でした</string>
+    <string name="outcome_home">ホーム</string>
+    <string name="outcome_another">「%1$s」をもう1問</string>
+
+    <string name="hint_remove_one">取り消す</string>
+    <string name="hint_remove_many">まとめて取り消す</string>
+    <string name="hint_look_here_title">ここを見て</string>
+    <string name="hint_look_here">%1$sに見つかるものがあります。このヒントが言うのはここまでです。</string>
+    <string name="hint_look_around">見つかる手があります。これはひとつの範囲に収まらず、盤面全体に散らばっています。</string>
+    <string name="hint_what_kind">どんな手？</string>
+    <string name="hint_menu_title">ヘルプ</string>
+    <string name="hint_menu_difficulty">次の手には「%1$s」レベルのテクニックが必要です。</string>
+    <string name="hint_menu_broken">入れた数字のどれかが違うので、直すまで先へ進めません。</string>
+    <string name="hint_menu_check">間違いはある？</string>
+    <string name="hint_menu_look">どこを見ればいい？</string>
+    <string name="hint_menu_explain">次の手を説明する</string>
+    <string name="hint_menu_free">ここでは聞いても減りません。上限は切ってあります。</string>
+    <string name="hint_check_clean">入れた数字に間違いはありません。</string>
+    <string name="hint_close">閉じる</string>
+    <string name="hint_previous">ひとつ前へ</string>
+    <string name="hint_cells_here">根拠になっているマスを%1$sで光らせています。</string>
+    <string name="hint_where">場所を見せて</string>
+    <string name="hint_explain">説明して</string>
+    <string name="hint_do_it">入れる</string>
+    <string name="hint_evidence">この行にはすでに%1$sがあります。この列には%2$s。このブロックには%3$s。合わせると%4$d以外の数字がすべてそろいます。</string>
+    <string name="hint_rests_on_earlier">この理屈の一部は、前のヒントが消した候補にもとづいています。盤面にメモとして書いてあるので、そこから追えます。</string>
+    <string name="hint_what_is_this">これは何？</string>
+    <string name="hint_wrong_title">どこかが違います</string>
+    <string name="hint_wrong_one">入れた数字のひとつが正しくありません。色をつけてあります。</string>
+    <string name="hint_wrong_many">入れた数字のうち%1$dつが正しくありません。色をつけてあります。</string>
+    <string name="hint_wrong_until_one">直すまで、ほかには何も決まりません。</string>
+    <string name="hint_wrong_until_many">直すまで、ほかには何も決まりません。</string>
+    <string name="hint_done_title">完成</string>
+    <string name="hint_done_body">この問題は解き終わりました。</string>
+    <string name="hint_stuck_title">提案できるものがありません</string>
+    <string name="hint_stuck_body">この盤面はルール違反ではありませんが、Sendokuが知っているテクニックはどれも当てはまりません。アプリの問題では起きないはずです。</string>
+    <string name="hint_in_region">%1$s</string>
+    <string name="hint_in_regions">%1$sと%2$s</string>
+    <string name="hint_outcome_place" tools:ignore="PluralsCandidate">したがって%1$d行%2$d列は%3$dです。</string>
+    <string name="hint_outcome_strike_one" tools:ignore="PluralsCandidate">したがって%2$sから%1$dを消せます。</string>
+    <string name="hint_outcome_strike_two" tools:ignore="PluralsCandidate">したがって%3$sから%1$dと%2$dを消せます。</string>
+    <plurals name="hint_cells">
+        <item quantity="other">%1$dマス</item>
+    </plurals>
+
+    <string name="house_row">%1$d行</string>
+    <string name="house_column">%1$d列</string>
+    <string name="house_box">ブロック%1$d</string>
+
+    <string name="glossary_title">テクニック</string>
+    <string name="back">戻る</string>
+
+    <string name="settings_title">設定</string>
+    <string name="settings_language">言語</string>
+    <string name="language_system">端末に合わせる</string>
+    <string name="language_english">English</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_german">Deutsch</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_italian">Italiano</string>
+    <string name="language_japanese">日本語</string>
+    <string name="settings_look">見た目</string>
+    <string name="settings_light_or_dark">ライトとダーク</string>
+    <string name="settings_terminal_is_dark">Terminalは端末の設定にかかわらずダークです。わざとそうしています。</string>
+    <string name="settings_board">盤面</string>
+    <string name="settings_highlight_peers">同じ行・列・ブロックを強調する</string>
+    <string name="settings_highlight_same">同じ数字をほかの場所でも強調する</string>
+    <string name="settings_auto_clear">数字を入れたら、消えたメモを自動で消す</string>
+    <string name="settings_auto_notes">すべてのマスにメモを入れておく</string>
+    <string name="settings_auto_notes_note">記録はアプリがやります。エキスパートより上ではほぼ必須です。</string>
+    <string name="settings_highlight_homes">選んだ数字がまだ入れる場所を表示する</string>
+    <string name="settings_auto_check">数字が違うときはすぐに知らせる</string>
+    <string name="settings_auto_check_note">これを入れると試しても失うものがないので、緊張感はほとんどなくなります。</string>
+    <string name="settings_auto_check_forced">ミスの上限があるあいだは自動でオンになります。数えられるミスは、見えるミスでなければならないからです。どちらもなしで遊ぶには、下の上限を切ってください。</string>
+    <string name="settings_flag_conflicts">行・列・ブロックで重複した数字に印をつける</string>
+    <string name="settings_clock">時計</string>
+    <string name="settings_show_timer">タイムを表示する</string>
+    <string name="settings_feedback">手ごたえ</string>
+    <string name="settings_haptics">数字を入れたら振動する</string>
+    <string name="settings_sound">サウンド</string>
+    <string name="settings_sound_note">操作に合わせた静かな音です。切るのはワンタップ、そして端末のマナーモードが両方に優先します。</string>
+    <string name="settings_mistakes">ミス</string>
+    <string name="settings_mistake_limit">ミス3回でゲームを終わりにする</string>
+    <string name="settings_mistake_note">既定でオン、3回までです。上のレベルでは切ってください。ひとつの不注意で1時間を失うのはつらいものです。</string>
+    <string name="settings_about">Sendokuについて</string>
+
+    <string name="theme_deep_field">ディープフィールド</string>
+    <string name="theme_deep_field_summary">真っ黒に、シアンの差し色だけ</string>
+    <string name="theme_ink">インクと紙</string>
+    <string name="theme_ink_summary">温かい紙に刷られたパズル雑誌</string>
+    <string name="theme_zen">スレート禅</string>
+    <string name="theme_zen_summary">セージと石、ほかはできるだけ置かない</string>
+    <string name="theme_terminal">Terminal</string>
+    <string name="theme_terminal_summary">等幅、角は立てたまま、ダークのみ</string>
+    <string name="mode_system">端末に合わせる</string>
+    <string name="mode_light">つねにライト</string>
+    <string name="mode_dark">つねにダーク</string>
+
+    <string name="stats_title">記録</string>
+    <string name="stats_solved">クリア</string>
+    <string name="stats_streak">連続</string>
+    <string name="stats_hardest">最高難度</string>
+    <string name="stats_hardest_note">クリアした中でいちばん難しいのは「%1$s」です。</string>
+    <plurals name="stats_longest_run">
+        <item quantity="other">いちばん長い連続記録は%1$d日です。</item>
+    </plurals>
+    <string name="stats_totals">合計%1$s、使ったヒント%2$d回。</string>
+    <string name="stats_by_grade">レベル別</string>
+    <string name="stats_hints_title">よく聞いているテクニック</string>
+    <string name="stats_hints_note">いちばんよく聞いているのは「%1$s」です。戻って読み直す価値のあるレッスンです。</string>
+    <string name="stats_needed">解いた問題に必要だったもの</string>
+    <string name="stats_solved_count">クリア %1$d</string>
+    <string name="stats_solved_and_lost">クリア %1$d、失敗 %2$d</string>
+    <string name="stats_average">平均 %1$s</string>
+    <string name="stats_reset">記録を消す</string>
+    <string name="stats_reset_title">記録をすべて消しますか？</string>
+    <string name="stats_reset_body">クリアした問題も、連続記録も、ベストタイムもすべてです。ほかに控えはないので、元には戻せません。</string>
+    <string name="stats_reset_confirm">消す</string>
+    <string name="stats_reset_cancel">やめる</string>
+    <string name="stats_empty_title">まだ何もありません</string>
+    <string name="stats_empty_body">1問クリアするとここが埋まります。レベルごとのタイム、どこまで登ったか、そして解いた問題にどのテクニックが必要だったかが並びます。</string>
+
+    <string name="about_title">このアプリについて</string>
+    <string name="about_version">Sendoku %1$s</string>
+    <string name="about_tagline">難しいナンプレを解き尽くした人のためのアプリです。</string>
+    <string name="about_no_ads">広告なし</string>
+    <string name="about_no_ads_detail">問題の合間にも、ヒントの前にも、いっさい出しません。</string>
+    <string name="about_no_tracking">追跡なし</string>
+    <string name="about_no_tracking_detail">何も計測せず、何も送りません。サーバーはありません。</string>
+    <string name="about_no_purchases">課金なし</string>
+    <string name="about_no_purchases_detail">問題もヒントも、すべて最初から入っています。</string>
+    <string name="about_offline">オフラインで動作</string>
+    <string name="about_offline_detail">問題はまとめてアプリの中に入っています。</string>
+    <string name="about_hints">教えてくれるヒント</string>
+    <string name="about_hints_detail">ヒントはテクニックの名前を挙げ、理屈を説明します。数字を埋めるだけで終わることはなく、売り物にもしません。どの問題にも3回ついていて、上限は設定で切れます。</string>
+    <string name="about_rating">難易度は、その問題を人と同じ手順で解いたときに本当に必要になった、いちばん難しいテクニックで決めています。だからここの「とてもむずかしい」は、前に解いた「とてもむずかしい」と同じ重さです。</string>
+    <string name="about_licence">SendokuはGNU General Public License version 3のもとで公開されている自由ソフトウェアです。</string>
+    <string name="about_privacy">プライバシーポリシーは、ストアが求める形で同じことを書いています。adilzhany.github.io/sendoku/privacy</string>
+    <string name="about_licences">オープンソースライセンス</string>
+    <string name="licences_title">ライセンス</string>
+
+    <string name="look_naked_single">入る数字がひとつしか残っていないマスがあります。</string>
+    <string name="look_hidden_single">入る場所がひとつしか残っていない数字があります。</string>
+    <string name="look_locked_candidates_pointing">あるブロックで、ひとつの数字が1本の行または列に閉じこめられています。</string>
+    <string name="look_locked_candidates_claiming">ある1本の線で、ひとつの数字がひとつのブロックの中にしか入れません。</string>
+    <string name="look_naked_pair">ひとつの範囲にある2マスが、同じ2つの数字だけを持っています。</string>
+    <string name="look_hidden_pair">ひとつの範囲で、2つの数字が同じ2マスにしか入れません。</string>
+    <string name="look_naked_triple">ひとつの範囲にある3マスが、3つの数字を分け合っています。</string>
+    <string name="look_hidden_triple">3つの数字が同じ3マスに閉じこめられています。</string>
+    <string name="look_naked_quad">ひとつの範囲にある4マスが、4つの数字を分け合っています。</string>
+    <string name="look_hidden_quad">4つの数字が同じ4マスに閉じこめられています。</string>
+    <string name="look_x_wing">2つの行が同じ2つの列にその数字を持っています。行と列を入れ替えても成り立ちます。</string>
+    <string name="look_swordfish">3つの行が、同じ3つの列の中にその数字を持っています。</string>
+    <string name="look_jellyfish">4つの行が、同じ4つの列の中にその数字を持っています。</string>
+    <string name="look_xy_wing">2候補のマスが3つ並び、ひとつの数字が押し出される形です。</string>
+    <string name="look_xyz_wing">XYウィングと同じですが、真ん中のマスに3つめの数字もあります。</string>
+    <string name="look_w_wing">同じ2候補を持つ2マスが、入る場所が2つしかない数字でつながっています。</string>
+    <string name="look_simple_colouring">ひとつの数字が、端から端まで交互に入れ替わる鎖をつくっています。</string>
+    <string name="look_multi_colouring">同じ数字の別々の鎖が2本あり、互いをぶつけ合えます。</string>
+    <string name="look_remote_pairs">まったく同じ2つの数字を持つマスが鎖のようにつながっています。</string>
+    <string name="look_unique_rectangle">4マスが、答えを2通りにしてしまう長方形をつくっています。</string>
+    <string name="look_bug_plus_one">1マスを除いて、すべてのマスが候補2つまで減っています。</string>
+    <string name="look_x_chain">ひとつの数字について、入るはずと入れないが交互に並ぶ鎖です。</string>
+    <string name="look_xy_chain">2候補のマスがつながり、それぞれが次を決めていく鎖です。</string>
+    <string name="look_forcing_chain">ほかに見つかるものが何も残っていないときの、候補がちょうど2つのマスです。</string>
+    <string name="look_death_blossom">1マスと、そのマスがなりうる数字ごとの集まり。そのマスは集まりの中のその数字をすべて見ています。</string>
+    <string name="look_als_xy_wing">どれも数字がひとつ足りない3つの集まりが、2種類の数字で一列につながっています。</string>
+    <string name="look_sue_de_coq">ブロックと線が交わり、共通のマスに入る余地より2つ多い数字が入っています。</string>
+    <string name="look_als_xz">どちらも数字があとひとつで固まる、2つのマスの集まりです。</string>
+
+    <string name="because_naked_single">ほかの数字はすべて、その行か列かブロックにもう出ています。だから残るのはひとつだけで、ここに入るしかありません。</string>
+    <string name="because_hidden_single">この範囲はどこかにこの数字を必要としていて、ほかのマスはすべて否定されました。だから残ったここが唯一の場所です。</string>
+    <string name="because_locked_candidates_pointing">ブロックはどこかにこの数字を入れなければならず、入れる場所はすべて1本の線の上にあります。だから数字はその線の上にあり、その線のほかの場所には入れません。</string>
+    <string name="because_locked_candidates_claiming">線はどこかにこの数字を入れなければならず、入れる場所はすべてひとつのブロックの中にあります。だから数字はそのブロックにあり、ブロックのほかの場所には入れません。</string>
+    <string name="because_naked_pair">その2マスがその2つの数字をひとつずつ引き受けます。範囲のほかのマスは、どちらの数字も持てません。</string>
+    <string name="because_hidden_pair">範囲は両方の数字を必要としていて、受けられるのはこの2マスだけなので、ひとつずつ引き受けます。その2マスにあるほかの候補は消えます。</string>
+    <string name="because_naked_triple">3マスに3つの数字がひとつずつ。ひとつのマスが3つとも持っていなくても、範囲のほかのマスはその3つを使えません。</string>
+    <string name="because_hidden_triple">ほかに行き場のない3つの数字が3マスを埋めるので、そのマスにあるほかの候補はありえません。</string>
+    <string name="because_naked_quad">4マスが4つの数字を引き受けるので、その4つは範囲のほかのマスから消えます。</string>
+    <string name="because_hidden_quad">4マスに閉じこめられた4つの数字がそこを埋めるので、ほかの候補は残れません。</string>
+    <string name="because_x_wing">2つの行はそれぞれこの数字を1回ずつ必要とし、置ける場所は同じ2つの列だけです。2つの行で2つの列を使い切るので、ほかの行はその列にこの数字を持てません。</string>
+    <string name="because_swordfish">この数字を必要とする行が3つ、置ける列が3つ。3つの行が3つの列を使い切るので、その列のほかのマスはこの数字を持てません。</string>
+    <string name="because_jellyfish">4つの行と4つの列で、理屈は同じです。4つの行が4つの列を使い切ります。</string>
+    <string name="because_xy_wing">真ん中のマスは2つの数字のどちらかです。どちらであっても、外側の2マスのどちらかが共通の数字になります。だから両方を見ているマスは、その数字になれません。</string>
+    <string name="because_xyz_wing">真ん中のマスも共通の数字になれるので、結論は弱くなります。3つすべてを見ているマスだけがその数字を失います。</string>
+    <string name="because_w_wing">2マスのどちらも2つめの数字を取らなければ、両方が1つめの数字になり、つながった範囲にその数字の置き場がなくなります。だからどちらかが2つめの数字です。</string>
+    <string name="because_simple_colouring">鎖を交互に塗り分けると、正しいのはどちらか一方の色です。ある色が同じ範囲に2回現れればその色は誤りで、鎖の外のマスが両方の色を見ていれば、どちらに転んでもその数字を失います。</string>
+    <string name="because_multi_colouring">1本目の鎖のある色が2本目のある色とぶつかると、数字は残る2色のどちらかに追いこまれます。その2つを見ているマスはその数字を持てません。</string>
+    <string name="because_remote_pairs">鎖の隣どうしは互いを見ているので、数字は交互になります。両端は奇数歩の距離にあり、それぞれ違う数字を持つので、両端を見ているマスはどちらの数字も持てません。</string>
+    <string name="because_unique_rectangle">その4マスが同じ2つの数字しか持たないなら、長方形の中で入れ替えても成り立ち、答えが2通りになってしまいます。答えはひとつなので、その形はありえません。</string>
+    <string name="because_bug_plus_one">余分な候補を取り除くと、どの範囲でもすべての数字がちょうど2回ずつ現れる形になり、そういう盤面の答えはかならず偶数個になります。この問題の答えはひとつなので、余分な候補が答えです。</string>
+    <string name="because_x_chain">鎖は、その数字が入るはずの場所と入れない場所を交互にたどります。両端がそろって外れることはないので、両端を見ているマスはその数字を失います。</string>
+    <string name="because_xy_chain">最初のマスがその数字でないとしてみます。鎖をたどると最後のマスがその数字に決まります。だからどちらかの端がその数字を持ちます。</string>
+    <string name="because_forcing_chain">両方の場合をたどります。片方が、入れる数字のないマスを生むなら、その場合は初めからありえず、消えます。両方が同じ場所に同じ数字を置くなら、どちらが本当でもその数字はそこに入ります。仮定が正しいかどうかに何も頼っていないので、これは当てずっぽうではなく証明です。</string>
+    <string name="because_death_blossom">そのマスがどの数字になっても、対応する集まりから自分の数字を追い出します。すると集まりは満杯になり、残る数字をすべて使わなければなりません。どの集まりにも同じ余りの数字があるなら、マスがどちらに転んでもその数字はどれかの集まりに入ります。それをすべての集まりで見ているマスは、その数字を失います。</string>
+    <string name="because_als_xy_wing">消したい数字が1つめの集まりから消えると、その集まりは満杯になり、真ん中の集まりと共通の数字を取らなければなりません。すると真ん中はその数字を失って満杯になり、3つめと共通の数字を取ります。3つめも満杯になり、消したい数字を使うしかありません。だから両端の集まりでその数字を見ているマスは、それを持てません。</string>
+    <string name="because_sue_de_coq">共通のマスは、自分の数字を2つ残してすべて使い切り、両側の集まりがちょうどその2つを引き受けます。だから線の集まりの数字は線の中で、ブロックの集まりの数字はブロックの中で使い切られます。どちらのほかのマスも、それらを持てません。</string>
+    <string name="because_als_xz">共通の数字のひとつは2つの集まりのどちらか一方にしか現れず、取らなかった側は固まって、持っている数字をすべて使うことになります。だからもうひとつの共通の数字は、どちらかの集まりに入ります。</string>
+
+    <string name="technique_naked_single">裸のシングル</string>
+    <string name="technique_hidden_single">隠れたシングル</string>
+    <string name="technique_locked_candidates_pointing">ポインティングペア・トリプル</string>
+    <string name="technique_locked_candidates_claiming">クレーミングペア・トリプル</string>
+    <string name="technique_naked_pair">二国同盟</string>
+    <string name="technique_hidden_pair">隠れ二国同盟</string>
+    <string name="technique_naked_triple">三国同盟</string>
+    <string name="technique_hidden_triple">隠れ三国同盟</string>
+    <string name="technique_naked_quad">四国同盟</string>
+    <string name="technique_hidden_quad">隠れ四国同盟</string>
+    <string name="technique_x_wing">井桁理論</string>
+    <string name="technique_simple_colouring">単純色分け</string>
+    <string name="technique_xy_wing">XYウィング</string>
+    <string name="technique_xyz_wing">XYZウィング</string>
+    <string name="technique_w_wing">Wウィング</string>
+    <string name="technique_swordfish">ソードフィッシュ</string>
+    <string name="technique_remote_pairs">リモートペア</string>
+    <string name="technique_unique_rectangle">ユニークレクタングル</string>
+    <string name="technique_bug_plus_one">BUG+1</string>
+    <string name="technique_jellyfish">ジェリーフィッシュ</string>
+    <string name="technique_multi_colouring">複数色分け</string>
+    <string name="technique_x_chain">Xチェイン</string>
+    <string name="technique_xy_chain">XYチェイン</string>
+    <string name="technique_als_xz">ALS-XZ</string>
+    <string name="technique_sue_de_coq">スー・ド・コック</string>
+    <string name="technique_als_xy_wing">ALS-XYウィング</string>
+    <string name="technique_death_blossom">デス・ブロッサム</string>
+    <string name="technique_forcing_chain">仮定法</string>
+    <string name="daily_title">デイリー</string>
+    <string name="daily_no_streak">まだ連続記録はありません。今日の問題を解くと始まります。</string>
+    <string name="daily_previous_month">前の月</string>
+    <string name="daily_next_month">次の月</string>
+    <string name="daily_cell_solved">クリア</string>
+    <string name="daily_cell_attempted">遊んだが未完成</string>
+    <string name="daily_cell_unplayed">未プレイ</string>
+    <string name="daily_cell_future">まだ先</string>
+    <string name="daily_play_today">今日の問題を解く</string>
+    <plurals name="daily_streak">
+        <item quantity="other">%1$d日連続</item>
+    </plurals>
+    <string name="daily_cell">%1$d日、%2$s、%3$s</string>
+    <string name="daily_cell_today">今日、%1$d日、%2$s、%3$s</string>
+    <string name="stat_difficulty">難易度</string>
+    <string name="stat_mistakes">ミス</string>
+    <string name="stat_hints">ヒント</string>
+    <string name="stat_time">タイム</string>
+    <string name="stat_pause">一時停止</string>
+
+    <string name="stage_first_steps">はじめの一歩</string>
+    <string name="stage_one_at_a_time">ひとつずつ決める</string>
+    <string name="stage_notes">メモ</string>
+    <string name="stage_locked_to_a_line">線に閉じこめられた数字</string>
+    <string name="stage_groups">同盟</string>
+    <string name="stage_patterns">盤面をまたぐ形</string>
+    <string name="stage_wings">ウィング</string>
+    <string name="stage_colouring">色分け</string>
+    <string name="stage_one_answer">答えがひとつであることを使う</string>
+    <string name="stage_chains">チェイン</string>
+    <string name="stage_the_far_end">その先へ</string>
+    <string name="stage_the_deep_end">いちばん深いところ</string>
+
+    <string name="lesson_what_is_title">ナンプレとは</string>
+    <string name="lesson_what_is_summary">どの行にも、どの列にも、どのブロックにも、各数字がちょうど1回ずつ入ります。</string>
+    <string name="lesson_what_is_1">これがナンプレです。4マス×4マスの小さなもので、全体が一度に頭に入ります。ふつうの大きさの盤面もまったく同じ仕組みです。</string>
+    <string name="lesson_what_is_2">これが行です。1、2、3、4をそれぞれ1回ずつ入れます。重ねてもいけないし、抜けてもいけません。</string>
+    <string name="lesson_what_is_3">これが列です。ルールは同じで、1、2、3、4をそれぞれ1回ずつ。</string>
+    <string name="lesson_what_is_4">ゲームはこれだけです。計算はいっさいなく、足すものもありません。数字がどこに入れるかという、たったひとつのルールです。</string>
+    <string name="lesson_what_is_5">この2マスが空いています。ルールを保ったまま埋めることが、解くということです。</string>
+
+    <string name="lesson_houses_title">行、列、ブロック</string>
+    <string name="lesson_houses_summary">1マスは同時に3つのハウスに属し、その3つとルールを共有します。</string>
+    <string name="lesson_houses_1">ルールは行と列の話をしていました。もうひとつ別の集まりがあり、それこそがナンプレを解く値打ちのあるものにしています。</string>
+    <string name="lesson_houses_2">もう一度、これが行です。</string>
+    <string name="lesson_houses_3">これが列です。</string>
+    <string name="lesson_houses_4">そしてこれがブロックで、太い線で区切られています。ここにも各数字が1回ずつ入ります。</string>
+    <string name="lesson_houses_5">つまりこのマスは、同時に3つの集まりに属しています。同じ集まりに入るマスをすべて光らせました。そのどれも、このマスと同じ数字を持てません。この3つの集まりをハウスと呼び、これ以降もその言葉を使います。</string>
+
+    <string name="lesson_givens_title">最初からある数字</string>
+    <string name="lesson_givens_summary">最初に印刷されている数字は動かせず、それが答えをひとつに決めています。</string>
+    <string name="lesson_givens_1">この数字は問題に最初から入っています。動かすことも消すこともできません。</string>
+    <string name="lesson_givens_2">あなたが入れる数字とは書き方が違うので、いつでも見分けがつきます。このアプリでは、最初からある数字のほうが太く見えます。</string>
+    <string name="lesson_givens_3">こちらがあなたの埋めるマスです。</string>
+    <string name="lesson_givens_4">きちんと作られた問題は、埋め方がちょうど1通りしかありません。これは問題についての約束であって、あなたについての話ではありません。行き詰まっても答えはひとつのままで、かならず理屈で導けます。このアプリの問題はすべてそう作られています。</string>
+
+    <string name="lesson_first_four_title">はじめて解く</string>
+    <string name="lesson_first_four_summary">そのマスに入れないものを見ていくと、残る数字がひとつになることがあります。</string>
+    <string name="lesson_first_four_1">では解いてみましょう。空いているのは2マスで、ルールだけで両方とも埋まります。</string>
+    <string name="lesson_first_four_2">この行から始めます。すでに1と4があるので、空いた2マスが2と3を分け合います。問題はどちらがどちらかです。</string>
+    <string name="lesson_first_four_3">このマスは2になれません。同じ列にすでに2があるからです。だから3です。</string>
+    <string name="lesson_first_four_4">残るのは1マスと、この行でまだ使っていない数字ひとつです。</string>
+    <string name="lesson_first_four_5">あなたの番です。ここに入る数字を入れてください。</string>
+    <string name="lesson_first_four_wrong">惜しいです。行を見てください。1から4のうち、まだ足りないのはどれでしょう。</string>
+    <string name="lesson_first_four_6">完成です。盤面の大きさが変わっても、ナンプレとはこういうものです。</string>
+
+    <string name="lesson_first_six_title">もう少し大きな盤面</string>
+    <string name="lesson_first_six_summary">ブロックはいつも正方形とはかぎらず、ルールはそれを気にしません。</string>
+    <string name="lesson_first_six_1">6×6です。ルールは変わっていませんが、ブロックが変わりました。横3マス、縦2マスです。</string>
+    <string name="lesson_first_six_2">これがひとつのブロックです。横3、縦2、合わせて6マスに、1から6が1回ずつ入ります。</string>
+    <string name="lesson_first_six_3">最初はこれで戸惑います。目が正方形を期待してしまうからです。ひと呼吸おく価値があります。ほかを探す前に、このマスがどのブロックにいるかを確かめてください。</string>
+    <string name="lesson_first_six_4">あなたの番です。左上のブロックに足りない数字がひとつあります。</string>
+    <string name="lesson_first_six_wrong">それではありません。ブロックにすでにある数字を数えて、1から6のうち欠けているものを探してください。</string>
+    <string name="lesson_first_six_5">よくできました。これ以降の盤面は9×9で、ブロックはまた正方形に戻ります。ただし3つのハウスをすべて確かめる習慣は、そのまま持っていてください。</string>
+
+    <string name="lesson_naked_single_title">裸のシングル</string>
+    <string name="lesson_naked_single_summary">入る数字がひとつしか残っていないマスは、その数字になります。</string>
+    <string name="lesson_naked_single_1">ふつうの大きさの盤面と、名前のついた最初のテクニックです。いちばん簡単なもので、どんなに難しい問題でも、マスの大半はこれで埋まります。</string>
+    <string name="lesson_naked_single_2">このマスだけを見てください。何が入りうるかを考えます。</string>
+    <string name="lesson_naked_single_3">何かを否定しているマスをすべて光らせました。行と列とブロックを合わせると、9つのうち8つの数字が、このマスから見える場所にすでに出ています。</string>
+    <string name="lesson_naked_single_4">だから残るのはひとつで、このマスはその数字になります。ほかはありえません。これが裸のシングルです。1マスを見るだけで分かるので裸、生き残る数字がひとつなのでシングルです。</string>
+    <string name="lesson_naked_single_5">ヒントを出すとき、アプリはこの名前で呼びます。これでその意味が分かりました。</string>
+    <string name="lesson_hidden_single_title">隠れたシングル</string>
+    <string name="lesson_hidden_single_summary">ハウスの中で入る場所がひとつしか残っていない数字は、そこに入ります。</string>
+    <string name="lesson_hidden_single_1">もうひとつのシングルで、こちらのほうが多くのマスを埋めます。裸のシングルは、残る数字がひとつのマスでした。これはその鏡写しで、残る場所がひとつの数字です。</string>
+    <string name="lesson_hidden_single_2">ハウスをひとつ取り、そこにまだ足りない数字を選びます。そのハウスのどこにその数字が入りうるかを考えます。</string>
+    <string name="lesson_hidden_single_3">このブロックでは、答えは1マスです。ほかの空きマスは、それぞれの行か列によって否定されています。</string>
+    <string name="lesson_hidden_single_4">だからその数字はそこに入ります。そのマス自体はいくつもの数字を持てるとしてもです。隠れたと呼ぶのはそのためで、数字がほかの候補にまぎれています。</string>
+    <string name="lesson_hidden_single_5">これはしっかり身につける価値があります。たいていの問題では、裸のシングルが尽きたあとに手を進めてくれるのがこれです。</string>
+    <string name="lesson_hidden_single_turn">あなたの番です。このブロックでほかに行き場のない数字を入れてください。</string>
+    <string name="lesson_hidden_single_wrong">それではありません。ブロックに足りない数字を考えて、そのそれぞれが実際どこに入りうるかを確かめてください。</string>
+
+    <string name="lesson_scanning_title">見つけ方</string>
+    <string name="lesson_scanning_summary">マスを一つずつ調べるのではなく、数字を決めて盤面をなでていきます。</string>
+    <string name="lesson_scanning_1">これで2つのテクニックを知りました。知っていることと見つけられることは別で、時間がかかるのは見つけるほうです。</string>
+    <string name="lesson_scanning_2">盤面をマスごとに読んではいけません。数字をひとつ、たとえばいちばん多く出ているものを選び、帯の中の3つのブロックを見ます。</string>
+    <string name="lesson_scanning_3">ブロックごとに問いはひとつだけです。この数字はどこに入れるか。すでにその数字を持つ行と列が候補のほとんどを消してくれて、しばしば1マスだけが残ります。</string>
+    <string name="lesson_scanning_4">次の帯へ移り、その数字を出し切ったら次の数字へ移ります。これが走査で、速い人がただ盤面を眺めているように見えるとき、やっているのはこれです。</string>
+    <string name="lesson_scanning_5">順序よく進めるのに費用はかからず、行き詰まった感じを減らせます。その感じの正体は、たいてい同じ隅を4回見ていたことです。</string>
+
+    <string name="lesson_first_nine_title">盤面ひとつ、シングルだけで</string>
+    <string name="lesson_first_nine_summary">ここまで覚えたことだけで、問題を1つ最後まで解けます。</string>
+    <string name="lesson_first_nine_1">本物の9×9、やさしいレベルです。どの手も裸か隠れたのシングルで、まだ見ていないものは何もありません。</string>
+    <string name="lesson_first_nine_2">手始めにひとつ。このマスは、見える範囲によって9つのうち8つの数字を否定されています。</string>
+    <string name="lesson_first_nine_3">これがやさしい問題の形です。最後までシングルだけで、当てずっぽうはどこにもありません。</string>
+    <string name="lesson_first_nine_4">このレッスンを出たら、1問遊んでみてください。次の段はメモの話で、メモが効いてくるのはこれより難しい問題からです。</string>
+    <string name="lesson_first_nine_turn">あなたの番です。ここに入れる数字はひとつだけです。</string>
+    <string name="lesson_first_nine_wrong">このマスの行と列とブロックをもう一度見て、そこにすでにある数字を並べてみてください。</string>
+
+    <string name="lesson_pencil_marks_title">メモ</string>
+    <string name="lesson_pencil_marks_summary">メモは、いちど考えたことの記録です。同じことを二度考えないためにあります。</string>
+    <string name="lesson_pencil_marks_1">ここから先、問題はシングルだけでは落ちなくなり、書き留める必要が出てきます。メモとは、その数字がまだそのマスに入りうる、と示す小さな数字のことです。</string>
+    <string name="lesson_pencil_marks_2">このマスを見てください。入るのが2つの数字のどちらかだと分かるまで数秒かかります。その2つを書いておけば、次に見るときは0秒です。</string>
+    <string name="lesson_pencil_marks_3">メモとはそれだけのものです。当てずっぽうでも約束でもなく、すでにした推理の記録です。</string>
+    <string name="lesson_pencil_marks_4">ここから先のテクニックはすべて、数字の並びではなくメモの並びを見ています。同盟も、魚も、チェインも、読み取るのはメモからです。</string>
+    <string name="lesson_pencil_marks_5">難しいナンプレを暗算で解く人はいません。エキスパートで何も書かない人は、賢いのではなく遅いだけです。</string>
+
+    <string name="lesson_when_to_mark_title">いつ書くか</string>
+    <string name="lesson_when_to_mark_summary">メモはシングルが尽きてから入れます。その前ではありません。</string>
+    <string name="lesson_when_to_mark_1">メモの使い方は2通りあり、その違いは大事です。</string>
+    <string name="lesson_when_to_mark_2">ひとつめは、ほかを何もする前に、空いたマスすべてに入りうる数字をすべて書き込む方法です。もれはありませんが、手書きなら数分かかり、やさしい問題ではその大半が無駄になります。シングルだけで埋まってしまうからです。</string>
+    <string name="lesson_when_to_mark_3">ふたつめは、いま見ているところにだけ書く方法です。この4マスは、その間で何かが起きているので書く値打ちがあります。盤面のほかの場所にはありません。</string>
+    <string name="lesson_when_to_mark_4">正直な助言はこうです。まずシングルを解き、見つからなくなったら書き始める。紙の上ではこれで本当に時間が浮きます。このアプリではメモを全部入れるのはワンタップなので費用は小さいのですが、数字だらけの盤面は、必要なところにだけメモがある盤面より読みにくいままです。</string>
+
+    <string name="lesson_marks_true_title">メモを正しく保つ</string>
+    <string name="lesson_marks_true_summary">古いメモは、メモがないより悪いものです。</string>
+    <string name="lesson_marks_true_1">メモには危険がひとつあります。数字を入れるたびにいくつかのメモが誤りになり、誤ったメモは、正しくなりようのない推理へ連れていきます。</string>
+    <string name="lesson_marks_true_2">ここに数字を入れると、そのマスから見えるすべてのマスがその数字を候補から失います。そのメモを消さないでおくと、次に見つけたテクニックがその上に組み上がっているかもしれません。</string>
+    <string name="lesson_marks_true_3">このアプリは代わりにやれます。「数字を入れたら、消えたメモを自動で消す」という設定があり、既定でオンです。紙の上では手で消すことになり、ミスの多くはそこから生まれます。</string>
+    <string name="lesson_marks_true_4">問題がおかしくなって理由が分からないときは、まず古いメモを疑ってください。入れた数字が正しくないときは、ヒントのボタンが教えてくれます。</string>
+
+    <string name="lesson_pointing_title">ポインティングペア</string>
+    <string name="lesson_pointing_summary">ブロックの中で数字が1本の線に閉じこめられていれば、その線のほかの場所からは消えます。</string>
+    <string name="lesson_pointing_1">数字を入れるのではなく、可能性を減らす最初のテクニックです。ここから先はほとんどがそうで、慣れるまで少しかかります。数字をひとつも書かずに前進するからです。</string>
+    <string name="lesson_pointing_2">このブロックでその数字がどこに入れるかを見てください。入れる場所はすべて同じ列に並んでいます。</string>
+    <string name="lesson_pointing_3">ブロックはどこかにその数字を入れなければなりません。だから最終的にどこに落ちても、その列の上です。</string>
+    <string name="lesson_pointing_4">つまり、列の残りはその数字を持てません。ブロックからずいぶん離れていても、このマスたちは候補からその数字を失います。</string>
+    <string name="lesson_pointing_5">ブロックの中のペアが線に沿って指し示し、その線を掃除するので、ポインティングと呼ばれます。</string>
+
+    <string name="lesson_claiming_title">クレーミングペア</string>
+    <string name="lesson_claiming_summary">線の上で数字がひとつのブロックに閉じこめられていれば、そのブロックのほかの場所からは消えます。</string>
+    <string name="lesson_claiming_1">同じ理屈を逆から読んだものです。目が見つける場所が違うので、分けて覚える値打ちがあります。</string>
+    <string name="lesson_claiming_2">今度は線から始めます。この行に沿って、その数字がどこに入れるかを見てください。</string>
+    <string name="lesson_claiming_3">入れる場所はすべて同じブロックの中にあります。行はどこかにその数字を入れなければならないので、数字はそのブロックの中です。</string>
+    <string name="lesson_claiming_4">つまりブロックの残りはその数字を失います。このマスたちはもう持てません。</string>
+    <string name="lesson_claiming_5">ポインティングはブロックを見て線を掃除します。クレーミングは線を見てブロックを掃除します。名前は2つ、考え方はひとつで、難しい問題では両方に出会います。</string>
+
+    <string name="lesson_naked_pair_title">二国同盟</string>
+    <string name="lesson_naked_pair_summary">同じ2つの数字を持つ2マスが、その2つを独り占めします。</string>
+    <string name="lesson_naked_pair_1">ここからは同盟です。いちばん小さく、ほかを当たり前に見せてくれる形です。</string>
+    <string name="lesson_naked_pair_2">この2マスは同じハウスにあり、どちらも同じ2つの数字のどちらかにしかなれません。</string>
+    <string name="lesson_naked_pair_3">2マスでその2つの数字をひとつずつ引き受けます。どちらがどちらかは関係なく、知る必要もありません。</string>
+    <string name="lesson_naked_pair_4">だからそのハウスのほかのマスは、どちらの数字も持てません。このマスはそのひとつを失います。</string>
+    <string name="lesson_naked_pair_5">ここでも裸です。2マスを読むだけで見えるからで、隠れているものはなく、ほかのマスは理屈に入ってきません。</string>
+
+    <string name="lesson_hidden_pair_title">隠れ二国同盟</string>
+    <string name="lesson_hidden_pair_summary">入る場所が同じ2マスしか残っていない2つの数字が、そのマスを独り占めします。</string>
+    <string name="lesson_hidden_pair_1">二国同盟の鏡写しで、隠れたシングルが裸のシングルを映すのとちょうど同じ関係です。</string>
+    <string name="lesson_hidden_pair_2">このハウスでは、2つの数字がどちらも同じ2マスにしか入れません。</string>
+    <string name="lesson_hidden_pair_3">その2つの数字がその2マスを引き受けます。だから、そのマスがほかの数字を持てるように見えていても、実は持てません。</string>
+    <string name="lesson_hidden_pair_4">2マスはほかのメモをすべて失います。これで二国同盟になり、この形の値打ちはたいていそこにあります。隠れ二国同盟を裸の二国同盟に変えて、ハウスの残りを掃除するのです。</string>
+    <string name="lesson_hidden_pair_5">隠れているほうは、マスではなく数字を見なければならないぶん見つけにくいものです。止まってしまった盤面では、その手間に見合います。</string>
+
+    <string name="lesson_naked_triple_title">三国同盟</string>
+    <string name="lesson_naked_triple_summary">3つの数字を分け合う3マスがそれを独り占めします。1マスが3つとも持っていなくてもです。</string>
+    <string name="lesson_naked_triple_1">二国同盟にマスをひとつ足したもので、最初はだれもが引っかかる細かい点がひとつあります。</string>
+    <string name="lesson_naked_triple_2">この3マスは同じハウスにあり、3マス合わせて3種類の数字しか使っていません。</string>
+    <string name="lesson_naked_triple_3">細かい点はここです。3つとも持っているマスは、ひとつも要りません。あるマスに2つ、次のマスに2つ、3つめのマスに2つでも、全体で3種類しか出てこなければ三国同盟です。</string>
+    <string name="lesson_naked_triple_4">3マスが3つの数字を引き受けるので、ハウスのほかのマスは3つとも失います。いちどに消えるメモの量はかなりのものです。</string>
+    <string name="lesson_naked_triple_5">探すときは、同じメモを探すのではなく、2、3マスに現れる数字の種類を数えてください。三国同盟を見つけるのはその習慣です。</string>
+
+    <string name="lesson_hidden_triple_title">隠れ三国同盟</string>
+    <string name="lesson_hidden_triple_summary">入る場所が3つしか残っていない3つの数字が、そのマスを独り占めします。</string>
+    <string name="lesson_hidden_triple_1">隠れ二国同盟と同じ関係をひとつ大きくしたもので、本当に見つけにくいものです。</string>
+    <string name="lesson_hidden_triple_2">このハウスでは、3つの数字が合わせて同じ3マスにしか入れません。</string>
+    <string name="lesson_hidden_triple_3">だからその3マスはその3つの数字になり、そこにあるほかのメモはすべて消せます。</string>
+    <string name="lesson_hidden_triple_4">これを最初から探してはいけません。ハウスに空きが数マス残っていて、ほかに何も効かないときに探してください。たいていは同じハウスに、もっと見つけやすい裸の形があります。</string>
+
+    <string name="lesson_quads_title">四国同盟</string>
+    <string name="lesson_quads_summary">同じ考えを4つでもう一度。知っておく値打ちはありますが、探す値打ちはめったにありません。</string>
+    <string name="lesson_quads_1">二国、三国、そして四国同盟です。理屈は変わりません。合わせて4つの数字を使う4マスはその数字を独り占めし、入る場所が4つしかない4つの数字はそのマスを独り占めします。</string>
+    <string name="lesson_quads_2">これが裸の四国同盟です。4マス、合わせて4つの数字、そしてハウスの残りは4つとも失います。</string>
+    <string name="lesson_quads_3">ここで正直な助言をひとつ。四国同盟は本物で、ルールにもかなっていますが、めったに出ません。空きが5、6マスのハウスに四国同盟が見えたときは、たいていほかのマスにもっと簡単な形があって、それを見落としています。</string>
+    <string name="lesson_quads_4">こちらは隠れ四国同盟です。念のために挙げておきます。4つの数字に、入る場所が4つ。</string>
+    <string name="lesson_quads_5">ヒントが名前を出したときに分かるよう、見分けられるようにしておいてください。探すのに時間を使ってはいけません。</string>
+
+    <string name="lesson_x_wing_title">井桁理論</string>
+    <string name="lesson_x_wing_summary">2つの行で数字が同じ2つの列に固定されると、その列のほかの場所からは消えます。</string>
+    <string name="lesson_x_wing_1">ひとつのハウスに収まらず、盤面全体にまたがる最初の形です。形があり、いちど見えるようになるとどこにでも見えてきます。</string>
+    <string name="lesson_x_wing_2">数字をひとつ選びます。この2つの行では、それぞれ2マスにしか入れず、そのマスは同じ2つの列にあります。長方形に並んだ4マスです。</string>
+    <string name="lesson_x_wing_3">考えてみてください。どの行もその数字を1回持たなければなりません。一方の行がどちらの角を使っても、もう一方は反対の角を使うしかありません。3つめの選択肢はありません。</string>
+    <string name="lesson_x_wing_4">だから2つの行で、その数字を2つの列の両方で使い切ります。その列のほかのマスはすべて失います。</string>
+    <string name="lesson_x_wing_5">行と列を入れ替えても成り立ちます。数字が同じ2つの行に閉じこめられている2つの列は、その行を掃除します。</string>
+
+    <string name="lesson_swordfish_title">ソードフィッシュ</string>
+    <string name="lesson_swordfish_summary">井桁理論と同じ理屈を、2本ではなく3本の線で行います。</string>
+    <string name="lesson_swordfish_1">井桁理論に行を1本足したものです。名前は手がかりになりませんが、形はまっすぐな拡張です。</string>
+    <string name="lesson_swordfish_2">3つの行、ひとつの数字、そしてどの行でもその数字は同じ3つの列のマスに閉じこめられています。</string>
+    <string name="lesson_swordfish_3">どの行も3つの列すべてを使う必要はありません。どの行もその外へ出なければ、3つのうち2つで足ります。</string>
+    <string name="lesson_swordfish_4">3つの行がその3つの列でその数字を使い切るので、その列の残りは失います。</string>
+    <string name="lesson_swordfish_5">井桁理論を追えるなら、これも追えます。見つけるほうは別の話で、メモを埋めるのが必須になるのはここからです。</string>
+
+    <string name="lesson_jellyfish_title">ジェリーフィッシュ</string>
+    <string name="lesson_jellyfish_summary">4本の線。同じ形をもう一度、そして覚える値打ちのある最後のものです。</string>
+    <string name="lesson_jellyfish_1">4つの行、ひとつの数字、4つの列。理屈は井桁理論から変わっておらず、これ以上変わりません。</string>
+    <string name="lesson_jellyfish_2">これがそのひとつです。4つの行があり、どの行でもその数字は同じ4つの列に閉じこめられています。</string>
+    <string name="lesson_jellyfish_3">4より先に学ぶものはありません。理屈の上では5本の版もありますが、9×9の盤面では、そのどれもが余った4つの列でもっと小さな形として見つかるので、だれも探しません。</string>
+    <string name="lesson_jellyfish_4">形で狩る値打ちがあるのはここまでです。この先は、チェインのほうが注意力の使いみちとして良くなります。</string>
+
+    <string name="lesson_xy_wing_title">XYウィング</string>
+    <string name="lesson_xy_wing_summary">2候補のマス3つと、どちらに転んでも損をするマスひとつ。</string>
+    <string name="lesson_xy_wing_1">ウィングには別の考え方が要ります。ここまでは形を見つけて結論を読み取っていました。ここでは場合分けで考えます。</string>
+    <string name="lesson_xy_wing_2">このマスから始めます。入りうる数字がちょうど2つで、この形の蝶番です。</string>
+    <string name="lesson_xy_wing_3">蝶番には仲間が2つあり、どちらも蝶番とハウスを共有し、どちらも2つの数字を持ちます。ひとつは蝶番と共通、もうひとつは仲間どうしで共通です。</string>
+    <string name="lesson_xy_wing_4">では理屈です。蝶番は2つの数字のどちらかです。ひとつめなら左の翼が共通の数字に決まります。ふたつめなら右の翼が同じ共通の数字に決まります。どちらにしても、翼のどちらかがその数字を持ちます。</string>
+    <string name="lesson_xy_wing_5">だから両方の翼を見ているマスは、その数字を持てません。このマスが失います。</string>
+    <string name="lesson_xy_wing_6">蝶番が実際どの数字なのかは、最後まで分かりません。そこが肝で、ウィングがそれまでのものと違って感じられる理由です。</string>
+
+    <string name="lesson_xyz_wing_title">XYZウィング</string>
+    <string name="lesson_xyz_wing_summary">XYウィングと同じですが、蝶番も共通の数字になれるぶん、結論が弱くなります。</string>
+    <string name="lesson_xyz_wing_1">XYウィングを1か所だけ変えたもので、その分だけ結論が小さくなります。</string>
+    <string name="lesson_xyz_wing_2">ここでは蝶番が2つではなく3つの数字を持ち、共通の数字もその中にあります。</string>
+    <string name="lesson_xyz_wing_3">だから場合は2つではなく3つです。どちらの翼が共通の数字を持つかもしれないし、蝶番自身が持つかもしれません。</string>
+    <string name="lesson_xyz_wing_4">つまり、その数字を失うのは3つすべてを見ているマスだけで、翼2つを見ているだけでは足りません。当てはまるマスが減るので、この形は簡単ないとこより消せる数が少なくなります。</string>
+    <string name="lesson_xyz_wing_5">形がほとんど同じに見えるので、知っておく値打ちがあります。XYウィングとして読むと、消してはいけない数字を消してしまいます。</string>
+
+    <string name="lesson_w_wing_title">Wウィング</string>
+    <string name="lesson_w_wing_summary">同じ2候補の2マスが、その数字のどちらかを必ず持つ線でつながっています。</string>
+    <string name="lesson_w_wing_1">3つめのウィングで、計算がいちばん少ないものです。</string>
+    <string name="lesson_w_wing_2">ハウスを共有していない2マスが、どちらも同じ2つの数字を持っています。</string>
+    <string name="lesson_w_wing_3">次に、その2つの数字のどちらかが2か所にしか入れないハウスを探します。その2か所が、それぞれ先ほどの2マスの一方を見ていること。そのハウスが連結器です。</string>
+    <string name="lesson_w_wing_4">連結器のハウスは2か所のどちらかにその数字を持たなければならず、どちらであっても、ペアの一方をもう片方の数字に追いこみます。だからペアのどちらかは必ずもう片方の数字です。</string>
+    <string name="lesson_w_wing_5">ペアの両方を見ているマスはその数字を失います。このマスが見ています。</string>
+
+    <string name="lesson_rectangle_title">ユニークレクタングル</string>
+    <string name="lesson_rectangle_summary">答えがひとつの問題に、回してしまえる四角は入っていられません。</string>
+    <string name="lesson_rectangle_1">このテクニックはほかのどれとも種類が違うので、使う前になぜかを言っておく値打ちがあります。</string>
+    <string name="lesson_rectangle_2">この4マスを見てください。2つの行、2つの列、そしてちょうど2つのブロックにまたがり、どれも同じ2つの数字を持てます。</string>
+    <string name="lesson_rectangle_3">それだけなら、この問題の答えは2通りになります。長方形を一方の向きに埋めても、両方の対角を入れ替えても、どちらの盤面もすべてのルールを満たすからです。きちんと作られた問題の答えは2通りになりません。</string>
+    <string name="lesson_rectangle_4">だからそれだけではないはずです。その4マスのどれかは別の数字を持たなければならず、そこから消去ができます。</string>
+    <string name="lesson_rectangle_5">ここでは余分な候補が生き残り、共通のペアがこのマスたちから消えます。</string>
+    <string name="lesson_rectangle_6">落とし穴もはっきり言っておきます。この理屈は、問題がきちんと作られていることを前提にしています。このアプリの問題はすべてそうです。生成器が確かめているからです。出どころの分からない盤面で使うと、まちがった結論に導かれることがあります。</string>
+
+    <string name="lesson_bug_title">BUG+1</string>
+    <string name="lesson_bug_summary">1マスを除くすべてが候補2つなら、その問題は答えが定まりません。だからその1マスが特別です。</string>
+    <string name="lesson_bug_1">ユニークレクタングルと同じ前提が、別の形をとったものです。</string>
+    <string name="lesson_bug_2">ある盤面が、未確定のマスすべてがちょうど2つの候補を持ち、どのハウスでもどの数字もちょうど2回現れる形になったとします。そういう盤面の答えは、かならず偶数個あります。</string>
+    <string name="lesson_bug_3">だからきちんと作られた問題はそこへ到達できません。あと1マスでその形になる位置、つまり2つではなく3つの候補を持つマスがちょうどひとつある位置を見つけたら、そのマスこそが問題を曖昧さから救っています。</string>
+    <string name="lesson_bug_4">そのマスのハウスで3回現れている数字が、そこに入る数字です。めったに出ない形ですが、出たときの終わり方はとても速いものです。</string>
+
+    <string name="lesson_colouring_title">単純色分け</string>
+    <string name="lesson_colouring_summary">入る場所が2つしかないところをたどって数字を追い、矛盾を探します。</string>
+    <string name="lesson_colouring_1">チェインへ、ゆっくり入ります。色分けはいちばん入りやすい入口で、根っこの理屈は同じです。</string>
+    <string name="lesson_colouring_2">数字をひとつ選びます。その数字が入れるマスが2つしかないハウスを探します。その2マスは結ばれていて、ちょうど一方がその数字です。</string>
+    <string name="lesson_colouring_3">ペアの片方を塗り、結びをたどっていきます。こうしてつながったマスはすべて2色のどちらかになり、片方の色が丸ごと正しく、もう片方が丸ごと誤りです。どちらかは分かりません。</string>
+    <string name="lesson_colouring_4">次に矛盾を探します。同じ色のマスを2つ見ているマスがあれば、その色は正しくありえないので、そのマスはその数字を失います。ここではそれが起きています。</string>
+    <string name="lesson_colouring_5">2つの色、ひとつの矛盾、そしてどこにも当てずっぽうがない。方法はこれだけです。</string>
+
+    <string name="lesson_remote_pairs_title">リモートペア</string>
+    <string name="lesson_remote_pairs_summary">同じペアの鎖は交互に入れ替わるので、両端は反対になります。</string>
+    <string name="lesson_remote_pairs_1">色分けを、ひとつの数字ではなくマスに当てはめたものです。</string>
+    <string name="lesson_remote_pairs_2">どれも同じ2つの数字を持つマスが、共有するハウスで次々につながっています。</string>
+    <string name="lesson_remote_pairs_3">どの結びもペアなので、数字は鎖に沿って交互になります。最初のマスが一方を取り、2番目がもう一方を取り、と続きます。</string>
+    <string name="lesson_remote_pairs_4">だから偶数の長さの鎖の両端は反対で、違う数字を持ちます。両端を見ているマスは、両端がひとつずつ持っているので、2つの数字を両方とも失います。</string>
+    <string name="lesson_remote_pairs_5">いちばん見つけやすい鎖です。中のマスがどれも同じ見た目をしているからです。</string>
+
+    <string name="lesson_multi_colouring_title">複数色分け</string>
+    <string name="lesson_multi_colouring_summary">触れ合う2本の色分けの鎖は、互いを否定します。</string>
+    <string name="lesson_multi_colouring_1">単純色分けは鎖を1本使います。1本では矛盾がなくても、2本合わせると出ることがあります。</string>
+    <string name="lesson_multi_colouring_2">同じ数字についての、別々の2本の鎖のマスです。</string>
+    <string name="lesson_multi_colouring_3">一方の鎖のある色が他方のある色を見ているなら、その2色が両方とも正しいことはありえません。そこをたどると、残った2色を見ているマスからその数字を消せます。</string>
+    <string name="lesson_multi_colouring_4">結論はここに落ちます。</string>
+    <string name="lesson_multi_colouring_5">色分けが頭の中に収まらなくなり、どのマスがどの色かを書き留めたくなるのはここからです。</string>
+
+    <string name="lesson_x_chain_title">Xチェイン</string>
+    <string name="lesson_x_chain_summary">ひとつの数字、強い結びと弱い結びの交互、そして両端での消去。</string>
+    <string name="lesson_x_chain_1">前の段のすべてを一般の形にしたものです。ひとつの数字と、交互に並ぶ結びの鎖です。</string>
+    <string name="lesson_x_chain_2">強い結びとは、少なくとも一方がその数字を持たなければならない2マスのことで、入る場所が2つしかないハウスがそれを与えます。弱い結びとは、多くても一方しかその数字を持てない2マスのことで、ハウスを共有する2マスなら何でもそれになります。</string>
+    <string name="lesson_x_chain_3">強、弱、強と交互に並べ、両端を強い結びにします。すると途中で何が起きても、両端のどちらかがその数字を持ちます。</string>
+    <string name="lesson_x_chain_4">だから両端を見ているマスは、その数字を失います。</string>
+    <string name="lesson_x_chain_5">色分けは、この鎖を2色で描いたものです。色分けが届かないマスも通れるぶん、鎖のほうが一般的です。</string>
+
+    <string name="lesson_xy_chain_title">XYチェイン</string>
+    <string name="lesson_xy_chain_summary">2候補のマスの鎖で、両端が同じ数字を共有しているもの。</string>
+    <string name="lesson_xy_chain_1">同じ交互の考え方を、ひとつの数字を追うのではなく、マスをたどって進めます。</string>
+    <string name="lesson_xy_chain_2">この鎖のどのマスもちょうど2つの候補を持ち、それぞれが次のマスとハウスを共有しています。</string>
+    <string name="lesson_xy_chain_3">ひとつのマスの中では、片方の数字を取ればもう片方が決まり、これが強い結びです。マスとマスのあいだでは、共有するハウスが弱い結びをつくります。交互に並べると、理屈が鎖に沿って走ります。</string>
+    <string name="lesson_xy_chain_4">鎖の両端が同じ数字を持てるなら、鎖がどちらに転んでも、どちらかの端がそれを持ちます。両端を見ているマスは、その数字を失います。</string>
+    <string name="lesson_xy_chain_5">エキスパートの問題の多くを終わらせるのはこのテクニックで、見つけるこつは賢さより、2候補のマスを根気よくたどることです。</string>
+
+    <string name="lesson_writing_chains_title">鎖を書き出す</string>
+    <string name="lesson_writing_chains_summary">確かめられない鎖は、手数の多い当てずっぽうです。</string>
+    <string name="lesson_writing_chains_1">最後のテクニックの前に、実践的なレッスンをひとつ。鎖は、人が正しくないことを自分に信じこませてしまう場所だからです。</string>
+    <string name="lesson_writing_chains_2">鎖は主張の連なりで、そのひとつひとつが成り立たなければなりません。画面の上では色のついたマスの集まりに見えますが、色をつけることは理屈ではありません。</string>
+    <string name="lesson_writing_chains_3">一列に書き出してください。このマスは4か7、4ならあのマスは9、あのマスが9ならこちらのマスは4、というように。矢印のひとつずつが結びで、結びのひとつずつに理由があります。</string>
+    <string name="lesson_writing_chains_4">そのあとで交互になっているかを確かめます。強、弱、強、弱、そして両端が強。弱い結びで始まったり終わったりする鎖は何も証明せず、鎖が壊れるいちばんよくある形がこれです。</string>
+    <string name="lesson_writing_chains_5">書き出せないなら、見つけていません。きれい好きの話ではなく、推理と勘のあいだの違いです。</string>
+
+    <string name="lesson_sue_de_coq_title">スー・ド・コック</string>
+    <string name="lesson_sue_de_coq_summary">ブロックと線が交わるところで、交わりに入る余地より数字が多い形。</string>
+    <string name="lesson_sue_de_coq_1">ブロックと列が3マスで重なっています。その3マスは同時に両方に属していて、このテクニックはそこから生きています。</string>
+    <string name="lesson_sue_de_coq_2">そのうち2マスを見てください。合わせて2、6、7、8を持っています。2マスに4つの数字です。2つが入り、2つはほかの場所へ余ります。</string>
+    <string name="lesson_sue_de_coq_3">同じ列の下のほうに、6と7を持つマスがあります。同じブロックの別の場所に、2と8を持つマスがあります。この2マスは合わせて、交わりの持つ4つの数字をちょうど欲しがっていて、しかも重なりなく半分ずつです。</string>
+    <string name="lesson_sue_de_coq_4">数えてみてください。列の3マスが4つのうち3つの違う数字を取り、ブロックの3マスも同じことをします。計算が合う並べ方はひとつしかありません。6と7は列の中で、2と8はブロックの中で使い切られます。</string>
+    <string name="lesson_sue_de_coq_5">だからその列のほかのマスは6にも7にもなれません。ここでは2マスがひとつずつ失います。</string>
+    <string name="lesson_sue_de_coq_6">同じ理屈がブロックについても逆向きに走ります。形はひとつ、ハウスは2つ、消去は別々に2組、そしてどこにも鎖はありません。</string>
+
+    <string name="lesson_als_title">ALS-XZ</string>
+    <string name="lesson_als_summary">数字をひとつ共有する2つのほぼ固まった集まりと、そこから出る消去。</string>
+    <string name="lesson_als_1">いちばん難しいレベルが立っている土台の規則です。この段より上にあるものは、すべてこれの変奏です。</string>
+    <string name="lesson_als_2">ほぼ固まった集まりとは、ひとつのハウスの中のマスの集まりで、マスの数よりちょうどひとつ多い数字を持つもののことです。4マスに合わせて5つの数字、という具合です。数字がひとつ減れば固まった集まりになるので、この名前がついています。</string>
+    <string name="lesson_als_3">そのうち2つの数字を共有する集まりを2つ取ります。共有する数字の一方を制限つきと呼び、一方の集まりでそれが現れるすべての場所が、他方の集まりでそれが現れるすべての場所を見ていることを求めます。</string>
+    <string name="lesson_als_4">するとその数字は2つの集まりの一方にしか入れません。取らなかったほうの集まりは固まり、もうひとつの共有する数字がその中に決まります。だから両方の集まりでその数字を見ているマスは、それを失います。</string>
+    <string name="lesson_als_5">そこから出てくる消去がこれです。</string>
+    <string name="lesson_als_6">何度か読み返すことになっても、それがふつうの回数です。ここから先のテクニックはすべて、これが姿を変えたものです。</string>
+
+    <string name="lesson_deep_end_title">いちばん深いところで問われること</string>
+    <string name="lesson_deep_end_summary">狂気と悪夢で何が変わるのか、そしてなぜこのレベルには紙が要るのか。</string>
+    <string name="lesson_deep_end_1">ここまでのものはすべて目で見えます。行を見て、ブロックを見て、2マスを見れば、形さえ知っていれば答えは目の前にあります。</string>
+    <string name="lesson_deep_end_2">いちばん難しい2つのレベルはそうではありません。3手、4手と理屈をたどり、その全体を一度に頭に置いておくことを求めます。それを見るだけでやれる人はほとんどいません。</string>
+    <string name="lesson_deep_end_3">だから書いてください。鉛筆と封筒の裏はずるではないし、下手だという印でもありません。このレベルを解く人はみなそうしています。</string>
+    <string name="lesson_deep_end_4">ここでの規則はすべて同じ考えです。満杯まであと数字ひとつ、というマスの集まり。その数字を取り去れば集まりは決まり、決まった集まりが次の集まりを決めます。いちばん深いところは、それだけでできています。</string>
+    <string name="lesson_deep_end_5">この先に当てずっぽうはひとつもありません。どの手も証明され、どのヒントもその証明を見せます。ここの問題に負けても、1週間後に戻ってくるのがふつうのやり方です。</string>
+
+    <string name="lesson_als_xy_title">ALS-XYウィング</string>
+    <string name="lesson_als_xy_summary">鎖につながれた3つの集まりと、どちらの端でも生き残れない数字。</string>
+    <string name="lesson_als_xy_1">今度は3つの集まりが一列につながります。両端にひとつずつ、そして真ん中がその2つを隔てます。</string>
+    <string name="lesson_als_xy_2">左の2つから始めます。r3c9は1と3を持ちます。r1c8は3と7を持ちます。同じブロックにあるので、3になれるのはどちらか一方だけです。</string>
+    <string name="lesson_als_xy_3">次に、8列を下る集まりです。3マスで合わせて1、3、7、9を持ちます。4つの数字に3マスなので、満杯まであとひとつです。この集まりはr1c8と7を共有し、その中の7はすべて同じ列にあるので、ここでも取れるのは片側だけです。</string>
+    <string name="lesson_als_xy_4">9列の印をつけた2マスのどちらかが1だとしてみます。そのマスはr3c9を見ているのでr3c9は1ではなく、3になります。するとr1c8は3ではないので7になります。すると集まりに7が残らないので満杯になり、1と3と9を使うしかありません。</string>
+    <string name="lesson_als_xy_5">ところがそのマスは集まりの中の1もすべて見ているので、集まりは1も持てません。理屈が自分自身を食べてしまい、1は消えます。</string>
+    <string name="lesson_als_xy_6">つなぎ目が2つ、集まりが3つ、そしてどの一歩も次を決めます。2回読んでください。これは鎖で、鎖は結びひとつずつでしか意味を成しません。</string>
+
+    <string name="lesson_blossom_title">デス・ブロッサム</string>
+    <string name="lesson_blossom_summary">1マスと、その数字ひとつひとつの後ろで待っている集まり。</string>
+    <string name="lesson_blossom_1">これは目に見える形をしています。茎がひとつ、そして茎がなりうる数字ごとに花びらがひとつです。</string>
+    <string name="lesson_blossom_2">茎はr1c4です。5か6で、ほかにはなりません。可能性が2つなら場合も2つで、このテクニックはその両方を一度に片づけます。</string>
+    <string name="lesson_blossom_3">5だとしてみます。すると同じ行にあり5と8を持つr1c7は、5になれません。だから8です。</string>
+    <string name="lesson_blossom_4">今度は6だとしてみます。同じブロックのこの3マスを見てください。合わせて2、6、7、8を持ちます。4つの数字に3マス、満杯まであとひとつです。茎は3マスすべてを見ているので、茎の6がそこから6を取り去ります。</string>
+    <string name="lesson_blossom_5">すると3マスは満杯になり、満杯の3マスは3つの数字、2と7と8を使います。8になれるのはそのうち1マスだけなので、8はそこに入ります。</string>
+    <string name="lesson_blossom_6">2つの場合を合わせます。r1c7に8があるか、そのブロックに8があるかのどちらかで、3つめの場合はありません。両方の場所を見ているマスは8を失い、ここでは2マスがそうなります。</string>
+    <string name="lesson_blossom_7">最後まで知る必要がなかったものに注目してください。茎が実際にどの数字なのか、です。どちらの道も8で終わるので、答えは分かれ道に左右されません。</string>
+
+    <string name="lesson_fork_title">仮定法</string>
+    <string name="lesson_fork_summary">1マスを両方の場合で試し、生き残るほうを見ます。このアプリでいちばん難しいものです。</string>
+    <string name="lesson_fork_1">最後のテクニックで、形ではない唯一のものです。ここに見つけるものはありません。あるのは作業だけです。</string>
+    <string name="lesson_fork_2">このマスは2か7です。盤面のほかはすべて絞り切ってあり、どちらなのかを言うものは何もありません。</string>
+    <string name="lesson_fork_3">だから片方を試します。2だと鉛筆で置いて、簡単な帰結だけを追います。残る数字がひとつのマス、あるいはハウスの中で入る場所がひとつの数字です。</string>
+    <string name="lesson_fork_4">すぐに出てきます。ここで2が決まり、あそこで7、それから3、5、9。続けてください。14個の数字のあとで、印をつけたマスを見てください。</string>
+    <string name="lesson_fork_5">何も残っていません。そこに入りえた数字は、すべてほかに取られました。これは運の悪さではなく矛盾で、2は初めから不可能だったということです。</string>
+    <string name="lesson_fork_6">だからすべて消して7と書きます。7のほうが良く見えるからではなく、2が不可能だと証明されたからで、2つの可能性から1つを引けば1つが残るからです。</string>
+    <string name="lesson_fork_7">これが場合分けによる証明で、人が「紙の上で解く」と言うときに指しているものです。紙を使ってください。14個の決まった数字を頭に置いておける人はいませんし、書く必要があることは弱さではありません。</string>
+    <string name="lesson_fork_8">では入れてください。</string>
+    <string name="lesson_fork_wrong">死んだのはもう一方の数字です。2は何も入らないマスに行き着いたので、残るのは7です。</string>
+
+    <string name="lesson_nothing_applies_title">何も当てはまらないとき</string>
+    <string name="lesson_nothing_applies_summary">当てずっぽうの前に見直してください。このアプリの問題にはかならず次の一手があります。</string>
+    <string name="lesson_nothing_applies_1">すべて見たのに何も見つからない、という場面に来ることがあります。そこですべきことと、してはいけないことです。</string>
+    <string name="lesson_nothing_applies_2">してはいけないのは当てずっぽうです。このアプリの問題はすべて理屈で解けますし、たまたま当たった推測は何も教えてくれないのに、外れた推測は盤面ごと持っていきます。</string>
+    <string name="lesson_nothing_applies_3">この順で見直してください。ひとつ、メモはすべて正しいですか。古いメモは、解けない位置のいちばんよくある原因で、任せてくれればこのアプリが消します。ふたつ、入れた数字は本当に正しいですか。ヒントを押せば教えてくれます。</string>
+    <string name="lesson_nothing_applies_4">そのあとで、また簡単なものを探してください。見落としているのは、まず鎖ではありません。たいていは、20手前から見るのをやめたハウスにある隠れたシングルです。</string>
+
+    <string name="lesson_look_first_title">何から探すか</string>
+    <string name="lesson_look_first_summary">かならず安いものから。よく出てきて、盤面を開いてくれるからです。</string>
+    <string name="lesson_look_first_1">これでこのアプリが名前を出せるテクニックをすべて知りました。最後に覚えるのは、探す順番です。</string>
+    <string name="lesson_look_first_2">かならずシングルから。裸、それから隠れたです。ほかより圧倒的によく出てきますし、ひとつ埋めるたびにほかのテクニックも見つけやすくなります。</string>
+    <string name="lesson_look_first_3">次に安い消去、ポインティングとクレーミングです。ハウスごとに素早く確かめられて、そのまますぐシングルが開くことがよくあります。</string>
+    <string name="lesson_look_first_4">次に、空きの少ないハウスの二国同盟と三国同盟。それから魚、それからウィング。チェインはかならず最後です。いちばん手間がかかり、いちばん出てこないからです。</string>
+    <string name="lesson_look_first_5">シングルを確かめる前にジェリーフィッシュを狩るのは、エラーメッセージを読む前にプログラムを書き直すようなものです。アプリは必要ないちばん難しいもので問題を格付けしますが、マスターでも中身のほとんどはシングルです。</string>
+    <string name="lesson_together_title">マスターを、いっしょに</string>
+    <string name="lesson_together_summary">難しい問題の中身は、ほとんどが簡単な手と、いくつかの難しい手です。</string>
+    <string name="lesson_together_1">最後のレッスンです。コースがずっと歩いてきた盤面、レベルはマスター。その解き筋の全体を、テクニックの名前を挙げながら追います。</string>
+    <string name="lesson_together_2">始まりは裸のシングルです。たいていの問題がそうです。</string>
+    <string name="lesson_together_3">次は隣のブロックで隠れたシングル。</string>
+    <string name="lesson_together_4">ここで止まり、ポインティングペアが列を掃除してシングルが再開できるようになります。この一手では数字がひとつも入っていないのに、前に進んでいることに気づいてください。</string>
+    <string name="lesson_together_5">少しあとに二国同盟が、ハウスの中で同じ仕事をします。</string>
+    <string name="lesson_together_6">さらに進んで井桁理論。このころには盤面は半分埋まり、仕事をしているのはメモです。</string>
+    <string name="lesson_together_7">そして終わり近くに、レベルを決めた一手、ALS-XZです。消去がひとつ、あとはまたシングルです。</string>
+    <string name="lesson_together_8">ここでのマスターとはこういう意味です。81個の難しい手ではなく、70個の簡単な手と、学んだすべてを使う数手です。</string>
+    <string name="lesson_together_9">このアプリが名前を出せるテクニックに、すべて出会いました。1問遊んでみてください。どの問題にもヒントが3回ついていて、使うことに恥ずかしさはありません。好きなだけ使いたければ、上限は設定のスイッチひとつです。</string>
+    <string name="lesson_step_of">%1$d／%2$d</string>
+    <string name="lesson_back">戻る</string>
+    <string name="lesson_next">次へ</string>
+    <string name="lesson_done">終わり</string>
+    <string name="lesson_replay">もう一度</string>
+    <string name="lesson_show_me">見せて</string>
+    <string name="lesson_cell_at">%1$d行%2$d列。</string>
+    <string name="course_title">学ぶ</string>
+    <string name="course_lesson_done">修了</string>
+    <string name="course_lesson_next">次</string>
+    <string name="course_lesson_todo">未着手</string>
+    <plurals name="course_progress">
+        <item quantity="other">%2$d件中%1$d件</item>
+    </plurals>
+    <string name="settings_hint_detail">ヒントがどこまで言うか</string>
+    <string name="hint_detail_region">範囲だけ</string>
+    <string name="hint_detail_region_note">どのブロックか線かを示すだけで、それ以上は言いません。</string>
+    <string name="hint_detail_name">テクニック</string>
+    <string name="hint_detail_name_note">どんな手かを言うので、何を探せばよいか分かります。</string>
+    <string name="hint_detail_cells">根拠のマス</string>
+    <string name="hint_detail_cells_note">理屈の根拠になっているマスを、盤面で光らせます。</string>
+    <string name="hint_detail_full">理屈のすべて</string>
+    <string name="hint_detail_full_note">手も含めて全部です。コースを進めるときに向いています。</string>
+    <string name="path_title">解き筋</string>
+    <string name="path_placed">%1$d行%2$d列は%3$dです。</string>
+    <string name="outcome_path">解き筋を見る</string>
+    <string name="settings_your_data">あなたのデータ</string>
+    <string name="settings_data_note">このアプリがあなたについて知っていることは、すべてこの端末の中にあります。書き出しはそれを選んだファイルに保存するので、新しい端末で続きから始められます。どこにも送信しません。</string>
+    <string name="settings_export">進み具合を書き出す</string>
+    <string name="settings_import">ファイルから読み込む</string>
+    <string name="settings_reset_course">ゲームは残して、コースだけ最初に戻す</string>
+    <string name="settings_exported">保存しました。レッスン%1$d件、ゲーム%2$d件。</string>
+    <string name="settings_imported">追加しました。レッスン%1$d件、ゲーム%2$d件。</string>
+    <string name="settings_imported_ignored">追加しました。レッスン%1$d件、ゲーム%2$d件。新しい版で書かれていたため取り込まなかったもの%3$d件。</string>
+    <string name="settings_import_empty">このファイルは空です。</string>
+    <string name="settings_import_not_ours">これはSendokuの書き出しファイルではないようです。</string>
+    <string name="settings_import_future">このファイルは新しい版のSendokuで書かれています。</string>
+    <string name="settings_import_failed">このファイルは読めませんでした。この端末のデータは何も変わっていません。</string>
+    <string name="settings_course_reset">コースを最初に戻しました。ゲームはそのままです。</string>
+    <string name="practice_looking">場面を探しています…</string>
+    <string name="practice_find">「%1$s」を見つけてください。</string>
+    <string name="practice_keep_going">そのひとつです。続けてください。</string>
+    <string name="practice_wrong">そのマスではありません。もう一度ルールを読んでください。「%1$s」はそのマスを根拠にしていません。</string>
+    <string name="practice_right">それが「%1$s」です。消えるものに印をつけました。</string>
+    <string name="practice_revealed">これが「%1$s」と、そこから消えるものです。</string>
+    <string name="practice_show_me">見せて</string>
+    <string name="practice_another">別の問題</string>
+    <string name="practice_skip">とばす</string>
+    <string name="practice_title">練習</string>
+    <string name="practice_none">まだ練習できるものがありません。まずテクニックを教えるレッスンを終えてください。</string>
+    <string name="glossary_learn_this">これを学ぶ</string>
+    <string name="hint_learn_this">これを教えて</string>
+    <string name="outcome_learn">「%1$s」を学ぶ</string>
+    <string name="course_finished">すべて修了です。このアプリが名前を出せるものは、あなたも名前を出せます。あとは問題を解くだけです。</string>
+    <string name="outcome_lost_hints">ヒントの上限に達しました</string>
+    <string name="outcome_share">共有</string>
+    <string name="card_solved">クリア</string>
+    <string name="card_lost">負け</string>
+    <string name="settings_hints">ヒント</string>
+    <string name="settings_hint_limit">ヒント3回でゲームを終わりにする</string>
+    <string name="settings_hint_note">既定でオン。ヒントは3回まで無料で、4回目はゲームと引き換えです。そうすることでヒントが反射ではなく判断になります。コースを進めるあいだは切っておいてください。</string>
+    <string name="account_title">あなた</string>
+    <string name="account_no_account">ログインするアカウントはありません。以下はすべてこの端末の中だけにあります。</string>
+    <string name="account_solved">クリア</string>
+    <string name="account_streak">連続</string>
+    <string name="account_played">プレイ</string>
+    <string name="account_time">時間</string>
+    <string name="account_lessons">レッスン</string>
+    <string name="account_stats">記録</string>
+    <string name="account_stats_detail">レベルごとの成績、ベストタイム、出会ったテクニック</string>
+    <string name="account_settings_detail">見た目、盤面、上限、そしてあなたのデータ</string>
+    <string name="account_about_detail">このアプリの約束と、支えているライセンス</string>
+    <string name="tab_home">ホーム</string>
+    <string name="tab_learn">学ぶ</string>
+    <string name="tab_account">あなた</string>
+    <plurals name="hint_menu_left">
+        <item quantity="other">下の2つはヒントを1回使います。残りは%1$d回です。</item>
+    </plurals>
+    <plurals name="hint_check_wrong">
+        <item quantity="other">入れた数字のうち%1$dつが違います。どれかを見つけるのはあなたの仕事のままです。</item>
+    </plurals>
+    <plurals name="path_summary">
+        <item quantity="other">%1$d手。安い規則から順に、アプリが評価したとおりです。</item>
+    </plurals>
+    <plurals name="path_struck">
+        <item quantity="other">メモを%1$d個消します。</item>
+    </plurals>
+</resources>

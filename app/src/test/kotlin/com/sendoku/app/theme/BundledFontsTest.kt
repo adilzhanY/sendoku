@@ -83,6 +83,31 @@ class BundledFontsTest {
     }
 
     @Test
+    fun `japanese is left to the phone, deliberately and visibly`() {
+        // 日本語 is the name of Japanese in the language picker, and it is written in Japanese
+        // in every language file including the English one. So this is not hypothetical even
+        // before a word of the app is translated: something has to draw it, and it is not
+        // going to be a face cut down to a hundred and seventy Latin characters.
+        val inStrings = File("src/main/res").listFiles().orEmpty()
+            .filter { it.name.startsWith("values") }
+            .mapNotNull { File(it, "strings.xml").takeIf(File::isFile) }
+            .flatMap { file -> file.readText().toList() }
+            .filter { it.isJapanese() }
+            .toSet()
+        assertTrue("no Japanese was found in any language file", inStrings.isNotEmpty())
+        for ((family, files) in families) {
+            for (name in files) {
+                val font = open(name)
+                val drawn = inStrings.filter(font::canDisplay)
+                assertTrue(
+                    "$family draws ${drawn.joinToString("")} in $name, so the subset has grown a CJK range",
+                    drawn.isEmpty(),
+                )
+            }
+        }
+    }
+
+    @Test
     fun `every face can draw every character in every language`() {
         for ((family, files) in families) {
             for (name in files) {

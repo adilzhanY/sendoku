@@ -27,6 +27,7 @@ import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.sendoku.app.R
 import com.sendoku.app.game.GameState
 import com.sendoku.app.theme.Sendoku
@@ -171,7 +172,11 @@ private fun Stat(label: String, value: String, modifier: Modifier = Modifier, wa
         // Four of these share the width of the screen, so at a large font scale a German
         // label is wider than its quarter of it. Wrapping put "Leicht" over two lines and
         // slid "0 von 3" sideways into the column next to it, so they shrink to fit instead.
-        OneLine(label, Sendoku.type.statLabel, colors.muted)
+        // Down to five if that is what it takes. Four of these share the width of the screen,
+        // so a quarter of it is about seventy density pixels once the padding is off, and at
+        // twice the font scale a ten letter word in a monospace face needs every bit of that.
+        // "Dificultad" in Terminal was the case that found it, arriving as "Dificult".
+        OneLine(label, Sendoku.type.statLabel, colors.muted, min = 5.sp)
         OneLine(value, Sendoku.type.statValue, if (warn) colors.conflict else colors.given)
     }
 }

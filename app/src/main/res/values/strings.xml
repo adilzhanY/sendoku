@@ -163,6 +163,7 @@
     <string name="language_turkish">Türkçe</string>
     <string name="language_spanish">Español</string>
     <string name="language_italian">Italiano</string>
+    <string name="language_japanese">日本語</string>
     <string name="settings_look">Look</string>
     <string name="settings_light_or_dark">Light or dark</string>
     <string name="settings_terminal_is_dark">Terminal is dark whichever way the phone is set. That is deliberate.</string>

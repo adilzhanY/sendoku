@@ -182,6 +182,17 @@ class ThemeScreenshotTest {
     @Test
     fun lessonInGerman() = checkLesson(SendokuThemeId.DEEP_FIELD, dark = true, language = "de")
 
+    /**
+     * And Japanese, which breaks a layout in the other direction.
+     *
+     * German is the longest language and is where text runs out of room. Japanese writes
+     * without spaces, in glyphs that come from the phone's own font rather than from any of
+     * the four in res/font, and its line breaking follows rules instead of gaps. Nothing
+     * about that shows up in a contrast check or a string test, and all of it shows up here.
+     */
+    @Test
+    fun lessonInJapanese() = checkLesson(SendokuThemeId.DEEP_FIELD, dark = true, language = "ja")
+
     @Test
     fun lessonDeepFieldDark() = checkLesson(SendokuThemeId.DEEP_FIELD, dark = true)
 

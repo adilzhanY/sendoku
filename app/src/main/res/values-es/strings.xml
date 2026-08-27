@@ -152,6 +152,7 @@
     <string name="language_turkish">Türkçe</string>
     <string name="language_spanish">Español</string>
     <string name="language_italian">Italiano</string>
+    <string name="language_japanese">日本語</string>
     <string name="settings_look">Aspecto</string>
     <string name="settings_light_or_dark">Claro u oscuro</string>
     <string name="settings_terminal_is_dark">Terminal es oscuro esté como esté el teléfono. Es a propósito.</string>
@@ -334,7 +335,7 @@
     </plurals>
     <string name="daily_cell">%1$d, %2$s, %3$s</string>
     <string name="daily_cell_today">hoy, %1$d, %2$s, %3$s</string>
-    <string name="stat_difficulty">Dificultad</string>
+    <string name="stat_difficulty">Nivel</string>
     <string name="stat_mistakes">Errores</string>
     <string name="stat_hints">Pistas</string>
     <string name="stat_time">Tiempo</string>

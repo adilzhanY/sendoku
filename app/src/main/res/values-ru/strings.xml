@@ -157,6 +157,7 @@
     <string name="language_turkish">Türkçe</string>
     <string name="language_spanish">Español</string>
     <string name="language_italian">Italiano</string>
+    <string name="language_japanese">日本語</string>
     <string name="settings_look">Оформление</string>
     <string name="settings_light_or_dark">Светлая или тёмная</string>
     <string name="settings_terminal_is_dark">Terminal всегда тёмная, как бы ни был настроен телефон. Так задумано.</string>
