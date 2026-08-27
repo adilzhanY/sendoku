@@ -74,11 +74,13 @@ class FirstRunLanguageTest {
 
     @Test
     fun aPhoneInALanguageWeDoNotSpeakIsToldSo() {
-        // Portuguese. The honest answer is that there is no translation yet and English is
-        // the nearest thing, which is what the screen says rather than quietly using English
-        // as though it were what the phone asked for.
+        // Swedish, which this app does not speak and is not planning to. The honest answer
+        // is that there is no translation yet and English is the nearest thing, which is what
+        // the screen says rather than quietly using English as though the phone had asked for
+        // it. Pick the language here from the ones Sendoku will not have: this test failed the
+        // day Portuguese arrived, which is the test doing its job.
         var chosen: Language? = null
-        shownOn("pt") { chosen = it }
+        shownOn("sv") { chosen = it }
         compose.onNodeWithTag("first-run:untranslated").assertIsDisplayed()
         compose.onNodeWithTag("first-run:continue").performClick()
         compose.waitForIdle()
