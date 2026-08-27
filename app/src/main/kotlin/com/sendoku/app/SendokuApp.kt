@@ -271,6 +271,7 @@ private fun Screens(
             AccountScreen(
                 statistics = stats,
                 course = course,
+                history = played,
                 onStats = { navigator.go(Destination.Stats) },
                 onHistory = { navigator.go(Destination.History) },
                 onSettings = { navigator.go(Destination.Settings) },
