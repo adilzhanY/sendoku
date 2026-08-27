@@ -8,15 +8,15 @@
 -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Sendoku</string>
-    <string name="home_choose_level">SEVİYE SEÇİN</string>
+    <string name="home_choose_level">Seviye seçin</string>
     <string name="home_daily">Günlük</string>
     <string name="home_new_puzzle">Yeni bulmaca</string>
     <string name="home_resume">Devam et</string>
-    <string name="home_in_progress">DEVAM EDEN</string>
+    <string name="home_in_progress">Devam eden</string>
     <string name="home_placed">Yerleşen: %2$d içinden %1$d</string>
-    <string name="home_or_start">YA DA YENİ BAŞLA</string>
-    <string name="home_your_level">SENİN SEVİYEN</string>
-    <string name="home_all_levels">TÜM SEVİYELER</string>
+    <string name="home_or_start">Ya da yeni başla</string>
+    <string name="home_your_level">Senin seviyen</string>
+    <string name="home_all_levels">Tüm seviyeler</string>
 
     <string name="grade_gentle">Kolay</string>
     <string name="grade_steady">Orta</string>
@@ -35,7 +35,7 @@
     <string name="gate_beyond">çoğu uygulamanın gittiğinden daha ileri</string>
     <string name="gate_insane">zincire bağlanmış hücre grupları</string>
     <string name="gate_nightmare">bir hücre iki yönden birden, kâğıt üstünde</string>
-    <string name="grade_advanced">İLERİ</string>
+    <string name="grade_advanced">İleri</string>
     <string name="grade_advanced_talkback">ileri düzey bir seviye, kurstan bir teknik gerektirir</string>
 
     <string name="tool_undo">Geri al</string>
@@ -43,7 +43,7 @@
     <string name="tool_erase">Sil</string>
     <string name="tool_notes">Notlar</string>
     <string name="tool_hint">İpucu</string>
-    <string name="paused">DURAKLADI</string>
+    <string name="paused">Durakladı</string>
     <string name="paused_tap">Devam etmek için herhangi bir yere dokunun</string>
     <string name="mistakes_of">%2$d içinden %1$d</string>
 
@@ -65,7 +65,7 @@
     <string name="cell_actions_title">SATIR %1$d, SÜTUN %2$d</string>
     <string name="cell_actions_clue">Bu rakam bulmacayla birlikte geldi, değiştirilemez.</string>
     <string name="cell_actions_clear_notes">Notları sil</string>
-    <string name="why_not_title">NEDEN OLMAZ?</string>
+    <string name="why_not_title">Neden olmaz?</string>
     <string name="why_not_prompt">Bir rakama dokunun, onu neyin engellediğini söyleyelim.</string>
     <string name="why_not_taken">%2$s içinde zaten bir %1$d var, satır %3$d, sütun %4$d.</string>
     <string name="why_not_filled">Bu hücrede zaten bir %1$d var. Önce onu silin.</string>
@@ -77,23 +77,23 @@
     <string name="leave_confirm">Çık</string>
     <string name="leave_cancel">Kal</string>
 
-    <string name="outcome_solved">ÇÖZÜLDÜ</string>
-    <string name="outcome_lost">HATA HAKKI BİTTİ</string>
+    <string name="outcome_solved">Çözüldü</string>
+    <string name="outcome_lost">Hata hakkı bitti</string>
     <string name="outcome_rated">%1$s, %2$s olarak derecelendirildi</string>
-    <string name="outcome_hints">İPUÇLARI</string>
-    <string name="outcome_mistakes">HATALAR</string>
-    <string name="outcome_moves">HAMLELER</string>
+    <string name="outcome_hints">İpuçları</string>
+    <string name="outcome_mistakes">Hatalar</string>
+    <string name="outcome_moves">Hamleler</string>
     <string name="outcome_needed">%1$s gerekti</string>
     <string name="outcome_home">Ana sayfa</string>
     <string name="outcome_another">Bir %1$s daha</string>
 
     <string name="hint_remove_one">Kaldır</string>
     <string name="hint_remove_many">Hepsini kaldır</string>
-    <string name="hint_look_here_title">BURAYA BAKIN</string>
+    <string name="hint_look_here_title">Buraya bakın</string>
     <string name="hint_look_here">%1$s bulunacak bir şey var. Bu ipucu bundan fazlasını söylemez.</string>
     <string name="hint_look_around">Bulunacak bir adım var. Bu adım tek bir bölgede durmuyor, ızgaraya yayılmış.</string>
     <string name="hint_what_kind">Ne tür bir adım?</string>
-    <string name="hint_menu_title">YARDIM</string>
+    <string name="hint_menu_title">Yardım</string>
     <string name="hint_menu_difficulty">Sonraki adım %1$s seviyesinde bir teknik gerektiriyor.</string>
     <string name="hint_menu_broken">Yerleştirdiğiniz bir şey yanlış, o düzeltilene kadar başka hiçbir şey çıkmaz.</string>
     <string name="hint_menu_check">Bir yanlış var mı?</string>
@@ -109,15 +109,15 @@
     <string name="hint_do_it">Uygula</string>
     <string name="hint_evidence">Satırında zaten %1$s var. Sütununda %2$s var. Kutusunda %3$s var. Hepsi birlikte %4$d dışındaki her rakamı kaplıyor.</string>
     <string name="hint_rests_on_earlier">Bunun bir kısmı, önceki bir ipucunun elediği notlara dayanıyor. O notlar tahtaya yazılı, oradan takip edebilirsiniz.</string>
-    <string name="hint_what_is_this">BU NEDİR?</string>
-    <string name="hint_wrong_title">BİR ŞEY YANLIŞ</string>
+    <string name="hint_what_is_this">Bu nedir?</string>
+    <string name="hint_wrong_title">Bir şey yanlış</string>
     <string name="hint_wrong_one">Yerleştirdiğiniz rakamlardan biri doğru olamaz. İşaretlendi.</string>
     <string name="hint_wrong_many">Yerleştirdiğiniz rakamlardan %1$d tanesi doğru olamaz. İşaretlendiler.</string>
     <string name="hint_wrong_until_one">O düzeltilene kadar başka hiçbir şey çıkarılamaz.</string>
     <string name="hint_wrong_until_many">Onlar düzeltilene kadar başka hiçbir şey çıkarılamaz.</string>
-    <string name="hint_done_title">BİTTİ</string>
+    <string name="hint_done_title">Bitti</string>
     <string name="hint_done_body">Bulmaca tamamlandı.</string>
-    <string name="hint_stuck_title">ÖNERECEK BİR ŞEY YOK</string>
+    <string name="hint_stuck_title">Önerecek bir şey yok</string>
     <string name="hint_stuck_body">Bu tahta kurallara uygun, ama Sendoku\'nun bildiği tekniklerin hiçbiri buna uymuyor. Uygulamadan gelen bir bulmacada bu olmamalı.</string>
     <string name="hint_in_region">%1$s içinde</string>
     <string name="hint_in_regions">%1$s ve %2$s içinde</string>
@@ -129,7 +129,7 @@
     <string name="house_box">kutu %1$d</string>
 
     <string name="glossary_title">Teknikler</string>
-    <string name="back">GERİ</string>
+    <string name="back">Geri</string>
     <string name="settings_title">Ayarlar</string>
     <string name="settings_language">Dil</string>
     <string name="language_system">Telefondaki gibi</string>
@@ -172,7 +172,7 @@
     <string name="settings_sound_note">Oynarken duyulan yumuşak notalar. Kapatmak tek dokunuş, üstelik telefonun sessiz modu her ikisinden de önce gelir.</string>
     <string name="settings_mistake_limit">Üç hatadan sonra oyunu bitir</string>
     <string name="settings_mistake_note">Varsayılan olarak açık, üç hatada. Zor seviyelerde kapatın: tek bir dalgınlığa bir saat kaybetmek can sıkıcıdır.</string>
-    <string name="settings_about">SENDOKU HAKKINDA</string>
+    <string name="settings_about">Sendoku hakkında</string>
 
     <string name="theme_deep_field">Deep Field</string>
     <string name="theme_deep_field_summary">Gerçek siyah, tek bir camgöbeği vurgu, başka bir şey yok</string>
@@ -187,19 +187,19 @@
     <string name="mode_dark">Her zaman koyu</string>
 
     <string name="stats_title">İstatistikler</string>
-    <string name="stats_solved">ÇÖZÜLEN</string>
-    <string name="stats_streak">SERİ</string>
-    <string name="stats_hardest">EN ZORU</string>
+    <string name="stats_solved">Çözülen</string>
+    <string name="stats_streak">Seri</string>
+    <string name="stats_hardest">En zoru</string>
     <string name="stats_hardest_note">Bitirdiğiniz en zor bulmaca bir %1$s.</string>
     <string name="stats_totals">%1$s oynandı, alınan ipucu: %2$d.</string>
     <string name="stats_by_grade">Seviyeye göre</string>
-    <string name="stats_hints_title">NELERİ SORDUNUZ</string>
+    <string name="stats_hints_title">Neleri sordunuz</string>
     <string name="stats_hints_note">En çok %1$s tekniğini soruyorsunuz. Geri dönmeye değer ders o.</string>
     <string name="stats_needed">Bulmacalarınızın gerektirdikleri</string>
     <string name="stats_solved_count">Çözülen: %1$d</string>
     <string name="stats_solved_and_lost">Çözülen: %1$d, kaybedilen: %2$d</string>
     <string name="stats_average">ort. %1$s</string>
-    <string name="stats_reset">İSTATİSTİKLERİ SIFIRLA</string>
+    <string name="stats_reset">İstatistikleri sıfırla</string>
     <string name="stats_reset_title">Geçmişiniz atılsın mı?</string>
     <string name="stats_reset_body">Bitirilen her bulmaca, her seri ve her en iyi süre. Başka hiçbir yerde kopyası yok, bu yüzden geri alınamaz.</string>
     <string name="stats_reset_confirm">Sıfırla</string>
@@ -223,7 +223,7 @@
     <string name="about_rating">Zorluk, bir bulmacanın gerçekten ihtiyaç duyduğu en zor tekniğe göre belirlenir; bu da bulmacayı bir insanın çözeceği gibi çözerek bulunur. Buradaki bir Çok zor, bir önceki Çok zor ile aynı anlama gelsin diye.</string>
     <string name="about_licence">Sendoku, GNU General Public License sürüm 3 altında özgür yazılımdır.</string>
     <string name="about_privacy">Gizlilik politikası aynı şeyi mağazanın istediği biçimde söyler: adilzhany.github.io/sendoku/privacy</string>
-    <string name="about_licences">AÇIK KAYNAK LİSANSLARI</string>
+    <string name="about_licences">Açık kaynak lisansları</string>
     <string name="licences_title">Lisanslar</string>
 
     <string name="look_naked_single">İçine yalnızca tek bir rakamın girebileceği bir hücre var.</string>
@@ -315,8 +315,8 @@
 
     <string name="daily_title">Günlük</string>
     <string name="daily_no_streak">Henüz seri yok. Başlatmak için bugünün bulmacasını çözün.</string>
-    <string name="daily_previous_month">ÖNCEKİ</string>
-    <string name="daily_next_month">SONRAKİ</string>
+    <string name="daily_previous_month">Önceki</string>
+    <string name="daily_next_month">Sonraki</string>
     <string name="daily_cell_solved">çözüldü</string>
     <string name="daily_cell_attempted">oynandı ama bitirilmedi</string>
     <string name="daily_cell_unplayed">oynanmadı</string>
@@ -348,11 +348,11 @@
     <string name="course_lesson_done">tamamlandı</string>
     <string name="course_lesson_next">sırada</string>
     <string name="course_lesson_todo">başlanmadı</string>
-    <string name="course_you_are_here">BURADASIN</string>
+    <string name="course_you_are_here">Buradasın</string>
     <string name="course_continue">Devam et</string>
     <string name="course_stage_done">Biten %1$d / %2$d</string>
 
-    <string name="settings_hint_detail">BİR İPUCU NE KADAR SÖYLER</string>
+    <string name="settings_hint_detail">Bir ipucu ne kadar söyler</string>
     <string name="hint_detail_region">Yalnızca bölge</string>
     <string name="hint_detail_region_note">Hangi kutuya ya da çizgiye bakılacağı, fazlası değil.</string>
     <string name="hint_detail_name">Teknik</string>
@@ -364,7 +364,7 @@
 
     <string name="path_title">Nasıl çözüldü</string>
     <string name="path_placed">Satır %1$d, sütun %2$d bir %3$d.</string>
-    <string name="outcome_path">NASIL ÇÖZÜLDÜĞÜNÜ GÖSTER</string>
+    <string name="outcome_path">Nasıl çözüldüğünü göster</string>
 
     <string name="settings_your_data">Verileriniz</string>
     <string name="settings_data_note">Bu uygulamanın sizin hakkınızda bildiği her şey bu telefonda. Dışa aktarma, bunu seçtiğiniz bir dosyaya yazar; böylece yeni bir telefon bu telefonun bıraktığı yerden devam edebilir. Hiçbir şey hiçbir yere gönderilmez.</string>
@@ -392,11 +392,11 @@
     <string name="practice_title">Alıştırma</string>
     <string name="practice_none">Henüz alıştırma yapılacak bir şey yok. Önce bir teknik öğreten bir dersi bitirin.</string>
 
-    <string name="glossary_learn_this">BUNU ÖĞREN</string>
+    <string name="glossary_learn_this">Bunu öğren</string>
     <string name="hint_learn_this">Bunu bana öğret</string>
     <string name="outcome_learn">%1$s öğren</string>
     <string name="course_finished">Hepsi tamam. Uygulamanın adlandırabildiği her şeyi siz de adlandırabiliyorsunuz. Gerisi bulmacalar.</string>
-    <string name="outcome_lost_hints">İPUCU HAKKI BİTTİ</string>
+    <string name="outcome_lost_hints">İpucu hakkı bitti</string>
     <string name="outcome_share">Paylaş</string>
     <string name="card_solved">Çözüldü</string>
     <string name="card_lost">Yenildiği bulmaca</string>

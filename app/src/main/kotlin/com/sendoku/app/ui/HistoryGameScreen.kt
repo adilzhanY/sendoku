@@ -151,6 +151,6 @@ public fun HistoryGameScreen(
 private fun Stat(label: String, value: String) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         OneLine(value, Sendoku.type.title, Sendoku.colors.given)
-        OneLine(label.shout(), Sendoku.type.overline, Sendoku.colors.muted)
+        OneLine(label, Sendoku.type.overline, Sendoku.colors.muted)
     }
 }

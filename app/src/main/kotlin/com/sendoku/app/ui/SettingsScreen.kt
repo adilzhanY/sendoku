@@ -320,7 +320,7 @@ private fun Section(icon: ImageVector, text: String) {
             tint = Sendoku.colors.accent,
             modifier = Modifier.size(SECTION_ICON),
         )
-        Text(text.shout(), style = Sendoku.type.overline, color = Sendoku.colors.accent)
+        Text(text, style = Sendoku.type.overline, color = Sendoku.colors.accent)
     }
 }
 
@@ -328,7 +328,7 @@ private fun Section(icon: ImageVector, text: String) {
 @Composable
 private fun Label(text: String) {
     Text(
-        text = text.shout(),
+        text = text,
         style = Sendoku.type.overline,
         color = Sendoku.colors.muted,
         modifier = Modifier.padding(top = Sendoku.dimens.spaceM, bottom = Sendoku.dimens.spaceXs),

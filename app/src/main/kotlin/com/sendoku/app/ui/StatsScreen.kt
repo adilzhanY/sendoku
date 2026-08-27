@@ -218,7 +218,7 @@ private fun Headline(value: String, label: String) {
 @Composable
 private fun Section(title: String) {
     Text(
-        text = title.shout(),
+        text = title,
         style = Sendoku.type.overline,
         color = Sendoku.colors.muted,
         modifier = Modifier.padding(top = Sendoku.dimens.spaceL, bottom = Sendoku.dimens.spaceXs),

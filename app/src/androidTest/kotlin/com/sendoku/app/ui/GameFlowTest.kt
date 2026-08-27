@@ -119,7 +119,7 @@ class GameFlowTest {
             }
         }
         play(solved)
-        compose.onNodeWithText("SOLVED").assertIsDisplayed()
+        compose.onNodeWithText("Solved").assertIsDisplayed()
         compose.onNodeWithText("Home").assertIsDisplayed()
     }
 

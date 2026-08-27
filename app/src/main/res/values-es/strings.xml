@@ -10,15 +10,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Sendoku</string>
 
-    <string name="home_choose_level">ELIGE UN NIVEL</string>
+    <string name="home_choose_level">Elige un nivel</string>
     <string name="home_daily">Diario</string>
     <string name="home_new_puzzle">Nuevo sudoku</string>
     <string name="home_resume">Continuar</string>
-    <string name="home_in_progress">EMPEZADO</string>
+    <string name="home_in_progress">Empezado</string>
     <string name="home_placed">Puestas: %1$d de %2$d</string>
-    <string name="home_or_start">O EMPIEZA ALGO NUEVO</string>
-    <string name="home_your_level">TU NIVEL</string>
-    <string name="home_all_levels">TODOS LOS NIVELES</string>
+    <string name="home_or_start">O empieza algo nuevo</string>
+    <string name="home_your_level">Tu nivel</string>
+    <string name="home_all_levels">Todos los niveles</string>
 
     <string name="grade_gentle">Fácil</string>
     <string name="grade_steady">Medio</string>
@@ -37,7 +37,7 @@
     <string name="gate_beyond">más lejos de lo que llegan casi todas las apps</string>
     <string name="gate_insane">grupos de casillas encadenados</string>
     <string name="gate_nightmare">una casilla por los dos caminos, sobre papel</string>
-    <string name="grade_advanced">AVANZADO</string>
+    <string name="grade_advanced">Avanzado</string>
     <string name="grade_advanced_talkback">un nivel avanzado, que necesita una técnica del curso</string>
 
     <string name="tool_undo">Deshacer</string>
@@ -45,7 +45,7 @@
     <string name="tool_erase">Borrar</string>
     <string name="tool_notes">Notas</string>
     <string name="tool_hint">Pista</string>
-    <string name="paused">EN PAUSA</string>
+    <string name="paused">En pausa</string>
     <string name="paused_tap">Toca donde quieras para seguir</string>
     <string name="mistakes_of">%1$d de %2$d</string>
 
@@ -74,7 +74,7 @@
         <item quantity="other">Anotar los %1$d candidatos</item>
     </plurals>
     <string name="cell_actions_clear_notes">Borrar las notas</string>
-    <string name="why_not_title">¿POR QUÉ NO?</string>
+    <string name="why_not_title">¿Por qué no?</string>
     <string name="why_not_prompt">Toca una cifra y te digo qué se lo impide.</string>
     <string name="why_not_taken">Ya hay un %1$d en %2$s, en la fila %3$d, columna %4$d.</string>
     <string name="why_not_filled">Esta casilla ya tiene un %1$d. Bórralo primero.</string>
@@ -86,23 +86,23 @@
     <string name="leave_confirm">Salir</string>
     <string name="leave_cancel">Quedarme</string>
 
-    <string name="outcome_solved">RESUELTO</string>
-    <string name="outcome_lost">SIN ERRORES DISPONIBLES</string>
+    <string name="outcome_solved">Resuelto</string>
+    <string name="outcome_lost">Sin errores disponibles</string>
     <string name="outcome_rated">%1$s, valorado en %2$s</string>
-    <string name="outcome_hints">PISTAS</string>
-    <string name="outcome_mistakes">ERRORES</string>
-    <string name="outcome_moves">JUGADAS</string>
+    <string name="outcome_hints">Pistas</string>
+    <string name="outcome_mistakes">Errores</string>
+    <string name="outcome_moves">Jugadas</string>
     <string name="outcome_needed">Necesitaba un %1$s</string>
     <string name="outcome_home">Inicio</string>
     <string name="outcome_another">Otro %1$s</string>
 
     <string name="hint_remove_one">Quitarlo</string>
     <string name="hint_remove_many">Quitarlos</string>
-    <string name="hint_look_here_title">MIRA AQUÍ</string>
+    <string name="hint_look_here_title">Mira aquí</string>
     <string name="hint_look_here">Hay algo que encontrar %1$s. Esto es todo lo que dice esta pista.</string>
     <string name="hint_look_around">Hay un paso que encontrar. Este está repartido por el tablero en vez de estar en una sola región.</string>
     <string name="hint_what_kind">¿Qué clase de paso?</string>
-    <string name="hint_menu_title">AYUDA</string>
+    <string name="hint_menu_title">Ayuda</string>
     <string name="hint_menu_difficulty">El siguiente paso necesita una técnica de nivel %1$s.</string>
     <string name="hint_menu_broken">Algo que has puesto está mal, así que nada más se deduce hasta arreglarlo.</string>
     <string name="hint_menu_check">¿Hay algo mal?</string>
@@ -118,15 +118,15 @@
     <string name="hint_do_it">Hazlo</string>
     <string name="hint_evidence">Su fila ya tiene %1$s. Su columna tiene %2$s. Su bloque tiene %3$s. Entre los tres están todas las cifras menos el %4$d.</string>
     <string name="hint_rests_on_earlier">Parte de esto se apoya en notas que descartó una pista anterior. Están escritas en el tablero, así que puedes seguirlo desde ahí.</string>
-    <string name="hint_what_is_this">¿QUÉ ES ESTO?</string>
-    <string name="hint_wrong_title">ALGO ESTÁ MAL</string>
+    <string name="hint_what_is_this">¿Qué es esto?</string>
+    <string name="hint_wrong_title">Algo está mal</string>
     <string name="hint_wrong_one">Una de las cifras que has puesto no puede ser correcta. Está resaltada.</string>
     <string name="hint_wrong_many">%1$d de las cifras que has puesto no pueden ser correctas. Están resaltadas.</string>
     <string name="hint_wrong_until_one">No se puede deducir nada más hasta arreglarla.</string>
     <string name="hint_wrong_until_many">No se puede deducir nada más hasta arreglarlas.</string>
-    <string name="hint_done_title">HECHO</string>
+    <string name="hint_done_title">Hecho</string>
     <string name="hint_done_body">El sudoku está terminado.</string>
-    <string name="hint_stuck_title">NADA QUE SUGERIR</string>
+    <string name="hint_stuck_title">Nada que sugerir</string>
     <string name="hint_stuck_body">Este tablero es legal, pero ninguna de las técnicas que Sendoku conoce se le aplica. Eso no debería pasar en un sudoku de la app.</string>
     <string name="hint_in_region">en %1$s</string>
     <string name="hint_in_regions">en %1$s y %2$s</string>
@@ -143,7 +143,7 @@
     <string name="house_box">el bloque %1$d</string>
 
     <string name="glossary_title">Técnicas</string>
-    <string name="back">ATRÁS</string>
+    <string name="back">Atrás</string>
 
     <string name="settings_title">Ajustes</string>
     <string name="settings_language">Idioma</string>
@@ -187,7 +187,7 @@
     <string name="settings_sound_note">Notas suaves mientras juegas. Apagarlas es un toque, y el modo silencio del teléfono manda sobre las dos cosas.</string>
     <string name="settings_mistake_limit">Terminar la partida a los tres errores</string>
     <string name="settings_mistake_note">Encendido por defecto, en tres. Apágalo para los niveles altos, donde perder una hora por un descuido es miserable.</string>
-    <string name="settings_about">SOBRE SENDOKU</string>
+    <string name="settings_about">Sobre Sendoku</string>
 
     <string name="theme_deep_field">Campo profundo</string>
     <string name="theme_deep_field_summary">Negro puro, un acento cian y nada más</string>
@@ -202,9 +202,9 @@
     <string name="mode_dark">Siempre oscuro</string>
 
     <string name="stats_title">Estadísticas</string>
-    <string name="stats_solved">RESUELTOS</string>
-    <string name="stats_streak">RACHA</string>
-    <string name="stats_hardest">MÁS DIFÍCIL</string>
+    <string name="stats_solved">Resueltos</string>
+    <string name="stats_streak">Racha</string>
+    <string name="stats_hardest">Más difícil</string>
     <string name="stats_hardest_note">Lo más difícil que has terminado es un %1$s.</string>
     <plurals name="stats_longest_run">
         <item quantity="one">Tu racha más larga fue de un día.</item>
@@ -212,13 +212,13 @@
     </plurals>
     <string name="stats_totals">%1$s jugados, pistas usadas: %2$d.</string>
     <string name="stats_by_grade">Por nivel</string>
-    <string name="stats_hints_title">SOBRE LO QUE HAS PREGUNTADO</string>
+    <string name="stats_hints_title">Sobre lo que has preguntado</string>
     <string name="stats_hints_note">Sobre lo que más preguntas es %1$s. Esa es la lección a la que merece la pena volver.</string>
     <string name="stats_needed">Lo que necesitaban tus sudokus</string>
     <string name="stats_solved_count">Resueltos: %1$d</string>
     <string name="stats_solved_and_lost">Resueltos: %1$d, perdidos: %2$d</string>
     <string name="stats_average">media %1$s</string>
-    <string name="stats_reset">BORRAR LAS ESTADÍSTICAS</string>
+    <string name="stats_reset">Borrar las estadísticas</string>
     <string name="stats_reset_title">¿Tirar tu historial?</string>
     <string name="stats_reset_body">Cada sudoku terminado, cada racha y cada mejor tiempo. No hay copia en ningún otro sitio, así que esto no se puede deshacer.</string>
     <string name="stats_reset_confirm">Borrar</string>
@@ -242,7 +242,7 @@
     <string name="about_rating">La dificultad se mide por la técnica más difícil que un sudoku necesita de verdad, calculada resolviéndolo como lo haría una persona. Por eso un Muy difícil de aquí significa lo mismo que el anterior Muy difícil.</string>
     <string name="about_licence">Sendoku es software libre bajo la Licencia Pública General de GNU, versión 3.</string>
     <string name="about_privacy">La política de privacidad dice lo mismo en la forma que pide la tienda, en adilzhany.github.io/sendoku/privacy</string>
-    <string name="about_licences">LICENCIAS DE CÓDIGO ABIERTO</string>
+    <string name="about_licences">Licencias de código abierto</string>
     <string name="licences_title">Licencias</string>
 
     <string name="look_naked_single">Hay una casilla en la que solo cabe ya una cifra.</string>
@@ -333,8 +333,8 @@
     <string name="technique_forcing_chain">Cadena forzada</string>
     <string name="daily_title">Diario</string>
     <string name="daily_no_streak">Todavía no hay racha. Resuelve el sudoku de hoy para empezar una.</string>
-    <string name="daily_previous_month">ANTES</string>
-    <string name="daily_next_month">DESPUÉS</string>
+    <string name="daily_previous_month">Antes</string>
+    <string name="daily_next_month">Después</string>
     <string name="daily_cell_solved">resuelto</string>
     <string name="daily_cell_attempted">jugado pero sin terminar</string>
     <string name="daily_cell_unplayed">sin jugar</string>
@@ -723,14 +723,14 @@
     <string name="course_lesson_done">terminada</string>
     <string name="course_lesson_next">siguiente</string>
     <string name="course_lesson_todo">sin empezar</string>
-    <string name="course_you_are_here">AQUÍ ESTÁS</string>
+    <string name="course_you_are_here">Aquí estás</string>
     <string name="course_continue">Continuar</string>
     <string name="course_stage_done">Terminadas %1$d de %2$d</string>
     <plurals name="course_progress">
         <item quantity="one">%1$d de %2$d lección</item>
         <item quantity="other">%1$d de %2$d lecciones</item>
     </plurals>
-    <string name="settings_hint_detail">CUÁNTO DICE UNA PISTA</string>
+    <string name="settings_hint_detail">Cuánto dice una pista</string>
     <string name="hint_detail_region">Solo la región</string>
     <string name="hint_detail_region_note">Qué bloque o línea mirar, y nada más.</string>
     <string name="hint_detail_name">La técnica</string>
@@ -741,7 +741,7 @@
     <string name="hint_detail_full_note">Todo, incluida la jugada. Para ir trabajando el curso.</string>
     <string name="path_title">Cómo se resolvió</string>
     <string name="path_placed">La fila %1$d, columna %2$d es un %3$d.</string>
-    <string name="outcome_path">VER CÓMO SE RESOLVIÓ</string>
+    <string name="outcome_path">Ver cómo se resolvió</string>
     <string name="settings_your_data">Tus datos</string>
     <string name="settings_data_note">Todo lo que esta app sabe de ti está en este teléfono. Exportar lo escribe en un archivo que eliges tú, para que un teléfono nuevo siga donde lo dejó este. No se envía nada a ninguna parte.</string>
     <string name="settings_export">Exportar mi progreso</string>
@@ -766,11 +766,11 @@
     <string name="practice_skip">Saltar</string>
     <string name="practice_title">Práctica</string>
     <string name="practice_none">Todavía no hay nada que practicar. Termina primero una lección que enseñe una técnica.</string>
-    <string name="glossary_learn_this">APRENDER ESTO</string>
+    <string name="glossary_learn_this">Aprender esto</string>
     <string name="hint_learn_this">Enséñame esto</string>
     <string name="outcome_learn">Aprender %1$s</string>
     <string name="course_finished">Todo, hecho. Todo lo que la app sabe nombrar, lo sabes nombrar tú. Los sudokus son lo que queda.</string>
-    <string name="outcome_lost_hints">SIN PISTAS DISPONIBLES</string>
+    <string name="outcome_lost_hints">Sin pistas disponibles</string>
     <string name="outcome_share">Compartir</string>
     <string name="card_solved">Resuelto</string>
     <string name="card_lost">Ganó el sudoku</string>

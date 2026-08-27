@@ -40,7 +40,6 @@ import androidx.compose.ui.unit.dp
 import com.sendoku.app.R
 import com.sendoku.app.theme.Sendoku
 import com.sendoku.app.ui.BackButton
-import com.sendoku.app.ui.shout
 
 /**
  * The course, as a map rather than a list.
@@ -308,7 +307,7 @@ private fun NextCard(lesson: Lesson, onOpen: (LessonId) -> Unit) {
             },
         verticalArrangement = Arrangement.spacedBy(dimens.spaceXs),
     ) {
-        Text(here.shout(), style = Sendoku.type.overline, color = colors.accent)
+        Text(here, style = Sendoku.type.overline, color = colors.accent)
         Text(title, style = Sendoku.type.label, color = colors.given)
         Text(stringResource(lesson.summary), style = Sendoku.type.body, color = colors.muted)
         Box(

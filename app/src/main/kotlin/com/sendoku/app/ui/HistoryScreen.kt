@@ -123,7 +123,7 @@ private fun Entry(game: FinishedGame, onClick: () -> Unit) {
                 // game, so they sit in one list, and the row says which it was.
                 if (game.dailyEpochDay != null) {
                     Text(
-                        text = stringResource(R.string.home_daily).shout(),
+                        text = stringResource(R.string.home_daily),
                         style = Sendoku.type.overline,
                         color = colors.accent,
                     )

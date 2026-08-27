@@ -220,7 +220,7 @@ private fun Dots(current: Int, count: Int) {
 @Composable
 private fun titleOf(hint: Hint): String = when {
     hint is Hint.Step && hint.level == HintLevel.REGION -> stringResource(R.string.hint_look_here_title)
-    hint is Hint.Step -> stringResource(TechniqueCopy.nameOf(hint.deduction.technique)).shout()
+    hint is Hint.Step -> stringResource(TechniqueCopy.nameOf(hint.deduction.technique))
     hint is Hint.Mistake -> stringResource(R.string.hint_wrong_title)
     hint is Hint.Solved -> stringResource(R.string.hint_done_title)
     else -> stringResource(R.string.hint_stuck_title)

@@ -152,7 +152,7 @@ private fun Figure(label: String, value: String, modifier: Modifier = Modifier) 
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         OneLine(value, Sendoku.type.display, Sendoku.colors.given, min = 5.sp)
-        OneLine(label.shout(), Sendoku.type.overline, Sendoku.colors.muted, min = 5.sp)
+        OneLine(label, Sendoku.type.overline, Sendoku.colors.muted, min = 5.sp)
     }
 }
 

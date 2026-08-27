@@ -9,15 +9,15 @@
 -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Sendoku</string>
-    <string name="home_choose_level">STUFE WÄHLEN</string>
+    <string name="home_choose_level">Stufe wählen</string>
     <string name="home_daily">Täglich</string>
     <string name="home_new_puzzle">Neues Rätsel</string>
     <string name="home_resume">Weiter</string>
-    <string name="home_in_progress">ANGEFANGEN</string>
+    <string name="home_in_progress">Angefangen</string>
     <string name="home_placed">Gesetzt: %1$d von %2$d</string>
-    <string name="home_or_start">ODER NEU ANFANGEN</string>
-    <string name="home_your_level">DEINE STUFE</string>
-    <string name="home_all_levels">ALLE STUFEN</string>
+    <string name="home_or_start">Oder neu anfangen</string>
+    <string name="home_your_level">Deine Stufe</string>
+    <string name="home_all_levels">Alle Stufen</string>
 
     <string name="grade_gentle">Leicht</string>
     <string name="grade_steady">Mittel</string>
@@ -36,7 +36,7 @@
     <string name="gate_beyond">weiter, als die meisten Apps gehen</string>
     <string name="gate_insane">Zellgruppen, zu einer Kette verbunden</string>
     <string name="gate_nightmare">eine Zelle in beide Richtungen, auf Papier</string>
-    <string name="grade_advanced">FORTGESCHRITTEN</string>
+    <string name="grade_advanced">Fortgeschritten</string>
     <string name="grade_advanced_talkback">eine fortgeschrittene Stufe, für die eine Technik aus dem Kurs nötig ist</string>
 
     <string name="tool_undo">Zurück</string>
@@ -44,7 +44,7 @@
     <string name="tool_erase">Löschen</string>
     <string name="tool_notes">Notizen</string>
     <string name="tool_hint">Tipp</string>
-    <string name="paused">PAUSE</string>
+    <string name="paused">Pause</string>
     <string name="paused_tap">Tippen Sie irgendwohin, um weiterzuspielen</string>
     <string name="mistakes_of">%1$d von %2$d</string>
 
@@ -66,7 +66,7 @@
     <string name="cell_actions_title">ZEILE %1$d, SPALTE %2$d</string>
     <string name="cell_actions_clue">Diese Ziffer kam mit dem Rätsel und lässt sich nicht ändern.</string>
     <string name="cell_actions_clear_notes">Notizen wegradieren</string>
-    <string name="why_not_title">WARUM NICHT?</string>
+    <string name="why_not_title">Warum nicht?</string>
     <string name="why_not_prompt">Tippen Sie eine Ziffer an, und Sie erfahren, was ihr im Weg steht.</string>
     <string name="why_not_taken">In %2$s steht bereits eine %1$d, in Zeile %3$d, Spalte %4$d.</string>
     <string name="why_not_filled">In dieser Zelle steht schon eine %1$d. Radieren Sie sie zuerst weg.</string>
@@ -78,23 +78,23 @@
     <string name="leave_confirm">Verlassen</string>
     <string name="leave_cancel">Bleiben</string>
 
-    <string name="outcome_solved">GELÖST</string>
-    <string name="outcome_lost">KEINE FEHLER MEHR ÜBRIG</string>
+    <string name="outcome_solved">Gelöst</string>
+    <string name="outcome_lost">Keine Fehler mehr übrig</string>
     <string name="outcome_rated">%1$s, bewertet mit %2$s</string>
-    <string name="outcome_hints">TIPPS</string>
-    <string name="outcome_mistakes">FEHLER</string>
-    <string name="outcome_moves">ZÜGE</string>
+    <string name="outcome_hints">Tipps</string>
+    <string name="outcome_mistakes">Fehler</string>
+    <string name="outcome_moves">Züge</string>
     <string name="outcome_needed">Brauchte %1$s</string>
     <string name="outcome_home">Start</string>
     <string name="outcome_another">Noch ein %1$s</string>
 
     <string name="hint_remove_one">Wegnehmen</string>
     <string name="hint_remove_many">Alle wegnehmen</string>
-    <string name="hint_look_here_title">HIER SCHAUEN</string>
+    <string name="hint_look_here_title">Hier schauen</string>
     <string name="hint_look_here">%1$s gibt es etwas zu finden. Mehr sagt dieser Tipp nicht.</string>
     <string name="hint_look_around">Es gibt einen Schritt zu finden. Dieser liegt quer über dem Gitter und nicht in einem einzelnen Bereich.</string>
     <string name="hint_what_kind">Was für ein Schritt?</string>
-    <string name="hint_menu_title">HILFE</string>
+    <string name="hint_menu_title">Hilfe</string>
     <string name="hint_menu_difficulty">Der nächste Schritt braucht eine Technik der Stufe %1$s.</string>
     <string name="hint_menu_broken">Etwas, das Sie gesetzt haben, ist falsch, und bis das behoben ist, folgt nichts weiter.</string>
     <string name="hint_menu_check">Stimmt etwas nicht?</string>
@@ -110,15 +110,15 @@
     <string name="hint_do_it">Mach das</string>
     <string name="hint_evidence">In der Zeile stehen schon %1$s. In der Spalte stehen %2$s. Im Block stehen %3$s. Zusammen ist das jede Ziffer außer der %4$d.</string>
     <string name="hint_rests_on_earlier">Ein Teil davon beruht auf Notizen, die ein früherer Tipp ausgeschlossen hat. Sie stehen auf dem Brett, Sie können also von dort weiterdenken.</string>
-    <string name="hint_what_is_this">WAS IST DAS?</string>
-    <string name="hint_wrong_title">ETWAS STIMMT NICHT</string>
+    <string name="hint_what_is_this">Was ist das?</string>
+    <string name="hint_wrong_title">Etwas stimmt nicht</string>
     <string name="hint_wrong_one">Eine der Ziffern, die Sie gesetzt haben, kann nicht stimmen. Sie ist hervorgehoben.</string>
     <string name="hint_wrong_many">%1$d der Ziffern, die Sie gesetzt haben, können nicht stimmen. Sie sind hervorgehoben.</string>
     <string name="hint_wrong_until_one">Bis das behoben ist, lässt sich nichts weiter herleiten.</string>
     <string name="hint_wrong_until_many">Bis das behoben ist, lässt sich nichts weiter herleiten.</string>
-    <string name="hint_done_title">FERTIG</string>
+    <string name="hint_done_title">Fertig</string>
     <string name="hint_done_body">Das Rätsel ist gelöst.</string>
-    <string name="hint_stuck_title">NICHTS VORZUSCHLAGEN</string>
+    <string name="hint_stuck_title">Nichts vorzuschlagen</string>
     <string name="hint_stuck_body">Dieses Brett ist regelkonform, aber keine Technik, die Sendoku kennt, passt darauf. Bei einem Rätsel aus der App sollte das nicht vorkommen.</string>
     <string name="hint_in_region">in %1$s</string>
     <string name="hint_in_regions">in %1$s und %2$s</string>
@@ -130,7 +130,7 @@
     <string name="house_box">Block %1$d</string>
 
     <string name="glossary_title">Techniken</string>
-    <string name="back">ZURÜCK</string>
+    <string name="back">Zurück</string>
     <string name="settings_title">Einstellungen</string>
     <string name="settings_language">Sprache</string>
     <string name="language_system">Wie das Telefon</string>
@@ -173,7 +173,7 @@
     <string name="settings_sound_note">Leise Töne beim Spielen. Aus ist einen Tipp entfernt, und der Lautlosmodus des Telefons zählt ohnehin mehr.</string>
     <string name="settings_mistake_limit">Spiel nach drei Fehlern beenden</string>
     <string name="settings_mistake_note">Standardmäßig an, bei drei. Für die schweren Stufen lieber aus, denn eine Stunde an einen Ausrutscher zu verlieren ist bitter.</string>
-    <string name="settings_about">ÜBER SENDOKU</string>
+    <string name="settings_about">Über Sendoku</string>
 
     <string name="theme_deep_field">Deep Field</string>
     <string name="theme_deep_field_summary">Echtes Schwarz, ein Cyan als Akzent, sonst nichts</string>
@@ -188,19 +188,19 @@
     <string name="mode_dark">Immer dunkel</string>
 
     <string name="stats_title">Statistik</string>
-    <string name="stats_solved">GELÖST</string>
-    <string name="stats_streak">SERIE</string>
-    <string name="stats_hardest">SCHWERSTES</string>
+    <string name="stats_solved">Gelöst</string>
+    <string name="stats_streak">Serie</string>
+    <string name="stats_hardest">Schwerstes</string>
     <string name="stats_hardest_note">Das Schwerste, das Sie geschafft haben, ist ein %1$s.</string>
     <string name="stats_totals">%1$s gespielt, Tipps genommen: %2$d.</string>
     <string name="stats_by_grade">Nach Stufe</string>
-    <string name="stats_hints_title">WONACH SIE GEFRAGT HABEN</string>
+    <string name="stats_hints_title">Wonach Sie gefragt haben</string>
     <string name="stats_hints_note">Am häufigsten fragen Sie nach %1$s. Das ist die Lektion, zu der es sich zurückzukehren lohnt.</string>
     <string name="stats_needed">Was Ihre Rätsel gebraucht haben</string>
     <string name="stats_solved_count">Gelöst: %1$d</string>
     <string name="stats_solved_and_lost">Gelöst: %1$d, verloren: %2$d</string>
     <string name="stats_average">Ø %1$s</string>
-    <string name="stats_reset">STATISTIK ZURÜCKSETZEN</string>
+    <string name="stats_reset">Statistik zurücksetzen</string>
     <string name="stats_reset_title">Verlauf wegwerfen?</string>
     <string name="stats_reset_body">Jedes gelöste Rätsel, jede Serie und jede Bestzeit. Es gibt nirgends eine Kopie, das lässt sich also nicht rückgängig machen.</string>
     <string name="stats_reset_confirm">Zurücksetzen</string>
@@ -224,7 +224,7 @@
     <string name="about_rating">Die Schwierigkeit richtet sich nach der schwersten Technik, die ein Rätsel wirklich braucht, ermittelt, indem es so gelöst wird, wie ein Mensch es täte. Deshalb bedeutet ein Sehr schwer hier dasselbe wie das letzte Sehr schwer.</string>
     <string name="about_licence">Sendoku ist freie Software unter der GNU General Public License Version 3.</string>
     <string name="about_privacy">Die Datenschutzerklärung sagt dasselbe in der Form, die der Store verlangt, unter adilzhany.github.io/sendoku/privacy</string>
-    <string name="about_licences">OPEN-SOURCE-LIZENZEN</string>
+    <string name="about_licences">Open-Source-Lizenzen</string>
     <string name="licences_title">Lizenzen</string>
 
     <string name="look_naked_single">Es gibt eine Zelle, in die nur noch eine einzige Ziffer passt.</string>
@@ -316,8 +316,8 @@
 
     <string name="daily_title">Täglich</string>
     <string name="daily_no_streak">Noch keine Serie. Lösen Sie das heutige Rätsel, um eine zu beginnen.</string>
-    <string name="daily_previous_month">FRÜHER</string>
-    <string name="daily_next_month">SPÄTER</string>
+    <string name="daily_previous_month">Früher</string>
+    <string name="daily_next_month">Später</string>
     <string name="daily_cell_solved">gelöst</string>
     <string name="daily_cell_attempted">gespielt, aber nicht beendet</string>
     <string name="daily_cell_unplayed">nicht gespielt</string>
@@ -349,11 +349,11 @@
     <string name="course_lesson_done">abgeschlossen</string>
     <string name="course_lesson_next">als Nächstes</string>
     <string name="course_lesson_todo">nicht begonnen</string>
-    <string name="course_you_are_here">HIER STEHST DU</string>
+    <string name="course_you_are_here">Hier stehst du</string>
     <string name="course_continue">Weiter</string>
     <string name="course_stage_done">Fertig %1$d von %2$d</string>
 
-    <string name="settings_hint_detail">WIE VIEL EIN TIPP SAGT</string>
+    <string name="settings_hint_detail">Wie viel ein Tipp sagt</string>
     <string name="hint_detail_region">Nur den Bereich</string>
     <string name="hint_detail_region_note">Welcher Block oder welche Linie, und sonst nichts.</string>
     <string name="hint_detail_name">Die Technik</string>
@@ -365,7 +365,7 @@
 
     <string name="path_title">Wie es gelöst wurde</string>
     <string name="path_placed">Zeile %1$d, Spalte %2$d ist eine %3$d.</string>
-    <string name="outcome_path">ZEIGEN, WIE ES GELÖST WURDE</string>
+    <string name="outcome_path">Zeigen, wie es gelöst wurde</string>
 
     <string name="settings_your_data">Ihre Daten</string>
     <string name="settings_data_note">Alles, was diese App über Sie weiß, liegt auf diesem Telefon. Der Export schreibt es in eine Datei Ihrer Wahl, damit ein neues Telefon dort weitermachen kann, wo dieses aufgehört hat. Nichts wird irgendwohin gesendet.</string>
@@ -393,11 +393,11 @@
     <string name="practice_title">Üben</string>
     <string name="practice_none">Noch nichts zu üben. Schließen Sie zuerst eine Lektion ab, die eine Technik beibringt.</string>
 
-    <string name="glossary_learn_this">DAS LERNEN</string>
+    <string name="glossary_learn_this">Das lernen</string>
     <string name="hint_learn_this">Bring mir das bei</string>
     <string name="outcome_learn">%1$s lernen</string>
     <string name="course_finished">Alles geschafft. Alles, was die App benennen kann, können Sie benennen. Der Rest sind die Rätsel.</string>
-    <string name="outcome_lost_hints">KEINE TIPPS MEHR ÜBRIG</string>
+    <string name="outcome_lost_hints">Keine Tipps mehr übrig</string>
     <string name="outcome_share">Teilen</string>
     <string name="card_solved">Gelöst</string>
     <string name="card_lost">Geschlagen von</string>

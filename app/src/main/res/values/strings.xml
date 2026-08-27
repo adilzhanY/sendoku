@@ -11,15 +11,15 @@
     <string name="app_name">Sendoku</string>
 
     <!-- Home -->
-    <string name="home_choose_level">CHOOSE A LEVEL</string>
+    <string name="home_choose_level">Choose a level</string>
     <string name="home_daily">Daily</string>
     <string name="home_new_puzzle">New puzzle</string>
     <string name="home_resume">Resume</string>
-    <string name="home_in_progress">IN PROGRESS</string>
+    <string name="home_in_progress">In progress</string>
     <string name="home_placed">Placed: %1$d of %2$d</string>
-    <string name="home_or_start">OR START SOMETHING</string>
-    <string name="home_your_level">YOUR LEVEL</string>
-    <string name="home_all_levels">ALL LEVELS</string>
+    <string name="home_or_start">Or start something</string>
+    <string name="home_your_level">Your level</string>
+    <string name="home_all_levels">All levels</string>
 
     <!-- Grades -->
     <string name="grade_gentle">Easy</string>
@@ -39,7 +39,7 @@
     <string name="gate_beyond">further than most apps go</string>
     <string name="gate_insane">groups of cells chained together</string>
     <string name="gate_nightmare">one cell taken both ways, on paper</string>
-    <string name="grade_advanced">ADVANCED</string>
+    <string name="grade_advanced">Advanced</string>
     <string name="grade_advanced_talkback">an advanced level, which needs a technique from the course</string>
 
     <!-- Playing -->
@@ -48,7 +48,7 @@
     <string name="tool_erase">Erase</string>
     <string name="tool_notes">Notes</string>
     <string name="tool_hint">Hint</string>
-    <string name="paused">PAUSED</string>
+    <string name="paused">Paused</string>
     <string name="paused_tap">Tap anywhere to carry on</string>
     <string name="mistakes_of">%1$d of %2$d</string>
 
@@ -79,7 +79,7 @@
         <item quantity="other">Note all %1$d candidates</item>
     </plurals>
     <string name="cell_actions_clear_notes">Rub out the notes</string>
-    <string name="why_not_title">WHY NOT?</string>
+    <string name="why_not_title">Why not?</string>
     <string name="why_not_prompt">Tap a digit to be told what is stopping it.</string>
     <string name="why_not_taken">There is already a %1$d in %2$s, at row %3$d, column %4$d.</string>
     <string name="why_not_filled">This cell already holds a %1$d. Rub it out first.</string>
@@ -93,12 +93,12 @@
     <string name="leave_cancel">Stay</string>
 
     <!-- Finishing -->
-    <string name="outcome_solved">SOLVED</string>
-    <string name="outcome_lost">OUT OF MISTAKES</string>
+    <string name="outcome_solved">Solved</string>
+    <string name="outcome_lost">Out of mistakes</string>
     <string name="outcome_rated">%1$s, rated %2$s</string>
-    <string name="outcome_hints">HINTS</string>
-    <string name="outcome_mistakes">MISTAKES</string>
-    <string name="outcome_moves">MOVES</string>
+    <string name="outcome_hints">Hints</string>
+    <string name="outcome_mistakes">Mistakes</string>
+    <string name="outcome_moves">Moves</string>
     <string name="outcome_needed">Needed a %1$s</string>
     <string name="outcome_home">Home</string>
     <string name="outcome_another">Another %1$s</string>
@@ -106,11 +106,11 @@
     <!-- Hints -->
     <string name="hint_remove_one">Take it off</string>
     <string name="hint_remove_many">Take them off</string>
-    <string name="hint_look_here_title">LOOK HERE</string>
+    <string name="hint_look_here_title">Look here</string>
     <string name="hint_look_here">There is something to find %1$s. That is all this one says.</string>
     <string name="hint_look_around">There is a step to find. This one is spread across the grid rather than sitting in one region.</string>
     <string name="hint_what_kind">What kind of step?</string>
-    <string name="hint_menu_title">HELP</string>
+    <string name="hint_menu_title">Help</string>
     <string name="hint_menu_difficulty">The next step needs a technique at the %1$s level.</string>
     <string name="hint_menu_broken">Something you have placed is wrong, so nothing else follows until it is fixed.</string>
     <string name="hint_menu_check">Is anything wrong?</string>
@@ -126,15 +126,15 @@
     <string name="hint_do_it">Do it</string>
     <string name="hint_evidence">Its row already has %1$s. Its column has %2$s. Its box has %3$s. Between them that is every digit except the %4$d.</string>
     <string name="hint_rests_on_earlier">Part of this rests on marks an earlier hint ruled out. They are pencilled in on the board, so you can follow it from there.</string>
-    <string name="hint_what_is_this">WHAT IS THIS?</string>
-    <string name="hint_wrong_title">SOMETHING IS WRONG</string>
+    <string name="hint_what_is_this">What is this?</string>
+    <string name="hint_wrong_title">Something is wrong</string>
     <string name="hint_wrong_one">One of the digits you have placed cannot be right. It is highlighted.</string>
     <string name="hint_wrong_many">%1$d of the digits you have placed cannot be right. They are highlighted.</string>
     <string name="hint_wrong_until_one">Nothing else can be worked out until it is fixed.</string>
     <string name="hint_wrong_until_many">Nothing else can be worked out until they are fixed.</string>
-    <string name="hint_done_title">DONE</string>
+    <string name="hint_done_title">Done</string>
     <string name="hint_done_body">The puzzle is finished.</string>
-    <string name="hint_stuck_title">NOTHING TO SUGGEST</string>
+    <string name="hint_stuck_title">Nothing to suggest</string>
     <string name="hint_stuck_body">This board is legal, but none of the techniques Sendoku knows apply to it. That should not happen on a puzzle from the app.</string>
     <string name="hint_in_region">in %1$s</string>
     <string name="hint_in_regions">in %1$s and %2$s</string>
@@ -153,7 +153,7 @@
 
     <!-- Glossary -->
     <string name="glossary_title">Techniques</string>
-    <string name="back">BACK</string>
+    <string name="back">Back</string>
 
     <!-- Settings -->
     <string name="settings_title">Settings</string>
@@ -198,7 +198,7 @@
     <string name="settings_sound_note">Soft notes as you play. Off is one tap away, and the phone\'s own silent mode wins over both.</string>
     <string name="settings_mistake_limit">End the game after three mistakes</string>
     <string name="settings_mistake_note">On by default, at three. Turn it off for the hard grades, where losing an hour to one slip is miserable.</string>
-    <string name="settings_about">ABOUT SENDOKU</string>
+    <string name="settings_about">About Sendoku</string>
 
     <!-- Themes -->
     <string name="theme_deep_field">Deep Field</string>
@@ -215,9 +215,9 @@
 
     <!-- Statistics -->
     <string name="stats_title">Statistics</string>
-    <string name="stats_solved">SOLVED</string>
-    <string name="stats_streak">STREAK</string>
-    <string name="stats_hardest">HARDEST</string>
+    <string name="stats_solved">Solved</string>
+    <string name="stats_streak">Streak</string>
+    <string name="stats_hardest">Hardest</string>
     <string name="stats_hardest_note">The hardest you have finished is a %1$s.</string>
     <plurals name="stats_longest_run">
         <item quantity="one">Your longest run was one day.</item>
@@ -225,13 +225,13 @@
     </plurals>
     <string name="stats_totals">%1$s spent, hints taken: %2$d.</string>
     <string name="stats_by_grade">By grade</string>
-    <string name="stats_hints_title">WHAT YOU HAVE ASKED ABOUT</string>
+    <string name="stats_hints_title">What you have asked about</string>
     <string name="stats_hints_note">You ask about %1$s most. That is the lesson worth going back to.</string>
     <string name="stats_needed">What your puzzles needed</string>
     <string name="stats_solved_count">Solved: %1$d</string>
     <string name="stats_solved_and_lost">Solved: %1$d, lost: %2$d</string>
     <string name="stats_average">avg %1$s</string>
-    <string name="stats_reset">RESET STATISTICS</string>
+    <string name="stats_reset">Reset statistics</string>
     <string name="stats_reset_title">Throw away your history?</string>
     <string name="stats_reset_body">Every finished puzzle, every streak and every best time. There is no copy anywhere else, so this cannot be undone.</string>
     <string name="stats_reset_confirm">Reset</string>
@@ -256,7 +256,7 @@
     <string name="about_rating">Difficulty is rated by the hardest technique a puzzle actually needs, worked out by solving it the way a person would. That is why a Severe here means the same thing as the last Severe.</string>
     <string name="about_licence">Sendoku is free software under the GNU General Public License version 3.</string>
     <string name="about_privacy">The privacy policy says the same thing in the form the store asks for, at adilzhany.github.io/sendoku/privacy</string>
-    <string name="about_licences">OPEN SOURCE LICENCES</string>
+    <string name="about_licences">Open source licences</string>
     <string name="licences_title">Licences</string>
 
     <!-- What to look for, shown at the first tap of a hint -->
@@ -350,8 +350,8 @@
     <string name="technique_forcing_chain">Forcing chain</string>
     <string name="daily_title">Daily</string>
     <string name="daily_no_streak">No streak yet. Solve today\'s puzzle to start one.</string>
-    <string name="daily_previous_month">EARLIER</string>
-    <string name="daily_next_month">LATER</string>
+    <string name="daily_previous_month">Earlier</string>
+    <string name="daily_next_month">Later</string>
     <string name="daily_cell_solved">solved</string>
     <string name="daily_cell_attempted">played but not finished</string>
     <string name="daily_cell_unplayed">not played</string>
@@ -741,14 +741,14 @@
     <string name="course_lesson_done">finished</string>
     <string name="course_lesson_next">next</string>
     <string name="course_lesson_todo">not started</string>
-    <string name="course_you_are_here">YOU ARE HERE</string>
+    <string name="course_you_are_here">You are here</string>
     <string name="course_continue">Continue</string>
     <string name="course_stage_done">Finished %1$d of %2$d</string>
     <plurals name="course_progress">
         <item quantity="one">%1$d of %2$d lesson</item>
         <item quantity="other">%1$d of %2$d lessons</item>
     </plurals>
-    <string name="settings_hint_detail">HOW MUCH A HINT SAYS</string>
+    <string name="settings_hint_detail">How much a hint says</string>
     <string name="hint_detail_region">Just the region</string>
     <string name="hint_detail_region_note">Which box or line to look at, and nothing more.</string>
     <string name="hint_detail_name">The technique</string>
@@ -759,7 +759,7 @@
     <string name="hint_detail_full_note">Everything, including the move. For working through the course.</string>
     <string name="path_title">How it was solved</string>
     <string name="path_placed">Row %1$d, column %2$d is a %3$d.</string>
-    <string name="outcome_path">SHOW HOW IT WAS SOLVED</string>
+    <string name="outcome_path">Show how it was solved</string>
     <string name="settings_your_data">Your data</string>
     <string name="settings_data_note">Everything this app knows about you is on this phone. Export writes it to a file you choose, so a new phone can pick up where this one left off. Nothing is sent anywhere.</string>
     <string name="settings_export">Export my progress</string>
@@ -784,11 +784,11 @@
     <string name="practice_skip">Skip</string>
     <string name="practice_title">Practice</string>
     <string name="practice_none">Nothing to practise yet. Finish a lesson that teaches a technique first.</string>
-    <string name="glossary_learn_this">LEARN THIS</string>
+    <string name="glossary_learn_this">Learn this</string>
     <string name="hint_learn_this">Teach me this</string>
     <string name="outcome_learn">Learn %1$s</string>
     <string name="course_finished">All of it, done. Everything the app can name, you can name. The puzzles are the rest of it.</string>
-    <string name="outcome_lost_hints">OUT OF HINTS</string>
+    <string name="outcome_lost_hints">Out of hints</string>
     <string name="outcome_share">Share</string>
     <string name="card_solved">Solved</string>
     <string name="card_lost">Beaten by</string>

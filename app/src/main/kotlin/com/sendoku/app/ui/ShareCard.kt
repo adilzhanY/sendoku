@@ -136,7 +136,7 @@ public object ShareCard {
         paint.color = look.muted
         paint.textSize = 34f
         paint.letterSpacing = 0.14f
-        canvas.drawText(title.shout(), if (look.rightToLeft) textEdge else 234f, 200f, paint)
+        canvas.drawText(title, if (look.rightToLeft) textEdge else 234f, 200f, paint)
         paint.letterSpacing = 0f
         paint.textAlign = Paint.Align.LEFT
 
@@ -168,8 +168,8 @@ public object ShareCard {
             paint.typeface = plain
             paint.color = look.muted
             paint.letterSpacing = 0.12f
-            fit(paint, line.label.shout(), 32f, step - 40f)
-            canvas.drawText(line.label.shout(), centre, top + 92f, paint)
+            fit(paint, line.label, 32f, step - 40f)
+            canvas.drawText(line.label, centre, top + 92f, paint)
             paint.letterSpacing = 0f
             paint.textAlign = Paint.Align.LEFT
         }

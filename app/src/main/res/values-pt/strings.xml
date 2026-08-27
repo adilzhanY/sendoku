@@ -15,15 +15,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Sendoku</string>
 
-    <string name="home_choose_level">ESCOLHA UM NÍVEL</string>
+    <string name="home_choose_level">Escolha um nível</string>
     <string name="home_daily">Diário</string>
     <string name="home_new_puzzle">Novo jogo</string>
     <string name="home_resume">Continuar</string>
-    <string name="home_in_progress">EM ANDAMENTO</string>
+    <string name="home_in_progress">Em andamento</string>
     <string name="home_placed">Preenchidas: %1$d de %2$d</string>
-    <string name="home_or_start">OU COMECE ALGO NOVO</string>
-    <string name="home_your_level">SEU NÍVEL</string>
-    <string name="home_all_levels">TODOS OS NÍVEIS</string>
+    <string name="home_or_start">Ou comece algo novo</string>
+    <string name="home_your_level">Seu nível</string>
+    <string name="home_all_levels">Todos os níveis</string>
 
     <string name="grade_gentle">Fácil</string>
     <string name="grade_steady">Médio</string>
@@ -42,7 +42,7 @@
     <string name="gate_beyond">mais longe do que quase todos os aplicativos vão</string>
     <string name="gate_insane">grupos de casas ligados em cadeia</string>
     <string name="gate_nightmare">uma casa testada dos dois jeitos, no papel</string>
-    <string name="grade_advanced">AVANÇADO</string>
+    <string name="grade_advanced">Avançado</string>
     <string name="grade_advanced_talkback">um nível avançado, que exige uma técnica do curso</string>
 
     <string name="tool_undo">Desfazer</string>
@@ -50,7 +50,7 @@
     <string name="tool_erase">Apagar</string>
     <string name="tool_notes">Anotações</string>
     <string name="tool_hint">Dica</string>
-    <string name="paused">PAUSADO</string>
+    <string name="paused">Pausado</string>
     <string name="paused_tap">Toque em qualquer lugar para continuar</string>
     <string name="mistakes_of">%1$d de %2$d</string>
 
@@ -79,7 +79,7 @@
         <item quantity="other">Anotar os %1$d candidatos</item>
     </plurals>
     <string name="cell_actions_clear_notes">Apagar as anotações</string>
-    <string name="why_not_title">POR QUE NÃO?</string>
+    <string name="why_not_title">Por que não?</string>
     <string name="why_not_prompt">Toque em um número para saber o que o impede.</string>
     <string name="why_not_taken">Já existe um %1$d %2$s, na linha %3$d, coluna %4$d.</string>
     <string name="why_not_filled">Esta casa já tem um %1$d. Apague antes.</string>
@@ -91,23 +91,23 @@
     <string name="leave_confirm">Sair</string>
     <string name="leave_cancel">Ficar</string>
 
-    <string name="outcome_solved">RESOLVIDO</string>
-    <string name="outcome_lost">ERROS ESGOTADOS</string>
+    <string name="outcome_solved">Resolvido</string>
+    <string name="outcome_lost">Erros esgotados</string>
     <string name="outcome_rated">%1$s, avaliado em %2$s</string>
-    <string name="outcome_hints">DICAS</string>
-    <string name="outcome_mistakes">ERROS</string>
-    <string name="outcome_moves">JOGADAS</string>
+    <string name="outcome_hints">Dicas</string>
+    <string name="outcome_mistakes">Erros</string>
+    <string name="outcome_moves">Jogadas</string>
     <string name="outcome_needed">Exigiu um %1$s</string>
     <string name="outcome_home">Início</string>
     <string name="outcome_another">Outro %1$s</string>
 
     <string name="hint_remove_one">Tirar</string>
     <string name="hint_remove_many">Tirar todos</string>
-    <string name="hint_look_here_title">OLHE AQUI</string>
+    <string name="hint_look_here_title">Olhe aqui</string>
     <string name="hint_look_here">Há algo a encontrar %1$s. É tudo o que esta dica diz.</string>
     <string name="hint_look_around">Há um passo a encontrar. Este está espalhado pelo tabuleiro em vez de caber em uma única região.</string>
     <string name="hint_what_kind">Que tipo de passo?</string>
-    <string name="hint_menu_title">AJUDA</string>
+    <string name="hint_menu_title">Ajuda</string>
     <string name="hint_menu_difficulty">O próximo passo exige uma técnica de nível %1$s.</string>
     <string name="hint_menu_broken">Algo que você preencheu está errado, então nada mais se deduz até corrigir.</string>
     <string name="hint_menu_check">Tem algo errado?</string>
@@ -123,15 +123,15 @@
     <string name="hint_do_it">Preencher</string>
     <string name="hint_evidence">A linha já tem %1$s. A coluna tem %2$s. O bloco tem %3$s. Juntos, são todos os números menos o %4$d.</string>
     <string name="hint_rests_on_earlier">Parte disto se apoia em anotações que uma dica anterior descartou. Elas estão escritas no tabuleiro, então dá para seguir a partir dali.</string>
-    <string name="hint_what_is_this">O QUE É ISSO?</string>
-    <string name="hint_wrong_title">TEM ALGO ERRADO</string>
+    <string name="hint_what_is_this">O que é isso?</string>
+    <string name="hint_wrong_title">Tem algo errado</string>
     <string name="hint_wrong_one">Um dos números que você preencheu não pode estar certo. Ele está destacado.</string>
     <string name="hint_wrong_many">%1$d dos números que você preencheu não podem estar certos. Eles estão destacados.</string>
     <string name="hint_wrong_until_one">Nada mais pode ser deduzido até que ele seja corrigido.</string>
     <string name="hint_wrong_until_many">Nada mais pode ser deduzido até que eles sejam corrigidos.</string>
-    <string name="hint_done_title">PRONTO</string>
+    <string name="hint_done_title">Pronto</string>
     <string name="hint_done_body">O jogo terminou.</string>
-    <string name="hint_stuck_title">NADA A SUGERIR</string>
+    <string name="hint_stuck_title">Nada a sugerir</string>
     <string name="hint_stuck_body">Este tabuleiro é válido, mas nenhuma das técnicas que o Sendoku conhece se aplica a ele. Isso não deveria acontecer em um jogo do aplicativo.</string>
     <string name="hint_in_region">%1$s</string>
     <string name="hint_in_regions">%1$s e %2$s</string>
@@ -148,7 +148,7 @@
     <string name="house_box">do bloco %1$d</string>
 
     <string name="glossary_title">Técnicas</string>
-    <string name="back">VOLTAR</string>
+    <string name="back">Voltar</string>
 
     <string name="settings_title">Configurações</string>
     <string name="settings_language">Idioma</string>
@@ -192,7 +192,7 @@
     <string name="settings_sound_note">Notas suaves enquanto você joga. Desligar é um toque, e o modo silencioso do telefone vence os dois.</string>
     <string name="settings_mistake_limit">Encerrar o jogo após três erros</string>
     <string name="settings_mistake_note">Ligado por padrão, em três. Desligue nos níveis altos, onde perder uma hora por uma distração é sofrido.</string>
-    <string name="settings_about">SOBRE O SENDOKU</string>
+    <string name="settings_about">Sobre o Sendoku</string>
 
     <string name="theme_deep_field">Campo profundo</string>
     <string name="theme_deep_field_summary">Preto absoluto, um toque de ciano, nada além disso</string>
@@ -207,9 +207,9 @@
     <string name="mode_dark">Sempre escuro</string>
 
     <string name="stats_title">Estatísticas</string>
-    <string name="stats_solved">RESOLVIDOS</string>
-    <string name="stats_streak">SEQUÊNCIA</string>
-    <string name="stats_hardest">MAIS DIFÍCIL</string>
+    <string name="stats_solved">Resolvidos</string>
+    <string name="stats_streak">Sequência</string>
+    <string name="stats_hardest">Mais difícil</string>
     <string name="stats_hardest_note">O mais difícil que você terminou é um %1$s.</string>
     <plurals name="stats_longest_run">
         <item quantity="one">Sua sequência mais longa foi de %1$d dia.</item>
@@ -217,13 +217,13 @@
     </plurals>
     <string name="stats_totals">%1$s jogados, dicas usadas: %2$d.</string>
     <string name="stats_by_grade">Por nível</string>
-    <string name="stats_hints_title">SOBRE O QUE VOCÊ PERGUNTOU</string>
+    <string name="stats_hints_title">Sobre o que você perguntou</string>
     <string name="stats_hints_note">Você pergunta mais sobre %1$s. É a lição que vale a pena reler.</string>
     <string name="stats_needed">O que os seus jogos exigiram</string>
     <string name="stats_solved_count">Resolvidos: %1$d</string>
     <string name="stats_solved_and_lost">Resolvidos: %1$d, perdidos: %2$d</string>
     <string name="stats_average">média %1$s</string>
-    <string name="stats_reset">APAGAR AS ESTATÍSTICAS</string>
+    <string name="stats_reset">Apagar as estatísticas</string>
     <string name="stats_reset_title">Jogar fora o seu histórico?</string>
     <string name="stats_reset_body">Cada jogo terminado, cada sequência e cada melhor tempo. Não há cópia em nenhum outro lugar, então não dá para voltar atrás.</string>
     <string name="stats_reset_confirm">Apagar</string>
@@ -247,7 +247,7 @@
     <string name="about_rating">A dificuldade é medida pela técnica mais difícil que um jogo realmente exige, calculada resolvendo o jogo como uma pessoa resolveria. Por isso um Muito difícil aqui significa o mesmo que o Muito difícil anterior.</string>
     <string name="about_licence">O Sendoku é software livre sob a Licença Pública Geral GNU versão 3.</string>
     <string name="about_privacy">A política de privacidade diz a mesma coisa no formato que a loja pede, em adilzhany.github.io/sendoku/privacy</string>
-    <string name="about_licences">LICENÇAS DE CÓDIGO ABERTO</string>
+    <string name="about_licences">Licenças de código aberto</string>
     <string name="licences_title">Licenças</string>
 
     <string name="look_naked_single">Há uma casa em que só um número ainda cabe.</string>
@@ -338,8 +338,8 @@
     <string name="technique_forcing_chain">Cadeia forçada</string>
     <string name="daily_title">Diário</string>
     <string name="daily_no_streak">Ainda sem sequência. Resolva o jogo de hoje para começar uma.</string>
-    <string name="daily_previous_month">ANTES</string>
-    <string name="daily_next_month">DEPOIS</string>
+    <string name="daily_previous_month">Antes</string>
+    <string name="daily_next_month">Depois</string>
     <string name="daily_cell_solved">resolvido</string>
     <string name="daily_cell_attempted">jogado mas não terminado</string>
     <string name="daily_cell_unplayed">não jogado</string>
@@ -728,14 +728,14 @@
     <string name="course_lesson_done">concluída</string>
     <string name="course_lesson_next">próxima</string>
     <string name="course_lesson_todo">não começada</string>
-    <string name="course_you_are_here">VOCÊ ESTÁ AQUI</string>
+    <string name="course_you_are_here">Você está aqui</string>
     <string name="course_continue">Continuar</string>
     <string name="course_stage_done">Concluídas %1$d de %2$d</string>
     <plurals name="course_progress">
         <item quantity="one">%1$d de %2$d lição</item>
         <item quantity="other">%1$d de %2$d lições</item>
     </plurals>
-    <string name="settings_hint_detail">QUANTO UMA DICA DIZ</string>
+    <string name="settings_hint_detail">Quanto uma dica diz</string>
     <string name="hint_detail_region">Só a região</string>
     <string name="hint_detail_region_note">Qual bloco ou linha olhar, e nada mais.</string>
     <string name="hint_detail_name">A técnica</string>
@@ -746,7 +746,7 @@
     <string name="hint_detail_full_note">Tudo, inclusive a jogada. Para ir avançando no curso.</string>
     <string name="path_title">Como foi resolvido</string>
     <string name="path_placed">A linha %1$d, coluna %2$d é %3$d.</string>
-    <string name="outcome_path">VER COMO FOI RESOLVIDO</string>
+    <string name="outcome_path">Ver como foi resolvido</string>
     <string name="settings_your_data">Os seus dados</string>
     <string name="settings_data_note">Tudo o que este aplicativo sabe sobre você está neste telefone. Exportar escreve isso em um arquivo escolhido por você, para que um telefone novo continue de onde este parou. Nada é enviado para lugar nenhum.</string>
     <string name="settings_export">Exportar o meu progresso</string>
@@ -771,11 +771,11 @@
     <string name="practice_skip">Pular</string>
     <string name="practice_title">Treino</string>
     <string name="practice_none">Ainda não há nada para treinar. Termine primeiro uma lição que ensine uma técnica.</string>
-    <string name="glossary_learn_this">APRENDER ISTO</string>
+    <string name="glossary_learn_this">Aprender isto</string>
     <string name="hint_learn_this">Me ensine isto</string>
     <string name="outcome_learn">Aprender %1$s</string>
     <string name="course_finished">Tudo, concluído. Tudo o que o aplicativo sabe nomear, você sabe nomear. Os jogos são o resto.</string>
-    <string name="outcome_lost_hints">DICAS ESGOTADAS</string>
+    <string name="outcome_lost_hints">Dicas esgotadas</string>
     <string name="outcome_share">Compartilhar</string>
     <string name="card_solved">Resolvido</string>
     <string name="card_lost">Perdido para</string>

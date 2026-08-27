@@ -50,7 +50,7 @@ class SettingsGroupsTest {
     @Test
     fun everyGroupIsThere() {
         show()
-        for (heading in listOf("FEEDBACK", "LANGUAGE", "INTERFACE", "THE BOARD", "GAME RULES", "YOUR DATA")) {
+        for (heading in listOf("Feedback", "Language", "Interface", "The board", "Game rules", "Your data")) {
             compose.onNodeWithText(heading).performScrollTo().assertIsDisplayed()
         }
         // The last one says what is behind it rather than repeating its own heading.
@@ -71,7 +71,7 @@ class SettingsGroupsTest {
         // be separated by seven board toggles, which is how somebody turns one off and never
         // finds the other.
         show()
-        compose.onNodeWithText("GAME RULES").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithText("Game rules").performScrollTo().assertIsDisplayed()
         compose.onNodeWithText("End the game after three mistakes").performScrollTo().assertIsDisplayed()
         compose.onNodeWithText("End the game after three hints").performScrollTo().assertIsDisplayed()
     }
@@ -79,12 +79,12 @@ class SettingsGroupsTest {
     @Test
     fun theBoardGroupHoldsTheHelpAndNothingThatChangesTheRules() {
         show()
-        compose.onNodeWithText("THE BOARD").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithText("The board").performScrollTo().assertIsDisplayed()
         compose.onNodeWithText("Highlight the row, column and box").performScrollTo().assertIsDisplayed()
         assertEquals(
             "the old headings are still on the page",
             0,
-            compose.onAllNodesWithText("MISTAKES").fetchSemanticsNodes().size,
+            compose.onAllNodesWithText("Mistakes").fetchSemanticsNodes().size,
         )
     }
 }

@@ -9,15 +9,15 @@
 <resources>
     <string name="app_name">Sendoku</string>
 
-    <string name="home_choose_level">ВЫБЕРИТЕ УРОВЕНЬ</string>
+    <string name="home_choose_level">Выберите уровень</string>
     <string name="home_daily">Сегодня</string>
     <string name="home_new_puzzle">Новая</string>
     <string name="home_resume">Продолжить</string>
-    <string name="home_in_progress">НЕЗАКОНЧЕННАЯ</string>
+    <string name="home_in_progress">Незаконченная</string>
     <string name="home_placed">Заполнено: %1$d из %2$d</string>
-    <string name="home_or_start">ИЛИ НАЧНИТЕ НОВУЮ</string>
-    <string name="home_your_level">ВАШ УРОВЕНЬ</string>
-    <string name="home_all_levels">ВСЕ УРОВНИ</string>
+    <string name="home_or_start">Или начните новую</string>
+    <string name="home_your_level">Ваш уровень</string>
+    <string name="home_all_levels">Все уровни</string>
 
     <string name="grade_gentle">Лёгкий</string>
     <string name="grade_steady">Средний</string>
@@ -36,7 +36,7 @@
     <string name="gate_beyond">дальше, чем идёт большинство приложений</string>
     <string name="gate_insane">группы клеток, соединённые в цепочку</string>
     <string name="gate_nightmare">одна клетка в обе стороны, на бумаге</string>
-    <string name="grade_advanced">ПРОДВИНУТЫЙ</string>
+    <string name="grade_advanced">Продвинутый</string>
     <string name="grade_advanced_talkback">продвинутый уровень, для него нужна техника из курса</string>
 
     <string name="tool_undo">Назад</string>
@@ -44,7 +44,7 @@
     <string name="tool_erase">Стереть</string>
     <string name="tool_notes">Пометки</string>
     <string name="tool_hint">Подсказка</string>
-    <string name="paused">ПАУЗА</string>
+    <string name="paused">Пауза</string>
     <string name="paused_tap">Нажмите в любом месте, чтобы продолжить</string>
     <string name="mistakes_of">%1$d из %2$d</string>
 
@@ -77,7 +77,7 @@
         <item quantity="other">Пометить всех %1$d кандидатов</item>
     </plurals>
     <string name="cell_actions_clear_notes">Стереть пометки</string>
-    <string name="why_not_title">ПОЧЕМУ НЕТ?</string>
+    <string name="why_not_title">Почему нет?</string>
     <string name="why_not_prompt">Нажмите цифру, и мы скажем, что ей мешает.</string>
     <string name="why_not_taken">Цифра %1$d уже есть в доме %2$s, в строке %3$d, столбце %4$d.</string>
     <string name="why_not_filled">В этой клетке уже стоит %1$d. Сначала сотрите её.</string>
@@ -89,23 +89,23 @@
     <string name="leave_confirm">Выйти</string>
     <string name="leave_cancel">Остаться</string>
 
-    <string name="outcome_solved">РЕШЕНО</string>
-    <string name="outcome_lost">ОШИБКИ ЗАКОНЧИЛИСЬ</string>
+    <string name="outcome_solved">Решено</string>
+    <string name="outcome_lost">Ошибки закончились</string>
     <string name="outcome_rated">%1$s, оценка %2$s</string>
-    <string name="outcome_hints">ПОДСКАЗКИ</string>
-    <string name="outcome_mistakes">ОШИБКИ</string>
-    <string name="outcome_moves">ХОДЫ</string>
+    <string name="outcome_hints">Подсказки</string>
+    <string name="outcome_mistakes">Ошибки</string>
+    <string name="outcome_moves">Ходы</string>
     <string name="outcome_needed">Потребовалась техника: %1$s</string>
     <string name="outcome_home">На главную</string>
     <string name="outcome_another">Ещё одна: %1$s</string>
 
     <string name="hint_remove_one">Убрать</string>
     <string name="hint_remove_many">Убрать их</string>
-    <string name="hint_look_here_title">СМОТРИТЕ СЮДА</string>
+    <string name="hint_look_here_title">Смотрите сюда</string>
     <string name="hint_look_here">Здесь есть что найти: %1$s. Больше эта подсказка ничего не скажет.</string>
     <string name="hint_look_around">Шаг есть, но он растянут по всей сетке, а не сидит в одном доме.</string>
     <string name="hint_what_kind">Что за шаг?</string>
-    <string name="hint_menu_title">ПОМОЩЬ</string>
+    <string name="hint_menu_title">Помощь</string>
     <string name="hint_menu_difficulty">Следующий шаг требует техники уровня «%1$s».</string>
     <string name="hint_menu_broken">Одна из ваших цифр неверна, и дальше ничего не выводится, пока это не исправлено.</string>
     <string name="hint_menu_check">Что-то не так?</string>
@@ -121,15 +121,15 @@
     <string name="hint_do_it">Сделать</string>
     <string name="hint_evidence">В его строке уже есть %1$s. В столбце есть %2$s. В блоке есть %3$s. Вместе это все цифры, кроме %4$d.</string>
     <string name="hint_rests_on_earlier">Часть этого опирается на пометки, которые убрала прошлая подсказка. Они вписаны на доске, так что дальше можно проследить оттуда.</string>
-    <string name="hint_what_is_this">ЧТО ЭТО ТАКОЕ?</string>
-    <string name="hint_wrong_title">ЧТО-ТО НЕ ТАК</string>
+    <string name="hint_what_is_this">Что это такое?</string>
+    <string name="hint_wrong_title">Что-то не так</string>
     <string name="hint_wrong_one">Одна из поставленных вами цифр не может быть верной. Она выделена.</string>
     <string name="hint_wrong_many">Поставленных вами цифр, которые не могут быть верными: %1$d. Они выделены.</string>
     <string name="hint_wrong_until_one">Пока она не исправлена, дальше рассуждать невозможно.</string>
     <string name="hint_wrong_until_many">Пока они не исправлены, дальше рассуждать невозможно.</string>
-    <string name="hint_done_title">ГОТОВО</string>
+    <string name="hint_done_title">Готово</string>
     <string name="hint_done_body">Судоку решена.</string>
-    <string name="hint_stuck_title">НЕЧЕГО ПРЕДЛОЖИТЬ</string>
+    <string name="hint_stuck_title">Нечего предложить</string>
     <string name="hint_stuck_body">Эта сетка не нарушает правил, но ни одна из известных Sendoku техник к ней не подходит. С судоку из приложения такого быть не должно.</string>
     <string name="hint_in_region">в области: %1$s</string>
     <string name="hint_in_regions">в областях: %1$s и %2$s</string>
@@ -148,7 +148,7 @@
     <string name="house_box">блок %1$d</string>
 
     <string name="glossary_title">Техники</string>
-    <string name="back">НАЗАД</string>
+    <string name="back">Назад</string>
 
     <string name="settings_title">Настройки</string>
     <string name="settings_language">Язык</string>
@@ -192,7 +192,7 @@
     <string name="settings_sound_note">Тихие ноты во время игры. Выключить можно одним касанием, а беззвучный режим телефона важнее этой настройки.</string>
     <string name="settings_mistake_limit">Заканчивать игру после трёх ошибок</string>
     <string name="settings_mistake_note">Включено по умолчанию, три ошибки. Выключите на сложных уровнях, где потерять час из-за одной оплошности обидно.</string>
-    <string name="settings_about">О ПРИЛОЖЕНИИ</string>
+    <string name="settings_about">О приложении</string>
 
     <string name="theme_deep_field">Deep Field</string>
     <string name="theme_deep_field_summary">Чистый чёрный, один бирюзовый акцент, больше ничего</string>
@@ -207,9 +207,9 @@
     <string name="mode_dark">Всегда тёмная</string>
 
     <string name="stats_title">Статистика</string>
-    <string name="stats_solved">РЕШЕНО</string>
-    <string name="stats_streak">СЕРИЯ</string>
-    <string name="stats_hardest">РЕКОРД</string>
+    <string name="stats_solved">Решено</string>
+    <string name="stats_streak">Серия</string>
+    <string name="stats_hardest">Рекорд</string>
     <string name="stats_hardest_note">Самая сложная решённая: %1$s.</string>
     <plurals name="stats_longest_run">
         <item quantity="one">Самая длинная серия: %1$d день.</item>
@@ -219,13 +219,13 @@
     </plurals>
     <string name="stats_totals">Потрачено %1$s, взято подсказок: %2$d.</string>
     <string name="stats_by_grade">По уровням</string>
-    <string name="stats_hints_title">О ЧЁМ ВЫ СПРАШИВАЛИ</string>
+    <string name="stats_hints_title">О чём вы спрашивали</string>
     <string name="stats_hints_note">Чаще всего вы спрашиваете про %1$s. Это тот урок, к которому стоит вернуться.</string>
     <string name="stats_needed">Что потребовалось вашим судоку</string>
     <string name="stats_solved_count">Решено: %1$d</string>
     <string name="stats_solved_and_lost">Решено: %1$d, проиграно: %2$d</string>
     <string name="stats_average">в среднем %1$s</string>
-    <string name="stats_reset">СБРОСИТЬ СТАТИСТИКУ</string>
+    <string name="stats_reset">Сбросить статистику</string>
     <string name="stats_reset_title">Удалить всю историю?</string>
     <string name="stats_reset_body">Все решённые судоку, все серии и все лучшие результаты. Копии нигде нет, отменить это будет нельзя.</string>
     <string name="stats_reset_confirm">Сбросить</string>
@@ -249,7 +249,7 @@
     <string name="about_rating">Сложность определяется по самой трудной технике, которая действительно нужна, и вычисляется решением судоку так, как решал бы человек. Поэтому Сложный здесь означает то же самое, что и прошлый Сложный.</string>
     <string name="about_licence">Sendoku, свободная программа под лицензией GNU General Public License версии 3.</string>
     <string name="about_privacy">Политика конфиденциальности говорит то же самое в том виде, который требует магазин: adilzhany.github.io/sendoku/privacy</string>
-    <string name="about_licences">ЛИЦЕНЗИИ ОТКРЫТОГО КОДА</string>
+    <string name="about_licences">Лицензии открытого кода</string>
     <string name="licences_title">Лицензии</string>
 
     <!-- Что искать, показывается при первом нажатии подсказки -->
@@ -343,8 +343,8 @@
     <string name="technique_forcing_chain">Forcing chain</string>
     <string name="daily_title">Ежедневная</string>
     <string name="daily_no_streak">Серии пока нет. Решите сегодняшнюю головоломку, чтобы начать.</string>
-    <string name="daily_previous_month">РАНЬШЕ</string>
-    <string name="daily_next_month">ПОЗЖЕ</string>
+    <string name="daily_previous_month">Раньше</string>
+    <string name="daily_next_month">Позже</string>
     <string name="daily_cell_solved">решено</string>
     <string name="daily_cell_attempted">начато, но не закончено</string>
     <string name="daily_cell_unplayed">не играли</string>
@@ -736,7 +736,7 @@
     <string name="course_lesson_done">пройден</string>
     <string name="course_lesson_next">следующий</string>
     <string name="course_lesson_todo">не начат</string>
-    <string name="course_you_are_here">ВЫ ЗДЕСЬ</string>
+    <string name="course_you_are_here">Вы здесь</string>
     <string name="course_continue">Продолжить</string>
     <string name="course_stage_done">Пройдено %1$d из %2$d</string>
     <plurals name="course_progress">
@@ -745,7 +745,7 @@
         <item quantity="many">%1$d из %2$d уроков</item>
         <item quantity="other">%1$d из %2$d уроков</item>
     </plurals>
-    <string name="settings_hint_detail">СКОЛЬКО ГОВОРИТ ПОДСКАЗКА</string>
+    <string name="settings_hint_detail">Сколько говорит подсказка</string>
     <string name="hint_detail_region">Только дом</string>
     <string name="hint_detail_region_note">В какой блок или линию смотреть, и ничего больше.</string>
     <string name="hint_detail_name">Техника</string>
@@ -756,7 +756,7 @@
     <string name="hint_detail_full_note">Всё, включая сам ход. Для работы по курсу.</string>
     <string name="path_title">Как это решалось</string>
     <string name="path_placed">Строка %1$d, столбец %2$d это %3$d.</string>
-    <string name="outcome_path">ПОКАЗАТЬ, КАК ЭТО РЕШАЛОСЬ</string>
+    <string name="outcome_path">Показать, как это решалось</string>
     <string name="settings_your_data">Ваши данные</string>
     <string name="settings_data_note">Всё, что приложение о вас знает, лежит на этом телефоне. Экспорт запишет это в файл на ваш выбор, чтобы новый телефон продолжил с того же места. Никуда ничего не отправляется.</string>
     <string name="settings_export">Экспортировать прогресс</string>
@@ -781,11 +781,11 @@
     <string name="practice_skip">Пропустить</string>
     <string name="practice_title">Практика</string>
     <string name="practice_none">Пока нечего отрабатывать. Сначала пройдите урок с техникой.</string>
-    <string name="glossary_learn_this">УЧИТЬ</string>
+    <string name="glossary_learn_this">Учить</string>
     <string name="hint_learn_this">Научи меня</string>
     <string name="outcome_learn">Изучить: %1$s</string>
     <string name="course_finished">Курс пройден целиком. Всё, что приложение умеет называть, теперь умеете называть и вы. Дальше только головоломки.</string>
-    <string name="outcome_lost_hints">ПОДСКАЗКИ ЗАКОНЧИЛИСЬ</string>
+    <string name="outcome_lost_hints">Подсказки закончились</string>
     <string name="outcome_share">Поделиться</string>
     <string name="card_solved">Решено</string>
     <string name="card_lost">Не сдалась</string>

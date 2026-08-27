@@ -612,7 +612,7 @@ private fun Tile(
             },
         verticalArrangement = Arrangement.spacedBy(dimens.spaceXs),
     ) {
-        Text(overline.shout(), style = Sendoku.type.overline, color = quiet)
+        Text(overline, style = Sendoku.type.overline, color = quiet)
         Text(title, style = Sendoku.type.label, color = ink)
         Text(detail, style = Sendoku.type.body, color = if (accent) quiet else colors.accent)
     }
