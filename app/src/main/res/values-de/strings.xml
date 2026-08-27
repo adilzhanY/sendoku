@@ -349,6 +349,9 @@
     <string name="course_lesson_done">abgeschlossen</string>
     <string name="course_lesson_next">als Nächstes</string>
     <string name="course_lesson_todo">nicht begonnen</string>
+    <string name="course_you_are_here">HIER STEHST DU</string>
+    <string name="course_continue">Weiter</string>
+    <string name="course_stage_done">Fertig %1$d von %2$d</string>
 
     <string name="settings_hint_detail">WIE VIEL EIN TIPP SAGT</string>
     <string name="hint_detail_region">Nur den Bereich</string>

@@ -718,6 +718,9 @@
     <string name="course_lesson_done">완료</string>
     <string name="course_lesson_next">다음</string>
     <string name="course_lesson_todo">시작 전</string>
+    <string name="course_you_are_here">현재 위치</string>
+    <string name="course_continue">이어서 하기</string>
+    <string name="course_stage_done">완료 %1$d / %2$d</string>
     <plurals name="course_progress">
         <item quantity="other">%2$d개 중 %1$d개</item>
     </plurals>

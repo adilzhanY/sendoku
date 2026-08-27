@@ -348,6 +348,9 @@
     <string name="course_lesson_done">tamamlandı</string>
     <string name="course_lesson_next">sırada</string>
     <string name="course_lesson_todo">başlanmadı</string>
+    <string name="course_you_are_here">BURADASIN</string>
+    <string name="course_continue">Devam et</string>
+    <string name="course_stage_done">Biten %1$d / %2$d</string>
 
     <string name="settings_hint_detail">BİR İPUCU NE KADAR SÖYLER</string>
     <string name="hint_detail_region">Yalnızca bölge</string>

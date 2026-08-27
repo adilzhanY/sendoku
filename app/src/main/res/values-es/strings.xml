@@ -723,6 +723,9 @@
     <string name="course_lesson_done">terminada</string>
     <string name="course_lesson_next">siguiente</string>
     <string name="course_lesson_todo">sin empezar</string>
+    <string name="course_you_are_here">AQUÍ ESTÁS</string>
+    <string name="course_continue">Continuar</string>
+    <string name="course_stage_done">Terminadas %1$d de %2$d</string>
     <plurals name="course_progress">
         <item quantity="one">%1$d de %2$d lección</item>
         <item quantity="other">%1$d de %2$d lecciones</item>

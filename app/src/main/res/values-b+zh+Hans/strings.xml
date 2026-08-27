@@ -721,6 +721,9 @@
     <string name="course_lesson_done">已学完</string>
     <string name="course_lesson_next">接下来</string>
     <string name="course_lesson_todo">未开始</string>
+    <string name="course_you_are_here">你在这里</string>
+    <string name="course_continue">继续</string>
+    <string name="course_stage_done">已完成 %1$d / %2$d</string>
     <plurals name="course_progress">
         <item quantity="other">%2$d课中的第%1$d课</item>
     </plurals>

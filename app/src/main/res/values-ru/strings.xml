@@ -736,6 +736,9 @@
     <string name="course_lesson_done">пройден</string>
     <string name="course_lesson_next">следующий</string>
     <string name="course_lesson_todo">не начат</string>
+    <string name="course_you_are_here">ВЫ ЗДЕСЬ</string>
+    <string name="course_continue">Продолжить</string>
+    <string name="course_stage_done">Пройдено %1$d из %2$d</string>
     <plurals name="course_progress">
         <item quantity="one">%1$d из %2$d урока</item>
         <item quantity="few">%1$d из %2$d уроков</item>

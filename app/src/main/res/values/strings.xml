@@ -741,6 +741,9 @@
     <string name="course_lesson_done">finished</string>
     <string name="course_lesson_next">next</string>
     <string name="course_lesson_todo">not started</string>
+    <string name="course_you_are_here">YOU ARE HERE</string>
+    <string name="course_continue">Continue</string>
+    <string name="course_stage_done">Finished %1$d of %2$d</string>
     <plurals name="course_progress">
         <item quantity="one">%1$d of %2$d lesson</item>
         <item quantity="other">%1$d of %2$d lessons</item>

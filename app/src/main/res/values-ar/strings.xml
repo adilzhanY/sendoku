@@ -749,6 +749,9 @@
     <string name="course_lesson_done">منتهٍ</string>
     <string name="course_lesson_next">التالي</string>
     <string name="course_lesson_todo">لم يبدأ</string>
+    <string name="course_you_are_here">أنت هنا</string>
+    <string name="course_continue">متابعة</string>
+    <string name="course_stage_done">مكتملة %1$d من %2$d</string>
     <plurals name="course_progress">
         <item quantity="zero">لا دروس من %2$d</item>
         <item quantity="one">درس واحد من %2$d</item>

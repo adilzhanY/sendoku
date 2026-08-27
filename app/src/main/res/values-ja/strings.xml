@@ -725,6 +725,9 @@
     <string name="course_lesson_done">修了</string>
     <string name="course_lesson_next">次</string>
     <string name="course_lesson_todo">未着手</string>
+    <string name="course_you_are_here">今ここ</string>
+    <string name="course_continue">続きから</string>
+    <string name="course_stage_done">完了 %1$d / %2$d</string>
     <plurals name="course_progress">
         <item quantity="other">%2$d件中%1$d件</item>
     </plurals>
