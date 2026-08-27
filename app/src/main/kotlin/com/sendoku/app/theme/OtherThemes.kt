@@ -147,17 +147,14 @@ public val TerminalDark: SendokuColors = SendokuColors(
 )
 
 /** Terminal draws its own type: monospace throughout, digits included. */
-public val TerminalType: SendokuType = DefaultType.copy(
-    display = DefaultType.display.copy(fontFamily = FontFamily.Monospace, letterSpacing = 0.em),
-    title = DefaultType.title.copy(fontFamily = FontFamily.Monospace, letterSpacing = 0.em),
-    body = DefaultType.body.copy(fontFamily = FontFamily.Monospace, fontSize = 14.sp),
-    label = DefaultType.label.copy(fontFamily = FontFamily.Monospace),
-    overline = DefaultType.overline.copy(fontFamily = FontFamily.Monospace, letterSpacing = 0.1.em),
-    // The grid keeps the bundled digits and keeps the weight difference. A monospace zero
-    // with a slash through it is a liability on a sudoku board, and the platform monospace is
-    // whatever the phone happens to have. The clue staying heavier than the entry is the only
-    // thing telling them apart for a player who cannot use the colour.
-)
+public val TerminalType: SendokuType = DefaultType.inFace(JetBrainsMonoFont).let { mono ->
+    mono.copy(
+        display = mono.display.copy(letterSpacing = 0.em),
+        title = mono.title.copy(letterSpacing = 0.em),
+        body = mono.body.copy(fontSize = 14.sp),
+        overline = mono.overline.copy(letterSpacing = 0.1.em),
+    )
+}
 
 /** Terminal has no rounding anywhere, and heavier rules. */
 public val TerminalDimens: SendokuDimens = DefaultDimens.copy(
@@ -220,8 +217,4 @@ public val ZenMotion: SendokuMotion = DefaultMotion.copy(
 )
 
 /** Ink uses a serif for its headings, the way a puzzle book does. */
-public val InkType: SendokuType = DefaultType.copy(
-    display = DefaultType.display.copy(fontFamily = FontFamily.Serif),
-    title = DefaultType.title.copy(fontFamily = FontFamily.Serif),
-    body = DefaultType.body.copy(fontFamily = FontFamily.Serif, fontSize = 16.sp),
-)
+public val InkType: SendokuType = DefaultType.inFace(PtSerifFont)

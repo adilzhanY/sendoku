@@ -12,8 +12,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,6 +29,7 @@ import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.sendoku.app.R
 import com.sendoku.app.game.GameState
 import com.sendoku.app.theme.Sendoku
@@ -130,7 +132,7 @@ private fun ToolButton(
             .clip(RoundedCornerShape(dimens.radiusM))
             .combinedClickable(enabled = enabled, onClick = onClick, onLongClick = onLongClick)
             .alpha(if (enabled) 1f else 0.3f)
-            .padding(vertical = dimens.spaceS)
+            .padding(vertical = dimens.spaceS, horizontal = dimens.spaceXs)
             .testTag("tool:$label")
             .semantics(mergeDescendants = true) {
                 contentDescription = label
@@ -140,7 +142,20 @@ private fun ToolButton(
         verticalArrangement = Arrangement.spacedBy(dimens.spaceXs),
     ) {
         Icon(imageVector = icon, contentDescription = null, tint = ink, modifier = Modifier.size(ICON))
-        Text(text = label, textAlign = TextAlign.Center, style = Sendoku.type.toolLabel, color = ink)
+        // One line, shrunk to fit rather than wrapped. Five words share the width of the
+        // screen, and at a large font scale a German label is wider than its fifth of it.
+        // Wrapping breaks the word in the middle, so "Notizen" becomes "Notize" over "n",
+        // which reads as a bug. Smaller and whole is better than bigger and broken.
+        BasicText(
+            text = label,
+            style = Sendoku.type.toolLabel.copy(color = ink, textAlign = TextAlign.Center),
+            maxLines = 1,
+            autoSize = TextAutoSize.StepBased(
+                minFontSize = 7.sp,
+                maxFontSize = Sendoku.type.toolLabel.fontSize,
+                stepSize = 0.5.sp,
+            ),
+        )
         // The mode marker. Two pixels of accent under one of five words is enough to find
         // without being enough to notice while playing.
         Box(

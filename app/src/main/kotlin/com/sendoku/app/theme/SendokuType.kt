@@ -10,23 +10,42 @@ import androidx.compose.ui.unit.sp
 import com.sendoku.app.R
 
 /**
- * The digits, and only the digits, in a font the app carries itself.
+ * The four faces the app carries, one per theme.
  *
- * Samsung and Xiaomi let a user replace the system font, and plenty do. On a sudoku board
- * that is not a cosmetic change: a narrow one, or a seven with a bar, or a one that looks
- * like a seven, and the grid stops being readable at a glance. So the digits are pinned.
+ * Two reasons for bundling type at all, and the first is not decoration. Samsung and Xiaomi
+ * let a user replace the system font, and plenty do. On a sudoku board that is not a
+ * cosmetic change: a narrow one, or a seven with a bar, or a one that looks like a seven,
+ * and the grid stops being readable at a glance. A bundled face pins the digits.
  *
- * The file holds ten digits and a colon and nothing else, which is six kilobytes rather
- * than the three hundred a full weight of Inter costs. Prose stays on the platform font,
- * where a replacement is a preference rather than a problem, and where the user's own
- * choice of font should win.
+ * The second is that a theme is meant to be a whole look. Terminal has been calling itself
+ * Terminal while borrowing whatever proportional font the phone happened to have.
  *
- * Because it holds nothing else, this family must never be given anything but digits and
- * colons. Anything else renders as a blank box.
+ * Each family is two static weights cut down to the 159 characters the app's own strings
+ * can produce across English, Russian, German and Turkish. Whole, the four of them are 941
+ * kilobytes; cut down they are 113, which is what makes this affordable at all. They are
+ * built by tools/subset-fonts.py, which derives that character set from the shipped
+ * strings rather than from a list somebody has to remember to update.
+ *
+ * Weights between the two shipped are resolved to the nearest, which is Compose's own rule.
  */
-public val DigitFont: FontFamily = FontFamily(
-    Font(R.font.inter_digits_regular, FontWeight.Normal),
-    Font(R.font.inter_digits_semibold, FontWeight.SemiBold),
+public val InterFont: FontFamily = FontFamily(
+    Font(R.font.inter_regular, FontWeight.Normal),
+    Font(R.font.inter_semibold, FontWeight.SemiBold),
+)
+
+public val PtSerifFont: FontFamily = FontFamily(
+    Font(R.font.pt_serif_regular, FontWeight.Normal),
+    Font(R.font.pt_serif_bold, FontWeight.Bold),
+)
+
+public val ManropeFont: FontFamily = FontFamily(
+    Font(R.font.manrope_regular, FontWeight.Normal),
+    Font(R.font.manrope_semibold, FontWeight.SemiBold),
+)
+
+public val JetBrainsMonoFont: FontFamily = FontFamily(
+    Font(R.font.jetbrains_mono_regular, FontWeight.Normal),
+    Font(R.font.jetbrains_mono_bold, FontWeight.Bold),
 )
 
 /**
@@ -81,7 +100,29 @@ public data class SendokuType(
     val timer: TextStyle,
 )
 
-/** Inter for the digits, the platform sans for everything else. */
+/**
+ * The same scale, in another face.
+ *
+ * Every style, including the board and the clock, because a theme whose grid is set in one
+ * family and whose buttons are set in another is not a theme, it is a mistake.
+ */
+public fun SendokuType.inFace(family: FontFamily): SendokuType = copy(
+    display = display.copy(fontFamily = family),
+    title = title.copy(fontFamily = family),
+    body = body.copy(fontFamily = family),
+    label = label.copy(fontFamily = family),
+    overline = overline.copy(fontFamily = family),
+    toolLabel = toolLabel.copy(fontFamily = family),
+    statLabel = statLabel.copy(fontFamily = family),
+    statValue = statValue.copy(fontFamily = family),
+    gridGiven = gridGiven.copy(fontFamily = family),
+    gridEntry = gridEntry.copy(fontFamily = family),
+    pencilMark = pencilMark.copy(fontFamily = family),
+    padDigit = padDigit.copy(fontFamily = family),
+    padCount = padCount.copy(fontFamily = family),
+    timer = timer.copy(fontFamily = family),
+)
+
 public val DefaultType: SendokuType = SendokuType(
     display = TextStyle(
         fontSize = 44.sp,
@@ -127,34 +168,28 @@ public val DefaultType: SendokuType = SendokuType(
         fontWeight = FontWeight.SemiBold,
     ),
     gridGiven = TextStyle(
-        fontFamily = DigitFont,
         fontWeight = FontWeight.SemiBold,
         fontSize = 22.sp,
     ),
     gridEntry = TextStyle(
-        fontFamily = DigitFont,
         fontWeight = FontWeight.Normal,
         fontSize = 22.sp,
     ),
     pencilMark = TextStyle(
-        fontFamily = DigitFont,
         fontWeight = FontWeight.Normal,
         fontSize = 8.sp,
     ),
     padDigit = TextStyle(
-        fontFamily = DigitFont,
         fontWeight = FontWeight.Normal,
         // Bigger than it was, because the card that used to say "this is a key" is gone and
         // the digit has to say it instead.
         fontSize = 30.sp,
     ),
     padCount = TextStyle(
-        fontFamily = DigitFont,
         fontWeight = FontWeight.Normal,
         fontSize = 10.sp,
     ),
     timer = TextStyle(
-        fontFamily = DigitFont,
         fontWeight = FontWeight.Normal,
         fontSize = 14.sp,
         fontFeatureSettings = "tnum",

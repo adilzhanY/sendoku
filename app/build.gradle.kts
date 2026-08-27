@@ -224,12 +224,31 @@ val licenceNames =
         "junit" to "Eclipse Public License 1.0",
     )
 
+/*
+ * The four bundled typefaces, one per theme.
+ *
+ * These are files in res/font rather than dependencies, so nothing resolves them for us and
+ * they have to be named here. All four are under the SIL Open Font License, which asks for
+ * the copyright notice to be carried with the software, and this screen is where it is
+ * carried. Keep this in step with tools/subset-fonts.py.
+ */
+val fontLicences =
+    listOf(
+        "Inter, Copyright 2016 The Inter Project Authors|SIL Open Font License 1.1",
+        "PT Serif, Copyright 2010 ParaType|SIL Open Font License 1.1",
+        "Manrope, Copyright 2018 The Manrope Project Authors|SIL Open Font License 1.1",
+        "JetBrains Mono, Copyright 2020 The JetBrains Mono Project Authors|SIL Open Font License 1.1",
+    )
+
 abstract class GenerateLicences : DefaultTask() {
     @get:Input
     abstract val artifacts: SetProperty<String>
 
     @get:Input
     abstract val names: MapProperty<String, String>
+
+    @get:Input
+    abstract val fonts: ListProperty<String>
 
     @get:OutputDirectory
     abstract val output: DirectoryProperty
@@ -251,7 +270,7 @@ abstract class GenerateLicences : DefaultTask() {
         directory.mkdirs()
         val file = File(directory, "licences.txt")
         file.writeText(
-            (listOf("Inter (digits only), Copyright 2016 The Inter Project Authors|SIL Open Font License 1.1") + lines)
+            (fonts.get() + lines)
                 .joinToString("\n", postfix = "\n"),
         )
     }
@@ -271,6 +290,7 @@ val generateLicences =
             }
         artifacts.set(resolved)
         names.set(licenceNames)
+        fonts.set(fontLicences)
         output.set(layout.buildDirectory.dir("generated/licences"))
     }
 

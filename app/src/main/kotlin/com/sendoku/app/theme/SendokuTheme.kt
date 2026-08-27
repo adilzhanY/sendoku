@@ -47,8 +47,17 @@ public object SendokuThemes {
     /** True when a theme ignores the light and dark setting. */
     public fun isFixed(id: SendokuThemeId): Boolean = id == SendokuThemeId.TERMINAL
 
+    /**
+     * A face per theme, not a colour scheme per theme.
+     *
+     * Deep Field is Inter, which is what its digits already were. Ink is PT Serif, drawn for
+     * newsprint and for Cyrillic at once, which is this theme's whole brief. Zen is Manrope,
+     * round and quiet. Terminal is JetBrains Mono, which is the first time that theme has
+     * been what its name says.
+     */
     public fun type(id: SendokuThemeId): SendokuType = when (id) {
-        SendokuThemeId.DEEP_FIELD, SendokuThemeId.ZEN -> DefaultType
+        SendokuThemeId.DEEP_FIELD -> DefaultType.inFace(InterFont)
+        SendokuThemeId.ZEN -> DefaultType.inFace(ManropeFont)
         SendokuThemeId.INK -> InkType
         SendokuThemeId.TERMINAL -> TerminalType
     }
