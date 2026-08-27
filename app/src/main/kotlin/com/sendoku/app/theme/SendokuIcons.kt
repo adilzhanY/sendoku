@@ -189,6 +189,40 @@ public object SendokuIcons {
     // shape beside it is found at glancing speed, which is the whole reason these exist: not
     // decoration, a way to stop scrolling sooner.
 
+    /** Three bars of different heights. What you have done, counted. */
+    public val Chart: ImageVector = icon("Chart") {
+        stroke {
+            moveTo(5.0f, 20.0f)
+            verticalLineTo(12.5f)
+        }
+        stroke {
+            moveTo(12.0f, 20.0f)
+            verticalLineTo(6.0f)
+        }
+        stroke {
+            moveTo(19.0f, 20.0f)
+            verticalLineTo(15.5f)
+        }
+        stroke {
+            moveTo(3.0f, 20.5f)
+            horizontalLineTo(21.0f)
+        }
+    }
+
+    /** A clock. Games that are over, and when they were. */
+    public val History: ImageVector = icon("History") {
+        stroke {
+            moveTo(12.0f, 3.5f)
+            arcTo(8.5f, 8.5f, 0f, isMoreThanHalf = true, isPositiveArc = true, 11.9f, 3.5f)
+            close()
+        }
+        stroke {
+            moveTo(12.0f, 7.5f)
+            verticalLineTo(12.0f)
+            horizontalLineTo(15.5f)
+        }
+    }
+
     /** A speaker with two waves. Sound, and everything the app does that you can feel. */
     public val Sound: ImageVector = icon("Sound") {
         stroke {

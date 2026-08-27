@@ -9,14 +9,17 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
@@ -31,6 +34,7 @@ import com.sendoku.app.data.Statistics
 import com.sendoku.app.learn.CourseProgress
 import com.sendoku.app.learn.Curriculum
 import com.sendoku.app.theme.Sendoku
+import com.sendoku.app.theme.SendokuIcons
 import kotlin.time.Duration
 
 /**
@@ -100,25 +104,32 @@ public fun AccountScreen(
             )
         }
 
+        // The same four rows as before, each behind its own mark. This page is a hallway:
+        // nobody reads it, they cross it on the way to one of four doors, and a shape beside
+        // the word is what makes the right door findable without reading all four.
         Entry(
+            icon = SendokuIcons.Chart,
             label = stringResource(R.string.account_stats),
             detail = stringResource(R.string.account_stats_detail),
             tag = "account:stats",
             onClick = onStats,
         )
         Entry(
+            icon = SendokuIcons.History,
             label = stringResource(R.string.account_history),
             detail = stringResource(R.string.account_history_detail),
             tag = "account:history",
             onClick = onHistory,
         )
         Entry(
+            icon = SendokuIcons.Settings,
             label = stringResource(R.string.settings_title),
             detail = stringResource(R.string.account_settings_detail),
             tag = "account:settings",
             onClick = onSettings,
         )
         Entry(
+            icon = SendokuIcons.Info,
             label = stringResource(R.string.about_title),
             detail = stringResource(R.string.account_about_detail),
             tag = "account:about",
@@ -147,10 +158,10 @@ private fun Figure(label: String, value: String, modifier: Modifier = Modifier) 
 
 /** A row that goes somewhere, or one that only reports when there is nowhere to go. */
 @Composable
-private fun Entry(label: String, detail: String, tag: String, onClick: () -> Unit) {
+private fun Entry(icon: ImageVector, label: String, detail: String, tag: String, onClick: () -> Unit) {
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
-    Column(
+    Row(
         modifier = Modifier
             .fillMaxWidth()
             .heightIn(min = dimens.minTouchTarget)
@@ -160,15 +171,28 @@ private fun Entry(label: String, detail: String, tag: String, onClick: () -> Uni
             .padding(horizontal = dimens.spaceM, vertical = dimens.spaceM)
             .testTag(tag)
             .semantics(mergeDescendants = true) {
+                // The icon says nothing the label does not. Reading it aloud as well would
+                // be one more word between the player and the door they are looking for.
                 contentDescription = "$label, $detail"
                 role = Role.Button
             },
-        verticalArrangement = Arrangement.spacedBy(dimens.spaceXs),
+        horizontalArrangement = Arrangement.spacedBy(dimens.spaceM),
     ) {
-        Text(label, style = Sendoku.type.label, color = colors.given)
-        Text(detail, style = Sendoku.type.body, color = colors.muted)
+        Icon(
+            imageVector = icon,
+            contentDescription = null,
+            tint = colors.accent,
+            modifier = Modifier.padding(top = 2.dp).size(ENTRY_ICON),
+        )
+        Column(verticalArrangement = Arrangement.spacedBy(dimens.spaceXs)) {
+            Text(label, style = Sendoku.type.label, color = colors.given)
+            Text(detail, style = Sendoku.type.body, color = colors.muted)
+        }
     }
 }
+
+/** The same size as the marks on the settings page, so the two pages read as one app. */
+private val ENTRY_ICON = 20.dp
 
 /** Hours and minutes, since a total playing time in seconds is a number nobody reads. */
 private fun Duration.short(): String {
