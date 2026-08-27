@@ -153,6 +153,7 @@
     <string name="language_spanish">Español</string>
     <string name="language_italian">Italiano</string>
     <string name="language_japanese">日本語</string>
+    <string name="language_french">Français</string>
     <string name="first_run_prompt">Sendoku è scritto in sette lingue. Quale leggi?</string>
     <string name="first_run_system_is">Il tuo telefono è impostato su %1$s</string>
     <string name="first_run_no_translation">Il tuo telefono è impostato su una lingua che Sendoku non parla ancora. L\'inglese è la cosa più vicina che ha.</string>

@@ -32,7 +32,7 @@ GOOGLE = "https://github.com/google/fonts/raw/main"
 
 # Everything the app can draw that is not in a string: the digits themselves, the clock,
 # and the couple of marks the board and the share card add on their own.
-EXTRA = "0123456789:/%·…"
+EXTRA = "0123456789:/%·…\u00a0"
 
 # What these four faces are not asked to draw.
 #
@@ -82,7 +82,10 @@ def charset() -> str:
         with open(path, encoding="utf-8") as handle:
             for body in re.findall(r">([^<>]+)<", handle.read()):
                 found |= set(body)
-    return "".join(sorted(c for c in found if c.isprintable()))
+    # A no-break space is not printable by Python's reckoning and is very much something the
+    # app draws: French typography puts one before a colon, and a face without it falls back
+    # in the middle of a sentence.
+    return "".join(sorted(c for c in found if c.isprintable() or c in EXTRA))
 
 
 def source(url: str) -> str:

@@ -1,0 +1,811 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Français.
+
+  Trois décisions qui valent pour tout le fichier. Les noms descriptifs des techniques sont
+  traduits et les noms propres inventés restent en anglais : un X-Wing est un X-Wing en
+  français aussi, mais un naked single est un singleton nu. Le ton est celui de l'original :
+  calme, direct, sans point d'exclamation. Et la typographie est celle de France, avec une
+  espace insécable avant le deux-points, le point-virgule, le point d'interrogation et
+  le point d'exclamation. L'espace fine serait plus juste, mais elle manque à l'une des quatre
+  polices embarquées, et une police de secours au milieu d'une phrase est pire qu'une espace
+  un peu large.
+-->
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Sendoku</string>
+
+    <string name="home_choose_level">CHOISIR UN NIVEAU</string>
+    <string name="home_daily">Quotidien</string>
+    <string name="home_new_puzzle">Nouvelle grille</string>
+    <string name="home_resume">Reprendre</string>
+    <string name="home_in_progress">EN COURS</string>
+    <string name="home_percent">%1$s, %2$d %%</string>
+    <string name="home_placed">Placés : %1$d sur %2$d</string>
+
+    <string name="grade_gentle">Facile</string>
+    <string name="grade_steady">Moyen</string>
+    <string name="grade_tricky">Difficile</string>
+    <string name="grade_severe">Très difficile</string>
+    <string name="grade_diabolical">Expert</string>
+    <string name="grade_beyond">Maître</string>
+    <string name="grade_insane">Démentiel</string>
+    <string name="grade_nightmare">Cauchemar</string>
+    <string name="grade_locked">Gagnez une grille %1$s pour ouvrir ce niveau</string>
+    <string name="gate_gentle">un chiffre évident après l\'autre</string>
+    <string name="gate_steady">des paires, et des chiffres enfermés sur une ligne</string>
+    <string name="gate_tricky">des triplets, et des motifs à travers la grille</string>
+    <string name="gate_severe">wings, coloration et rectangles</string>
+    <string name="gate_diabolical">des chaînes de raisonnement</string>
+    <string name="gate_beyond">plus loin que la plupart des applications</string>
+    <string name="gate_insane">des groupes de cases enchaînés</string>
+    <string name="gate_nightmare">une case prise des deux façons, sur papier</string>
+    <string name="grade_advanced">AVANCÉ</string>
+    <string name="grade_advanced_talkback">un niveau avancé, qui demande une technique du cours</string>
+
+    <string name="tool_undo">Annuler</string>
+    <string name="tool_redo">Rétablir</string>
+    <string name="tool_erase">Effacer</string>
+    <string name="tool_notes">Notes</string>
+    <string name="tool_hint">Indice</string>
+    <string name="paused">EN PAUSE</string>
+    <string name="paused_tap">Touchez n\'importe où pour continuer</string>
+    <string name="mistakes_of">%1$d sur %2$d</string>
+
+    <string name="cell_position">Ligne %1$d, colonne %2$d</string>
+    <string name="cell_clue">%1$s, %2$d, un chiffre de départ</string>
+    <string name="cell_digit">%1$s, %2$d</string>
+    <string name="cell_empty">%1$s, vide</string>
+    <string name="cell_noted">%1$s, vide, notes %2$s</string>
+    <string name="cell_hint_argument">%1$s. Fait partie de l\'indice.</string>
+    <string name="cell_hint_struck">%1$s. L\'indice élimine une note ici.</string>
+    <string name="cell_hint_region">%1$s. Dans la région dont parle l\'indice.</string>
+    <string name="cell_repeated">%1$s, en double</string>
+    <string name="pad_all_placed">%1$d, tous placés</string>
+    <string name="pad_one_left">%1$d, il en reste un</string>
+    <plurals name="pad_left">
+        <item quantity="one">%1$d, il en reste %2$d</item>
+        <item quantity="other">%1$d, il en reste %2$d</item>
+    </plurals>
+    <string name="pad_scanning">%1$s, montre où il peut aller</string>
+    <string name="pad_notes_mode">%1$s, mode notes</string>
+
+    <string name="cell_actions_title">LIGNE %1$d, COLONNE %2$d</string>
+    <string name="cell_actions_clue">Celui-ci vient avec la grille, il ne peut donc pas être changé.</string>
+    <plurals name="cell_actions_note_all">
+        <item quantity="one">Noter %1$d candidat</item>
+        <item quantity="other">Noter les %1$d candidats</item>
+    </plurals>
+    <string name="cell_actions_clear_notes">Effacer les notes</string>
+    <string name="why_not_title">POURQUOI PAS ?</string>
+    <string name="why_not_prompt">Touchez un chiffre pour savoir ce qui l\'en empêche.</string>
+    <string name="why_not_taken">Il y a déjà un %1$d %2$s, ligne %3$d, colonne %4$d.</string>
+    <string name="why_not_filled">Cette case contient déjà un %1$d. Effacez-le d\'abord.</string>
+    <string name="why_not_possible">Rien sur la grille n\'interdit le %1$d. Cela ne le rend pas juste, seulement possible.</string>
+    <string name="cell_actions_clear">Vider la case</string>
+
+    <string name="leave_title">Quitter cette grille ?</string>
+    <string name="leave_body">Elle vous attendra là où vous l\'avez laissée.</string>
+    <string name="leave_confirm">Quitter</string>
+    <string name="leave_cancel">Rester</string>
+
+    <string name="outcome_solved">RÉSOLU</string>
+    <string name="outcome_lost">PLUS D\'ERREURS POSSIBLES</string>
+    <string name="outcome_rated">%1$s, noté %2$s</string>
+    <string name="outcome_hints">INDICES</string>
+    <string name="outcome_mistakes">ERREURS</string>
+    <string name="outcome_moves">COUPS</string>
+    <string name="outcome_needed">Demandait un %1$s</string>
+    <string name="outcome_home">Accueil</string>
+    <string name="outcome_another">Une autre %1$s</string>
+
+    <string name="hint_remove_one">L\'enlever</string>
+    <string name="hint_remove_many">Les enlever</string>
+    <string name="hint_look_here_title">REGARDEZ ICI</string>
+    <string name="hint_look_here">Il y a quelque chose à trouver %1$s. C\'est tout ce que dit cet indice.</string>
+    <string name="hint_look_around">Il y a un pas à trouver. Celui-ci est réparti sur la grille au lieu de tenir dans une seule région.</string>
+    <string name="hint_what_kind">Quel genre de pas ?</string>
+    <string name="hint_menu_title">AIDE</string>
+    <string name="hint_menu_difficulty">Le pas suivant demande une technique de niveau %1$s.</string>
+    <string name="hint_menu_broken">Quelque chose que vous avez placé est faux, donc plus rien ne se déduit tant que ce n\'est pas corrigé.</string>
+    <string name="hint_menu_check">Y a-t-il une erreur ?</string>
+    <string name="hint_menu_look">Où dois-je regarder ?</string>
+    <string name="hint_menu_explain">Expliquer le pas suivant</string>
+    <string name="hint_menu_free">Demander ne coûte rien ici. La limite est désactivée.</string>
+    <string name="hint_check_clean">Rien de ce que vous avez placé n\'est faux.</string>
+    <string name="hint_close">Fermer</string>
+    <string name="hint_previous">Un pas en arrière</string>
+    <string name="hint_cells_here">Les cases sur lesquelles il repose sont éclairées %1$s.</string>
+    <string name="hint_where">Montrez-moi où</string>
+    <string name="hint_explain">Expliquez-le</string>
+    <string name="hint_do_it">Le placer</string>
+    <string name="hint_evidence">Sa ligne contient déjà %1$s. Sa colonne contient %2$s. Son bloc contient %3$s. Ensemble, cela fait tous les chiffres sauf le %4$d.</string>
+    <string name="hint_rests_on_earlier">Une partie de ceci repose sur des notes qu\'un indice précédent a éliminées. Elles sont écrites sur la grille, vous pouvez donc suivre à partir de là.</string>
+    <string name="hint_what_is_this">QU\'EST-CE QUE C\'EST ?</string>
+    <string name="hint_wrong_title">QUELQUE CHOSE NE VA PAS</string>
+    <string name="hint_wrong_one">L\'un des chiffres que vous avez placés ne peut pas être juste. Il est mis en évidence.</string>
+    <string name="hint_wrong_many">%1$d des chiffres que vous avez placés ne peuvent pas être justes. Ils sont mis en évidence.</string>
+    <string name="hint_wrong_until_one">Rien d\'autre ne peut être déduit tant qu\'il n\'est pas corrigé.</string>
+    <string name="hint_wrong_until_many">Rien d\'autre ne peut être déduit tant qu\'ils ne sont pas corrigés.</string>
+    <string name="hint_done_title">TERMINÉ</string>
+    <string name="hint_done_body">La grille est terminée.</string>
+    <string name="hint_stuck_title">RIEN À PROPOSER</string>
+    <string name="hint_stuck_body">Cette grille est valide, mais aucune des techniques que Sendoku connaît ne s\'y applique. Cela ne devrait pas arriver sur une grille de l\'application.</string>
+    <string name="hint_in_region">%1$s</string>
+    <string name="hint_in_regions">%1$s et %2$s</string>
+    <string name="hint_outcome_place" tools:ignore="PluralsCandidate">Donc la ligne %1$d, colonne %2$d vaut %3$d.</string>
+    <string name="hint_outcome_strike_one" tools:ignore="PluralsCandidate">Donc le %1$d peut disparaître %2$s.</string>
+    <string name="hint_outcome_strike_two" tools:ignore="PluralsCandidate">Donc le %1$d et le %2$d peuvent disparaître %3$s.</string>
+    <plurals name="hint_cells">
+        <item quantity="one">%1$d case</item>
+        <item quantity="other">%1$d cases</item>
+    </plurals>
+
+    <string name="house_row">de la ligne %1$d</string>
+    <string name="house_column">de la colonne %1$d</string>
+    <string name="house_box">du bloc %1$d</string>
+
+    <string name="glossary_title">Techniques</string>
+    <string name="back">RETOUR</string>
+
+    <string name="settings_title">Réglages</string>
+    <string name="settings_language">Langue</string>
+    <string name="language_system">Suivre le téléphone</string>
+    <string name="language_english">English</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_german">Deutsch</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_italian">Italiano</string>
+    <string name="language_japanese">日本語</string>
+    <string name="language_french">Français</string>
+    <string name="first_run_prompt">Sendoku est écrit en sept langues. Laquelle lisez-vous ?</string>
+    <string name="first_run_system_is">Votre téléphone est réglé sur %1$s</string>
+    <string name="first_run_no_translation">Votre téléphone est réglé sur une langue que Sendoku ne parle pas encore. L\'anglais est ce qui s\'en approche le plus.</string>
+    <string name="first_run_continue">Commencer à jouer</string>
+    <string name="settings_look">Apparence</string>
+    <string name="settings_light_or_dark">Clair ou sombre</string>
+    <string name="settings_terminal_is_dark">Terminal est sombre quel que soit le réglage du téléphone. C\'est voulu.</string>
+    <string name="settings_board">La grille</string>
+    <string name="settings_highlight_peers">Mettre en évidence la ligne, la colonne et le bloc</string>
+    <string name="settings_highlight_same">Mettre en évidence le même chiffre ailleurs</string>
+    <string name="settings_auto_clear">Effacer les notes qu\'un chiffre placé élimine</string>
+    <string name="settings_auto_notes">Garder toutes les cases annotées</string>
+    <string name="settings_auto_notes_note">L\'application tient les comptes. À partir d\'Expert, c\'est presque indispensable.</string>
+    <string name="settings_highlight_homes">Montrer où le chiffre choisi peut encore aller</string>
+    <string name="settings_auto_check">Me prévenir tout de suite quand un chiffre est faux</string>
+    <string name="settings_auto_check_note">Avec ceci activé, essayer ne coûte rien, et la grille perd presque toute sa tension.</string>
+    <string name="settings_auto_check_forced">Activé tant qu\'une limite d\'erreurs tourne, parce qu\'une erreur qui vous est comptée doit être une erreur que vous pouvez voir. Désactivez la limite ci-dessous pour jouer sans les deux.</string>
+    <string name="settings_flag_conflicts">Signaler un chiffre en double dans une ligne, une colonne ou un bloc</string>
+    <string name="settings_clock">L\'horloge</string>
+    <string name="settings_show_timer">Afficher le chronomètre</string>
+    <string name="settings_feedback">Retour</string>
+    <string name="settings_haptics">Vibrer quand un chiffre est placé</string>
+    <string name="settings_sound">Sons</string>
+    <string name="settings_sound_note">Des notes douces pendant que vous jouez. Les couper est à une touche, et le mode silencieux du téléphone l\'emporte sur les deux.</string>
+    <string name="settings_mistakes">Erreurs</string>
+    <string name="settings_mistake_limit">Terminer la partie après trois erreurs</string>
+    <string name="settings_mistake_note">Activé par défaut, à trois. Désactivez-le pour les niveaux élevés, où perdre une heure sur une étourderie est pénible.</string>
+    <string name="settings_about">À PROPOS DE SENDOKU</string>
+
+    <string name="theme_deep_field">Champ profond</string>
+    <string name="theme_deep_field_summary">Noir intégral, une touche de cyan, rien d\'autre</string>
+    <string name="theme_ink">Encre et papier</string>
+    <string name="theme_ink_summary">Un cahier de jeux, imprimé sur papier chaud</string>
+    <string name="theme_zen">Zen d\'ardoise</string>
+    <string name="theme_zen_summary">Sauge et pierre, et le moins de choses possible autour</string>
+    <string name="theme_terminal">Terminal</string>
+    <string name="theme_terminal_summary">Chasse fixe, angles nets, sombre uniquement</string>
+    <string name="mode_system">Suivre le système</string>
+    <string name="mode_light">Toujours clair</string>
+    <string name="mode_dark">Toujours sombre</string>
+
+    <string name="stats_title">Statistiques</string>
+    <string name="stats_solved">RÉSOLUES</string>
+    <string name="stats_streak">SÉRIE</string>
+    <string name="stats_hardest">PLUS DIFFICILE</string>
+    <string name="stats_hardest_note">La plus difficile que vous ayez terminée est une %1$s.</string>
+    <plurals name="stats_longest_run">
+        <item quantity="one">Votre plus longue série a duré %1$d jour.</item>
+        <item quantity="other">Votre plus longue série a duré %1$d jours.</item>
+    </plurals>
+    <string name="stats_totals">%1$s de jeu, indices utilisés : %2$d.</string>
+    <string name="stats_by_grade">Par niveau</string>
+    <string name="stats_hints_title">CE SUR QUOI VOUS AVEZ DEMANDÉ DE L\'AIDE</string>
+    <string name="stats_hints_note">Vous demandez le plus souvent %1$s. C\'est la leçon à relire.</string>
+    <string name="stats_needed">Ce que vos grilles demandaient</string>
+    <string name="stats_solved_count">Résolues : %1$d</string>
+    <string name="stats_solved_and_lost">Résolues : %1$d, perdues : %2$d</string>
+    <string name="stats_average">moy. %1$s</string>
+    <string name="stats_reset">EFFACER LES STATISTIQUES</string>
+    <string name="stats_reset_title">Jeter votre historique ?</string>
+    <string name="stats_reset_body">Chaque grille terminée, chaque série et chaque meilleur temps. Il n\'y a de copie nulle part ailleurs, donc c\'est sans retour.</string>
+    <string name="stats_reset_confirm">Effacer</string>
+    <string name="stats_reset_cancel">Garder</string>
+    <string name="stats_empty_title">Rien pour l\'instant</string>
+    <string name="stats_empty_body">Terminez une grille et ceci se remplit : le temps que prend chaque niveau, jusqu\'où vous êtes monté, et les techniques que vos grilles ont demandées.</string>
+
+    <string name="about_title">À propos</string>
+    <string name="about_version">Sendoku %1$s</string>
+    <string name="about_tagline">Une application de sudoku pour ceux qui n\'ont plus de sudokus difficiles.</string>
+    <string name="about_no_ads">Sans publicité</string>
+    <string name="about_no_ads_detail">Ni entre les grilles, ni pour les indices, jamais.</string>
+    <string name="about_no_tracking">Sans pistage</string>
+    <string name="about_no_tracking_detail">Rien n\'est mesuré et rien n\'est envoyé. Il n\'y a pas de serveur.</string>
+    <string name="about_no_purchases">Sans achats</string>
+    <string name="about_no_purchases_detail">Toutes les grilles et tous les indices sont déjà là.</string>
+    <string name="about_offline">Fonctionne hors ligne</string>
+    <string name="about_offline_detail">Le lot entier voyage dans l\'application.</string>
+    <string name="about_hints">Des indices qui enseignent</string>
+    <string name="about_hints_detail">Un indice nomme la technique et explique le raisonnement. Il ne se contente jamais de remplir une case, et il n\'est jamais vendu : trois viennent avec chaque grille, et la limite se désactive dans les réglages.</string>
+    <string name="about_rating">La difficulté est mesurée par la technique la plus difficile qu\'une grille demande vraiment, calculée en la résolvant comme le ferait une personne. C\'est pourquoi un Très difficile ici veut dire la même chose que le dernier Très difficile.</string>
+    <string name="about_licence">Sendoku est un logiciel libre sous licence GNU General Public License version 3.</string>
+    <string name="about_privacy">La politique de confidentialité dit la même chose dans la forme demandée par la boutique, sur adilzhany.github.io/sendoku/privacy</string>
+    <string name="about_licences">LICENCES OPEN SOURCE</string>
+    <string name="licences_title">Licences</string>
+
+    <string name="look_naked_single">Il y a une case où un seul chiffre peut encore entrer.</string>
+    <string name="look_hidden_single">Il y a un chiffre auquel il ne reste qu\'une seule place.</string>
+    <string name="look_locked_candidates_pointing">Dans un bloc, un chiffre est coincé sur une seule ligne ou colonne.</string>
+    <string name="look_locked_candidates_claiming">Sur une ligne, un chiffre ne peut se placer que dans un seul bloc.</string>
+    <string name="look_naked_pair">Deux cases d\'une même région portent les deux mêmes chiffres et rien d\'autre.</string>
+    <string name="look_hidden_pair">Deux chiffres n\'ont nulle part où aller dans une région, sauf les deux mêmes cases.</string>
+    <string name="look_naked_triple">Trois cases d\'une même région se partagent trois chiffres.</string>
+    <string name="look_hidden_triple">Trois chiffres sont enfermés dans les trois mêmes cases.</string>
+    <string name="look_naked_quad">Quatre cases d\'une même région se partagent quatre chiffres.</string>
+    <string name="look_hidden_quad">Quatre chiffres sont enfermés dans les quatre mêmes cases.</string>
+    <string name="look_x_wing">Deux lignes portent un chiffre dans les deux mêmes colonnes, ou l\'inverse.</string>
+    <string name="look_swordfish">Trois lignes portent un chiffre dans les trois mêmes colonnes.</string>
+    <string name="look_jellyfish">Quatre lignes portent un chiffre dans les quatre mêmes colonnes.</string>
+    <string name="look_xy_wing">Trois cases à deux chiffres chacune, disposées de façon qu\'un chiffre soit chassé.</string>
+    <string name="look_xyz_wing">Comme un XY-Wing, mais la case du milieu porte aussi un troisième chiffre.</string>
+    <string name="look_w_wing">Deux cases portant la même paire, reliées par un chiffre qui n\'a que deux places.</string>
+    <string name="look_simple_colouring">Un chiffre forme une chaîne qui alterne d\'un bout à l\'autre.</string>
+    <string name="look_multi_colouring">Deux chaînes distinctes sur un même chiffre, opposées l\'une à l\'autre.</string>
+    <string name="look_remote_pairs">Une chaîne de cases portant toutes exactement les deux mêmes chiffres.</string>
+    <string name="look_unique_rectangle">Quatre cases forment un rectangle qui donnerait deux solutions à la grille.</string>
+    <string name="look_bug_plus_one">Toutes les cases sauf une sont descendues à deux chiffres.</string>
+    <string name="look_x_chain">Une chaîne sur un chiffre, alternant entre doit et ne peut pas.</string>
+    <string name="look_xy_chain">Une chaîne de cases à deux chiffres, chacune forçant la suivante.</string>
+    <string name="look_forcing_chain">Une case avec exactement deux possibilités, quand il ne reste plus rien d\'autre à trouver.</string>
+    <string name="look_death_blossom">Une case, et un groupe pour chaque chiffre qu\'elle pourrait être, où la case voit ce chiffre partout dans le groupe.</string>
+    <string name="look_als_xy_wing">Trois groupes auxquels il manque un chiffre pour être pleins, reliés en ligne par deux chiffres différents.</string>
+    <string name="look_sue_de_coq">Un bloc et une ligne qui se croisent, où les cases communes portent deux chiffres de plus qu\'elles n\'ont de place.</string>
+    <string name="look_als_xz">Deux groupes de cases, chacun à un chiffre d\'être verrouillé.</string>
+
+    <string name="because_naked_single">Tous les autres chiffres figurent déjà dans sa ligne, sa colonne ou son bloc, donc il n\'en reste qu\'un. Il doit aller ici.</string>
+    <string name="because_hidden_single">La région a besoin de ce chiffre quelque part, et toutes les autres cases sont exclues, donc c\'est la seule place qui reste.</string>
+    <string name="because_locked_candidates_pointing">Le bloc doit contenir ce chiffre quelque part, et toutes les places possibles sont sur une même ligne. Le chiffre est donc sur cette ligne, et il ne peut être nulle part ailleurs sur elle.</string>
+    <string name="because_locked_candidates_claiming">La ligne doit contenir ce chiffre quelque part, et toutes les places possibles sont dans un même bloc. Le chiffre est donc dans ce bloc, et il ne peut être ailleurs dans le bloc.</string>
+    <string name="because_naked_pair">Ces deux cases prendront ces deux chiffres, un chacune. Aucune autre case de la région ne peut porter l\'un ou l\'autre.</string>
+    <string name="because_hidden_pair">La région a besoin des deux chiffres, et seules ces deux cases peuvent les prendre, donc elles en prennent un chacune. Tout le reste dans ces deux cases disparaît.</string>
+    <string name="because_naked_triple">Trois cases, trois chiffres, un chacune. Rien d\'autre dans la région ne peut les utiliser, même si aucune case ne les porte tous les trois.</string>
+    <string name="because_hidden_triple">Trois chiffres sans autre place remplissent trois cases entre eux, donc toute autre note dans ces cases est impossible.</string>
+    <string name="because_naked_quad">Quatre cases prennent quatre chiffres entre elles, ce qui exclut les quatre du reste de la région.</string>
+    <string name="because_hidden_quad">Quatre chiffres enfermés dans quatre cases les remplissent, donc rien d\'autre ne peut y vivre.</string>
+    <string name="because_x_wing">Chacune des deux lignes a besoin du chiffre une fois, et toutes deux ne peuvent le placer que dans les deux mêmes colonnes. À elles deux, elles occupent les deux colonnes, donc aucune autre ligne ne peut y mettre ce chiffre.</string>
+    <string name="because_swordfish">Trois lignes qui ont besoin du chiffre, et seulement trois colonnes où le mettre. Les trois lignes occupent les trois colonnes, donc rien d\'autre dans ces colonnes ne peut le porter.</string>
+    <string name="because_jellyfish">Quatre lignes et quatre colonnes, le même raisonnement encore. Les quatre lignes remplissent les quatre colonnes entre elles.</string>
+    <string name="because_xy_wing">La case du milieu est l\'un de ses deux chiffres. Dans les deux cas, l\'une des deux cases extérieures est forcée au chiffre commun, donc rien de ce qui voit les deux ne peut le porter.</string>
+    <string name="because_xyz_wing">La case du milieu peut aussi être le chiffre commun, donc la conclusion est plus faible : seule une case qui voit les trois le perd.</string>
+    <string name="because_w_wing">Si aucune des deux cases de la paire ne prenait le second chiffre, toutes deux prendraient le premier, et la région reliée n\'aurait plus où le mettre. Donc l\'une des deux est le second chiffre.</string>
+    <string name="because_simple_colouring">Coloriez la chaîne en alternance et exactement une couleur est vraie. Soit une couleur tombe deux fois dans une même région et elle est donc fausse, soit une case extérieure voit les deux couleurs et perd le chiffre dans tous les cas.</string>
+    <string name="because_multi_colouring">Une couleur de la première chaîne entre en conflit avec une couleur de la seconde, ce qui force le chiffre dans l\'une des deux couleurs opposées. Tout ce qui voit ces deux-là ne peut pas le porter.</string>
+    <string name="because_remote_pairs">Les voisines de la chaîne se voient, donc elles alternent. Les deux extrémités sont à un nombre impair de pas et portent donc un chiffre chacune, et tout ce qui voit les deux ne peut porter ni l\'un ni l\'autre.</string>
+    <string name="because_unique_rectangle">Si ces quatre cases ne portaient que les deux mêmes chiffres, on pourrait les permuter autour du rectangle et la grille aurait deux solutions. Elle en a une, donc cette disposition est impossible.</string>
+    <string name="because_bug_plus_one">Si le candidat en trop était retiré, chaque chiffre apparaîtrait exactement deux fois dans chaque région, et une grille pareille a toujours un nombre pair de solutions. Celle-ci en a une, donc le candidat en trop est la solution.</string>
+    <string name="because_x_chain">La chaîne alterne entre des places où le chiffre doit être et des places où il ne peut pas être. Les deux extrémités ne peuvent pas en être privées toutes les deux, donc tout ce qui voit les deux le perd.</string>
+    <string name="because_xy_chain">Supposons que la première case ne soit pas le chiffre. Suivez la chaîne et la dernière case y est forcée. Donc l\'une des deux extrémités le porte.</string>
+    <string name="because_forcing_chain">Suivez les deux possibilités. Si l\'une laisse une case sans rien à y mettre, cette possibilité n\'a jamais été réelle et elle disparaît. Si les deux mettent le même chiffre au même endroit, ce chiffre y va quelle que soit celle qui est vraie. Rien ici ne dépend de la justesse de l\'hypothèse, et c\'est ce qui en fait une preuve et non un pari.</string>
+    <string name="because_death_blossom">Quel que soit le chiffre de la case, elle chasse son propre chiffre du groupe correspondant, et ce groupe devient plein et doit utiliser tous les chiffres qui lui restent. Si tous les groupes portent le même chiffre en trop, ce chiffre tombe dans l\'un d\'eux quoi qu\'il arrive à la case. Tout ce qui le voit dans chacun d\'eux le perd.</string>
+    <string name="because_als_xy_wing">Si le chiffre menacé disparaît du premier groupe, ce groupe est plein et doit prendre le chiffre qu\'il partage avec celui du milieu. Le groupe du milieu perd alors ce chiffre, il est donc plein lui aussi et prend celui qu\'il partage avec le troisième. Le troisième groupe est alors plein également et doit utiliser le chiffre menacé. Donc aucune case qui le voit dans les deux groupes extérieurs ne peut le porter.</string>
+    <string name="because_sue_de_coq">Les cases communes utiliseront tous leurs chiffres sauf deux, et les deux groupes de part et d\'autre réclament exactement ces deux-là. Chaque chiffre du groupe de la ligne est donc dépensé dans la ligne, et chaque chiffre du groupe du bloc dans le bloc. Rien d\'autre dans l\'un ou l\'autre ne peut les porter.</string>
+    <string name="because_als_xz">Un chiffre commun ne peut apparaître que dans l\'un des deux groupes, ce qui verrouille l\'autre et l\'oblige à utiliser tous les chiffres qu\'il a. Le second chiffre commun tombe donc dans l\'un ou l\'autre.</string>
+
+    <string name="technique_naked_single">Singleton nu</string>
+    <string name="technique_hidden_single">Singleton caché</string>
+    <string name="technique_locked_candidates_pointing">Paire ou triplet pointant</string>
+    <string name="technique_locked_candidates_claiming">Paire ou triplet revendiquant</string>
+    <string name="technique_naked_pair">Paire nue</string>
+    <string name="technique_hidden_pair">Paire cachée</string>
+    <string name="technique_naked_triple">Triplet nu</string>
+    <string name="technique_hidden_triple">Triplet caché</string>
+    <string name="technique_naked_quad">Quadruplet nu</string>
+    <string name="technique_hidden_quad">Quadruplet caché</string>
+    <string name="technique_x_wing">X-Wing</string>
+    <string name="technique_simple_colouring">Coloration simple</string>
+    <string name="technique_xy_wing">XY-Wing</string>
+    <string name="technique_xyz_wing">XYZ-Wing</string>
+    <string name="technique_w_wing">W-Wing</string>
+    <string name="technique_swordfish">Swordfish</string>
+    <string name="technique_remote_pairs">Paires distantes</string>
+    <string name="technique_unique_rectangle">Rectangle unique</string>
+    <string name="technique_bug_plus_one">BUG plus un</string>
+    <string name="technique_jellyfish">Jellyfish</string>
+    <string name="technique_multi_colouring">Coloration multiple</string>
+    <string name="technique_x_chain">Chaîne X</string>
+    <string name="technique_xy_chain">Chaîne XY</string>
+    <string name="technique_als_xz">ALS XZ</string>
+    <string name="technique_sue_de_coq">Sue de Coq</string>
+    <string name="technique_als_xy_wing">ALS XY-Wing</string>
+    <string name="technique_death_blossom">Death blossom</string>
+    <string name="technique_forcing_chain">Chaîne forcée</string>
+    <string name="daily_title">Quotidien</string>
+    <string name="daily_no_streak">Pas encore de série. Résolvez la grille du jour pour en commencer une.</string>
+    <string name="daily_previous_month">AVANT</string>
+    <string name="daily_next_month">APRÈS</string>
+    <string name="daily_cell_solved">résolue</string>
+    <string name="daily_cell_attempted">jouée mais pas terminée</string>
+    <string name="daily_cell_unplayed">pas jouée</string>
+    <string name="daily_cell_future">pas encore</string>
+    <string name="daily_play_today">Jouer celle du jour</string>
+    <plurals name="daily_streak">
+        <item quantity="one">%1$d jour d\'affilée</item>
+        <item quantity="other">%1$d jours d\'affilée</item>
+    </plurals>
+    <string name="daily_cell">%1$d, %2$s, %3$s</string>
+    <string name="daily_cell_today">aujourd\'hui, %1$d, %2$s, %3$s</string>
+    <string name="stat_difficulty">Niveau</string>
+    <string name="stat_mistakes">Erreurs</string>
+    <string name="stat_hints">Indices</string>
+    <string name="stat_time">Temps</string>
+    <string name="stat_pause">Pause</string>
+
+    <string name="stage_first_steps">Premiers pas</string>
+    <string name="stage_one_at_a_time">Un chiffre à la fois</string>
+    <string name="stage_notes">Notes</string>
+    <string name="stage_locked_to_a_line">Chiffres enfermés sur une ligne</string>
+    <string name="stage_groups">Groupes</string>
+    <string name="stage_patterns">Motifs à travers la grille</string>
+    <string name="stage_wings">Wings</string>
+    <string name="stage_colouring">Coloration</string>
+    <string name="stage_one_answer">Supposer une solution unique</string>
+    <string name="stage_chains">Chaînes</string>
+    <string name="stage_the_far_end">L\'autre bout</string>
+    <string name="stage_the_deep_end">Le grand bain</string>
+
+    <string name="lesson_what_is_title">Ce qu\'est un sudoku</string>
+    <string name="lesson_what_is_summary">Chaque ligne, chaque colonne et chaque bloc contiennent chaque chiffre une fois.</string>
+    <string name="lesson_what_is_1">Voici un sudoku. Un petit, quatre cases sur quatre, pour que tout tienne dans la tête d\'un coup. La grille en taille réelle marche exactement pareil.</string>
+    <string name="lesson_what_is_2">Voici une ligne. Elle doit contenir les chiffres 1, 2, 3 et 4, chacun une fois. Sans répétition et sans oubli.</string>
+    <string name="lesson_what_is_3">Voici une colonne. Même règle : 1, 2, 3 et 4, chacun une fois.</string>
+    <string name="lesson_what_is_4">C\'est tout le jeu. Il n\'y a pas d\'arithmétique dedans, rien à additionner. C\'est une seule règle sur les endroits où un chiffre a le droit d\'être.</string>
+    <string name="lesson_what_is_5">Ces deux cases sont vides. Les remplir sans casser la règle, c\'est ce que veut dire résoudre.</string>
+
+    <string name="lesson_houses_title">Lignes, colonnes et blocs</string>
+    <string name="lesson_houses_summary">Une case appartient à trois maisons à la fois, et partage une règle avec les trois.</string>
+    <string name="lesson_houses_1">La règle parlait de lignes et de colonnes. Il existe un troisième type de groupe, et c\'est lui qui rend un sudoku intéressant à résoudre.</string>
+    <string name="lesson_houses_2">Voici de nouveau une ligne.</string>
+    <string name="lesson_houses_3">Voici une colonne.</string>
+    <string name="lesson_houses_4">Et voici un bloc, marqué par les traits épais. Il contient lui aussi chaque chiffre une fois.</string>
+    <string name="lesson_houses_5">Cette case appartient donc à trois groupes en même temps. Toutes les cases avec lesquelles elle partage un groupe sont éclairées, et aucune ne peut porter le même chiffre qu\'elle. Ces trois groupes s\'appellent des maisons, et le mot sert à partir d\'ici.</string>
+
+    <string name="lesson_givens_title">Les chiffres de départ</string>
+    <string name="lesson_givens_summary">Les chiffres imprimés au début sont fixes, et ce sont eux qui rendent la solution unique.</string>
+    <string name="lesson_givens_1">Ces chiffres viennent avec la grille. On les appelle les chiffres de départ et ils ne peuvent être ni changés ni effacés.</string>
+    <string name="lesson_givens_2">Ils sont dessinés autrement que ceux que vous placez, pour qu\'on sache toujours lesquels sont lesquels. Dans cette application, ceux de départ sont les plus gras.</string>
+    <string name="lesson_givens_3">Voici les cases que vous remplissez.</string>
+    <string name="lesson_givens_4">Une grille bien faite n\'a qu\'une seule façon de les remplir. C\'est une promesse sur la grille, pas sur vous : si vous bloquez, il n\'y a toujours qu\'une solution, et elle se déduit toujours. Toutes les grilles de cette application sont faites ainsi.</string>
+
+    <string name="lesson_first_four_title">Votre première résolution</string>
+    <string name="lesson_first_four_summary">Regardez ce qu\'une case ne peut pas être, et parfois il ne reste qu\'un chiffre.</string>
+    <string name="lesson_first_four_1">Résolvez-en une. Deux cases sont vides, et la règle suffit à remplir les deux.</string>
+    <string name="lesson_first_four_2">Commencez par cette ligne. Elle a déjà un 1 et un 4, donc les deux cases vides se partagent le 2 et le 3. La question est dans quel ordre.</string>
+    <string name="lesson_first_four_3">Cette case ne peut pas être 2, parce que sa colonne en a déjà un. Elle vaut donc 3.</string>
+    <string name="lesson_first_four_4">Il reste une case vide, et un chiffre inutilisé dans la ligne.</string>
+    <string name="lesson_first_four_5">À vous. Placez le chiffre qui va ici.</string>
+    <string name="lesson_first_four_wrong">Pas tout à fait. Regardez la ligne : quel chiffre de 1 à 4 lui manque encore ?</string>
+    <string name="lesson_first_four_6">Résolu. Voilà un sudoku, quelle que soit la taille de la grille.</string>
+
+    <string name="lesson_first_six_title">Une grille plus grande</string>
+    <string name="lesson_first_six_summary">Les blocs ne sont pas toujours carrés, et la règle s\'en moque.</string>
+    <string name="lesson_first_six_1">Six sur six. La règle n\'a pas changé, les blocs si : ils font trois de large et deux de haut.</string>
+    <string name="lesson_first_six_2">Voici un bloc. Trois en largeur, deux en hauteur, six cases, chaque chiffre de 1 à 6 une fois.</string>
+    <string name="lesson_first_six_3">Cela surprend au début, parce que l\'œil attend un carré. Cela vaut un moment d\'arrêt : trouvez le bloc où se trouve cette case avant de chercher quoi que ce soit d\'autre.</string>
+    <string name="lesson_first_six_4">À vous. Il manque un chiffre au bloc en haut à gauche.</string>
+    <string name="lesson_first_six_wrong">Pas celui-là. Comptez ce que le bloc contient déjà, puis trouvez le chiffre de 1 à 6 qui n\'y est pas.</string>
+    <string name="lesson_first_six_5">Bien. À partir d\'ici les grilles font neuf sur neuf et les blocs redeviennent carrés, mais l\'habitude de vérifier les trois maisons est celle qu\'il faut garder.</string>
+
+    <string name="lesson_naked_single_title">Le singleton nu</string>
+    <string name="lesson_naked_single_summary">Une case où il ne reste qu\'un chiffre doit le porter.</string>
+    <string name="lesson_naked_single_1">Une grille en taille réelle, et la première technique qui a un nom. C\'est la plus simple qui soit, et même sur les grilles les plus dures c\'est elle qui remplit la plupart des cases.</string>
+    <string name="lesson_naked_single_2">Regardez cette case toute seule. Demandez-vous ce qu\'elle peut porter.</string>
+    <string name="lesson_naked_single_3">Toutes les cases qui excluent quelque chose sont éclairées. Entre sa ligne, sa colonne et son bloc, huit des neuf chiffres figurent déjà quelque part qu\'elle voit.</string>
+    <string name="lesson_naked_single_4">Il reste donc un chiffre, et la case doit le porter. Rien d\'autre n\'est possible. Voilà un singleton nu : nu parce qu\'on le voit en regardant une seule case, singleton parce qu\'un seul chiffre survit.</string>
+    <string name="lesson_naked_single_5">L\'application l\'appelle par son nom quand elle vous donne un indice. Vous savez maintenant ce que cela veut dire.</string>
+    <string name="lesson_hidden_single_title">Le singleton caché</string>
+    <string name="lesson_hidden_single_summary">Un chiffre auquel il ne reste qu\'une place dans une maison doit y aller.</string>
+    <string name="lesson_hidden_single_1">L\'autre sorte de singleton, et celle qui trouve le plus de cases. Un singleton nu est une case à laquelle il reste un chiffre. Voici l\'image dans le miroir : un chiffre auquel il reste une case.</string>
+    <string name="lesson_hidden_single_2">Prenez une maison et choisissez un chiffre qui lui manque encore. Demandez-vous où, dans cette maison, ce chiffre pourrait aller.</string>
+    <string name="lesson_hidden_single_3">Dans ce bloc, la réponse est une seule case. Toutes les autres cases vides du bloc sont exclues par leur propre ligne ou colonne.</string>
+    <string name="lesson_hidden_single_4">Le chiffre va donc là, même si cette case pourrait porter plusieurs chiffres à elle seule. C\'est pour cela qu\'on l\'appelle caché : le chiffre se cache parmi les autres.</string>
+    <string name="lesson_hidden_single_5">C\'est celui qui vaut la peine d\'être bien appris. Sur la plupart des grilles, c\'est lui qui fait avancer quand les singletons nus s\'épuisent.</string>
+    <string name="lesson_hidden_single_turn">À vous. Placez le chiffre qui n\'a nulle part ailleurs où aller dans ce bloc.</string>
+    <string name="lesson_hidden_single_wrong">Pas celui-là. Demandez-vous quel chiffre manque au bloc, puis vérifiez où chacun pourrait vraiment tenir.</string>
+
+    <string name="lesson_scanning_title">Comment regarder</string>
+    <string name="lesson_scanning_summary">Balayez la grille avec un chiffre au lieu d\'étudier les cases une à une.</string>
+    <string name="lesson_scanning_1">Vous connaissez maintenant deux techniques. Les connaître n\'est pas les trouver, et c\'est les trouver qui prend du temps.</string>
+    <string name="lesson_scanning_2">Ne lisez pas la grille case par case. Prenez un chiffre, par exemple celui qui figure déjà le plus souvent, et regardez les trois blocs d\'une bande.</string>
+    <string name="lesson_scanning_3">Pour chaque bloc, une seule question : où ce chiffre peut-il aller ? Les lignes et colonnes qui le contiennent déjà barrent presque toutes les réponses, et souvent il ne reste qu\'une case.</string>
+    <string name="lesson_scanning_4">Passez ensuite à la bande suivante, et quand le chiffre est épuisé, passez au chiffre suivant. Voilà le balayage, et c\'est ce que font les joueurs rapides quand ils ont l\'air de fixer la grille sans rien faire.</string>
+    <string name="lesson_scanning_5">Être méthodique ne coûte rien et évite la sensation de blocage, qui est d\'habitude la sensation d\'avoir regardé le même coin quatre fois.</string>
+
+    <string name="lesson_first_nine_title">Une grille entière, rien que des singletons</string>
+    <string name="lesson_first_nine_summary">Tout ce que vous avez appris jusqu\'ici suffit à terminer une grille complète.</string>
+    <string name="lesson_first_nine_1">Un vrai neuf sur neuf, au niveau Facile. Chaque pas est un singleton, nu ou caché, et il n\'y a rien ici que vous n\'ayez pas déjà rencontré.</string>
+    <string name="lesson_first_nine_2">En voici un pour démarrer. Cette case a huit des neuf chiffres exclus par ce qu\'elle voit.</string>
+    <string name="lesson_first_nine_3">Voilà la forme d\'une grille Facile. Des singletons jusqu\'au bout, et aucun pari à aucun moment.</string>
+    <string name="lesson_first_nine_4">En quittant cette leçon, jouez-en une. L\'étape suivante parle de notes, et les notes ne commencent à valoir leur peine que sur des grilles plus dures que celle-ci.</string>
+    <string name="lesson_first_nine_turn">À vous. Un seul chiffre est possible ici.</string>
+    <string name="lesson_first_nine_wrong">Regardez de nouveau la ligne, la colonne et le bloc de cette case, et faites la liste de ce qu\'ils contiennent déjà.</string>
+
+    <string name="lesson_pencil_marks_title">Les notes</string>
+    <string name="lesson_pencil_marks_summary">Une note est la trace de ce que vous avez déjà déduit, pour ne pas le déduire deux fois.</string>
+    <string name="lesson_pencil_marks_1">À partir d\'ici, les grilles cessent de céder aux singletons, et il va falloir écrire. Une note, ou marque au crayon, est un petit chiffre dans une case qui dit que ce chiffre y est encore possible.</string>
+    <string name="lesson_pencil_marks_2">Regardez cette case. Comprendre qu\'elle ne peut être que l\'un de deux chiffres prend quelques secondes. Écrire ces deux chiffres fait que la prochaine fois cela ne prendra rien du tout.</string>
+    <string name="lesson_pencil_marks_3">Une note n\'est que cela. Ce n\'est ni un pari ni un engagement. C\'est la trace d\'une déduction déjà faite.</string>
+    <string name="lesson_pencil_marks_4">Toutes les techniques à partir d\'ici portent sur des motifs dans les notes, pas sur des motifs dans les chiffres. Paires, triplets, poissons et chaînes se lisent tous dans les notes.</string>
+    <string name="lesson_pencil_marks_5">Personne ne résout un sudoku difficile de tête, et celui qui n\'écrit rien sur un Expert n\'est pas malin, il est lent.</string>
+
+    <string name="lesson_when_to_mark_title">Quand les écrire</string>
+    <string name="lesson_when_to_mark_summary">Mettez des notes quand les singletons s\'épuisent, pas avant.</string>
+    <string name="lesson_when_to_mark_1">Il y a deux façons d\'utiliser les notes, et la différence compte.</string>
+    <string name="lesson_when_to_mark_2">La première est de remplir chaque case vide avec tous les chiffres possibles, d\'un coup, avant toute autre chose. C\'est complet, à la main cela prend plusieurs minutes, et sur une grille facile presque tout est perdu parce que les singletons auraient fini la grille de toute façon.</string>
+    <string name="lesson_when_to_mark_3">La seconde est de n\'annoter que là où vous travaillez. Ces quatre cases méritent des notes parce qu\'il se passe quelque chose entre elles. Le reste de la grille non.</string>
+    <string name="lesson_when_to_mark_4">Le conseil honnête : résolvez d\'abord les singletons, et commencez à annoter quand vous cessez d\'en trouver. Sur papier cela fait gagner du temps pour de bon. Dans cette application, remplir toutes les notes tient en une touche, donc le coût est plus faible, mais une grille pleine de chiffres reste plus difficile à lire qu\'une grille annotée seulement là où il faut.</string>
+
+    <string name="lesson_marks_true_title">Garder les notes honnêtes</string>
+    <string name="lesson_marks_true_summary">Une note périmée est pire que pas de note du tout.</string>
+    <string name="lesson_marks_true_1">Les notes ont un danger. Chaque chiffre que vous placez en rend certaines fausses, et une note fausse vous entraîne dans un raisonnement qui ne peut pas être juste.</string>
+    <string name="lesson_marks_true_2">Placez un chiffre ici, et toutes les cases qui le voient perdent ce chiffre comme possibilité. Si ces notes ne sont pas effacées, la prochaine technique que vous repérez pourrait être bâtie sur l\'une d\'elles.</string>
+    <string name="lesson_marks_true_3">Cette application peut le faire pour vous. Un réglage s\'appelle effacer les notes qu\'un chiffre placé élimine, et il est activé par défaut. Sur papier, cela se fait à la main, et c\'est de là que viennent presque toutes les erreurs.</string>
+    <string name="lesson_marks_true_4">Quand une grille tourne mal sans qu\'on voie pourquoi, la première chose à soupçonner est une vieille note. Le bouton d\'indice vous dira si un chiffre que vous avez placé ne peut pas être juste.</string>
+
+    <string name="lesson_pointing_title">La paire pointante</string>
+    <string name="lesson_pointing_summary">Si un chiffre d\'un bloc est coincé sur une ligne, il quitte cette ligne partout ailleurs.</string>
+    <string name="lesson_pointing_1">La première technique qui retire des possibilités au lieu de placer un chiffre. Presque toutes celles qui suivent font cela, et il faut s\'y habituer : on avance sans écrire un seul chiffre.</string>
+    <string name="lesson_pointing_2">Regardez où un chiffre peut aller dans ce bloc. Toutes les places possibles sont sur la même colonne.</string>
+    <string name="lesson_pointing_3">Le bloc doit contenir ce chiffre quelque part. Où qu\'il finisse, il est donc dans cette colonne.</string>
+    <string name="lesson_pointing_4">Ce qui veut dire que le reste de la colonne ne peut pas le porter. Ces cases perdent ce chiffre comme possibilité, même si elles sont très loin du bloc.</string>
+    <string name="lesson_pointing_5">On dit pointante parce que la paire à l\'intérieur du bloc pointe le long de la ligne et la nettoie.</string>
+
+    <string name="lesson_claiming_title">La paire revendiquante</string>
+    <string name="lesson_claiming_summary">Si un chiffre d\'une ligne est coincé dans un bloc, il quitte ce bloc partout ailleurs.</string>
+    <string name="lesson_claiming_1">Le même raisonnement lu à l\'envers, et il vaut la peine d\'être vu à part parce que l\'œil le trouve à un autre endroit.</string>
+    <string name="lesson_claiming_2">Cette fois, partez d\'une ligne. Regardez où un chiffre peut aller le long de cette ligne.</string>
+    <string name="lesson_claiming_3">Toutes les places possibles sont dans le même bloc. La ligne doit contenir ce chiffre quelque part, donc le chiffre est dans ce bloc.</string>
+    <string name="lesson_claiming_4">Ce qui veut dire que le reste du bloc le perd. Ces cases ne peuvent plus le porter.</string>
+    <string name="lesson_claiming_5">Pointer regarde un bloc et nettoie une ligne. Revendiquer regarde une ligne et nettoie un bloc. Deux noms, une idée, et vous verrez les deux dans toute grille difficile.</string>
+
+    <string name="lesson_naked_pair_title">La paire nue</string>
+    <string name="lesson_naked_pair_summary">Deux cases portant les deux mêmes chiffres se les approprient.</string>
+    <string name="lesson_naked_pair_1">Les groupes, maintenant. Voici le plus petit d\'entre eux et le motif qui rend les autres évidents.</string>
+    <string name="lesson_naked_pair_2">Ces deux cases sont dans la même maison, et chacune ne peut être que l\'un des deux mêmes chiffres.</string>
+    <string name="lesson_naked_pair_3">À elles deux, elles prendront ces deux chiffres, un chacune. Lequel est lequel n\'a pas d\'importance et vous n\'avez pas besoin de le savoir.</string>
+    <string name="lesson_naked_pair_4">Donc aucune autre case de cette maison ne peut porter l\'un ou l\'autre. Cette case en perd un.</string>
+    <string name="lesson_naked_pair_5">Nue, encore, parce qu\'on la voit en lisant les deux cases. Rien n\'est caché et aucune autre case n\'entre dans le raisonnement.</string>
+
+    <string name="lesson_hidden_pair_title">La paire cachée</string>
+    <string name="lesson_hidden_pair_summary">Deux chiffres auxquels il ne reste que les deux mêmes places s\'approprient ces cases.</string>
+    <string name="lesson_hidden_pair_1">L\'image dans le miroir de la paire nue, exactement comme le singleton caché reflète le nu.</string>
+    <string name="lesson_hidden_pair_2">Dans cette maison, deux chiffres ne peuvent aller chacun que dans les deux mêmes cases.</string>
+    <string name="lesson_hidden_pair_3">Ces deux chiffres prendront ces deux cases. Donc quoi que ces cases aient eu l\'air de pouvoir porter d\'autre, elles ne le peuvent pas.</string>
+    <string name="lesson_hidden_pair_4">Les deux cases perdent toutes leurs autres notes. Ce sont maintenant une paire nue, et c\'est souvent à cela que sert le motif : transformer une paire cachée en une paire nue qui nettoie le reste de la maison.</string>
+    <string name="lesson_hidden_pair_5">Les paires cachées sont plus difficiles à voir que les nues parce qu\'il faut regarder les chiffres au lieu des cases. Sur une grille qui stagne, elles valent l\'effort.</string>
+
+    <string name="lesson_naked_triple_title">Le triplet nu</string>
+    <string name="lesson_naked_triple_summary">Trois cases qui se partagent trois chiffres se les approprient, même si aucune ne les porte tous.</string>
+    <string name="lesson_naked_triple_1">Une paire avec une case de plus, et une subtilité qui attrape tout le monde la première fois.</string>
+    <string name="lesson_naked_triple_2">Ces trois cases sont dans la même maison, et à elles trois elles n\'utilisent que trois chiffres différents.</string>
+    <string name="lesson_naked_triple_3">Voici la subtilité : aucune n\'a besoin de porter les trois. Deux chiffres dans une case, deux dans la suivante, deux dans la troisième, c\'est un triplet, tant que seulement trois chiffres apparaissent en tout.</string>
+    <string name="lesson_naked_triple_4">Les trois cases prendront les trois chiffres, donc toutes les autres cases de la maison perdent les trois. Cela fait beaucoup de notes qui partent d\'un coup.</string>
+    <string name="lesson_naked_triple_5">Quand vous cherchez, comptez les chiffres différents sur deux ou trois cases au lieu de chercher des notes identiques. C\'est l\'habitude qui trouve les triplets.</string>
+
+    <string name="lesson_hidden_triple_title">Le triplet caché</string>
+    <string name="lesson_hidden_triple_summary">Trois chiffres auxquels il ne reste que trois places s\'approprient ces cases.</string>
+    <string name="lesson_hidden_triple_1">La même relation que la paire cachée, d\'une taille au-dessus, et vraiment difficile à repérer.</string>
+    <string name="lesson_hidden_triple_2">Dans cette maison, trois chiffres ne peuvent aller que dans les trois mêmes cases.</string>
+    <string name="lesson_hidden_triple_3">Ces trois cases portent donc ces trois chiffres, et toutes les autres notes qu\'elles contiennent peuvent partir.</string>
+    <string name="lesson_hidden_triple_4">Ne les cherchez pas en premier. Cherchez-les quand une maison a encore plusieurs cases et que rien d\'autre n\'a marché. La plupart du temps, un motif nu dans la même maison est plus facile à voir.</string>
+
+    <string name="lesson_quads_title">Les quadruplets</string>
+    <string name="lesson_quads_summary">La même idée encore, avec quatre, à connaître mais rarement à chercher.</string>
+    <string name="lesson_quads_1">Paires, triplets, et maintenant quadruplets. Le raisonnement ne change pas : quatre cases qui utilisent quatre chiffres entre elles se les approprient, et quatre chiffres qui n\'ont que quatre places s\'approprient ces cases.</string>
+    <string name="lesson_quads_2">Voici un quadruplet nu. Quatre cases, quatre chiffres entre elles, et le reste de la maison perd les quatre.</string>
+    <string name="lesson_quads_3">Et voici le conseil honnête. Les quadruplets sont réels et légitimes, mais ils sont rares, et un quadruplet dans une maison à cinq ou six cases vides veut d\'habitude dire qu\'il y a un motif plus simple dans les autres cases et que vous l\'avez manqué.</string>
+    <string name="lesson_quads_4">Voici un quadruplet caché, pour être complet. Quatre chiffres avec quatre places.</string>
+    <string name="lesson_quads_5">Apprenez à les reconnaître pour qu\'un indice qui en nomme un ait du sens. Ne passez pas votre temps à les chercher.</string>
+
+    <string name="lesson_x_wing_title">Le X-Wing</string>
+    <string name="lesson_x_wing_summary">Un chiffre fixé à deux colonnes dans deux lignes quitte ces colonnes partout ailleurs.</string>
+    <string name="lesson_x_wing_1">Le premier motif qui traverse toute la grille au lieu de tenir dans une maison. Il a une forme, et une fois la forme vue vous la verrez partout.</string>
+    <string name="lesson_x_wing_2">Prenez un chiffre. Dans ces deux lignes, il ne peut aller que dans deux cases chacune, et ces cases sont dans les deux mêmes colonnes. Quatre cases, en rectangle.</string>
+    <string name="lesson_x_wing_3">Réfléchissez. Chaque ligne doit porter le chiffre une fois. Quel que soit le coin qu\'une ligne utilise, l\'autre doit prendre le coin opposé. Il n\'y a pas de troisième option.</string>
+    <string name="lesson_x_wing_4">Donc à elles deux, les deux lignes prennent ce chiffre dans les deux colonnes. Tout le reste dans ces colonnes le perd.</string>
+    <string name="lesson_x_wing_5">Cela marche aussi en échangeant lignes et colonnes. Deux colonnes dont le chiffre est enfermé dans les deux mêmes lignes nettoient ces lignes.</string>
+
+    <string name="lesson_swordfish_title">Le Swordfish</string>
+    <string name="lesson_swordfish_summary">Le même raisonnement que le X-Wing, avec trois lignes au lieu de deux.</string>
+    <string name="lesson_swordfish_1">Un X-Wing avec une ligne de plus. Le nom n\'aide pas, mais le motif est une extension directe.</string>
+    <string name="lesson_swordfish_2">Trois lignes, un chiffre, et dans chaque ligne ce chiffre est enfermé dans des cases des trois mêmes colonnes.</string>
+    <string name="lesson_swordfish_3">Chaque ligne n\'a pas besoin d\'utiliser les trois colonnes. Deux sur trois suffisent, tant qu\'aucune ligne n\'en sort.</string>
+    <string name="lesson_swordfish_4">Les trois lignes prennent le chiffre dans ces trois colonnes, donc le reste de ces colonnes le perd.</string>
+    <string name="lesson_swordfish_5">Si vous suivez le X-Wing, vous suivez celui-ci. Le trouver est une autre affaire : c\'est ici que remplir ses notes cesse d\'être facultatif.</string>
+
+    <string name="lesson_jellyfish_title">Le Jellyfish</string>
+    <string name="lesson_jellyfish_summary">Quatre lignes. Le même motif encore, et le dernier qui vaille la peine d\'être appris.</string>
+    <string name="lesson_jellyfish_1">Quatre lignes, un chiffre, quatre colonnes. Le raisonnement n\'a pas changé depuis le X-Wing et il ne changera plus.</string>
+    <string name="lesson_jellyfish_2">En voici un. Quatre lignes, et le chiffre dans chacune est enfermé dans les quatre mêmes colonnes.</string>
+    <string name="lesson_jellyfish_3">Au-delà de quatre, il n\'y a rien à apprendre. Une version à cinq lignes existe en théorie, mais sur une grille de neuf sur neuf chacune se retrouve comme un motif plus petit dans les quatre colonnes restantes, donc personne ne les cherche.</string>
+    <string name="lesson_jellyfish_4">C\'est la limite de ce qu\'il vaut la peine de chasser par motif. Au-delà, les chaînes valent mieux votre attention.</string>
+
+    <string name="lesson_xy_wing_title">Le XY-Wing</string>
+    <string name="lesson_xy_wing_summary">Trois cases à deux chiffres chacune, et une case qui perd quoi qu\'il arrive.</string>
+    <string name="lesson_xy_wing_1">Les wings demandent une autre façon de penser. Jusqu\'ici vous trouviez un motif et vous lisiez une conclusion. Ici, on raisonne par cas.</string>
+    <string name="lesson_xy_wing_2">Partez de cette case. Elle a exactement deux chiffres possibles et c\'est la charnière du motif.</string>
+    <string name="lesson_xy_wing_3">Elle a deux amies, chacune partageant une maison avec elle, et chacune portant deux chiffres : un partagé avec la charnière, un partagé entre elles.</string>
+    <string name="lesson_xy_wing_4">Le raisonnement, maintenant. La charnière est l\'un de ses deux chiffres. Si c\'est le premier, l\'aile gauche est forcée au chiffre commun. Si c\'est le second, l\'aile droite est forcée au même chiffre commun. Dans les deux cas, l\'une des ailes le porte.</string>
+    <string name="lesson_xy_wing_5">Donc aucune case qui voit les deux ailes ne peut porter ce chiffre. Celle-ci le perd.</string>
+    <string name="lesson_xy_wing_6">Vous n\'apprenez jamais ce qu\'est réellement la charnière. C\'est tout l\'intérêt, et c\'est ce qui rend les wings différents de tout ce qui précède.</string>
+
+    <string name="lesson_xyz_wing_title">Le XYZ-Wing</string>
+    <string name="lesson_xyz_wing_summary">Comme un XY-Wing, mais la charnière peut aussi être le chiffre commun, donc la conclusion est plus faible.</string>
+    <string name="lesson_xyz_wing_1">Un changement au XY-Wing, et il rend la conclusion plus petite.</string>
+    <string name="lesson_xyz_wing_2">Ici la charnière porte trois chiffres au lieu de deux, et le chiffre commun est l\'un d\'eux.</string>
+    <string name="lesson_xyz_wing_3">Il y a donc trois cas, pas deux. L\'une ou l\'autre aile peut porter le chiffre commun, ou la charnière elle-même.</string>
+    <string name="lesson_xyz_wing_4">Cela veut dire qu\'une case ne perd le chiffre que si elle voit les trois, pas seulement les deux ailes. Moins de cases sont concernées, et c\'est pourquoi ce motif élimine moins que son cousin plus simple.</string>
+    <string name="lesson_xyz_wing_5">Il vaut la peine d\'être connu parce que la forme paraît presque identique, et le lire comme un XY-Wing vous ferait éliminer un chiffre auquel vous n\'avez pas droit.</string>
+
+    <string name="lesson_w_wing_title">Le W-Wing</string>
+    <string name="lesson_w_wing_summary">Deux paires identiques reliées par une ligne qui doit porter l\'un de leurs chiffres.</string>
+    <string name="lesson_w_wing_1">Le troisième wing, et celui qui demande le moins de calcul.</string>
+    <string name="lesson_w_wing_2">Deux cases, ne partageant pas de maison, portant chacune les deux mêmes chiffres.</string>
+    <string name="lesson_w_wing_3">Trouvez maintenant une maison où l\'un de ces deux chiffres ne peut aller que dans deux places, et où ces deux places voient chacune l\'une des cases de la paire. Cette maison est le lien.</string>
+    <string name="lesson_w_wing_4">La maison du lien doit porter ce chiffre dans l\'une de ses deux places, et quelle que soit celle-là, elle force l\'une des cases de la paire à prendre l\'autre chiffre. Donc l\'une des deux porte l\'autre chiffre, toujours.</string>
+    <string name="lesson_w_wing_5">Toute case qui voit les deux cases de la paire le perd. Celle-ci les voit.</string>
+
+    <string name="lesson_rectangle_title">Le rectangle unique</string>
+    <string name="lesson_rectangle_summary">Une grille à solution unique ne peut pas contenir un carré qui pourrait tourner.</string>
+    <string name="lesson_rectangle_1">Cette technique est d\'une autre nature que toutes les autres, et il vaut la peine de dire pourquoi avant de l\'utiliser.</string>
+    <string name="lesson_rectangle_2">Regardez ces quatre cases. Elles occupent deux lignes, deux colonnes et exactement deux blocs, et chacune peut porter les deux mêmes chiffres.</string>
+    <string name="lesson_rectangle_3">Si c\'était toute l\'histoire, la grille aurait deux solutions : remplissez le rectangle dans un sens, ou échangez les deux diagonales, et les deux grilles respectent toutes les règles. Une grille bien faite n\'a pas deux solutions.</string>
+    <string name="lesson_rectangle_4">Ce ne peut donc pas être toute l\'histoire. L\'une de ces cases doit porter autre chose, et c\'est cela qui permet d\'éliminer.</string>
+    <string name="lesson_rectangle_5">Ici les possibilités en trop survivent et la paire commune est barrée de ces cases.</string>
+    <string name="lesson_rectangle_6">Le piège, dit clairement : ce raisonnement suppose que la grille est bien faite. C\'est vrai de toutes celles de cette application, parce que le générateur le vérifie. Utilisez-le sur une grille d\'origine inconnue et il peut vous tromper.</string>
+
+    <string name="lesson_bug_title">BUG plus un</string>
+    <string name="lesson_bug_summary">Si toutes les cases sauf une avaient deux candidats, la grille serait ambiguë. Cette case-là est donc spéciale.</string>
+    <string name="lesson_bug_1">La même supposition que le rectangle unique, sous une autre forme.</string>
+    <string name="lesson_bug_2">Supposez qu\'une grille atteigne une position où chaque case non résolue porte exactement deux possibilités, et où chaque chiffre apparaît exactement deux fois dans chaque maison. Une telle grille a toujours deux solutions.</string>
+    <string name="lesson_bug_3">Une grille bien faite ne peut donc jamais l\'atteindre. Si vous trouvez une position qui en est à une case, où exactement une case porte trois possibilités au lieu de deux, c\'est cette case qui sauve la grille de l\'ambiguïté.</string>
+    <string name="lesson_bug_4">Le chiffre qui apparaît trois fois dans ses maisons est celui qu\'elle doit porter. Motif rare, et fin de partie très rapide quand il se présente.</string>
+
+    <string name="lesson_colouring_title">La coloration simple</string>
+    <string name="lesson_colouring_summary">Suivez un chiffre à travers les cases où il n\'a que deux places, et cherchez une contradiction.</string>
+    <string name="lesson_colouring_1">Les chaînes, doucement. La coloration est la porte d\'entrée la plus facile et c\'est le même raisonnement en dessous.</string>
+    <string name="lesson_colouring_2">Choisissez un chiffre. Trouvez une maison où il n\'a que deux cases possibles. Ces deux-là sont liées : exactement l\'une des deux est le chiffre.</string>
+    <string name="lesson_colouring_3">Coloriez l\'une de la paire, puis suivez les liens. Chaque case reliée ainsi finit d\'une des deux couleurs, et une couleur entière est juste tandis que l\'autre est fausse. Vous ne savez pas laquelle.</string>
+    <string name="lesson_colouring_4">Cherchez maintenant la contradiction. Si une case voit deux cases de la même couleur, cette couleur ne peut pas être la bonne, donc la case perd le chiffre. C\'est ce qui arrive ici.</string>
+    <string name="lesson_colouring_5">Deux couleurs, une contradiction, et aucun pari nulle part. Toute la méthode est là.</string>
+
+    <string name="lesson_remote_pairs_title">Les paires distantes</string>
+    <string name="lesson_remote_pairs_summary">Une chaîne de paires identiques alterne, donc les extrémités sont opposées.</string>
+    <string name="lesson_remote_pairs_1">La coloration appliquée aux cases plutôt qu\'à un seul chiffre.</string>
+    <string name="lesson_remote_pairs_2">Voici une chaîne de cases portant toutes les deux mêmes chiffres, chacune reliée à la suivante par une maison partagée.</string>
+    <string name="lesson_remote_pairs_3">Comme chaque lien est une paire, les chiffres alternent le long de la chaîne. La première case prend l\'un, la deuxième l\'autre, et ainsi de suite.</string>
+    <string name="lesson_remote_pairs_4">Les deux extrémités d\'une chaîne de longueur paire sont donc opposées : elles portent des chiffres différents. Toute case qui voit les deux extrémités perd les deux chiffres, puisque chaque extrémité en porte un.</string>
+    <string name="lesson_remote_pairs_5">C\'est la chaîne la plus facile à repérer, parce que toutes les cases y ont la même allure.</string>
+
+    <string name="lesson_multi_colouring_title">La coloration multiple</string>
+    <string name="lesson_multi_colouring_summary">Deux chaînes de coloration qui se touchent s\'excluent l\'une l\'autre.</string>
+    <string name="lesson_multi_colouring_1">La coloration simple utilise une chaîne. Parfois une chaîne n\'a pas de contradiction en elle mais deux ensemble en ont une.</string>
+    <string name="lesson_multi_colouring_2">Voici des cases de deux chaînes distinctes pour le même chiffre.</string>
+    <string name="lesson_multi_colouring_3">Si une couleur d\'une chaîne voit une couleur de l\'autre, ces deux couleurs ne peuvent pas être justes toutes les deux. En suivant cela, on élimine le chiffre des cases qui voient les deux couleurs restantes.</string>
+    <string name="lesson_multi_colouring_4">La conclusion tombe ici.</string>
+    <string name="lesson_multi_colouring_5">C\'est ici que la coloration cesse de tenir dans la tête et commence à demander une note écrite de quelle case est de quelle couleur.</string>
+
+    <string name="lesson_x_chain_title">La chaîne X</string>
+    <string name="lesson_x_chain_summary">Un chiffre, des liens qui alternent entre forts et faibles, et une élimination aux extrémités.</string>
+    <string name="lesson_x_chain_1">La forme générale de tout ce qu\'il y avait à l\'étape précédente. Un chiffre, et une chaîne de liens alternés.</string>
+    <string name="lesson_x_chain_2">Un lien fort, ce sont deux cases dont au moins une doit porter le chiffre, ce que donne une maison à deux places seulement. Un lien faible, ce sont deux cases dont au plus une peut le porter, c\'est-à-dire deux cases quelconques partageant une maison.</string>
+    <string name="lesson_x_chain_3">Alternez-les : fort, faible, fort, et ainsi de suite, en commençant et en finissant par un fort. Alors quoi qu\'il arrive au milieu, l\'une des deux extrémités porte le chiffre.</string>
+    <string name="lesson_x_chain_4">Donc toute case qui voit les deux extrémités le perd.</string>
+    <string name="lesson_x_chain_5">La coloration est cette chaîne dessinée en deux couleurs. La chaîne est plus générale parce qu\'elle peut passer par des cases que la coloration n\'atteint pas.</string>
+
+    <string name="lesson_xy_chain_title">La chaîne XY</string>
+    <string name="lesson_xy_chain_summary">Une chaîne de cases à deux candidats, dont les extrémités partagent un chiffre.</string>
+    <string name="lesson_xy_chain_1">La même idée d\'alternance, mais en passant par les cases au lieu de suivre un seul chiffre.</string>
+    <string name="lesson_xy_chain_2">Chaque case de cette chaîne porte exactement deux possibilités, et chacune partage une maison avec la suivante.</string>
+    <string name="lesson_xy_chain_3">À l\'intérieur d\'une case, prendre un chiffre force l\'autre, et c\'est le lien fort. Entre les cases, une maison partagée fait le lien faible. Les alterner fait courir le raisonnement le long de la chaîne.</string>
+    <string name="lesson_xy_chain_4">Si les deux extrémités de la chaîne peuvent porter le même chiffre, alors l\'une des deux le porte, quoi qu\'il arrive à la chaîne. Toute case qui voit les deux extrémités perd ce chiffre.</string>
+    <string name="lesson_xy_chain_5">C\'est la technique qui termine la plupart des grilles Expert, et en trouver une tient surtout à suivre patiemment les cases à deux chiffres plutôt qu\'à être malin.</string>
+
+    <string name="lesson_writing_chains_title">Écrire une chaîne</string>
+    <string name="lesson_writing_chains_summary">Une chaîne que vous ne pouvez pas vérifier est un pari avec des étapes en plus.</string>
+    <string name="lesson_writing_chains_1">Une leçon pratique avant la dernière technique, parce que les chaînes sont l\'endroit où l\'on se convainc de choses fausses.</string>
+    <string name="lesson_writing_chains_2">Une chaîne est une suite d\'affirmations, et chacune doit tenir. À l\'écran cela ressemble à un ensemble de cases en couleur, et mettre en couleur n\'est pas un raisonnement.</string>
+    <string name="lesson_writing_chains_3">Écrivez-la sur une ligne : cette case est 4 ou 7 ; si c\'est 4 alors celle-là est 9 ; si celle-là est 9 alors cette autre est 4. Chaque flèche est un lien et chaque lien a une raison.</string>
+    <string name="lesson_writing_chains_4">Vérifiez ensuite l\'alternance. Fort, faible, fort, faible, et fort aux deux bouts. Une chaîne qui commence ou finit sur un lien faible ne prouve rien, et c\'est la façon la plus courante dont une chaîne tourne mal.</string>
+    <string name="lesson_writing_chains_5">Si vous ne pouvez pas l\'écrire, vous ne l\'avez pas trouvée. Ce n\'est pas une règle de propreté, c\'est la différence entre une déduction et une intuition.</string>
+
+    <string name="lesson_sue_de_coq_title">Sue de Coq</string>
+    <string name="lesson_sue_de_coq_summary">Là où un bloc croise une ligne, et où le croisement a plus de chiffres que de place.</string>
+    <string name="lesson_sue_de_coq_1">Un bloc et une colonne se chevauchent sur trois cases. Ces trois cases appartiennent aux deux à la fois, et c\'est de cela que vit cette technique.</string>
+    <string name="lesson_sue_de_coq_2">Regardez-en deux ici. À elles deux, elles portent 2, 6, 7 et 8 : quatre chiffres pour deux cases. Deux y entrent, et deux restent pour ailleurs.</string>
+    <string name="lesson_sue_de_coq_3">Plus bas dans la même colonne se trouve une case portant 6 et 7. Ailleurs dans le même bloc se trouve une case portant 2 et 8. À elles deux, ces cases veulent exactement les quatre chiffres du croisement, partagés à parts égales et sans rien en commun.</string>
+    <string name="lesson_sue_de_coq_4">Comptez. Trois cases de la colonne prennent maintenant trois chiffres différents sur les quatre, et trois cases du bloc font pareil. Il n\'y a qu\'une façon dont le compte tombe juste : le 6 et le 7 sont dépensés dans la colonne, le 2 et le 8 dans le bloc.</string>
+    <string name="lesson_sue_de_coq_5">Donc rien d\'autre dans cette colonne ne peut être un 6 ou un 7. Deux cases en perdent un ici.</string>
+    <string name="lesson_sue_de_coq_6">Le même raisonnement vaut en sens inverse pour le bloc. Un motif, deux maisons, deux séries d\'éliminations distinctes, et pas la moindre chaîne.</string>
+
+    <string name="lesson_als_title">ALS-XZ</string>
+    <string name="lesson_als_summary">Deux ensembles presque verrouillés partageant un chiffre, et l\'élimination qui en découle.</string>
+    <string name="lesson_als_1">La règle sur laquelle sont bâtis les niveaux les plus durs. Tout ce qui est au-dessus de cette étape en est une variation.</string>
+    <string name="lesson_als_2">Un ensemble presque verrouillé est un groupe de cases d\'une même maison portant exactement un chiffre de plus qu\'il n\'y a de cases. Quatre cases avec cinq chiffres entre elles. S\'il perdait un chiffre ce serait un ensemble verrouillé, d\'où le nom.</string>
+    <string name="lesson_als_3">Prenez-en deux qui partagent deux chiffres. Appelez restreint l\'un des chiffres partagés, et exigez que chaque place où il apparaît dans un ensemble voie chaque place où il apparaît dans l\'autre.</string>
+    <string name="lesson_als_4">Alors il ne peut être que dans l\'un des deux ensembles. L\'ensemble qui ne l\'obtient pas devient verrouillé, ce qui y fixe l\'autre chiffre partagé. Et ainsi, toute case qui voit ce chiffre dans les deux ensembles le perd.</string>
+    <string name="lesson_als_5">Voici l\'élimination qui en sort.</string>
+    <string name="lesson_als_6">Si cela demande plusieurs lectures, c\'est le nombre normal. Toutes les techniques à partir d\'ici sont celle-ci sous une autre forme.</string>
+
+    <string name="lesson_deep_end_title">Ce que demande le grand bain</string>
+    <string name="lesson_deep_end_summary">Ce qui change en Démentiel et Cauchemar, et pourquoi ces niveaux demandent du papier.</string>
+    <string name="lesson_deep_end_1">Tout ce qui précède se voit. Vous regardez une ligne, un bloc, deux cases, et la réponse est devant vous dès que vous connaissez la forme.</string>
+    <string name="lesson_deep_end_2">Les deux niveaux les plus durs ne sont pas comme cela. Ils demandent de suivre un raisonnement sur trois ou quatre pas et de le tenir entier dans la tête d\'un coup, et presque personne ne fait cela en regardant.</string>
+    <string name="lesson_deep_end_3">Alors écrivez-le. Un crayon et le dos d\'une enveloppe ne sont pas de la triche et ne sont pas un signe de faiblesse. C\'est ce que fait tout le monde à ce niveau.</string>
+    <string name="lesson_deep_end_4">Les règles ici sont toutes la même idée : un groupe de cases à un chiffre d\'être plein. Retirez ce chiffre et le groupe est forcé, et un groupe forcé force le suivant. Le grand bain, c\'est tout entier cela.</string>
+    <string name="lesson_deep_end_5">Rien de ce qui suit n\'est un pari. Chaque pas est prouvé, chaque indice vous montrera la preuve, et si une grille d\'ici vous bat, y revenir dans une semaine est la façon normale dont cela se passe.</string>
+
+    <string name="lesson_als_xy_title">ALS-XY-Wing</string>
+    <string name="lesson_als_xy_summary">Trois groupes en chaîne, et le chiffre qui ne survit à aucune des deux extrémités.</string>
+    <string name="lesson_als_xy_1">Trois groupes cette fois, reliés en ligne : un à chaque bout et un au milieu qui les sépare.</string>
+    <string name="lesson_als_xy_2">Commencez par les deux de gauche. r3c9 porte 1 et 3. r1c8 porte 3 et 7. Ils partagent un bloc, donc un seul des deux peut être le 3.</string>
+    <string name="lesson_als_xy_3">Maintenant le groupe qui descend la colonne 8 : trois cases portant 1, 3, 7 et 9 entre elles. Quatre chiffres, trois cases, il lui manque donc un chiffre pour être plein. Il partage le 7 avec r1c8, et tous ses 7 sont dans cette même colonne, donc là encore un seul côté peut le prendre.</string>
+    <string name="lesson_als_xy_4">Supposez que l\'une des deux cases marquées de la colonne 9 soit un 1. Elle voit r3c9, donc r3c9 n\'est pas 1, donc c\'est 3. Alors r1c8 n\'est pas 3, donc c\'est 7. Alors il ne reste plus de 7 au groupe, il est donc plein, et il doit utiliser 1, 3 et 9.</string>
+    <string name="lesson_als_xy_5">Mais ces cases voient aussi tous les 1 du groupe, donc le groupe ne peut pas non plus avoir de 1. Le raisonnement se dévore lui-même, et le 1 s\'en va.</string>
+    <string name="lesson_als_xy_6">Deux jonctions, trois groupes, et chaque pas force le suivant. Lisez-le deux fois : c\'est une chaîne, et une chaîne n\'a de sens qu\'un lien à la fois.</string>
+
+    <string name="lesson_blossom_title">Death blossom</string>
+    <string name="lesson_blossom_summary">Une case avec un groupe qui attend derrière chacun de ses chiffres.</string>
+    <string name="lesson_blossom_1">Celle-ci a une forme qui se voit : une tige, et un pétale pour chaque chiffre que la tige pourrait être.</string>
+    <string name="lesson_blossom_2">La tige est r1c4. C\'est un 5 ou un 6, et rien d\'autre. Deux possibilités font deux cas, et cette technique traite les deux d\'un coup.</string>
+    <string name="lesson_blossom_3">Disons que c\'est un 5. Alors r1c7, sur la même ligne, portant 5 et 8, ne peut pas être le 5. C\'est donc le 8.</string>
+    <string name="lesson_blossom_4">Disons plutôt que c\'est un 6. Regardez ces trois cases du même bloc : à elles trois elles portent 2, 6, 7 et 8. Quatre chiffres, trois cases, à un chiffre d\'être pleines. La tige les voit toutes les trois, donc son 6 leur retire le 6.</string>
+    <string name="lesson_blossom_5">Elles sont maintenant pleines, et trois cases pleines utilisent trois chiffres : 2, 7 et 8. Une seule d\'entre elles peut être le 8, c\'est donc là que va le 8.</string>
+    <string name="lesson_blossom_6">Mettez les deux cas ensemble. Soit il y a un 8 en r1c7, soit il y a un 8 dans ce bloc, et il n\'y a pas de troisième cas. Toute case qui voit les deux endroits perd son 8, et deux d\'entre elles les voient.</string>
+    <string name="lesson_blossom_7">Remarquez ce que vous n\'avez jamais eu besoin de savoir : quel chiffre est réellement la tige. Les deux chemins finissent sur un 8, donc la réponse ne dépend pas de l\'embranchement.</string>
+
+    <string name="lesson_fork_title">La chaîne forcée</string>
+    <string name="lesson_fork_summary">Prenez une case des deux façons et regardez laquelle survit. La chose la plus difficile de l\'application.</string>
+    <string name="lesson_fork_1">La dernière technique, et la seule qui ne soit pas un motif. Il n\'y a rien à repérer ici. Il n\'y a que du travail.</string>
+    <string name="lesson_fork_2">Cette case est un 2 ou un 7. Tout le reste de la grille a été pressé jusqu\'à la dernière goutte, et rien ne dit lequel des deux c\'est.</string>
+    <string name="lesson_fork_3">Alors essayez-en un. Dites que c\'est un 2, au crayon, et suivez seulement les conséquences faciles : une case à laquelle il reste un chiffre, ou un chiffre auquel il reste une place dans sa maison.</string>
+    <string name="lesson_fork_4">Elles viennent vite. Un 2 est forcé ici, puis un 7 là, puis un 3, un 5, un 9. Continuez. Quatorze chiffres plus tard, regardez la case marquée.</string>
+    <string name="lesson_fork_5">Il ne lui reste rien. Tous les chiffres qui pouvaient y aller ont été pris par autre chose. Ce n\'est pas de la malchance, c\'est une contradiction, et cela veut dire que le 2 n\'a jamais été possible.</string>
+    <string name="lesson_fork_6">Alors effacez tout et écrivez le 7. Non parce que le 7 a meilleure allure, mais parce que le 2 a été prouvé impossible, et deux possibilités moins une en laissent une.</string>
+    <string name="lesson_fork_7">C\'est une preuve par cas, et c\'est ce que les gens veulent dire par résoudre une grille sur papier. Utilisez du papier. Personne ne tient quatorze chiffres forcés dans sa tête, et avoir besoin de les écrire n\'est pas une faiblesse.</string>
+    <string name="lesson_fork_8">Placez-le maintenant.</string>
+    <string name="lesson_fork_wrong">C\'est l\'autre chiffre qui est mort. Le 2 menait à une case où rien ne pouvait aller, donc ce qui reste est le 7.</string>
+
+    <string name="lesson_nothing_applies_title">Quand rien ne s\'applique</string>
+    <string name="lesson_nothing_applies_summary">Revérifiez avant de deviner, car une grille de cette application a toujours un pas suivant.</string>
+    <string name="lesson_nothing_applies_1">Vous arriverez à des positions où vous avez tout regardé et rien trouvé. Voici quoi faire, et quoi ne pas faire.</string>
+    <string name="lesson_nothing_applies_2">Ce qu\'il ne faut pas faire, c\'est deviner. Toutes les grilles de cette application se résolvent par raisonnement, et une supposition juste par hasard ne vous apprend rien alors qu\'une supposition fausse vous coûte la grille entière.</string>
+    <string name="lesson_nothing_applies_3">Revérifiez dans cet ordre. D\'abord, toutes vos notes sont-elles vraies ? Une note périmée est la cause la plus fréquente d\'une position impossible, et cette application les effacera pour vous si vous la laissez faire. Ensuite, un chiffre que vous avez placé est-il vraiment juste ? Appuyez sur indice et elle vous le dira.</string>
+    <string name="lesson_nothing_applies_4">Cherchez ensuite de nouveau les choses simples. Ce n\'est presque jamais une chaîne que vous avez manquée. C\'est presque toujours un singleton caché dans une maison que vous avez cessé de regarder il y a vingt coups.</string>
+
+    <string name="lesson_look_first_title">Ce qu\'il faut chercher en premier</string>
+    <string name="lesson_look_first_summary">Les motifs les moins chers d\'abord, toujours, parce qu\'ils sont fréquents et qu\'ils ouvrent la grille.</string>
+    <string name="lesson_look_first_1">Vous connaissez maintenant toutes les techniques que cette application sait nommer. La dernière chose à apprendre est l\'ordre dans lequel regarder.</string>
+    <string name="lesson_look_first_2">Les singletons d\'abord, toujours. Nus, puis cachés. Ce sont de loin les plus fréquents et chacun que vous placez rend toutes les autres techniques plus faciles à trouver.</string>
+    <string name="lesson_look_first_3">Ensuite les éliminations bon marché : paires pointantes et revendiquantes. Elles se vérifient vite, maison par maison, et débloquent souvent un singleton dans la foulée.</string>
+    <string name="lesson_look_first_4">Ensuite paires et triplets dans les maisons qui ont le moins de cases vides. Puis les poissons, puis les wings. Les chaînes en dernier, toujours, parce qu\'elles demandent le plus de travail et sont les moins fréquentes.</string>
+    <string name="lesson_look_first_5">Chasser un Jellyfish avant d\'avoir vérifié les singletons est l\'équivalent sudoku de réécrire un programme avant d\'avoir lu le message d\'erreur. L\'application classe les grilles par la chose la plus dure qu\'elles demandent, mais un Maître reste surtout fait de singletons.</string>
+    <string name="lesson_together_title">Un Maître, ensemble</string>
+    <string name="lesson_together_summary">Une grille difficile est surtout faite de pas faciles avec quelques pas durs dedans.</string>
+    <string name="lesson_together_1">La dernière leçon. Voici la grille que le cours a parcourue, au niveau Maître, et voici toute la résolution nommée technique par technique.</string>
+    <string name="lesson_together_2">Elle s\'ouvre sur un singleton nu. Presque toutes le font.</string>
+    <string name="lesson_together_3">Puis un singleton caché, dans le bloc d\'à côté.</string>
+    <string name="lesson_together_4">Elle cale, et une paire pointante nettoie une colonne pour que les singletons puissent repartir. Remarquez qu\'aucun chiffre n\'a été placé par ce pas et qu\'on a quand même avancé.</string>
+    <string name="lesson_together_5">Une paire nue un peu plus loin, qui fait le même travail dans une maison.</string>
+    <string name="lesson_together_6">Plus profond, un X-Wing. À ce stade la grille est à moitié pleine et ce sont les notes qui travaillent.</string>
+    <string name="lesson_together_7">Et vers la fin, celui qui vaut le niveau : un ALS-XZ. Une élimination, et le reste redevient des singletons.</string>
+    <string name="lesson_together_8">Voilà ce que Maître veut dire ici. Pas quatre-vingt-un pas difficiles, mais soixante-dix faciles et une poignée qui demandent tout ce que vous avez appris.</string>
+    <string name="lesson_together_9">Vous avez rencontré toutes les techniques que cette application sait nommer. Allez en jouer une. Trois indices viennent avec chaque grille et il n\'y a aucune honte à les dépenser, et si vous préférez en avoir autant que vous voulez, la limite est un interrupteur dans les réglages.</string>
+    <string name="lesson_step_of">%1$d sur %2$d</string>
+    <string name="lesson_back">Retour</string>
+    <string name="lesson_next">Suivant</string>
+    <string name="lesson_done">Terminé</string>
+    <string name="lesson_replay">Encore</string>
+    <string name="lesson_show_me">Montrez-moi</string>
+    <string name="lesson_cell_at">Ligne %1$d, colonne %2$d.</string>
+    <string name="course_title">Apprendre</string>
+    <string name="course_lesson_done">terminée</string>
+    <string name="course_lesson_next">suivante</string>
+    <string name="course_lesson_todo">pas commencée</string>
+    <plurals name="course_progress">
+        <item quantity="one">%1$d leçon sur %2$d</item>
+        <item quantity="other">%1$d leçons sur %2$d</item>
+    </plurals>
+    <string name="settings_hint_detail">CE QUE DIT UN INDICE</string>
+    <string name="hint_detail_region">La région seulement</string>
+    <string name="hint_detail_region_note">Quel bloc ou quelle ligne regarder, et rien de plus.</string>
+    <string name="hint_detail_name">La technique</string>
+    <string name="hint_detail_name_note">Quel genre de pas c\'est, pour savoir quoi chercher.</string>
+    <string name="hint_detail_cells">Les cases</string>
+    <string name="hint_detail_cells_note">Les cases sur lesquelles repose le raisonnement, éclairées sur la grille.</string>
+    <string name="hint_detail_full">Tout le raisonnement</string>
+    <string name="hint_detail_full_note">Tout, y compris le coup. Pour avancer dans le cours.</string>
+    <string name="path_title">Comment elle a été résolue</string>
+    <string name="path_placed">La ligne %1$d, colonne %2$d vaut %3$d.</string>
+    <string name="outcome_path">VOIR COMMENT ELLE A ÉTÉ RÉSOLUE</string>
+    <string name="settings_your_data">Vos données</string>
+    <string name="settings_data_note">Tout ce que cette application sait de vous est sur ce téléphone. L\'export l\'écrit dans un fichier que vous choisissez, pour qu\'un nouveau téléphone reprenne là où celui-ci s\'est arrêté. Rien n\'est envoyé nulle part.</string>
+    <string name="settings_export">Exporter ma progression</string>
+    <string name="settings_import">Importer depuis un fichier</string>
+    <string name="settings_reset_course">Recommencer le cours, en gardant mes parties</string>
+    <string name="settings_exported">Enregistré. Leçons : %1$d. Parties : %2$d.</string>
+    <string name="settings_imported">Ajouté. Leçons : %1$d. Parties : %2$d.</string>
+    <string name="settings_imported_ignored">Ajouté. Leçons : %1$d. Parties : %2$d. Laissées de côté, parce qu\'elles viennent d\'une version plus récente : %3$d.</string>
+    <string name="settings_import_empty">Ce fichier est vide.</string>
+    <string name="settings_import_not_ours">Cela ne ressemble pas à un export de Sendoku.</string>
+    <string name="settings_import_future">Ce fichier a été écrit par une version plus récente de Sendoku.</string>
+    <string name="settings_import_failed">Ce fichier n\'a pas pu être lu, et rien sur ce téléphone n\'a été changé.</string>
+    <string name="settings_course_reset">Le cours est revenu au début. Vos parties sont intactes.</string>
+    <string name="practice_looking">Recherche d\'une position…</string>
+    <string name="practice_find">Trouvez le %1$s.</string>
+    <string name="practice_keep_going">C\'en est un. Continuez.</string>
+    <string name="practice_wrong">Pas cette case. Relisez la règle : un %1$s ne repose pas dessus.</string>
+    <string name="practice_right">C\'est bien le %1$s. Ce qu\'il élimine est marqué.</string>
+    <string name="practice_revealed">Voici le %1$s, et ce qu\'il élimine.</string>
+    <string name="practice_show_me">Montrez-moi</string>
+    <string name="practice_another">Un autre</string>
+    <string name="practice_skip">Passer</string>
+    <string name="practice_title">Entraînement</string>
+    <string name="practice_none">Rien à travailler pour l\'instant. Terminez d\'abord une leçon qui enseigne une technique.</string>
+    <string name="glossary_learn_this">APPRENDRE CECI</string>
+    <string name="hint_learn_this">Apprenez-moi ceci</string>
+    <string name="outcome_learn">Apprendre %1$s</string>
+    <string name="course_finished">Tout, terminé. Tout ce que l\'application sait nommer, vous savez le nommer. Les grilles sont le reste.</string>
+    <string name="outcome_lost_hints">PLUS D\'INDICES</string>
+    <string name="outcome_share">Partager</string>
+    <string name="card_solved">Résolue</string>
+    <string name="card_lost">Battu par</string>
+    <string name="settings_hints">Indices</string>
+    <string name="settings_hint_limit">Terminer la partie après trois indices</string>
+    <string name="settings_hint_note">Activé par défaut. Trois indices sont gratuits, et le quatrième coûte la partie, ce qui fait d\'un indice une décision plutôt qu\'un réflexe. Désactivez-le pendant que vous suivez le cours.</string>
+    <string name="account_title">Vous</string>
+    <string name="account_no_account">Il n\'y a aucun compte où se connecter. Tout ce qui suit est sur ce téléphone et nulle part ailleurs.</string>
+    <string name="account_solved">Résolues</string>
+    <string name="account_streak">Série</string>
+    <string name="account_played">Jouées</string>
+    <string name="account_time">Temps</string>
+    <string name="account_lessons">Leçons</string>
+    <string name="account_stats">Statistiques</string>
+    <string name="account_stats_detail">Chaque niveau, vos meilleurs temps et les techniques rencontrées</string>
+    <string name="account_history">Historique</string>
+    <string name="account_history_detail">Chaque partie terminée, et la grille sur laquelle elle s\'est terminée</string>
+    <string name="history_title">Historique</string>
+    <string name="history_lost">Perdue</string>
+    <string name="history_empty_body">Terminez une grille et elle atterrit ici, avec la grille telle que vous l\'avez laissée, prête à être partagée quand vous voulez.</string>
+    <string name="history_no_board">Celle-ci s\'est terminée avant que l\'application ne garde les grilles, il n\'y a donc rien à dessiner. Il ne reste que les chiffres.</string>
+    <string name="account_settings_detail">L\'apparence, la grille, les limites et vos données</string>
+    <string name="account_about_detail">Ce que cette application promet, et les licences sur lesquelles elle repose</string>
+    <string name="tab_home">Accueil</string>
+    <string name="tab_learn">Apprendre</string>
+    <string name="tab_account">Vous</string>
+    <plurals name="hint_menu_left">
+        <item quantity="one">Les deux derniers coûtent un indice, et il vous en reste %1$d.</item>
+        <item quantity="other">Les deux derniers coûtent un indice, et il vous en reste %1$d.</item>
+    </plurals>
+    <plurals name="hint_check_wrong">
+        <item quantity="one">%1$d chiffre que vous avez placé est faux. Le trouver reste votre affaire.</item>
+        <item quantity="other">%1$d chiffres que vous avez placés sont faux. Les trouver reste votre affaire.</item>
+    </plurals>
+    <plurals name="path_summary">
+        <item quantity="one">%1$d pas, la règle la moins chère d\'abord, exactement comme l\'application l\'a noté.</item>
+        <item quantity="other">%1$d pas, la règle la moins chère d\'abord, exactement comme l\'application l\'a noté.</item>
+    </plurals>
+    <plurals name="path_struck">
+        <item quantity="one">Élimine %1$d note.</item>
+        <item quantity="other">Élimine %1$d notes.</item>
+    </plurals>
+</resources>
