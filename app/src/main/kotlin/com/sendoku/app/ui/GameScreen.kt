@@ -513,6 +513,9 @@ private fun HintArea(
     HintPanel(
         hint = hint,
         onMore = { if (hint is Hint.Step) onHint(hint.copy(level = hint.level.next)) },
+        // Walking back through the deck is free. The card behind has already been read, and
+        // the board follows it, so the lit cells go dark again with the words that named them.
+        onBack = { if (hint is Hint.Step) onHint(hint.copy(level = hint.level.previous)) },
         onApply = {
             if (hint is Hint.Step) onEvent(GameEvent.Accept(hint.deduction))
             onHint(null)

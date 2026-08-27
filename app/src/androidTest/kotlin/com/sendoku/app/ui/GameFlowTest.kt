@@ -131,9 +131,10 @@ class GameFlowTest {
         compose.onNodeWithText("Hint").performClick()
         compose.onNodeWithTag("hint:menu").assertIsDisplayed()
         compose.onNodeWithTag("hint:menu:explain").performClick()
-        compose.onNodeWithText("Show me where").assertIsDisplayed()
-        compose.onNodeWithText("Close").performClick()
-        compose.onNodeWithText("Show me where").assertDoesNotExistNow()
+        // A card of the deck, with the dots that say how far through it this one is.
+        compose.onNodeWithTag("hint:dots").assertIsDisplayed()
+        compose.onNodeWithTag("hint:close").performClick()
+        compose.onNodeWithTag("hint:dots").assertDoesNotExistNow()
     }
 
     @Test

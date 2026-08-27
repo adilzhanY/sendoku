@@ -42,7 +42,12 @@ public enum class HintLevel {
 
     public val next: HintLevel get() = entries.getOrElse(ordinal + 1) { FULL }
 
+    /** The step before this one. Going back costs nothing: it has already been said. */
+    public val previous: HintLevel get() = entries.getOrElse(ordinal - 1) { REGION }
+
     public val hasMore: Boolean get() = this != FULL
+
+    public val hasLess: Boolean get() = this != REGION
 }
 
 /** What the hint system has to say. */

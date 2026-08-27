@@ -117,6 +117,8 @@
     <string name="hint_menu_free">Asking costs nothing here. The limit is off.</string>
     <string name="hint_check_clean">Nothing you have placed is wrong.</string>
     <string name="hint_close">Close</string>
+    <string name="hint_previous">Back a step</string>
+    <string name="hint_cells_here">The cells it rests on are lit up %1$s.</string>
     <string name="hint_where">Show me where</string>
     <string name="hint_explain">Explain it</string>
     <string name="hint_do_it">Do it</string>
@@ -134,7 +136,7 @@
     <string name="hint_stuck_body">This board is legal, but none of the techniques Sendoku knows apply to it. That should not happen on a puzzle from the app.</string>
     <string name="hint_in_region">in %1$s</string>
     <string name="hint_in_regions">in %1$s and %2$s</string>
-    <string name="hint_outcome_place">So row %1$d, column %2$d is a %3$d.</string>
+    <string name="hint_outcome_place" tools:ignore="PluralsCandidate">So row %1$d, column %2$d must be %3$d.</string>
     <string name="hint_outcome_strike_one" tools:ignore="PluralsCandidate">So the %1$d can go from %2$s.</string>
     <string name="hint_outcome_strike_two" tools:ignore="PluralsCandidate">So the %1$d and the %2$d can go from %3$s.</string>
     <plurals name="hint_cells">

@@ -150,6 +150,27 @@ public object SendokuIcons {
         }
     }
 
+    /** The way on. The same chevron as [Back], turned around, so a pair of them match. */
+    public val Forward: ImageVector = icon("Forward") {
+        stroke {
+            moveTo(9.0f, 4.5f)
+            lineTo(16.5f, 12.0f)
+            lineTo(9.0f, 19.5f)
+        }
+    }
+
+    /** A cross. Two strokes, the same weight as everything else. */
+    public val Close: ImageVector = icon("Close") {
+        stroke {
+            moveTo(6.0f, 6.0f)
+            lineTo(18.0f, 18.0f)
+        }
+        stroke {
+            moveTo(18.0f, 6.0f)
+            lineTo(6.0f, 18.0f)
+        }
+    }
+
     /** A grid of nine, which is what the app is about, rather than a house nobody lives in. */
     public val Home: ImageVector = icon("Home") {
         stroke {

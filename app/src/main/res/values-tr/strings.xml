@@ -100,6 +100,8 @@
     <string name="hint_menu_free">Burada sormanın bedeli yok. Sınır kapalı.</string>
     <string name="hint_check_clean">Yerleştirdiklerinizin hepsi doğru.</string>
     <string name="hint_close">Kapat</string>
+    <string name="hint_previous">Bir adım geri</string>
+    <string name="hint_cells_here">Dayandığı hücreler %1$s aydınlatıldı.</string>
     <string name="hint_where">Nerede olduğunu göster</string>
     <string name="hint_explain">Açıkla</string>
     <string name="hint_do_it">Uygula</string>

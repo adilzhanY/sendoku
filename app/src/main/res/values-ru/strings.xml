@@ -112,6 +112,8 @@
     <string name="hint_menu_free">Спрашивать здесь ничего не стоит, лимит выключен.</string>
     <string name="hint_check_clean">Из того, что вы поставили, всё верно.</string>
     <string name="hint_close">Закрыть</string>
+    <string name="hint_previous">Шаг назад</string>
+    <string name="hint_cells_here">Клетки, на которых он держится, подсвечены %1$s.</string>
     <string name="hint_where">Показать где</string>
     <string name="hint_explain">Объяснить</string>
     <string name="hint_do_it">Сделать</string>

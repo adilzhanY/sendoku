@@ -101,6 +101,8 @@
     <string name="hint_menu_free">Fragen kostet hier nichts. Das Limit ist aus.</string>
     <string name="hint_check_clean">Alles, was Sie gesetzt haben, ist richtig.</string>
     <string name="hint_close">Schließen</string>
+    <string name="hint_previous">Einen Schritt zurück</string>
+    <string name="hint_cells_here">Die Zellen, auf denen er ruht, sind %1$s hervorgehoben.</string>
     <string name="hint_where">Zeig mir wo</string>
     <string name="hint_explain">Erklär es</string>
     <string name="hint_do_it">Mach das</string>

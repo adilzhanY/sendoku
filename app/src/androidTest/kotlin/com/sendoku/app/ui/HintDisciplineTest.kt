@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.junit4.v2.createComposeRule
 import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onNodeWithTag
@@ -50,6 +51,7 @@ class HintDisciplineTest {
                 HintPanel(
                     hint = hint,
                     onMore = {},
+                    onBack = {},
                     onApply = onApply,
                     onDismiss = {},
                     onGlossary = {},
@@ -73,6 +75,7 @@ class HintDisciplineTest {
                     HintPanel(
                         hint = hint,
                         onMore = {},
+                        onBack = {},
                         onApply = {},
                         onDismiss = {},
                         onGlossary = {},
@@ -85,6 +88,41 @@ class HintDisciplineTest {
 
         compose.onNodeWithTag("hint:close").assertIsDisplayed()
         compose.onNodeWithTag("hint:apply").assertIsDisplayed()
+        // And the move it is about. The reasoning may scroll, the conclusion may not: a
+        // button that places a digit with the sentence naming that digit out of sight is
+        // asking to be pressed on trust.
+        compose.onNodeWithTag("hint:outcome").assertIsDisplayed()
+    }
+
+    @Test
+    fun theFirstCardOfTheDeckHasNothingBehindIt() {
+        // The arrow is there on every card so the footer never rearranges itself, which
+        // means on the first card it has to be visibly dead rather than quietly useless.
+        show(HintLevel.REGION)
+        compose.onNodeWithTag("hint:back").assertIsNotEnabled()
+    }
+
+    @Test
+    fun everyLaterCardCanBeWalkedBack() {
+        var back = 0
+        val state = GameState.start(puzzle)
+        val hint = HintEngine.next(state, HintLevel.CELLS) as Hint.Step
+        compose.setContent {
+            SendokuTheme {
+                HintPanel(
+                    hint = hint,
+                    onMore = {},
+                    onBack = { back++ },
+                    onApply = {},
+                    onDismiss = {},
+                    onGlossary = {},
+                    onRemoveMistake = {},
+                )
+            }
+        }
+        compose.onNodeWithTag("hint:back").performClick()
+        compose.waitForIdle()
+        assertEquals("the deck would not walk backwards", 1, back)
     }
 
     @Test
