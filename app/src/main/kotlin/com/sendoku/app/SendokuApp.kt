@@ -38,6 +38,8 @@ import com.sendoku.app.ui.BottomBar
 import com.sendoku.app.ui.DailyScreen
 import com.sendoku.app.ui.GameScreen
 import com.sendoku.app.ui.GlossaryScreen
+import com.sendoku.app.ui.HistoryGameScreen
+import com.sendoku.app.ui.HistoryScreen
 import com.sendoku.app.ui.HomeScreen
 import com.sendoku.app.ui.HomeState
 import com.sendoku.app.ui.InProgressSummary
@@ -67,6 +69,8 @@ public fun SendokuApp(
     solvedByGrade: Flow<Map<Grade, Int>>,
     savedGame: Flow<InProgressSummary?>,
     statistics: Flow<Statistics>,
+    /** Every finished game, newest first, for the history screen. */
+    history: Flow<List<com.sendoku.app.data.FinishedGame>>,
     dailyDays: Flow<DailyDays>,
     course: Flow<CourseProgress>,
     onLessonStep: (LessonId, Int, Boolean) -> Unit,
@@ -91,6 +95,7 @@ public fun SendokuApp(
     val counts by solvedByGrade.collectAsState(initial = emptyMap())
     val saved by savedGame.collectAsState(initial = null)
     val stats by statistics.collectAsState(initial = Statistics.of(emptyList()))
+    val played by history.collectAsState(initial = emptyList())
     val calendar by dailyDays.collectAsState(initial = DailyDays())
     val learning by course.collectAsState(initial = CourseProgress())
     val currentSettings by settings.collectAsState(initial = GameSettings())
@@ -111,6 +116,7 @@ public fun SendokuApp(
                     counts = counts,
                     saved = saved,
                     stats = stats,
+                    played = played,
                     currentSettings = currentSettings,
                     look = look,
                     loading = loading,
@@ -151,6 +157,7 @@ private fun Screens(
     counts: Map<Grade, Int>,
     saved: InProgressSummary?,
     stats: Statistics,
+    played: List<com.sendoku.app.data.FinishedGame>,
     currentSettings: GameSettings,
     look: Appearance,
     loading: Boolean,
@@ -259,6 +266,7 @@ private fun Screens(
                 statistics = stats,
                 course = course,
                 onStats = { navigator.go(Destination.Stats) },
+                onHistory = { navigator.go(Destination.History) },
                 onSettings = { navigator.go(Destination.Settings) },
                 onAbout = { navigator.go(Destination.About) },
                 modifier = modifier,
@@ -270,6 +278,34 @@ private fun Screens(
                 SolvePath.of(com.sendoku.engine.Board.parse(com.sendoku.engine.Dimensions.CLASSIC, here.givens))
             }
             SolvePathScreen(path = path, onBack = { navigator.back() }, modifier = modifier)
+        }
+
+        Destination.History -> {
+            HistoryScreen(
+                games = played,
+                onBack = { navigator.back() },
+                onOpen = { navigator.go(Destination.HistoryGame(it.finishedAt)) },
+                modifier = modifier,
+            )
+        }
+
+        is Destination.HistoryGame -> {
+            // Found by when it ended, which is the only thing that identifies a game. If it is
+            // gone, so is the screen: a reset while the detail is open should not leave the
+            // player looking at a game that no longer exists.
+            val game = played.firstOrNull { it.finishedAt == here.finishedAt }
+            if (game == null) {
+                navigator.back()
+            } else {
+                HistoryGameScreen(
+                    game = game,
+                    onBack = { navigator.back() },
+                    onLearn = { technique ->
+                        Curriculum.teaching(technique)?.let { navigator.go(Destination.LessonAt(it.id.name)) }
+                    },
+                    modifier = modifier,
+                )
+            }
         }
 
         Destination.Stats -> {

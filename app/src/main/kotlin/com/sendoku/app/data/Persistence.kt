@@ -60,6 +60,15 @@ public data class FinishedRow(
     val solved: Boolean,
     val finishedAt: Long,
     /**
+     * The board as it was left, or null for a game finished before this column existed.
+     *
+     * Kept so a game can be looked at and shared long after the ten seconds the result panel
+     * is on screen. A won game could be rebuilt from the givens by solving them again, and is
+     * when this is null, but a lost one could not: what was on the board when it ended is not
+     * derivable from anything else, and it is the half of the history worth keeping.
+     */
+    val board: String? = null,
+    /**
      * Which day's puzzle this was, or null for one off the ladder.
      *
      * The day, not the timestamp. A player in Auckland who solves Tuesday's puzzle is on
@@ -217,7 +226,7 @@ public abstract class SendokuDatabase : RoomDatabase() {
     public abstract fun mastery(): TechniqueMasteryDao
 
     public companion object {
-        public const val VERSION: Int = 3
+        public const val VERSION: Int = 4
         public const val NAME: String = "sendoku.db"
 
         /**
@@ -259,7 +268,20 @@ public abstract class SendokuDatabase : RoomDatabase() {
             }
         }
 
-        public val MIGRATIONS: Array<Migration> = arrayOf(MIGRATION_1_2, MIGRATION_2_3)
+        /**
+         * Version 3 to 4: the board a finished game was left on.
+         *
+         * Nullable and with no default, for the same reason the day was: every game already
+         * recorded was finished before anything kept the board, and inventing one would put a
+         * grid on the screen that the player never played.
+         */
+        public val MIGRATION_3_4: Migration = object : Migration(3, 4) {
+            override fun migrate(connection: SQLiteConnection) {
+                connection.execSQL("ALTER TABLE finished ADD COLUMN board TEXT")
+            }
+        }
+
+        public val MIGRATIONS: Array<Migration> = arrayOf(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
     }
 }
 
@@ -299,6 +321,7 @@ internal fun SavedGame.toRow(savedAt: Long): InProgressRow = InProgressRow(
 
 internal fun FinishedRow.toFinished(): FinishedGame = FinishedGame(
     givens = givens,
+    board = board,
     grade = Grade.valueOf(grade),
     rating = rating,
     hardest = hardest?.let { TechniqueId.valueOf(it) },
@@ -312,6 +335,7 @@ internal fun FinishedRow.toFinished(): FinishedGame = FinishedGame(
 
 internal fun FinishedGame.toRow(): FinishedRow = FinishedRow(
     givens = givens,
+    board = board,
     grade = grade.name,
     rating = rating,
     hardest = hardest?.name,

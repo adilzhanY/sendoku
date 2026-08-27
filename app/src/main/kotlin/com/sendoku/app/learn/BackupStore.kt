@@ -39,6 +39,7 @@ public class BackupStore(private val database: SendokuDatabase, private val appV
             games = finished.all().map {
                 GameRecord(
                     givens = it.givens,
+                    board = it.board,
                     grade = it.grade,
                     rating = it.rating,
                     hardest = it.hardest,
@@ -117,6 +118,7 @@ public class BackupStore(private val database: SendokuDatabase, private val appV
             finished.record(
                 FinishedRow(
                     givens = record.givens,
+                    board = record.board,
                     grade = record.grade,
                     rating = record.rating,
                     hardest = record.hardest?.takeIf { runCatching { TechniqueId.valueOf(it) }.isSuccess },

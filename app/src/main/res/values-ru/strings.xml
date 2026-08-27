@@ -787,6 +787,12 @@
     <string name="account_lessons">Уроки</string>
     <string name="account_stats">Статистика</string>
     <string name="account_stats_detail">Все уровни, лучшее время и техники, которые вы встретили</string>
+    <string name="account_history">История</string>
+    <string name="account_history_detail">Каждая законченная партия и поле, на котором она закончилась</string>
+    <string name="history_title">История</string>
+    <string name="history_lost">Проигрыш</string>
+    <string name="history_empty_body">Закончите головоломку, и она появится здесь вместе с полем, каким вы его оставили, готовая к отправке в любой момент.</string>
+    <string name="history_no_board">Эта партия закончилась ещё до того, как приложение стало хранить поле, поэтому рисовать нечего. Остались только цифры.</string>
     <string name="account_settings_detail">Оформление, поле, ограничения и ваши данные</string>
     <string name="account_about_detail">Что это приложение обещает и на каких лицензиях стоит</string>
     <string name="tab_home">Главная</string>

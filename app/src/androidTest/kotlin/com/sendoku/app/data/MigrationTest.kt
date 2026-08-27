@@ -127,6 +127,49 @@ class MigrationTest {
     }
 
     @Test
+    fun threeToFourKeepsEveryGameAndAddsTheBoard() {
+        helper.createDatabase(DATABASE, 3).apply {
+            execSQL(
+                """
+                INSERT INTO finished
+                    (givens, grade, rating, hardest, elapsedSeconds, hintsUsed, mistakes, solved, finishedAt)
+                VALUES ('${".".repeat(81)}', 'BEYOND', 7.6, 'ALS_XZ', 3000, 0, 0, 1, 1787000000000)
+                """.trimIndent(),
+            )
+            close()
+        }
+
+        val upgraded = helper.runMigrationsAndValidate(DATABASE, 4, true, SendokuDatabase.MIGRATION_3_4)
+
+        // The game is still there, and the column it never had is empty rather than invented.
+        upgraded.query("SELECT grade, board FROM finished").use { cursor ->
+            assertTrue("the history did not survive the upgrade", cursor.moveToFirst())
+            assertEquals("BEYOND", cursor.getString(0))
+            assertTrue("a game finished before the column has a board out of nowhere", cursor.isNull(1))
+        }
+        upgraded.close()
+    }
+
+    @Test
+    fun theNewColumnAcceptsABoard() {
+        helper.createDatabase(DATABASE, 3).close()
+        val upgraded = helper.runMigrationsAndValidate(DATABASE, 4, true, SendokuDatabase.MIGRATION_3_4)
+        val board = (1..81).joinToString("") { ((it % 9) + 1).toString() }
+        upgraded.execSQL(
+            """
+            INSERT INTO finished
+                (givens, grade, rating, hardest, elapsedSeconds, hintsUsed, mistakes, solved, finishedAt, board)
+            VALUES ('${".".repeat(81)}', 'GENTLE', 1.2, NULL, 300, 0, 0, 1, 1787000000000, '$board')
+            """.trimIndent(),
+        )
+        upgraded.query("SELECT board FROM finished").use { cursor ->
+            assertTrue(cursor.moveToFirst())
+            assertEquals(board, cursor.getString(0))
+        }
+        upgraded.close()
+    }
+
+    @Test
     fun theInProgressRowGetsTheDayToo() {
         helper.createDatabase(DATABASE, 1).close()
         val upgraded = helper.runMigrationsAndValidate(DATABASE, 2, true, SendokuDatabase.MIGRATION_1_2)

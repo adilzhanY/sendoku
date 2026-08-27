@@ -24,6 +24,8 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.sendoku.app.R
 import com.sendoku.app.data.Statistics
 import com.sendoku.app.learn.CourseProgress
@@ -44,6 +46,7 @@ public fun AccountScreen(
     statistics: Statistics,
     course: CourseProgress,
     onStats: () -> Unit,
+    onHistory: () -> Unit,
     onSettings: () -> Unit,
     onAbout: () -> Unit,
     modifier: Modifier = Modifier,
@@ -74,13 +77,26 @@ public fun AccountScreen(
             // Solved and played, side by side and never merged. A player who finished a
             // puzzle and lost it wants to see that both things happened, and a page that
             // only counts wins tells them nothing except nought.
-            Figure(stringResource(R.string.account_solved), statistics.totalSolved.toString())
-            Figure(stringResource(R.string.account_played), statistics.gamesPlayed.toString())
-            Figure(stringResource(R.string.account_streak), statistics.currentStreak.toString())
-            Figure(stringResource(R.string.account_time), statistics.totalTime.short())
+            Figure(
+                stringResource(R.string.account_solved),
+                statistics.totalSolved.toString(),
+                Modifier.weight(1f),
+            )
+            Figure(
+                stringResource(R.string.account_played),
+                statistics.gamesPlayed.toString(),
+                Modifier.weight(1f),
+            )
+            Figure(
+                stringResource(R.string.account_streak),
+                statistics.currentStreak.toString(),
+                Modifier.weight(1f),
+            )
+            Figure(stringResource(R.string.account_time), statistics.totalTime.short(), Modifier.weight(1f))
             Figure(
                 stringResource(R.string.account_lessons),
                 "${course.finishedCount}/${Curriculum.lessons.size}",
+                Modifier.weight(1f),
             )
         }
 
@@ -89,6 +105,12 @@ public fun AccountScreen(
             detail = stringResource(R.string.account_stats_detail),
             tag = "account:stats",
             onClick = onStats,
+        )
+        Entry(
+            label = stringResource(R.string.account_history),
+            detail = stringResource(R.string.account_history_detail),
+            tag = "account:history",
+            onClick = onHistory,
         )
         Entry(
             label = stringResource(R.string.settings_title),
@@ -105,12 +127,21 @@ public fun AccountScreen(
     }
 }
 
-/** One number, big, with what it counts under it. */
+/**
+ * One number, big, with what it counts under it.
+ *
+ * Five of these share the width of the screen, so each keeps to its fifth of it and shrinks
+ * rather than spilling. At two hundred percent in German they used to run together into
+ * GELÖSTGESPIELTSERIEZEIT, with the lessons count reading one letter per line down the side.
+ */
 @Composable
-private fun Figure(label: String, value: String) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(value, style = Sendoku.type.display, color = Sendoku.colors.given)
-        Text(label.shout(), style = Sendoku.type.overline, color = Sendoku.colors.muted)
+private fun Figure(label: String, value: String, modifier: Modifier = Modifier) {
+    Column(
+        modifier = modifier.padding(horizontal = 2.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        OneLine(value, Sendoku.type.display, Sendoku.colors.given, min = 5.sp)
+        OneLine(label.shout(), Sendoku.type.overline, Sendoku.colors.muted, min = 5.sp)
     }
 }
 

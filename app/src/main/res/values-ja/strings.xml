@@ -773,6 +773,12 @@
     <string name="account_lessons">レッスン</string>
     <string name="account_stats">記録</string>
     <string name="account_stats_detail">レベルごとの成績、ベストタイム、出会ったテクニック</string>
+    <string name="account_history">履歴</string>
+    <string name="account_history_detail">終わったゲームのすべてと、終わったときの盤面</string>
+    <string name="history_title">履歴</string>
+    <string name="history_lost">負け</string>
+    <string name="history_empty_body">1問終えるとここに残ります。終えたときの盤面ごと残るので、いつでも共有できます。</string>
+    <string name="history_no_board">このゲームは、アプリが盤面を保存するようになる前に終わっています。描くものがないので、残っているのは数字だけです。</string>
     <string name="account_settings_detail">見た目、盤面、上限、そしてあなたのデータ</string>
     <string name="account_about_detail">このアプリの約束と、支えているライセンス</string>
     <string name="tab_home">ホーム</string>

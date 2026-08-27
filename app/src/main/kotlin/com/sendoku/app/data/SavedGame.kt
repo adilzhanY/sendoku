@@ -8,6 +8,7 @@ import com.sendoku.engine.Candidates
 import com.sendoku.engine.Digits
 import com.sendoku.engine.Dimensions
 import com.sendoku.engine.Grade
+import com.sendoku.engine.Solver
 import com.sendoku.engine.technique.TechniqueId
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
@@ -155,6 +156,8 @@ public data class SavedGame(
 /** A game that is over, and what it cost. */
 public data class FinishedGame(
     val givens: String,
+    /** Every digit on the board when it ended, the player's and the puzzle's alike. */
+    val board: String? = null,
     val grade: Grade,
     val rating: Double,
     val hardest: TechniqueId?,
@@ -165,6 +168,45 @@ public data class FinishedGame(
     val finishedAt: Long,
     val dailyEpochDay: Long? = null,
 ) {
+
+    /**
+     * The game as it ended, rebuilt well enough to look at and to share.
+     *
+     * Three cases, and only one of them costs anything. A game recorded since the board
+     * column exists is read straight back. A won game recorded before it is rebuilt by
+     * solving the givens again, which is the same grid it ended on because a won board is the
+     * solution. A lost game recorded before it has no board anywhere, and this returns null
+     * rather than drawing a grid the player never played.
+     */
+    public fun replay(settings: GameSettings = GameSettings()): GameState? {
+        val dims = SavedGame.dimensionsFor(givens.length)
+        val givenBoard = Board.parse(dims, givens)
+        val solved = Solver(dims).solve(givenBoard) ?: return null
+        val ended = board?.let { Board.parse(dims, it) } ?: solved.takeIf { this.solved } ?: return null
+        return GameState(
+            dims = dims,
+            solution = solved,
+            grade = grade,
+            rating = rating,
+            hardest = hardest,
+            cells = (0 until dims.cellCount).map { index ->
+                val given = givenBoard.atIndex(index)
+                if (given != Board.EMPTY) {
+                    Cell(digit = given, isGiven = true)
+                } else {
+                    Cell(digit = ended.atIndex(index))
+                }
+            },
+            selected = null,
+            pencilMode = false,
+            elapsed = elapsed,
+            mistakes = mistakes,
+            hintsUsed = hintsUsed,
+            dailyEpochDay = dailyEpochDay,
+            settings = settings,
+        )
+    }
+
     public companion object {
         public fun of(state: GameState, finishedAt: Long): FinishedGame = FinishedGame(
             givens = buildString {
@@ -172,6 +214,7 @@ public data class FinishedGame(
                     append(Digits.toChar(if (cell.isGiven) cell.digit else Board.EMPTY))
                 }
             },
+            board = buildString { for (cell in state.cells) append(Digits.toChar(cell.digit)) },
             grade = state.grade,
             rating = state.rating,
             hardest = state.hardest,

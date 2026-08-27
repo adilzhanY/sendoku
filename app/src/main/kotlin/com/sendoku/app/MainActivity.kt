@@ -210,6 +210,7 @@ class MainActivity : ComponentActivity() {
                         },
                         solvedByGrade = repository.solvedByGrade(),
                         statistics = repository.statistics(),
+                        history = repository.history(),
                         dailyDays = repository.dailyDays(),
                         course = learning.progress(),
                         onExport = {

@@ -790,6 +790,12 @@
     <string name="account_lessons">Lessons</string>
     <string name="account_stats">Statistics</string>
     <string name="account_stats_detail">Every grade, your best times, and which techniques you have met</string>
+    <string name="account_history">History</string>
+    <string name="account_history_detail">Every game you have finished, and the board you finished it on</string>
+    <string name="history_title">History</string>
+    <string name="history_lost">Lost</string>
+    <string name="history_empty_body">Finish a puzzle and it lands here, with the board as you left it, ready to share whenever you like.</string>
+    <string name="history_no_board">This one was finished before the app kept boards, so there is nothing to draw. The numbers are all there is.</string>
     <string name="account_settings_detail">The look, the board, the limits, and your data</string>
     <string name="account_about_detail">What this app promises, and the licences it stands on</string>
     <string name="tab_home">Home</string>

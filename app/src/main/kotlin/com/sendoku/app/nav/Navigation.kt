@@ -54,6 +54,12 @@ public sealed interface Destination {
 
     public data object Stats : Destination
 
+    /** Every game that is over. */
+    public data object History : Destination
+
+    /** One of them, by the moment it ended, which is the only thing that identifies it. */
+    public data class HistoryGame(val finishedAt: Long) : Destination
+
     public data object About : Destination
 
     public data object Licences : Destination
@@ -144,6 +150,8 @@ public class Navigator(stack: List<Destination> = listOf(Destination.Home)) {
             Destination.Glossary -> "glossary"
             is Destination.Path -> "path:$givens"
             Destination.Stats -> "stats"
+            Destination.History -> "history"
+            is Destination.HistoryGame -> "game:$finishedAt"
             Destination.About -> "about"
             Destination.Licences -> "licences"
         }
@@ -154,6 +162,8 @@ public class Navigator(stack: List<Destination> = listOf(Destination.Home)) {
             value == "settings" -> Destination.Settings
             value == "glossary" -> Destination.Glossary
             value == "stats" -> Destination.Stats
+            value == "history" -> Destination.History
+            value.startsWith("game:") -> Destination.HistoryGame(value.removePrefix("game:").toLong())
             value == "about" -> Destination.About
             value == "licences" -> Destination.Licences
             value.startsWith("play:") -> Destination.Play(Grade.valueOf(value.removePrefix("play:")))

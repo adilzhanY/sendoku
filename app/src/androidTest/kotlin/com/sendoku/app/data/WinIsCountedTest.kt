@@ -79,6 +79,68 @@ class WinIsCountedTest {
     }
 
     @Test
+    fun theBoardIsKeptSoTheGameCanBeLookedAtLater() = runBlocking {
+        var state = easy()
+        for (cell in state.cells.indices) {
+            if (!state.cells[cell].isEmpty) continue
+            state = state.select(cell).enter(state.solution.atIndex(cell))
+        }
+        repository.recordFinished(state, finishedAt = 3_000L)
+
+        val recorded = repository.history().first().single()
+        val replayed = checkNotNull(recorded.replay()) { "a game recorded today could not be rebuilt" }
+        assertEquals(
+            "the board that came back is not the board that was played",
+            state.cells.map { it.digit },
+            replayed.cells.map { it.digit },
+        )
+        assertEquals(
+            "the clues came back as the player's own digits",
+            state.cells.map { it.isGiven },
+            replayed.cells.map { it.isGiven },
+        )
+    }
+
+    @Test
+    fun aWonGameFromBeforeTheColumnStillHasABoard() = runBlocking {
+        // Every game finished before the board column existed has none, and a won board is
+        // the solution, so it can be rebuilt by solving the puzzle again. This is what a
+        // player with a year of history sees on the day they update.
+        var state = easy()
+        for (cell in state.cells.indices) {
+            if (!state.cells[cell].isEmpty) continue
+            state = state.select(cell).enter(state.solution.atIndex(cell))
+        }
+        repository.recordFinished(state, finishedAt = 4_000L)
+        val old = repository.history().first().single().copy(board = null)
+
+        val replayed = checkNotNull(old.replay()) { "an old won game could not be rebuilt" }
+        assertEquals(
+            "the rebuilt board is not the one that was solved",
+            state.cells.map { it.digit },
+            replayed.cells.map { it.digit },
+        )
+    }
+
+    @Test
+    fun aLostGameFromBeforeTheColumnSaysSoRatherThanInventingOne() = runBlocking {
+        var state = easy().withSettings(GameSettings(mistakeLimit = 3))
+        repeat(3) {
+            val cell = state.cells.indices.first { at ->
+                state.cells[at].isEmpty && state.solution.atIndex(at) in state.candidatesAt(at)
+            }
+            val wrong = (1..9).first { it != state.solution.atIndex(cell) }
+            state = state.select(cell).enter(wrong).select(cell).erase()
+        }
+        repository.recordFinished(state, finishedAt = 5_000L)
+        val old = repository.history().first().single().copy(board = null)
+
+        // Nothing anywhere knows what was on that board, and drawing the solution instead
+        // would be showing the player a grid they never played.
+        assertEquals("a board was invented for a lost game that never kept one", null, old.replay())
+    }
+
+    @Test
     fun aLostGameCountsAsPlayedAndOpensNothing() = runBlocking {
         var state = easy().withSettings(GameSettings(mistakeLimit = 3))
         // Three real mistakes, in cells that were still healthy when they were made.

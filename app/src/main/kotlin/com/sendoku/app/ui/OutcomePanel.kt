@@ -57,32 +57,7 @@ public fun OutcomePanel(
 
     // Read here rather than inside the click, because a click is not a composable and the card
     // has to be written in whatever language the player is reading.
-    val look = rememberCardLook()
-    val appName = stringResource(R.string.app_name)
-    val chooser = stringResource(R.string.outcome_share)
-    val resultText = stringResource(if (won) R.string.card_solved else R.string.card_lost)
-    val gradeText = stringResource(gradeName(state.grade))
-    val labels = listOf(
-        stringResource(R.string.stat_time) to state.elapsed.clock(),
-        stringResource(R.string.stat_mistakes) to (
-            state.settings.mistakeLimit
-                ?.let { stringResource(R.string.mistakes_of, state.mistakes, it) }
-                ?: state.mistakes.toString()
-            ),
-        stringResource(R.string.stat_hints) to (
-            state.settings.hintLimit
-                ?.let { stringResource(R.string.mistakes_of, state.hintsUsed, it) }
-                ?: state.hintsUsed.toString()
-            ),
-    )
-    // The board as it was left, so the picture shows the puzzle rather than describing it.
-    val grid = ShareCard.Grid(
-        size = state.size,
-        boxWidth = state.dims.boxWidth,
-        boxHeight = state.dims.boxHeight,
-        digits = state.cells.map { it.digit },
-        given = state.cells.indices.filter { state.cells[it].isGiven }.toSet(),
-    )
+    val card = rememberGameCard(state, won)
 
     Box(
         modifier = modifier
@@ -211,7 +186,7 @@ public fun OutcomePanel(
                 OutcomeButton(
                     stringResource(R.string.outcome_share),
                     accent = false,
-                    onClick = { shareCard(context, appName, chooser, resultText, gradeText, labels, grid, look) },
+                    onClick = { card.share(context) },
                     modifier = Modifier.weight(1f),
                     tag = "outcome:share",
                 )
@@ -262,31 +237,4 @@ private fun OutcomeButton(
     ) {
         OneLine(label, Sendoku.type.label, if (accent) colors.onAccent else colors.muted, min = 6.sp)
     }
-}
-
-/**
- * Builds the card and offers it.
- *
- * Everything it needs arrives already translated, so this knows nothing about languages and
- * the drawing code knows nothing about the app.
- */
-private fun shareCard(
-    context: android.content.Context,
-    appName: String,
-    chooser: String,
-    title: String,
-    grade: String,
-    lines: List<Pair<String, String>>,
-    grid: ShareCard.Grid,
-    look: ShareCard.Look,
-) {
-    val card = ShareCard.draw(
-        appName = appName,
-        title = title,
-        grade = grade,
-        lines = lines.map { (label, value) -> ShareCard.Line(label, value) },
-        grid = grid,
-        look = look,
-    )
-    ShareResult.share(context, card, chooser)
 }

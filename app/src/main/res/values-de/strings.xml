@@ -401,6 +401,12 @@
     <string name="account_lessons">Lektionen</string>
     <string name="account_stats">Statistik</string>
     <string name="account_stats_detail">Jede Stufe, Ihre Bestzeiten und die Techniken, denen Sie begegnet sind</string>
+    <string name="account_history">Verlauf</string>
+    <string name="account_history_detail">Jedes beendete Spiel und das Gitter, auf dem es endete</string>
+    <string name="history_title">Verlauf</string>
+    <string name="history_lost">Verloren</string>
+    <string name="history_empty_body">Beenden Sie ein Rätsel, und es landet hier, mit dem Gitter, wie Sie es verlassen haben, jederzeit zum Teilen bereit.</string>
+    <string name="history_no_board">Dieses Spiel endete, bevor die App Gitter aufbewahrt hat, also gibt es nichts zu zeichnen. Die Zahlen sind alles, was da ist.</string>
     <string name="account_settings_detail">Das Aussehen, das Brett, die Limits und Ihre Daten</string>
     <string name="account_about_detail">Was diese App verspricht, und die Lizenzen, auf denen sie steht</string>
 

@@ -400,6 +400,12 @@
     <string name="account_lessons">Dersler</string>
     <string name="account_stats">İstatistikler</string>
     <string name="account_stats_detail">Her seviye, en iyi süreleriniz ve karşılaştığınız teknikler</string>
+    <string name="account_history">Geçmiş</string>
+    <string name="account_history_detail">Bitirdiğin her oyun ve onu bitirdiğin tahta</string>
+    <string name="history_title">Geçmiş</string>
+    <string name="history_lost">Kaybedildi</string>
+    <string name="history_empty_body">Bir bulmacayı bitir, bıraktığın hâliyle tahtasıyla birlikte buraya düşsün ve istediğin zaman paylaşılmaya hazır olsun.</string>
+    <string name="history_no_board">Bu oyun, uygulama tahtaları saklamaya başlamadan önce bitmiş, yani çizilecek bir şey yok. Elde yalnızca sayılar var.</string>
     <string name="account_settings_detail">Görünüm, tahta, sınırlar ve verileriniz</string>
     <string name="account_about_detail">Bu uygulamanın verdiği sözler ve dayandığı lisanslar</string>
 

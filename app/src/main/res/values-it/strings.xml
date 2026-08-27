@@ -772,6 +772,12 @@
     <string name="account_lessons">Lezioni</string>
     <string name="account_stats">Statistiche</string>
     <string name="account_stats_detail">Ogni livello, i tuoi tempi migliori e quali tecniche hai incontrato</string>
+    <string name="account_history">Cronologia</string>
+    <string name="account_history_detail">Ogni partita finita e la griglia su cui è finita</string>
+    <string name="history_title">Cronologia</string>
+    <string name="history_lost">Persa</string>
+    <string name="history_empty_body">Finisci uno schema e finirà qui, con la griglia come l\'hai lasciata, pronta da condividere quando vuoi.</string>
+    <string name="history_no_board">Questa partita è finita prima che l\'app conservasse le griglie, quindi non c\'è niente da disegnare. Restano solo i numeri.</string>
     <string name="account_settings_detail">L\'aspetto, la griglia, i limiti e i tuoi dati</string>
     <string name="account_about_detail">Che cosa promette questa app e le licenze su cui si regge</string>
     <string name="tab_home">Inizio</string>

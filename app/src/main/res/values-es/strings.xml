@@ -772,6 +772,12 @@
     <string name="account_lessons">Lecciones</string>
     <string name="account_stats">Estadísticas</string>
     <string name="account_stats_detail">Cada nivel, tus mejores tiempos y qué técnicas has visto</string>
+    <string name="account_history">Historial</string>
+    <string name="account_history_detail">Cada partida terminada y el tablero en el que la terminaste</string>
+    <string name="history_title">Historial</string>
+    <string name="history_lost">Perdida</string>
+    <string name="history_empty_body">Termina un sudoku y aparecerá aquí, con el tablero tal como lo dejaste, listo para compartir cuando quieras.</string>
+    <string name="history_no_board">Esta partida terminó antes de que la app guardara los tableros, así que no hay nada que dibujar. Solo quedan los números.</string>
     <string name="account_settings_detail">El aspecto, el tablero, los límites y tus datos</string>
     <string name="account_about_detail">Lo que promete esta app y las licencias sobre las que se sostiene</string>
     <string name="tab_home">Inicio</string>

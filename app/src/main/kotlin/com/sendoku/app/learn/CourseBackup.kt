@@ -85,6 +85,13 @@ public data class MasteryRecord(
 @Serializable
 public data class GameRecord(
     val givens: String,
+    /**
+     * The board as it was left, when the version that wrote the file kept one.
+     *
+     * Optional and defaulted, so a file from before this existed still imports and a file
+     * written now still opens in a build that has never heard of it.
+     */
+    val board: String? = null,
     val grade: String,
     val rating: Double,
     val hardest: String? = null,
