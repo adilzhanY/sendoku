@@ -76,7 +76,7 @@ class BundledFontsTest {
         // testing nothing.
         assertTrue("only ${charset.size} characters were found", charset.size > 150)
         assertTrue("no Cyrillic was found", charset.any { it.code in 0x400..0x4FF })
-        for (c in "äöüßğşıİçÇñáíóúü¿") {
+        for (c in "äöüßğşıİçÇñáíóúü¿àèìòù") {
             assertTrue("$c is missing from the set the faces are cut to", c in charset)
         }
         assertTrue("Japanese should be left to the phone rather than cut into the faces", '日' !in charset)

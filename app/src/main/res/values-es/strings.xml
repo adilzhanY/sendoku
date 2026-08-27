@@ -151,6 +151,7 @@
     <string name="language_german">Deutsch</string>
     <string name="language_turkish">Türkçe</string>
     <string name="language_spanish">Español</string>
+    <string name="language_italian">Italiano</string>
     <string name="settings_look">Aspecto</string>
     <string name="settings_light_or_dark">Claro u oscuro</string>
     <string name="settings_terminal_is_dark">Terminal es oscuro esté como esté el teléfono. Es a propósito.</string>

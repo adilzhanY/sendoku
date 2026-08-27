@@ -1,0 +1,795 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Italiano.
+
+  Due scelte che valgono per tutto il file. I nomi descrittivi delle tecniche sono tradotti,
+  i nomi propri inventati restano in inglese: un X-Wing è un X-Wing anche in italiano, ma un
+  naked single è un unico nudo. E il tono è lo stesso dell'originale: calmo, diretto e senza
+  punti esclamativi.
+-->
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Sendoku</string>
+
+    <string name="home_choose_level">SCEGLI UN LIVELLO</string>
+    <string name="home_daily">Giornaliero</string>
+    <string name="home_new_puzzle">Nuovo schema</string>
+    <string name="home_resume">Riprendi</string>
+    <string name="home_in_progress">INIZIATO</string>
+    <string name="home_percent">%1$s, %2$d%%</string>
+    <string name="home_placed">Inserite: %1$d di %2$d</string>
+
+    <string name="grade_gentle">Facile</string>
+    <string name="grade_steady">Medio</string>
+    <string name="grade_tricky">Difficile</string>
+    <string name="grade_severe">Molto difficile</string>
+    <string name="grade_diabolical">Esperto</string>
+    <string name="grade_beyond">Maestro</string>
+    <string name="grade_insane">Folle</string>
+    <string name="grade_nightmare">Incubo</string>
+    <string name="grade_locked">Vinci uno schema di livello %1$s per aprire questo</string>
+    <string name="gate_gentle">una cifra chiara dopo l\'altra</string>
+    <string name="gate_steady">coppie, e cifre legate a una linea</string>
+    <string name="gate_tricky">terne, e schemi su tutta la griglia</string>
+    <string name="gate_severe">wing, colorazione e rettangoli</string>
+    <string name="gate_diabolical">catene di ragionamento</string>
+    <string name="gate_beyond">più in là di quasi tutte le app</string>
+    <string name="gate_insane">gruppi di celle uniti in catena</string>
+    <string name="gate_nightmare">una cella presa da entrambi i lati, su carta</string>
+    <string name="grade_advanced">AVANZATO</string>
+    <string name="grade_advanced_talkback">un livello avanzato, che richiede una tecnica del corso</string>
+
+    <string name="tool_undo">Annulla</string>
+    <string name="tool_redo">Ripeti</string>
+    <string name="tool_erase">Cancella</string>
+    <string name="tool_notes">Note</string>
+    <string name="tool_hint">Aiuto</string>
+    <string name="paused">IN PAUSA</string>
+    <string name="paused_tap">Tocca dove vuoi per continuare</string>
+    <string name="mistakes_of">%1$d di %2$d</string>
+
+    <string name="cell_position">Riga %1$d, colonna %2$d</string>
+    <string name="cell_clue">%1$s, %2$d, un indizio</string>
+    <string name="cell_digit">%1$s, %2$d</string>
+    <string name="cell_empty">%1$s, vuota</string>
+    <string name="cell_noted">%1$s, vuota, annotato %2$s</string>
+    <string name="cell_hint_argument">%1$s. Parte dell\'aiuto.</string>
+    <string name="cell_hint_struck">%1$s. L\'aiuto sta escludendo una nota qui.</string>
+    <string name="cell_hint_region">%1$s. Nella regione di cui parla l\'aiuto.</string>
+    <string name="cell_repeated">%1$s, ripetuta</string>
+    <string name="pad_all_placed">%1$d, tutte inserite</string>
+    <string name="pad_one_left">%1$d, ne resta una</string>
+    <plurals name="pad_left">
+        <item quantity="one">%1$d, ne resta %2$d</item>
+        <item quantity="other">%1$d, ne restano %2$d</item>
+    </plurals>
+    <string name="pad_scanning">%1$s, mostra dove può andare</string>
+    <string name="pad_notes_mode">%1$s, modo note</string>
+
+    <string name="cell_actions_title">RIGA %1$d, COLONNA %2$d</string>
+    <string name="cell_actions_clue">Questa è arrivata con lo schema, quindi non si può cambiare.</string>
+    <plurals name="cell_actions_note_all">
+        <item quantity="one">Annota l\'unico candidato</item>
+        <item quantity="other">Annota tutti e %1$d i candidati</item>
+    </plurals>
+    <string name="cell_actions_clear_notes">Cancella le note</string>
+    <string name="why_not_title">PERCHÉ NO?</string>
+    <string name="why_not_prompt">Tocca una cifra e ti dico che cosa la blocca.</string>
+    <string name="why_not_taken">C\'è già un %1$d in %2$s, alla riga %3$d, colonna %4$d.</string>
+    <string name="why_not_filled">Questa cella contiene già un %1$d. Cancellalo prima.</string>
+    <string name="why_not_possible">Niente sulla griglia esclude %1$d. Questo non lo rende giusto, solo possibile.</string>
+    <string name="cell_actions_clear">Svuota la cella</string>
+
+    <string name="leave_title">Lasciare questo schema?</string>
+    <string name="leave_body">Ti aspetterà dove lo hai lasciato.</string>
+    <string name="leave_confirm">Esci</string>
+    <string name="leave_cancel">Resto</string>
+
+    <string name="outcome_solved">RISOLTO</string>
+    <string name="outcome_lost">ERRORI FINITI</string>
+    <string name="outcome_rated">%1$s, valutato %2$s</string>
+    <string name="outcome_hints">AIUTI</string>
+    <string name="outcome_mistakes">ERRORI</string>
+    <string name="outcome_moves">MOSSE</string>
+    <string name="outcome_needed">Richiedeva un %1$s</string>
+    <string name="outcome_home">Inizio</string>
+    <string name="outcome_another">Un altro %1$s</string>
+
+    <string name="hint_remove_one">Toglilo</string>
+    <string name="hint_remove_many">Toglili</string>
+    <string name="hint_look_here_title">GUARDA QUI</string>
+    <string name="hint_look_here">C\'è qualcosa da trovare %1$s. Questo è tutto ciò che dice questo aiuto.</string>
+    <string name="hint_look_around">C\'è un passo da trovare. Questo è sparso sulla griglia invece di stare in una sola regione.</string>
+    <string name="hint_what_kind">Che tipo di passo?</string>
+    <string name="hint_menu_title">AIUTO</string>
+    <string name="hint_menu_difficulty">Il passo successivo richiede una tecnica di livello %1$s.</string>
+    <string name="hint_menu_broken">Qualcosa che hai inserito è sbagliato, quindi nient\'altro segue finché non è sistemato.</string>
+    <string name="hint_menu_check">C\'è qualcosa di sbagliato?</string>
+    <string name="hint_menu_look">Dove dovrei guardare?</string>
+    <string name="hint_menu_explain">Spiega il passo successivo</string>
+    <string name="hint_menu_free">Chiedere non costa niente qui. Il limite è spento.</string>
+    <string name="hint_check_clean">Niente di quello che hai inserito è sbagliato.</string>
+    <string name="hint_close">Chiudi</string>
+    <string name="hint_previous">Un passo indietro</string>
+    <string name="hint_cells_here">Le celle su cui si regge sono illuminate %1$s.</string>
+    <string name="hint_where">Mostrami dove</string>
+    <string name="hint_explain">Spiegalo</string>
+    <string name="hint_do_it">Fallo</string>
+    <string name="hint_evidence">La sua riga ha già %1$s. La sua colonna ha %2$s. Il suo blocco ha %3$s. Insieme sono tutte le cifre tranne il %4$d.</string>
+    <string name="hint_rests_on_earlier">Una parte di questo si regge su note che un aiuto precedente ha escluso. Sono segnate sulla griglia, quindi puoi seguirlo da lì.</string>
+    <string name="hint_what_is_this">CHE COS\'È?</string>
+    <string name="hint_wrong_title">QUALCOSA NON VA</string>
+    <string name="hint_wrong_one">Una delle cifre che hai inserito non può essere giusta. È evidenziata.</string>
+    <string name="hint_wrong_many">%1$d delle cifre che hai inserito non possono essere giuste. Sono evidenziate.</string>
+    <string name="hint_wrong_until_one">Non si può dedurre altro finché non è sistemata.</string>
+    <string name="hint_wrong_until_many">Non si può dedurre altro finché non sono sistemate.</string>
+    <string name="hint_done_title">FATTO</string>
+    <string name="hint_done_body">Lo schema è finito.</string>
+    <string name="hint_stuck_title">NIENTE DA SUGGERIRE</string>
+    <string name="hint_stuck_body">Questa griglia è valida, ma nessuna delle tecniche che Sendoku conosce si applica. Non dovrebbe succedere su uno schema dell\'app.</string>
+    <string name="hint_in_region">in %1$s</string>
+    <string name="hint_in_regions">in %1$s e %2$s</string>
+    <string name="hint_outcome_place" tools:ignore="PluralsCandidate">Quindi la riga %1$d, colonna %2$d deve essere %3$d.</string>
+    <string name="hint_outcome_strike_one" tools:ignore="PluralsCandidate">Quindi il %1$d si può togliere da %2$s.</string>
+    <string name="hint_outcome_strike_two" tools:ignore="PluralsCandidate">Quindi il %1$d e il %2$d si possono togliere da %3$s.</string>
+    <plurals name="hint_cells">
+        <item quantity="one">una cella</item>
+        <item quantity="other">%1$d celle</item>
+    </plurals>
+
+    <string name="house_row">la riga %1$d</string>
+    <string name="house_column">la colonna %1$d</string>
+    <string name="house_box">il blocco %1$d</string>
+
+    <string name="glossary_title">Tecniche</string>
+    <string name="back">INDIETRO</string>
+
+    <string name="settings_title">Impostazioni</string>
+    <string name="settings_language">Lingua</string>
+    <string name="language_system">Segui il telefono</string>
+    <string name="language_english">English</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_german">Deutsch</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_italian">Italiano</string>
+    <string name="settings_look">Aspetto</string>
+    <string name="settings_light_or_dark">Chiaro o scuro</string>
+    <string name="settings_terminal_is_dark">Terminal è scuro comunque sia impostato il telefono. È voluto.</string>
+    <string name="settings_board">La griglia</string>
+    <string name="settings_highlight_peers">Evidenzia la riga, la colonna e il blocco</string>
+    <string name="settings_highlight_same">Evidenzia la stessa cifra altrove</string>
+    <string name="settings_auto_clear">Cancella le note che una cifra inserita esclude</string>
+    <string name="settings_auto_notes">Tieni ogni cella annotata</string>
+    <string name="settings_auto_notes_note">L\'app tiene la contabilità. Da Esperto in su questo è quasi necessario.</string>
+    <string name="settings_highlight_homes">Mostra dove può ancora andare la cifra scelta</string>
+    <string name="settings_auto_check">Dimmi subito quando una cifra è sbagliata</string>
+    <string name="settings_auto_check_note">Con questo acceso non si perde niente a provare, quindi lo schema perde quasi tutta la sua tensione.</string>
+    <string name="settings_auto_check_forced">Acceso finché c\'è un limite di errori, perché un errore che ti costa qualcosa deve essere un errore che puoi vedere. Spegni il limite qui sotto per giocare senza nessuno dei due.</string>
+    <string name="settings_flag_conflicts">Segnala una cifra che si ripete in una riga, colonna o blocco</string>
+    <string name="settings_clock">L\'orologio</string>
+    <string name="settings_show_timer">Mostra il cronometro</string>
+    <string name="settings_feedback">Risposta</string>
+    <string name="settings_haptics">Vibra quando entra una cifra</string>
+    <string name="settings_sound">Suoni</string>
+    <string name="settings_sound_note">Note morbide mentre giochi. Spegnerle è un tocco, e la modalità silenziosa del telefono vince su entrambe le cose.</string>
+    <string name="settings_mistakes">Errori</string>
+    <string name="settings_mistake_limit">Chiudi la partita dopo tre errori</string>
+    <string name="settings_mistake_note">Acceso di default, a tre. Spegnilo per i livelli alti, dove perdere un\'ora per una distrazione è penoso.</string>
+    <string name="settings_about">SU SENDOKU</string>
+
+    <string name="theme_deep_field">Campo profondo</string>
+    <string name="theme_deep_field_summary">Nero pieno, un accento ciano e nient\'altro</string>
+    <string name="theme_ink">Inchiostro e carta</string>
+    <string name="theme_ink_summary">Un libretto di enigmi, stampato su carta calda</string>
+    <string name="theme_zen">Zen di ardesia</string>
+    <string name="theme_zen_summary">Salvia e pietra, e il meno possibile oltre a questo</string>
+    <string name="theme_terminal">Terminal</string>
+    <string name="theme_terminal_summary">Monospaziato, spigoli netti, solo scuro</string>
+    <string name="mode_system">Segui il sistema</string>
+    <string name="mode_light">Sempre chiaro</string>
+    <string name="mode_dark">Sempre scuro</string>
+
+    <string name="stats_title">Statistiche</string>
+    <string name="stats_solved">RISOLTI</string>
+    <string name="stats_streak">SERIE</string>
+    <string name="stats_hardest">PIÙ DIFFICILE</string>
+    <string name="stats_hardest_note">Il più difficile che hai finito è un %1$s.</string>
+    <plurals name="stats_longest_run">
+        <item quantity="one">La tua serie più lunga è stata di un giorno.</item>
+        <item quantity="other">La tua serie più lunga è stata di %1$d giorni.</item>
+    </plurals>
+    <string name="stats_totals">%1$s giocati, aiuti usati: %2$d.</string>
+    <string name="stats_by_grade">Per livello</string>
+    <string name="stats_hints_title">SU CHE COSA HAI CHIESTO</string>
+    <string name="stats_hints_note">Chiedi più spesso di %1$s. È la lezione su cui vale la pena tornare.</string>
+    <string name="stats_needed">Che cosa richiedevano i tuoi schemi</string>
+    <string name="stats_solved_count">Risolti: %1$d</string>
+    <string name="stats_solved_and_lost">Risolti: %1$d, persi: %2$d</string>
+    <string name="stats_average">media %1$s</string>
+    <string name="stats_reset">AZZERA LE STATISTICHE</string>
+    <string name="stats_reset_title">Buttare via la tua storia?</string>
+    <string name="stats_reset_body">Ogni schema finito, ogni serie e ogni tempo migliore. Non c\'è copia da nessun\'altra parte, quindi non si può tornare indietro.</string>
+    <string name="stats_reset_confirm">Azzera</string>
+    <string name="stats_reset_cancel">Tienila</string>
+    <string name="stats_empty_title">Ancora niente</string>
+    <string name="stats_empty_body">Finisci uno schema e questo si riempie: quanto ci metti per ogni livello, fin dove sei salito e quali tecniche hanno richiesto i tuoi schemi.</string>
+
+    <string name="about_title">Informazioni</string>
+    <string name="about_version">Sendoku %1$s</string>
+    <string name="about_tagline">Un\'app di sudoku per chi ha finito i sudoku difficili.</string>
+    <string name="about_no_ads">Nessuna pubblicità</string>
+    <string name="about_no_ads_detail">Non fra uno schema e l\'altro, non per gli aiuti, mai.</string>
+    <string name="about_no_tracking">Nessun tracciamento</string>
+    <string name="about_no_tracking_detail">Non si misura niente e non si manda niente. Non c\'è nessun server.</string>
+    <string name="about_no_purchases">Nessun acquisto</string>
+    <string name="about_no_purchases_detail">Ogni schema e ogni aiuto sono già qui.</string>
+    <string name="about_offline">Funziona senza rete</string>
+    <string name="about_offline_detail">L\'intero lotto viaggia dentro l\'app.</string>
+    <string name="about_hints">Aiuti che insegnano</string>
+    <string name="about_hints_detail">Un aiuto nomina la tecnica e spiega il ragionamento. Non si limita mai a riempire una cifra, e non è mai in vendita: tre arrivano con ogni schema, e il limite si può togliere nelle impostazioni.</string>
+    <string name="about_rating">La difficoltà è misurata dalla tecnica più difficile che uno schema richiede davvero, calcolata risolvendolo come farebbe una persona. Per questo un Molto difficile qui significa la stessa cosa del Molto difficile precedente.</string>
+    <string name="about_licence">Sendoku è software libero sotto la GNU General Public License versione 3.</string>
+    <string name="about_privacy">L\'informativa sulla privacy dice la stessa cosa nella forma che chiede il negozio, su adilzhany.github.io/sendoku/privacy</string>
+    <string name="about_licences">LICENZE OPEN SOURCE</string>
+    <string name="licences_title">Licenze</string>
+
+    <string name="look_naked_single">C\'è una cella in cui può ancora entrare una sola cifra.</string>
+    <string name="look_hidden_single">C\'è una cifra a cui resta un solo posto dove andare.</string>
+    <string name="look_locked_candidates_pointing">In un blocco, una cifra è bloccata su una sola riga o colonna.</string>
+    <string name="look_locked_candidates_claiming">Su una linea, una cifra può stare solo dentro un blocco.</string>
+    <string name="look_naked_pair">Due celle di una regione hanno le stesse due cifre e nient\'altro.</string>
+    <string name="look_hidden_pair">Due cifre non hanno dove andare in una regione se non nelle stesse due celle.</string>
+    <string name="look_naked_triple">Tre celle di una regione si dividono tre cifre.</string>
+    <string name="look_hidden_triple">Tre cifre sono confinate nelle stesse tre celle.</string>
+    <string name="look_naked_quad">Quattro celle di una regione si dividono quattro cifre.</string>
+    <string name="look_hidden_quad">Quattro cifre sono confinate nelle stesse quattro celle.</string>
+    <string name="look_x_wing">Due righe hanno una cifra nelle stesse due colonne, o viceversa.</string>
+    <string name="look_swordfish">Tre righe hanno una cifra dentro le stesse tre colonne.</string>
+    <string name="look_jellyfish">Quattro righe hanno una cifra dentro le stesse quattro colonne.</string>
+    <string name="look_xy_wing">Tre celle di due cifre ciascuna, disposte in modo che una cifra resti fuori.</string>
+    <string name="look_xyz_wing">Come un XY-Wing, ma la cella di mezzo ha anche una terza cifra.</string>
+    <string name="look_w_wing">Due celle con la stessa coppia, unite da una cifra che ha solo due posti.</string>
+    <string name="look_simple_colouring">Una cifra forma una catena che si alterna per tutta la sua lunghezza.</string>
+    <string name="look_multi_colouring">Due catene separate sulla stessa cifra, messe una contro l\'altra.</string>
+    <string name="look_remote_pairs">Una catena di celle che hanno tutte esattamente le stesse due cifre.</string>
+    <string name="look_unique_rectangle">Quattro celle formano un rettangolo che darebbe allo schema due soluzioni.</string>
+    <string name="look_bug_plus_one">Tutte le celle tranne una sono scese a due cifre.</string>
+    <string name="look_x_chain">Una catena su una cifra, che si alterna fra deve e non può.</string>
+    <string name="look_xy_chain">Una catena di celle a due cifre, ognuna che forza la successiva.</string>
+    <string name="look_forcing_chain">Una cella con esattamente due possibilità, quando non resta altro da trovare.</string>
+    <string name="look_death_blossom">Una cella, e un gruppo per ogni cifra che potrebbe essere, dove la cella vede quella cifra ovunque dentro il gruppo.</string>
+    <string name="look_als_xy_wing">Tre gruppi, a ognuno manca una cifra per essere pieno, uniti in linea da due cifre diverse.</string>
+    <string name="look_sue_de_coq">Un blocco e una linea che si incrociano, dove le celle condivise hanno due cifre più di quanto ci stia.</string>
+    <string name="look_als_xz">Due gruppi di celle, a ognuno manca una cifra per essere bloccato.</string>
+
+    <string name="because_naked_single">Tutte le altre cifre compaiono già nella sua riga, nella sua colonna o nel suo blocco, quindi ne resta una sola. Deve andare qui.</string>
+    <string name="because_hidden_single">La regione ha bisogno di questa cifra da qualche parte, e ogni altra cella è esclusa, quindi questo è l\'unico posto rimasto.</string>
+    <string name="because_locked_candidates_pointing">Il blocco deve contenere questa cifra da qualche parte, e ogni posto possibile sta su una sola linea. Quindi la cifra è su quella linea, e non può stare in nessun altro punto di essa.</string>
+    <string name="because_locked_candidates_claiming">La linea deve contenere questa cifra da qualche parte, e ogni posto possibile è dentro un solo blocco. Quindi la cifra è in quel blocco, e non può stare altrove nel blocco.</string>
+    <string name="because_naked_pair">Quelle due celle si prenderanno quelle due cifre, una ciascuna. Nessun\'altra cella della regione può avere né l\'una né l\'altra.</string>
+    <string name="because_hidden_pair">La regione ha bisogno di entrambe le cifre, e solo queste due celle possono prenderle, quindi ne prendono una ciascuna. Tutto il resto in quelle due celle è escluso.</string>
+    <string name="because_naked_triple">Tre celle, tre cifre, una ciascuna. Nient\'altro nella regione può usarle, anche se nessuna singola cella le contiene tutte e tre.</string>
+    <string name="because_hidden_triple">Tre cifre che non hanno altro posto riempiono tre celle, quindi qualunque altra cosa in quelle celle è impossibile.</string>
+    <string name="because_naked_quad">Quattro celle si prendono quattro cifre, il che le esclude tutte e quattro dal resto della regione.</string>
+    <string name="because_hidden_quad">Quattro cifre confinate in quattro celle le riempiono, quindi niente altro può viverci.</string>
+    <string name="because_x_wing">Ognuna delle due righe ha bisogno della cifra una volta, ed entrambe possono metterla solo nelle stesse due colonne. Insieme usano entrambe le colonne, quindi nessun\'altra riga può avere la cifra lì.</string>
+    <string name="because_swordfish">Tre righe che hanno bisogno della cifra, e solo tre colonne dove metterla. Le tre righe usano tutte e tre le colonne, quindi nient\'altro in quelle colonne può averla.</string>
+    <string name="because_jellyfish">Quattro righe e quattro colonne, di nuovo lo stesso ragionamento. Le quattro righe riempiono insieme tutte e quattro le colonne.</string>
+    <string name="because_xy_wing">La cella di mezzo è una delle sue due cifre. In ogni caso, una delle due celle esterne è costretta alla cifra condivisa, quindi qualunque cella veda entrambe non può averla.</string>
+    <string name="because_xyz_wing">La cella di mezzo può essere anche la cifra condivisa, quindi la conclusione è più debole: perde la cifra solo una cella che le vede tutte e tre.</string>
+    <string name="because_w_wing">Se nessuna delle due celle della coppia prendesse la seconda cifra, entrambe prenderebbero la prima, e la regione collegata non avrebbe più dove metterla. Quindi una delle due è la seconda cifra.</string>
+    <string name="because_simple_colouring">Colora la catena in modo alternato ed esattamente un colore è vero. O un colore cade due volte nella stessa regione ed è quindi falso, oppure una cella esterna vede entrambi i colori e perde la cifra comunque vada.</string>
+    <string name="because_multi_colouring">Un colore della prima catena si scontra con un colore della seconda, il che costringe la cifra in uno dei due colori opposti. Qualunque cella veda entrambi non può averla.</string>
+    <string name="because_remote_pairs">I vicini nella catena si vedono, quindi si alternano. I due estremi distano un numero dispari di passi e hanno quindi una cifra ciascuno, e qualunque cella li veda entrambi non può avere né l\'una né l\'altra.</string>
+    <string name="because_unique_rectangle">Se quelle quattro celle non contenessero altro che le stesse due cifre, si potrebbero scambiare intorno al rettangolo e lo schema avrebbe due soluzioni. Ne ha una, quindi quella disposizione è impossibile.</string>
+    <string name="because_bug_plus_one">Se si togliesse il candidato in più, ogni cifra comparirebbe esattamente due volte in ogni regione, e una griglia così ha sempre un numero pari di soluzioni. Questo schema ne ha una, quindi il candidato in più è la soluzione.</string>
+    <string name="because_x_chain">La catena si alterna fra posti dove la cifra deve stare e posti dove non può stare. I due estremi non possono restarne privi entrambi, quindi qualunque cella li veda entrambi la perde.</string>
+    <string name="because_xy_chain">Supponi che la prima cella non sia la cifra. Segui la catena e l\'ultima cella è costretta a esserlo. Quindi la tiene un estremo o l\'altro.</string>
+    <string name="because_forcing_chain">Segui entrambe le possibilità. Se una delle due lascia una cella senza niente da metterci, quella possibilità non è mai stata reale e se ne va. Se entrambe mettono la stessa cifra nello stesso posto, quella cifra ci va qualunque delle due risulti vera. Niente qui dipende dal fatto che l\'ipotesi sia giusta, ed è questo che ne fa una dimostrazione e non una scommessa.</string>
+    <string name="because_death_blossom">Qualunque cosa risulti la cella, butta la propria cifra fuori dal gruppo corrispondente, e quel gruppo resta pieno e deve usare tutte le cifre che gli restano. Se tutti i gruppi hanno la stessa cifra in avanzo, quella cifra cade in uno di essi comunque vada la cella. Qualunque cella la veda in tutti loro la perde.</string>
+    <string name="because_als_xy_wing">Se la cifra minacciata sparisce dal primo gruppo, quel gruppo è pieno e deve prendere la cifra che condivide con quello di mezzo. Il gruppo di mezzo perde allora quella cifra, quindi è pieno anche lui e prende quella che condivide con il terzo. Anche il terzo gruppo è allora pieno e deve usare la cifra minacciata. Quindi nessuna cella che la veda in entrambi i gruppi esterni può averla.</string>
+    <string name="because_sue_de_coq">Le celle condivise useranno tutte le loro cifre tranne due, e i due gruppi ai lati reclamano esattamente quelle due. Quindi ogni cifra del gruppo sulla linea si consuma dentro la linea, e ogni cifra del gruppo nel blocco si consuma dentro il blocco. Nient\'altro né nell\'una né nell\'altro può averle.</string>
+    <string name="because_als_xz">Una cifra condivisa può comparire solo in uno dei due gruppi, il che blocca l\'altro e lo costringe a usare tutte le cifre che ha. Quindi la seconda cifra condivisa cade in un gruppo o nell\'altro.</string>
+
+    <string name="technique_naked_single">Unico nudo</string>
+    <string name="technique_hidden_single">Unico nascosto</string>
+    <string name="technique_locked_candidates_pointing">Coppia o terna che punta</string>
+    <string name="technique_locked_candidates_claiming">Coppia o terna che reclama</string>
+    <string name="technique_naked_pair">Coppia nuda</string>
+    <string name="technique_hidden_pair">Coppia nascosta</string>
+    <string name="technique_naked_triple">Terna nuda</string>
+    <string name="technique_hidden_triple">Terna nascosta</string>
+    <string name="technique_naked_quad">Quaterna nuda</string>
+    <string name="technique_hidden_quad">Quaterna nascosta</string>
+    <string name="technique_x_wing">X-Wing</string>
+    <string name="technique_simple_colouring">Colorazione semplice</string>
+    <string name="technique_xy_wing">XY-Wing</string>
+    <string name="technique_xyz_wing">XYZ-Wing</string>
+    <string name="technique_w_wing">W-Wing</string>
+    <string name="technique_swordfish">Swordfish</string>
+    <string name="technique_remote_pairs">Coppie remote</string>
+    <string name="technique_unique_rectangle">Rettangolo unico</string>
+    <string name="technique_bug_plus_one">BUG più uno</string>
+    <string name="technique_jellyfish">Jellyfish</string>
+    <string name="technique_multi_colouring">Colorazione multipla</string>
+    <string name="technique_x_chain">X-Chain</string>
+    <string name="technique_xy_chain">XY-Chain</string>
+    <string name="technique_als_xz">ALS XZ</string>
+    <string name="technique_sue_de_coq">Sue de Coq</string>
+    <string name="technique_als_xy_wing">ALS XY-Wing</string>
+    <string name="technique_death_blossom">Death blossom</string>
+    <string name="technique_forcing_chain">Catena forzata</string>
+    <string name="daily_title">Giornaliero</string>
+    <string name="daily_no_streak">Ancora nessuna serie. Risolvi lo schema di oggi per iniziarne una.</string>
+    <string name="daily_previous_month">PRIMA</string>
+    <string name="daily_next_month">DOPO</string>
+    <string name="daily_cell_solved">risolto</string>
+    <string name="daily_cell_attempted">giocato ma non finito</string>
+    <string name="daily_cell_unplayed">non giocato</string>
+    <string name="daily_cell_future">non ancora</string>
+    <string name="daily_play_today">Gioca quello di oggi</string>
+    <plurals name="daily_streak">
+        <item quantity="one">%1$d giorno di fila</item>
+        <item quantity="other">%1$d giorni di fila</item>
+    </plurals>
+    <string name="daily_cell">%1$d, %2$s, %3$s</string>
+    <string name="daily_cell_today">oggi, %1$d, %2$s, %3$s</string>
+    <string name="stat_difficulty">Difficoltà</string>
+    <string name="stat_mistakes">Errori</string>
+    <string name="stat_hints">Aiuti</string>
+    <string name="stat_time">Tempo</string>
+    <string name="stat_pause">Pausa</string>
+
+    <string name="stage_first_steps">Primi passi</string>
+    <string name="stage_one_at_a_time">Una cifra alla volta</string>
+    <string name="stage_notes">Note</string>
+    <string name="stage_locked_to_a_line">Cifre legate a una linea</string>
+    <string name="stage_groups">Gruppi</string>
+    <string name="stage_patterns">Schemi su tutta la griglia</string>
+    <string name="stage_wings">Wing</string>
+    <string name="stage_colouring">Colorazione</string>
+    <string name="stage_one_answer">Supporre una sola soluzione</string>
+    <string name="stage_chains">Catene</string>
+    <string name="stage_the_far_end">L\'altro capo</string>
+    <string name="stage_the_deep_end">La parte profonda</string>
+
+    <string name="lesson_what_is_title">Che cos\'è un sudoku</string>
+    <string name="lesson_what_is_summary">Ogni riga, ogni colonna e ogni blocco contengono ciascuna cifra una volta.</string>
+    <string name="lesson_what_is_1">Questo è un sudoku. Uno piccolo, quattro celle per quattro, così sta tutto in testa insieme. La griglia di dimensione piena funziona esattamente allo stesso modo.</string>
+    <string name="lesson_what_is_2">Questa è una riga. Deve contenere le cifre 1, 2, 3 e 4, ognuna di esse una volta. Senza ripetizioni e senza lasciarne fuori nessuna.</string>
+    <string name="lesson_what_is_3">Questa è una colonna. Stessa regola: 1, 2, 3 e 4, ognuna di esse una volta.</string>
+    <string name="lesson_what_is_4">Questo è tutto il gioco. Non c\'è aritmetica dentro, non c\'è niente da sommare. È una sola regola su dove una cifra può stare.</string>
+    <string name="lesson_what_is_5">Queste due celle sono vuote. Riempirle in modo che la regola valga ancora è ciò che significa risolvere.</string>
+
+    <string name="lesson_houses_title">Righe, colonne e blocchi</string>
+    <string name="lesson_houses_summary">Una cella sta in tre case insieme, e condivide una regola con tutte e tre.</string>
+    <string name="lesson_houses_1">La regola parlava di righe e colonne. C\'è un terzo tipo di gruppo, ed è quello che rende un sudoku degno di essere risolto.</string>
+    <string name="lesson_houses_2">Ecco di nuovo una riga.</string>
+    <string name="lesson_houses_3">Ecco una colonna.</string>
+    <string name="lesson_houses_4">Ed ecco un blocco, segnato dalle linee più spesse. Anche lui contiene ciascuna cifra una volta.</string>
+    <string name="lesson_houses_5">Quindi questa cella appartiene a tre gruppi allo stesso tempo. Ogni cella con cui condivide un gruppo è illuminata, e nessuna di esse può contenere la stessa cifra che contiene lei. Quei tre gruppi si chiamano case, e la parola si usa da qui in avanti.</string>
+
+    <string name="lesson_givens_title">Cifre date</string>
+    <string name="lesson_givens_summary">Le cifre stampate all\'inizio sono fisse, e sono ciò che rende la soluzione unica.</string>
+    <string name="lesson_givens_1">Queste cifre sono arrivate con lo schema. Si chiamano cifre date e non si possono cambiare né cancellare.</string>
+    <string name="lesson_givens_2">Sono disegnate in modo diverso da quelle che inserisci tu, così si capisce sempre quali sono quali. In questa app le date sono quelle più marcate.</string>
+    <string name="lesson_givens_3">Queste sono le celle che riempi tu.</string>
+    <string name="lesson_givens_4">Uno schema fatto bene ha esattamente un modo di riempirle. Questa è una promessa sullo schema, non su di te: se ti blocchi, c\'è comunque una sola soluzione, e si può sempre ricavare ragionando. Ogni schema di questa app è fatto così.</string>
+
+    <string name="lesson_first_four_title">La tua prima soluzione</string>
+    <string name="lesson_first_four_summary">Guarda che cosa una cella non può essere, e a volte resta una sola cifra.</string>
+    <string name="lesson_first_four_1">Adesso risolvine uno. Due celle sono vuote, e la regola basta a riempirle entrambe.</string>
+    <string name="lesson_first_four_2">Comincia da questa riga. Ha già un 1 e un 4, quindi le due celle vuote si dividono il 2 e il 3. La domanda è in che ordine.</string>
+    <string name="lesson_first_four_3">Questa cella non può essere 2, perché la sua colonna ne ha già uno. Quindi è 3.</string>
+    <string name="lesson_first_four_4">Resta una cella vuota, e una cifra non usata nella riga.</string>
+    <string name="lesson_first_four_5">Tocca a te. Inserisci la cifra che va qui.</string>
+    <string name="lesson_first_four_wrong">Non proprio. Guarda la riga: quale cifra da 1 a 4 le manca ancora?</string>
+    <string name="lesson_first_four_6">Risolto. Questo è un sudoku, qualunque sia la dimensione della griglia.</string>
+
+    <string name="lesson_first_six_title">Una griglia più grande</string>
+    <string name="lesson_first_six_summary">I blocchi non sono sempre quadrati, e alla regola non importa.</string>
+    <string name="lesson_first_six_1">Sei per sei. La regola non è cambiata, ma i blocchi sì: sono larghi tre e alti due.</string>
+    <string name="lesson_first_six_2">Questo è un blocco. Tre di larghezza, due di altezza, sei celle, ogni cifra da 1 a 6 una volta.</string>
+    <string name="lesson_first_six_3">All\'inizio questo spiazza, perché l\'occhio si aspetta un quadrato. Vale un momento di attenzione: trova il blocco in cui sta questa cella prima di cercare qualunque altra cosa.</string>
+    <string name="lesson_first_six_4">Tocca a te. Al blocco in alto a sinistra manca una cifra.</string>
+    <string name="lesson_first_six_wrong">Non quella. Conta che cosa contiene già il blocco, poi trova la cifra da 1 a 6 che non c\'è.</string>
+    <string name="lesson_first_six_5">Bene. Da qui in avanti le griglie sono nove per nove e i blocchi tornano quadrati, ma l\'abitudine di controllare tutte e tre le case è quella da tenere.</string>
+
+    <string name="lesson_naked_single_title">L\'unico nudo</string>
+    <string name="lesson_naked_single_summary">Una cella in cui resta una sola cifra deve contenerla.</string>
+    <string name="lesson_naked_single_1">Una griglia di dimensione piena, e la prima tecnica con un nome. È la più semplice che ci sia, e anche sugli schemi più difficili è quella che chiude la maggior parte delle celle.</string>
+    <string name="lesson_naked_single_2">Guarda questa cella da sola. Chiediti che cosa può contenere.</string>
+    <string name="lesson_naked_single_3">Ogni cella che esclude qualcosa è illuminata. Fra la sua riga, la sua colonna e il suo blocco, otto cifre su nove compaiono già da qualche parte che lei vede.</string>
+    <string name="lesson_naked_single_4">Quindi resta una cifra, e la cella deve contenerla. Non c\'è nient\'altro di possibile. Questo è un unico nudo: nudo perché lo vedi guardando una cella sola, unico perché sopravvive una cifra sola.</string>
+    <string name="lesson_naked_single_5">L\'app lo chiama per nome quando ti dà un aiuto. Adesso sai che cosa vuol dire.</string>
+    <string name="lesson_hidden_single_title">L\'unico nascosto</string>
+    <string name="lesson_hidden_single_summary">Una cifra a cui resta un solo posto in una casa deve andare lì.</string>
+    <string name="lesson_hidden_single_1">L\'altro tipo di unico, e quello che trova più celle. Un unico nudo è una cella a cui resta una cifra. Questo è l\'immagine allo specchio: una cifra a cui resta una cella.</string>
+    <string name="lesson_hidden_single_2">Prendi una casa e scegli una cifra che le manca ancora. Chiediti dove in quella casa la cifra potrebbe andare.</string>
+    <string name="lesson_hidden_single_3">In questo blocco la risposta è una cella. Ogni altra cella vuota del blocco è esclusa dalla propria riga o colonna.</string>
+    <string name="lesson_hidden_single_4">Quindi la cifra va lì, anche se quella cella da sola potrebbe contenere parecchie cifre. Per questo si chiama nascosto: la cifra si nasconde fra le altre.</string>
+    <string name="lesson_hidden_single_5">Questo è quello che vale la pena imparare bene. Sulla maggior parte degli schemi è quello che ti tiene in movimento quando finiscono gli unici nudi.</string>
+    <string name="lesson_hidden_single_turn">Tocca a te. Inserisci la cifra che non ha altro posto in questo blocco.</string>
+    <string name="lesson_hidden_single_wrong">Non quella. Chiediti quale cifra manca al blocco, poi controlla dove ognuna potrebbe stare davvero.</string>
+
+    <string name="lesson_scanning_title">Come guardare</string>
+    <string name="lesson_scanning_summary">Passa una cifra su tutta la griglia invece di studiare le celle una alla volta.</string>
+    <string name="lesson_scanning_1">Adesso conosci due tecniche. Conoscerle non è come trovarle, e trovarle è ciò che porta via tempo.</string>
+    <string name="lesson_scanning_2">Non leggere la griglia cella per cella. Prendi una cifra, per esempio quella che compare già più spesso, e guarda i tre blocchi di una fascia.</string>
+    <string name="lesson_scanning_3">Per ogni blocco fatti una sola domanda: dove può andare questa cifra? Le righe e le colonne che la contengono già cancellano quasi tutte le risposte, e spesso resta una sola cella.</string>
+    <string name="lesson_scanning_4">Poi passa alla fascia successiva, e quando la cifra è esaurita, passa alla cifra successiva. Questa è la scansione, ed è quello che stanno facendo i solutori veloci quando sembra che guardino nel vuoto.</string>
+    <string name="lesson_scanning_5">Essere sistematici non costa niente e risparmia la sensazione di essere bloccati, che di solito è la sensazione di aver guardato lo stesso angolo quattro volte.</string>
+
+    <string name="lesson_first_nine_title">Una griglia intera, solo unici</string>
+    <string name="lesson_first_nine_summary">Tutto quello che hai imparato finora basta a finire uno schema completo.</string>
+    <string name="lesson_first_nine_1">Un nove per nove vero, di livello Facile. Ogni passo dentro è un unico, nudo o nascosto, e non c\'è niente qui che tu non abbia già visto.</string>
+    <string name="lesson_first_nine_2">Eccone uno per partire. Questa cella ha otto cifre su nove escluse da ciò che vede.</string>
+    <string name="lesson_first_nine_3">Questa è la forma di uno schema Facile. Unici, fino alla fine, e nessuna scommessa in nessun momento.</string>
+    <string name="lesson_first_nine_4">Quando esci da questa lezione, giocane uno. La fase successiva parla di note, e le note cominciano a valere la pena solo su schemi più difficili di questo.</string>
+    <string name="lesson_first_nine_turn">Tocca a te. Qui è possibile una sola cifra.</string>
+    <string name="lesson_first_nine_wrong">Guarda di nuovo la riga, la colonna e il blocco di questa cella, ed elenca che cosa contengono già.</string>
+
+    <string name="lesson_pencil_marks_title">Note</string>
+    <string name="lesson_pencil_marks_summary">Una nota è il registro di quello che hai già dedotto, per non doverlo dedurre di nuovo.</string>
+    <string name="lesson_pencil_marks_1">Da qui in avanti gli schemi smettono di cedere agli unici, e ti servirà scrivere le cose. Una nota, o segno a matita, è una cifra piccola in una cella che dice che quella cifra è ancora possibile lì.</string>
+    <string name="lesson_pencil_marks_2">Guarda questa cella. Capire che può essere solo una di due cifre porta via qualche secondo. Scrivere quelle due cifre vuol dire che la prossima volta che la guardi non ne porta via nessuno.</string>
+    <string name="lesson_pencil_marks_3">Una nota è solo questo. Non è una scommessa e non è un impegno. È il registro di una deduzione che hai già fatto.</string>
+    <string name="lesson_pencil_marks_4">Ogni tecnica da qui in avanti parla di schemi nelle note e non di schemi nelle cifre. Coppie, terne, pesci e catene si leggono tutti sulle note.</string>
+    <string name="lesson_pencil_marks_5">Nessuno risolve un sudoku difficile a mente, e chi non scrive niente su un Esperto non è furbo, è lento.</string>
+
+    <string name="lesson_when_to_mark_title">Quando scriverle</string>
+    <string name="lesson_when_to_mark_summary">Metti le note quando finiscono gli unici, non prima.</string>
+    <string name="lesson_when_to_mark_1">Ci sono due modi di usare le note, e la differenza conta.</string>
+    <string name="lesson_when_to_mark_2">Il primo è riempire ogni cella vuota con ogni cifra possibile, tutte insieme, prima di fare qualunque altra cosa. È completo, a mano porta via diversi minuti, e su uno schema facile quasi tutto è sprecato perché gli unici avrebbero finito la griglia comunque.</string>
+    <string name="lesson_when_to_mark_3">Il secondo è segnare solo dove stai lavorando. Queste quattro celle meritano le note perché fra loro sta succedendo qualcosa. Il resto della griglia no.</string>
+    <string name="lesson_when_to_mark_4">Il consiglio onesto: risolvi prima gli unici, e comincia a segnare quando smetti di trovarli. Su carta questo fa risparmiare tempo davvero. In questa app riempire tutte le note è un tocco, quindi il costo è minore, ma una griglia piena di numeri resta più difficile da leggere di una con le note solo dove servono.</string>
+
+    <string name="lesson_marks_true_title">Tenere le note oneste</string>
+    <string name="lesson_marks_true_summary">Una nota vecchia è peggio di nessuna nota.</string>
+    <string name="lesson_marks_true_1">Le note hanno un pericolo. Ogni cifra che inserisci ne rende alcune sbagliate, e una nota sbagliata ti manda dentro un ragionamento che non può essere giusto.</string>
+    <string name="lesson_marks_true_2">Inserisci una cifra qui, e ogni cella che la vede perde quella cifra come possibilità. Se quelle note non vengono cancellate, la prossima tecnica che noti potrebbe essere costruita su una di esse.</string>
+    <string name="lesson_marks_true_3">Questa app può farlo per te. C\'è un\'impostazione che si chiama cancella le note che una cifra inserita esclude, ed è accesa di default. Su carta lo fai a mano, ed è da lì che arrivano quasi tutti gli errori.</string>
+    <string name="lesson_marks_true_4">Quando uno schema va storto e non vedi perché, la prima cosa da sospettare è una nota vecchia. Il pulsante aiuto ti dirà quando una cifra che hai inserito non può essere giusta.</string>
+
+    <string name="lesson_pointing_title">La coppia che punta</string>
+    <string name="lesson_pointing_summary">Se una cifra in un blocco è bloccata su una linea, lascia quella linea libera altrove.</string>
+    <string name="lesson_pointing_1">La prima tecnica che toglie possibilità invece di inserire una cifra. Quasi tutte da qui in avanti fanno così, e ci vuole un po\' ad abituarsi: fai progressi senza scrivere una sola cifra.</string>
+    <string name="lesson_pointing_2">Guarda dove può andare una cifra in questo blocco. Ogni posto possibile sta sulla stessa colonna.</string>
+    <string name="lesson_pointing_3">Il blocco deve contenere quella cifra da qualche parte. Quindi dovunque finisca, sta in quella colonna.</string>
+    <string name="lesson_pointing_4">Il che vuol dire che il resto della colonna non può averla. Queste celle perdono quella cifra come possibilità, anche se sono lontanissime dal blocco.</string>
+    <string name="lesson_pointing_5">Si chiama così perché la coppia dentro il blocco punta lungo la linea e la ripulisce.</string>
+
+    <string name="lesson_claiming_title">La coppia che reclama</string>
+    <string name="lesson_claiming_summary">Se una cifra su una linea è bloccata in un blocco, lascia quel blocco libero altrove.</string>
+    <string name="lesson_claiming_1">Lo stesso ragionamento letto al contrario, e vale la pena vederlo a parte perché l\'occhio lo trova in un altro posto.</string>
+    <string name="lesson_claiming_2">Questa volta parti da una linea. Guarda dove può andare una cifra lungo questa riga.</string>
+    <string name="lesson_claiming_3">Ogni posto possibile è dentro lo stesso blocco. La riga deve contenere quella cifra da qualche parte, quindi la cifra è in quel blocco.</string>
+    <string name="lesson_claiming_4">Il che vuol dire che il resto del blocco la perde. Queste celle non possono più averla.</string>
+    <string name="lesson_claiming_5">Puntare guarda un blocco e ripulisce una linea. Reclamare guarda una linea e ripulisce un blocco. Due nomi, una idea, e le vedrai entrambe in ogni schema difficile.</string>
+
+    <string name="lesson_naked_pair_title">La coppia nuda</string>
+    <string name="lesson_naked_pair_summary">Due celle con le stesse due cifre sono padrone di entrambe.</string>
+    <string name="lesson_naked_pair_1">Adesso i gruppi. Questo è il più piccolo di tutti e lo schema che rende ovvi gli altri.</string>
+    <string name="lesson_naked_pair_2">Queste due celle sono nella stessa casa, e ognuna può essere solo una delle stesse due cifre.</string>
+    <string name="lesson_naked_pair_3">Insieme si prenderanno quelle due cifre, una ciascuna. Quale sia quale non conta e non serve saperlo.</string>
+    <string name="lesson_naked_pair_4">Quindi nessun\'altra cella di quella casa può contenere né l\'una né l\'altra. Questa cella ne perde una.</string>
+    <string name="lesson_naked_pair_5">Nuda, di nuovo, perché la vedi leggendo le due celle. Non c\'è niente di nascosto e nessun\'altra cella entra nel ragionamento.</string>
+
+    <string name="lesson_hidden_pair_title">La coppia nascosta</string>
+    <string name="lesson_hidden_pair_summary">Due cifre a cui restano solo gli stessi due posti sono padrone di quelle celle.</string>
+    <string name="lesson_hidden_pair_1">L\'immagine allo specchio della coppia nuda, esattamente come l\'unico nascosto rispecchia quello nudo.</string>
+    <string name="lesson_hidden_pair_2">In questa casa, due cifre possono andare ciascuna solo nelle stesse due celle.</string>
+    <string name="lesson_hidden_pair_3">Quelle due cifre si prenderanno quelle due celle. Quindi per quanto quelle celle sembrassero poter contenere altro, non possono.</string>
+    <string name="lesson_hidden_pair_4">Le due celle perdono tutte le altre note. Adesso sono una coppia nuda, e spesso è a questo che serve lo schema: trasformare una coppia nascosta in una nuda che ripulisce il resto della casa.</string>
+    <string name="lesson_hidden_pair_5">Le coppie nascoste si vedono meno facilmente di quelle nude perché bisogna guardare le cifre invece delle celle. Su una griglia ferma valgono la fatica.</string>
+
+    <string name="lesson_naked_triple_title">La terna nuda</string>
+    <string name="lesson_naked_triple_summary">Tre celle che si dividono tre cifre ne sono padrone, anche se nessuna le contiene tutte e tre.</string>
+    <string name="lesson_naked_triple_1">Una coppia con una cella in più, e una finezza che frega tutti la prima volta.</string>
+    <string name="lesson_naked_triple_2">Queste tre celle stanno nella stessa casa, e fra tutte usano solo tre cifre diverse.</string>
+    <string name="lesson_naked_triple_3">Ecco la finezza: nessuna di loro deve per forza contenerle tutte e tre. Due cifre in una cella, due nella successiva, due nella terza è una terna, purché in tutto compaiano solo tre cifre.</string>
+    <string name="lesson_naked_triple_4">Le tre celle si prenderanno le tre cifre, quindi ogni altra cella della casa le perde tutte e tre. Sono parecchie note che se ne vanno insieme.</string>
+    <string name="lesson_naked_triple_5">Quando cerchi, conta le cifre diverse fra due o tre celle invece di cercare note identiche. È l\'abitudine che trova le terne.</string>
+
+    <string name="lesson_hidden_triple_title">La terna nascosta</string>
+    <string name="lesson_hidden_triple_summary">Tre cifre a cui restano solo tre posti sono padrone di quelle celle.</string>
+    <string name="lesson_hidden_triple_1">La stessa relazione della coppia nascosta, una taglia più su, e davvero difficile da vedere.</string>
+    <string name="lesson_hidden_triple_2">In questa casa, tre cifre possono andare solo nelle stesse tre celle.</string>
+    <string name="lesson_hidden_triple_3">Quindi quelle tre celle contengono quelle tre cifre, e ogni altra nota dentro di esse può andarsene.</string>
+    <string name="lesson_hidden_triple_4">Non cercarle per prime. Cercale quando a una casa restano diverse celle e non ha funzionato nient\'altro. Quasi sempre nella stessa casa c\'è uno schema nudo più facile da vedere.</string>
+
+    <string name="lesson_quads_title">Quaterne</string>
+    <string name="lesson_quads_summary">La stessa idea di nuovo con quattro, da conoscere ma raramente da cercare.</string>
+    <string name="lesson_quads_1">Coppie, terne e adesso quaterne. Il ragionamento non cambia: quattro celle che fra loro usano quattro cifre sono padrone di quelle cifre, e quattro cifre con solo quattro posti sono padrone di quelle celle.</string>
+    <string name="lesson_quads_2">Ecco una quaterna nuda. Quattro celle, quattro cifre fra loro, e il resto della casa le perde tutte e quattro.</string>
+    <string name="lesson_quads_3">Ed ecco il consiglio onesto. Le quaterne sono reali e sono valide, ma sono rare, e una quaterna in una casa con cinque o sei celle vuote di solito vuol dire che nelle altre celle c\'è uno schema più semplice che ti è sfuggito.</string>
+    <string name="lesson_quads_4">Ecco una quaterna nascosta, per completezza. Quattro cifre con quattro posti.</string>
+    <string name="lesson_quads_5">Impara a riconoscerle così che un aiuto che ne nomina una abbia senso. Non passare il tempo a cercarle.</string>
+
+    <string name="lesson_x_wing_title">L\'X-Wing</string>
+    <string name="lesson_x_wing_summary">Una cifra fissata a due colonne in due righe lascia quelle colonne libere altrove.</string>
+    <string name="lesson_x_wing_1">Il primo schema che attraversa tutta la griglia invece di stare dentro una casa. Ha una forma, e una volta vista la forma la vedrai dappertutto.</string>
+    <string name="lesson_x_wing_2">Prendi una cifra. In queste due righe può andare solo in due celle ciascuna, e quelle celle stanno nelle stesse due colonne. Quattro celle, in rettangolo.</string>
+    <string name="lesson_x_wing_3">Adesso ragionaci. Ogni riga deve contenere la cifra una volta. Qualunque angolo usi una riga, l\'altra deve usare quello opposto. Non c\'è una terza opzione.</string>
+    <string name="lesson_x_wing_4">Quindi insieme le due righe si prendono quella cifra in entrambe quelle colonne. Tutto il resto in quelle colonne la perde.</string>
+    <string name="lesson_x_wing_5">Funziona anche scambiando righe e colonne. Due colonne la cui cifra è confinata nelle stesse due righe ripuliscono quelle righe.</string>
+
+    <string name="lesson_swordfish_title">Lo Swordfish</string>
+    <string name="lesson_swordfish_summary">Lo stesso ragionamento dell\'X-Wing, con tre linee invece di due.</string>
+    <string name="lesson_swordfish_1">Un X-Wing con una riga in più. Il nome non aiuta, ma lo schema è un\'estensione diretta.</string>
+    <string name="lesson_swordfish_2">Tre righe, una cifra, e in ogni riga quella cifra è confinata in celle delle stesse tre colonne.</string>
+    <string name="lesson_swordfish_3">Non serve che ogni riga usi tutte e tre le colonne. Due su tre bastano, purché nessuna riga esca da esse.</string>
+    <string name="lesson_swordfish_4">Le tre righe si prendono la cifra in quelle tre colonne, quindi il resto di quelle colonne la perde.</string>
+    <string name="lesson_swordfish_5">Se riesci a seguire l\'X-Wing riesci a seguire questo. Trovarlo è un\'altra cosa: qui è il punto in cui riempire le note smette di essere facoltativo.</string>
+
+    <string name="lesson_jellyfish_title">Il Jellyfish</string>
+    <string name="lesson_jellyfish_summary">Quattro linee. Di nuovo lo stesso schema, e l\'ultimo che vale la pena imparare.</string>
+    <string name="lesson_jellyfish_1">Quattro righe, una cifra, quattro colonne. Il ragionamento non è cambiato dall\'X-Wing e non cambierà più.</string>
+    <string name="lesson_jellyfish_2">Eccone uno. Quattro righe, e la cifra in ognuna è confinata nelle stesse quattro colonne.</string>
+    <string name="lesson_jellyfish_3">Oltre il quattro non c\'è niente da imparare. In teoria esiste una versione a cinque linee, ma su una griglia nove per nove ognuna si può trovare come schema più piccolo nelle quattro colonne che avanzano, quindi nessuno le cerca.</string>
+    <string name="lesson_jellyfish_4">Questo è il limite di ciò che vale la pena cacciare per schemi. Più in là, le catene usano meglio la tua attenzione.</string>
+
+    <string name="lesson_xy_wing_title">L\'XY-Wing</string>
+    <string name="lesson_xy_wing_summary">Tre celle di due cifre ciascuna, e una cella che ci rimette comunque vada.</string>
+    <string name="lesson_xy_wing_1">I wing chiedono un modo di pensare diverso. Fino a qui trovavi uno schema e leggevi una conclusione. Qui si ragiona per casi.</string>
+    <string name="lesson_xy_wing_2">Parti da questa cella. Ha esattamente due cifre possibili ed è il perno dello schema.</string>
+    <string name="lesson_xy_wing_3">Ha due amiche, ognuna condivide una casa con lei e ognuna contiene due cifre: una condivisa con il perno e una condivisa fra loro.</string>
+    <string name="lesson_xy_wing_4">Adesso il ragionamento. Il perno è una delle sue due cifre. Se è la prima, l\'ala sinistra è costretta alla cifra condivisa. Se è la seconda, l\'ala destra è costretta alla stessa cifra condivisa. In ogni caso, una delle due ali la contiene.</string>
+    <string name="lesson_xy_wing_5">Quindi nessuna cella che veda entrambe le ali può contenere quella cifra. Questa la perde.</string>
+    <string name="lesson_xy_wing_6">Non arrivi mai a sapere che cos\'è davvero il perno. È questo il punto, ed è ciò che fa sembrare i wing diversi da tutto quello che viene prima.</string>
+
+    <string name="lesson_xyz_wing_title">L\'XYZ-Wing</string>
+    <string name="lesson_xyz_wing_summary">Come un XY-Wing, ma il perno può essere anche la cifra condivisa, quindi la conclusione è più debole.</string>
+    <string name="lesson_xyz_wing_1">Una modifica all\'XY-Wing, e rende la conclusione più piccola.</string>
+    <string name="lesson_xyz_wing_2">Qui il perno contiene tre cifre invece di due, e la cifra condivisa è una di esse.</string>
+    <string name="lesson_xyz_wing_3">Quindi adesso i casi sono tre, non due. Può contenere la cifra condivisa una delle ali, oppure il perno stesso.</string>
+    <string name="lesson_xyz_wing_4">Vuol dire che una cella perde la cifra solo se le vede tutte e tre, non solo le due ali. Meno celle rientrano, ed è per questo che questo schema elimina meno del suo cugino più semplice.</string>
+    <string name="lesson_xyz_wing_5">Vale la pena conoscerlo perché la forma sembra quasi identica, e leggerlo come un XY-Wing ti farebbe eliminare una cifra a cui non hai diritto.</string>
+
+    <string name="lesson_w_wing_title">Il W-Wing</string>
+    <string name="lesson_w_wing_summary">Due coppie identiche unite da una linea che deve contenere una delle loro cifre.</string>
+    <string name="lesson_w_wing_1">Il terzo wing, e quello che chiede meno conti.</string>
+    <string name="lesson_w_wing_2">Due celle, che non condividono una casa, ognuna con le stesse due cifre.</string>
+    <string name="lesson_w_wing_3">Adesso trova una casa dove una di quelle due cifre può andare solo in due posti, e dove quei due posti vedono ciascuno una delle celle della coppia. Quella casa è il collegamento.</string>
+    <string name="lesson_w_wing_4">La casa del collegamento deve contenere quella cifra in uno dei suoi due posti, e qualunque sia, costringe una delle celle della coppia a prendere l\'altra cifra. Quindi una della coppia contiene l\'altra cifra, sempre.</string>
+    <string name="lesson_w_wing_5">Qualunque cella veda entrambe le celle della coppia la perde. Questa le vede.</string>
+
+    <string name="lesson_rectangle_title">Il rettangolo unico</string>
+    <string name="lesson_rectangle_summary">Uno schema con una sola soluzione non può contenere un quadro che potrebbe ruotare.</string>
+    <string name="lesson_rectangle_1">Questa tecnica è di un altro tipo rispetto a tutte le altre, e vale la pena dire perché prima di usarla.</string>
+    <string name="lesson_rectangle_2">Guarda queste quattro celle. Stanno in due righe, due colonne ed esattamente due blocchi, e ognuna può contenere le stesse due cifre.</string>
+    <string name="lesson_rectangle_3">Se fosse tutta la storia, lo schema avrebbe due soluzioni: riempi il rettangolo in un modo, oppure scambia entrambe le diagonali, ed entrambe le griglie rispettano ogni regola. Uno schema fatto bene non ha due soluzioni.</string>
+    <string name="lesson_rectangle_4">Quindi non può essere tutta la storia. Una di quelle celle deve contenere qualcos\'altro, ed è questo che ti permette di eliminare.</string>
+    <string name="lesson_rectangle_5">Qui le possibilità in più sopravvivono e la coppia condivisa viene cancellata da queste celle.</string>
+    <string name="lesson_rectangle_6">Il trucco, detto chiaramente: questo ragionamento suppone che lo schema sia fatto bene. È vero per ogni schema di questa app, perché il generatore lo verifica. Usalo su una griglia di provenienza sconosciuta e può ingannarti.</string>
+
+    <string name="lesson_bug_title">BUG più uno</string>
+    <string name="lesson_bug_summary">Se ogni cella tranne una avesse due candidati, lo schema sarebbe ambiguo. Quindi quella cella è speciale.</string>
+    <string name="lesson_bug_1">La stessa ipotesi del rettangolo unico, con un\'altra forma.</string>
+    <string name="lesson_bug_2">Supponi che una griglia arrivi a una posizione in cui ogni cella non risolta contiene esattamente due possibilità, e ogni cifra compare esattamente due volte in ogni casa. Una griglia così ha sempre due soluzioni.</string>
+    <string name="lesson_bug_3">Quindi uno schema fatto bene non può mai arrivarci. Se trovi una posizione che dista una cella, dove esattamente una cella contiene tre possibilità invece di due, quella cella è ciò che salva lo schema dall\'essere ambiguo.</string>
+    <string name="lesson_bug_4">La cifra che compare tre volte nelle sue case è quella che deve contenere. È uno schema raro e una chiusura velocissima quando salta fuori.</string>
+
+    <string name="lesson_colouring_title">Colorazione semplice</string>
+    <string name="lesson_colouring_summary">Segui una cifra nelle celle dove ha solo due posti, e cerca una contraddizione.</string>
+    <string name="lesson_colouring_1">Catene, con calma. La colorazione è la via più facile per arrivarci e sotto è lo stesso ragionamento.</string>
+    <string name="lesson_colouring_2">Scegli una cifra. Trova una casa dove ha solo due celle possibili. Quelle due sono collegate: esattamente una di esse è la cifra.</string>
+    <string name="lesson_colouring_3">Colora una della coppia, poi segui i collegamenti. Ogni cella connessa così finisce di uno di due colori, e un colore intero è giusto mentre l\'altro è sbagliato. Non sai quale.</string>
+    <string name="lesson_colouring_4">Adesso cerca la contraddizione. Se una cella vede due celle dello stesso colore, quel colore non può essere quello giusto, quindi la cella perde la cifra. Qui è quello che succede.</string>
+    <string name="lesson_colouring_5">Due colori, una contraddizione, e nessuna scommessa da nessuna parte. Il metodo è tutto qui.</string>
+
+    <string name="lesson_remote_pairs_title">Coppie remote</string>
+    <string name="lesson_remote_pairs_summary">Una catena di coppie identiche si alterna, quindi gli estremi sono opposti.</string>
+    <string name="lesson_remote_pairs_1">La colorazione applicata alle celle invece che a una sola cifra.</string>
+    <string name="lesson_remote_pairs_2">Ecco una catena di celle che contengono tutte le stesse due cifre, ognuna collegata alla successiva da una casa condivisa.</string>
+    <string name="lesson_remote_pairs_3">Siccome ogni collegamento è una coppia, le cifre si alternano lungo la catena. La prima cella prende una, la seconda prende l\'altra, e così via.</string>
+    <string name="lesson_remote_pairs_4">Quindi i due estremi di una catena di lunghezza pari sono opposti: contengono cifre diverse. Qualunque cella veda entrambi gli estremi deve perdere entrambe le cifre, perché ogni estremo ne contiene una.</string>
+    <string name="lesson_remote_pairs_5">È la catena più facile da notare, perché ogni cella dentro ha lo stesso aspetto.</string>
+
+    <string name="lesson_multi_colouring_title">Colorazione multipla</string>
+    <string name="lesson_multi_colouring_summary">Due catene di colorazione che interagiscono si escludono a vicenda.</string>
+    <string name="lesson_multi_colouring_1">La colorazione semplice usa una catena. A volte una catena non ha contraddizioni dentro ma due insieme sì.</string>
+    <string name="lesson_multi_colouring_2">Ecco celle di due catene separate per la stessa cifra.</string>
+    <string name="lesson_multi_colouring_3">Se un colore di una catena vede un colore dell\'altra, quei due colori non possono essere giusti entrambi. Seguendo questo si elimina la cifra dalle celle che vedono i due colori rimasti.</string>
+    <string name="lesson_multi_colouring_4">La conclusione cade qui.</string>
+    <string name="lesson_multi_colouring_5">Qui la colorazione smette di essere qualcosa che sta in testa e comincia a chiedere una nota scritta di quale cella è di quale colore.</string>
+
+    <string name="lesson_x_chain_title">L\'X-Chain</string>
+    <string name="lesson_x_chain_summary">Una cifra, collegamenti che si alternano fra forti e deboli, e un\'eliminazione agli estremi.</string>
+    <string name="lesson_x_chain_1">La forma generale di tutto quello della fase precedente. Una cifra e una catena di collegamenti alternati.</string>
+    <string name="lesson_x_chain_2">Un collegamento forte sono due celle di cui almeno una deve contenere la cifra, che è quello che dà una casa con soli due posti. Un collegamento debole sono due celle di cui al massimo una può contenerla, che sono due celle qualunque che condividono una casa.</string>
+    <string name="lesson_x_chain_3">Alternali: forte, debole, forte, e così via, iniziando e finendo con uno forte. Allora qualunque cosa succeda in mezzo, uno dei due estremi contiene la cifra.</string>
+    <string name="lesson_x_chain_4">Quindi qualunque cella veda entrambi gli estremi la perde.</string>
+    <string name="lesson_x_chain_5">La colorazione è questa catena disegnata in due colori. La catena è più generale perché può passare per celle che la colorazione non raggiunge.</string>
+
+    <string name="lesson_xy_chain_title">L\'XY-Chain</string>
+    <string name="lesson_xy_chain_summary">Una catena di celle a due candidati, dove gli estremi condividono una cifra.</string>
+    <string name="lesson_xy_chain_1">La stessa idea alternata, ma passando per le celle invece di seguire una sola cifra.</string>
+    <string name="lesson_xy_chain_2">Ogni cella di questa catena contiene esattamente due possibilità, e ognuna condivide una casa con la successiva.</string>
+    <string name="lesson_xy_chain_3">Dentro una cella, prendere una cifra costringe l\'altra, e questo è il collegamento forte. Fra le celle, una casa condivisa fa quello debole. Alternarli porta il ragionamento lungo la catena.</string>
+    <string name="lesson_xy_chain_4">Se entrambi gli estremi della catena possono contenere la stessa cifra, allora uno dei due la contiene, comunque vada la catena. Qualunque cella veda entrambi gli estremi perde quella cifra.</string>
+    <string name="lesson_xy_chain_5">È la tecnica che chiude la maggior parte degli schemi Esperto, e trovarne una è soprattutto questione di seguire con pazienza le celle a due cifre e non di essere furbi.</string>
+
+    <string name="lesson_writing_chains_title">Scrivere una catena</string>
+    <string name="lesson_writing_chains_summary">Una catena che non puoi verificare è una scommessa con passi in più.</string>
+    <string name="lesson_writing_chains_1">Una lezione pratica prima dell\'ultima tecnica, perché le catene sono il punto in cui la gente si convince di cose che non sono vere.</string>
+    <string name="lesson_writing_chains_2">Una catena è una sequenza di affermazioni, e ognuna deve reggere. Sullo schermo sembra un insieme di celle evidenziate, ed evidenziare non è un ragionamento.</string>
+    <string name="lesson_writing_chains_3">Scrivila su una riga: questa cella è 4 o 7; se è 4 allora quella è 9; se quella è 9 allora quest\'altra è 4. Ogni freccia è un collegamento e ogni collegamento ha un motivo.</string>
+    <string name="lesson_writing_chains_4">Poi verifica l\'alternanza. Forte, debole, forte, debole, e forte a entrambi gli estremi. Una catena che inizia o finisce su un collegamento debole non dimostra niente, ed è il modo più comune in cui una catena va storta.</string>
+    <string name="lesson_writing_chains_5">Se non riesci a scriverla, non l\'hai trovata. Non è una regola sull\'ordine, è la differenza fra una deduzione e un\'intuizione.</string>
+
+    <string name="lesson_sue_de_coq_title">Sue de Coq</string>
+    <string name="lesson_sue_de_coq_summary">Dove un blocco incrocia una linea, e l\'incrocio ha più cifre che posto.</string>
+    <string name="lesson_sue_de_coq_1">Un blocco e una colonna si sovrappongono in tre celle. Quelle tre celle appartengono a entrambi insieme, ed è di questo che vive questa tecnica.</string>
+    <string name="lesson_sue_de_coq_2">Guardane due qui. Insieme contengono 2, 6, 7 e 8: quattro cifre per due celle. Due di esse entrano, e due restano per qualche altro posto.</string>
+    <string name="lesson_sue_de_coq_3">Più giù nella stessa colonna c\'è una cella con 6 e 7. Altrove nello stesso blocco c\'è una cella con 2 e 8. Insieme quelle due celle vogliono esattamente le quattro cifre dell\'incrocio, divise in parti uguali e senza niente in comune.</string>
+    <string name="lesson_sue_de_coq_4">Fai il conto. Tre celle della colonna prendono adesso tre cifre diverse delle quattro, e tre celle del blocco fanno lo stesso. C\'è un solo modo in cui il conto torna: il 6 e il 7 si consumano dentro la colonna, e il 2 e l\'8 dentro il blocco.</string>
+    <string name="lesson_sue_de_coq_5">Quindi nient\'altro in quella colonna può essere un 6 o un 7. Due celle ne perdono uno qui.</string>
+    <string name="lesson_sue_de_coq_6">Lo stesso ragionamento vale al contrario per il blocco. Uno schema, due case, due insiemi separati di eliminazioni, e nessuna catena da nessuna parte.</string>
+
+    <string name="lesson_als_title">ALS-XZ</string>
+    <string name="lesson_als_summary">Due insiemi quasi bloccati che condividono una cifra, e l\'eliminazione che ne segue.</string>
+    <string name="lesson_als_1">La regola su cui sono costruiti i livelli più difficili. Tutto quello che sta sopra questa fase ne è una variazione.</string>
+    <string name="lesson_als_2">Un insieme quasi bloccato è un gruppo di celle di una casa che contiene esattamente una cifra più di quante siano le celle. Quattro celle con cinque cifre. Se perdesse una cifra sarebbe un insieme bloccato, da cui il nome.</string>
+    <string name="lesson_als_3">Prendine due che condividono due cifre. Chiama ristretta una delle cifre condivise, e pretendi che ogni posto in cui compare in un insieme veda ogni posto in cui compare nell\'altro.</string>
+    <string name="lesson_als_4">Allora può stare solo in uno dei due insiemi. L\'insieme che non se la prende resta bloccato, il che fissa dentro di lui l\'altra cifra condivisa. E così qualunque cella veda quella cifra in entrambi gli insiemi la perde.</string>
+    <string name="lesson_als_5">Ecco l\'eliminazione che ne esce.</string>
+    <string name="lesson_als_6">Se questo richiede diverse letture, è il numero normale. Ogni tecnica da qui in poi è questa con un\'altra forma.</string>
+
+    <string name="lesson_deep_end_title">Che cosa chiede la parte profonda</string>
+    <string name="lesson_deep_end_summary">Che cosa cambia a Folle e Incubo, e perché questi livelli chiedono carta.</string>
+    <string name="lesson_deep_end_1">Tutto quello fino a qui si può vedere. Guardi una riga, un blocco, un paio di celle, e la risposta è davanti a te una volta che conosci la forma.</string>
+    <string name="lesson_deep_end_2">I due livelli più difficili non sono così. Chiedono di seguire un ragionamento per tre o quattro passi e di tenerlo tutto in testa insieme, e questo quasi nessuno lo fa guardando.</string>
+    <string name="lesson_deep_end_3">Quindi scrivilo. Una matita e il retro di una busta non sono un imbroglio e non sono un segno che tu sia scarso. È quello che fa chiunque risolva questi.</string>
+    <string name="lesson_deep_end_4">Le regole qui sono tutte la stessa idea: un gruppo di celle a cui manca una cifra per essere pieno. Togli quella cifra e il gruppo è costretto, e un gruppo costretto costringe il successivo. La parte profonda è tutta qui.</string>
+    <string name="lesson_deep_end_5">Niente di quello che viene è una scommessa. Ogni passo è dimostrato, ogni aiuto ti mostrerà la dimostrazione, e se uno schema qui ti batte, tornarci fra una settimana è il modo normale in cui va.</string>
+
+    <string name="lesson_als_xy_title">ALS-XY-Wing</string>
+    <string name="lesson_als_xy_summary">Tre gruppi in catena, e la cifra che non sopravvive a nessuno dei due estremi.</string>
+    <string name="lesson_als_xy_1">Tre gruppi questa volta, uniti in linea: uno a ogni estremo e uno in mezzo che li tiene separati.</string>
+    <string name="lesson_als_xy_2">Parti dai due a sinistra. r3c9 contiene 1 e 3. r1c8 contiene 3 e 7. Condividono un blocco, quindi solo uno dei due può essere il 3.</string>
+    <string name="lesson_als_xy_3">Adesso il gruppo che scende lungo la colonna 8: tre celle che contengono 1, 3, 7 e 9. Quattro cifre, tre celle, quindi gli manca una cifra per essere pieno. Condivide il 7 con r1c8, e ogni suo 7 sta in quella stessa colonna, quindi di nuovo solo un lato può prenderlo.</string>
+    <string name="lesson_als_xy_4">Supponi che una delle due celle segnate nella colonna 9 sia un 1. Vede r3c9, quindi r3c9 non è 1, quindi è 3. Allora r1c8 non è 3, quindi è 7. Allora al gruppo non resta nessun 7, quindi è pieno, e deve usare 1, 3 e 9.</string>
+    <string name="lesson_als_xy_5">Ma quelle celle vedono anche ogni 1 del gruppo, quindi il gruppo non può avere nemmeno un 1. Il ragionamento si mangia da solo, e l\'1 se ne va.</string>
+    <string name="lesson_als_xy_6">Due giunzioni, tre gruppi, e ogni passo costringe il successivo. Leggilo due volte: è una catena, e le catene hanno senso solo un collegamento alla volta.</string>
+
+    <string name="lesson_blossom_title">Death blossom</string>
+    <string name="lesson_blossom_summary">Una cella con un gruppo che aspetta dietro ognuna delle sue cifre.</string>
+    <string name="lesson_blossom_1">Questa ha una forma che si vede: un gambo, e un petalo per ogni cifra che il gambo potrebbe essere.</string>
+    <string name="lesson_blossom_2">Il gambo è r1c4. È un 5 o un 6, e nient\'altro. Due possibilità sono due casi, e questa tecnica se ne occupa insieme.</string>
+    <string name="lesson_blossom_3">Diciamo che sia un 5. Allora r1c7, sulla stessa riga, che contiene 5 e 8, non può essere il 5. Quindi è l\'8.</string>
+    <string name="lesson_blossom_4">Diciamo invece che sia un 6. Guarda queste tre celle nello stesso blocco: insieme contengono 2, 6, 7 e 8. Quattro cifre, tre celle, una meno del pieno. Il gambo le vede tutte e tre, quindi il suo 6 toglie loro il 6.</string>
+    <string name="lesson_blossom_5">Adesso sono piene, e tre celle piene usano tre cifre: 2, 7 e 8. Solo una di esse può essere l\'8, quindi è lì che va l\'8.</string>
+    <string name="lesson_blossom_6">Metti insieme i due casi. O c\'è un 8 in r1c7 o c\'è un 8 in quel blocco, e non esiste un terzo caso. Qualunque cella veda entrambi i posti perde il suo 8, e due lo perdono.</string>
+    <string name="lesson_blossom_7">Nota che cosa non hai mai avuto bisogno di sapere: quale cifra è davvero il gambo. Entrambe le strade finiscono in un 8, quindi la risposta non dipende dal bivio.</string>
+
+    <string name="lesson_fork_title">Catena forzata</string>
+    <string name="lesson_fork_summary">Prendi una cella da entrambi i lati e guarda quale sopravvive. La cosa più difficile dell\'app.</string>
+    <string name="lesson_fork_1">L\'ultima tecnica, e l\'unica che non è uno schema. Qui non c\'è niente da notare. C\'è solo lavoro.</string>
+    <string name="lesson_fork_2">Questa cella è un 2 o un 7. Tutto il resto della griglia è stato spremuto, e niente dice quale delle due sia.</string>
+    <string name="lesson_fork_3">Quindi provane una. Di\' che sia un 2, a matita, e segui solo le conseguenze facili: una cella a cui resta una cifra, o una cifra a cui resta un posto nella sua casa.</string>
+    <string name="lesson_fork_4">Arrivano subito. Qui è costretto un 2, poi un 7 là, poi un 3, un 5, un 9. Vai avanti. Quattordici cifre dopo, guarda la cella segnata.</string>
+    <string name="lesson_fork_5">Non le resta niente. Ogni cifra che poteva andarci è stata presa da qualcos\'altro. Non è sfortuna, è una contraddizione, e vuol dire che il 2 non è mai stato possibile.</string>
+    <string name="lesson_fork_6">Quindi cancella tutto e scrivi il 7. Non perché il 7 abbia un aspetto migliore, ma perché il 2 è stato dimostrato impossibile, e due possibilità meno una ne lasciano una.</string>
+    <string name="lesson_fork_7">Questa è una dimostrazione per casi, ed è quello che la gente intende quando dice di risolvere uno schema su carta. Usa la carta. Nessuno tiene quattordici cifre forzate in testa, e aver bisogno di scriverle non è una debolezza.</string>
+    <string name="lesson_fork_8">Adesso inseriscila.</string>
+    <string name="lesson_fork_wrong">La cifra che è morta è l\'altra. Il 2 portava a una cella senza niente dentro, quindi quello che resta è il 7.</string>
+
+    <string name="lesson_nothing_applies_title">Quando non si applica niente</string>
+    <string name="lesson_nothing_applies_summary">Ricontrolla prima di tirare a indovinare, perché uno schema di questa app ha sempre un passo successivo.</string>
+    <string name="lesson_nothing_applies_1">Arriverai a posizioni in cui hai guardato tutto e non hai trovato niente. Ecco che cosa fare, e che cosa no.</string>
+    <string name="lesson_nothing_applies_2">Quello che non va fatto è tirare a indovinare. Ogni schema di questa app si risolve ragionando, e una scommessa che per caso è giusta non ti insegna niente mentre una sbagliata ti costa l\'intera griglia.</string>
+    <string name="lesson_nothing_applies_3">Ricontrolla in questo ordine. Primo: le tue note sono tutte vere? Una nota vecchia è la causa più comune di una posizione impossibile, e questa app le cancella per te se la lasci fare. Secondo: una cifra che hai inserito è davvero giusta? Premi aiuto e te lo dirà.</string>
+    <string name="lesson_nothing_applies_4">Poi cerca di nuovo le cose facili. Quasi mai è una catena che ti è sfuggita. Quasi sempre è un unico nascosto in una casa che hai smesso di guardare venti mosse fa.</string>
+
+    <string name="lesson_look_first_title">Che cosa cercare per primo</string>
+    <string name="lesson_look_first_summary">Prima gli schemi facili, sempre, perché sono comuni e aprono la griglia.</string>
+    <string name="lesson_look_first_1">Adesso conosci ogni tecnica che questa app sa nominare. L\'ultima cosa da imparare è l\'ordine in cui guardare.</string>
+    <string name="lesson_look_first_2">Prima gli unici, sempre. Nudi, poi nascosti. Sono di gran lunga i più comuni e ognuno che inserisci rende più facile trovare ogni altra tecnica.</string>
+    <string name="lesson_look_first_3">Poi le eliminazioni facili: coppie che puntano e che reclamano. Si controllano in fretta, casa per casa, e spesso sbloccano subito un unico.</string>
+    <string name="lesson_look_first_4">Poi coppie e terne nelle case con meno celle vuote. Poi i pesci, poi i wing. Le catene per ultime, sempre, perché sono le più faticose e le meno comuni.</string>
+    <string name="lesson_look_first_5">Cacciare un Jellyfish prima di controllare gli unici è l\'equivalente sudoku di riscrivere un programma prima di leggere il messaggio di errore. L\'app classifica gli schemi in base alla cosa più difficile che richiedono, ma un Maestro resta fatto soprattutto di unici.</string>
+    <string name="lesson_together_title">Un Maestro, insieme</string>
+    <string name="lesson_together_summary">Uno schema difficile è fatto soprattutto di passi facili con dentro qualche passo difficile.</string>
+    <string name="lesson_together_1">L\'ultima lezione. Questa è la griglia che il corso ha attraversato, di livello Maestro, ed ecco l\'intera soluzione nominata tecnica per tecnica.</string>
+    <string name="lesson_together_2">Si apre con un unico nudo. Quasi tutti lo fanno.</string>
+    <string name="lesson_together_3">Poi un unico nascosto, nel blocco accanto.</string>
+    <string name="lesson_together_4">Adesso si ferma, e una coppia che punta ripulisce una colonna perché gli unici possano ricominciare. Nota che quel passo non ha inserito nessuna cifra e il progresso c\'è stato lo stesso.</string>
+    <string name="lesson_together_5">Una coppia nuda poco dopo, che fa lo stesso lavoro in una casa.</string>
+    <string name="lesson_together_6">Più avanti, un X-Wing. Ormai la griglia è mezza piena e sono le note a fare il lavoro.</string>
+    <string name="lesson_together_7">E verso la fine, quello che si guadagna il livello: un ALS-XZ. Un\'eliminazione, e il resto sono di nuovo unici.</string>
+    <string name="lesson_together_8">Questo è ciò che vuol dire Maestro qui. Non ottantuno passi difficili, ma settanta facili e una manciata che richiedono tutto quello che hai imparato.</string>
+    <string name="lesson_together_9">Hai incontrato ogni tecnica che questa app sa nominare. Vai a giocarne uno. Tre aiuti arrivano con ogni schema e non c\'è nessuna vergogna a spenderli, e se preferisci averne quanti ne vuoi, il limite è un interruttore nelle impostazioni.</string>
+    <string name="lesson_step_of">%1$d di %2$d</string>
+    <string name="lesson_back">Indietro</string>
+    <string name="lesson_next">Avanti</string>
+    <string name="lesson_done">Fatto</string>
+    <string name="lesson_replay">Di nuovo</string>
+    <string name="lesson_show_me">Mostrami</string>
+    <string name="lesson_cell_at">Riga %1$d, colonna %2$d.</string>
+    <string name="course_title">Impara</string>
+    <string name="course_lesson_done">finita</string>
+    <string name="course_lesson_next">prossima</string>
+    <string name="course_lesson_todo">non iniziata</string>
+    <plurals name="course_progress">
+        <item quantity="one">%1$d lezione di %2$d</item>
+        <item quantity="other">%1$d lezioni di %2$d</item>
+    </plurals>
+    <string name="settings_hint_detail">QUANTO DICE UN AIUTO</string>
+    <string name="hint_detail_region">Solo la regione</string>
+    <string name="hint_detail_region_note">Quale blocco o linea guardare, e nient\'altro.</string>
+    <string name="hint_detail_name">La tecnica</string>
+    <string name="hint_detail_name_note">Che tipo di passo è, così sai che cosa cercare.</string>
+    <string name="hint_detail_cells">Le celle</string>
+    <string name="hint_detail_cells_note">Le celle su cui si regge il ragionamento, illuminate sulla griglia.</string>
+    <string name="hint_detail_full">Tutto il ragionamento</string>
+    <string name="hint_detail_full_note">Tutto, mossa compresa. Per lavorare sul corso.</string>
+    <string name="path_title">Come è stato risolto</string>
+    <string name="path_placed">La riga %1$d, colonna %2$d è un %3$d.</string>
+    <string name="outcome_path">MOSTRA COME È STATO RISOLTO</string>
+    <string name="settings_your_data">I tuoi dati</string>
+    <string name="settings_data_note">Tutto quello che questa app sa di te è su questo telefono. L\'esportazione lo scrive in un file scelto da te, così un telefono nuovo può riprendere da dove questo ha lasciato. Non si manda niente da nessuna parte.</string>
+    <string name="settings_export">Esporta i miei progressi</string>
+    <string name="settings_import">Importa da un file</string>
+    <string name="settings_reset_course">Azzera il corso, tenendo le mie partite</string>
+    <string name="settings_exported">Salvato. Lezioni: %1$d. Partite: %2$d.</string>
+    <string name="settings_imported">Aggiunto. Lezioni: %1$d. Partite: %2$d.</string>
+    <string name="settings_imported_ignored">Aggiunto. Lezioni: %1$d. Partite: %2$d. Lasciate fuori, perché venivano da una versione più nuova: %3$d.</string>
+    <string name="settings_import_empty">Quel file è vuoto.</string>
+    <string name="settings_import_not_ours">Non sembra un\'esportazione di Sendoku.</string>
+    <string name="settings_import_future">Quel file è stato scritto da una versione più nuova di Sendoku.</string>
+    <string name="settings_import_failed">Non è stato possibile leggere quel file, e su questo telefono non è cambiato niente.</string>
+    <string name="settings_course_reset">Il corso è tornato all\'inizio. Le tue partite sono intatte.</string>
+    <string name="practice_looking">Cerco una posizione…</string>
+    <string name="practice_find">Trova il %1$s.</string>
+    <string name="practice_keep_going">Questo è uno di quelli. Vai avanti.</string>
+    <string name="practice_wrong">Non quella cella. Rileggi la regola: un %1$s non si regge su di essa.</string>
+    <string name="practice_right">Questo è il %1$s. Quello che esclude è segnato.</string>
+    <string name="practice_revealed">Ecco il %1$s, e quello che esclude.</string>
+    <string name="practice_show_me">Mostrami</string>
+    <string name="practice_another">Un altro</string>
+    <string name="practice_skip">Salta</string>
+    <string name="practice_title">Esercizio</string>
+    <string name="practice_none">Ancora niente da esercitare. Finisci prima una lezione che insegna una tecnica.</string>
+    <string name="glossary_learn_this">IMPARA QUESTO</string>
+    <string name="hint_learn_this">Insegnami questo</string>
+    <string name="outcome_learn">Impara %1$s</string>
+    <string name="course_finished">Tutto quanto, fatto. Tutto quello che l\'app sa nominare, lo sai nominare tu. Gli schemi sono il resto.</string>
+    <string name="outcome_lost_hints">AIUTI FINITI</string>
+    <string name="outcome_share">Condividi</string>
+    <string name="card_solved">Risolto</string>
+    <string name="card_lost">Ha vinto lo schema</string>
+    <string name="settings_hints">Aiuti</string>
+    <string name="settings_hint_limit">Chiudi la partita dopo tre aiuti</string>
+    <string name="settings_hint_note">Acceso di default. Tre aiuti sono gratis, e il quarto costa la partita, il che rende un aiuto una decisione e non un riflesso. Spegnilo mentre lavori sul corso.</string>
+    <string name="account_title">Tu</string>
+    <string name="account_no_account">Non c\'è nessun account con cui entrare. Tutto quello che segue è su questo telefono e in nessun altro posto.</string>
+    <string name="account_solved">Risolti</string>
+    <string name="account_streak">Serie</string>
+    <string name="account_played">Giocati</string>
+    <string name="account_time">Tempo</string>
+    <string name="account_lessons">Lezioni</string>
+    <string name="account_stats">Statistiche</string>
+    <string name="account_stats_detail">Ogni livello, i tuoi tempi migliori e quali tecniche hai incontrato</string>
+    <string name="account_settings_detail">L\'aspetto, la griglia, i limiti e i tuoi dati</string>
+    <string name="account_about_detail">Che cosa promette questa app e le licenze su cui si regge</string>
+    <string name="tab_home">Inizio</string>
+    <string name="tab_learn">Impara</string>
+    <string name="tab_account">Tu</string>
+    <plurals name="hint_menu_left">
+        <item quantity="one">Gli ultimi due costano un aiuto, e te ne resta %1$d.</item>
+        <item quantity="other">Gli ultimi due costano un aiuto, e te ne restano %1$d.</item>
+    </plurals>
+    <plurals name="hint_check_wrong">
+        <item quantity="one">%1$d cifra che hai inserito è sbagliata. Trovarla resta compito tuo.</item>
+        <item quantity="other">%1$d cifre che hai inserito sono sbagliate. Trovarle resta compito tuo.</item>
+    </plurals>
+    <plurals name="path_summary">
+        <item quantity="one">%1$d passo, prima la regola più semplice, esattamente come lo ha valutato l\'app.</item>
+        <item quantity="other">%1$d passi, prima la regola più semplice, esattamente come lo ha valutato l\'app.</item>
+    </plurals>
+    <plurals name="path_struck">
+        <item quantity="one">Esclude %1$d nota.</item>
+        <item quantity="other">Esclude %1$d note.</item>
+    </plurals>
+</resources>
