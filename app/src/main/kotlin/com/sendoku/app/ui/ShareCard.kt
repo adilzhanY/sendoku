@@ -62,6 +62,14 @@ public object ShareCard {
         val warn: Int,
         val regular: Typeface,
         val bold: Typeface,
+        /**
+         * Whether the reader reads right to left.
+         *
+         * A canvas mirrors nothing by itself. The words inside a line are laid out correctly
+         * either way, because Android does that per string, but where those lines sit on the
+         * card is decided here and nowhere else.
+         */
+        val rightToLeft: Boolean = false,
     )
 
     private val MARK = listOf(
@@ -112,36 +120,43 @@ public object ShareCard {
         val bold = look.bold
         val plain = look.regular
 
-        drawMark(canvas, paint, left = 84f, top = 84f, side = 116f)
+        // The mark leads, so it sits on the side the reader starts from.
+        val markLeft = if (look.rightToLeft) WIDTH - 84f - 116f else 84f
+        val textEdge = if (look.rightToLeft) markLeft - 32f else 232f
+        drawMark(canvas, paint, left = markLeft, top = 84f, side = 116f)
 
         paint.typeface = bold
         paint.color = look.entry
         paint.textSize = 72f
-        canvas.drawText(appName, 232f, 152f, paint)
+        paint.textAlign = if (look.rightToLeft) Paint.Align.RIGHT else Paint.Align.LEFT
+        canvas.drawText(appName, textEdge, 152f, paint)
         val nameWidth = paint.measureText(appName)
 
         paint.typeface = plain
         paint.color = look.muted
         paint.textSize = 34f
         paint.letterSpacing = 0.14f
-        canvas.drawText(title.shout(), 234f, 200f, paint)
+        canvas.drawText(title.shout(), if (look.rightToLeft) textEdge else 234f, 200f, paint)
         paint.letterSpacing = 0f
+        paint.textAlign = Paint.Align.LEFT
 
         // The grade, on the right of the same line as the name, so the board can start high.
         // It gets whatever the name has left, and shrinks rather than running into it: a
         // German grade in a monospace face is more than twice the width of an English one.
         paint.typeface = bold
         paint.color = look.accent
-        paint.textAlign = Paint.Align.RIGHT
+        paint.textAlign = if (look.rightToLeft) Paint.Align.LEFT else Paint.Align.RIGHT
         fit(paint, grade, 62f, WIDTH - 84f - (232f + nameWidth) - 32f)
-        canvas.drawText(grade, WIDTH - 84f, 168f, paint)
+        canvas.drawText(grade, if (look.rightToLeft) 84f else WIDTH - 84f, 168f, paint)
         paint.textAlign = Paint.Align.LEFT
 
         if (grid != null) drawGrid(canvas, paint, grid, top = 250f, side = 880f, look = look)
 
         val top = HEIGHT - 150f
         val step = (WIDTH - 168f) / lines.size
-        for ((index, line) in lines.withIndex()) {
+        // Read from the other side, so the first thing named is the first thing seen.
+        val ordered = if (look.rightToLeft) lines.reversed() else lines
+        for ((index, line) in ordered.withIndex()) {
             val centre = 84f + step * index + step / 2
             paint.textAlign = Paint.Align.CENTER
 

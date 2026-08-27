@@ -162,6 +162,7 @@
     <string name="language_portuguese">Português (Brasil)</string>
     <string name="language_chinese">简体中文</string>
     <string name="language_korean">한국어</string>
+    <string name="language_arabic">العربية</string>
     <string name="first_run_prompt">O Sendoku está escrito em oito idiomas. Em qual você lê?</string>
     <string name="first_run_system_is">Seu telefone está em %1$s</string>
     <string name="first_run_no_translation">Seu telefone está em um idioma que o Sendoku ainda não fala. O inglês é o mais próximo que ele tem.</string>

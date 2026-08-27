@@ -25,12 +25,25 @@ public object SendokuIcons {
     private const val SIZE = 24f
     private const val STROKE = 1.9f
 
-    private fun icon(name: String, block: ImageVector.Builder.() -> Unit): ImageVector = ImageVector.Builder(
+    private fun icon(
+        name: String,
+        /**
+         * Whether the icon turns around in a right to left language.
+         *
+         * True for anything that points at the way back or the way on, and false for
+         * everything else. An arrow pointing the wrong way in Arabic is the single most
+         * common right to left bug there is, and a pencil that has been mirrored to match it
+         * is the second.
+         */
+        mirrored: Boolean = false,
+        block: ImageVector.Builder.() -> Unit,
+    ): ImageVector = ImageVector.Builder(
         name = name,
         defaultWidth = SIZE.dp,
         defaultHeight = SIZE.dp,
         viewportWidth = SIZE,
         viewportHeight = SIZE,
+        autoMirror = mirrored,
     ).apply(block).build()
 
     private fun ImageVector.Builder.stroke(pathData: androidx.compose.ui.graphics.vector.PathBuilder.() -> Unit) {
@@ -44,7 +57,7 @@ public object SendokuIcons {
     }
 
     /** A loop turning back on itself, with the arrow head where the motion ends. */
-    public val Undo: ImageVector = icon("Undo") {
+    public val Undo: ImageVector = icon("Undo", mirrored = true) {
         stroke {
             moveTo(4.5f, 9.5f)
             horizontalLineTo(14.0f)
@@ -59,7 +72,7 @@ public object SendokuIcons {
     }
 
     /** The same loop mirrored. Redo is undo run the other way and should look like it. */
-    public val Redo: ImageVector = icon("Redo") {
+    public val Redo: ImageVector = icon("Redo", mirrored = true) {
         stroke {
             moveTo(19.5f, 9.5f)
             horizontalLineTo(10.0f)
@@ -142,7 +155,7 @@ public object SendokuIcons {
     }
 
     /** The way back. A chevron, because an arrow with a tail reads as a share on some phones. */
-    public val Back: ImageVector = icon("Back") {
+    public val Back: ImageVector = icon("Back", mirrored = true) {
         stroke {
             moveTo(15.0f, 4.5f)
             lineTo(7.5f, 12.0f)
@@ -151,7 +164,7 @@ public object SendokuIcons {
     }
 
     /** The way on. The same chevron as [Back], turned around, so a pair of them match. */
-    public val Forward: ImageVector = icon("Forward") {
+    public val Forward: ImageVector = icon("Forward", mirrored = true) {
         stroke {
             moveTo(9.0f, 4.5f)
             lineTo(16.5f, 12.0f)

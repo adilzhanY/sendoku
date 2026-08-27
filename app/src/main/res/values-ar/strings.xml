@@ -1,0 +1,857 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  العربية.
+
+  ثلاثة قرارات تسري على الملف كله.
+
+  الأرقام غربية: 1 و2 و3، لا ١ و٢ و٣. اللوح نفسه لا يستطيع رسم غيرها، وخلط النظامين في
+  شاشة واحدة هو أول ما يلاحظه اللاعب العربي. فإذا كانت الأرقام على اللوح غربية، فكل رقم في
+  الواجهة غربي كذلك.
+
+  أسماء الأساليب الوصفية مترجمة، والأسماء العَلَمية المخترعة تبقى بالحروف اللاتينية كما هي
+  في الكتابة التقنية العربية: X-Wing يبقى X-Wing، أما naked single فهو منفرد ظاهر.
+
+  والنبرة هي نبرة الأصل: هادئة، مباشرة، بلا علامات تعجب.
+-->
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Sendoku</string>
+
+    <string name="home_choose_level">اختر مستوى</string>
+    <string name="home_daily">لغز اليوم</string>
+    <string name="home_new_puzzle">لغز جديد</string>
+    <string name="home_resume">متابعة</string>
+    <string name="home_in_progress">قيد اللعب</string>
+    <string name="home_percent">%1$s، %2$d%%</string>
+    <string name="home_placed">الموضوع: %1$d من %2$d</string>
+
+    <string name="grade_gentle">سهل</string>
+    <string name="grade_steady">متوسط</string>
+    <string name="grade_tricky">صعب</string>
+    <string name="grade_severe">صعب جدًا</string>
+    <string name="grade_diabolical">خبير</string>
+    <string name="grade_beyond">أستاذ</string>
+    <string name="grade_insane">جنوني</string>
+    <string name="grade_nightmare">كابوس</string>
+    <string name="grade_locked">اربح لغزًا من مستوى %1$s لفتح هذا المستوى</string>
+    <string name="gate_gentle">رقم واضح تلو الآخر</string>
+    <string name="gate_steady">أزواج، وأرقام محبوسة في خط واحد</string>
+    <string name="gate_tricky">ثلاثيات، وأنماط تمتد عبر اللوح</string>
+    <string name="gate_severe">أجنحة وتلوين ومستطيلات</string>
+    <string name="gate_diabolical">سلاسل من الاستنتاج</string>
+    <string name="gate_beyond">أبعد مما تصل إليه معظم التطبيقات</string>
+    <string name="gate_insane">مجموعات من الخانات مرتبطة في سلسلة</string>
+    <string name="gate_nightmare">خانة واحدة تُجرَّب في الاتجاهين، على الورق</string>
+    <string name="grade_advanced">متقدم</string>
+    <string name="grade_advanced_talkback">مستوى متقدم، يحتاج إلى أسلوب من الدورة</string>
+
+    <string name="tool_undo">تراجع</string>
+    <string name="tool_redo">إعادة</string>
+    <string name="tool_erase">مسح</string>
+    <string name="tool_notes">ملاحظات</string>
+    <string name="tool_hint">تلميح</string>
+    <string name="paused">متوقف مؤقتًا</string>
+    <string name="paused_tap">المس أي مكان للمتابعة</string>
+    <string name="mistakes_of">%1$d من %2$d</string>
+
+    <string name="cell_position">الصف %1$d، العمود %2$d</string>
+    <string name="cell_clue">%1$s، %2$d، رقم من اللغز نفسه</string>
+    <string name="cell_digit">%1$s، %2$d</string>
+    <string name="cell_empty">%1$s، فارغة</string>
+    <string name="cell_noted">%1$s، فارغة، الملاحظات %2$s</string>
+    <string name="cell_hint_argument">%1$s. جزء من التلميح.</string>
+    <string name="cell_hint_struck">%1$s. التلميح يشطب ملاحظة هنا.</string>
+    <string name="cell_hint_region">%1$s. داخل المنطقة التي يتحدث عنها التلميح.</string>
+    <string name="cell_repeated">%1$s، مكرر</string>
+    <string name="pad_all_placed">%1$d، وُضع كله</string>
+    <string name="pad_one_left">%1$d، بقي واحد</string>
+    <plurals name="pad_left">
+        <item quantity="zero">%1$d، لم يبق شيء</item>
+        <item quantity="one">%1$d، بقي واحد</item>
+        <item quantity="two">%1$d، بقي اثنان</item>
+        <item quantity="few">%1$d، بقي %2$d</item>
+        <item quantity="many">%1$d، بقي %2$d</item>
+        <item quantity="other">%1$d، بقي %2$d</item>
+    </plurals>
+    <string name="pad_scanning">%1$s، يعرض أين يمكن أن يوضع</string>
+    <string name="pad_notes_mode">%1$s، وضع الملاحظات</string>
+
+    <string name="cell_actions_title">الصف %1$d، العمود %2$d</string>
+    <string name="cell_actions_clue">هذا الرقم جاء مع اللغز، فلا يمكن تغييره.</string>
+    <plurals name="cell_actions_note_all">
+        <item quantity="zero">لا مرشحات لتدوينها</item>
+        <item quantity="one">دوّن المرشح الوحيد</item>
+        <item quantity="two">دوّن المرشحين</item>
+        <item quantity="few">دوّن المرشحات %1$d</item>
+        <item quantity="many">دوّن المرشحات %1$d</item>
+        <item quantity="other">دوّن المرشحات %1$d</item>
+    </plurals>
+    <string name="cell_actions_clear_notes">امسح الملاحظات</string>
+    <string name="why_not_title">لماذا لا؟</string>
+    <string name="why_not_prompt">المس رقمًا لتعرف ما الذي يمنعه.</string>
+    <string name="why_not_taken">يوجد %1$d بالفعل في %2$s، الصف %3$d، العمود %4$d.</string>
+    <string name="why_not_filled">هذه الخانة تحتوي على %1$d بالفعل. امسحه أولًا.</string>
+    <string name="why_not_possible">لا شيء في اللوح يمنع %1$d. هذا لا يجعله صحيحًا، بل ممكنًا فقط.</string>
+    <string name="cell_actions_clear">أفرغ الخانة</string>
+
+    <string name="leave_title">هل تترك هذا اللغز؟</string>
+    <string name="leave_body">سينتظرك عند النقطة التي تركته فيها.</string>
+    <string name="leave_confirm">اخرج</string>
+    <string name="leave_cancel">ابق</string>
+
+    <string name="outcome_solved">تم الحل</string>
+    <string name="outcome_lost">نفدت الأخطاء المسموح بها</string>
+    <string name="outcome_rated">%1$s، بتقييم %2$s</string>
+    <string name="outcome_hints">التلميحات</string>
+    <string name="outcome_mistakes">الأخطاء</string>
+    <string name="outcome_moves">الحركات</string>
+    <string name="outcome_needed">احتاج إلى %1$s</string>
+    <string name="outcome_home">الرئيسية</string>
+    <string name="outcome_another">لغز %1$s آخر</string>
+
+    <string name="hint_remove_one">احذفه</string>
+    <string name="hint_remove_many">احذفها</string>
+    <string name="hint_look_here_title">انظر هنا</string>
+    <string name="hint_look_here">هناك شيء يمكن إيجاده في %1$s. هذا كل ما يقوله هذا التلميح.</string>
+    <string name="hint_look_around">هناك خطوة يمكن إيجادها. هذه الخطوة موزعة على اللوح كله بدل أن تكون داخل منطقة واحدة.</string>
+    <string name="hint_what_kind">أي نوع من الخطوات؟</string>
+    <string name="hint_menu_title">مساعدة</string>
+    <string name="hint_menu_difficulty">الخطوة التالية تحتاج إلى أسلوب من مستوى %1$s.</string>
+    <string name="hint_menu_broken">أحد الأرقام التي وضعتها خاطئ، فلا شيء آخر يترتب قبل إصلاحه.</string>
+    <string name="hint_menu_check">هل هناك خطأ؟</string>
+    <string name="hint_menu_look">أين أنظر؟</string>
+    <string name="hint_menu_explain">اشرح الخطوة التالية</string>
+    <string name="hint_menu_free">السؤال هنا لا يكلف شيئًا. الحد معطّل.</string>
+    <string name="hint_check_clean">لا شيء مما وضعته خاطئ.</string>
+    <string name="hint_close">إغلاق</string>
+    <string name="hint_previous">خطوة إلى الوراء</string>
+    <string name="hint_cells_here">الخانات التي يستند إليها مضاءة في %1$s.</string>
+    <string name="hint_where">أرني أين</string>
+    <string name="hint_explain">اشرحه</string>
+    <string name="hint_do_it">ضعه</string>
+    <string name="hint_evidence">صفها يحتوي بالفعل على %1$s. عمودها يحتوي على %2$s. مربعها يحتوي على %3$s. معًا هذه كل الأرقام عدا %4$d.</string>
+    <string name="hint_rests_on_earlier">جزء من هذا يستند إلى ملاحظات شطبها تلميح سابق. هي مكتوبة على اللوح، فيمكنك متابعة الاستنتاج من هناك.</string>
+    <string name="hint_what_is_this">ما هذا؟</string>
+    <string name="hint_wrong_title">هناك خطأ ما</string>
+    <string name="hint_wrong_one">أحد الأرقام التي وضعتها لا يمكن أن يكون صحيحًا. تم تمييزه.</string>
+    <string name="hint_wrong_many">%1$d من الأرقام التي وضعتها لا يمكن أن تكون صحيحة. تم تمييزها.</string>
+    <string name="hint_wrong_until_one">لا يمكن استنتاج شيء آخر قبل إصلاحه.</string>
+    <string name="hint_wrong_until_many">لا يمكن استنتاج شيء آخر قبل إصلاحها.</string>
+    <string name="hint_done_title">انتهى</string>
+    <string name="hint_done_body">تم حل اللغز.</string>
+    <string name="hint_stuck_title">لا شيء لاقتراحه</string>
+    <string name="hint_stuck_body">هذا اللوح لا يخالف القواعد، لكن لا ينطبق عليه أي أسلوب يعرفه Sendoku. هذا لا يُفترض أن يحدث في لغز من التطبيق.</string>
+    <string name="hint_in_region">%1$s</string>
+    <string name="hint_in_regions">%1$s و%2$s</string>
+    <string name="hint_outcome_place" tools:ignore="PluralsCandidate">إذن الصف %1$d، العمود %2$d هو %3$d.</string>
+    <string name="hint_outcome_strike_one" tools:ignore="PluralsCandidate">إذن يمكن شطب %1$d من %2$s.</string>
+    <string name="hint_outcome_strike_two" tools:ignore="PluralsCandidate">إذن يمكن شطب %1$d و%2$d من %3$s.</string>
+    <plurals name="hint_cells">
+        <item quantity="zero">لا خانات</item>
+        <item quantity="one">خانة واحدة</item>
+        <item quantity="two">خانتان</item>
+        <item quantity="few">%1$d خانات</item>
+        <item quantity="many">%1$d خانة</item>
+        <item quantity="other">%1$d خانة</item>
+    </plurals>
+
+    <string name="house_row">الصف %1$d</string>
+    <string name="house_column">العمود %1$d</string>
+    <string name="house_box">المربع %1$d</string>
+
+    <string name="glossary_title">الأساليب</string>
+    <string name="back">رجوع</string>
+
+    <string name="settings_title">الإعدادات</string>
+    <string name="settings_language">اللغة</string>
+    <string name="language_system">اتبع الهاتف</string>
+    <string name="language_english">English</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_german">Deutsch</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_italian">Italiano</string>
+    <string name="language_japanese">日本語</string>
+    <string name="language_french">Français</string>
+    <string name="language_portuguese">Português (Brasil)</string>
+    <string name="language_chinese">简体中文</string>
+    <string name="language_korean">한국어</string>
+    <string name="language_arabic">العربية</string>
+    <string name="first_run_prompt">Sendoku مكتوب بإحدى عشرة لغة. بأي لغة تقرأ؟</string>
+    <string name="first_run_system_is">هاتفك مضبوط على %1$s</string>
+    <string name="first_run_no_translation">هاتفك مضبوط على لغة لا يتحدثها Sendoku بعد. الإنجليزية هي الأقرب المتوفرة.</string>
+    <string name="first_run_continue">ابدأ اللعب</string>
+    <string name="settings_look">المظهر</string>
+    <string name="settings_light_or_dark">فاتح أو داكن</string>
+    <string name="settings_terminal_is_dark">مظهر Terminal داكن مهما كان ضبط الهاتف. هذا مقصود.</string>
+    <string name="settings_board">اللوح</string>
+    <string name="settings_highlight_peers">إبراز الصف والعمود والمربع</string>
+    <string name="settings_highlight_same">إبراز الرقم نفسه في بقية اللوح</string>
+    <string name="settings_auto_clear">مسح الملاحظات التي يلغيها رقم موضوع</string>
+    <string name="settings_auto_notes">إبقاء الملاحظات في كل خانة</string>
+    <string name="settings_auto_notes_note">التطبيق يتولى الحساب. من مستوى خبير فما فوق يكاد يكون ضروريًا.</string>
+    <string name="settings_highlight_homes">إظهار أين يمكن أن يوضع الرقم المختار</string>
+    <string name="settings_auto_check">أخبرني فورًا عندما يكون الرقم خاطئًا</string>
+    <string name="settings_auto_check_note">مع تفعيل هذا لا تخسر شيئًا بالمحاولة، ويفقد اللغز معظم توتره.</string>
+    <string name="settings_auto_check_forced">مفعّل ما دام هناك حد للأخطاء، لأن الخطأ الذي يُحتسب عليك يجب أن يكون خطأ تراه. عطّل الحد بالأسفل للعب من دون الاثنين.</string>
+    <string name="settings_flag_conflicts">تمييز الرقم المتكرر في صف أو عمود أو مربع</string>
+    <string name="settings_clock">الساعة</string>
+    <string name="settings_show_timer">إظهار المؤقت</string>
+    <string name="settings_feedback">الاستجابة</string>
+    <string name="settings_haptics">اهتزاز عند وضع رقم</string>
+    <string name="settings_sound">الأصوات</string>
+    <string name="settings_sound_note">نغمات هادئة أثناء اللعب. إيقافها بلمسة واحدة، ووضع الصامت في الهاتف يعلو على الاثنين.</string>
+    <string name="settings_mistakes">الأخطاء</string>
+    <string name="settings_mistake_limit">إنهاء اللعبة بعد ثلاثة أخطاء</string>
+    <string name="settings_mistake_note">مفعّل افتراضيًا، عند ثلاثة. عطّله في المستويات الصعبة، حيث خسارة ساعة بسبب سهو واحد أمر مؤلم.</string>
+    <string name="settings_about">عن SENDOKU</string>
+
+    <string name="theme_deep_field">الحقل العميق</string>
+    <string name="theme_deep_field_summary">أسود خالص، ولمسة سماوية واحدة، ولا شيء غير ذلك</string>
+    <string name="theme_ink">حبر وورق</string>
+    <string name="theme_ink_summary">كتيب ألغاز مطبوع على ورق دافئ</string>
+    <string name="theme_zen">زن الحجر</string>
+    <string name="theme_zen_summary">مريمية وحجر، وأقل ما يمكن مما عداهما</string>
+    <string name="theme_terminal">Terminal</string>
+    <string name="theme_terminal_summary">خط ثابت العرض، حواف حادة، داكن فقط</string>
+    <string name="mode_system">اتبع النظام</string>
+    <string name="mode_light">فاتح دائمًا</string>
+    <string name="mode_dark">داكن دائمًا</string>
+
+    <string name="stats_title">الإحصاءات</string>
+    <string name="stats_solved">محلولة</string>
+    <string name="stats_streak">متتالية</string>
+    <string name="stats_hardest">الأصعب</string>
+    <string name="stats_hardest_note">أصعب ما أنهيته هو مستوى %1$s.</string>
+    <plurals name="stats_longest_run">
+        <item quantity="zero">لا متتالية بعد.</item>
+        <item quantity="one">أطول متتالية لك كانت يومًا واحدًا.</item>
+        <item quantity="two">أطول متتالية لك كانت يومين.</item>
+        <item quantity="few">أطول متتالية لك كانت %1$d أيام.</item>
+        <item quantity="many">أطول متتالية لك كانت %1$d يومًا.</item>
+        <item quantity="other">أطول متتالية لك كانت %1$d يوم.</item>
+    </plurals>
+    <string name="stats_totals">%1$s من اللعب، والتلميحات المستخدمة: %2$d.</string>
+    <string name="stats_by_grade">حسب المستوى</string>
+    <string name="stats_hints_title">ما سألت عنه أكثر</string>
+    <string name="stats_hints_note">أكثر ما تسأل عنه هو %1$s. هذا هو الدرس الذي يستحق العودة إليه.</string>
+    <string name="stats_needed">ما احتاجته ألغازك</string>
+    <string name="stats_solved_count">محلولة: %1$d</string>
+    <string name="stats_solved_and_lost">محلولة: %1$d، خاسرة: %2$d</string>
+    <string name="stats_average">المتوسط %1$s</string>
+    <string name="stats_reset">مسح الإحصاءات</string>
+    <string name="stats_reset_title">هل تحذف سجلك؟</string>
+    <string name="stats_reset_body">كل لغز أنهيته، وكل متتالية، وكل أفضل وقت. لا توجد نسخة في أي مكان آخر، فلا رجعة في هذا.</string>
+    <string name="stats_reset_confirm">احذف</string>
+    <string name="stats_reset_cancel">احتفظ به</string>
+    <string name="stats_empty_title">لا شيء بعد</string>
+    <string name="stats_empty_body">أنهِ لغزًا وسيمتلئ هذا: كم يستغرق كل مستوى، وإلى أين وصلت، وما الأساليب التي احتاجتها ألغازك.</string>
+
+    <string name="about_title">عن التطبيق</string>
+    <string name="about_version">Sendoku %1$s</string>
+    <string name="about_tagline">تطبيق سودوكو لمن نفدت منه الألغاز الصعبة.</string>
+    <string name="about_no_ads">بلا إعلانات</string>
+    <string name="about_no_ads_detail">لا بين الألغاز، ولا مقابل التلميحات، ولا في أي وقت.</string>
+    <string name="about_no_tracking">بلا تتبع</string>
+    <string name="about_no_tracking_detail">لا يُقاس شيء ولا يُرسل شيء. لا يوجد خادم.</string>
+    <string name="about_no_purchases">بلا مشتريات</string>
+    <string name="about_no_purchases_detail">كل الألغاز وكل التلميحات موجودة هنا بالفعل.</string>
+    <string name="about_offline">يعمل دون إنترنت</string>
+    <string name="about_offline_detail">الدفعة كاملة تسافر داخل التطبيق.</string>
+    <string name="about_hints">تلميحات تُعلّم</string>
+    <string name="about_hints_detail">التلميح يسمي الأسلوب ويشرح الاستنتاج. لا يكتفي أبدًا بملء رقم، ولا يُباع أبدًا: ثلاثة مع كل لغز، والحد يمكن تعطيله من الإعدادات.</string>
+    <string name="about_rating">تُقاس الصعوبة بأصعب أسلوب يحتاجه اللغز فعلًا، محسوبًا بحله كما يحله إنسان. لذلك «صعب جدًا» هنا يعني ما عناه «صعب جدًا» السابق.</string>
+    <string name="about_licence">Sendoku برنامج حر بموجب رخصة جنو العمومية العامة، الإصدار الثالث.</string>
+    <string name="about_privacy">سياسة الخصوصية تقول الشيء نفسه بالصيغة التي يطلبها المتجر، على adilzhany.github.io/sendoku/privacy</string>
+    <string name="about_licences">تراخيص المصادر المفتوحة</string>
+    <string name="licences_title">التراخيص</string>
+
+    <string name="look_naked_single">هناك خانة لم يبق فيها سوى رقم واحد ممكن.</string>
+    <string name="look_hidden_single">هناك رقم لم يبق له سوى مكان واحد.</string>
+    <string name="look_locked_candidates_pointing">داخل مربع واحد، رقم محبوس في صف واحد أو عمود واحد.</string>
+    <string name="look_locked_candidates_claiming">على خط واحد، رقم لا يمكن أن يقع إلا داخل مربع واحد.</string>
+    <string name="look_naked_pair">خانتان في منطقة واحدة تحملان الرقمين نفسيهما ولا شيء غيرهما.</string>
+    <string name="look_hidden_pair">رقمان لا مكان لهما في منطقة واحدة إلا الخانتين نفسيهما.</string>
+    <string name="look_naked_triple">ثلاث خانات في منطقة واحدة تتقاسم ثلاثة أرقام.</string>
+    <string name="look_hidden_triple">ثلاثة أرقام محصورة في الخانات الثلاث نفسها.</string>
+    <string name="look_naked_quad">أربع خانات في منطقة واحدة تتقاسم أربعة أرقام.</string>
+    <string name="look_hidden_quad">أربعة أرقام محصورة في الخانات الأربع نفسها.</string>
+    <string name="look_x_wing">صفان يحملان رقمًا في العمودين نفسيهما، أو العكس.</string>
+    <string name="look_swordfish">ثلاثة صفوف تحمل رقمًا داخل الأعمدة الثلاثة نفسها.</string>
+    <string name="look_jellyfish">أربعة صفوف تحمل رقمًا داخل الأعمدة الأربعة نفسها.</string>
+    <string name="look_xy_wing">ثلاث خانات في كل منها رقمان، مرتبة بحيث يُطرد أحد الأرقام.</string>
+    <string name="look_xyz_wing">مثل XY-Wing، لكن الخانة الوسطى تحمل رقمًا ثالثًا أيضًا.</string>
+    <string name="look_w_wing">خانتان تحملان الزوج نفسه، يربط بينهما رقم ليس له سوى موضعين.</string>
+    <string name="look_simple_colouring">رقم واحد يشكّل سلسلة تتناوب من طرفها إلى طرفها.</string>
+    <string name="look_multi_colouring">سلسلتان منفصلتان للرقم نفسه، تُواجَه إحداهما بالأخرى.</string>
+    <string name="look_remote_pairs">سلسلة من الخانات تحمل كلها الرقمين نفسيهما تمامًا.</string>
+    <string name="look_unique_rectangle">أربع خانات تشكّل مستطيلًا يجعل للغز حلين.</string>
+    <string name="look_bug_plus_one">كل الخانات عدا واحدة نزلت إلى مرشحين اثنين.</string>
+    <string name="look_x_chain">سلسلة على رقم واحد، تتناوب بين يجب ولا يمكن.</string>
+    <string name="look_xy_chain">سلسلة من خانات ذات مرشحين، كل واحدة تفرض التي تليها.</string>
+    <string name="look_forcing_chain">خانة فيها احتمالان بالضبط، حين لا يبقى شيء آخر لإيجاده.</string>
+    <string name="look_death_blossom">خانة واحدة، ومجموعة خلف كل رقم يمكن أن تكونه، والخانة ترى ذلك الرقم في كل أنحاء المجموعة.</string>
+    <string name="look_als_xy_wing">ثلاث مجموعات، ينقص كلًا منها رقم واحد لتمتلئ، مرتبطة في خط برقمين مختلفين.</string>
+    <string name="look_sue_de_coq">مربع وخط يتقاطعان، والخانات المشتركة تحمل رقمين أكثر مما يتسع لها.</string>
+    <string name="look_als_xz">مجموعتان من الخانات، ينقص كلًا منهما رقم واحد لتُقفل.</string>
+
+    <string name="because_naked_single">كل الأرقام الأخرى موجودة سلفًا في صفها أو عمودها أو مربعها، فلم يبق سوى واحد. لا بد أن يوضع هنا.</string>
+    <string name="because_hidden_single">المنطقة تحتاج إلى هذا الرقم في مكان ما، وكل الخانات الأخرى مستبعدة، فهذا هو المكان الوحيد الباقي.</string>
+    <string name="because_locked_candidates_pointing">المربع لا بد أن يحوي هذا الرقم في مكان ما، وكل المواضع الممكنة تقع على خط واحد. إذن الرقم على ذلك الخط، ولا يمكن أن يكون في أي موضع آخر منه.</string>
+    <string name="because_locked_candidates_claiming">الخط لا بد أن يحوي هذا الرقم في مكان ما، وكل المواضع الممكنة داخل مربع واحد. إذن الرقم في ذلك المربع، ولا يمكن أن يكون في بقيته.</string>
+    <string name="because_naked_pair">هاتان الخانتان ستأخذان الرقمين، واحدًا لكل منهما. لا خانة أخرى في المنطقة يمكن أن تحمل أيًا منهما.</string>
+    <string name="because_hidden_pair">المنطقة تحتاج إلى الرقمين معًا، ولا تستطيع استيعابهما إلا هاتان الخانتان، فتأخذ كل واحدة رقمًا. وكل ما عداهما في هاتين الخانتين يسقط.</string>
+    <string name="because_naked_triple">ثلاث خانات، وثلاثة أرقام، واحد لكل منها. لا شيء آخر في المنطقة يستطيع استخدامها، حتى لو لم تحمل خانة واحدة الأرقام الثلاثة كلها.</string>
+    <string name="because_hidden_triple">ثلاثة أرقام لا مكان لها غير ذلك تملأ ثلاث خانات بينها، فأي مرشح آخر في تلك الخانات مستحيل.</string>
+    <string name="because_naked_quad">أربع خانات تأخذ أربعة أرقام بينها، فتخرج الأربعة من بقية المنطقة.</string>
+    <string name="because_hidden_quad">أربعة أرقام محصورة في أربع خانات تملؤها، فلا يبقى مكان لغيرها.</string>
+    <string name="because_x_wing">كل من الصفين يحتاج إلى الرقم مرة واحدة، وكلاهما لا يستطيع وضعه إلا في العمودين نفسيهما. بينهما يستهلكان العمودين، فلا يستطيع أي صف آخر أن يحمل الرقم فيهما.</string>
+    <string name="because_swordfish">ثلاثة صفوف تحتاج إلى الرقم، وثلاثة أعمدة فقط لوضعه فيها. الصفوف الثلاثة تستهلك الأعمدة الثلاثة، فلا شيء آخر في تلك الأعمدة يمكن أن يحمله.</string>
+    <string name="because_jellyfish">أربعة صفوف وأربعة أعمدة، الحجة نفسها من جديد. الصفوف الأربعة تملأ الأعمدة الأربعة بينها.</string>
+    <string name="because_xy_wing">الخانة الوسطى هي أحد رقميها. في الحالتين يُجبَر أحد الجناحين على الرقم المشترك، فأي خانة ترى الجناحين معًا لا يمكن أن تحمله.</string>
+    <string name="because_xyz_wing">الخانة الوسطى قد تكون هي الرقم المشترك أيضًا، فالنتيجة أضعف: لا يفقد الرقم إلا خانة ترى الثلاث جميعًا.</string>
+    <string name="because_w_wing">لو لم تأخذ أي من خانتي الزوج الرقم الثاني، لأخذتا كلتاهما الأول، ولما بقي للمنطقة المرتبطة مكان تضعه فيه. إذن إحداهما هي الرقم الثاني.</string>
+    <string name="because_simple_colouring">لوّن السلسلة بالتناوب، ولون واحد بالضبط هو الصحيح. فإما أن يقع لون مرتين في منطقة واحدة فيكون خاطئًا، وإما أن ترى خانة خارج السلسلة اللونين معًا فتفقد الرقم مهما كانت النتيجة.</string>
+    <string name="because_multi_colouring">لون من السلسلة الأولى يصطدم بلون من الثانية، فيُدفع الرقم إلى أحد اللونين المقابلين. وكل ما يرى هذين الاثنين لا يمكن أن يحمله.</string>
+    <string name="because_remote_pairs">الخانات المتجاورة في السلسلة يرى بعضها بعضًا، فتتناوب. والطرفان يفصل بينهما عدد فردي من الخطوات، فيحمل كل منهما رقمًا، وكل ما يرى الطرفين لا يمكن أن يحمل أيًا منهما.</string>
+    <string name="because_unique_rectangle">لو لم تحمل تلك الخانات الأربع سوى الرقمين نفسيهما، لأمكن تبديلهما حول المستطيل ولصار للغز حلان. وله حل واحد، فذلك الترتيب مستحيل.</string>
+    <string name="because_bug_plus_one">لو أزيل المرشح الزائد، لظهر كل رقم مرتين بالضبط في كل منطقة، ولوح كهذا عدد حلوله زوجي دائمًا. ولهذا اللغز حل واحد، إذن المرشح الزائد هو الحل.</string>
+    <string name="because_x_chain">السلسلة تتناوب بين مواضع يجب أن يكون الرقم فيها ومواضع لا يمكن أن يكون فيها. ولا يمكن أن يخلو منه الطرفان معًا، فكل ما يرى الطرفين يفقده.</string>
+    <string name="because_xy_chain">افترض أن الخانة الأولى ليست الرقم. تابع السلسلة فتُجبَر الخانة الأخيرة على أن تكونه. إذن أحد الطرفين يحمله.</string>
+    <string name="because_forcing_chain">تابع الاحتمالين معًا. إن ترك أحدهما خانة لا شيء يوضع فيها، فذلك الاحتمال لم يكن ممكنًا أصلًا ويسقط. وإن وضع الاثنان الرقم نفسه في الموضع نفسه، فذلك الرقم يقع هناك أيًا كان الصحيح منهما. لا شيء هنا يتوقف على صحة الافتراض، وهذا ما يجعله برهانًا لا تخمينًا.</string>
+    <string name="because_death_blossom">أيًا كان الرقم الذي تؤول إليه الخانة، فإنها تطرد رقمها من المجموعة المقابلة، فتمتلئ تلك المجموعة ويجب أن تستخدم كل ما بقي لها من أرقام. وإن كان لدى كل المجموعات الرقم الزائد نفسه، فذلك الرقم يقع في إحداها مهما آلت إليه الخانة. وكل ما يراه في جميعها يفقده.</string>
+    <string name="because_als_xy_wing">إذا اختفى الرقم المستهدف من المجموعة الأولى، امتلأت تلك المجموعة ووجب أن تأخذ الرقم الذي تشترك فيه مع الوسطى. عندها تفقد الوسطى ذلك الرقم فتمتلئ هي الأخرى وتأخذ ما تشترك فيه مع الثالثة. والثالثة تمتلئ كذلك ولا بد أن تستخدم الرقم المستهدف. إذن أي خانة تراه في المجموعتين الطرفيتين لا يمكن أن تحمله.</string>
+    <string name="because_sue_de_coq">الخانات المشتركة ستستهلك كل أرقامها عدا اثنين، والمجموعتان على الجانبين تطالبان بهذين الاثنين بالضبط. إذن كل رقم من مجموعة الخط يُستهلك داخل الخط، وكل رقم من مجموعة المربع يُستهلك داخل المربع. ولا شيء آخر في أي منهما يمكن أن يحملهما.</string>
+    <string name="because_als_xz">الرقم المشترك لا يمكن أن يظهر إلا في إحدى المجموعتين، فتُقفل الأخرى وتُجبَر على استخدام كل ما لديها من أرقام. إذن الرقم المشترك الثاني يقع في إحدى المجموعتين.</string>
+
+    <string name="technique_naked_single">منفرد ظاهر</string>
+    <string name="technique_hidden_single">منفرد مخفي</string>
+    <string name="technique_locked_candidates_pointing">زوج أو ثلاثي مُشير</string>
+    <string name="technique_locked_candidates_claiming">زوج أو ثلاثي مُطالِب</string>
+    <string name="technique_naked_pair">زوج ظاهر</string>
+    <string name="technique_hidden_pair">زوج مخفي</string>
+    <string name="technique_naked_triple">ثلاثي ظاهر</string>
+    <string name="technique_hidden_triple">ثلاثي مخفي</string>
+    <string name="technique_naked_quad">رباعي ظاهر</string>
+    <string name="technique_hidden_quad">رباعي مخفي</string>
+    <string name="technique_x_wing">X-Wing</string>
+    <string name="technique_simple_colouring">تلوين بسيط</string>
+    <string name="technique_xy_wing">XY-Wing</string>
+    <string name="technique_xyz_wing">XYZ-Wing</string>
+    <string name="technique_w_wing">W-Wing</string>
+    <string name="technique_swordfish">Swordfish</string>
+    <string name="technique_remote_pairs">أزواج بعيدة</string>
+    <string name="technique_unique_rectangle">مستطيل الحل الوحيد</string>
+    <string name="technique_bug_plus_one">BUG زائد واحد</string>
+    <string name="technique_jellyfish">Jellyfish</string>
+    <string name="technique_multi_colouring">تلوين متعدد</string>
+    <string name="technique_x_chain">سلسلة X</string>
+    <string name="technique_xy_chain">سلسلة XY</string>
+    <string name="technique_als_xz">ALS-XZ</string>
+    <string name="technique_sue_de_coq">Sue de Coq</string>
+    <string name="technique_als_xy_wing">ALS-XY-Wing</string>
+    <string name="technique_death_blossom">Death blossom</string>
+    <string name="technique_forcing_chain">سلسلة إجبار</string>
+    <string name="daily_title">لغز اليوم</string>
+    <string name="daily_no_streak">لا متتالية بعد. حل لغز اليوم لتبدأ واحدة.</string>
+    <string name="daily_previous_month">السابق</string>
+    <string name="daily_next_month">اللاحق</string>
+    <string name="daily_cell_solved">محلول</string>
+    <string name="daily_cell_attempted">لُعب ولم يُنهَ</string>
+    <string name="daily_cell_unplayed">لم يُلعب</string>
+    <string name="daily_cell_future">لم يحن بعد</string>
+    <string name="daily_play_today">العب لغز اليوم</string>
+    <plurals name="daily_streak">
+        <item quantity="zero">لا أيام متتالية</item>
+        <item quantity="one">يوم واحد متتالٍ</item>
+        <item quantity="two">يومان متتاليان</item>
+        <item quantity="few">%1$d أيام متتالية</item>
+        <item quantity="many">%1$d يومًا متتاليًا</item>
+        <item quantity="other">%1$d يوم متتالٍ</item>
+    </plurals>
+    <string name="daily_cell">%1$d، %2$s، %3$s</string>
+    <string name="daily_cell_today">اليوم، %1$d، %2$s، %3$s</string>
+    <string name="stat_difficulty">المستوى</string>
+    <string name="stat_mistakes">الأخطاء</string>
+    <string name="stat_hints">التلميحات</string>
+    <string name="stat_time">الوقت</string>
+    <string name="stat_pause">إيقاف مؤقت</string>
+
+    <string name="stage_first_steps">الخطوات الأولى</string>
+    <string name="stage_one_at_a_time">رقم واحد في كل مرة</string>
+    <string name="stage_notes">الملاحظات</string>
+    <string name="stage_locked_to_a_line">أرقام محبوسة في خط</string>
+    <string name="stage_groups">المجموعات</string>
+    <string name="stage_patterns">أنماط عبر اللوح</string>
+    <string name="stage_wings">الأجنحة</string>
+    <string name="stage_colouring">التلوين</string>
+    <string name="stage_one_answer">افتراض حل واحد</string>
+    <string name="stage_chains">السلاسل</string>
+    <string name="stage_the_far_end">الطرف البعيد</string>
+    <string name="stage_the_deep_end">العمق</string>
+
+    <string name="lesson_what_is_title">ما هو السودوكو</string>
+    <string name="lesson_what_is_summary">كل صف وكل عمود وكل مربع يحوي كل رقم مرة واحدة.</string>
+    <string name="lesson_what_is_1">هذا سودوكو. صغير، أربع خانات في أربع، فيسع الذهن كله دفعة واحدة. واللوح بالحجم الكامل يعمل بالطريقة نفسها تمامًا.</string>
+    <string name="lesson_what_is_2">هذا صف. عليه أن يحوي الأرقام 1 و2 و3 و4، كل واحد مرة. بلا تكرار وبلا نقصان.</string>
+    <string name="lesson_what_is_3">هذا عمود. القاعدة نفسها: 1 و2 و3 و4، كل واحد مرة.</string>
+    <string name="lesson_what_is_4">هذه هي اللعبة كلها. لا حساب فيها، ولا شيء يُجمع. إنها قاعدة واحدة عن المكان الذي يُسمح للرقم أن يكون فيه.</string>
+    <string name="lesson_what_is_5">هاتان الخانتان فارغتان. ملؤهما مع بقاء القاعدة قائمة هو معنى الحل.</string>
+
+    <string name="lesson_houses_title">الصفوف والأعمدة والمربعات</string>
+    <string name="lesson_houses_summary">الخانة الواحدة تقع في ثلاث مناطق في آن واحد، وتشترك مع الثلاث في قاعدة واحدة.</string>
+    <string name="lesson_houses_1">ذكرت القاعدة الصفوف والأعمدة. وهناك نوع ثالث من المجموعات، وهو الذي يجعل السودوكو يستحق الحل.</string>
+    <string name="lesson_houses_2">هذا صف مرة أخرى.</string>
+    <string name="lesson_houses_3">وهذا عمود.</string>
+    <string name="lesson_houses_4">وهذا مربع، تحدّه الخطوط الأثقل. وهو أيضًا يحوي كل رقم مرة واحدة.</string>
+    <string name="lesson_houses_5">إذن هذه الخانة تنتمي إلى ثلاث مجموعات في الوقت نفسه. كل خانة تشترك معها في مجموعة مضاءة، ولا واحدة منها تستطيع أن تحمل الرقم نفسه. هذه المجموعات الثلاث تُسمى مناطق، وسنستخدم الكلمة من هنا فصاعدًا.</string>
+
+    <string name="lesson_givens_title">الأرقام المعطاة</string>
+    <string name="lesson_givens_summary">الأرقام المطبوعة في البداية ثابتة، وهي التي تجعل الحل وحيدًا.</string>
+    <string name="lesson_givens_1">هذه الأرقام جاءت مع اللغز. تُسمى الأرقام المعطاة ولا يمكن تغييرها ولا مسحها.</string>
+    <string name="lesson_givens_2">وهي مرسومة بشكل مختلف عن الأرقام التي تضعها، فتعرف دائمًا أيها أي. في هذا التطبيق المعطاة هي الأثقل.</string>
+    <string name="lesson_givens_3">وهذه هي الخانات التي تملؤها أنت.</string>
+    <string name="lesson_givens_4">اللغز المصنوع جيدًا له طريقة واحدة بالضبط لملئه. هذا وعد بشأن اللغز لا بشأنك: إن توقفت، يبقى الحل واحدًا، ويمكن دائمًا الوصول إليه بالاستنتاج. وكل لغز في هذا التطبيق مصنوع هكذا.</string>
+
+    <string name="lesson_first_four_title">أول حل لك</string>
+    <string name="lesson_first_four_summary">انظر إلى ما لا يمكن أن تكونه الخانة، وأحيانًا لا يبقى إلا رقم واحد.</string>
+    <string name="lesson_first_four_1">والآن حل واحدًا. خانتان فارغتان، والقاعدة وحدها تكفي لملئهما.</string>
+    <string name="lesson_first_four_2">ابدأ بهذا الصف. فيه 1 و4 بالفعل، فالخانتان الفارغتان تتقاسمان 2 و3. والسؤال أيهما أين.</string>
+    <string name="lesson_first_four_3">هذه الخانة لا يمكن أن تكون 2، لأن عمودها فيه 2 بالفعل. إذن هي 3.</string>
+    <string name="lesson_first_four_4">بقيت خانة فارغة واحدة، ورقم واحد لم يُستخدم في الصف.</string>
+    <string name="lesson_first_four_5">دورك. ضع الرقم الذي مكانه هنا.</string>
+    <string name="lesson_first_four_wrong">ليس تمامًا. انظر إلى الصف: أي رقم من 1 إلى 4 ما زال ناقصًا فيه؟</string>
+    <string name="lesson_first_four_6">تم الحل. هذا هو السودوكو، مهما كان حجم اللوح.</string>
+
+    <string name="lesson_first_six_title">لوح أكبر</string>
+    <string name="lesson_first_six_summary">المربعات ليست دائمًا مربعة الشكل، والقاعدة لا تهتم بذلك.</string>
+    <string name="lesson_first_six_1">ستة في ستة. القاعدة لم تتغير، لكن المربعات تغيرت: ثلاث خانات عرضًا وخانتان ارتفاعًا.</string>
+    <string name="lesson_first_six_2">هذا مربع واحد. ثلاثة عرضًا، اثنان ارتفاعًا، ست خانات، وكل رقم من 1 إلى 6 مرة واحدة.</string>
+    <string name="lesson_first_six_3">هذا يربك في البداية، لأن العين تتوقع شكلًا مربعًا. يستحق الأمر لحظة: اعرف في أي مربع تقع هذه الخانة قبل أن تبحث عن أي شيء آخر.</string>
+    <string name="lesson_first_six_4">دورك. ينقص المربع الأيسر العلوي رقم واحد.</string>
+    <string name="lesson_first_six_wrong">ليس ذلك. عُدّ ما في المربع بالفعل، ثم ابحث عن الرقم من 1 إلى 6 غير الموجود فيه.</string>
+    <string name="lesson_first_six_5">جيد. من هنا فصاعدًا تكون الألواح تسعة في تسعة وتعود المربعات مربعة الشكل، لكن عادة فحص المناطق الثلاث كلها هي التي يجب أن تبقى.</string>
+
+    <string name="lesson_naked_single_title">المنفرد الظاهر</string>
+    <string name="lesson_naked_single_summary">الخانة التي لم يبق فيها سوى رقم واحد لا بد أن تحمله.</string>
+    <string name="lesson_naked_single_1">لوح بالحجم الكامل، وأول أسلوب له اسم. هو أبسط ما يكون، ومع ذلك فهو ما يملأ معظم الخانات حتى في أصعب الألغاز.</string>
+    <string name="lesson_naked_single_2">انظر إلى هذه الخانة وحدها. اسأل ماذا يمكن أن تحمل.</string>
+    <string name="lesson_naked_single_3">كل خانة تستبعد شيئًا مضاءة. بين صفها وعمودها ومربعها، ثمانية من الأرقام التسعة موجودة سلفًا في مكان تراه.</string>
+    <string name="lesson_naked_single_4">إذن بقي رقم واحد، ولا بد أن تحمله الخانة. لا شيء آخر ممكن. هذا هو المنفرد الظاهر: ظاهر لأنك تراه بالنظر إلى خانة واحدة، ومنفرد لأن رقمًا واحدًا هو ما ينجو.</string>
+    <string name="lesson_naked_single_5">التطبيق يسميه باسمه حين يعطيك تلميحًا. والآن تعرف ما يعنيه.</string>
+    <string name="lesson_hidden_single_title">المنفرد المخفي</string>
+    <string name="lesson_hidden_single_summary">الرقم الذي لم يبق له سوى مكان واحد في منطقة لا بد أن يوضع فيه.</string>
+    <string name="lesson_hidden_single_1">النوع الآخر من المنفرد، وهو الذي يجد خانات أكثر. المنفرد الظاهر خانة بقي لها رقم واحد. وهذا صورته في المرآة: رقم بقي له خانة واحدة.</string>
+    <string name="lesson_hidden_single_2">خذ منطقة، واختر رقمًا ما زال ينقصها. اسأل أين يمكن أن يقع هذا الرقم داخلها.</string>
+    <string name="lesson_hidden_single_3">في هذا المربع الجواب خانة واحدة. كل خانة فارغة أخرى فيه مستبعدة بصفها أو عمودها.</string>
+    <string name="lesson_hidden_single_4">إذن الرقم يوضع هناك، حتى لو كانت تلك الخانة وحدها تحتمل عدة أرقام. ولهذا يُسمى مخفيًا: الرقم مختبئ بين المرشحات الأخرى.</string>
+    <string name="lesson_hidden_single_5">هذا هو الذي يستحق أن يُتقن. في معظم الألغاز هو ما يبقيك متقدمًا حين تنفد المنفردات الظاهرة.</string>
+    <string name="lesson_hidden_single_turn">دورك. ضع الرقم الذي لا مكان له غير ذلك في هذا المربع.</string>
+    <string name="lesson_hidden_single_wrong">ليس ذلك. اسأل أي رقم ينقص المربع، ثم تحقق أين يمكن أن يقع كل منها فعلًا.</string>
+
+    <string name="lesson_scanning_title">كيف تنظر</string>
+    <string name="lesson_scanning_summary">امسح اللوح برقم واحد بدل دراسة الخانات واحدة واحدة.</string>
+    <string name="lesson_scanning_1">تعرف الآن أسلوبين. ومعرفتهما ليست كإيجادهما، والإيجاد هو ما يأخذ الوقت.</string>
+    <string name="lesson_scanning_2">لا تقرأ اللوح خانة خانة. خذ رقمًا واحدًا، مثلًا الأكثر ظهورًا بالفعل، وانظر إلى المربعات الثلاثة في شريط واحد.</string>
+    <string name="lesson_scanning_3">ولكل مربع سؤال واحد: أين يمكن أن يقع هذا الرقم؟ الصفوف والأعمدة التي تحويه سلفًا تشطب معظم الأجوبة، وكثيرًا ما لا تبقى إلا خانة واحدة.</string>
+    <string name="lesson_scanning_4">ثم انتقل إلى الشريط التالي، وحين ينفد الرقم انتقل إلى الرقم التالي. هذا هو المسح، وهو ما يفعله سريعو الحل حين يبدون وكأنهم يحدقون في اللوح فحسب.</string>
+    <string name="lesson_scanning_5">المنهجية لا تكلف شيئًا وتوفر عليك الإحساس بالتوقف، وهو في العادة إحساس من نظر إلى الزاوية نفسها أربع مرات.</string>
+
+    <string name="lesson_first_nine_title">لوح كامل بالمنفردات وحدها</string>
+    <string name="lesson_first_nine_summary">ما تعلمته حتى الآن يكفي لإنهاء لغز كامل.</string>
+    <string name="lesson_first_nine_1">تسعة في تسعة حقيقي، بمستوى سهل. كل خطوة فيه منفرد، ظاهر أو مخفي، وليس فيه شيء لم تره.</string>
+    <string name="lesson_first_nine_2">وهذه واحدة للبداية. هذه الخانة استُبعد عنها ثمانية من الأرقام التسعة بما تراه.</string>
+    <string name="lesson_first_nine_3">هذه هي هيئة اللغز السهل. منفردات حتى النهاية، ولا تخمين في أي لحظة.</string>
+    <string name="lesson_first_nine_4">حين تخرج من هذا الدرس، العب واحدًا. المرحلة التالية عن الملاحظات، والملاحظات لا تبدأ في استحقاق عنائها إلا في ألغاز أصعب من هذا.</string>
+    <string name="lesson_first_nine_turn">دورك. رقم واحد فقط ممكن هنا.</string>
+    <string name="lesson_first_nine_wrong">انظر مرة أخرى إلى صف هذه الخانة وعمودها ومربعها، وعدّد ما فيها بالفعل.</string>
+
+    <string name="lesson_pencil_marks_title">الملاحظات</string>
+    <string name="lesson_pencil_marks_summary">الملاحظة سجل لما استنتجته، حتى لا تستنتجه مرة أخرى.</string>
+    <string name="lesson_pencil_marks_1">من هنا فصاعدًا تتوقف الألغاز عن الاستسلام للمنفردات، وستحتاج إلى الكتابة. الملاحظة، أو علامة القلم، رقم صغير في خانة يقول إن هذا الرقم ما زال ممكنًا فيها.</string>
+    <string name="lesson_pencil_marks_2">انظر إلى هذه الخانة. إدراك أنها لا يمكن أن تكون إلا أحد رقمين يأخذ بضع ثوانٍ. وكتابة هذين الرقمين تجعله لا يأخذ شيئًا في المرة القادمة.</string>
+    <string name="lesson_pencil_marks_3">هذا كل ما تعنيه الملاحظة. ليست تخمينًا ولا التزامًا. إنها سجل لاستنتاج قمت به بالفعل.</string>
+    <string name="lesson_pencil_marks_4">كل أسلوب من هنا فصاعدًا يتعلق بأنماط في الملاحظات لا بأنماط في الأرقام. الأزواج والثلاثيات والأسماك والسلاسل كلها تُقرأ من الملاحظات.</string>
+    <string name="lesson_pencil_marks_5">لا أحد يحل سودوكو صعبًا ذهنيًا، ومن لا يكتب شيئًا في مستوى خبير ليس ذكيًا بل بطيئًا.</string>
+
+    <string name="lesson_when_to_mark_title">متى تكتبها</string>
+    <string name="lesson_when_to_mark_summary">ضع الملاحظات حين تنفد المنفردات، لا قبل ذلك.</string>
+    <string name="lesson_when_to_mark_1">هناك طريقتان لاستعمال الملاحظات، والفرق بينهما مهم.</string>
+    <string name="lesson_when_to_mark_2">الأولى أن تملأ كل خانة فارغة بكل رقم ممكن، دفعة واحدة، قبل أي شيء آخر. هذا شامل، ويأخذ باليد عدة دقائق، وفي لغز سهل يذهب معظمه هدرًا لأن المنفردات كانت ستنهي اللوح على أي حال.</string>
+    <string name="lesson_when_to_mark_3">والثانية أن تكتب حيث تعمل فقط. هذه الخانات الأربع تستحق الكتابة لأن شيئًا يجري بينها. أما بقية اللوح فلا.</string>
+    <string name="lesson_when_to_mark_4">والنصيحة الصادقة: حل المنفردات أولًا، وابدأ الكتابة حين تتوقف عن إيجادها. على الورق يوفر هذا وقتًا حقيقيًا. وفي هذا التطبيق ملء كل الملاحظات لمسة واحدة، فالتكلفة أقل، لكن لوحًا مليئًا بالأرقام يبقى أصعب قراءة من لوح فيه ملاحظات حيث تلزم فقط.</string>
+
+    <string name="lesson_marks_true_title">إبقاء الملاحظات صادقة</string>
+    <string name="lesson_marks_true_summary">الملاحظة القديمة أسوأ من عدم وجود ملاحظة.</string>
+    <string name="lesson_marks_true_1">للملاحظات خطر واحد. كل رقم تضعه يجعل بعضها خاطئًا، والملاحظة الخاطئة تسوقك إلى استنتاج لا يمكن أن يكون صحيحًا.</string>
+    <string name="lesson_marks_true_2">ضع رقمًا هنا، وكل خانة تراه تفقد ذلك الرقم من مرشحاتها. وإن لم تُمسح تلك الملاحظات، فقد يكون الأسلوب التالي الذي تراه مبنيًا على واحدة منها.</string>
+    <string name="lesson_marks_true_3">ويستطيع هذا التطبيق أن يفعلها عنك. هناك إعداد اسمه مسح الملاحظات التي يلغيها رقم موضوع، وهو مفعّل افتراضيًا. على الورق تفعلها بيدك، ومن هناك تأتي معظم الأخطاء.</string>
+    <string name="lesson_marks_true_4">وحين يسوء اللغز ولا ترى السبب، فأول ما يُشتبه فيه ملاحظة قديمة. وزر التلميح سيخبرك حين يكون رقم وضعته لا يمكن أن يكون صحيحًا.</string>
+
+    <string name="lesson_pointing_title">الزوج المُشير</string>
+    <string name="lesson_pointing_summary">إذا كان الرقم داخل مربع محبوسًا في خط، فإنه يخرج من ذلك الخط في كل مكان آخر.</string>
+    <string name="lesson_pointing_1">أول أسلوب يحذف احتمالات بدل أن يضع رقمًا. ومعظم ما يلي يفعل ذلك، ويحتاج الأمر إلى بعض التعود: تتقدم دون أن تكتب رقمًا واحدًا.</string>
+    <string name="lesson_pointing_2">انظر أين يمكن أن يقع رقم في هذا المربع. كل المواضع الممكنة على العمود نفسه.</string>
+    <string name="lesson_pointing_3">والمربع لا بد أن يحوي ذلك الرقم في مكان ما. فأينما استقر، هو في ذلك العمود.</string>
+    <string name="lesson_pointing_4">ومعنى ذلك أن بقية العمود لا يمكن أن تحمله. هذه الخانات تفقد ذلك الرقم من مرشحاتها، وإن كانت بعيدة عن المربع.</string>
+    <string name="lesson_pointing_5">ويُسمى مُشيرًا لأن الزوج داخل المربع يشير على امتداد الخط وينظفه.</string>
+
+    <string name="lesson_claiming_title">الزوج المُطالِب</string>
+    <string name="lesson_claiming_summary">إذا كان الرقم على خط محبوسًا في مربع، فإنه يخرج من ذلك المربع في كل مكان آخر.</string>
+    <string name="lesson_claiming_1">الحجة نفسها مقروءة بالمقلوب، وتستحق أن تُرى وحدها لأن العين تجدها في مكان آخر.</string>
+    <string name="lesson_claiming_2">ابدأ هذه المرة من خط. انظر أين يمكن أن يقع رقم على امتداد هذا الصف.</string>
+    <string name="lesson_claiming_3">كل المواضع الممكنة داخل المربع نفسه. والصف لا بد أن يحوي ذلك الرقم في مكان ما، إذن الرقم في ذلك المربع.</string>
+    <string name="lesson_claiming_4">ومعنى ذلك أن بقية المربع تفقده. هذه الخانات لم تعد تستطيع حمله.</string>
+    <string name="lesson_claiming_5">المُشير ينظر إلى مربع فينظف خطًا. والمُطالِب ينظر إلى خط فينظف مربعًا. اسمان وفكرة واحدة، وسترى الاثنين في كل لغز صعب.</string>
+
+    <string name="lesson_naked_pair_title">الزوج الظاهر</string>
+    <string name="lesson_naked_pair_summary">خانتان تحملان الرقمين نفسيهما تملكانهما معًا.</string>
+    <string name="lesson_naked_pair_1">والآن المجموعات. هذه أصغرها والنمط الذي يجعل البقية بديهية.</string>
+    <string name="lesson_naked_pair_2">هاتان الخانتان في المنطقة نفسها، وكل واحدة منهما لا يمكن أن تكون إلا أحد الرقمين نفسيهما.</string>
+    <string name="lesson_naked_pair_3">وبينهما ستأخذان هذين الرقمين، واحدًا لكل منهما. وأيهما أي لا يهم ولا تحتاج إلى معرفته.</string>
+    <string name="lesson_naked_pair_4">إذن لا خانة أخرى في تلك المنطقة تستطيع حمل أي منهما. وهذه الخانة تفقد أحدهما.</string>
+    <string name="lesson_naked_pair_5">ظاهر، مرة أخرى، لأنك تراه بقراءة الخانتين. لا شيء مخفي ولا تدخل أي خانة أخرى في الحجة.</string>
+
+    <string name="lesson_hidden_pair_title">الزوج المخفي</string>
+    <string name="lesson_hidden_pair_summary">رقمان لم يبق لهما سوى الموضعين نفسيهما يملكان تلك الخانتين.</string>
+    <string name="lesson_hidden_pair_1">صورة الزوج الظاهر في المرآة، تمامًا كما يعكس المنفرد المخفي المنفرد الظاهر.</string>
+    <string name="lesson_hidden_pair_2">في هذه المنطقة، رقمان لا يمكن أن يقع كل منهما إلا في الخانتين نفسيهما.</string>
+    <string name="lesson_hidden_pair_3">وهذان الرقمان سيأخذان تلك الخانتين. فمهما بدا أن تلك الخانتين تحتملان غير ذلك، فهما لا تحتملانه.</string>
+    <string name="lesson_hidden_pair_4">وتفقد الخانتان كل ملاحظاتهما الأخرى. وهما الآن زوج ظاهر، وكثيرًا ما تكون هذه هي فائدة النمط: تحويل زوج مخفي إلى زوج ظاهر ينظف بقية المنطقة.</string>
+    <string name="lesson_hidden_pair_5">والأزواج المخفية أصعب رؤية من الظاهرة لأن عليك النظر إلى الأرقام بدل الخانات. وفي لوح متوقف تستحق الجهد.</string>
+
+    <string name="lesson_naked_triple_title">الثلاثي الظاهر</string>
+    <string name="lesson_naked_triple_summary">ثلاث خانات تتقاسم ثلاثة أرقام تملكها، حتى لو لم تحملها واحدة منها كلها.</string>
+    <string name="lesson_naked_triple_1">زوج بخانة إضافية، ومعه تفصيل يوقع الجميع في المرة الأولى.</string>
+    <string name="lesson_naked_triple_2">هذه الخانات الثلاث في المنطقة نفسها، وبينها لا تستخدم سوى ثلاثة أرقام مختلفة.</string>
+    <string name="lesson_naked_triple_3">والتفصيل هنا: لا يلزم أن تحمل أي منها الأرقام الثلاثة. رقمان في خانة، ورقمان في التالية، ورقمان في الثالثة يظل ثلاثيًا، ما دام مجموع ما يظهر ثلاثة أرقام فقط.</string>
+    <string name="lesson_naked_triple_4">والخانات الثلاث ستأخذ الأرقام الثلاثة بينها، فتفقد كل خانة أخرى في المنطقة الثلاثة كلها. وهذا عدد كبير من الملاحظات يذهب دفعة واحدة.</string>
+    <string name="lesson_naked_triple_5">وحين تبحث، عُدّ الأرقام المختلفة عبر خانتين أو ثلاث بدل البحث عن ملاحظات متطابقة. هذه هي العادة التي تجد الثلاثيات.</string>
+
+    <string name="lesson_hidden_triple_title">الثلاثي المخفي</string>
+    <string name="lesson_hidden_triple_summary">ثلاثة أرقام لم يبق لها سوى ثلاثة مواضع تملك تلك الخانات.</string>
+    <string name="lesson_hidden_triple_1">العلاقة نفسها التي في الزوج المخفي، بمقاس أكبر، وصعبة الرؤية فعلًا.</string>
+    <string name="lesson_hidden_triple_2">في هذه المنطقة، ثلاثة أرقام لا يمكن أن تقع إلا في الخانات الثلاث نفسها بينها.</string>
+    <string name="lesson_hidden_triple_3">إذن تلك الخانات الثلاث تحمل تلك الأرقام الثلاثة، وكل ملاحظة أخرى فيها يمكن أن تذهب.</string>
+    <string name="lesson_hidden_triple_4">لا تبحث عنها أولًا. ابحث عنها حين يبقى في منطقة عدة خانات ولا ينفع شيء آخر. في أغلب الأحيان يوجد في المنطقة نفسها نمط ظاهر أسهل رؤية.</string>
+
+    <string name="lesson_quads_title">الرباعيات</string>
+    <string name="lesson_quads_summary">الفكرة نفسها بأربعة، تستحق المعرفة ونادرًا ما تستحق البحث.</string>
+    <string name="lesson_quads_1">أزواج وثلاثيات، والآن رباعيات. الحجة لا تتغير: أربع خانات تستخدم بينها أربعة أرقام تملك تلك الأرقام، وأربعة أرقام ليس لها سوى أربعة مواضع تملك تلك الخانات.</string>
+    <string name="lesson_quads_2">هذا رباعي ظاهر. أربع خانات، وأربعة أرقام بينها، وبقية المنطقة تفقد الأربعة كلها.</string>
+    <string name="lesson_quads_3">وهذه النصيحة الصادقة. الرباعيات حقيقية ومشروعة، لكنها نادرة، ورباعي في منطقة فيها خمس أو ست خانات فارغة يعني عادة أن في الخانات الأخرى نمطًا أبسط فاتك.</string>
+    <string name="lesson_quads_4">وهذا رباعي مخفي، تتميمًا. أربعة أرقام لها أربعة مواضع.</string>
+    <string name="lesson_quads_5">تعلم أن تميزها كي يكون للتلميح الذي يسميها معنى. ولا تنفق وقتك في البحث عنها.</string>
+
+    <string name="lesson_x_wing_title">X-Wing</string>
+    <string name="lesson_x_wing_summary">رقم مثبت في عمودين داخل صفين يخرج من ذينك العمودين في كل مكان آخر.</string>
+    <string name="lesson_x_wing_1">أول نمط يمتد عبر اللوح كله بدل أن يقع داخل منطقة واحدة. له شكل، ومتى رأيت الشكل رأيته في كل مكان.</string>
+    <string name="lesson_x_wing_2">خذ رقمًا. في هذين الصفين لا يمكن أن يقع إلا في خانتين من كل منهما، وتلك الخانات في العمودين نفسيهما. أربع خانات في مستطيل.</string>
+    <string name="lesson_x_wing_3">والآن فكر. كل صف لا بد أن يحمل الرقم مرة. وأي زاوية استخدمها أحد الصفين، فلا بد أن يستخدم الآخر الزاوية المقابلة. لا خيار ثالث.</string>
+    <string name="lesson_x_wing_4">إذن الصفان بينهما يأخذان ذلك الرقم في العمودين معًا. وكل ما عداهما في هذين العمودين يفقده.</string>
+    <string name="lesson_x_wing_5">ويعمل الأمر نفسه بتبديل الصفوف بالأعمدة. عمودان انحصر رقمهما في الصفين نفسيهما ينظفان ذينك الصفين.</string>
+
+    <string name="lesson_swordfish_title">Swordfish</string>
+    <string name="lesson_swordfish_summary">حجة X-Wing نفسها، بثلاثة خطوط بدل اثنين.</string>
+    <string name="lesson_swordfish_1">X-Wing بصف إضافي. الاسم لا يساعد، لكن النمط امتداد مباشر.</string>
+    <string name="lesson_swordfish_2">ثلاثة صفوف، ورقم واحد، وفي كل صف ينحصر ذلك الرقم في خانات الأعمدة الثلاثة نفسها.</string>
+    <string name="lesson_swordfish_3">ولا يلزم أن يستخدم كل صف الأعمدة الثلاثة. اثنان من ثلاثة يكفيان، ما دام لا يخرج أي صف عنها.</string>
+    <string name="lesson_swordfish_4">والصفوف الثلاثة تأخذ الرقم في تلك الأعمدة الثلاثة بينها، فتفقده بقية تلك الأعمدة.</string>
+    <string name="lesson_swordfish_5">إن استطعت متابعة X-Wing استطعت متابعة هذا. أما إيجاده فأمر آخر: هنا يتوقف ملء الملاحظات عن كونه اختياريًا.</string>
+
+    <string name="lesson_jellyfish_title">Jellyfish</string>
+    <string name="lesson_jellyfish_summary">أربعة خطوط. النمط نفسه مرة أخرى، وآخر ما يستحق التعلم.</string>
+    <string name="lesson_jellyfish_1">أربعة صفوف، ورقم واحد، وأربعة أعمدة. الحجة لم تتغير منذ X-Wing ولن تتغير بعد الآن.</string>
+    <string name="lesson_jellyfish_2">وهذا واحد منها. أربعة صفوف، والرقم في كل منها محصور في الأعمدة الأربعة نفسها.</string>
+    <string name="lesson_jellyfish_3">وبعد الأربعة لا شيء يُتعلم. توجد نظريًا نسخة بخمسة خطوط، لكن على لوح تسعة في تسعة يمكن إيجاد كل واحدة منها كنمط أصغر في الأعمدة الأربعة المتبقية، فلا أحد يبحث عنها.</string>
+    <string name="lesson_jellyfish_4">وهذا هو حد ما يستحق الصيد بالأنماط. وبعده تستحق السلاسل انتباهك أكثر.</string>
+
+    <string name="lesson_xy_wing_title">XY-Wing</string>
+    <string name="lesson_xy_wing_summary">ثلاث خانات في كل منها رقمان، وخانة تخسر مهما كانت النتيجة.</string>
+    <string name="lesson_xy_wing_1">الأجنحة تحتاج إلى طريقة تفكير مختلفة. حتى الآن كنت تجد نمطًا وتقرأ نتيجة. وهنا تستدل بالحالات.</string>
+    <string name="lesson_xy_wing_2">ابدأ من هذه الخانة. فيها رقمان ممكنان بالضبط، وهي مفصل النمط.</string>
+    <string name="lesson_xy_wing_3">ولها صديقتان، كل واحدة تشترك معها في منطقة، وكل واحدة تحمل رقمين: واحدًا مشتركًا مع المفصل، وواحدًا مشتركًا بينهما.</string>
+    <string name="lesson_xy_wing_4">والآن الحجة. المفصل هو أحد رقميه. فإن كان الأول، أُجبر الجناح الأيسر على الرقم المشترك. وإن كان الثاني، أُجبر الجناح الأيمن على الرقم المشترك نفسه. وفي الحالتين يحمله أحد الجناحين.</string>
+    <string name="lesson_xy_wing_5">إذن أي خانة ترى الجناحين معًا لا يمكن أن تحمل ذلك الرقم. وهذه تفقده.</string>
+    <string name="lesson_xy_wing_6">ولن تعرف أبدًا ما هو المفصل فعلًا. هذا هو المقصود، وهو ما يجعل الأجنحة تبدو مختلفة عن كل ما سبقها.</string>
+
+    <string name="lesson_xyz_wing_title">XYZ-Wing</string>
+    <string name="lesson_xyz_wing_summary">مثل XY-Wing، لكن المفصل قد يكون هو الرقم المشترك أيضًا، فتكون النتيجة أضعف.</string>
+    <string name="lesson_xyz_wing_1">تغيير واحد على XY-Wing، وهو يصغّر النتيجة.</string>
+    <string name="lesson_xyz_wing_2">هنا يحمل المفصل ثلاثة أرقام بدل رقمين، والرقم المشترك أحدها.</string>
+    <string name="lesson_xyz_wing_3">فالحالات الآن ثلاث لا اثنتان. قد يحمل الرقم المشترك أي من الجناحين، أو المفصل نفسه.</string>
+    <string name="lesson_xyz_wing_4">ومعنى ذلك أن الخانة لا تفقد الرقم إلا إذا رأت الثلاث جميعًا، لا الجناحين فقط. وعدد الخانات المؤهلة أقل، ولهذا يحذف هذا النمط أقل مما يحذفه ابن عمه الأبسط.</string>
+    <string name="lesson_xyz_wing_5">ويستحق المعرفة لأن الشكل يبدو متطابقًا تقريبًا، وقراءته على أنه XY-Wing تجعلك تحذف رقمًا لا حق لك في حذفه.</string>
+
+    <string name="lesson_w_wing_title">W-Wing</string>
+    <string name="lesson_w_wing_summary">زوجان متطابقان يربط بينهما خط لا بد أن يحمل أحد رقميهما.</string>
+    <string name="lesson_w_wing_1">الجناح الثالث، وأقلها حاجة إلى حساب.</string>
+    <string name="lesson_w_wing_2">خانتان لا تشتركان في منطقة، وكل منهما تحمل الرقمين نفسيهما.</string>
+    <string name="lesson_w_wing_3">والآن ابحث عن منطقة لا يمكن أن يقع فيها أحد هذين الرقمين إلا في موضعين، وكل من الموضعين يرى إحدى خانتي الزوج. تلك المنطقة هي الرابط.</string>
+    <string name="lesson_w_wing_4">ومنطقة الرابط لا بد أن تحمل ذلك الرقم في أحد موضعيها، وأيهما كان فإنه يجبر إحدى خانتي الزوج على أخذ الرقم الآخر. إذن إحدى الخانتين هي الرقم الآخر، دائمًا.</string>
+    <string name="lesson_w_wing_5">وأي خانة ترى خانتي الزوج معًا تفقده. وهذه تراهما.</string>
+
+    <string name="lesson_rectangle_title">مستطيل الحل الوحيد</string>
+    <string name="lesson_rectangle_summary">اللغز ذو الحل الواحد لا يمكن أن يحوي مربعًا قابلًا للدوران.</string>
+    <string name="lesson_rectangle_1">هذا الأسلوب مختلف في طبيعته عن كل الأساليب الأخرى، ويستحق أن يُقال لماذا قبل استعماله.</string>
+    <string name="lesson_rectangle_2">انظر إلى هذه الخانات الأربع. تقع في صفين وعمودين ومربعين بالضبط، وكل واحدة منها تحتمل الرقمين نفسيهما.</string>
+    <string name="lesson_rectangle_3">لو كانت هذه هي القصة كلها، لكان للغز حلان: املأ المستطيل بطريقة، أو بدّل القطرين، وكلا اللوحين يحترم كل القواعد. واللغز المصنوع جيدًا ليس له حلان.</string>
+    <string name="lesson_rectangle_4">إذن لا يمكن أن تكون هذه هي القصة كلها. لا بد أن تحمل إحدى تلك الخانات شيئًا آخر، وهذا ما يتيح الحذف.</string>
+    <string name="lesson_rectangle_5">هنا تنجو المرشحات الزائدة ويُشطب الزوج المشترك من هذه الخانات.</string>
+    <string name="lesson_rectangle_6">والمأخذ، بصراحة: هذه الحجة تفترض أن اللغز مصنوع جيدًا. وهذا صحيح في كل ألغاز هذا التطبيق، لأن المولّد يتحقق منه. استعمله على لوح مجهول المصدر وقد يضللك.</string>
+
+    <string name="lesson_bug_title">BUG زائد واحد</string>
+    <string name="lesson_bug_summary">لو كان لكل خانة عدا واحدة مرشحان، لصار اللغز بلا حل وحيد. إذن تلك الخانة استثنائية.</string>
+    <string name="lesson_bug_1">الافتراض نفسه الذي في مستطيل الحل الوحيد، بشكل آخر.</string>
+    <string name="lesson_bug_2">افترض أن لوحًا بلغ وضعًا فيه كل خانة غير محلولة تحمل احتمالين بالضبط، وكل رقم يظهر مرتين بالضبط في كل منطقة. لوح كهذا عدد حلوله زوجي دائمًا.</string>
+    <string name="lesson_bug_3">إذن اللغز المصنوع جيدًا لا يمكن أن يبلغه أبدًا. فإن وجدت وضعًا يبعد عنه بخانة واحدة، أي فيه خانة واحدة بالضبط تحمل ثلاثة احتمالات بدل اثنين، فتلك الخانة هي ما ينقذ اللغز من تعدد الحلول.</string>
+    <string name="lesson_bug_4">والرقم الذي يظهر ثلاث مرات في مناطقها هو الرقم الذي لا بد أن تحمله. نمط نادر ونهاية سريعة جدًا حين يظهر.</string>
+
+    <string name="lesson_colouring_title">التلوين البسيط</string>
+    <string name="lesson_colouring_summary">تابع رقمًا عبر الخانات التي ليس له فيها سوى موضعين، وابحث عن تناقض.</string>
+    <string name="lesson_colouring_1">السلاسل، على مهل. التلوين أسهل مدخل إليها، والاستدلال تحته هو نفسه.</string>
+    <string name="lesson_colouring_2">اختر رقمًا. ابحث عن منطقة ليس له فيها سوى خانتين ممكنتين. الخانتان مرتبطتان: واحدة منهما بالضبط هي الرقم.</string>
+    <string name="lesson_colouring_3">لوّن إحدى الخانتين، ثم تابع الروابط. كل خانة تتصل بهذه الطريقة تنتهي بأحد لونين، ولون كامل صحيح والآخر خاطئ. ولا تعرف أيهما.</string>
+    <string name="lesson_colouring_4">والآن ابحث عن التناقض. إن رأت خانة خانتين من اللون نفسه، فذلك اللون لا يمكن أن يكون الصحيح، وتفقد الخانة الرقم. وهذا ما يحدث هنا.</string>
+    <string name="lesson_colouring_5">لونان، وتناقض واحد، ولا تخمين في أي موضع. هذه هي الطريقة كلها.</string>
+
+    <string name="lesson_remote_pairs_title">الأزواج البعيدة</string>
+    <string name="lesson_remote_pairs_summary">سلسلة من أزواج متطابقة تتناوب، فيكون طرفاها متعاكسين.</string>
+    <string name="lesson_remote_pairs_1">التلوين مطبقًا على الخانات بدل رقم واحد.</string>
+    <string name="lesson_remote_pairs_2">هذه سلسلة من خانات تحمل كلها الرقمين نفسيهما، كل واحدة مرتبطة بالتالية بمنطقة مشتركة.</string>
+    <string name="lesson_remote_pairs_3">ولأن كل رابط زوج، تتناوب الأرقام على امتداد السلسلة. الخانة الأولى تأخذ واحدًا، والثانية تأخذ الآخر، وهكذا.</string>
+    <string name="lesson_remote_pairs_4">إذن طرفا سلسلة ذات طول زوجي متعاكسان: يحملان رقمين مختلفين. وأي خانة ترى الطرفين لا بد أن تفقد الرقمين معًا، لأن كل طرف يحمل واحدًا.</string>
+    <string name="lesson_remote_pairs_5">وهي أسهل السلاسل ملاحظة، لأن كل خانة فيها تبدو مثل الأخرى.</string>
+
+    <string name="lesson_multi_colouring_title">التلوين المتعدد</string>
+    <string name="lesson_multi_colouring_summary">سلسلتا تلوين تتلامسان تستبعد إحداهما الأخرى.</string>
+    <string name="lesson_multi_colouring_1">التلوين البسيط يستعمل سلسلة واحدة. وأحيانًا لا يكون في السلسلة الواحدة تناقض بينما يكون في سلسلتين معًا.</string>
+    <string name="lesson_multi_colouring_2">هذه خانات من سلسلتين منفصلتين للرقم نفسه.</string>
+    <string name="lesson_multi_colouring_3">إن رأى لون من إحدى السلسلتين لونًا من الأخرى، فلا يمكن أن يكون هذان اللونان صحيحين معًا. ومتابعة ذلك تحذف الرقم من الخانات التي ترى اللونين المتبقيين.</string>
+    <string name="lesson_multi_colouring_4">والنتيجة تقع هنا.</string>
+    <string name="lesson_multi_colouring_5">وهنا يتوقف التلوين عن كونه شيئًا يسع الذهن ويبدأ في طلب تدوين أي خانة بأي لون.</string>
+
+    <string name="lesson_x_chain_title">سلسلة X</string>
+    <string name="lesson_x_chain_summary">رقم واحد، وروابط تتناوب بين قوية وضعيفة، وحذف عند الطرفين.</string>
+    <string name="lesson_x_chain_1">الصورة العامة لكل ما كان في المرحلة السابقة. رقم واحد، وسلسلة من روابط متناوبة.</string>
+    <string name="lesson_x_chain_2">الرابط القوي خانتان لا بد أن تحمل إحداهما على الأقل الرقم، وهو ما تعطيه منطقة ليس فيها سوى موضعين. والرابط الضعيف خانتان تحمل واحدة منهما على الأكثر الرقم، وهما أي خانتين تشتركان في منطقة.</string>
+    <string name="lesson_x_chain_3">ناوب بينهما: قوي، ضعيف، قوي، وهكذا، بحيث يبدأ وينتهي بقوي. عندها مهما جرى في الوسط، فأحد الطرفين يحمل الرقم.</string>
+    <string name="lesson_x_chain_4">إذن أي خانة ترى الطرفين تفقده.</string>
+    <string name="lesson_x_chain_5">والتلوين هو هذه السلسلة مرسومة بلونين. والسلسلة أعم لأنها تستطيع المرور بخانات لا يبلغها التلوين.</string>
+
+    <string name="lesson_xy_chain_title">سلسلة XY</string>
+    <string name="lesson_xy_chain_summary">سلسلة من خانات ذات مرشحين، يشترك طرفاها في رقم.</string>
+    <string name="lesson_xy_chain_1">الفكرة المتناوبة نفسها، لكن بالمرور عبر الخانات بدل متابعة رقم واحد.</string>
+    <string name="lesson_xy_chain_2">كل خانة في هذه السلسلة تحمل احتمالين بالضبط، وكل واحدة تشترك في منطقة مع التالية.</string>
+    <string name="lesson_xy_chain_3">داخل الخانة الواحدة، أخذ أحد الرقمين يفرض الآخر، وهذا هو الرابط القوي. وبين الخانات، تصنع المنطقة المشتركة الرابط الضعيف. والمناوبة بينهما تُجري الحجة على امتداد السلسلة.</string>
+    <string name="lesson_xy_chain_4">فإن كان طرفا السلسلة يحتملان الرقم نفسه، فأحدهما يحمله، مهما آلت إليه السلسلة. وأي خانة ترى الطرفين تفقد ذلك الرقم.</string>
+    <string name="lesson_xy_chain_5">وهذا هو الأسلوب الذي ينهي معظم ألغاز مستوى خبير، وإيجاد واحدة منه مسألة صبر في متابعة خانات المرشحين أكثر منها مسألة ذكاء.</string>
+
+    <string name="lesson_writing_chains_title">كتابة السلسلة</string>
+    <string name="lesson_writing_chains_summary">السلسلة التي لا تستطيع التحقق منها تخمين بخطوات إضافية.</string>
+    <string name="lesson_writing_chains_1">درس عملي قبل الأسلوب الأخير، لأن السلاسل هي الموضع الذي يقنع فيه الناس أنفسهم بما ليس صحيحًا.</string>
+    <string name="lesson_writing_chains_2">السلسلة سلسلة دعاوى، وكل واحدة منها لا بد أن تصمد. وعلى الشاشة تبدو مجموعة خانات مضاءة، والإضاءة ليست حجة.</string>
+    <string name="lesson_writing_chains_3">اكتبها في سطر: هذه الخانة 4 أو 7؛ فإن كانت 4 فتلك 9؛ وإن كانت تلك 9 فهذه الأخرى 4. كل سهم رابط، ولكل رابط سبب.</string>
+    <string name="lesson_writing_chains_4">ثم تحقق من المناوبة. قوي، ضعيف، قوي، ضعيف، وقوي عند الطرفين. والسلسلة التي تبدأ أو تنتهي برابط ضعيف لا تثبت شيئًا، وهذا أشيع ما يفسد سلسلة.</string>
+    <string name="lesson_writing_chains_5">إن لم تستطع كتابتها فأنت لم تجدها. وهذه ليست قاعدة في الترتيب، بل هي الفرق بين الاستنتاج والحدس.</string>
+
+    <string name="lesson_sue_de_coq_title">Sue de Coq</string>
+    <string name="lesson_sue_de_coq_summary">حيث يتقاطع مربع مع خط، ويحمل التقاطع أرقامًا أكثر مما يتسع له.</string>
+    <string name="lesson_sue_de_coq_1">مربع وعمود يتداخلان في ثلاث خانات. تلك الخانات الثلاث تنتمي إليهما معًا، ومن ذلك يعيش هذا الأسلوب.</string>
+    <string name="lesson_sue_de_coq_2">انظر إلى اثنتين منها هنا. بينهما تحملان 2 و6 و7 و8: أربعة أرقام لخانتين. اثنان يدخلان، واثنان يبقيان لمكان آخر.</string>
+    <string name="lesson_sue_de_coq_3">وأسفل العمود نفسه تقع خانة تحمل 6 و7. وفي موضع آخر من المربع نفسه تقع خانة تحمل 2 و8. وبينهما تريد هاتان الخانتان الأرقام الأربعة نفسها التي في التقاطع، مقسومة بالتساوي وبلا اشتراك.</string>
+    <string name="lesson_sue_de_coq_4">عُدّ. ثلاث خانات من العمود تأخذ الآن ثلاثة أرقام مختلفة من الأربعة، وثلاث خانات من المربع تفعل الشيء نفسه. ولا يستقيم الحساب إلا بطريقة واحدة: 6 و7 يُستهلكان داخل العمود، و2 و8 داخل المربع.</string>
+    <string name="lesson_sue_de_coq_5">إذن لا شيء آخر في ذلك العمود يمكن أن يكون 6 أو 7. وهنا تفقد خانتان واحدًا منهما.</string>
+    <string name="lesson_sue_de_coq_6">والحجة نفسها تسري بالعكس على المربع. نمط واحد، ومنطقتان، ومجموعتان منفصلتان من الحذف، ولا سلسلة في أي موضع منه.</string>
+
+    <string name="lesson_als_title">ALS-XZ</string>
+    <string name="lesson_als_summary">مجموعتان شبه مقفلتين تشتركان في رقم، والحذف الذي يتبع ذلك.</string>
+    <string name="lesson_als_1">القاعدة التي بُنيت عليها أصعب المستويات. وكل ما فوق هذه المرحلة صورة أخرى منها.</string>
+    <string name="lesson_als_2">المجموعة شبه المقفلة مجموعة خانات في منطقة واحدة تحمل رقمًا واحدًا أكثر من عدد خاناتها. أربع خانات بخمسة أرقام بينها. ولو فقدت رقمًا لصارت مجموعة مقفلة، ومن هنا الاسم.</string>
+    <string name="lesson_als_3">خذ اثنتين منها تشتركان في رقمين. سمِّ أحد الرقمين المشتركين مقيدًا، واشترط أن يرى كل موضع يظهر فيه في إحدى المجموعتين كل موضع يظهر فيه في الأخرى.</string>
+    <string name="lesson_als_4">عندئذ لا يمكن أن يكون إلا في إحدى المجموعتين. والمجموعة التي لا تناله تُقفل، فيثبت فيها الرقم المشترك الآخر. وهكذا فأي خانة ترى ذلك الرقم في المجموعتين معًا تفقده.</string>
+    <string name="lesson_als_5">وهذا هو الحذف الناتج عن ذلك.</string>
+    <string name="lesson_als_6">وإن احتاج هذا إلى عدة قراءات، فهذا هو العدد الطبيعي. وكل أسلوب بعد هذه النقطة هو هذا الأسلوب في هيئة أخرى.</string>
+
+    <string name="lesson_deep_end_title">ما يطلبه العمق</string>
+    <string name="lesson_deep_end_summary">ما الذي يتغير في جنوني وكابوس، ولماذا يحتاج هذان المستويان إلى ورق.</string>
+    <string name="lesson_deep_end_1">كل ما سبق يمكن رؤيته. تنظر إلى صف، أو مربع، أو خانتين، ويكون الجواب أمامك متى عرفت الشكل.</string>
+    <string name="lesson_deep_end_2">وأصعب مستويين ليسا كذلك. إنهما يطلبان متابعة حجة عبر ثلاث أو أربع خطوات، والاحتفاظ بها كلها في الذهن دفعة واحدة، وهذا ما لا يفعله أحد تقريبًا بالنظر.</string>
+    <string name="lesson_deep_end_3">فاكتبها. قلم رصاص وظهر ظرف ليسا غشًا وليسا دليلًا على ضعفك. هذا ما يفعله كل من يحل هذين المستويين.</string>
+    <string name="lesson_deep_end_4">والقواعد هنا كلها الفكرة نفسها: مجموعة خانات ينقصها رقم واحد لتمتلئ. انزع ذلك الرقم فتُجبر المجموعة، والمجموعة المُجبرة تُجبر التي تليها. وهذا هو العمق كله.</string>
+    <string name="lesson_deep_end_5">ولا شيء مما يلي تخمين. كل خطوة مبرهنة، وكل تلميح سيريك البرهان، وإن هزمك لغز هنا فالعودة إليه بعد أسبوع هي المجرى الطبيعي للأمور.</string>
+
+    <string name="lesson_als_xy_title">ALS-XY-Wing</string>
+    <string name="lesson_als_xy_summary">ثلاث مجموعات في سلسلة، والرقم الذي لا ينجو عند أي من الطرفين.</string>
+    <string name="lesson_als_xy_1">ثلاث مجموعات هذه المرة، مرتبطة في خط: واحدة عند كل طرف وواحدة في الوسط تفصل بينهما.</string>
+    <string name="lesson_als_xy_2">ابدأ بالاثنتين على اليسار. r3c9 تحمل 1 و3. وr1c8 تحمل 3 و7. وهما تشتركان في مربع، فلا يمكن أن تكون إلا واحدة منهما 3.</string>
+    <string name="lesson_als_xy_3">والآن المجموعة النازلة في العمود 8: ثلاث خانات تحمل بينها 1 و3 و7 و9. أربعة أرقام وثلاث خانات، فينقصها رقم واحد لتمتلئ. وهي تشترك في 7 مع r1c8، وكل 7 فيها في ذلك العمود نفسه، فمرة أخرى لا يمكن أن يأخذه إلا طرف واحد.</string>
+    <string name="lesson_als_xy_4">افترض أن إحدى الخانتين المميزتين في العمود 9 هي 1. إنها ترى r3c9، إذن r3c9 ليست 1، إذن هي 3. وعندها r1c8 ليست 3، إذن هي 7. وعندها لا يبقى في المجموعة 7، فتمتلئ، ويجب أن تستخدم 1 و3 و9.</string>
+    <string name="lesson_als_xy_5">لكن تلك الخانات ترى أيضًا كل 1 في المجموعة، فلا يمكن للمجموعة أن تحمل 1 كذلك. والحجة تأكل نفسها، فيذهب الرقم 1.</string>
+    <string name="lesson_als_xy_6">وصلتان، وثلاث مجموعات، وكل خطوة تفرض التالية. اقرأها مرتين: إنها سلسلة، والسلاسل لا يستقيم معناها إلا رابطًا رابطًا.</string>
+
+    <string name="lesson_blossom_title">Death blossom</string>
+    <string name="lesson_blossom_summary">خانة واحدة، وخلف كل رقم من أرقامها مجموعة تنتظر.</string>
+    <string name="lesson_blossom_1">لهذا شكل يُرى: ساق، وبتلة لكل رقم يمكن أن تكونه الساق.</string>
+    <string name="lesson_blossom_2">الساق هي r1c4. وهي 5 أو 6، لا غير. واحتمالان يعنيان حالتين، وهذا الأسلوب يعالج الحالتين معًا.</string>
+    <string name="lesson_blossom_3">قل إنها 5. عندها r1c7، في الصف نفسه، وتحمل 5 و8، لا يمكن أن تكون 5. إذن هي 8.</string>
+    <string name="lesson_blossom_4">وقل بدل ذلك إنها 6. انظر إلى هذه الخانات الثلاث في المربع نفسه: تحمل بينها 2 و6 و7 و8. أربعة أرقام وثلاث خانات، ينقصها واحد لتمتلئ. والساق ترى الثلاث جميعًا، فيسحب رقمها 6 الرقم 6 منها.</string>
+    <string name="lesson_blossom_5">وهي الآن ممتلئة، وثلاث خانات ممتلئة تستخدم ثلاثة أرقام: 2 و7 و8. ولا يمكن أن تكون 8 إلا واحدة منها، فهناك يقع الرقم 8.</string>
+    <string name="lesson_blossom_6">اجمع الحالتين. إما أن يكون هناك 8 في r1c7 وإما أن يكون هناك 8 في ذلك المربع، ولا حالة ثالثة. وأي خانة ترى الموضعين تفقد 8 الخاص بها، وهنا تفقده خانتان.</string>
+    <string name="lesson_blossom_7">ولاحظ ما لم تحتج إلى معرفته قط: أي رقم هي الساق فعلًا. فكلا الطريقين ينتهي إلى 8، والجواب لا يتوقف على المفترق.</string>
+
+    <string name="lesson_fork_title">سلسلة الإجبار</string>
+    <string name="lesson_fork_summary">خذ خانة في الاتجاهين وانظر أيهما ينجو. أصعب ما في التطبيق.</string>
+    <string name="lesson_fork_1">الأسلوب الأخير، والوحيد الذي ليس نمطًا. لا شيء هنا يُلاحَظ. هنا عمل فقط.</string>
+    <string name="lesson_fork_2">هذه الخانة 2 أو 7. وكل ما عداها على اللوح عُصر حتى الجفاف، ولا شيء يقول أيهما هي.</string>
+    <string name="lesson_fork_3">فجرب واحدًا. قل إنها 2، بالقلم، وتابع النتائج السهلة فقط: خانة بقي لها رقم واحد، أو رقم بقي له موضع واحد في منطقته.</string>
+    <string name="lesson_fork_4">وتأتي سريعًا. يُفرض 2 هنا، ثم 7 هناك، ثم 3 و5 و9. تابع. وبعد أربعة عشر رقمًا، انظر إلى الخانة المميزة.</string>
+    <string name="lesson_fork_5">لم يبق فيها شيء. كل رقم كان يمكن أن يوضع فيها أخذه شيء آخر. وهذا ليس سوء حظ بل تناقض، ومعناه أن 2 لم يكن ممكنًا أصلًا.</string>
+    <string name="lesson_fork_6">فامسح كل ذلك واكتب 7. لا لأن 7 يبدو أفضل، بل لأن 2 ثبت أنه مستحيل، واحتمالان ناقص واحد يتركان واحدًا.</string>
+    <string name="lesson_fork_7">هذا برهان بالحالات، وهو ما يعنيه الناس بحل اللغز على الورق. استعمل الورق. لا أحد يحتفظ بأربعة عشر رقمًا مفروضًا في ذهنه، والحاجة إلى كتابتها ليست ضعفًا.</string>
+    <string name="lesson_fork_8">والآن ضعه.</string>
+    <string name="lesson_fork_wrong">الرقم الذي مات هو الآخر. فـ2 أدى إلى خانة لا شيء يوضع فيها، إذن الباقي هو 7.</string>
+
+    <string name="lesson_nothing_applies_title">حين لا ينطبق شيء</string>
+    <string name="lesson_nothing_applies_summary">أعد الفحص قبل أن تخمّن، فلغز هذا التطبيق له دائمًا خطوة تالية.</string>
+    <string name="lesson_nothing_applies_1">ستصل إلى مواضع نظرت فيها إلى كل شيء ولم تجد شيئًا. وهذا ما تفعله، وما لا تفعله.</string>
+    <string name="lesson_nothing_applies_2">ما لا تفعله هو التخمين. كل لغز في هذا التطبيق يُحل بالاستنتاج، والتخمين الذي يصادف الصواب لا يعلمك شيئًا، بينما التخمين الخاطئ يكلفك اللوح كله.</string>
+    <string name="lesson_nothing_applies_3">أعد الفحص بهذا الترتيب. أولًا، هل كل ملاحظاتك صحيحة؟ الملاحظة القديمة أشيع سبب لوضع مستحيل، وهذا التطبيق يمسحها عنك إن سمحت له. ثانيًا، هل الرقم الذي وضعته صحيح فعلًا؟ اضغط تلميحًا وسيخبرك.</string>
+    <string name="lesson_nothing_applies_4">ثم ابحث من جديد عن الأشياء الرخيصة. نادرًا ما تكون سلسلة فاتتك. وغالبًا ما يكون منفردًا مخفيًا في منطقة توقفت عن النظر إليها قبل عشرين حركة.</string>
+
+    <string name="lesson_look_first_title">بماذا تبدأ</string>
+    <string name="lesson_look_first_summary">الأنماط الرخيصة أولًا، دائمًا، لأنها شائعة ولأنها تفتح اللوح.</string>
+    <string name="lesson_look_first_1">تعرف الآن كل أسلوب يستطيع هذا التطبيق تسميته. وآخر ما تتعلمه هو ترتيب النظر.</string>
+    <string name="lesson_look_first_2">المنفردات أولًا، دائمًا. الظاهرة ثم المخفية. هي الأشيع بفارق كبير، وكل واحد تضعه يجعل كل أسلوب آخر أسهل إيجادًا.</string>
+    <string name="lesson_look_first_3">ثم الحذف الرخيص: الأزواج المُشيرة والمُطالِبة. تُفحص بسرعة، منطقة منطقة، وكثيرًا ما تفتح منفردًا في الحال.</string>
+    <string name="lesson_look_first_4">ثم الأزواج والثلاثيات في المناطق الأقل خانات فارغة. ثم الأسماك، ثم الأجنحة. والسلاسل أخيرًا، دائمًا، لأنها أكثرها عملًا وأقلها ورودًا.</string>
+    <string name="lesson_look_first_5">وصيد Jellyfish قبل فحص المنفردات هو مقابل السودوكو لإعادة كتابة برنامج قبل قراءة رسالة الخطأ. التطبيق يصنف الألغاز بأصعب ما تحتاجه، لكن لغز مستوى أستاذ يبقى في معظمه منفردات.</string>
+    <string name="lesson_together_title">لغز أستاذ، معًا</string>
+    <string name="lesson_together_summary">اللغز الصعب في معظمه خطوات سهلة، وفيه قليل من الخطوات الصعبة.</string>
+    <string name="lesson_together_1">الدرس الأخير. هذا هو اللوح الذي ظلت الدورة تمر به، بمستوى أستاذ، وهذا هو الحل كله مسمى أسلوبًا أسلوبًا.</string>
+    <string name="lesson_together_2">يفتتح بمنفرد ظاهر. وهكذا يفتتح كل شيء تقريبًا.</string>
+    <string name="lesson_together_3">ثم منفرد مخفي، في المربع المجاور.</string>
+    <string name="lesson_together_4">ثم يتوقف، فينظف زوج مُشير عمودًا حتى تستطيع المنفردات أن تبدأ من جديد. ولاحظ أن تلك الخطوة لم تضع رقمًا واحدًا ومع ذلك تحقق تقدم.</string>
+    <string name="lesson_together_5">ثم زوج ظاهر بعد قليل، يؤدي العمل نفسه داخل منطقة.</string>
+    <string name="lesson_together_6">وأعمق من ذلك، X-Wing. وعند هذه النقطة يكون اللوح نصف ممتلئ وتكون الملاحظات هي التي تعمل.</string>
+    <string name="lesson_together_7">وقرب النهاية، الخطوة التي تستحق المستوى: ALS-XZ. حذف واحد، وما بقي منفردات من جديد.</string>
+    <string name="lesson_together_8">هذا ما يعنيه مستوى أستاذ هنا. لا إحدى وثمانين خطوة صعبة، بل سبعون سهلة وحفنة تحتاج إلى كل ما تعلمته.</string>
+    <string name="lesson_together_9">لقد قابلت كل أسلوب يستطيع هذا التطبيق تسميته. اذهب والعب لغزًا. مع كل لغز ثلاثة تلميحات ولا عيب في إنفاقها، وإن أردت ما لا حد له فالحد مفتاح واحد في الإعدادات.</string>
+    <string name="lesson_step_of">%1$d من %2$d</string>
+    <string name="lesson_back">السابق</string>
+    <string name="lesson_next">التالي</string>
+    <string name="lesson_done">تم</string>
+    <string name="lesson_replay">مرة أخرى</string>
+    <string name="lesson_show_me">أرني</string>
+    <string name="lesson_cell_at">الصف %1$d، العمود %2$d.</string>
+    <string name="course_title">تعلّم</string>
+    <string name="course_lesson_done">منتهٍ</string>
+    <string name="course_lesson_next">التالي</string>
+    <string name="course_lesson_todo">لم يبدأ</string>
+    <plurals name="course_progress">
+        <item quantity="zero">لا دروس من %2$d</item>
+        <item quantity="one">درس واحد من %2$d</item>
+        <item quantity="two">درسان من %2$d</item>
+        <item quantity="few">%1$d دروس من %2$d</item>
+        <item quantity="many">%1$d درسًا من %2$d</item>
+        <item quantity="other">%1$d درس من %2$d</item>
+    </plurals>
+    <string name="settings_hint_detail">إلى أي حد يقول التلميح</string>
+    <string name="hint_detail_region">المنطقة فقط</string>
+    <string name="hint_detail_region_note">أي مربع أو خط تنظر إليه، ولا شيء أكثر.</string>
+    <string name="hint_detail_name">الأسلوب</string>
+    <string name="hint_detail_name_note">أي نوع من الخطوات هو، لتعرف ما تبحث عنه.</string>
+    <string name="hint_detail_cells">الخانات</string>
+    <string name="hint_detail_cells_note">الخانات التي تستند إليها الحجة، مضاءة على اللوح.</string>
+    <string name="hint_detail_full">الحجة كاملة</string>
+    <string name="hint_detail_full_note">كل شيء، بما في ذلك الحركة. مناسب أثناء متابعة الدورة.</string>
+    <string name="path_title">كيف حُل</string>
+    <string name="path_placed">الصف %1$d، العمود %2$d هو %3$d.</string>
+    <string name="outcome_path">اعرض كيف حُل</string>
+    <string name="settings_your_data">بياناتك</string>
+    <string name="settings_data_note">كل ما يعرفه هذا التطبيق عنك موجود على هذا الهاتف. التصدير يكتبه في ملف تختاره أنت، ليكمل هاتف جديد من حيث توقف هذا. ولا يُرسل شيء إلى أي مكان.</string>
+    <string name="settings_export">صدّر تقدمي</string>
+    <string name="settings_import">استورد من ملف</string>
+    <string name="settings_reset_course">أعد الدورة إلى البداية مع الاحتفاظ بألعابي</string>
+    <string name="settings_exported">تم الحفظ. الدروس: %1$d. الألعاب: %2$d.</string>
+    <string name="settings_imported">تمت الإضافة. الدروس: %1$d. الألعاب: %2$d.</string>
+    <string name="settings_imported_ignored">تمت الإضافة. الدروس: %1$d. الألعاب: %2$d. وتُركت لأنها من إصدار أحدث: %3$d.</string>
+    <string name="settings_import_empty">هذا الملف فارغ.</string>
+    <string name="settings_import_not_ours">هذا لا يبدو ملف تصدير من Sendoku.</string>
+    <string name="settings_import_future">هذا الملف كتبه إصدار أحدث من Sendoku.</string>
+    <string name="settings_import_failed">تعذّرت قراءة هذا الملف، ولم يتغير شيء على هذا الهاتف.</string>
+    <string name="settings_course_reset">عادت الدورة إلى البداية. وألعابك كما هي.</string>
+    <string name="practice_looking">يبحث عن وضع…</string>
+    <string name="practice_find">ابحث عن %1$s.</string>
+    <string name="practice_keep_going">هذا واحد منها. تابع.</string>
+    <string name="practice_wrong">ليست هذه الخانة. أعد قراءة القاعدة: %1$s لا يستند إليها.</string>
+    <string name="practice_right">هذا هو %1$s. وما يحذفه مميّز.</string>
+    <string name="practice_revealed">هذا هو %1$s، وهذا ما يحذفه.</string>
+    <string name="practice_show_me">أرني</string>
+    <string name="practice_another">لغز آخر</string>
+    <string name="practice_skip">تخطَّ</string>
+    <string name="practice_title">تدريب</string>
+    <string name="practice_none">لا شيء للتدرب عليه بعد. أنهِ أولًا درسًا يعلّم أسلوبًا.</string>
+    <string name="glossary_learn_this">تعلّم هذا</string>
+    <string name="hint_learn_this">علّمني هذا</string>
+    <string name="outcome_learn">تعلّم %1$s</string>
+    <string name="course_finished">كل شيء، منتهٍ. كل ما يستطيع التطبيق تسميته تستطيع أنت تسميته. وما بقي هو الألغاز نفسها.</string>
+    <string name="outcome_lost_hints">نفدت التلميحات</string>
+    <string name="outcome_share">مشاركة</string>
+    <string name="card_solved">محلول</string>
+    <string name="card_lost">هزمه اللغز</string>
+    <string name="settings_hints">التلميحات</string>
+    <string name="settings_hint_limit">إنهاء اللعبة بعد ثلاثة تلميحات</string>
+    <string name="settings_hint_note">مفعّل افتراضيًا. ثلاثة تلميحات مجانية، والرابع يكلف اللعبة، وهذا يجعل التلميح قرارًا لا ردة فعل. عطّله ما دمت تتابع الدورة.</string>
+    <string name="account_title">أنت</string>
+    <string name="account_no_account">لا يوجد حساب لتسجيل الدخول إليه. كل ما يلي على هذا الهاتف ولا مكان آخر.</string>
+    <string name="account_solved">محلولة</string>
+    <string name="account_streak">متتالية</string>
+    <string name="account_played">ملعوبة</string>
+    <string name="account_time">الوقت</string>
+    <string name="account_lessons">الدروس</string>
+    <string name="account_stats">الإحصاءات</string>
+    <string name="account_stats_detail">كل مستوى، وأفضل أوقاتك، والأساليب التي قابلتها</string>
+    <string name="account_history">السجل</string>
+    <string name="account_history_detail">كل لعبة أنهيتها، واللوح الذي أنهيتها عليه</string>
+    <string name="history_title">السجل</string>
+    <string name="history_lost">خاسرة</string>
+    <string name="history_empty_body">أنهِ لغزًا وسيصل إلى هنا، ومعه اللوح كما تركته، جاهزًا للمشاركة متى شئت.</string>
+    <string name="history_no_board">هذه انتهت قبل أن يحتفظ التطبيق بالألواح، فلا شيء يُرسم. ولم يبق إلا الأرقام.</string>
+    <string name="account_settings_detail">المظهر واللوح والحدود وبياناتك</string>
+    <string name="account_about_detail">ما يعد به هذا التطبيق، والتراخيص التي يقوم عليها</string>
+    <string name="tab_home">الرئيسية</string>
+    <string name="tab_learn">تعلّم</string>
+    <string name="tab_account">أنت</string>
+    <plurals name="hint_menu_left">
+        <item quantity="zero">الخياران الأخيران يكلفان تلميحًا، ولم يبق لك شيء.</item>
+        <item quantity="one">الخياران الأخيران يكلفان تلميحًا، وبقي لك واحد.</item>
+        <item quantity="two">الخياران الأخيران يكلفان تلميحًا، وبقي لك اثنان.</item>
+        <item quantity="few">الخياران الأخيران يكلفان تلميحًا، وبقي لك %1$d.</item>
+        <item quantity="many">الخياران الأخيران يكلفان تلميحًا، وبقي لك %1$d.</item>
+        <item quantity="other">الخياران الأخيران يكلفان تلميحًا، وبقي لك %1$d.</item>
+    </plurals>
+    <plurals name="hint_check_wrong">
+        <item quantity="zero">لا شيء مما وضعته خاطئ.</item>
+        <item quantity="one">رقم واحد مما وضعته خاطئ. وإيجاده يبقى لك.</item>
+        <item quantity="two">رقمان مما وضعته خاطئان. وإيجادهما يبقى لك.</item>
+        <item quantity="few">%1$d أرقام مما وضعته خاطئة. وإيجادها يبقى لك.</item>
+        <item quantity="many">%1$d رقمًا مما وضعته خاطئة. وإيجادها يبقى لك.</item>
+        <item quantity="other">%1$d رقم مما وضعته خاطئ. وإيجاده يبقى لك.</item>
+    </plurals>
+    <plurals name="path_summary">
+        <item quantity="zero">لا خطوات.</item>
+        <item quantity="one">خطوة واحدة، أرخص قاعدة أولًا، تمامًا كما قيّمها التطبيق.</item>
+        <item quantity="two">خطوتان، أرخص قاعدة أولًا، تمامًا كما قيّمها التطبيق.</item>
+        <item quantity="few">%1$d خطوات، أرخص قاعدة أولًا، تمامًا كما قيّمها التطبيق.</item>
+        <item quantity="many">%1$d خطوة، أرخص قاعدة أولًا، تمامًا كما قيّمها التطبيق.</item>
+        <item quantity="other">%1$d خطوة، أرخص قاعدة أولًا، تمامًا كما قيّمها التطبيق.</item>
+    </plurals>
+    <plurals name="path_struck">
+        <item quantity="zero">لا يحذف أي ملاحظة.</item>
+        <item quantity="one">يحذف ملاحظة واحدة.</item>
+        <item quantity="two">يحذف ملاحظتين.</item>
+        <item quantity="few">يحذف %1$d ملاحظات.</item>
+        <item quantity="many">يحذف %1$d ملاحظة.</item>
+        <item quantity="other">يحذف %1$d ملاحظة.</item>
+    </plurals>
+</resources>

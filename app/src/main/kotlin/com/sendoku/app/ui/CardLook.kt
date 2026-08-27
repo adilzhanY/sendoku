@@ -5,6 +5,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.core.content.res.ResourcesCompat
 import com.sendoku.app.theme.Sendoku
 import com.sendoku.app.theme.SendokuThemes
@@ -25,7 +27,8 @@ internal fun rememberCardLook(): ShareCard.Look {
     val context = LocalContext.current
     val themeId = Sendoku.themeId
     val colors = Sendoku.colors
-    return remember(themeId, colors) {
+    val direction = LocalLayoutDirection.current
+    return remember(themeId, colors, direction) {
         val (regular, bold) = SendokuThemes.fonts(themeId)
         ShareCard.Look(
             background = colors.background.toArgb(),
@@ -41,6 +44,7 @@ internal fun rememberCardLook(): ShareCard.Look {
             // platform face is a better answer than a crash on somebody's finished game.
             regular = ResourcesCompat.getFont(context, regular) ?: Typeface.SANS_SERIF,
             bold = ResourcesCompat.getFont(context, bold) ?: Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD),
+            rightToLeft = direction == LayoutDirection.Rtl,
         )
     }
 }

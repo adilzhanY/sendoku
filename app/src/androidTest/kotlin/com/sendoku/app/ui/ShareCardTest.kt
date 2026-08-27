@@ -156,6 +156,22 @@ class ShareCardTest {
     }
 
     @Test
+    fun aRightToLeftCardIsLaidOutTheOtherWayRound() {
+        // The card is drawn on a canvas, which mirrors nothing by itself. The mark leads, so
+        // it swaps sides with the grade, and the stats read from the other end. If none of
+        // that happened these two would be the same picture with different words on it.
+        val ltr = card(title = "محلول", grade = "خبير")
+        val rtl = card(title = "محلول", grade = "خبير", look = look(SendokuThemeId.DEEP_FIELD).copy(rightToLeft = true))
+        var different = 0
+        for (x in 0 until ShareCard.WIDTH step 4) {
+            for (y in 60 until 240 step 4) {
+                if (ltr.getPixel(x, y) != rtl.getPixel(x, y)) different++
+            }
+        }
+        assertTrue("the Arabic card was drawn left to right", different > 500)
+    }
+
+    @Test
     fun theCardCanBeWrittenInJapanese() {
         // The card draws its own text on a canvas rather than going through Compose, so it
         // resolves its own font. Nothing in res/font has a kana or a kanji in it, and the
@@ -187,6 +203,11 @@ class ShareCardTest {
             "lost" to card("Beaten by", "Beyond"),
             "japanese" to card("クリア", "エキスパート"),
             "ink_light" to card(look = look(SendokuThemeId.INK, dark = false)),
+            "arabic" to card(
+                title = "محلول",
+                grade = "خبير",
+                look = look(SendokuThemeId.DEEP_FIELD).copy(rightToLeft = true),
+            ),
         )
         for ((name, made) in cards) {
             File(directory, "$name.png").outputStream().use { made.compress(Bitmap.CompressFormat.PNG, 100, it) }

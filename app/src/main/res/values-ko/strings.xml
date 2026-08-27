@@ -154,6 +154,7 @@
     <string name="language_portuguese">Português (Brasil)</string>
     <string name="language_chinese">简体中文</string>
     <string name="language_korean">한국어</string>
+    <string name="language_arabic">العربية</string>
     <string name="first_run_prompt">Sendoku는 열 가지 언어로 쓰여 있어요. 어떤 언어로 읽으시겠어요?</string>
     <string name="first_run_system_is">휴대폰이 %1$s로 설정되어 있어요</string>
     <string name="first_run_no_translation">휴대폰에 설정된 언어는 Sendoku가 아직 못 하는 언어예요. 가장 가까운 것은 영어예요.</string>

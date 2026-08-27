@@ -40,6 +40,17 @@ public enum class Language(public val tag: String, @StringRes public val label: 
      */
     CHINESE("zh-Hans", R.string.language_chinese),
     KOREAN("ko", R.string.language_korean),
+
+    /**
+     * Arabic, with the numbering system named in the tag.
+     *
+     * Android formats numbers in the numbering system of the locale, and for Arabic that is
+     * Arabic-Indic: ١ ٢ ٣ rather than 1 2 3. The board can only draw Western digits, and
+     * mixing the two systems in one screen is the mistake an Arabic player notices first, so
+     * the tag asks for Arabic with Latin digits. Resources still resolve on the language, so
+     * this reads values-ar exactly as ar would.
+     */
+    ARABIC("ar-u-nu-latn", R.string.language_arabic),
 }
 
 /**

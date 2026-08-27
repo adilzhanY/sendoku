@@ -193,6 +193,20 @@ class ThemeScreenshotTest {
     @Test
     fun lessonInJapanese() = checkLesson(SendokuThemeId.DEEP_FIELD, dark = true, language = "ja")
 
+    /**
+     * And Arabic, which is the only one of the twelve that changes the shape of the screen.
+     *
+     * Everything here is mirrored: the back word, the dots, the two buttons, the padding on
+     * both sides. Nothing else in this app has ever been drawn that way round, so this is the
+     * picture that catches a left that should have been a start.
+     */
+    @Test
+    fun lessonInArabic() = checkLesson(SendokuThemeId.DEEP_FIELD, dark = true, language = "ar")
+
+    /** And Chinese, where the glyphs come from the phone rather than from res/font. */
+    @Test
+    fun lessonInChinese() = checkLesson(SendokuThemeId.DEEP_FIELD, dark = true, language = "zh-Hans")
+
     @Test
     fun lessonDeepFieldDark() = checkLesson(SendokuThemeId.DEEP_FIELD, dark = true)
 

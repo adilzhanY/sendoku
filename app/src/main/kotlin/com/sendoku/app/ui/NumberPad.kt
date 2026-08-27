@@ -14,10 +14,12 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
@@ -25,6 +27,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.sendoku.app.R
 import com.sendoku.app.game.GameState
@@ -54,21 +57,26 @@ public fun NumberPad(
     onScan: (Int) -> Unit = {},
 ) {
     val dimens = Sendoku.dimens
-    Row(
-        modifier = modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(dimens.padGap),
-    ) {
-        for (digit in 1..state.size) {
-            PadKey(
-                digit = digit,
-                remaining = state.remaining(digit),
-                exhausted = state.isExhausted(digit),
-                pencilMode = state.pencilMode,
-                scanning = state.scanning == digit,
-                onClick = { onDigit(digit) },
-                onLongClick = { onScan(digit) },
-                modifier = Modifier.weight(1f),
-            )
+    // One to nine, left to right, in every language. The keys are Western numerals and they
+    // sit under the board they fill in, so mirroring them would put the 1 under the ninth
+    // column and leave the board and its keyboard reading in opposite directions.
+    CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
+        Row(
+            modifier = modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(dimens.padGap),
+        ) {
+            for (digit in 1..state.size) {
+                PadKey(
+                    digit = digit,
+                    remaining = state.remaining(digit),
+                    exhausted = state.isExhausted(digit),
+                    pencilMode = state.pencilMode,
+                    scanning = state.scanning == digit,
+                    onClick = { onDigit(digit) },
+                    onLongClick = { onScan(digit) },
+                    modifier = Modifier.weight(1f),
+                )
+            }
         }
     }
 }

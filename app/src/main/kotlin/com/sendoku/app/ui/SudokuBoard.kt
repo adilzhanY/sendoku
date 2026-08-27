@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -29,6 +30,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
@@ -40,6 +42,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -122,70 +125,78 @@ public fun SudokuBoard(
     val housed = hintHouses.flatMap { geometry.cellsOf(it).toList() }.toSet()
     val dimming = spotlight && (hintLogic.isNotEmpty() || hintHouses.isNotEmpty() || struckMarks.isNotEmpty())
 
-    BoxWithConstraints(
-        modifier = modifier
-            .testTag("game:board")
-            .aspectRatio(1f)
-            .clip(RoundedCornerShape(dimens.boardRadius))
-            .background(colors.surface),
-    ) {
-        val cellSize: Dp = maxWidth / size
-        // Set against the cell rather than fixed, so one board fits a phone and a tablet.
-        // Both were raised after the grid grew: the digits were sized for a board with wide
-        // margins, and the pencil marks had become genuinely hard to read.
-        val digitSize = cellSize.toSp(0.62f)
-        val markSize = cellSize.toSp(0.27f)
+    // The board does not turn around in a right to left language, and neither does anything
+    // that names a place on it. Row one column one is the top left corner in every language:
+    // the digits are Western numerals read left to right, every hint counts columns from that
+    // corner, and a mirrored grid would make each of those a lie while looking, at a glance,
+    // like it had merely been tidied. The furniture around the board mirrors; the board is
+    // the thing being furnished.
+    CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
+        BoxWithConstraints(
+            modifier = modifier
+                .testTag("game:board")
+                .aspectRatio(1f)
+                .clip(RoundedCornerShape(dimens.boardRadius))
+                .background(colors.surface),
+        ) {
+            val cellSize: Dp = maxWidth / size
+            // Set against the cell rather than fixed, so one board fits a phone and a tablet.
+            // Both were raised after the grid grew: the digits were sized for a board with wide
+            // margins, and the pencil marks had become genuinely hard to read.
+            val digitSize = cellSize.toSp(0.62f)
+            val markSize = cellSize.toSp(0.27f)
 
-        Column(Modifier.fillMaxSize()) {
-            for (row in 0 until size) {
-                Row(Modifier.fillMaxWidth().weight(1f)) {
-                    for (col in 0 until size) {
-                        val index = row * size + col
-                        BoardCell(
-                            cell = state.cells[index],
-                            isSelected = state.selected == index,
-                            isPeer = index in peers,
-                            isMatch = index in matches,
-                            isConflict = index in conflicts || index in wrong,
-                            isHintLogic = index in hintLogic,
-                            isHintStrike = index in hintStrike,
-                            digitSize = digitSize,
-                            markSize = markSize,
-                            onClick = if (live) ({ onSelect(index) }) else null,
-                            onLongClick = if (live) ({ onLongPress(index) }) else null,
-                            struck = struckMarks.filter { it.cell == index }.map { it.digit }.toSet(),
-                            emphasis = inHand,
-                            description = describe(
-                                state = state,
-                                index = index,
-                                conflicting = index in conflicts || index in wrong,
-                                role = when {
-                                    index in hintLogic -> HintRole.ARGUMENT
-                                    struckMarks.any { it.cell == index } -> HintRole.STRUCK
-                                    index in housed -> HintRole.REGION
-                                    else -> HintRole.NONE
-                                },
-                            ),
-                            testTag = "game:cell:$index",
-                            modifier = Modifier.weight(1f).fillMaxSize(),
-                        )
+            Column(Modifier.fillMaxSize()) {
+                for (row in 0 until size) {
+                    Row(Modifier.fillMaxWidth().weight(1f)) {
+                        for (col in 0 until size) {
+                            val index = row * size + col
+                            BoardCell(
+                                cell = state.cells[index],
+                                isSelected = state.selected == index,
+                                isPeer = index in peers,
+                                isMatch = index in matches,
+                                isConflict = index in conflicts || index in wrong,
+                                isHintLogic = index in hintLogic,
+                                isHintStrike = index in hintStrike,
+                                digitSize = digitSize,
+                                markSize = markSize,
+                                onClick = if (live) ({ onSelect(index) }) else null,
+                                onLongClick = if (live) ({ onLongPress(index) }) else null,
+                                struck = struckMarks.filter { it.cell == index }.map { it.digit }.toSet(),
+                                emphasis = inHand,
+                                description = describe(
+                                    state = state,
+                                    index = index,
+                                    conflicting = index in conflicts || index in wrong,
+                                    role = when {
+                                        index in hintLogic -> HintRole.ARGUMENT
+                                        struckMarks.any { it.cell == index } -> HintRole.STRUCK
+                                        index in housed -> HintRole.REGION
+                                        else -> HintRole.NONE
+                                    },
+                                ),
+                                testTag = "game:cell:$index",
+                                modifier = Modifier.weight(1f).fillMaxSize(),
+                            )
+                        }
                     }
                 }
             }
+
+            GridLines(state = state, modifier = Modifier.fillMaxSize())
+
+            // One pass over the top for everything a hint draws. Eighty one cells all changing
+            // their own brightness is eighty one recompositions for something that is really a
+            // single picture, and the outline has to land on one pixel the way the rules do.
+            HintOverlay(
+                state = state,
+                houses = hintHouses,
+                lit = lit + housed,
+                dimming = dimming,
+                modifier = Modifier.fillMaxSize(),
+            )
         }
-
-        GridLines(state = state, modifier = Modifier.fillMaxSize())
-
-        // One pass over the top for everything a hint draws. Eighty one cells all changing
-        // their own brightness is eighty one recompositions for something that is really a
-        // single picture, and the outline has to land on one pixel the way the rules do.
-        HintOverlay(
-            state = state,
-            houses = hintHouses,
-            lit = lit + housed,
-            dimming = dimming,
-            modifier = Modifier.fillMaxSize(),
-        )
     }
 }
 
