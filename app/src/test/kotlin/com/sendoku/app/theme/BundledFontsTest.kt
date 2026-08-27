@@ -31,22 +31,31 @@ class BundledFontsTest {
     /**
      * What no bundled face is asked to draw.
      *
-     * Kept in step with JAPANESE in tools/subset-fonts.py. None of the four has a kana or a
-     * kanji in it and none of them is going to: Android carries Noto Sans CJK JP and picks it
-     * up per character, so Japanese renders on every phone without a byte from us. The one
-     * thing to hold onto is that this list stays small and deliberate rather than growing
-     * into a hole the guard below can fall through.
+     * Kept in step with NOT_OURS in tools/subset-fonts.py. None of the four has a kana, a
+     * Chinese character, a Hangul syllable or an Arabic letter in it, and none of them is
+     * going to: Android carries Noto for all of these and picks it up per character, so they
+     * render on every phone without a byte from us. The one thing to hold onto is that this
+     * list stays small and deliberate rather than growing into a hole the guard below can
+     * fall through, which is why an accented Latin letter must never appear in it.
      */
-    private val japanese = listOf(
-        0x3000..0x303F,
-        0x3040..0x309F,
-        0x30A0..0x30FF,
-        0x3400..0x4DBF,
-        0x4E00..0x9FFF,
-        0xFF00..0xFFEF,
+    private val notOurs = listOf(
+        0x0600..0x06FF, // Arabic
+        0x0750..0x077F, // Arabic supplement
+        0x08A0..0x08FF, // Arabic extended-A
+        0x1100..0x11FF, // Hangul jamo
+        0x3000..0x303F, // CJK punctuation
+        0x3040..0x309F, // hiragana
+        0x30A0..0x30FF, // katakana
+        0x3130..0x318F, // Hangul compatibility jamo
+        0x3400..0x4DBF, // CJK ideographs, extension A
+        0x4E00..0x9FFF, // CJK ideographs
+        0xAC00..0xD7AF, // Hangul syllables
+        0xFB50..0xFDFF, // Arabic presentation forms-A
+        0xFE70..0xFEFF, // Arabic presentation forms-B
+        0xFF00..0xFFEF, // halfwidth and fullwidth forms
     )
 
-    private fun Char.isJapanese(): Boolean = japanese.any { code in it }
+    private fun Char.isNotOurs(): Boolean = notOurs.any { code in it }
 
     /** Every character the shipped strings can put on screen, plus what the board adds. */
     private val charset: Set<Char> by lazy {
@@ -60,7 +69,7 @@ class BundledFontsTest {
                     found += match.groupValues[1].toSet()
                 }
             }
-        found.filter { !it.isWhitespace() && it.code >= 0x20 && !it.isJapanese() }.toSet()
+        found.filter { !it.isWhitespace() && it.code >= 0x20 && !it.isNotOurs() }.toSet()
     }
 
     private fun open(name: String): Font {
@@ -80,6 +89,8 @@ class BundledFontsTest {
             assertTrue("$c is missing from the set the faces are cut to", c in charset)
         }
         assertTrue("Japanese should be left to the phone rather than cut into the faces", '日' !in charset)
+        assertTrue("Korean should be left to the phone too", '한' !in charset)
+        assertTrue("Chinese should be left to the phone too", '数' !in charset)
     }
 
     @Test
@@ -92,7 +103,7 @@ class BundledFontsTest {
             .filter { it.name.startsWith("values") }
             .mapNotNull { File(it, "strings.xml").takeIf(File::isFile) }
             .flatMap { file -> file.readText().toList() }
-            .filter { it.isJapanese() }
+            .filter { it.isNotOurs() }
             .toSet()
         assertTrue("no Japanese was found in any language file", inStrings.isNotEmpty())
         for ((family, files) in families) {

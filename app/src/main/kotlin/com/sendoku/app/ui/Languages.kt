@@ -39,6 +39,7 @@ public enum class Language(public val tag: String, @StringRes public val label: 
      * honest answer is the English they already had.
      */
     CHINESE("zh-Hans", R.string.language_chinese),
+    KOREAN("ko", R.string.language_korean),
 }
 
 /**

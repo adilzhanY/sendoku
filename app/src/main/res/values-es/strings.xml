@@ -156,6 +156,7 @@
     <string name="language_french">Français</string>
     <string name="language_portuguese">Português (Brasil)</string>
     <string name="language_chinese">简体中文</string>
+    <string name="language_korean">한국어</string>
     <string name="first_run_prompt">Sendoku está escrito en siete idiomas. ¿En cuál lees?</string>
     <string name="first_run_system_is">Tu teléfono está en %1$s</string>
     <string name="first_run_no_translation">Tu teléfono está en un idioma que Sendoku todavía no habla. El inglés es lo más cercano que tiene.</string>
