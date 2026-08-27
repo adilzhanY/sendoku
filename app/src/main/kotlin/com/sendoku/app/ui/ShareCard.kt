@@ -28,19 +28,41 @@ import androidx.core.graphics.createBitmap
  * The mark is the same five by five grid spelling an S that the launcher icon uses, drawn from
  * the same description rather than loaded from a bitmap, so it is crisp at any size and there
  * is no second copy of the logo to keep in step.
+ *
+ * It wears whatever the player is wearing. The card used to have Deep Field written into it
+ * as six constants, so somebody who had spent a week in Ink and Paper shared a picture of an
+ * app they do not use. Now the palette and the typeface both come in from the theme, and the
+ * only thing that stays fixed is the mark, because that is the logo rather than the look.
  */
 public object ShareCard {
 
     public const val WIDTH: Int = 1080
     public const val HEIGHT: Int = 1350
 
-    /** Deep Field, because a shared card should look like the app people will download. */
-    private const val INK = 0xFF0A0E12.toInt()
-    private const val TEAL = 0xFF4FE8DA.toInt()
-    private const val PAPER = 0xFFE8F0F5.toInt()
-    private const val MUTED = 0xFF7D95A5.toInt()
-    private const val SLATE = 0xFF2A3540.toInt()
-    private const val ROSE = 0xFFFF5C7A.toInt()
+    /** The mark's own two colours, the same in every theme. See the note above. */
+    private const val MARK_ON = 0xFF4FE8DA.toInt()
+    private const val MARK_OFF = 0xFF2A3540.toInt()
+
+    /**
+     * The theme, in the only terms a canvas understands.
+     *
+     * Colours are packed ints and the faces are real typefaces, because [android.graphics] has
+     * never heard of a Compose colour or a font family. Everything here comes from the theme
+     * the player is in, which is what makes the card a picture of their app.
+     */
+    public data class Look(
+        val background: Int,
+        val board: Int,
+        val hairline: Int,
+        val boxLine: Int,
+        val given: Int,
+        val entry: Int,
+        val muted: Int,
+        val accent: Int,
+        val warn: Int,
+        val regular: Typeface,
+        val bold: Typeface,
+    )
 
     private val MARK = listOf(
         ".####",
@@ -74,38 +96,48 @@ public object ShareCard {
      * handed in as text already formatted and translated, because this file must not know how
      * to say "3 of 3" in Russian.
      */
-    public fun draw(appName: String, title: String, grade: String, lines: List<Line>, grid: Grid?): Bitmap {
+    public fun draw(
+        appName: String,
+        title: String,
+        grade: String,
+        lines: List<Line>,
+        grid: Grid?,
+        look: Look,
+    ): Bitmap {
         val bitmap = createBitmap(WIDTH, HEIGHT)
         val canvas = Canvas(bitmap)
-        canvas.drawColor(INK)
+        canvas.drawColor(look.background)
 
         val paint = Paint(Paint.ANTI_ALIAS_FLAG)
-        val bold = Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD)
-        val plain = Typeface.SANS_SERIF
+        val bold = look.bold
+        val plain = look.regular
 
         drawMark(canvas, paint, left = 84f, top = 84f, side = 116f)
 
         paint.typeface = bold
-        paint.color = PAPER
+        paint.color = look.entry
         paint.textSize = 72f
         canvas.drawText(appName, 232f, 152f, paint)
+        val nameWidth = paint.measureText(appName)
 
         paint.typeface = plain
-        paint.color = MUTED
+        paint.color = look.muted
         paint.textSize = 34f
         paint.letterSpacing = 0.14f
         canvas.drawText(title.shout(), 234f, 200f, paint)
         paint.letterSpacing = 0f
 
         // The grade, on the right of the same line as the name, so the board can start high.
+        // It gets whatever the name has left, and shrinks rather than running into it: a
+        // German grade in a monospace face is more than twice the width of an English one.
         paint.typeface = bold
-        paint.color = TEAL
-        paint.textSize = 62f
+        paint.color = look.accent
         paint.textAlign = Paint.Align.RIGHT
+        fit(paint, grade, 62f, WIDTH - 84f - (232f + nameWidth) - 32f)
         canvas.drawText(grade, WIDTH - 84f, 168f, paint)
         paint.textAlign = Paint.Align.LEFT
 
-        if (grid != null) drawGrid(canvas, paint, grid, top = 250f, side = 880f)
+        if (grid != null) drawGrid(canvas, paint, grid, top = 250f, side = 880f, look = look)
 
         val top = HEIGHT - 150f
         val step = (WIDTH - 168f) / lines.size
@@ -114,14 +146,14 @@ public object ShareCard {
             paint.textAlign = Paint.Align.CENTER
 
             paint.typeface = bold
-            paint.color = if (line.warn) ROSE else PAPER
-            paint.textSize = 76f
+            paint.color = if (line.warn) look.warn else look.entry
+            fit(paint, line.value, 76f, step - 56f)
             canvas.drawText(line.value, centre, top + 36f, paint)
 
             paint.typeface = plain
-            paint.color = MUTED
-            paint.textSize = 32f
+            paint.color = look.muted
             paint.letterSpacing = 0.12f
+            fit(paint, line.label.shout(), 32f, step - 40f)
             canvas.drawText(line.label.shout(), centre, top + 92f, paint)
             paint.letterSpacing = 0f
             paint.textAlign = Paint.Align.LEFT
@@ -131,19 +163,38 @@ public object ShareCard {
     }
 
     /**
+     * Sets the text size, and takes it down until the text fits the width it has.
+     *
+     * A card is drawn once at a fixed size, so nothing here reflows: whatever is written has
+     * to fit where it is put. Three stats share the width of the card and a monospace face is
+     * half again as wide as a proportional one, so "1 of 3" in Terminal reached its
+     * neighbour. Shrinking is the only move a canvas has, and it never grows the text: the
+     * size passed in is the size a short word gets.
+     */
+    private fun fit(paint: Paint, text: String, size: Float, width: Float): Float {
+        paint.textSize = size
+        var current = size
+        while (current > 12f && paint.measureText(text) > width) {
+            current -= 1f
+            paint.textSize = current
+        }
+        return current
+    }
+
+    /**
      * The board, with the player's own digits brighter than the clues.
      *
      * Box rules are drawn heavier than cell rules, the same way they are in the app, because a
      * grid without them is a wall of eighty one numbers.
      */
-    private fun drawGrid(canvas: Canvas, paint: Paint, grid: Grid, top: Float, side: Float) {
+    private fun drawGrid(canvas: Canvas, paint: Paint, grid: Grid, top: Float, side: Float, look: Look) {
         val left = (WIDTH - side) / 2
         val cell = side / grid.size
 
-        paint.color = 0xFF121820.toInt()
+        paint.color = look.board
         canvas.drawRoundRect(RectF(left, top, left + side, top + side), 10f, 10f, paint)
 
-        paint.typeface = Typeface.SANS_SERIF
+        paint.typeface = look.regular
         paint.textAlign = Paint.Align.CENTER
         paint.textSize = cell * 0.58f
         for (index in grid.digits.indices) {
@@ -151,9 +202,8 @@ public object ShareCard {
             if (digit == 0) continue
             val column = index % grid.size
             val row = index / grid.size
-            paint.color = if (index in grid.given) MUTED else PAPER
-            paint.typeface =
-                if (index in grid.given) Typeface.SANS_SERIF else Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD)
+            paint.color = if (index in grid.given) look.given else look.entry
+            paint.typeface = if (index in grid.given) look.regular else look.bold
             canvas.drawText(
                 digit.toString(),
                 left + column * cell + cell / 2,
@@ -162,18 +212,18 @@ public object ShareCard {
             )
         }
         paint.textAlign = Paint.Align.LEFT
-        paint.typeface = Typeface.SANS_SERIF
+        paint.typeface = look.regular
 
         for (line in 0..grid.size) {
             val heavy = line % grid.boxWidth == 0
-            paint.color = if (heavy) SLATE else 0xFF1B2530.toInt()
+            paint.color = if (heavy) look.boxLine else look.hairline
             paint.strokeWidth = if (heavy) 4f else 2f
             val at = left + line * cell
             canvas.drawLine(at, top, at, top + side, paint)
         }
         for (line in 0..grid.size) {
             val heavy = line % grid.boxHeight == 0
-            paint.color = if (heavy) SLATE else 0xFF1B2530.toInt()
+            paint.color = if (heavy) look.boxLine else look.hairline
             paint.strokeWidth = if (heavy) 4f else 2f
             val at = top + line * cell
             canvas.drawLine(left, at, left + side, at, paint)
@@ -189,7 +239,7 @@ public object ShareCard {
             for ((column, mark) in line.withIndex()) {
                 val x = left + column * (cell + gap)
                 val y = top + row * (cell + gap)
-                paint.color = if (mark == '#') TEAL else SLATE
+                paint.color = if (mark == '#') MARK_ON else MARK_OFF
                 canvas.drawRoundRect(RectF(x, y, x + cell, y + cell), radius, radius, paint)
             }
         }

@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.runtime.staticCompositionLocalOf
+import com.sendoku.app.R
 
 /**
  * The looks Sendoku can wear.
@@ -62,6 +63,19 @@ public object SendokuThemes {
         SendokuThemeId.TERMINAL -> TerminalType
     }
 
+    /**
+     * The same four faces again, as font resources rather than as a Compose family.
+     *
+     * The shared card is drawn straight onto a canvas, which knows nothing about a
+     * FontFamily. Regular first, then the heavier of the two weights each family ships.
+     */
+    public fun fonts(id: SendokuThemeId): Pair<Int, Int> = when (id) {
+        SendokuThemeId.DEEP_FIELD -> R.font.inter_regular to R.font.inter_semibold
+        SendokuThemeId.INK -> R.font.pt_serif_regular to R.font.pt_serif_bold
+        SendokuThemeId.ZEN -> R.font.manrope_regular to R.font.manrope_semibold
+        SendokuThemeId.TERMINAL -> R.font.jetbrains_mono_regular to R.font.jetbrains_mono_bold
+    }
+
     public fun dimens(id: SendokuThemeId): SendokuDimens = when (id) {
         SendokuThemeId.DEEP_FIELD -> DefaultDimens
         SendokuThemeId.INK -> InkDimens
@@ -105,6 +119,7 @@ private val Still: SendokuMotion = SendokuMotion(
     enter = androidx.compose.animation.core.LinearEasing,
 )
 
+internal val LocalSendokuThemeId = staticCompositionLocalOf { SendokuThemeId.DEEP_FIELD }
 internal val LocalSendokuColors = staticCompositionLocalOf { DeepFieldDark }
 internal val LocalSendokuType = staticCompositionLocalOf { DefaultType }
 internal val LocalSendokuDimens = staticCompositionLocalOf { DefaultDimens }
@@ -118,6 +133,17 @@ internal val LocalSendokuMotion = staticCompositionLocalOf { DefaultMotion }
  * theme but the one it was written against.
  */
 public object Sendoku {
+
+    /**
+     * Which look is on.
+     *
+     * Almost nothing needs this: a composable wanting a colour asks for the colour. The one
+     * thing that does is the shared card, which is drawn on a canvas rather than composed and
+     * so has to load the theme's typeface itself.
+     */
+    public val themeId: SendokuThemeId
+        @Composable @ReadOnlyComposable
+        get() = LocalSendokuThemeId.current
 
     public val colors: SendokuColors
         @Composable @ReadOnlyComposable
@@ -182,6 +208,7 @@ public fun SendokuTheme(
     }
 
     CompositionLocalProvider(
+        LocalSendokuThemeId provides themeId,
         LocalSendokuColors provides colors,
         LocalSendokuType provides type,
         LocalSendokuDimens provides SendokuThemes.dimens(themeId),

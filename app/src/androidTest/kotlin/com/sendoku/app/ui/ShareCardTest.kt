@@ -1,8 +1,13 @@
 package com.sendoku.app.ui
 
 import android.graphics.Bitmap
+import android.graphics.Typeface
+import androidx.compose.ui.graphics.toArgb
+import androidx.core.content.res.ResourcesCompat
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import com.sendoku.app.theme.SendokuThemeId
+import com.sendoku.app.theme.SendokuThemes
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -13,7 +18,38 @@ import java.io.File
 @RunWith(AndroidJUnit4::class)
 class ShareCardTest {
 
-    private fun card(title: String = "Solved", grade: String = "Diabolical") = ShareCard.draw(
+    private val context = InstrumentationRegistry.getInstrumentation().targetContext
+
+    /**
+     * The same bridge the app uses, outside a composition.
+     *
+     * Kept next to the real one rather than reaching into it, because a test that builds the
+     * look differently from the app is a test of nothing. Both read the theme's own colours
+     * and the theme's own font, and that is the part worth pinning.
+     */
+    private fun look(theme: SendokuThemeId, dark: Boolean = true): ShareCard.Look {
+        val colors = SendokuThemes.colors(theme, dark)
+        val (regular, bold) = SendokuThemes.fonts(theme)
+        return ShareCard.Look(
+            background = colors.background.toArgb(),
+            board = colors.surface.toArgb(),
+            hairline = colors.hairline.toArgb(),
+            boxLine = colors.boxLine.toArgb(),
+            given = colors.muted.toArgb(),
+            entry = colors.given.toArgb(),
+            muted = colors.muted.toArgb(),
+            accent = colors.accent.toArgb(),
+            warn = colors.conflict.toArgb(),
+            regular = ResourcesCompat.getFont(context, regular) ?: Typeface.SANS_SERIF,
+            bold = ResourcesCompat.getFont(context, bold) ?: Typeface.DEFAULT_BOLD,
+        )
+    }
+
+    private fun card(
+        title: String = "Solved",
+        grade: String = "Diabolical",
+        look: ShareCard.Look = look(SendokuThemeId.DEEP_FIELD),
+    ) = ShareCard.draw(
         appName = "Sendoku",
         title = title,
         grade = grade,
@@ -30,6 +66,7 @@ class ShareCardTest {
             digits = (0 until 81).map { (it % 9) + 1 },
             given = (0 until 81).filter { it % 3 == 0 }.toSet(),
         ),
+        look = look,
     )
 
     @Test
@@ -49,6 +86,7 @@ class ShareCardTest {
             grade = "Diabolical",
             lines = listOf(ShareCard.Line("Time", "27:41")),
             grid = null,
+            look = look(SendokuThemeId.DEEP_FIELD),
         )
         var different = 0
         for (x in 0 until ShareCard.WIDTH step 8) {
@@ -70,6 +108,51 @@ class ShareCardTest {
             }
         }
         assertTrue("the card came out flat, so nothing was drawn: ${colours.size} colours", colours.size > 20)
+    }
+
+    @Test
+    fun everyThemeGetsItsOwnCard() {
+        // The card used to have Deep Field written into it as six constants, so a player who
+        // had spent a week in Ink and Paper shared a picture of an app they do not use. Each
+        // card now has to come out on its own theme's background, and no two the same.
+        val backgrounds = SendokuThemeId.entries.associateWith { theme ->
+            val drawn = card(look = look(theme))
+            drawn.getPixel(8, 8)
+        }
+        for ((theme, drawn) in backgrounds) {
+            val expected = SendokuThemes.colors(theme, dark = true).background.toArgb()
+            assertEquals("$theme drew a card that is not its own colour", expected, drawn)
+        }
+        assertEquals(
+            "two themes share a card background, so at least one card is not its theme",
+            SendokuThemeId.entries.size,
+            backgrounds.values.toSet().size,
+        )
+    }
+
+    @Test
+    fun aLightThemeGetsALightCard() {
+        // The light half of a theme is the half a card can get wrong most visibly: dark text
+        // written for a dark background on paper is an unreadable picture rather than an ugly
+        // one. Ink and Paper light is the case, and its card has to be light.
+        val light = card(look = look(SendokuThemeId.INK, dark = false)).getPixel(8, 8)
+        val dark = card(look = look(SendokuThemeId.INK, dark = true)).getPixel(8, 8)
+        assertTrue("Ink light drew a dark card", android.graphics.Color.luminance(light) > 0.5f)
+        assertTrue("Ink dark drew a light card", android.graphics.Color.luminance(dark) < 0.5f)
+    }
+
+    @Test
+    fun theFaceOnTheCardIsTheFaceOnTheScreen() {
+        // Four themes, four typefaces, and the same words drawn in each. If the card ignored
+        // the face it was handed, these would be the same picture four times over.
+        val words = SendokuThemeId.entries.map { theme ->
+            val drawn = card(look = look(theme))
+            // The band under the app name, which is text and nothing else.
+            buildList {
+                for (x in 230 until 800 step 3) add(drawn.getPixel(x, 130))
+            }
+        }
+        assertEquals("two themes drew the heading identically", words.size, words.toSet().size)
     }
 
     @Test
@@ -98,10 +181,12 @@ class ShareCardTest {
             InstrumentationRegistry.getInstrumentation().targetContext.filesDir,
             "cards",
         ).apply { mkdirs() }
-        val cards = listOf(
-            "won" to card(),
+        val cards = SendokuThemeId.entries.map { theme ->
+            theme.name.lowercase() to card(look = look(theme))
+        } + listOf(
             "lost" to card("Beaten by", "Beyond"),
             "japanese" to card("クリア", "エキスパート"),
+            "ink_light" to card(look = look(SendokuThemeId.INK, dark = false)),
         )
         for ((name, made) in cards) {
             File(directory, "$name.png").outputStream().use { made.compress(Bitmap.CompressFormat.PNG, 100, it) }

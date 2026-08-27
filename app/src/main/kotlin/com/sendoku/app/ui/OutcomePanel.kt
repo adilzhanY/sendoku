@@ -57,6 +57,7 @@ public fun OutcomePanel(
 
     // Read here rather than inside the click, because a click is not a composable and the card
     // has to be written in whatever language the player is reading.
+    val look = rememberCardLook()
     val appName = stringResource(R.string.app_name)
     val chooser = stringResource(R.string.outcome_share)
     val resultText = stringResource(if (won) R.string.card_solved else R.string.card_lost)
@@ -210,7 +211,7 @@ public fun OutcomePanel(
                 OutcomeButton(
                     stringResource(R.string.outcome_share),
                     accent = false,
-                    onClick = { shareCard(context, appName, chooser, resultText, gradeText, labels, grid) },
+                    onClick = { shareCard(context, appName, chooser, resultText, gradeText, labels, grid, look) },
                     modifier = Modifier.weight(1f),
                     tag = "outcome:share",
                 )
@@ -277,6 +278,7 @@ private fun shareCard(
     grade: String,
     lines: List<Pair<String, String>>,
     grid: ShareCard.Grid,
+    look: ShareCard.Look,
 ) {
     val card = ShareCard.draw(
         appName = appName,
@@ -284,6 +286,7 @@ private fun shareCard(
         grade = grade,
         lines = lines.map { (label, value) -> ShareCard.Line(label, value) },
         grid = grid,
+        look = look,
     )
     ShareResult.share(context, card, chooser)
 }
