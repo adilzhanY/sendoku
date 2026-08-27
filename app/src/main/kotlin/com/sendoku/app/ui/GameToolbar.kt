@@ -12,8 +12,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.BasicText
-import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -27,9 +25,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.sendoku.app.R
 import com.sendoku.app.game.GameState
 import com.sendoku.app.theme.Sendoku
@@ -144,18 +140,7 @@ private fun ToolButton(
         Icon(imageVector = icon, contentDescription = null, tint = ink, modifier = Modifier.size(ICON))
         // One line, shrunk to fit rather than wrapped. Five words share the width of the
         // screen, and at a large font scale a German label is wider than its fifth of it.
-        // Wrapping breaks the word in the middle, so "Notizen" becomes "Notize" over "n",
-        // which reads as a bug. Smaller and whole is better than bigger and broken.
-        BasicText(
-            text = label,
-            style = Sendoku.type.toolLabel.copy(color = ink, textAlign = TextAlign.Center),
-            maxLines = 1,
-            autoSize = TextAutoSize.StepBased(
-                minFontSize = 7.sp,
-                maxFontSize = Sendoku.type.toolLabel.fontSize,
-                stepSize = 0.5.sp,
-            ),
-        )
+        OneLine(label, Sendoku.type.toolLabel, ink)
         // The mode marker. Two pixels of accent under one of five words is enough to find
         // without being enough to notice while playing.
         Box(

@@ -6,7 +6,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -60,38 +62,49 @@ public fun HintMenu(
     ) {
         Text(stringResource(R.string.hint_menu_title), style = Sendoku.type.overline, color = colors.accent)
 
-        Text(
-            text = difficultyOf(next),
-            style = Sendoku.type.body,
-            color = colors.given,
-            modifier = Modifier.testTag("hint:difficulty"),
-        )
-
-        if (checked != null) {
+        // The words scroll and the four buttons do not. In German at a large font scale
+        // these three sentences are taller than what is left of the screen under the board,
+        // and without this the choices themselves went off the bottom of it.
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .weight(1f, fill = false)
+                .verticalScroll(rememberScrollState()),
+            verticalArrangement = Arrangement.spacedBy(dimens.spaceS),
+        ) {
             Text(
-                text = if (checked == 0) {
-                    stringResource(R.string.hint_check_clean)
+                text = difficultyOf(next),
+                style = Sendoku.type.body,
+                color = colors.given,
+                modifier = Modifier.testTag("hint:difficulty"),
+            )
+
+            if (checked != null) {
+                Text(
+                    text = if (checked == 0) {
+                        stringResource(R.string.hint_check_clean)
+                    } else {
+                        pluralStringResource(R.plurals.hint_check_wrong, checked, checked)
+                    },
+                    style = Sendoku.type.body,
+                    color = if (checked == 0) colors.accent else colors.conflict,
+                    modifier = Modifier
+                        .semantics { liveRegion = LiveRegionMode.Polite }
+                        .testTag("hint:check"),
+                )
+            }
+
+            val left = state.settings.hintLimit?.minus(state.hintsUsed)
+            Text(
+                text = if (left == null) {
+                    stringResource(R.string.hint_menu_free)
                 } else {
-                    pluralStringResource(R.plurals.hint_check_wrong, checked, checked)
+                    pluralStringResource(R.plurals.hint_menu_left, left.coerceAtLeast(0), left.coerceAtLeast(0))
                 },
                 style = Sendoku.type.body,
-                color = if (checked == 0) colors.accent else colors.conflict,
-                modifier = Modifier
-                    .semantics { liveRegion = LiveRegionMode.Polite }
-                    .testTag("hint:check"),
+                color = colors.muted,
             )
         }
-
-        val left = state.settings.hintLimit?.minus(state.hintsUsed)
-        Text(
-            text = if (left == null) {
-                stringResource(R.string.hint_menu_free)
-            } else {
-                pluralStringResource(R.plurals.hint_menu_left, left.coerceAtLeast(0), left.coerceAtLeast(0))
-            },
-            style = Sendoku.type.body,
-            color = colors.muted,
-        )
 
         Row(
             modifier = Modifier.fillMaxWidth(),

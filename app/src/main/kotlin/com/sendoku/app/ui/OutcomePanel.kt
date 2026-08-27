@@ -10,7 +10,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -20,6 +22,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.sendoku.app.R
 import com.sendoku.app.game.GameState
 import com.sendoku.app.learn.Curriculum
@@ -87,7 +91,12 @@ public fun OutcomePanel(
         contentAlignment = Alignment.Center,
     ) {
         Column(
-            modifier = Modifier.padding(dimens.spaceL),
+            // It scrolls, because at a large font scale in a long language this is taller
+            // than the board it covers, and the three buttons at the bottom of it are the
+            // only way off a finished game.
+            modifier = Modifier
+                .verticalScroll(rememberScrollState())
+                .padding(dimens.spaceL),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(dimens.spaceS),
         ) {
@@ -126,18 +135,24 @@ public fun OutcomePanel(
                 horizontalArrangement = Arrangement.SpaceEvenly,
             ) {
                 Stat(
-                    stringResource(R.string.outcome_hints),
-                    state.settings.hintLimit
+                    label = stringResource(R.string.outcome_hints),
+                    value = state.settings.hintLimit
                         ?.let { stringResource(R.string.mistakes_of, state.hintsUsed, it) }
                         ?: state.hintsUsed.toString(),
+                    modifier = Modifier.weight(1f),
                 )
                 Stat(
-                    stringResource(R.string.outcome_mistakes),
-                    state.settings.mistakeLimit
+                    label = stringResource(R.string.outcome_mistakes),
+                    value = state.settings.mistakeLimit
                         ?.let { stringResource(R.string.mistakes_of, state.mistakes, it) }
                         ?: state.mistakes.toString(),
+                    modifier = Modifier.weight(1f),
                 )
-                Stat(stringResource(R.string.outcome_moves), state.past.size.toString())
+                Stat(
+                    label = stringResource(R.string.outcome_moves),
+                    value = state.past.size.toString(),
+                    modifier = Modifier.weight(1f),
+                )
             }
 
             state.hardest?.let { technique ->
@@ -217,10 +232,11 @@ public fun OutcomePanel(
 }
 
 @Composable
-private fun Stat(label: String, value: String) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(value, style = Sendoku.type.title, color = Sendoku.colors.given)
-        Text(label, style = Sendoku.type.overline, color = Sendoku.colors.muted)
+private fun Stat(label: String, value: String, modifier: Modifier = Modifier) {
+    // Three of these across the width of the board, each one keeping to its third of it.
+    Column(modifier = modifier.padding(horizontal = 8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+        OneLine(value, Sendoku.type.title, Sendoku.colors.given)
+        OneLine(label, Sendoku.type.overline, Sendoku.colors.muted)
     }
 }
 
@@ -243,11 +259,7 @@ private fun OutcomeButton(
             .then(if (tag == null) Modifier else Modifier.testTag(tag)),
         contentAlignment = Alignment.Center,
     ) {
-        Text(
-            text = label,
-            style = Sendoku.type.label,
-            color = if (accent) colors.onAccent else colors.muted,
-        )
+        OneLine(label, Sendoku.type.label, if (accent) colors.onAccent else colors.muted, min = 6.sp)
     }
 }
 

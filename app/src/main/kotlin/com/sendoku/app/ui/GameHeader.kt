@@ -160,17 +160,19 @@ private fun BarIcon(
 private fun Stat(label: String, value: String, modifier: Modifier = Modifier, warn: Boolean = false) {
     val colors = Sendoku.colors
     Column(
-        modifier = modifier.semantics(mergeDescendants = true) { contentDescription = "$label, $value" },
+        modifier = modifier
+            // A hair of air on both sides, so two neighbouring stats cannot end up reading
+            // as one word when both of them have filled their quarter of the screen.
+            .padding(horizontal = 6.dp)
+            .semantics(mergeDescendants = true) { contentDescription = "$label, $value" },
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(2.dp),
     ) {
-        Text(label, style = Sendoku.type.statLabel, color = colors.muted, textAlign = TextAlign.Center)
-        Text(
-            text = value,
-            style = Sendoku.type.statValue,
-            color = if (warn) colors.conflict else colors.given,
-            textAlign = TextAlign.Center,
-        )
+        // Four of these share the width of the screen, so at a large font scale a German
+        // label is wider than its quarter of it. Wrapping put "Leicht" over two lines and
+        // slid "0 von 3" sideways into the column next to it, so they shrink to fit instead.
+        OneLine(label, Sendoku.type.statLabel, colors.muted)
+        OneLine(value, Sendoku.type.statValue, if (warn) colors.conflict else colors.given)
     }
 }
 
