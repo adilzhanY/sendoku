@@ -91,6 +91,8 @@ class GameViewModelTest {
         private val look = MutableStateFlow(com.sendoku.app.data.Appearance())
         override val settings: Flow<GameSettings> = flow
         override val appearance: Flow<com.sendoku.app.data.Appearance> = look
+        private val asked = MutableStateFlow<Boolean?>(true)
+        override val languageAsked: Flow<Boolean?> = asked
         override suspend fun update(transform: (GameSettings) -> GameSettings) {
             flow.value = transform(flow.value)
         }
@@ -98,6 +100,10 @@ class GameViewModelTest {
             transform: (com.sendoku.app.data.Appearance) -> com.sendoku.app.data.Appearance,
         ) {
             look.value = transform(look.value)
+        }
+
+        override suspend fun markLanguageAsked() {
+            asked.value = true
         }
     }
 

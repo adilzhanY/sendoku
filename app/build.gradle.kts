@@ -56,6 +56,21 @@ android {
         resourceConfigurations += listOf("en", "ru", "de", "tr", "es", "it", "ja", "en-rXA", "ar-rXB")
     }
 
+    /*
+     * Every language ships in every install.
+     *
+     * Play splits a bundle by language by default and downloads only the ones the phone is
+     * set to. This app lets a player choose a language the phone is not set to, which is the
+     * whole point of the picker, so a split install would offer seven languages and have the
+     * strings for one. Turning the split off costs a couple of hundred kilobytes and is the
+     * only setting under which the language picker is not a lie.
+     */
+    bundle {
+        language {
+            enableSplit = false
+        }
+    }
+
     signingConfigs {
         if (keystoreProperties != null) {
             create("upload") {

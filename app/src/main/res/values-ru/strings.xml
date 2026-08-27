@@ -158,6 +158,10 @@
     <string name="language_spanish">Español</string>
     <string name="language_italian">Italiano</string>
     <string name="language_japanese">日本語</string>
+    <string name="first_run_prompt">Sendoku написан на семи языках. На каком читаете вы?</string>
+    <string name="first_run_system_is">На телефоне выбран %1$s</string>
+    <string name="first_run_no_translation">На телефоне выбран язык, которого у Sendoku пока нет. Ближе всего английский.</string>
+    <string name="first_run_continue">Начать игру</string>
     <string name="settings_look">Оформление</string>
     <string name="settings_light_or_dark">Светлая или тёмная</string>
     <string name="settings_terminal_is_dark">Terminal всегда тёмная, как бы ни был настроен телефон. Так задумано.</string>

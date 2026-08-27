@@ -138,6 +138,10 @@
     <string name="language_spanish">Español</string>
     <string name="language_italian">Italiano</string>
     <string name="language_japanese">日本語</string>
+    <string name="first_run_prompt">Sendoku yedi dilde yazıldı. Sen hangisini okuyorsun?</string>
+    <string name="first_run_system_is">Telefonun %1$s olarak ayarlı</string>
+    <string name="first_run_no_translation">Telefonun, Sendoku\'nun henüz konuşmadığı bir dile ayarlı. En yakını İngilizce.</string>
+    <string name="first_run_continue">Oynamaya başla</string>
     <string name="settings_look">Görünüm</string>
     <string name="settings_light_or_dark">Açık ya da koyu</string>
     <string name="settings_terminal_is_dark">Terminal, telefon nasıl ayarlı olursa olsun koyudur. Bu bilinçli bir tercih.</string>

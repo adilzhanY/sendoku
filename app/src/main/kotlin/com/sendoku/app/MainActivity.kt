@@ -7,7 +7,9 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -43,10 +45,14 @@ import com.sendoku.app.learn.Problem
 import com.sendoku.app.learn.RoomLearningRepository
 import com.sendoku.app.theme.Sendoku
 import com.sendoku.app.theme.SendokuTheme
+import com.sendoku.app.ui.FirstRunLanguage
 import com.sendoku.app.ui.InProgressSummary
+import com.sendoku.app.ui.Languages
+import com.sendoku.app.ui.languageAnswered
 import com.sendoku.engine.catalog.CatalogReader
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -157,6 +163,30 @@ class MainActivity : ComponentActivity() {
     private val hints by lazy { DataStoreHintLog(preferences) }
 
     /**
+     * Whether the language question has been answered, or does not need asking.
+     *
+     * The flag says whether this player answered it. The rest says whether they were ever
+     * going to be asked: somebody with a saved game, a finished game or a lesson in progress
+     * has been using the app since before this screen existed, and stopping them on an
+     * update to ask a question they answered by playing is an update that feels broken.
+     */
+    private val firstRunAnswered by lazy {
+        combine(
+            settings.languageAsked,
+            repository.watchInProgress(),
+            repository.history(),
+            learning.progress(),
+        ) { asked, inProgress, finished, course ->
+            languageAnswered(
+                asked = asked == true,
+                hasGame = inProgress != null,
+                hasHistory = finished.isNotEmpty(),
+                hasLessons = course.lessons.isNotEmpty(),
+            )
+        }
+    }
+
+    /**
      * Built once, not per frame.
      *
      * Mapping the flow inside the composable rebuilt it on every recomposition, which
@@ -173,6 +203,18 @@ class MainActivity : ComponentActivity() {
                 )
             }
         }
+    }
+
+    /**
+     * The chosen language, applied before a single string is read.
+     *
+     * Below Android 13 this is the only place it can happen: there is no per app language in
+     * the system, so the app carries its own and puts it on the context the activity is built
+     * from. On 13 and later the system has already done it and this hands back what it was
+     * given.
+     */
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(Languages.wrap(newBase))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -202,6 +244,30 @@ class MainActivity : ComponentActivity() {
                     contentWindowInsets = WindowInsets.safeDrawing,
                     modifier = Modifier.fillMaxSize(),
                 ) { insets ->
+                    // Ask which language, once, before anything else. Null means the
+                    // answer is still being read off disk, and the first frame waits
+                    // rather than showing the home screen and replacing it a moment
+                    // later with a question.
+                    val asked by firstRunAnswered.collectAsState(initial = null)
+                    if (asked == null) {
+                        Box(Modifier.fillMaxSize().background(Sendoku.colors.background))
+                        return@Scaffold
+                    }
+                    if (asked == false) {
+                        FirstRunLanguage(
+                            onChoose = { language ->
+                                // The flag first, and awaited: choosing a language restarts
+                                // the activity, and a write left running in a scope that is
+                                // about to be cancelled is a question asked twice.
+                                lifecycleScope.launch {
+                                    settings.markLanguageAsked()
+                                    Languages.choose(this@MainActivity, language)
+                                }
+                            },
+                            modifier = Modifier.fillMaxSize().padding(insets),
+                        )
+                        return@Scaffold
+                    }
                     SendokuApp(
                         model = model,
                         settings = settings.settings,

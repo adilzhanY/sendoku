@@ -164,6 +164,10 @@
     <string name="language_spanish">Español</string>
     <string name="language_italian">Italiano</string>
     <string name="language_japanese">日本語</string>
+    <string name="first_run_prompt">Sendoku is written in seven languages. Which one do you read?</string>
+    <string name="first_run_system_is">Your phone is set to %1$s</string>
+    <string name="first_run_no_translation">Your phone is set to a language Sendoku does not speak yet. English is the closest it has.</string>
+    <string name="first_run_continue">Start playing</string>
     <string name="settings_look">Look</string>
     <string name="settings_light_or_dark">Light or dark</string>
     <string name="settings_terminal_is_dark">Terminal is dark whichever way the phone is set. That is deliberate.</string>

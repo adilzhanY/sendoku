@@ -30,8 +30,20 @@ public enum class ThemeMode(public val displayName: String) {
 public interface SettingsStore {
     public val settings: Flow<GameSettings>
     public val appearance: Flow<Appearance>
+
+    /**
+     * Whether this player has been asked which language they read.
+     *
+     * A flag rather than a version number or a date, because the only thing that matters is
+     * whether this person has answered. Null until anything is known, so the first frame can
+     * wait rather than guess: showing the home screen and then replacing it with a question
+     * is worse than showing nothing for a moment.
+     */
+    public val languageAsked: Flow<Boolean?>
+
     public suspend fun update(transform: (GameSettings) -> GameSettings)
     public suspend fun updateAppearance(transform: (Appearance) -> Appearance)
+    public suspend fun markLanguageAsked()
 }
 
 /**
@@ -47,6 +59,8 @@ public class DataStoreSettings(private val store: DataStore<Preferences>) : Sett
 
     override val appearance: Flow<Appearance> = store.data.map { it.toAppearance() }
 
+    override val languageAsked: Flow<Boolean?> = store.data.map { it[SettingsKeys.languageAsked] == true }
+
     override suspend fun update(transform: (GameSettings) -> GameSettings) {
         store.edit { preferences ->
             preferences.write(transform(preferences.toSettings()))
@@ -57,6 +71,10 @@ public class DataStoreSettings(private val store: DataStore<Preferences>) : Sett
         store.edit { preferences ->
             preferences.write(transform(preferences.toAppearance()))
         }
+    }
+
+    override suspend fun markLanguageAsked() {
+        store.edit { preferences -> preferences[SettingsKeys.languageAsked] = true }
     }
 }
 
@@ -73,6 +91,7 @@ internal object SettingsKeys {
     val mistakeLimit = intPreferencesKey("mistake_limit")
     val hintLimit = intPreferencesKey("hint_limit")
     val haptics = booleanPreferencesKey("haptics")
+    val languageAsked = booleanPreferencesKey("language_asked")
     val sound = booleanPreferencesKey("sound")
     val theme = stringPreferencesKey("theme")
     val themeMode = stringPreferencesKey("theme_mode")

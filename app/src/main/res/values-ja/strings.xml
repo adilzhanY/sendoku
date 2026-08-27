@@ -157,6 +157,10 @@
     <string name="language_spanish">Español</string>
     <string name="language_italian">Italiano</string>
     <string name="language_japanese">日本語</string>
+    <string name="first_run_prompt">Sendokuは7つの言語で書かれています。どの言語で読みますか。</string>
+    <string name="first_run_system_is">この端末の設定は%1$sです</string>
+    <string name="first_run_no_translation">この端末は、Sendokuがまだ話せない言語に設定されています。いちばん近いのは英語です。</string>
+    <string name="first_run_continue">はじめる</string>
     <string name="settings_look">見た目</string>
     <string name="settings_light_or_dark">ライトとダーク</string>
     <string name="settings_terminal_is_dark">Terminalは端末の設定にかかわらずダークです。わざとそうしています。</string>

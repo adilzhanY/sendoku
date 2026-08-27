@@ -1,5 +1,6 @@
 package com.sendoku.app.ui
 
+import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -25,6 +26,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import com.sendoku.app.R
@@ -102,7 +104,9 @@ public fun SettingsScreen(
         // Next to the sound switch, at the top, for the same reason: somebody who cannot
         // read the app cannot go looking for the setting that fixes that.
         SectionLabel(stringResource(R.string.settings_language))
-        var language by remember { mutableStateOf(Languages.current()) }
+        val activity = LocalActivity.current
+        val here = LocalContext.current
+        var language by remember { mutableStateOf(Languages.current(here)) }
         for (choice in Language.entries) {
             Choice(
                 label = stringResource(choice.label),
@@ -110,7 +114,7 @@ public fun SettingsScreen(
                 selected = language == choice,
             ) {
                 language = choice
-                Languages.choose(choice)
+                activity?.let { Languages.choose(it, choice) }
             }
         }
 
