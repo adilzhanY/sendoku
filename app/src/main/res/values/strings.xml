@@ -173,7 +173,8 @@
     <string name="first_run_system_is">Your phone is set to %1$s</string>
     <string name="first_run_no_translation">Your phone is set to a language Sendoku does not speak yet. English is the closest it has.</string>
     <string name="first_run_continue">Start playing</string>
-    <string name="settings_look">Look</string>
+    <string name="settings_interface">Interface</string>
+    <string name="settings_rules">Game rules</string>
     <string name="settings_light_or_dark">Light or dark</string>
     <string name="settings_terminal_is_dark">Terminal is dark whichever way the phone is set. That is deliberate.</string>
     <string name="settings_board">The board</string>
@@ -193,7 +194,6 @@
     <string name="settings_haptics">Buzz when a digit goes in</string>
     <string name="settings_sound">Sounds</string>
     <string name="settings_sound_note">Soft notes as you play. Off is one tap away, and the phone\'s own silent mode wins over both.</string>
-    <string name="settings_mistakes">Mistakes</string>
     <string name="settings_mistake_limit">End the game after three mistakes</string>
     <string name="settings_mistake_note">On by default, at three. Turn it off for the hard grades, where losing an hour to one slip is miserable.</string>
     <string name="settings_about">ABOUT SENDOKU</string>
@@ -787,7 +787,6 @@
     <string name="outcome_share">Share</string>
     <string name="card_solved">Solved</string>
     <string name="card_lost">Beaten by</string>
-    <string name="settings_hints">Hints</string>
     <string name="settings_hint_limit">End the game after three hints</string>
     <string name="settings_hint_note">On by default. Three hints are free, and the fourth costs the game, which makes a hint a decision rather than a reflex. Turn it off while you are working through the course.</string>
     <string name="account_title">You</string>

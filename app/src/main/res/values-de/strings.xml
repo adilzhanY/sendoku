@@ -148,7 +148,8 @@
     <string name="first_run_system_is">Ihr Telefon steht auf %1$s</string>
     <string name="first_run_no_translation">Ihr Telefon steht auf einer Sprache, die Sendoku noch nicht spricht. Englisch kommt am nächsten.</string>
     <string name="first_run_continue">Spielen</string>
-    <string name="settings_look">Aussehen</string>
+    <string name="settings_interface">Oberfläche</string>
+    <string name="settings_rules">Spielregeln</string>
     <string name="settings_light_or_dark">Hell oder dunkel</string>
     <string name="settings_terminal_is_dark">Terminal ist dunkel, wie das Telefon auch eingestellt ist. Das ist Absicht.</string>
     <string name="settings_board">Das Brett</string>
@@ -168,7 +169,6 @@
     <string name="settings_haptics">Vibrieren, wenn eine Ziffer gesetzt wird</string>
     <string name="settings_sound">Töne</string>
     <string name="settings_sound_note">Leise Töne beim Spielen. Aus ist einen Tipp entfernt, und der Lautlosmodus des Telefons zählt ohnehin mehr.</string>
-    <string name="settings_mistakes">Fehler</string>
     <string name="settings_mistake_limit">Spiel nach drei Fehlern beenden</string>
     <string name="settings_mistake_note">Standardmäßig an, bei drei. Für die schweren Stufen lieber aus, denn eine Stunde an einen Ausrutscher zu verlieren ist bitter.</string>
     <string name="settings_about">ÜBER SENDOKU</string>
@@ -397,7 +397,6 @@
     <string name="card_solved">Gelöst</string>
     <string name="card_lost">Geschlagen von</string>
 
-    <string name="settings_hints">Tipps</string>
     <string name="settings_hint_limit">Spiel nach drei Tipps beenden</string>
     <string name="settings_hint_note">Standardmäßig an. Drei Tipps sind frei, der vierte kostet das Spiel, und das macht einen Tipp zu einer Entscheidung statt zu einem Reflex. Schalten Sie es aus, solange Sie den Kurs durcharbeiten.</string>
 

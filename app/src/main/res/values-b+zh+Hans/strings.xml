@@ -162,7 +162,8 @@
     <string name="first_run_system_is">你的手机设置为%1$s</string>
     <string name="first_run_no_translation">你的手机设置的语言 Sendoku 还不会说。最接近的是英语。</string>
     <string name="first_run_continue">开始玩</string>
-    <string name="settings_look">外观</string>
+    <string name="settings_interface">界面</string>
+    <string name="settings_rules">游戏规则</string>
     <string name="settings_light_or_dark">浅色或深色</string>
     <string name="settings_terminal_is_dark">无论手机怎么设置，Terminal 都是深色的。这是有意为之。</string>
     <string name="settings_board">盘面</string>
@@ -182,7 +183,6 @@
     <string name="settings_haptics">填入数字时震动</string>
     <string name="settings_sound">声音</string>
     <string name="settings_sound_note">操作时的轻声提示。关掉只需一下，而手机的静音模式优先于这两项。</string>
-    <string name="settings_mistakes">错误</string>
     <string name="settings_mistake_limit">错满三次结束本局</string>
     <string name="settings_mistake_note">默认打开，三次。高难度建议关掉：一次走神赔上一个小时是很难受的。</string>
     <string name="settings_about">关于 SENDOKU</string>
@@ -766,7 +766,6 @@
     <string name="outcome_share">分享</string>
     <string name="card_solved">已完成</string>
     <string name="card_lost">未能完成</string>
-    <string name="settings_hints">提示</string>
     <string name="settings_hint_limit">用满三次提示后结束本局</string>
     <string name="settings_hint_note">默认打开。前三次提示免费，第四次要赔上这一局，这样提示就成了一个决定而不是一个条件反射。做课程的时候可以关掉。</string>
     <string name="account_title">你</string>

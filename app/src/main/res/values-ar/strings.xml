@@ -180,7 +180,8 @@
     <string name="first_run_system_is">هاتفك مضبوط على %1$s</string>
     <string name="first_run_no_translation">هاتفك مضبوط على لغة لا يتحدثها Sendoku بعد. الإنجليزية هي الأقرب المتوفرة.</string>
     <string name="first_run_continue">ابدأ اللعب</string>
-    <string name="settings_look">المظهر</string>
+    <string name="settings_interface">الواجهة</string>
+    <string name="settings_rules">قواعد اللعبة</string>
     <string name="settings_light_or_dark">فاتح أو داكن</string>
     <string name="settings_terminal_is_dark">مظهر Terminal داكن مهما كان ضبط الهاتف. هذا مقصود.</string>
     <string name="settings_board">اللوح</string>
@@ -200,7 +201,6 @@
     <string name="settings_haptics">اهتزاز عند وضع رقم</string>
     <string name="settings_sound">الأصوات</string>
     <string name="settings_sound_note">نغمات هادئة أثناء اللعب. إيقافها بلمسة واحدة، ووضع الصامت في الهاتف يعلو على الاثنين.</string>
-    <string name="settings_mistakes">الأخطاء</string>
     <string name="settings_mistake_limit">إنهاء اللعبة بعد ثلاثة أخطاء</string>
     <string name="settings_mistake_note">مفعّل افتراضيًا، عند ثلاثة. عطّله في المستويات الصعبة، حيث خسارة ساعة بسبب سهو واحد أمر مؤلم.</string>
     <string name="settings_about">عن SENDOKU</string>
@@ -799,7 +799,6 @@
     <string name="outcome_share">مشاركة</string>
     <string name="card_solved">محلول</string>
     <string name="card_lost">هزمه اللغز</string>
-    <string name="settings_hints">التلميحات</string>
     <string name="settings_hint_limit">إنهاء اللعبة بعد ثلاثة تلميحات</string>
     <string name="settings_hint_note">مفعّل افتراضيًا. ثلاثة تلميحات مجانية، والرابع يكلف اللعبة، وهذا يجعل التلميح قرارًا لا ردة فعل. عطّله ما دمت تتابع الدورة.</string>
     <string name="account_title">أنت</string>

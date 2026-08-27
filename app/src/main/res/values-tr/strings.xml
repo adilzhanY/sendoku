@@ -147,7 +147,8 @@
     <string name="first_run_system_is">Telefonun %1$s olarak ayarlı</string>
     <string name="first_run_no_translation">Telefonun, Sendoku\'nun henüz konuşmadığı bir dile ayarlı. En yakını İngilizce.</string>
     <string name="first_run_continue">Oynamaya başla</string>
-    <string name="settings_look">Görünüm</string>
+    <string name="settings_interface">Arayüz</string>
+    <string name="settings_rules">Oyun kuralları</string>
     <string name="settings_light_or_dark">Açık ya da koyu</string>
     <string name="settings_terminal_is_dark">Terminal, telefon nasıl ayarlı olursa olsun koyudur. Bu bilinçli bir tercih.</string>
     <string name="settings_board">Tahta</string>
@@ -167,7 +168,6 @@
     <string name="settings_haptics">Rakam girildiğinde titret</string>
     <string name="settings_sound">Sesler</string>
     <string name="settings_sound_note">Oynarken duyulan yumuşak notalar. Kapatmak tek dokunuş, üstelik telefonun sessiz modu her ikisinden de önce gelir.</string>
-    <string name="settings_mistakes">Hatalar</string>
     <string name="settings_mistake_limit">Üç hatadan sonra oyunu bitir</string>
     <string name="settings_mistake_note">Varsayılan olarak açık, üç hatada. Zor seviyelerde kapatın: tek bir dalgınlığa bir saat kaybetmek can sıkıcıdır.</string>
     <string name="settings_about">SENDOKU HAKKINDA</string>
@@ -396,7 +396,6 @@
     <string name="card_solved">Çözüldü</string>
     <string name="card_lost">Yenildiği bulmaca</string>
 
-    <string name="settings_hints">İpuçları</string>
     <string name="settings_hint_limit">Üç ipucundan sonra oyunu bitir</string>
     <string name="settings_hint_note">Varsayılan olarak açık. Üç ipucu bedava, dördüncüsü oyuna mal olur; bu da ipucunu bir refleks değil bir karar hâline getirir. Kursu çalışırken kapatın.</string>
 

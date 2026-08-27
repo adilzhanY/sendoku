@@ -184,6 +184,154 @@ public object SendokuIcons {
         }
     }
 
+    // The seven marks down the side of the settings screen. A settings page is a list
+    // somebody scrolls looking for one thing, and a word alone is read at reading speed. A
+    // shape beside it is found at glancing speed, which is the whole reason these exist: not
+    // decoration, a way to stop scrolling sooner.
+
+    /** A speaker with two waves. Sound, and everything the app does that you can feel. */
+    public val Sound: ImageVector = icon("Sound") {
+        stroke {
+            moveTo(4.0f, 9.5f)
+            horizontalLineTo(7.5f)
+            lineTo(12.0f, 5.5f)
+            verticalLineTo(18.5f)
+            lineTo(7.5f, 14.5f)
+            horizontalLineTo(4.0f)
+            close()
+        }
+        stroke {
+            moveTo(15.5f, 9.0f)
+            arcTo(4.5f, 4.5f, 0f, isMoreThanHalf = false, isPositiveArc = true, 15.5f, 15.0f)
+        }
+        stroke {
+            moveTo(18.5f, 6.0f)
+            arcTo(8.5f, 8.5f, 0f, isMoreThanHalf = false, isPositiveArc = true, 18.5f, 18.0f)
+        }
+    }
+
+    /** A globe. The one row a person who cannot read the app has to be able to find. */
+    public val Globe: ImageVector = icon("Globe") {
+        stroke {
+            moveTo(12.0f, 3.0f)
+            arcTo(9.0f, 9.0f, 0f, isMoreThanHalf = true, isPositiveArc = true, 11.9f, 3.0f)
+            close()
+        }
+        stroke {
+            moveTo(3.0f, 12.0f)
+            horizontalLineTo(21.0f)
+        }
+        stroke {
+            moveTo(12.0f, 3.0f)
+            curveTo(15.0f, 6.5f, 15.0f, 17.5f, 12.0f, 21.0f)
+            curveTo(9.0f, 17.5f, 9.0f, 6.5f, 12.0f, 3.0f)
+            close()
+        }
+    }
+
+    /** A brush. The look of the thing rather than the rules of it. */
+    public val Palette: ImageVector = icon("Palette") {
+        stroke {
+            moveTo(6.0f, 20.0f)
+            lineTo(4.0f, 18.0f)
+            lineTo(14.5f, 7.5f)
+            lineTo(16.5f, 9.5f)
+            close()
+        }
+        stroke {
+            moveTo(13.5f, 6.5f)
+            lineTo(17.5f, 10.5f)
+            lineTo(20.0f, 8.0f)
+            lineTo(16.0f, 4.0f)
+            close()
+        }
+    }
+
+    /** A grid with one cell filled. What the board does while you are playing on it. */
+    public val Board: ImageVector = icon("Board") {
+        stroke {
+            moveTo(4.0f, 4.0f)
+            horizontalLineTo(20.0f)
+            verticalLineTo(20.0f)
+            horizontalLineTo(4.0f)
+            close()
+        }
+        stroke {
+            moveTo(9.33f, 4.0f)
+            verticalLineTo(20.0f)
+        }
+        stroke {
+            moveTo(14.67f, 4.0f)
+            verticalLineTo(20.0f)
+        }
+        stroke {
+            moveTo(4.0f, 9.33f)
+            horizontalLineTo(20.0f)
+        }
+        stroke {
+            moveTo(4.0f, 14.67f)
+            horizontalLineTo(20.0f)
+        }
+        path(fill = SolidColor(Color.Black)) {
+            moveTo(9.33f, 9.33f)
+            horizontalLineTo(14.67f)
+            verticalLineTo(14.67f)
+            horizontalLineTo(9.33f)
+            close()
+        }
+    }
+
+    /** A flag. Where the limits are, and what happens when you reach one. */
+    public val Rules: ImageVector = icon("Rules", mirrored = true) {
+        stroke {
+            moveTo(6.0f, 21.0f)
+            verticalLineTo(3.5f)
+        }
+        stroke {
+            moveTo(6.0f, 4.5f)
+            horizontalLineTo(18.0f)
+            lineTo(15.0f, 9.0f)
+            lineTo(18.0f, 13.5f)
+            horizontalLineTo(6.0f)
+        }
+    }
+
+    /** A box with an arrow going into it. Your record, and taking it with you. */
+    public val Data: ImageVector = icon("Data") {
+        stroke {
+            moveTo(12.0f, 3.5f)
+            verticalLineTo(13.5f)
+        }
+        stroke {
+            moveTo(8.0f, 9.5f)
+            lineTo(12.0f, 13.5f)
+            lineTo(16.0f, 9.5f)
+        }
+        stroke {
+            moveTo(4.5f, 15.5f)
+            verticalLineTo(19.5f)
+            horizontalLineTo(19.5f)
+            verticalLineTo(15.5f)
+        }
+    }
+
+    /** An i in a circle. What the app promises, and what it is standing on. */
+    public val Info: ImageVector = icon("Info") {
+        stroke {
+            moveTo(12.0f, 3.0f)
+            arcTo(9.0f, 9.0f, 0f, isMoreThanHalf = true, isPositiveArc = true, 11.9f, 3.0f)
+            close()
+        }
+        stroke {
+            moveTo(12.0f, 11.0f)
+            verticalLineTo(16.5f)
+        }
+        stroke {
+            moveTo(12.0f, 7.5f)
+            verticalLineTo(8.0f)
+        }
+    }
+
     /** A grid of nine, which is what the app is about, rather than a house nobody lives in. */
     public val Home: ImageVector = icon("Home") {
         stroke {

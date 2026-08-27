@@ -162,7 +162,8 @@
     <string name="first_run_system_is">Il tuo telefono è impostato su %1$s</string>
     <string name="first_run_no_translation">Il tuo telefono è impostato su una lingua che Sendoku non parla ancora. L\'inglese è la cosa più vicina che ha.</string>
     <string name="first_run_continue">Inizia a giocare</string>
-    <string name="settings_look">Aspetto</string>
+    <string name="settings_interface">Interfaccia</string>
+    <string name="settings_rules">Regole del gioco</string>
     <string name="settings_light_or_dark">Chiaro o scuro</string>
     <string name="settings_terminal_is_dark">Terminal è scuro comunque sia impostato il telefono. È voluto.</string>
     <string name="settings_board">La griglia</string>
@@ -182,7 +183,6 @@
     <string name="settings_haptics">Vibra quando entra una cifra</string>
     <string name="settings_sound">Suoni</string>
     <string name="settings_sound_note">Note morbide mentre giochi. Spegnerle è un tocco, e la modalità silenziosa del telefono vince su entrambe le cose.</string>
-    <string name="settings_mistakes">Errori</string>
     <string name="settings_mistake_limit">Chiudi la partita dopo tre errori</string>
     <string name="settings_mistake_note">Acceso di default, a tre. Spegnilo per i livelli alti, dove perdere un\'ora per una distrazione è penoso.</string>
     <string name="settings_about">SU SENDOKU</string>
@@ -769,7 +769,6 @@
     <string name="outcome_share">Condividi</string>
     <string name="card_solved">Risolto</string>
     <string name="card_lost">Ha vinto lo schema</string>
-    <string name="settings_hints">Aiuti</string>
     <string name="settings_hint_limit">Chiudi la partita dopo tre aiuti</string>
     <string name="settings_hint_note">Acceso di default. Tre aiuti sono gratis, e il quarto costa la partita, il che rende un aiuto una decisione e non un riflesso. Spegnilo mentre lavori sul corso.</string>
     <string name="account_title">Tu</string>

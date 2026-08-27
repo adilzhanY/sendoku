@@ -166,7 +166,8 @@
     <string name="first_run_system_is">Votre téléphone est réglé sur %1$s</string>
     <string name="first_run_no_translation">Votre téléphone est réglé sur une langue que Sendoku ne parle pas encore. L\'anglais est ce qui s\'en approche le plus.</string>
     <string name="first_run_continue">Commencer à jouer</string>
-    <string name="settings_look">Apparence</string>
+    <string name="settings_interface">Interface</string>
+    <string name="settings_rules">Règles du jeu</string>
     <string name="settings_light_or_dark">Clair ou sombre</string>
     <string name="settings_terminal_is_dark">Terminal est sombre quel que soit le réglage du téléphone. C\'est voulu.</string>
     <string name="settings_board">La grille</string>
@@ -186,7 +187,6 @@
     <string name="settings_haptics">Vibrer quand un chiffre est placé</string>
     <string name="settings_sound">Sons</string>
     <string name="settings_sound_note">Des notes douces pendant que vous jouez. Les couper est à une touche, et le mode silencieux du téléphone l\'emporte sur les deux.</string>
-    <string name="settings_mistakes">Erreurs</string>
     <string name="settings_mistake_limit">Terminer la partie après trois erreurs</string>
     <string name="settings_mistake_note">Activé par défaut, à trois. Désactivez-le pour les niveaux élevés, où perdre une heure sur une étourderie est pénible.</string>
     <string name="settings_about">À PROPOS DE SENDOKU</string>
@@ -773,7 +773,6 @@
     <string name="outcome_share">Partager</string>
     <string name="card_solved">Résolue</string>
     <string name="card_lost">Battu par</string>
-    <string name="settings_hints">Indices</string>
     <string name="settings_hint_limit">Terminer la partie après trois indices</string>
     <string name="settings_hint_note">Activé par défaut. Trois indices sont gratuits, et le quatrième coûte la partie, ce qui fait d\'un indice une décision plutôt qu\'un réflexe. Désactivez-le pendant que vous suivez le cours.</string>
     <string name="account_title">Vous</string>

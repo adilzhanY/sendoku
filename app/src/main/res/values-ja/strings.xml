@@ -166,7 +166,8 @@
     <string name="first_run_system_is">この端末の設定は%1$sです</string>
     <string name="first_run_no_translation">この端末は、Sendokuがまだ話せない言語に設定されています。いちばん近いのは英語です。</string>
     <string name="first_run_continue">はじめる</string>
-    <string name="settings_look">見た目</string>
+    <string name="settings_interface">画面</string>
+    <string name="settings_rules">ゲームのルール</string>
     <string name="settings_light_or_dark">ライトとダーク</string>
     <string name="settings_terminal_is_dark">Terminalは端末の設定にかかわらずダークです。わざとそうしています。</string>
     <string name="settings_board">盤面</string>
@@ -186,7 +187,6 @@
     <string name="settings_haptics">数字を入れたら振動する</string>
     <string name="settings_sound">サウンド</string>
     <string name="settings_sound_note">操作に合わせた静かな音です。切るのはワンタップ、そして端末のマナーモードが両方に優先します。</string>
-    <string name="settings_mistakes">ミス</string>
     <string name="settings_mistake_limit">ミス3回でゲームを終わりにする</string>
     <string name="settings_mistake_note">既定でオン、3回までです。上のレベルでは切ってください。ひとつの不注意で1時間を失うのはつらいものです。</string>
     <string name="settings_about">Sendokuについて</string>
@@ -770,7 +770,6 @@
     <string name="outcome_share">共有</string>
     <string name="card_solved">クリア</string>
     <string name="card_lost">負け</string>
-    <string name="settings_hints">ヒント</string>
     <string name="settings_hint_limit">ヒント3回でゲームを終わりにする</string>
     <string name="settings_hint_note">既定でオン。ヒントは3回まで無料で、4回目はゲームと引き換えです。そうすることでヒントが反射ではなく判断になります。コースを進めるあいだは切っておいてください。</string>
     <string name="account_title">あなた</string>

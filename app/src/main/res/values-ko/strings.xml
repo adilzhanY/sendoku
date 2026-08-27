@@ -159,7 +159,8 @@
     <string name="first_run_system_is">휴대폰이 %1$s로 설정되어 있어요</string>
     <string name="first_run_no_translation">휴대폰에 설정된 언어는 Sendoku가 아직 못 하는 언어예요. 가장 가까운 것은 영어예요.</string>
     <string name="first_run_continue">시작하기</string>
-    <string name="settings_look">모양</string>
+    <string name="settings_interface">화면</string>
+    <string name="settings_rules">게임 규칙</string>
     <string name="settings_light_or_dark">밝게 또는 어둡게</string>
     <string name="settings_terminal_is_dark">Terminal은 휴대폰 설정과 상관없이 어두워요. 일부러 그렇게 했어요.</string>
     <string name="settings_board">판</string>
@@ -179,7 +180,6 @@
     <string name="settings_haptics">숫자를 넣을 때 진동</string>
     <string name="settings_sound">소리</string>
     <string name="settings_sound_note">조작할 때 나는 잔잔한 소리예요. 끄는 것은 한 번만 누르면 되고, 휴대폰의 무음 모드가 둘 다보다 우선해요.</string>
-    <string name="settings_mistakes">실수</string>
     <string name="settings_mistake_limit">실수 세 번이면 판을 끝내기</string>
     <string name="settings_mistake_note">기본으로 켜져 있고, 세 번이에요. 높은 난이도에서는 꺼 두세요. 한 번의 부주의로 한 시간을 잃는 것은 괴로우니까요.</string>
     <string name="settings_about">SENDOKU 정보</string>
@@ -763,7 +763,6 @@
     <string name="outcome_share">공유</string>
     <string name="card_solved">완성</string>
     <string name="card_lost">실패</string>
-    <string name="settings_hints">힌트</string>
     <string name="settings_hint_limit">힌트 세 번이면 판을 끝내기</string>
     <string name="settings_hint_note">기본으로 켜져 있어요. 힌트 세 번은 무료이고 네 번째는 판을 잃게 되니, 힌트가 반사가 아니라 결정이 돼요. 코스를 따라가는 동안에는 꺼 두세요.</string>
     <string name="account_title">나</string>
