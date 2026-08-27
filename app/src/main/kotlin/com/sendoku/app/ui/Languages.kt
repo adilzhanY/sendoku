@@ -28,6 +28,7 @@ public enum class Language(public val tag: String, @StringRes public val label: 
     ITALIAN("it", R.string.language_italian),
     JAPANESE("ja", R.string.language_japanese),
     FRENCH("fr", R.string.language_french),
+    PORTUGUESE("pt", R.string.language_portuguese),
 }
 
 /**

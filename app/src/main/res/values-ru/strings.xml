@@ -159,6 +159,7 @@
     <string name="language_italian">Italiano</string>
     <string name="language_japanese">日本語</string>
     <string name="language_french">Français</string>
+    <string name="language_portuguese">Português (Brasil)</string>
     <string name="first_run_prompt">Sendoku написан на семи языках. На каком читаете вы?</string>
     <string name="first_run_system_is">На телефоне выбран %1$s</string>
     <string name="first_run_no_translation">На телефоне выбран язык, которого у Sendoku пока нет. Ближе всего английский.</string>
