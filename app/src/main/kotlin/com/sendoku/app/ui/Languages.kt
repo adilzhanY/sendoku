@@ -29,6 +29,16 @@ public enum class Language(public val tag: String, @StringRes public val label: 
     JAPANESE("ja", R.string.language_japanese),
     FRENCH("fr", R.string.language_french),
     PORTUGUESE("pt", R.string.language_portuguese),
+
+    /**
+     * Simplified Chinese, and only Simplified.
+     *
+     * The tag carries the script because that is what is being promised. Somebody reading
+     * Traditional in Taipei or Hong Kong is not served by being handed Simplified: it is a
+     * different written language to read, and until there is a Traditional translation the
+     * honest answer is the English they already had.
+     */
+    CHINESE("zh-Hans", R.string.language_chinese),
 }
 
 /**
@@ -60,7 +70,10 @@ public object Languages {
     /** What the app is set to, or [Language.SYSTEM] when it is following the phone. */
     public fun current(context: Context): Language {
         val tag = stored(context)
-        return Language.entries.firstOrNull { it.tag.isNotEmpty() && it.tag == tag } ?: Language.SYSTEM
+        // Compared on the language alone, because that is all a stored locale carries back.
+        // A tag with a script in it, like zh-Hans, still comes home as zh.
+        return Language.entries.firstOrNull { it.tag.isNotEmpty() && it.tag.substringBefore('-') == tag }
+            ?: Language.SYSTEM
     }
 
     /**

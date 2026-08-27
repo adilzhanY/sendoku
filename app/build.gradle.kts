@@ -53,7 +53,7 @@ android {
         // Every language the app is written in, and nothing else. This list is what actually
         // ends up in the APK: a translation missing from here is stripped at package time,
         // and the app quietly falls back to English with no error anywhere.
-        resourceConfigurations += listOf("en", "ru", "de", "tr", "es", "it", "ja", "fr", "pt", "en-rXA", "ar-rXB")
+        resourceConfigurations += listOf("en", "ru", "de", "tr", "es", "it", "ja", "fr", "pt", "b+zh+Hans", "en-rXA", "ar-rXB")
     }
 
     /*

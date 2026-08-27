@@ -64,7 +64,7 @@ public fun FirstRunLanguage(onChoose: (Language) -> Unit, modifier: Modifier = M
     // What the phone is set to, and whether that is one of ours. A phone in Portuguese gets
     // told so rather than being quietly given English as though it were the same thing.
     val phone = LocalConfiguration.current.locales[0]?.language.orEmpty()
-    val spoken = Language.entries.firstOrNull { it.tag.isNotEmpty() && it.tag == phone }
+    val spoken = Language.entries.firstOrNull { it.tag.isNotEmpty() && it.tag.substringBefore('-') == phone }
 
     var chosen by remember { mutableStateOf(if (spoken != null) Language.SYSTEM else Language.ENGLISH) }
 

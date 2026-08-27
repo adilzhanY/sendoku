@@ -1,0 +1,802 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  简体中文。
+
+  这份文件放在 values-b+zh+Hans 里，只给使用简体中文的手机看。在台北或香港读繁体的人不会
+  因为拿到一份简体译文而变得更方便：那是另一套书写系统，在有繁体译文之前，诚实的做法是让
+  他们继续看到原来的英文。
+
+  技巧的名字用中国数独爱好者本来就在用的说法，而不是从英文直译：naked single 是唯余法，
+  hidden single 是摒除法，X-Wing 是四角对角线，Swordfish 是剑鱼，ALS 是待定数组。语气与
+  原文一致：平静、直接，不用感叹号。
+-->
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Sendoku</string>
+
+    <string name="home_choose_level">选择难度</string>
+    <string name="home_daily">每日一题</string>
+    <string name="home_new_puzzle">新题</string>
+    <string name="home_resume">继续</string>
+    <string name="home_in_progress">进行中</string>
+    <string name="home_percent">%1$s，%2$d%%</string>
+    <string name="home_placed">已填 %1$d／%2$d</string>
+
+    <string name="grade_gentle">简单</string>
+    <string name="grade_steady">普通</string>
+    <string name="grade_tricky">困难</string>
+    <string name="grade_severe">非常难</string>
+    <string name="grade_diabolical">专家</string>
+    <string name="grade_beyond">大师</string>
+    <string name="grade_insane">疯狂</string>
+    <string name="grade_nightmare">噩梦</string>
+    <string name="grade_locked">通关一道「%1$s」后解锁</string>
+    <string name="gate_gentle">一个一个地确定数字</string>
+    <string name="gate_steady">数对，以及被锁在一条线上的数字</string>
+    <string name="gate_tricky">三数组，以及横跨盘面的图形</string>
+    <string name="gate_severe">翼、染色和矩形</string>
+    <string name="gate_diabolical">推理链</string>
+    <string name="gate_beyond">比大多数应用走得更远</string>
+    <string name="gate_insane">连成链的格子群</string>
+    <string name="gate_nightmare">把一格的两种可能都在纸上试一遍</string>
+    <string name="grade_advanced">高阶</string>
+    <string name="grade_advanced_talkback">高阶难度，需要课程里教的技巧</string>
+
+    <string name="tool_undo">撤销</string>
+    <string name="tool_redo">重做</string>
+    <string name="tool_erase">擦除</string>
+    <string name="tool_notes">笔记</string>
+    <string name="tool_hint">提示</string>
+    <string name="paused">已暂停</string>
+    <string name="paused_tap">点击任意处继续</string>
+    <string name="mistakes_of">%1$d／%2$d</string>
+
+    <string name="cell_position">第%1$d行第%2$d列</string>
+    <string name="cell_clue">%1$s，%2$d，题目给出的数字</string>
+    <string name="cell_digit">%1$s，%2$d</string>
+    <string name="cell_empty">%1$s，空</string>
+    <string name="cell_noted">%1$s，空，笔记为%2$s</string>
+    <string name="cell_hint_argument">%1$s。提示的一部分。</string>
+    <string name="cell_hint_struck">%1$s。提示正在删掉这里的一个笔记。</string>
+    <string name="cell_hint_region">%1$s。在提示所说的区域内。</string>
+    <string name="cell_repeated">%1$s，重复</string>
+    <string name="pad_all_placed">%1$d，已全部填完</string>
+    <string name="pad_one_left">%1$d，还剩一个</string>
+    <plurals name="pad_left">
+        <item quantity="other">%1$d，还剩%2$d个</item>
+    </plurals>
+    <string name="pad_scanning">%1$s，正在显示可以填的位置</string>
+    <string name="pad_notes_mode">%1$s，笔记模式</string>
+
+    <string name="cell_actions_title">第%1$d行第%2$d列</string>
+    <string name="cell_actions_clue">这个是题目自带的，不能修改。</string>
+    <plurals name="cell_actions_note_all">
+        <item quantity="other">记下这%1$d个候选数</item>
+    </plurals>
+    <string name="cell_actions_clear_notes">清除笔记</string>
+    <string name="why_not_title">为什么不行？</string>
+    <string name="why_not_prompt">点一个数字，告诉你是什么挡住了它。</string>
+    <string name="why_not_taken">%2$s的第%3$d行第%4$d列已经有一个%1$d了。</string>
+    <string name="why_not_filled">这一格里已经有%1$d了。请先擦掉。</string>
+    <string name="why_not_possible">盘面上没有任何东西排除%1$d。这并不代表它是对的，只代表可以填。</string>
+    <string name="cell_actions_clear">清空这一格</string>
+
+    <string name="leave_title">离开这道题？</string>
+    <string name="leave_body">它会停在你离开的地方等你。</string>
+    <string name="leave_confirm">离开</string>
+    <string name="leave_cancel">继续</string>
+
+    <string name="outcome_solved">已完成</string>
+    <string name="outcome_lost">错误次数已用完</string>
+    <string name="outcome_rated">%1$s，评分 %2$s</string>
+    <string name="outcome_hints">提示</string>
+    <string name="outcome_mistakes">错误</string>
+    <string name="outcome_moves">步数</string>
+    <string name="outcome_needed">需要用到%1$s</string>
+    <string name="outcome_home">主页</string>
+    <string name="outcome_another">再来一道%1$s</string>
+
+    <string name="hint_remove_one">撤掉它</string>
+    <string name="hint_remove_many">一起撤掉</string>
+    <string name="hint_look_here_title">看这里</string>
+    <string name="hint_look_here">%1$s里有东西可找。这条提示只说到这里。</string>
+    <string name="hint_look_around">有一步可以找。这一步散在整个盘面上，而不是集中在某一个区域里。</string>
+    <string name="hint_what_kind">是哪一类的一步？</string>
+    <string name="hint_menu_title">帮助</string>
+    <string name="hint_menu_difficulty">下一步需要「%1$s」难度的技巧。</string>
+    <string name="hint_menu_broken">你填的某个数字是错的，改过来之前推不出别的东西。</string>
+    <string name="hint_menu_check">有填错的吗？</string>
+    <string name="hint_menu_look">我该看哪里？</string>
+    <string name="hint_menu_explain">讲解下一步</string>
+    <string name="hint_menu_free">在这里提问不花费提示次数。上限已经关掉了。</string>
+    <string name="hint_check_clean">你填的数字都没有错。</string>
+    <string name="hint_close">关闭</string>
+    <string name="hint_previous">上一步</string>
+    <string name="hint_cells_here">它所依据的格子已在%1$s里点亮。</string>
+    <string name="hint_where">指给我看</string>
+    <string name="hint_explain">讲解一下</string>
+    <string name="hint_do_it">填上</string>
+    <string name="hint_evidence">它所在的行已经有%1$s。列有%2$s。宫有%3$s。合起来正好是除%4$d以外的所有数字。</string>
+    <string name="hint_rests_on_earlier">这个推理有一部分依据的是前一条提示排除掉的候选数。它们已经作为笔记写在盘面上，你可以从那里接着往下看。</string>
+    <string name="hint_what_is_this">这是什么？</string>
+    <string name="hint_wrong_title">有地方不对</string>
+    <string name="hint_wrong_one">你填的数字里有一个不可能是对的。它已被标出。</string>
+    <string name="hint_wrong_many">你填的数字里有%1$d个不可能是对的。它们已被标出。</string>
+    <string name="hint_wrong_until_one">改过来之前推不出别的东西。</string>
+    <string name="hint_wrong_until_many">改过来之前推不出别的东西。</string>
+    <string name="hint_done_title">完成</string>
+    <string name="hint_done_body">这道题已经做完了。</string>
+    <string name="hint_stuck_title">没有可以建议的</string>
+    <string name="hint_stuck_body">这个盘面本身没有违规，但 Sendoku 知道的技巧没有一个适用。应用里的题目不应该出现这种情况。</string>
+    <string name="hint_in_region">%1$s</string>
+    <string name="hint_in_regions">%1$s和%2$s</string>
+    <string name="hint_outcome_place" tools:ignore="PluralsCandidate">所以第%1$d行第%2$d列是%3$d。</string>
+    <string name="hint_outcome_strike_one" tools:ignore="PluralsCandidate">所以%2$s里的%1$d可以去掉。</string>
+    <string name="hint_outcome_strike_two" tools:ignore="PluralsCandidate">所以%3$s里的%1$d和%2$d可以去掉。</string>
+    <plurals name="hint_cells">
+        <item quantity="other">%1$d格</item>
+    </plurals>
+
+    <string name="house_row">第%1$d行</string>
+    <string name="house_column">第%1$d列</string>
+    <string name="house_box">第%1$d宫</string>
+
+    <string name="glossary_title">技巧</string>
+    <string name="back">返回</string>
+
+    <string name="settings_title">设置</string>
+    <string name="settings_language">语言</string>
+    <string name="language_system">跟随手机</string>
+    <string name="language_english">English</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_german">Deutsch</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_italian">Italiano</string>
+    <string name="language_japanese">日本語</string>
+    <string name="language_french">Français</string>
+    <string name="language_portuguese">Português (Brasil)</string>
+    <string name="language_chinese">简体中文</string>
+    <string name="first_run_prompt">Sendoku 有九种语言。你用哪一种阅读？</string>
+    <string name="first_run_system_is">你的手机设置为%1$s</string>
+    <string name="first_run_no_translation">你的手机设置的语言 Sendoku 还不会说。最接近的是英语。</string>
+    <string name="first_run_continue">开始玩</string>
+    <string name="settings_look">外观</string>
+    <string name="settings_light_or_dark">浅色或深色</string>
+    <string name="settings_terminal_is_dark">无论手机怎么设置，Terminal 都是深色的。这是有意为之。</string>
+    <string name="settings_board">盘面</string>
+    <string name="settings_highlight_peers">高亮所在的行、列和宫</string>
+    <string name="settings_highlight_same">高亮盘面上相同的数字</string>
+    <string name="settings_auto_clear">填入数字后自动擦掉被排除的笔记</string>
+    <string name="settings_auto_notes">为每一格保留笔记</string>
+    <string name="settings_auto_notes_note">记账的事交给应用。专家以上几乎是必需的。</string>
+    <string name="settings_highlight_homes">显示所选数字还能填在哪里</string>
+    <string name="settings_auto_check">数字填错时立刻告诉我</string>
+    <string name="settings_auto_check_note">打开之后试错没有代价，题目也就失去了大半的紧张感。</string>
+    <string name="settings_auto_check_forced">只要还有错误次数上限，这一项就是打开的，因为会被计入的错误必须是看得见的错误。想两样都不要，就把下面的上限关掉。</string>
+    <string name="settings_flag_conflicts">标出在同一行、列或宫里重复的数字</string>
+    <string name="settings_clock">计时</string>
+    <string name="settings_show_timer">显示计时器</string>
+    <string name="settings_feedback">反馈</string>
+    <string name="settings_haptics">填入数字时震动</string>
+    <string name="settings_sound">声音</string>
+    <string name="settings_sound_note">操作时的轻声提示。关掉只需一下，而手机的静音模式优先于这两项。</string>
+    <string name="settings_mistakes">错误</string>
+    <string name="settings_mistake_limit">错满三次结束本局</string>
+    <string name="settings_mistake_note">默认打开，三次。高难度建议关掉：一次走神赔上一个小时是很难受的。</string>
+    <string name="settings_about">关于 SENDOKU</string>
+
+    <string name="theme_deep_field">深空</string>
+    <string name="theme_deep_field_summary">纯黑，一点青色，别无他物</string>
+    <string name="theme_ink">墨与纸</string>
+    <string name="theme_ink_summary">印在暖色纸上的谜题册</string>
+    <string name="theme_zen">石板禅</string>
+    <string name="theme_zen_summary">鼠尾草与石头，其余尽量不放</string>
+    <string name="theme_terminal">Terminal</string>
+    <string name="theme_terminal_summary">等宽、硬边、只有深色</string>
+    <string name="mode_system">跟随系统</string>
+    <string name="mode_light">始终浅色</string>
+    <string name="mode_dark">始终深色</string>
+
+    <string name="stats_title">统计</string>
+    <string name="stats_solved">已完成</string>
+    <string name="stats_streak">连续</string>
+    <string name="stats_hardest">最高难度</string>
+    <string name="stats_hardest_note">你完成过的最难的是%1$s。</string>
+    <plurals name="stats_longest_run">
+        <item quantity="other">你最长的连续记录是%1$d天。</item>
+    </plurals>
+    <string name="stats_totals">共%1$s，用了%2$d次提示。</string>
+    <string name="stats_by_grade">按难度</string>
+    <string name="stats_hints_title">你问得最多的技巧</string>
+    <string name="stats_hints_note">你问得最多的是%1$s。那一课值得回头再看一遍。</string>
+    <string name="stats_needed">你的题目用到了什么</string>
+    <string name="stats_solved_count">已完成：%1$d</string>
+    <string name="stats_solved_and_lost">已完成：%1$d，失败：%2$d</string>
+    <string name="stats_average">平均 %1$s</string>
+    <string name="stats_reset">清除统计</string>
+    <string name="stats_reset_title">丢掉你的记录？</string>
+    <string name="stats_reset_body">每一道做完的题、每一段连续记录和每一个最佳成绩。别处没有副本，所以无法恢复。</string>
+    <string name="stats_reset_confirm">清除</string>
+    <string name="stats_reset_cancel">保留</string>
+    <string name="stats_empty_title">还没有内容</string>
+    <string name="stats_empty_body">做完一道题这里就会有内容：每个难度你要花多久、你爬到了哪里、你的题目用到了哪些技巧。</string>
+
+    <string name="about_title">关于</string>
+    <string name="about_version">Sendoku %1$s</string>
+    <string name="about_tagline">给已经玩腻了难题的人做的数独应用。</string>
+    <string name="about_no_ads">没有广告</string>
+    <string name="about_no_ads_detail">题目之间没有，提示之前没有，永远没有。</string>
+    <string name="about_no_tracking">不做追踪</string>
+    <string name="about_no_tracking_detail">不统计任何东西，也不发送任何东西。没有服务器。</string>
+    <string name="about_no_purchases">没有内购</string>
+    <string name="about_no_purchases_detail">所有题目和所有提示都已经在里面了。</string>
+    <string name="about_offline">离线可用</string>
+    <string name="about_offline_detail">整批题目都装在应用里。</string>
+    <string name="about_hints">会教你的提示</string>
+    <string name="about_hints_detail">提示会说出技巧的名字，并讲清楚推理。它不会只把数字填上了事，也从不拿来卖钱：每道题送三次，上限可以在设置里关掉。</string>
+    <string name="about_rating">难度是按一道题真正需要用到的最难技巧来定的，办法是像人一样把它解一遍。所以这里的「非常难」和你上一次做的「非常难」是同一个分量。</string>
+    <string name="about_licence">Sendoku 是遵循 GNU 通用公共许可证第 3 版的自由软件。</string>
+    <string name="about_privacy">隐私政策用商店要求的格式写了同样的内容，见 adilzhany.github.io/sendoku/privacy</string>
+    <string name="about_licences">开源许可</string>
+    <string name="licences_title">许可</string>
+
+    <string name="look_naked_single">有一格只剩下一个数字能填。</string>
+    <string name="look_hidden_single">有一个数字只剩下一个位置能放。</string>
+    <string name="look_locked_candidates_pointing">在某一宫里，一个数字被锁在同一行或同一列上。</string>
+    <string name="look_locked_candidates_claiming">在某一条线上，一个数字只能落在同一宫里。</string>
+    <string name="look_naked_pair">同一区域里有两格，都只有相同的两个数字。</string>
+    <string name="look_hidden_pair">在同一区域里，两个数字只能放在相同的两格中。</string>
+    <string name="look_naked_triple">同一区域里的三格，一共只用三个数字。</string>
+    <string name="look_hidden_triple">三个数字被限制在相同的三格里。</string>
+    <string name="look_naked_quad">同一区域里的四格，一共只用四个数字。</string>
+    <string name="look_hidden_quad">四个数字被限制在相同的四格里。</string>
+    <string name="look_x_wing">两行在相同的两列上放同一个数字，反过来也一样。</string>
+    <string name="look_swordfish">三行把同一个数字放在相同的三列里。</string>
+    <string name="look_jellyfish">四行把同一个数字放在相同的四列里。</string>
+    <string name="look_xy_wing">三个双候选格摆成一个形状，把某个数字挤了出去。</string>
+    <string name="look_xyz_wing">和XY翼一样，只是中间那一格还多了第三个数字。</string>
+    <string name="look_w_wing">两格有相同的一对候选数，由一个只有两个位置的数字连起来。</string>
+    <string name="look_simple_colouring">一个数字连成一条链，从头到尾交替。</string>
+    <string name="look_multi_colouring">同一个数字的两条独立的链，拿来互相碰撞。</string>
+    <string name="look_remote_pairs">一串格子连成链，每一格的候选数都完全相同。</string>
+    <string name="look_unique_rectangle">四格构成一个矩形，会让这道题出现两个解。</string>
+    <string name="look_bug_plus_one">除了一格以外，所有格都只剩两个候选数。</string>
+    <string name="look_x_chain">关于一个数字的链，在必须和不能之间交替。</string>
+    <string name="look_xy_chain">一串双候选格连成链，每一格决定下一格。</string>
+    <string name="look_forcing_chain">当再也找不到别的东西时，一个正好有两种可能的格子。</string>
+    <string name="look_death_blossom">一格，加上它每个候选数背后的一组格子，而这一格能看到组里所有的那个数字。</string>
+    <string name="look_als_xy_wing">三组格子，每一组都差一个数字才满，由两个不同的数字连成一条线。</string>
+    <string name="look_sue_de_coq">一宫和一线相交，交叉处的格子里的数字比容得下的多两个。</string>
+    <string name="look_als_xz">两组格子，每一组都差一个数字就会被锁死。</string>
+
+    <string name="because_naked_single">其余的数字都已经出现在它的行、列或宫里，所以只剩下一个。它只能填在这里。</string>
+    <string name="because_hidden_single">这个区域某处需要这个数字，而其他格都被排除了，所以这是唯一剩下的位置。</string>
+    <string name="because_locked_candidates_pointing">这一宫某处必须有这个数字，而所有可能的位置都在同一条线上。所以数字在那条线上，也就不可能在那条线的别处。</string>
+    <string name="because_locked_candidates_claiming">这条线某处必须有这个数字，而所有可能的位置都在同一宫里。所以数字在那一宫里，也就不可能在那一宫的别处。</string>
+    <string name="because_naked_pair">那两格会各拿走这两个数字中的一个。区域里其他任何一格都不能有这两个数字。</string>
+    <string name="because_hidden_pair">这个区域两个数字都需要，而只有这两格能装，所以它们各拿一个。这两格里的其他候选数全部消失。</string>
+    <string name="because_naked_triple">三格、三个数字，各占其一。即使没有哪一格同时拥有三个，区域里的其他格也用不上它们。</string>
+    <string name="because_hidden_triple">三个再无处可去的数字填满这三格，所以这三格里的其他候选数都不可能成立。</string>
+    <string name="because_naked_quad">四格分掉四个数字，于是这四个数字从区域其余部分里被排除。</string>
+    <string name="because_hidden_quad">四个被限制在四格里的数字把它们填满，所以别的候选数留不下来。</string>
+    <string name="because_x_wing">这两行各需要这个数字一次，而两行都只能把它放进相同的两列。两行正好用掉这两列，所以其他任何一行都不能在这两列里放这个数字。</string>
+    <string name="because_swordfish">三行需要这个数字，而只有三列可以放。三行用掉了这三列，所以这三列里的其他格都不能有它。</string>
+    <string name="because_jellyfish">四行四列，还是同一套道理。四行一起把四列都占满了。</string>
+    <string name="because_xy_wing">中间那一格是它两个数字中的一个。无论是哪一个，外侧两格中总有一格被逼成共有的那个数字，所以能同时看到这两格的位置都不能是它。</string>
+    <string name="because_xyz_wing">中间那一格也可能是共有的数字，所以结论更弱：只有同时看到这三格的格子才会失去它。</string>
+    <string name="because_w_wing">如果这一对格子都不取第二个数字，那两格就都取第一个，被连起来的那个区域就没地方放它了。所以这一对里必有一格是第二个数字。</string>
+    <string name="because_simple_colouring">把链交替染色，正确的恰好是其中一种颜色。要么某种颜色在同一区域里出现两次，因而是错的；要么链外的某一格同时看到两种颜色，无论怎样都失去这个数字。</string>
+    <string name="because_multi_colouring">第一条链的某种颜色与第二条链的某种颜色冲突，于是这个数字被逼进剩下两种颜色之一。同时看到那两种颜色的格子都不能有它。</string>
+    <string name="because_remote_pairs">链上相邻的格子互相能看见，所以数字交替出现。两端相隔奇数步，因此各占一个数字，同时看到两端的格子两个数字都不能有。</string>
+    <string name="because_unique_rectangle">如果那四格只有相同的两个数字，就可以绕着矩形对调，这道题会有两个解。它只有一个解，所以那种摆法不可能成立。</string>
+    <string name="because_bug_plus_one">如果去掉那个多出来的候选数，每个区域里每个数字都恰好出现两次，而这样的盘面解的个数总是偶数。这道题只有一个解，所以那个多出来的候选数就是答案。</string>
+    <string name="because_x_chain">这条链在数字必须在的位置和不能在的位置之间交替。两端不可能都没有它，所以同时看到两端的格子会失去它。</string>
+    <string name="because_xy_chain">假设第一格不是这个数字。顺着链走下去，最后一格就被逼成这个数字。所以两端之中必有一端是它。</string>
+    <string name="because_forcing_chain">把两种可能都走一遍。如果其中一种让某一格无数可填，那种可能从一开始就不成立，可以去掉。如果两种可能在同一个位置放了同一个数字，那么无论哪一种为真，那个数字都在那里。这里没有任何一步依赖于假设是否正确，这也正是它是证明而不是猜测的原因。</string>
+    <string name="because_death_blossom">无论这一格最后是什么数字，它都会把自己的那个数字从对应的一组里赶走，那一组随即填满，必须用上剩下的所有数字。如果每一组都留着同一个多余的数字，那么无论这一格怎么落，那个数字都会落进其中一组。凡是在每一组里都能看到它的格子都会失去它。</string>
+    <string name="because_als_xy_wing">如果被针对的数字从第一组里消失，这一组就满了，必须取走它与中间那一组共有的数字。中间那一组因此失去那个数字，也满了，于是取走它与第三组共有的数字。第三组同样满了，只能用上被针对的那个数字。所以凡是在两端两组里都能看到它的格子都不能有它。</string>
+    <string name="because_sue_de_coq">交叉处的格子会用掉自己的数字，只留下两个，而两侧的两组正好各自认领这两个。于是线上那一组的数字全部消耗在线内，宫里那一组的数字全部消耗在宫内。两边的其他格都不能再有它们。</string>
+    <string name="because_als_xz">共有的一个数字只能出现在两组中的一组，另一组因此被锁死，必须用上自己拥有的全部数字。所以另一个共有的数字必然落在其中一组里。</string>
+
+    <string name="technique_naked_single">唯余法</string>
+    <string name="technique_hidden_single">摒除法</string>
+    <string name="technique_locked_candidates_pointing">宫区块</string>
+    <string name="technique_locked_candidates_claiming">行列区块</string>
+    <string name="technique_naked_pair">显性数对</string>
+    <string name="technique_hidden_pair">隐性数对</string>
+    <string name="technique_naked_triple">显性三数组</string>
+    <string name="technique_hidden_triple">隐性三数组</string>
+    <string name="technique_naked_quad">显性四数组</string>
+    <string name="technique_hidden_quad">隐性四数组</string>
+    <string name="technique_x_wing">四角对角线</string>
+    <string name="technique_simple_colouring">简单染色法</string>
+    <string name="technique_xy_wing">XY翼</string>
+    <string name="technique_xyz_wing">XYZ翼</string>
+    <string name="technique_w_wing">W翼</string>
+    <string name="technique_swordfish">剑鱼</string>
+    <string name="technique_remote_pairs">远程数对</string>
+    <string name="technique_unique_rectangle">唯一矩形</string>
+    <string name="technique_bug_plus_one">全双值坟墓加一</string>
+    <string name="technique_jellyfish">水母</string>
+    <string name="technique_multi_colouring">多重染色法</string>
+    <string name="technique_x_chain">单数链</string>
+    <string name="technique_xy_chain">异数链</string>
+    <string name="technique_als_xz">待定数组XZ</string>
+    <string name="technique_sue_de_coq">融合待定数组</string>
+    <string name="technique_als_xy_wing">待定数组XY翼</string>
+    <string name="technique_death_blossom">死亡绽放</string>
+    <string name="technique_forcing_chain">强制链</string>
+    <string name="daily_title">每日一题</string>
+    <string name="daily_no_streak">还没有连续记录。做完今天的题就开始了。</string>
+    <string name="daily_previous_month">上个月</string>
+    <string name="daily_next_month">下个月</string>
+    <string name="daily_cell_solved">已完成</string>
+    <string name="daily_cell_attempted">玩过但没做完</string>
+    <string name="daily_cell_unplayed">未玩</string>
+    <string name="daily_cell_future">还没到</string>
+    <string name="daily_play_today">玩今天这道</string>
+    <plurals name="daily_streak">
+        <item quantity="other">连续%1$d天</item>
+    </plurals>
+    <string name="daily_cell">%1$d日，%2$s，%3$s</string>
+    <string name="daily_cell_today">今天，%1$d日，%2$s，%3$s</string>
+    <string name="stat_difficulty">难度</string>
+    <string name="stat_mistakes">错误</string>
+    <string name="stat_hints">提示</string>
+    <string name="stat_time">用时</string>
+    <string name="stat_pause">暂停</string>
+
+    <string name="stage_first_steps">入门</string>
+    <string name="stage_one_at_a_time">一次确定一个数字</string>
+    <string name="stage_notes">笔记</string>
+    <string name="stage_locked_to_a_line">被锁在一条线上的数字</string>
+    <string name="stage_groups">数组</string>
+    <string name="stage_patterns">横跨盘面的图形</string>
+    <string name="stage_wings">翼</string>
+    <string name="stage_colouring">染色</string>
+    <string name="stage_one_answer">利用唯一解</string>
+    <string name="stage_chains">链</string>
+    <string name="stage_the_far_end">更远处</string>
+    <string name="stage_the_deep_end">最深处</string>
+
+    <string name="lesson_what_is_title">数独是什么</string>
+    <string name="lesson_what_is_summary">每一行、每一列、每一宫里，每个数字都恰好出现一次。</string>
+    <string name="lesson_what_is_1">这就是数独。一个小的，四格乘四格，整个盘面一眼就能装进脑子里。标准大小的盘面完全一样。</string>
+    <string name="lesson_what_is_2">这是一行。它必须包含 1、2、3、4，各一次。不重复，也不遗漏。</string>
+    <string name="lesson_what_is_3">这是一列。规则相同：1、2、3、4，各一次。</string>
+    <string name="lesson_what_is_4">整个游戏就这么多。里面没有任何算术，也没有什么要相加。它只是一条关于数字能放在哪里的规则。</string>
+    <string name="lesson_what_is_5">这两格是空的。在不破坏规则的前提下把它们填上，就是所谓的解题。</string>
+
+    <string name="lesson_houses_title">行、列和宫</string>
+    <string name="lesson_houses_summary">一格同时属于三个区域，并和这三个区域共用一条规则。</string>
+    <string name="lesson_houses_1">规则说的是行和列。还有第三种区域，正是它让数独值得去解。</string>
+    <string name="lesson_houses_2">这是一行。</string>
+    <string name="lesson_houses_3">这是一列。</string>
+    <string name="lesson_houses_4">这是一宫，由较粗的线分开。它同样每个数字只出现一次。</string>
+    <string name="lesson_houses_5">所以这一格同时属于三个区域。凡是与它同处一个区域的格子都被点亮了，它们都不能和它填同一个数字。这三个区域叫作区域，后面一直用这个说法。</string>
+
+    <string name="lesson_givens_title">题目给出的数字</string>
+    <string name="lesson_givens_summary">一开始就印好的数字不能动，正是它们让答案只有一个。</string>
+    <string name="lesson_givens_1">这些数字是题目自带的。它们不能修改，也不能擦掉。</string>
+    <string name="lesson_givens_2">它们的写法和你填的数字不同，所以任何时候都分得清哪个是哪个。在这个应用里，题目给出的数字更粗一些。</string>
+    <string name="lesson_givens_3">这些才是你要填的格子。</string>
+    <string name="lesson_givens_4">一道做得好的题，填法恰好只有一种。这是关于题目的承诺，不是关于你的：就算卡住了，答案依然只有一个，而且一定能推出来。这个应用里的每一道题都是这样做出来的。</string>
+
+    <string name="lesson_first_four_title">你的第一次解题</string>
+    <string name="lesson_first_four_summary">看一格不能是什么，有时就只剩下一个数字了。</string>
+    <string name="lesson_first_four_1">现在解一道。两格是空的，光靠规则就能把两格都填上。</string>
+    <string name="lesson_first_four_2">从这一行开始。它已经有 1 和 4，所以两个空格分掉 2 和 3。问题是谁在哪边。</string>
+    <string name="lesson_first_four_3">这一格不能是 2，因为它所在的列已经有一个 2 了。所以它是 3。</string>
+    <string name="lesson_first_four_4">剩下一个空格，以及这一行还没用过的一个数字。</string>
+    <string name="lesson_first_four_5">轮到你了。把该填的数字填进去。</string>
+    <string name="lesson_first_four_wrong">不太对。看这一行：1 到 4 里还缺哪一个？</string>
+    <string name="lesson_first_four_6">完成。无论盘面多大，数独就是这么回事。</string>
+
+    <string name="lesson_first_six_title">更大的盘面</string>
+    <string name="lesson_first_six_summary">宫不一定是正方形，规则并不在乎这一点。</string>
+    <string name="lesson_first_six_1">六乘六。规则没变，但宫变了：宽三格、高两格。</string>
+    <string name="lesson_first_six_2">这是一宫。横三竖二，一共六格，1 到 6 各一次。</string>
+    <string name="lesson_first_six_3">一开始这会让人反应不过来，因为眼睛期待的是正方形。值得停一下：在找别的东西之前，先确认这一格在哪一宫里。</string>
+    <string name="lesson_first_six_4">轮到你了。左上那一宫缺一个数字。</string>
+    <string name="lesson_first_six_wrong">不是这个。数一数这一宫已经有什么，再找出 1 到 6 里没有的那个。</string>
+    <string name="lesson_first_six_5">很好。从这里开始盘面都是九乘九，宫也重新变成正方形，但三个区域都要检查的习惯要留下。</string>
+
+    <string name="lesson_naked_single_title">唯余法</string>
+    <string name="lesson_naked_single_summary">只剩一个数字能填的格子，只能填那个数字。</string>
+    <string name="lesson_naked_single_1">标准大小的盘面，以及第一个有名字的技巧。它是最简单的一个，而即使在最难的题里，大部分格子也是靠它填完的。</string>
+    <string name="lesson_naked_single_2">单看这一格。想想它可以填什么。</string>
+    <string name="lesson_naked_single_3">凡是排除了某个数字的格子都点亮了。合起来看它的行、列和宫，九个数字里已经有八个出现在它能看到的地方。</string>
+    <string name="lesson_naked_single_4">所以只剩下一个数字，这一格只能填它。别的都不可能。这就是唯余法：只看一格就能看出来，而且只有一个数字活了下来。</string>
+    <string name="lesson_naked_single_5">给提示的时候，应用会直接叫它的名字。现在你知道那是什么意思了。</string>
+    <string name="lesson_hidden_single_title">摒除法</string>
+    <string name="lesson_hidden_single_summary">在一个区域里只剩一个位置的数字，只能放在那里。</string>
+    <string name="lesson_hidden_single_1">另一种“只有一个”，而且它找出来的格子更多。唯余法是一格只剩一个数字。这一个是它的镜像：一个数字只剩一格。</string>
+    <string name="lesson_hidden_single_2">取一个区域，挑一个它还缺的数字。想想在这个区域里，这个数字可以放在哪。</string>
+    <string name="lesson_hidden_single_3">在这一宫里，答案是一格。宫里其他的空格都被各自的行或列排除了。</string>
+    <string name="lesson_hidden_single_4">所以这个数字就放在那里，哪怕那一格本身还能填好几个数字。之所以叫摒除，是因为那个数字藏在其他候选数中间。</string>
+    <string name="lesson_hidden_single_5">这一招值得好好练。在大多数题里，唯余法用尽之后，是它让你继续往下走。</string>
+    <string name="lesson_hidden_single_turn">轮到你了。把这一宫里再无处可去的那个数字填上。</string>
+    <string name="lesson_hidden_single_wrong">不是这个。先想这一宫缺哪个数字，再看看每一个到底能放在哪。</string>
+
+    <string name="lesson_scanning_title">怎么看</string>
+    <string name="lesson_scanning_summary">拿一个数字扫过整个盘面，而不是一格一格地研究。</string>
+    <string name="lesson_scanning_1">现在你会两个技巧了。会用和找得到不是一回事，费时间的是找。</string>
+    <string name="lesson_scanning_2">不要一格一格地读盘面。挑一个数字，比如已经出现最多的那个，然后看一条带里的三个宫。</string>
+    <string name="lesson_scanning_3">对每一宫只问一个问题：这个数字能放在哪？已经有这个数字的行和列会划掉绝大部分答案，常常只剩下一格。</string>
+    <string name="lesson_scanning_4">然后换下一条带；这个数字用尽了，就换下一个数字。这就是扫描，那些看起来只是盯着盘面发呆的高手，做的就是这件事。</string>
+    <string name="lesson_scanning_5">有条理不花什么力气，却能省下“卡住了”的感觉，而那种感觉通常只是同一个角落看了四遍。</string>
+
+    <string name="lesson_first_nine_title">一整盘，只用“只有一个”</string>
+    <string name="lesson_first_nine_summary">到此为止学到的东西，已经够做完一整道题了。</string>
+    <string name="lesson_first_nine_1">一道真正的九乘九，简单难度。每一步都是唯余法或摒除法，没有你没见过的东西。</string>
+    <string name="lesson_first_nine_2">先来一个开头。这一格能看到的范围已经排除了九个数字中的八个。</string>
+    <string name="lesson_first_nine_3">简单难度的题就是这个样子。从头到尾都是“只有一个”，任何时候都不用猜。</string>
+    <string name="lesson_first_nine_4">离开这一课之后，去玩一道。下一阶段讲笔记，而笔记要在比这更难的题上才开始值回票价。</string>
+    <string name="lesson_first_nine_turn">轮到你了。这里只有一个数字能填。</string>
+    <string name="lesson_first_nine_wrong">再看一遍这一格所在的行、列和宫，把它们已经有的数字列出来。</string>
+
+    <string name="lesson_pencil_marks_title">笔记</string>
+    <string name="lesson_pencil_marks_summary">笔记是你已经推过一遍的记录，免得再推一次。</string>
+    <string name="lesson_pencil_marks_1">从这里开始，题目不再靠“只有一个”就能倒下，你需要把东西记下来。笔记，也叫候选数标记，就是格子里的小数字，表示这个数字在这里还有可能。</string>
+    <string name="lesson_pencil_marks_2">看这一格。想明白它只能是两个数字中的一个要花几秒钟。把这两个数字写下来，下次再看它就一秒都不用花。</string>
+    <string name="lesson_pencil_marks_3">笔记就是这么回事。它不是猜测，也不是承诺，只是你已经做过的一次推理的记录。</string>
+    <string name="lesson_pencil_marks_4">从这里往后的技巧，看的都是笔记里的图形，而不是数字里的图形。数对、三数组、鱼和链，全都是从笔记里读出来的。</string>
+    <string name="lesson_pencil_marks_5">没有人靠心算解出难的数独，在专家难度上什么都不写的人不是聪明，是慢。</string>
+
+    <string name="lesson_when_to_mark_title">什么时候写</string>
+    <string name="lesson_when_to_mark_summary">等“只有一个”用尽了再写笔记，不要更早。</string>
+    <string name="lesson_when_to_mark_1">用笔记有两种方式，区别很重要。</string>
+    <string name="lesson_when_to_mark_2">第一种是在做别的事之前，先把每个空格里所有可能的数字都写满。这样很周全，手写要花好几分钟，而在简单题上大半都是白费，因为光靠“只有一个”本来也能做完。</string>
+    <string name="lesson_when_to_mark_3">第二种是只在你正在看的地方写。这四格值得写，因为它们之间有事情在发生。盘面的其余部分不值得。</string>
+    <string name="lesson_when_to_mark_4">老实的建议是：先把“只有一个”做完，找不到了再开始写。在纸上这确实省时间。在这个应用里，一键就能写满所有笔记，代价小得多，但满是数字的盘面还是比只在关键处有笔记的盘面更难读。</string>
+
+    <string name="lesson_marks_true_title">让笔记保持可信</string>
+    <string name="lesson_marks_true_summary">过期的笔记比没有笔记更糟。</string>
+    <string name="lesson_marks_true_1">笔记有一个危险。你每填一个数字，都会让其中一些笔记变错，而一条错的笔记会把你带进一段根本不可能成立的推理。</string>
+    <string name="lesson_marks_true_2">在这里填一个数字，凡是能看到它的格子都失去这个候选数。如果那些笔记不擦掉，你接下来看到的技巧可能就建立在其中一条上面。</string>
+    <string name="lesson_marks_true_3">这个应用可以替你做。设置里有一项叫「填入数字后自动擦掉被排除的笔记」，默认是打开的。在纸上要手工擦，绝大多数错误都是从这里来的。</string>
+    <string name="lesson_marks_true_4">当一道题走岔了而你又看不出原因，第一个要怀疑的就是一条旧笔记。提示按钮会在你填的某个数字不可能正确时告诉你。</string>
+
+    <string name="lesson_pointing_title">宫区块</string>
+    <string name="lesson_pointing_summary">如果一宫里的某个数字被锁在一条线上，那条线的其他地方就没有它了。</string>
+    <string name="lesson_pointing_1">第一个不填数字、只删可能性的技巧。从这里往后大多数都是这样，需要适应一下：你没有写下任何一个数字，却在前进。</string>
+    <string name="lesson_pointing_2">看这一宫里某个数字能放在哪。所有可能的位置都在同一列上。</string>
+    <string name="lesson_pointing_3">这一宫某处必须有那个数字。所以不管它最后落在哪，它都在那一列上。</string>
+    <string name="lesson_pointing_4">也就是说这一列的其余部分不可能有它。这些格子失去了这个候选数，哪怕它们离那一宫很远。</string>
+    <string name="lesson_pointing_5">之所以叫区块，是因为宫里的这一组格子沿着线指过去，把那条线清了一遍。</string>
+
+    <string name="lesson_claiming_title">行列区块</string>
+    <string name="lesson_claiming_summary">如果一条线上的某个数字被锁在一宫里，那一宫的其他地方就没有它了。</string>
+    <string name="lesson_claiming_1">同一套道理反过来读，值得单独看一遍，因为眼睛是在另一个地方发现它的。</string>
+    <string name="lesson_claiming_2">这次从一条线开始。看这一行上某个数字能放在哪。</string>
+    <string name="lesson_claiming_3">所有可能的位置都在同一宫里。这一行某处必须有那个数字，所以数字就在那一宫里。</string>
+    <string name="lesson_claiming_4">也就是说这一宫的其余部分失去了它。这些格子不能再有它了。</string>
+    <string name="lesson_claiming_5">宫区块是看着一宫去清一条线，行列区块是看着一条线去清一宫。两个名字，一个想法，任何一道难题里两个都会遇到。</string>
+
+    <string name="lesson_naked_pair_title">显性数对</string>
+    <string name="lesson_naked_pair_summary">两格只有相同的两个数字，就把这两个数字占住了。</string>
+    <string name="lesson_naked_pair_1">现在讲数组。这是其中最小的一个，也是让其余几个变得显而易见的图形。</string>
+    <string name="lesson_naked_pair_2">这两格在同一个区域里，而且都只能是相同两个数字中的一个。</string>
+    <string name="lesson_naked_pair_3">两格会各拿走这两个数字中的一个。谁是谁并不重要，你也不需要知道。</string>
+    <string name="lesson_naked_pair_4">所以这个区域里其他任何一格都不能有这两个数字。这一格失去了其中一个。</string>
+    <string name="lesson_naked_pair_5">又是“显性”，因为只读这两格就看得出来。没有藏起来的东西，别的格子也不参与这段推理。</string>
+
+    <string name="lesson_hidden_pair_title">隐性数对</string>
+    <string name="lesson_hidden_pair_summary">两个数字只剩相同的两个位置，就把那两格占住了。</string>
+    <string name="lesson_hidden_pair_1">显性数对的镜像，正如摒除法是唯余法的镜像。</string>
+    <string name="lesson_hidden_pair_2">在这个区域里，有两个数字都只能放进相同的两格。</string>
+    <string name="lesson_hidden_pair_3">这两个数字会占住这两格。所以那两格看上去还能填别的什么，其实都不能。</string>
+    <string name="lesson_hidden_pair_4">这两格失去所有其他笔记。它们现在成了一个显性数对，而这往往正是这个图形的用处：把隐性数对变成显性数对，再去清理区域里的其余部分。</string>
+    <string name="lesson_hidden_pair_5">隐性数对比显性数对难看出来，因为要盯着数字而不是格子。在一个停住的盘面上，值得花这个力气。</string>
+
+    <string name="lesson_naked_triple_title">显性三数组</string>
+    <string name="lesson_naked_triple_summary">三格合起来只用三个数字，就把这三个数字占住，哪怕没有一格同时有三个。</string>
+    <string name="lesson_naked_triple_1">数对加一格，外加一个第一次总会绊倒所有人的细节。</string>
+    <string name="lesson_naked_triple_2">这三格在同一个区域里，三格合起来只用了三个不同的数字。</string>
+    <string name="lesson_naked_triple_3">细节在这里：不需要哪一格同时有三个数字。一格两个、下一格两个、第三格两个，只要全部加起来只出现三个数字，就是三数组。</string>
+    <string name="lesson_naked_triple_4">这三格会分掉这三个数字，所以区域里其他所有格都失去这三个。一次能消掉不少笔记。</string>
+    <string name="lesson_naked_triple_5">找的时候，数一数两三格合起来有几个不同的数字，而不是去找一模一样的笔记。这个习惯才找得到三数组。</string>
+
+    <string name="lesson_hidden_triple_title">隐性三数组</string>
+    <string name="lesson_hidden_triple_summary">三个数字只剩三个位置，就把那三格占住了。</string>
+    <string name="lesson_hidden_triple_1">和隐性数对同样的关系，大了一号，而且是真的难找。</string>
+    <string name="lesson_hidden_triple_2">在这个区域里，三个数字合起来只能放进相同的三格。</string>
+    <string name="lesson_hidden_triple_3">所以那三格就是这三个数字，格子里其他所有笔记都可以去掉。</string>
+    <string name="lesson_hidden_triple_4">不要一上来就找它。等一个区域里还剩好几格、别的办法都不管用的时候再找。多数情况下，同一个区域里有个更容易看出来的显性图形。</string>
+
+    <string name="lesson_quads_title">四数组</string>
+    <string name="lesson_quads_summary">同样的想法再来一次，只是变成四个；值得认得，但很少值得去找。</string>
+    <string name="lesson_quads_1">数对、三数组，现在是四数组。道理没变：四格合起来用四个数字，就占住这四个数字；四个数字只剩四个位置，就占住那四格。</string>
+    <string name="lesson_quads_2">这是一个显性四数组。四格、合起来四个数字，区域里其余部分把这四个都丢掉。</string>
+    <string name="lesson_quads_3">接下来是老实话。四数组是真实存在也完全合法的，但很少见。在一个还剩五六个空格的区域里看到四数组，通常说明另外那些格子里有个更简单的图形被你漏掉了。</string>
+    <string name="lesson_quads_4">这是一个隐性四数组，凑齐了说。四个数字，四个位置。</string>
+    <string name="lesson_quads_5">学会认出它们，好让提示提到时你明白在说什么。不要花时间去找它们。</string>
+
+    <string name="lesson_x_wing_title">四角对角线</string>
+    <string name="lesson_x_wing_summary">一个数字在两行里被固定在两列上，那两列的其他地方就没有它了。</string>
+    <string name="lesson_x_wing_1">第一个横跨整个盘面、而不是待在一个区域里的图形。它有形状，一旦看惯了，到处都能看见。</string>
+    <string name="lesson_x_wing_2">取一个数字。在这两行里，它各自只能放进两格，而且这些格子在相同的两列上。四格，围成一个矩形。</string>
+    <string name="lesson_x_wing_3">想一想。每一行都必须有这个数字一次。不管一行用了哪个角，另一行就只能用对角。没有第三种可能。</string>
+    <string name="lesson_x_wing_4">所以这两行合起来把这两列里的这个数字都用掉了。这两列里的其他格都失去它。</string>
+    <string name="lesson_x_wing_5">行列对调也一样成立。两列的这个数字被限制在相同的两行里，就能清理那两行。</string>
+
+    <string name="lesson_swordfish_title">剑鱼</string>
+    <string name="lesson_swordfish_summary">和四角对角线同样的道理，只是从两条线变成三条。</string>
+    <string name="lesson_swordfish_1">四角对角线加一行。名字帮不上忙，但图形是直接的推广。</string>
+    <string name="lesson_swordfish_2">三行、一个数字，而且在每一行里这个数字都被限制在相同三列的格子里。</string>
+    <string name="lesson_swordfish_3">不需要每一行都用满三列。三列里用两列就够，只要没有哪一行跑到这三列之外。</string>
+    <string name="lesson_swordfish_4">这三行把这个数字在那三列里用掉了，所以那三列的其余部分失去它。</string>
+    <string name="lesson_swordfish_5">能跟上四角对角线，就能跟上这个。找到它是另一回事：从这里开始，写满笔记不再是可选项。</string>
+
+    <string name="lesson_jellyfish_title">水母</string>
+    <string name="lesson_jellyfish_summary">四条线。同样的图形再来一次，也是最后一个值得学的。</string>
+    <string name="lesson_jellyfish_1">四行、一个数字、四列。道理从四角对角线起就没变过，往后也不会再变。</string>
+    <string name="lesson_jellyfish_2">这是一个。四行，每一行里这个数字都被限制在相同的四列中。</string>
+    <string name="lesson_jellyfish_3">超过四就没什么可学的了。理论上有五条线的版本，但在九乘九的盘面上，每一个都能在剩下的四列里当成更小的图形找到，所以没人去找。</string>
+    <string name="lesson_jellyfish_4">按图形去猎的价值到此为止。再往后，链更值得你花注意力。</string>
+
+    <string name="lesson_xy_wing_title">XY翼</string>
+    <string name="lesson_xy_wing_summary">三个双候选格，还有一格无论怎样都要吃亏。</string>
+    <string name="lesson_xy_wing_1">翼需要换一种思路。到目前为止你是找到图形、读出结论。这里要分情况讨论。</string>
+    <string name="lesson_xy_wing_2">从这一格开始。它正好有两个可能的数字，是这个图形的枢纽。</string>
+    <string name="lesson_xy_wing_3">它有两个同伴，各自和它同处一个区域，各自有两个数字：一个与枢纽相同，另一个两者之间相同。</string>
+    <string name="lesson_xy_wing_4">现在推。枢纽是它两个数字中的一个。如果是第一个，左翼就被逼成共有的那个数字；如果是第二个，右翼就被逼成同一个共有的数字。无论如何，两翼中总有一个是它。</string>
+    <string name="lesson_xy_wing_5">所以凡是能同时看到两翼的格子都不能有那个数字。这一格失去了它。</string>
+    <string name="lesson_xy_wing_6">你自始至终都不知道枢纽究竟是哪个数字。这正是关键，也是翼与之前一切都不同的地方。</string>
+
+    <string name="lesson_xyz_wing_title">XYZ翼</string>
+    <string name="lesson_xyz_wing_summary">和XY翼一样，但枢纽也可能是那个共有的数字，所以结论更弱。</string>
+    <string name="lesson_xyz_wing_1">在XY翼上改了一处，结论因此变小。</string>
+    <string name="lesson_xyz_wing_2">这里枢纽有三个数字而不是两个，共有的那个数字也在其中。</string>
+    <string name="lesson_xyz_wing_3">所以现在是三种情况，不是两种。共有的数字可能在任一翼，也可能在枢纽自己身上。</string>
+    <string name="lesson_xyz_wing_4">这意味着只有同时看到三格的格子才会失去这个数字，只看到两翼是不够的。符合条件的格子更少，所以这个图形比它简单的表亲删得更少。</string>
+    <string name="lesson_xyz_wing_5">值得认得，因为形状看上去几乎一样，把它当成XY翼来读会让你删掉本来没资格删的数字。</string>
+
+    <string name="lesson_w_wing_title">W翼</string>
+    <string name="lesson_w_wing_summary">两个相同的数对，由一条必然含有其中一个数字的线连起来。</string>
+    <string name="lesson_w_wing_1">第三个翼，也是最不需要计算的一个。</string>
+    <string name="lesson_w_wing_2">两格不在同一个区域里，各自有相同的两个数字。</string>
+    <string name="lesson_w_wing_3">然后找一个区域，让这两个数字中的一个在其中只有两个位置，而这两个位置各自能看到这一对格子中的一个。那个区域就是连接。</string>
+    <string name="lesson_w_wing_4">连接的那个区域必须把那个数字放进它两个位置中的一个，无论是哪一个，都会逼着这一对格子中的一个取另一个数字。所以这一对里总有一个是另一个数字。</string>
+    <string name="lesson_w_wing_5">凡是能同时看到这一对格子的格子都会失去它。这一格看得到。</string>
+
+    <string name="lesson_rectangle_title">唯一矩形</string>
+    <string name="lesson_rectangle_summary">只有一个解的题里，不可能存在一个可以旋转的方框。</string>
+    <string name="lesson_rectangle_1">这个技巧和其他所有技巧性质不同，用之前值得先说清楚为什么。</string>
+    <string name="lesson_rectangle_2">看这四格。它们落在两行、两列和正好两宫里，而且每一格都能填相同的两个数字。</string>
+    <string name="lesson_rectangle_3">如果只有这些，这道题就会有两个解：把矩形按一种方式填，或者把两条对角线对调，两个盘面都满足所有规则。做得好的题不会有两个解。</string>
+    <string name="lesson_rectangle_4">所以不可能只有这些。那四格里必有一格要填别的东西，正是这一点让你可以做出删除。</string>
+    <string name="lesson_rectangle_5">这里多出来的候选数活了下来，共有的那一对从这些格子里被划掉。</string>
+    <string name="lesson_rectangle_6">把话说明白：这段推理假设题目是做得好的。这个应用里的每一道题都是如此，因为生成器会检查。用在来路不明的盘面上，它可能把你带偏。</string>
+
+    <string name="lesson_bug_title">全双值坟墓加一</string>
+    <string name="lesson_bug_summary">如果除了一格以外每一格都只有两个候选数，这道题就会没有唯一解。所以那一格很特别。</string>
+    <string name="lesson_bug_1">和唯一矩形同样的前提，换了个样子。</string>
+    <string name="lesson_bug_2">假设盘面走到一个位置：每个未解的格子都正好有两个候选数，而每个数字在每个区域里都正好出现两次。这样的盘面解的个数总是偶数。</string>
+    <string name="lesson_bug_3">所以做得好的题永远走不到那里。如果你发现一个只差一格的位置，其中正好有一格有三个候选数而不是两个，那一格正是把这道题从多解里救出来的东西。</string>
+    <string name="lesson_bug_4">在它所在的区域里出现三次的那个数字，就是它要填的数字。这个图形很少见，出现时收尾非常快。</string>
+
+    <string name="lesson_colouring_title">简单染色法</string>
+    <string name="lesson_colouring_summary">顺着一个数字只有两个位置的地方走下去，找出矛盾。</string>
+    <string name="lesson_colouring_1">慢慢进入链。染色是最容易上手的入口，底下的道理是一样的。</string>
+    <string name="lesson_colouring_2">挑一个数字。找一个区域，它在里面只有两格可放。这两格被连在一起：其中恰好有一个是这个数字。</string>
+    <string name="lesson_colouring_3">给这一对里的一个上色，然后顺着连接走。这样连起来的每一格最后都是两种颜色之一，其中整整一种颜色是对的，另一种是错的。你不知道是哪一种。</string>
+    <string name="lesson_colouring_4">现在找矛盾。如果某一格能看到同一种颜色的两格，那种颜色就不可能是对的，于是这一格失去这个数字。这里发生的正是这件事。</string>
+    <string name="lesson_colouring_5">两种颜色、一个矛盾，全程没有一处是猜的。整个方法就这么多。</string>
+
+    <string name="lesson_remote_pairs_title">远程数对</string>
+    <string name="lesson_remote_pairs_summary">一串相同的数对交替出现，所以两端是相反的。</string>
+    <string name="lesson_remote_pairs_1">把染色用在格子上，而不是用在某一个数字上。</string>
+    <string name="lesson_remote_pairs_2">这是一串格子，候选数完全相同，每一格通过共有的区域和下一格相连。</string>
+    <string name="lesson_remote_pairs_3">因为每一个连接都是一个数对，数字沿着链交替出现。第一格取一个，第二格取另一个，以此类推。</string>
+    <string name="lesson_remote_pairs_4">所以偶数长度的链，两端是相反的：它们填不同的数字。凡是能同时看到两端的格子，两个数字都会失去，因为两端各占一个。</string>
+    <string name="lesson_remote_pairs_5">这是最容易发现的链，因为链上的每一格看起来都一样。</string>
+
+    <string name="lesson_multi_colouring_title">多重染色法</string>
+    <string name="lesson_multi_colouring_summary">两条互相接触的染色链会彼此排除。</string>
+    <string name="lesson_multi_colouring_1">简单染色只用一条链。有时候一条链里没有矛盾，两条放在一起就有了。</string>
+    <string name="lesson_multi_colouring_2">这是同一个数字的两条独立链上的格子。</string>
+    <string name="lesson_multi_colouring_3">如果一条链的某种颜色能看到另一条链的某种颜色，这两种颜色就不可能都对。顺着这一点推下去，就能把这个数字从同时看到剩下两种颜色的格子里删掉。</string>
+    <string name="lesson_multi_colouring_4">结论落在这里。</string>
+    <string name="lesson_multi_colouring_5">从这里开始，染色不再是脑子里装得下的东西，而开始需要写下哪一格是哪种颜色。</string>
+
+    <string name="lesson_x_chain_title">单数链</string>
+    <string name="lesson_x_chain_summary">一个数字，强弱交替的连接，以及两端的删除。</string>
+    <string name="lesson_x_chain_1">上一阶段所有东西的一般形式。一个数字，一条交替连接的链。</string>
+    <string name="lesson_x_chain_2">强连接是指两格中至少有一格必须填这个数字，一个只有两个位置的区域就能给出这种连接。弱连接是指两格中至多有一格能填它，任意两个同处一个区域的格子都算。</string>
+    <string name="lesson_x_chain_3">让它们交替：强、弱、强，如此下去，首尾都是强连接。那么无论中间发生什么，两端之中总有一端填这个数字。</string>
+    <string name="lesson_x_chain_4">所以凡是能同时看到两端的格子都会失去它。</string>
+    <string name="lesson_x_chain_5">染色就是用两种颜色画出来的这条链。链更一般，因为它能经过染色到不了的格子。</string>
+
+    <string name="lesson_xy_chain_title">异数链</string>
+    <string name="lesson_xy_chain_summary">一串双候选格连成的链，两端共有同一个数字。</string>
+    <string name="lesson_xy_chain_1">同样的交替想法，只是沿着格子走，而不是跟着一个数字走。</string>
+    <string name="lesson_xy_chain_2">这条链里的每一格都正好有两个候选数，而且每一格都和下一格同处一个区域。</string>
+    <string name="lesson_xy_chain_3">在一格之内，取了一个数字就逼出另一个，这是强连接。格与格之间，共有的区域构成弱连接。交替使用，推理就沿着链跑了下去。</string>
+    <string name="lesson_xy_chain_4">如果链的两端都能填同一个数字，那么无论链怎么落，两端之中总有一端是它。凡是能同时看到两端的格子都会失去这个数字。</string>
+    <string name="lesson_xy_chain_5">这是收掉大多数专家难度题目的技巧，而找到一条主要靠耐心地顺着双候选格走，而不是靠聪明。</string>
+
+    <string name="lesson_writing_chains_title">把链写下来</string>
+    <string name="lesson_writing_chains_summary">一条你没法检查的链，只是多绕了几步的猜测。</string>
+    <string name="lesson_writing_chains_1">在最后一个技巧之前，先来一课实用的，因为链正是人们说服自己相信错误结论的地方。</string>
+    <string name="lesson_writing_chains_2">一条链是一串主张，每一句都必须站得住。在屏幕上它看起来只是一堆高亮的格子，而高亮不是推理。</string>
+    <string name="lesson_writing_chains_3">把它写成一行：这一格是 4 或 7；如果是 4，那一格就是 9；如果那一格是 9，这另一格就是 4。每一个箭头都是一个连接，每一个连接都有理由。</string>
+    <string name="lesson_writing_chains_4">然后检查交替。强、弱、强、弱，两端都是强。以弱连接开头或结尾的链什么也证明不了，而这是链出错最常见的方式。</string>
+    <string name="lesson_writing_chains_5">如果你写不下来，就说明你还没找到。这不是关于整洁的规矩，而是推理和直觉之间的分界。</string>
+
+    <string name="lesson_sue_de_coq_title">融合待定数组</string>
+    <string name="lesson_sue_de_coq_summary">在宫与线相交的地方，交叉处的数字比放得下的多。</string>
+    <string name="lesson_sue_de_coq_1">一宫和一列在三格上重叠。那三格同时属于两者，这个技巧就靠这一点活着。</string>
+    <string name="lesson_sue_de_coq_2">先看其中两格。两格合起来有 2、6、7、8：两格四个数字。其中两个进得去，另外两个要留给别处。</string>
+    <string name="lesson_sue_de_coq_3">同一列往下有一格是 6 和 7。同一宫的别处有一格是 2 和 8。这两格合起来，想要的正好是交叉处的那四个数字，平均分开，而且互不重叠。</string>
+    <string name="lesson_sue_de_coq_4">数一数。列里的三格现在拿走四个数字中的三个，宫里的三格也一样。账只有一种算法能对上：6 和 7 消耗在列内，2 和 8 消耗在宫内。</string>
+    <string name="lesson_sue_de_coq_5">所以那一列里其他任何一格都不可能是 6 或 7。这里有两格各失去一个。</string>
+    <string name="lesson_sue_de_coq_6">同样的道理对那一宫反过来再走一遍。一个图形、两个区域、两组各自独立的删除，全程没有一条链。</string>
+
+    <string name="lesson_als_title">待定数组XZ</string>
+    <string name="lesson_als_summary">两个几乎被锁死的数组共有一个数字，以及由此得出的删除。</string>
+    <string name="lesson_als_1">最难的几个难度就建立在这条规则上。这一阶段以上的所有东西都是它的变体。</string>
+    <string name="lesson_als_2">待定数组是同一个区域里的一组格子，它们拥有的数字正好比格子数多一个。四格合起来五个数字。少一个数字它就成了被锁死的数组，名字由此而来。</string>
+    <string name="lesson_als_3">取两个共有两个数字的待定数组。把共有的数字之一称为受限数字，并要求它在一个数组里出现的每个位置，都能看到它在另一个数组里出现的每个位置。</string>
+    <string name="lesson_als_4">那么它只能在两个数组中的一个里。没拿到它的那一组被锁死，另一个共有的数字因此固定在那一组之内。于是凡是在两个数组里都能看到那个数字的格子都会失去它。</string>
+    <string name="lesson_als_5">由此得到的删除就在这里。</string>
+    <string name="lesson_als_6">如果这一段要读好几遍，那才是正常次数。从这里往后的每一个技巧，都是它换了个样子。</string>
+
+    <string name="lesson_deep_end_title">最深处要求什么</string>
+    <string name="lesson_deep_end_summary">疯狂和噩梦有什么不同，以及为什么这两个难度需要纸。</string>
+    <string name="lesson_deep_end_1">到此为止的一切都看得见。你看一行、一宫、两格，只要认得形状，答案就在眼前。</string>
+    <string name="lesson_deep_end_2">最难的两个难度不是这样。它们要求你把一段推理走三四步，并且同时把整段记在脑子里，而这件事几乎没有人靠看就能做到。</string>
+    <string name="lesson_deep_end_3">所以写下来。一支铅笔和一个信封背面既不是作弊，也不说明你不行。解这两个难度的人都是这么做的。</string>
+    <string name="lesson_deep_end_4">这里的规则都是同一个想法：一组格子差一个数字就满了。把那个数字拿掉，这一组就被确定下来，而一组被确定又会确定下一组。最深处全部就是这么回事。</string>
+    <string name="lesson_deep_end_5">下面没有一处是猜的。每一步都有证明，每一条提示都会把证明给你看，而如果这里的题赢了你，过一个星期再回来才是常态。</string>
+
+    <string name="lesson_als_xy_title">待定数组XY翼</string>
+    <string name="lesson_als_xy_summary">三组连成一条链，以及那个在两端都活不下来的数字。</string>
+    <string name="lesson_als_xy_1">这次是三组，连成一条线：两端各一组，中间一组把它们隔开。</string>
+    <string name="lesson_als_xy_2">从左边两组开始。r3c9 是 1 和 3。r1c8 是 3 和 7。它们同处一宫，所以两者之中只有一个能是 3。</string>
+    <string name="lesson_als_xy_3">再看沿第 8 列往下的那一组：三格合起来有 1、3、7、9。四个数字、三格，所以差一个数字就满。它和 r1c8 共有 7，而它里面所有的 7 都在同一列上，所以同样只有一边能拿走它。</string>
+    <string name="lesson_als_xy_4">假设第 9 列上标出的两格之一是 1。它能看到 r3c9，所以 r3c9 不是 1，那就是 3。于是 r1c8 不是 3，那就是 7。于是那一组里再没有 7，它满了，只能用 1、3、9。</string>
+    <string name="lesson_als_xy_5">可是那些格子也能看到那一组里所有的 1，所以那一组连 1 都不能有。这段推理把自己吃掉了，于是 1 被删去。</string>
+    <string name="lesson_als_xy_6">两处连接、三组格子，每一步都确定下一步。读两遍：这是一条链，而链只有一个连接一个连接地看才讲得通。</string>
+
+    <string name="lesson_blossom_title">死亡绽放</string>
+    <string name="lesson_blossom_summary">一格，它的每个候选数背后都等着一组格子。</string>
+    <string name="lesson_blossom_1">这一个的形状看得见：一根茎，加上茎的每个候选数各一片花瓣。</string>
+    <string name="lesson_blossom_2">茎是 r1c4。它是 5 或 6，没有别的。两种可能就是两种情况，这个技巧一次处理两种。</string>
+    <string name="lesson_blossom_3">先说它是 5。那么同一行上有 5 和 8 的 r1c7 就不能是 5。所以它是 8。</string>
+    <string name="lesson_blossom_4">再说它是 6。看同一宫里的这三格：合起来有 2、6、7、8。四个数字、三格，差一个就满。茎能看到这三格，所以它的 6 把 6 从这三格里拿走。</string>
+    <string name="lesson_blossom_5">现在它们满了，三个满格用三个数字：2、7、8。其中只有一格能是 8，所以 8 就落在那里。</string>
+    <string name="lesson_blossom_6">把两种情况合起来。要么 r1c7 是 8，要么那一宫里有个 8，没有第三种情况。凡是能同时看到这两处的格子都会失去自己的 8，这里有两格如此。</string>
+    <string name="lesson_blossom_7">注意你自始至终不需要知道的东西：茎到底是哪个数字。两条路都通向 8，所以答案不取决于那个岔口。</string>
+
+    <string name="lesson_fork_title">强制链</string>
+    <string name="lesson_fork_summary">把一格的两种可能都走一遍，看哪一种活下来。这是应用里最难的东西。</string>
+    <string name="lesson_fork_1">最后一个技巧，也是唯一一个不是图形的。这里没有什么可看出来的，只有工夫。</string>
+    <string name="lesson_fork_2">这一格是 2 或 7。盘面上其他地方都已经榨干了，没有任何东西说明它是哪一个。</string>
+    <string name="lesson_fork_3">那就试一个。用铅笔当它是 2，然后只跟着最容易的推论走：只剩一个数字的格子，或者在自己区域里只剩一个位置的数字。</string>
+    <string name="lesson_fork_4">它们来得很快。这里逼出一个 2，那里一个 7，接着一个 3、一个 5、一个 9。继续走。十四个数字之后，看那个标出来的格子。</string>
+    <string name="lesson_fork_5">它什么都不剩了。所有能填进去的数字都被别处拿走了。这不是运气不好，这是矛盾，它说明 2 从一开始就不可能。</string>
+    <string name="lesson_fork_6">于是把这些全部擦掉，写下 7。不是因为 7 看着更顺眼，而是因为 2 已被证明不可能，两种可能减去一种就只剩一种。</string>
+    <string name="lesson_fork_7">这就是分情况证明，也是人们说“在纸上把题做出来”时指的事。用纸。没有人能把十四个被逼出来的数字记在脑子里，需要写下来不是弱点。</string>
+    <string name="lesson_fork_8">现在把它填上。</string>
+    <string name="lesson_fork_wrong">死掉的是另一个数字。2 通向一个什么都填不进去的格子，所以剩下的是 7。</string>
+
+    <string name="lesson_nothing_applies_title">当什么都用不上时</string>
+    <string name="lesson_nothing_applies_summary">猜之前先重新检查，因为这个应用里的题永远还有下一步。</string>
+    <string name="lesson_nothing_applies_1">你会遇到这样的局面：什么都看过了，什么也没找到。下面是该做的，和不该做的。</string>
+    <string name="lesson_nothing_applies_2">不该做的是猜。这个应用里的每一道题都能靠推理解出来，而蒙对了什么也学不到，蒙错了却要赔上整个盘面。</string>
+    <string name="lesson_nothing_applies_3">按这个顺序重新检查。第一，你的笔记都还成立吗？旧笔记是走进死局最常见的原因，而只要你愿意，这个应用会替你擦掉。第二，你填的某个数字真的对吗？按一下提示，它会告诉你。</string>
+    <string name="lesson_nothing_applies_4">然后再去找那些便宜的东西。几乎从来不是你漏掉了一条链，几乎总是二十步之前你就不再看的那个区域里的一个摒除法。</string>
+
+    <string name="lesson_look_first_title">先找什么</string>
+    <string name="lesson_look_first_summary">永远先找便宜的图形，因为它们常见，而且能把盘面打开。</string>
+    <string name="lesson_look_first_1">现在这个应用能叫得出名字的技巧你都知道了。最后要学的是看的顺序。</string>
+    <string name="lesson_look_first_2">永远先找“只有一个”。先唯余，再摒除。它们比别的常见得多，而且每填一个，其他所有技巧都更容易找到。</string>
+    <string name="lesson_look_first_3">然后是便宜的删除：宫区块和行列区块。它们一个区域一个区域地查很快，而且常常当场就打开一个“只有一个”。</string>
+    <string name="lesson_look_first_4">然后是空格最少的区域里的数对和三数组。再然后是鱼，再然后是翼。链永远放在最后，因为它们最费工夫，也最少见。</string>
+    <string name="lesson_look_first_5">在没查“只有一个”之前就去猎水母，相当于还没读错误信息就先把程序重写一遍。应用是按一道题需要的最难技巧来定难度的，但大师难度里绝大部分仍然是“只有一个”。</string>
+    <string name="lesson_together_title">一起做一道大师</string>
+    <string name="lesson_together_summary">难题的绝大部分是容易的步骤，其中夹着少数难的。</string>
+    <string name="lesson_together_1">最后一课。这就是整个课程一路走下来的那个盘面，大师难度，下面把整个解题过程一个技巧一个技巧地过一遍。</string>
+    <string name="lesson_together_2">开局是一个唯余法。几乎所有题都是这样开的。</string>
+    <string name="lesson_together_3">然后是隔壁宫里的一个摒除法。</string>
+    <string name="lesson_together_4">这时卡住了，一个宫区块清了一列，于是“只有一个”又能接着来。注意那一步一个数字都没填，进展却是实实在在的。</string>
+    <string name="lesson_together_5">稍后是一个显性数对，在一个区域里做同样的事。</string>
+    <string name="lesson_together_6">再往里，是一个四角对角线。到这时盘面已经填了一半，干活的是笔记。</string>
+    <string name="lesson_together_7">接近尾声时，来了配得上这个难度的一手：待定数组XZ。删掉一个候选数，剩下的又都是“只有一个”。</string>
+    <string name="lesson_together_8">这就是这里所说的大师。不是八十一步难棋，而是七十步容易的，加上少数几步要用上你学过的全部。</string>
+    <string name="lesson_together_9">这个应用能叫得出名字的技巧，你都见过了。去玩一道吧。每道题都带三次提示，用掉它们并不丢人；如果你想要多少有多少，上限在设置里就是一个开关。</string>
+    <string name="lesson_step_of">%1$d／%2$d</string>
+    <string name="lesson_back">上一步</string>
+    <string name="lesson_next">下一步</string>
+    <string name="lesson_done">完成</string>
+    <string name="lesson_replay">再来一遍</string>
+    <string name="lesson_show_me">给我看看</string>
+    <string name="lesson_cell_at">第%1$d行第%2$d列。</string>
+    <string name="course_title">学习</string>
+    <string name="course_lesson_done">已学完</string>
+    <string name="course_lesson_next">接下来</string>
+    <string name="course_lesson_todo">未开始</string>
+    <plurals name="course_progress">
+        <item quantity="other">%2$d课中的第%1$d课</item>
+    </plurals>
+    <string name="settings_hint_detail">提示说到什么程度</string>
+    <string name="hint_detail_region">只说区域</string>
+    <string name="hint_detail_region_note">只说该看哪一宫或哪条线，别的不说。</string>
+    <string name="hint_detail_name">说技巧</string>
+    <string name="hint_detail_name_note">说这是哪一类的一步，好让你知道该找什么。</string>
+    <string name="hint_detail_cells">说格子</string>
+    <string name="hint_detail_cells_note">把推理所依据的格子在盘面上点亮。</string>
+    <string name="hint_detail_full">讲完整个推理</string>
+    <string name="hint_detail_full_note">全部都讲，包括那一手。适合边学课程边用。</string>
+    <string name="path_title">这道题是怎么解的</string>
+    <string name="path_placed">第%1$d行第%2$d列是%3$d。</string>
+    <string name="outcome_path">看这道题是怎么解的</string>
+    <string name="settings_your_data">你的数据</string>
+    <string name="settings_data_note">这个应用知道的关于你的一切都在这台手机里。导出会把它写进你选择的文件，好让新手机从这里接着来。什么都不会发到别处。</string>
+    <string name="settings_export">导出我的进度</string>
+    <string name="settings_import">从文件导入</string>
+    <string name="settings_reset_course">重置课程，保留我的对局</string>
+    <string name="settings_exported">已保存。课程：%1$d。对局：%2$d。</string>
+    <string name="settings_imported">已添加。课程：%1$d。对局：%2$d。</string>
+    <string name="settings_imported_ignored">已添加。课程：%1$d。对局：%2$d。因为来自更新的版本而没有导入：%3$d。</string>
+    <string name="settings_import_empty">这个文件是空的。</string>
+    <string name="settings_import_not_ours">这看起来不像 Sendoku 导出的文件。</string>
+    <string name="settings_import_future">这个文件是更新版本的 Sendoku 写的。</string>
+    <string name="settings_import_failed">这个文件读不了，这台手机上的数据没有任何改动。</string>
+    <string name="settings_course_reset">课程已回到起点。你的对局没有动过。</string>
+    <string name="practice_looking">正在找一个局面…</string>
+    <string name="practice_find">找出%1$s。</string>
+    <string name="practice_keep_going">这是其中之一。继续。</string>
+    <string name="practice_wrong">不是这一格。再读一遍规则：%1$s并不依据它。</string>
+    <string name="practice_right">这就是%1$s。它排除掉的东西已经标出。</string>
+    <string name="practice_revealed">这就是%1$s，以及它排除掉的东西。</string>
+    <string name="practice_show_me">给我看看</string>
+    <string name="practice_another">换一题</string>
+    <string name="practice_skip">跳过</string>
+    <string name="practice_title">练习</string>
+    <string name="practice_none">还没有可以练的内容。先学完一课有技巧的课程。</string>
+    <string name="glossary_learn_this">学这个</string>
+    <string name="hint_learn_this">教我这个</string>
+    <string name="outcome_learn">学习%1$s</string>
+    <string name="course_finished">全部学完。这个应用能叫得出名字的，你也都能。剩下的就是题目本身了。</string>
+    <string name="outcome_lost_hints">提示次数已用完</string>
+    <string name="outcome_share">分享</string>
+    <string name="card_solved">已完成</string>
+    <string name="card_lost">未能完成</string>
+    <string name="settings_hints">提示</string>
+    <string name="settings_hint_limit">用满三次提示后结束本局</string>
+    <string name="settings_hint_note">默认打开。前三次提示免费，第四次要赔上这一局，这样提示就成了一个决定而不是一个条件反射。做课程的时候可以关掉。</string>
+    <string name="account_title">你</string>
+    <string name="account_no_account">没有可以登录的账号。下面的一切都只在这台手机上。</string>
+    <string name="account_solved">已完成</string>
+    <string name="account_streak">连续</string>
+    <string name="account_played">玩过</string>
+    <string name="account_time">时间</string>
+    <string name="account_lessons">课程</string>
+    <string name="account_stats">统计</string>
+    <string name="account_stats_detail">每个难度、你的最好成绩，以及你见过的技巧</string>
+    <string name="account_history">历史</string>
+    <string name="account_history_detail">每一局做完的题，以及结束时的盘面</string>
+    <string name="history_title">历史</string>
+    <string name="history_lost">未完成</string>
+    <string name="history_empty_body">做完一道题它就会留在这里，连同你离开时的盘面，随时可以分享。</string>
+    <string name="history_no_board">这一局是在应用开始保存盘面之前结束的，所以没有可画的东西，只剩下这些数字。</string>
+    <string name="account_settings_detail">外观、盘面、上限，以及你的数据</string>
+    <string name="account_about_detail">这个应用的承诺，以及它所依据的许可</string>
+    <string name="tab_home">主页</string>
+    <string name="tab_learn">学习</string>
+    <string name="tab_account">你</string>
+    <plurals name="hint_menu_left">
+        <item quantity="other">下面两项各消耗一次提示，你还剩%1$d次。</item>
+    </plurals>
+    <plurals name="hint_check_wrong">
+        <item quantity="other">你填的数字里有%1$d个是错的。找出来仍然是你的事。</item>
+    </plurals>
+    <plurals name="path_summary">
+        <item quantity="other">共%1$d步，按最便宜的规则优先排列，正是应用评分时用的顺序。</item>
+    </plurals>
+    <plurals name="path_struck">
+        <item quantity="other">排除%1$d个笔记。</item>
+    </plurals>
+</resources>

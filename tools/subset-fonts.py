@@ -36,26 +36,37 @@ EXTRA = "0123456789:/%·…\u00a0"
 
 # What these four faces are not asked to draw.
 #
-# None of them has a single kana or kanji in it, and the subsets that do exist are around a
-# thousand glyphs where a Japanese face is tens of thousands. Bundling Japanese four times
-# over would cost more than the whole app. Android carries Noto Sans CJK JP and picks it up
-# per character when the face in use cannot draw one, so Japanese renders on every phone
-# without a byte from us, and the only thing that changes is which file the shapes come from.
+# None of them has a kana, a kanji, a Chinese character, a Hangul syllable or an Arabic letter
+# in it, and none of them is going to. A Chinese face alone is tens of thousands of glyphs
+# where these subsets are a couple of hundred, and bundling one for each of four themes would
+# cost several times the whole app. Android carries Noto for every one of these scripts and
+# picks it up per character when the face in use cannot draw one, so they render on every
+# phone without a byte from us, and the only thing that changes is which file the shapes come
+# from.
 #
 # Without this the script stops on 日本語, the name of Japanese in the language picker, which
 # is written in Japanese in every language including English.
-JAPANESE = [
+NOT_OURS = [
+    (0x0600, 0x06FF),  # Arabic
+    (0x0750, 0x077F),  # Arabic supplement
+    (0x08A0, 0x08FF),  # Arabic extended-A
+    (0x1100, 0x11FF),  # Hangul jamo
     (0x3000, 0x303F),  # CJK punctuation
     (0x3040, 0x309F),  # hiragana
     (0x30A0, 0x30FF),  # katakana
+    (0x3130, 0x318F),  # Hangul compatibility jamo
     (0x3400, 0x4DBF),  # CJK ideographs, extension A
     (0x4E00, 0x9FFF),  # CJK ideographs
+    (0xAC00, 0xD7AF),  # Hangul syllables
+    (0xFB50, 0xFDFF),  # Arabic presentation forms-A
+    (0xFE70, 0xFEFF),  # Arabic presentation forms-B
     (0xFF00, 0xFFEF),  # halfwidth and fullwidth forms
 ]
 
 
 def is_japanese(character: str) -> bool:
-    return any(low <= ord(character) <= high for low, high in JAPANESE)
+    """True when the phone draws it rather than one of the four bundled faces."""
+    return any(low <= ord(character) <= high for low, high in NOT_OURS)
 
 # One family per theme, and the two weights each one ships. Regular and the heavier of the
 # two are real files; anything between them is the nearest of these, which is what Compose
@@ -134,7 +145,7 @@ def main() -> int:
     japanese = "".join(c for c in everything if is_japanese(c))
     print(f"{len(everything)} characters, taken from the shipped strings")
     print(f"  {len(text)} for the four bundled faces")
-    print(f"  {len(japanese)} left to the phone's own Japanese font: {japanese}")
+    print(f"  {len(japanese)} left to the phone's own fonts: {japanese}")
     os.makedirs(OUT, exist_ok=True)
     total = 0
     for slug, label, weights in FAMILIES:
