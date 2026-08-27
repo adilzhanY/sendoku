@@ -47,15 +47,7 @@ public fun LicencesScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(dimens.spaceM),
         ) {
-            Text(
-                text = stringResource(R.string.back),
-                style = Sendoku.type.overline,
-                color = colors.muted,
-                modifier = Modifier
-                    .clip(RoundedCornerShape(dimens.radiusS))
-                    .clickable(onClick = onBack)
-                    .padding(dimens.spaceS),
-            )
+            BackButton(onClick = onBack)
             Text(stringResource(R.string.licences_title), style = Sendoku.type.title, color = colors.given)
         }
 

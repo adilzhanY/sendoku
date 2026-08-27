@@ -33,6 +33,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.sendoku.app.R
 import com.sendoku.app.theme.Sendoku
+import com.sendoku.app.ui.BackButton
 import com.sendoku.app.ui.shout
 
 /**
@@ -64,15 +65,7 @@ public fun CourseScreen(
             // Null when the course is a tab rather than a screen somebody navigated into.
             // A back link with nowhere to go is a button that does nothing when pressed.
             if (onBack != null) {
-                Text(
-                    text = stringResource(R.string.back),
-                    style = Sendoku.type.overline,
-                    color = colors.muted,
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(dimens.radiusS))
-                        .clickable(onClick = onBack)
-                        .padding(dimens.spaceS),
-                )
+                BackButton(onClick = onBack)
             }
             Text(
                 text = stringResource(R.string.course_title),

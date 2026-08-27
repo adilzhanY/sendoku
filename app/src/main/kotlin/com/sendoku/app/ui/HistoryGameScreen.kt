@@ -63,16 +63,7 @@ public fun HistoryGameScreen(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(dimens.spaceM),
         ) {
-            Text(
-                text = stringResource(R.string.back),
-                style = Sendoku.type.overline,
-                color = colors.muted,
-                modifier = Modifier
-                    .clip(RoundedCornerShape(dimens.radiusS))
-                    .clickable(onClick = onBack)
-                    .padding(dimens.spaceS)
-                    .testTag("history:game:back"),
-            )
+            BackButton(onClick = onBack, tag = "history:game:back")
             Text(
                 text = stringResource(gradeName(game.grade)),
                 style = Sendoku.type.title,

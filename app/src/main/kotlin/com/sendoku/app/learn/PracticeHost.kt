@@ -22,6 +22,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import com.sendoku.app.R
 import com.sendoku.app.theme.Sendoku
+import com.sendoku.app.ui.BackButton
 import com.sendoku.engine.Dimensions
 import com.sendoku.engine.catalog.RatedPuzzle
 import com.sendoku.engine.technique.TechniqueId
@@ -47,17 +48,7 @@ public fun PracticeHost(
         // With a way out. An empty state that cannot be left is a trap, and this one is
         // reachable on the player's very first visit to the course.
         Column(modifier.fillMaxSize().background(Sendoku.colors.background)) {
-            Text(
-                text = stringResource(R.string.back),
-                style = Sendoku.type.overline,
-                color = Sendoku.colors.muted,
-                modifier = Modifier
-                    .padding(Sendoku.dimens.spaceM)
-                    .clip(RoundedCornerShape(Sendoku.dimens.radiusS))
-                    .clickable(onClick = onBack)
-                    .padding(Sendoku.dimens.spaceS)
-                    .testTag("practice:back"),
-            )
+            BackButton(onClick = onBack, tag = "practice:back", modifier = Modifier.padding(Sendoku.dimens.spaceS))
             Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                 Text(
                     text = stringResource(R.string.practice_none),

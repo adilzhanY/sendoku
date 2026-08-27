@@ -58,16 +58,7 @@ public fun HistoryScreen(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(dimens.spaceM),
         ) {
-            Text(
-                text = stringResource(R.string.back),
-                style = Sendoku.type.overline,
-                color = colors.muted,
-                modifier = Modifier
-                    .clip(RoundedCornerShape(dimens.radiusS))
-                    .clickable(onClick = onBack)
-                    .padding(dimens.spaceS)
-                    .testTag("history:back"),
-            )
+            BackButton(onClick = onBack, tag = "history:back")
             Text(stringResource(R.string.history_title), style = Sendoku.type.title, color = colors.given)
         }
 

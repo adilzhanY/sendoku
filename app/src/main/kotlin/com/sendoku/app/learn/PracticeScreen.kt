@@ -39,6 +39,7 @@ import com.sendoku.app.game.Cell
 import com.sendoku.app.game.GameSettings
 import com.sendoku.app.game.GameState
 import com.sendoku.app.theme.Sendoku
+import com.sendoku.app.ui.BackButton
 import com.sendoku.app.ui.SudokuBoard
 import com.sendoku.app.ui.TechniqueCopy
 import com.sendoku.engine.Board
@@ -129,15 +130,7 @@ public fun PracticeScreen(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(dimens.spaceS),
             ) {
-                Text(
-                    text = stringResource(R.string.back),
-                    style = Sendoku.type.overline,
-                    color = colors.muted,
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(dimens.radiusS))
-                        .clickable(onClick = onBack)
-                        .padding(dimens.spaceS),
-                )
+                BackButton(onClick = onBack)
                 Text(
                     text = stringResource(TechniqueCopy.nameOf(exercise.technique)),
                     style = Sendoku.type.label,

@@ -48,16 +48,7 @@ public fun SolvePathScreen(path: SolvePath, onBack: () -> Unit, modifier: Modifi
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(dimens.spaceM),
         ) {
-            Text(
-                text = stringResource(R.string.back),
-                style = Sendoku.type.overline,
-                color = colors.muted,
-                modifier = Modifier
-                    .clip(RoundedCornerShape(dimens.radiusS))
-                    .clickable(onClick = onBack)
-                    .padding(dimens.spaceS)
-                    .testTag("path:back"),
-            )
+            BackButton(onClick = onBack, tag = "path:back")
             Text(
                 text = stringResource(R.string.path_title),
                 style = Sendoku.type.title,

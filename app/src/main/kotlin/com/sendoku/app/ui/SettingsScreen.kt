@@ -83,15 +83,7 @@ public fun SettingsScreen(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(dimens.spaceM),
         ) {
-            Text(
-                text = stringResource(R.string.back),
-                style = Sendoku.type.overline,
-                color = colors.muted,
-                modifier = Modifier
-                    .clip(RoundedCornerShape(dimens.radiusS))
-                    .clickable(onClick = onBack)
-                    .padding(dimens.spaceS),
-            )
+            BackButton(onClick = onBack)
             Text(stringResource(R.string.settings_title), style = Sendoku.type.title, color = colors.given)
         }
 

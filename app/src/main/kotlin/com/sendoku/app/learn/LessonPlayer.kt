@@ -53,6 +53,7 @@ import com.sendoku.app.game.Cell
 import com.sendoku.app.game.GameSettings
 import com.sendoku.app.game.GameState
 import com.sendoku.app.theme.Sendoku
+import com.sendoku.app.ui.BackButton
 import com.sendoku.app.ui.NumberPad
 import com.sendoku.app.ui.SudokuBoard
 import com.sendoku.engine.Board
@@ -217,16 +218,7 @@ private fun Header(lesson: Lesson, index: Int, onLeave: () -> Unit) {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(dimens.spaceS),
     ) {
-        Text(
-            text = stringResource(R.string.back),
-            style = Sendoku.type.overline,
-            color = colors.muted,
-            modifier = Modifier
-                .clip(RoundedCornerShape(dimens.radiusS))
-                .clickable(onClick = onLeave)
-                .padding(dimens.spaceS)
-                .testTag("lesson:back"),
-        )
+        BackButton(onClick = onLeave, tag = "lesson:back")
         Text(
             text = stringResource(lesson.title),
             style = Sendoku.type.label,
