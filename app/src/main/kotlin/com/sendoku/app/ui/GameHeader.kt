@@ -1,16 +1,15 @@
 package com.sendoku.app.ui
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -18,6 +17,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
@@ -25,7 +25,6 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sendoku.app.R
@@ -68,67 +67,120 @@ public fun GameHeader(
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
 
-    Column(modifier = modifier.fillMaxWidth()) {
+    Row(
+        modifier = modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        BarIcon(
+            icon = SendokuIcons.Back,
+            label = stringResource(R.string.back),
+            onClick = onLeave,
+            tag = "game:back",
+        )
+
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.weight(1f).padding(horizontal = dimens.spaceXs),
+            horizontalArrangement = Arrangement.spacedBy(dimens.spaceM, Alignment.CenterHorizontally),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            BarIcon(
-                icon = SendokuIcons.Back,
-                label = stringResource(R.string.back),
-                onClick = onLeave,
-                tag = "game:back",
-            )
-            Text(
+            // Shrinks rather than wraps. Four words of German at twice the font scale used
+            // to be what broke this line, and a title that wraps pushes the board down.
+            OneLine(
                 text = title(state),
                 style = Sendoku.type.label,
                 color = colors.given,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.weight(1f),
+                min = 9.sp,
+                modifier = Modifier.weight(1f, fill = false),
             )
-            BarIcon(
-                icon = SendokuIcons.Settings,
-                label = stringResource(R.string.settings_title),
-                onClick = onSettings,
-                tag = "game:settings",
-            )
-        }
-
-        Row(
-            modifier = Modifier.fillMaxWidth().padding(top = dimens.spaceS),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Stat(
-                label = stringResource(R.string.stat_difficulty),
-                value = stringResource(gradeName(state.grade)),
-                modifier = Modifier.weight(1f),
-            )
-            // Both, always. A count that appears only when a setting is on is a count nobody
-            // learns to read, and these two are now the two ways to lose.
-            Stat(
+            Marks(
+                spent = state.mistakes,
+                limit = state.settings.mistakeLimit,
+                colour = colors.conflict,
                 label = stringResource(R.string.stat_mistakes),
-                value = state.settings.mistakeLimit
-                    ?.let { stringResource(R.string.mistakes_of, state.mistakes, it) }
-                    ?: state.mistakes.toString(),
-                warn = state.mistakes > 0,
-                modifier = Modifier.weight(1f),
             )
-            Stat(
+            // Rings rather than discs, because two rows of identical dots side by side read
+            // as one row of six. A life you have spent is a life gone; a hint is something
+            // you asked for, and the two are not the same kind of mark.
+            Marks(
+                spent = state.hintsUsed,
+                limit = state.settings.hintLimit,
+                colour = colors.accent,
                 label = stringResource(R.string.stat_hints),
-                value = state.settings.hintLimit
-                    ?.let { stringResource(R.string.mistakes_of, state.hintsUsed, it) }
-                    ?: state.hintsUsed.toString(),
-                warn = state.settings.hintLimit != null && state.hintsUsed > 0,
-                modifier = Modifier.weight(1f),
+                hollow = true,
             )
             if (state.settings.showTimer) {
-                Stat(
-                    label = stringResource(R.string.stat_time),
-                    value = state.elapsed.clock(),
-                    modifier = Modifier.weight(1f),
+                val clock = state.elapsed.clock()
+                val time = stringResource(R.string.stat_time)
+                Text(
+                    text = clock,
+                    style = Sendoku.type.timer,
+                    color = colors.muted,
+                    modifier = Modifier.semantics { contentDescription = "$time, $clock" },
                 )
-                if (canPause) PauseButton(onPause)
             }
+        }
+
+        if (state.settings.showTimer && canPause) {
+            BarIcon(
+                icon = SendokuIcons.Pause,
+                label = stringResource(R.string.stat_pause),
+                onClick = onPause,
+                tag = "game:pause",
+            )
+        }
+        BarIcon(
+            icon = SendokuIcons.Settings,
+            label = stringResource(R.string.settings_title),
+            onClick = onSettings,
+            tag = "game:settings",
+        )
+    }
+}
+
+/**
+ * How many of something you have spent, as marks rather than as a sum.
+ *
+ * A limit is drawn as one dot per life, filled as they go. Reading three dots with one lit is
+ * instant, where "1 of 3" is a small piece of arithmetic done every time you glance up, and
+ * the dots take a third of the width, which is what let the whole header become one line.
+ *
+ * With no limit set there is nothing to count towards, so it is a plain number, and it stays
+ * out of the way entirely until there is something to say.
+ */
+@Composable
+private fun Marks(spent: Int, limit: Int?, colour: Color, label: String, hollow: Boolean = false) {
+    val colors = Sendoku.colors
+    if (limit == null) {
+        if (spent == 0) return
+        Text(
+            text = spent.toString(),
+            style = Sendoku.type.timer,
+            color = colour,
+            modifier = Modifier.semantics { contentDescription = "$label, $spent" },
+        )
+        return
+    }
+    val spoken = stringResource(R.string.mistakes_of, spent, limit)
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(DOT_GAP),
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.semantics(mergeDescendants = true) { contentDescription = "$label, $spoken" },
+    ) {
+        repeat(limit) { index ->
+            val on = index < spent
+            val ink = if (on) colour else colors.hairline
+            Box(
+                Modifier
+                    .size(DOT)
+                    .clip(CircleShape)
+                    .then(
+                        if (hollow) {
+                            Modifier.border(RING, ink, CircleShape)
+                        } else {
+                            Modifier.background(ink)
+                        },
+                    ),
+            )
         }
     }
 }
@@ -157,67 +209,26 @@ private fun BarIcon(
     }
 }
 
-@Composable
-private fun Stat(label: String, value: String, modifier: Modifier = Modifier, warn: Boolean = false) {
-    val colors = Sendoku.colors
-    Column(
-        modifier = modifier
-            // A hair of air on both sides, so two neighbouring stats cannot end up reading
-            // as one word when both of them have filled their quarter of the screen.
-            .padding(horizontal = 6.dp)
-            .semantics(mergeDescendants = true) { contentDescription = "$label, $value" },
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(2.dp),
-    ) {
-        // Four of these share the width of the screen, so at a large font scale a German
-        // label is wider than its quarter of it. Wrapping put "Leicht" over two lines and
-        // slid "0 von 3" sideways into the column next to it, so they shrink to fit instead.
-        // Down to five if that is what it takes. Four of these share the width of the screen,
-        // so a quarter of it is about seventy density pixels once the padding is off, and at
-        // twice the font scale a ten letter word in a monospace face needs every bit of that.
-        // "Dificultad" in Terminal was the case that found it, arriving as "Dificult".
-        OneLine(label, Sendoku.type.statLabel, colors.muted, min = 5.sp)
-        OneLine(value, Sendoku.type.statValue, if (warn) colors.conflict else colors.given)
-    }
-}
-
-@Composable
-private fun PauseButton(onPause: () -> Unit) {
-    val colors = Sendoku.colors
-    val dimens = Sendoku.dimens
-    val label = stringResource(R.string.stat_pause)
-    Box(
-        modifier = Modifier
-            .size(dimens.minTouchTarget)
-            .clip(CircleShape)
-            .background(colors.surfaceRaised)
-            .clickable(onClick = onPause)
-            .testTag("game:pause")
-            .semantics {
-                contentDescription = label
-                role = Role.Button
-            },
-        contentAlignment = Alignment.Center,
-    ) {
-        Icon(SendokuIcons.Pause, contentDescription = null, tint = colors.muted, modifier = Modifier.size(BAR_ICON))
-    }
-}
-
 /**
  * The line in the middle of the bar.
  *
- * A daily says which day it is, because a player who opened the calendar and tapped a square
- * in March should be able to see that is where they are. Anything else says nothing, since
- * the grade is already named underneath.
+ * The level, because it is the one word that says what kind of afternoon this is going to be.
+ * A daily says which day it is as well, because a player who opened the calendar and tapped a
+ * square in March should be able to see that is where they are. The app's own name used to be
+ * here, which is the one thing nobody opening the app needs to be told.
  */
 @Composable
 private fun title(state: GameState): String {
-    val day = state.dailyEpochDay ?: return stringResource(R.string.app_name)
+    val grade = stringResource(gradeName(state.grade))
+    val day = state.dailyEpochDay ?: return grade
     // Formatted by the platform, not by a format string of our own. A date written the
     // English way in a Russian listing is the kind of small wrongness that reads as sloppy.
     val locale = LocalConfiguration.current.locales[0]
     val format = remember(locale) { DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM).withLocale(locale) }
-    return LocalDate.ofEpochDay(day).format(format)
+    return stringResource(R.string.game_daily_title, LocalDate.ofEpochDay(day).format(format), grade)
 }
 
 private val BAR_ICON = 22.dp
+private val DOT = 7.dp
+private val DOT_GAP = 3.dp
+private val RING = 1.5.dp

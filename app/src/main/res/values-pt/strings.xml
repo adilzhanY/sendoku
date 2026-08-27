@@ -351,11 +351,11 @@
     </plurals>
     <string name="daily_cell">%1$d, %2$s, %3$s</string>
     <string name="daily_cell_today">hoje, %1$d, %2$s, %3$s</string>
-    <string name="stat_difficulty">Nível</string>
     <string name="stat_mistakes">Erros</string>
     <string name="stat_hints">Dicas</string>
     <string name="stat_time">Tempo</string>
     <string name="stat_pause">Pausa</string>
+    <string name="game_daily_title">%1$s, %2$s</string>
 
     <string name="stage_first_steps">Primeiros passos</string>
     <string name="stage_one_at_a_time">Um número de cada vez</string>

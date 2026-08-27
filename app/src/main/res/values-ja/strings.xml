@@ -348,11 +348,11 @@
     </plurals>
     <string name="daily_cell">%1$d日、%2$s、%3$s</string>
     <string name="daily_cell_today">今日、%1$d日、%2$s、%3$s</string>
-    <string name="stat_difficulty">難易度</string>
     <string name="stat_mistakes">ミス</string>
     <string name="stat_hints">ヒント</string>
     <string name="stat_time">タイム</string>
     <string name="stat_pause">一時停止</string>
+    <string name="game_daily_title">%1$s・%2$s</string>
 
     <string name="stage_first_steps">はじめの一歩</string>
     <string name="stage_one_at_a_time">ひとつずつ決める</string>

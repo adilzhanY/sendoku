@@ -344,11 +344,11 @@
     </plurals>
     <string name="daily_cell">%1$d日，%2$s，%3$s</string>
     <string name="daily_cell_today">今天，%1$d日，%2$s，%3$s</string>
-    <string name="stat_difficulty">难度</string>
     <string name="stat_mistakes">错误</string>
     <string name="stat_hints">提示</string>
     <string name="stat_time">用时</string>
     <string name="stat_pause">暂停</string>
+    <string name="game_daily_title">%1$s・%2$s</string>
 
     <string name="stage_first_steps">入门</string>
     <string name="stage_one_at_a_time">一次确定一个数字</string>

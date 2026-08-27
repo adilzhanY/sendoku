@@ -358,11 +358,11 @@
     </plurals>
     <string name="daily_cell">%1$d, %2$s, %3$s</string>
     <string name="daily_cell_today">сегодня, %1$d, %2$s, %3$s</string>
-    <string name="stat_difficulty">Сложность</string>
     <string name="stat_mistakes">Ошибки</string>
     <string name="stat_hints">Подсказки</string>
     <string name="stat_time">Время</string>
     <string name="stat_pause">Пауза</string>
+    <string name="game_daily_title">%1$s, %2$s</string>
 
     <!-- Учебный курс. -->
     <string name="stage_first_steps">Первые шаги</string>

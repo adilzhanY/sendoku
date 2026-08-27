@@ -231,12 +231,13 @@ public fun GameScreen(
                         onGlossary = onGlossary,
                         onAsk = { hint = askForHint(state, hint, it, feedback, onSpend) },
                         feedback = feedback,
-                        // Takes what is left under the board and no more, and is not stretched
-                        // to fill it. The slack ends up at the bottom, under the keys, which
-                        // is where a thumb wants it, and a hint long enough to run past the
-                        // bottom of the screen is stopped here and scrolls instead.
+                        // Everything left under the board, with the keys against the bottom
+                        // of it. The slack used to fall under the keys, which on a tall phone
+                        // left a quarter of the screen empty in the one place a thumb can
+                        // reach without moving. Now the slack is between the board and the
+                        // tools, and a hint too long for the space scrolls inside it.
                         modifier = Modifier
-                            .weight(1f, fill = false)
+                            .weight(1f)
                             .padding(horizontal = dimens.spaceS),
                     )
                 }
@@ -457,7 +458,7 @@ private fun HelpOrControls(
     onAsk: (HintLevel) -> Unit,
     feedback: (GameEvent) -> Unit,
 ) {
-    Box(modifier) {
+    Box(modifier, contentAlignment = Alignment.BottomCenter) {
         when {
             hint != null -> HintArea(hint, onEvent, onHint, onGlossary)
             menuOpen -> HintMenuArea(state, true, checked, onChecked, onOpen, onAsk)

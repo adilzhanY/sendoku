@@ -341,11 +341,11 @@
     </plurals>
     <string name="daily_cell">%1$d일, %2$s, %3$s</string>
     <string name="daily_cell_today">오늘, %1$d일, %2$s, %3$s</string>
-    <string name="stat_difficulty">난이도</string>
     <string name="stat_mistakes">실수</string>
     <string name="stat_hints">힌트</string>
     <string name="stat_time">시간</string>
     <string name="stat_pause">일시정지</string>
+    <string name="game_daily_title">%1$s · %2$s</string>
 
     <string name="stage_first_steps">첫걸음</string>
     <string name="stage_one_at_a_time">한 번에 숫자 하나씩</string>

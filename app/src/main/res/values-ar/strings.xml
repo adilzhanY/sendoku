@@ -372,11 +372,11 @@
     </plurals>
     <string name="daily_cell">%1$d، %2$s، %3$s</string>
     <string name="daily_cell_today">اليوم، %1$d، %2$s، %3$s</string>
-    <string name="stat_difficulty">المستوى</string>
     <string name="stat_mistakes">الأخطاء</string>
     <string name="stat_hints">التلميحات</string>
     <string name="stat_time">الوقت</string>
     <string name="stat_pause">إيقاف مؤقت</string>
+    <string name="game_daily_title">%1$s، %2$s</string>
 
     <string name="stage_first_steps">الخطوات الأولى</string>
     <string name="stage_one_at_a_time">رقم واحد في كل مرة</string>
