@@ -1,0 +1,794 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Español.
+
+  Dos decisiones que valen para todo el archivo. Los nombres descriptivos de las técnicas
+  están traducidos y los nombres propios inventados se quedan en inglés: un X-Wing es un
+  X-Wing también en español, pero un naked single es un único desnudo. Y el tono es el
+  mismo que en el original: tranquilo, directo y sin signos de exclamación.
+-->
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Sendoku</string>
+
+    <string name="home_choose_level">ELIGE UN NIVEL</string>
+    <string name="home_daily">Diario</string>
+    <string name="home_new_puzzle">Nuevo sudoku</string>
+    <string name="home_resume">Continuar</string>
+    <string name="home_in_progress">EMPEZADO</string>
+    <string name="home_percent">%1$s, %2$d%%</string>
+    <string name="home_placed">Puestas: %1$d de %2$d</string>
+
+    <string name="grade_gentle">Fácil</string>
+    <string name="grade_steady">Medio</string>
+    <string name="grade_tricky">Difícil</string>
+    <string name="grade_severe">Muy difícil</string>
+    <string name="grade_diabolical">Experto</string>
+    <string name="grade_beyond">Maestro</string>
+    <string name="grade_insane">Demencial</string>
+    <string name="grade_nightmare">Pesadilla</string>
+    <string name="grade_locked">Gana un sudoku de nivel %1$s para abrir este</string>
+    <string name="gate_gentle">una cifra clara detrás de otra</string>
+    <string name="gate_steady">parejas, y cifras atadas a una línea</string>
+    <string name="gate_tricky">tríos, y patrones a lo ancho del tablero</string>
+    <string name="gate_severe">wings, coloreado y rectángulos</string>
+    <string name="gate_diabolical">cadenas de razonamiento</string>
+    <string name="gate_beyond">más lejos de lo que llegan casi todas las apps</string>
+    <string name="gate_insane">grupos de casillas encadenados</string>
+    <string name="gate_nightmare">una casilla por los dos caminos, sobre papel</string>
+    <string name="grade_advanced">AVANZADO</string>
+    <string name="grade_advanced_talkback">un nivel avanzado, que necesita una técnica del curso</string>
+
+    <string name="tool_undo">Deshacer</string>
+    <string name="tool_redo">Rehacer</string>
+    <string name="tool_erase">Borrar</string>
+    <string name="tool_notes">Notas</string>
+    <string name="tool_hint">Pista</string>
+    <string name="paused">EN PAUSA</string>
+    <string name="paused_tap">Toca donde quieras para seguir</string>
+    <string name="mistakes_of">%1$d de %2$d</string>
+
+    <string name="cell_position">Fila %1$d, columna %2$d</string>
+    <string name="cell_clue">%1$s, %2$d, una pista</string>
+    <string name="cell_digit">%1$s, %2$d</string>
+    <string name="cell_empty">%1$s, vacía</string>
+    <string name="cell_noted">%1$s, vacía, anotado %2$s</string>
+    <string name="cell_hint_argument">%1$s. Parte de la pista.</string>
+    <string name="cell_hint_struck">%1$s. La pista descarta una nota aquí.</string>
+    <string name="cell_hint_region">%1$s. En la región de la que habla la pista.</string>
+    <string name="cell_repeated">%1$s, repetida</string>
+    <string name="pad_all_placed">%1$d, todas puestas</string>
+    <string name="pad_one_left">%1$d, queda una</string>
+    <plurals name="pad_left">
+        <item quantity="one">%1$d, queda %2$d</item>
+        <item quantity="other">%1$d, quedan %2$d</item>
+    </plurals>
+    <string name="pad_scanning">%1$s, mostrando dónde puede ir</string>
+    <string name="pad_notes_mode">%1$s, modo notas</string>
+
+    <string name="cell_actions_title">FILA %1$d, COLUMNA %2$d</string>
+    <string name="cell_actions_clue">Esta venía con el sudoku, así que no se puede cambiar.</string>
+    <plurals name="cell_actions_note_all">
+        <item quantity="one">Anotar el único candidato</item>
+        <item quantity="other">Anotar los %1$d candidatos</item>
+    </plurals>
+    <string name="cell_actions_clear_notes">Borrar las notas</string>
+    <string name="why_not_title">¿POR QUÉ NO?</string>
+    <string name="why_not_prompt">Toca una cifra y te digo qué se lo impide.</string>
+    <string name="why_not_taken">Ya hay un %1$d en %2$s, en la fila %3$d, columna %4$d.</string>
+    <string name="why_not_filled">Esta casilla ya tiene un %1$d. Bórralo primero.</string>
+    <string name="why_not_possible">Nada en el tablero descarta el %1$d. Eso no lo hace correcto, solo posible.</string>
+    <string name="cell_actions_clear">Vaciar la casilla</string>
+
+    <string name="leave_title">¿Dejar este sudoku?</string>
+    <string name="leave_body">Te esperará donde lo dejaste.</string>
+    <string name="leave_confirm">Salir</string>
+    <string name="leave_cancel">Quedarme</string>
+
+    <string name="outcome_solved">RESUELTO</string>
+    <string name="outcome_lost">SIN ERRORES DISPONIBLES</string>
+    <string name="outcome_rated">%1$s, valorado en %2$s</string>
+    <string name="outcome_hints">PISTAS</string>
+    <string name="outcome_mistakes">ERRORES</string>
+    <string name="outcome_moves">JUGADAS</string>
+    <string name="outcome_needed">Necesitaba un %1$s</string>
+    <string name="outcome_home">Inicio</string>
+    <string name="outcome_another">Otro %1$s</string>
+
+    <string name="hint_remove_one">Quitarlo</string>
+    <string name="hint_remove_many">Quitarlos</string>
+    <string name="hint_look_here_title">MIRA AQUÍ</string>
+    <string name="hint_look_here">Hay algo que encontrar %1$s. Esto es todo lo que dice esta pista.</string>
+    <string name="hint_look_around">Hay un paso que encontrar. Este está repartido por el tablero en vez de estar en una sola región.</string>
+    <string name="hint_what_kind">¿Qué clase de paso?</string>
+    <string name="hint_menu_title">AYUDA</string>
+    <string name="hint_menu_difficulty">El siguiente paso necesita una técnica de nivel %1$s.</string>
+    <string name="hint_menu_broken">Algo que has puesto está mal, así que nada más se deduce hasta arreglarlo.</string>
+    <string name="hint_menu_check">¿Hay algo mal?</string>
+    <string name="hint_menu_look">¿Dónde debería mirar?</string>
+    <string name="hint_menu_explain">Explicar el siguiente paso</string>
+    <string name="hint_menu_free">Preguntar no cuesta nada aquí. El límite está apagado.</string>
+    <string name="hint_check_clean">Nada de lo que has puesto está mal.</string>
+    <string name="hint_close">Cerrar</string>
+    <string name="hint_previous">Un paso atrás</string>
+    <string name="hint_cells_here">Las casillas en las que se apoya están iluminadas %1$s.</string>
+    <string name="hint_where">Enséñame dónde</string>
+    <string name="hint_explain">Explícalo</string>
+    <string name="hint_do_it">Hazlo</string>
+    <string name="hint_evidence">Su fila ya tiene %1$s. Su columna tiene %2$s. Su bloque tiene %3$s. Entre los tres están todas las cifras menos el %4$d.</string>
+    <string name="hint_rests_on_earlier">Parte de esto se apoya en notas que descartó una pista anterior. Están escritas en el tablero, así que puedes seguirlo desde ahí.</string>
+    <string name="hint_what_is_this">¿QUÉ ES ESTO?</string>
+    <string name="hint_wrong_title">ALGO ESTÁ MAL</string>
+    <string name="hint_wrong_one">Una de las cifras que has puesto no puede ser correcta. Está resaltada.</string>
+    <string name="hint_wrong_many">%1$d de las cifras que has puesto no pueden ser correctas. Están resaltadas.</string>
+    <string name="hint_wrong_until_one">No se puede deducir nada más hasta arreglarla.</string>
+    <string name="hint_wrong_until_many">No se puede deducir nada más hasta arreglarlas.</string>
+    <string name="hint_done_title">HECHO</string>
+    <string name="hint_done_body">El sudoku está terminado.</string>
+    <string name="hint_stuck_title">NADA QUE SUGERIR</string>
+    <string name="hint_stuck_body">Este tablero es legal, pero ninguna de las técnicas que Sendoku conoce se le aplica. Eso no debería pasar en un sudoku de la app.</string>
+    <string name="hint_in_region">en %1$s</string>
+    <string name="hint_in_regions">en %1$s y %2$s</string>
+    <string name="hint_outcome_place" tools:ignore="PluralsCandidate">Así que la fila %1$d, columna %2$d tiene que ser %3$d.</string>
+    <string name="hint_outcome_strike_one" tools:ignore="PluralsCandidate">Así que el %1$d se puede quitar de %2$s.</string>
+    <string name="hint_outcome_strike_two" tools:ignore="PluralsCandidate">Así que el %1$d y el %2$d se pueden quitar de %3$s.</string>
+    <plurals name="hint_cells">
+        <item quantity="one">una casilla</item>
+        <item quantity="other">%1$d casillas</item>
+    </plurals>
+
+    <string name="house_row">la fila %1$d</string>
+    <string name="house_column">la columna %1$d</string>
+    <string name="house_box">el bloque %1$d</string>
+
+    <string name="glossary_title">Técnicas</string>
+    <string name="back">ATRÁS</string>
+
+    <string name="settings_title">Ajustes</string>
+    <string name="settings_language">Idioma</string>
+    <string name="language_system">Seguir al teléfono</string>
+    <string name="language_english">English</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_german">Deutsch</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_spanish">Español</string>
+    <string name="settings_look">Aspecto</string>
+    <string name="settings_light_or_dark">Claro u oscuro</string>
+    <string name="settings_terminal_is_dark">Terminal es oscuro esté como esté el teléfono. Es a propósito.</string>
+    <string name="settings_board">El tablero</string>
+    <string name="settings_highlight_peers">Resaltar la fila, la columna y el bloque</string>
+    <string name="settings_highlight_same">Resaltar la misma cifra en el resto del tablero</string>
+    <string name="settings_auto_clear">Borrar las notas que una cifra puesta descarta</string>
+    <string name="settings_auto_notes">Mantener todas las casillas anotadas</string>
+    <string name="settings_auto_notes_note">La app lleva la contabilidad. A partir de Experto esto es casi necesario.</string>
+    <string name="settings_highlight_homes">Mostrar dónde puede ir todavía la cifra elegida</string>
+    <string name="settings_auto_check">Avisarme en cuanto una cifra esté mal</string>
+    <string name="settings_auto_check_note">Con esto encendido no se pierde nada por probar, así que el sudoku pierde casi toda su tensión.</string>
+    <string name="settings_auto_check_forced">Encendido mientras haya un límite de errores, porque un error que te cuesta algo tiene que ser un error que puedas ver. Apaga el límite abajo para jugar sin ninguno de los dos.</string>
+    <string name="settings_flag_conflicts">Marcar una cifra que se repite en una fila, columna o bloque</string>
+    <string name="settings_clock">El reloj</string>
+    <string name="settings_show_timer">Mostrar el cronómetro</string>
+    <string name="settings_feedback">Respuesta</string>
+    <string name="settings_haptics">Vibrar al poner una cifra</string>
+    <string name="settings_sound">Sonidos</string>
+    <string name="settings_sound_note">Notas suaves mientras juegas. Apagarlas es un toque, y el modo silencio del teléfono manda sobre las dos cosas.</string>
+    <string name="settings_mistakes">Errores</string>
+    <string name="settings_mistake_limit">Terminar la partida a los tres errores</string>
+    <string name="settings_mistake_note">Encendido por defecto, en tres. Apágalo para los niveles altos, donde perder una hora por un descuido es miserable.</string>
+    <string name="settings_about">SOBRE SENDOKU</string>
+
+    <string name="theme_deep_field">Campo profundo</string>
+    <string name="theme_deep_field_summary">Negro puro, un acento cian y nada más</string>
+    <string name="theme_ink">Tinta y papel</string>
+    <string name="theme_ink_summary">Un cuadernillo de pasatiempos, impreso en papel cálido</string>
+    <string name="theme_zen">Zen de pizarra</string>
+    <string name="theme_zen_summary">Salvia y piedra, y lo menos posible aparte de eso</string>
+    <string name="theme_terminal">Terminal</string>
+    <string name="theme_terminal_summary">Monoespaciado, cantos duros, solo oscuro</string>
+    <string name="mode_system">Seguir al sistema</string>
+    <string name="mode_light">Siempre claro</string>
+    <string name="mode_dark">Siempre oscuro</string>
+
+    <string name="stats_title">Estadísticas</string>
+    <string name="stats_solved">RESUELTOS</string>
+    <string name="stats_streak">RACHA</string>
+    <string name="stats_hardest">MÁS DIFÍCIL</string>
+    <string name="stats_hardest_note">Lo más difícil que has terminado es un %1$s.</string>
+    <plurals name="stats_longest_run">
+        <item quantity="one">Tu racha más larga fue de un día.</item>
+        <item quantity="other">Tu racha más larga fue de %1$d días.</item>
+    </plurals>
+    <string name="stats_totals">%1$s jugados, pistas usadas: %2$d.</string>
+    <string name="stats_by_grade">Por nivel</string>
+    <string name="stats_hints_title">SOBRE LO QUE HAS PREGUNTADO</string>
+    <string name="stats_hints_note">Sobre lo que más preguntas es %1$s. Esa es la lección a la que merece la pena volver.</string>
+    <string name="stats_needed">Lo que necesitaban tus sudokus</string>
+    <string name="stats_solved_count">Resueltos: %1$d</string>
+    <string name="stats_solved_and_lost">Resueltos: %1$d, perdidos: %2$d</string>
+    <string name="stats_average">media %1$s</string>
+    <string name="stats_reset">BORRAR LAS ESTADÍSTICAS</string>
+    <string name="stats_reset_title">¿Tirar tu historial?</string>
+    <string name="stats_reset_body">Cada sudoku terminado, cada racha y cada mejor tiempo. No hay copia en ningún otro sitio, así que esto no se puede deshacer.</string>
+    <string name="stats_reset_confirm">Borrar</string>
+    <string name="stats_reset_cancel">Conservarlo</string>
+    <string name="stats_empty_title">Todavía nada</string>
+    <string name="stats_empty_body">Termina un sudoku y esto se llena: cuánto tardas en cada nivel, hasta dónde has subido y qué técnicas han necesitado tus sudokus.</string>
+
+    <string name="about_title">Acerca de</string>
+    <string name="about_version">Sendoku %1$s</string>
+    <string name="about_tagline">Una app de sudoku para quien se ha quedado sin sudokus difíciles.</string>
+    <string name="about_no_ads">Sin anuncios</string>
+    <string name="about_no_ads_detail">Ni entre sudokus, ni por pistas, ni nunca.</string>
+    <string name="about_no_tracking">Sin rastreo</string>
+    <string name="about_no_tracking_detail">No se mide nada y no se envía nada. No hay servidor.</string>
+    <string name="about_no_purchases">Sin compras</string>
+    <string name="about_no_purchases_detail">Todos los sudokus y todas las pistas ya están aquí.</string>
+    <string name="about_offline">Funciona sin conexión</string>
+    <string name="about_offline_detail">El lote entero viaja dentro de la app.</string>
+    <string name="about_hints">Pistas que enseñan</string>
+    <string name="about_hints_detail">Una pista nombra la técnica y explica el razonamiento. Nunca se limita a rellenar una cifra, y nunca se vende: vienen tres con cada sudoku, y puedes quitar el límite en los ajustes.</string>
+    <string name="about_rating">La dificultad se mide por la técnica más difícil que un sudoku necesita de verdad, calculada resolviéndolo como lo haría una persona. Por eso un Muy difícil de aquí significa lo mismo que el anterior Muy difícil.</string>
+    <string name="about_licence">Sendoku es software libre bajo la Licencia Pública General de GNU, versión 3.</string>
+    <string name="about_privacy">La política de privacidad dice lo mismo en la forma que pide la tienda, en adilzhany.github.io/sendoku/privacy</string>
+    <string name="about_licences">LICENCIAS DE CÓDIGO ABIERTO</string>
+    <string name="licences_title">Licencias</string>
+
+    <string name="look_naked_single">Hay una casilla en la que solo cabe ya una cifra.</string>
+    <string name="look_hidden_single">Hay una cifra a la que solo le queda un sitio donde ir.</string>
+    <string name="look_locked_candidates_pointing">En un bloque, una cifra está atrapada en una sola fila o columna.</string>
+    <string name="look_locked_candidates_claiming">En una línea, una cifra solo puede caer dentro de un bloque.</string>
+    <string name="look_naked_pair">Dos casillas de una región tienen las mismas dos cifras y nada más.</string>
+    <string name="look_hidden_pair">Dos cifras no tienen dónde ir en una región salvo en las mismas dos casillas.</string>
+    <string name="look_naked_triple">Tres casillas de una región se reparten tres cifras entre ellas.</string>
+    <string name="look_hidden_triple">Tres cifras están confinadas en las mismas tres casillas.</string>
+    <string name="look_naked_quad">Cuatro casillas de una región se reparten cuatro cifras entre ellas.</string>
+    <string name="look_hidden_quad">Cuatro cifras están confinadas en las mismas cuatro casillas.</string>
+    <string name="look_x_wing">Dos filas tienen una cifra en las mismas dos columnas, o al revés.</string>
+    <string name="look_swordfish">Tres filas tienen una cifra dentro de las mismas tres columnas.</string>
+    <string name="look_jellyfish">Cuatro filas tienen una cifra dentro de las mismas cuatro columnas.</string>
+    <string name="look_xy_wing">Tres casillas de dos cifras cada una, colocadas de modo que una cifra queda expulsada.</string>
+    <string name="look_xyz_wing">Como un XY-Wing, pero la casilla del medio tiene además una tercera cifra.</string>
+    <string name="look_w_wing">Dos casillas con la misma pareja, unidas por una cifra que solo tiene dos sitios.</string>
+    <string name="look_simple_colouring">Una cifra forma una cadena que alterna de principio a fin.</string>
+    <string name="look_multi_colouring">Dos cadenas distintas de una misma cifra, enfrentadas entre sí.</string>
+    <string name="look_remote_pairs">Una cadena de casillas que tienen todas exactamente las mismas dos cifras.</string>
+    <string name="look_unique_rectangle">Cuatro casillas forman un rectángulo que le daría dos soluciones al sudoku.</string>
+    <string name="look_bug_plus_one">Todas las casillas menos una han bajado a dos cifras.</string>
+    <string name="look_x_chain">Una cadena sobre una cifra, alternando entre tiene que y no puede.</string>
+    <string name="look_xy_chain">Una cadena de casillas de dos cifras, cada una forzando a la siguiente.</string>
+    <string name="look_forcing_chain">Una casilla con exactamente dos posibilidades, cuando ya no queda nada más que encontrar.</string>
+    <string name="look_death_blossom">Una casilla, y un grupo por cada cifra que podría ser, donde la casilla ve esa cifra en todo el grupo.</string>
+    <string name="look_als_xy_wing">Tres grupos, a cada uno le falta una cifra para estar lleno, unidos en línea por dos cifras distintas.</string>
+    <string name="look_sue_de_coq">Un bloque y una línea que se cruzan, donde las casillas compartidas tienen dos cifras más de las que caben.</string>
+    <string name="look_als_xz">Dos grupos de casillas, a cada uno le falta una cifra para quedar bloqueado.</string>
+
+    <string name="because_naked_single">Todas las demás cifras ya aparecen en su fila, su columna o su bloque, así que solo queda una. Tiene que ir aquí.</string>
+    <string name="because_hidden_single">La región necesita esta cifra en algún sitio, y todas las demás casillas están descartadas, así que este es el único sitio que queda.</string>
+    <string name="because_locked_candidates_pointing">El bloque tiene que contener esta cifra en algún sitio, y todos los sitios posibles caen en una misma línea. Así que la cifra está en esa línea, y no puede estar en ningún otro punto de ella.</string>
+    <string name="because_locked_candidates_claiming">La línea tiene que contener esta cifra en algún sitio, y todos los sitios posibles están dentro de un mismo bloque. Así que la cifra está en ese bloque, y no puede estar en el resto del bloque.</string>
+    <string name="because_naked_pair">Esas dos casillas se llevarán esas dos cifras entre ellas, una cada una. Ninguna otra casilla de la región puede tener ninguna de las dos.</string>
+    <string name="because_hidden_pair">La región necesita las dos cifras, y solo estas dos casillas pueden llevárselas, así que se llevan una cada una. Todo lo demás en esas dos casillas queda fuera.</string>
+    <string name="because_naked_triple">Tres casillas, tres cifras, una cada una. Nada más en la región puede usarlas, aunque ninguna casilla por separado tenga las tres.</string>
+    <string name="because_hidden_triple">Tres cifras que no tienen otro sitio llenan tres casillas entre ellas, así que cualquier otra cosa en esas casillas es imposible.</string>
+    <string name="because_naked_quad">Cuatro casillas se llevan cuatro cifras entre ellas, lo que deja las cuatro fuera del resto de la región.</string>
+    <string name="because_hidden_quad">Cuatro cifras confinadas en cuatro casillas las llenan entre ellas, así que nada más puede vivir ahí.</string>
+    <string name="because_x_wing">Cada una de las dos filas necesita la cifra una vez, y las dos solo pueden ponerla en las mismas dos columnas. Entre las dos gastan las dos columnas, así que ninguna otra fila puede tener la cifra ahí.</string>
+    <string name="because_swordfish">Tres filas que necesitan la cifra, y solo tres columnas donde ponerla. Las tres filas gastan las tres columnas, así que nada más en esas columnas puede tenerla.</string>
+    <string name="because_jellyfish">Cuatro filas y cuatro columnas, el mismo argumento otra vez. Las cuatro filas llenan las cuatro columnas entre ellas.</string>
+    <string name="because_xy_wing">La casilla del medio es una de sus dos cifras. Sea cual sea, una de las dos casillas de fuera queda forzada a la cifra compartida, así que nada que vea a las dos puede serlo.</string>
+    <string name="because_xyz_wing">La casilla del medio también puede ser la cifra compartida, así que la conclusión es más débil: solo pierde la cifra una casilla que vea a las tres.</string>
+    <string name="because_w_wing">Si ninguna de las dos casillas de la pareja se llevara la segunda cifra, las dos se llevarían la primera, y la región enlazada no tendría dónde ponerla. Así que una de ellas es la segunda cifra.</string>
+    <string name="because_simple_colouring">Colorea la cadena de forma alterna y exactamente un color es verdadero. O bien un color cae dos veces en una misma región y por tanto es falso, o bien una casilla de fuera ve los dos colores y pierde la cifra caiga como caiga.</string>
+    <string name="because_multi_colouring">Un color de la primera cadena choca con un color de la segunda, lo que fuerza la cifra a uno de los dos colores contrarios. Nada que vea a esos dos puede tenerla.</string>
+    <string name="because_remote_pairs">Los vecinos de la cadena se ven entre sí, así que alternan. Los dos extremos están a un número impar de pasos y por tanto tienen una cifra cada uno, y nada que vea a los dos puede tener ninguna.</string>
+    <string name="because_unique_rectangle">Si esas cuatro casillas no tuvieran más que las mismas dos cifras, se podrían intercambiar alrededor del rectángulo y el sudoku tendría dos soluciones. Tiene una, así que esa disposición es imposible.</string>
+    <string name="because_bug_plus_one">Si se quitara el candidato de más, cada cifra aparecería exactamente dos veces en cada región, y un tablero así siempre tiene un número par de soluciones. Este sudoku tiene una, así que el candidato de más es la solución.</string>
+    <string name="because_x_chain">La cadena alterna entre sitios donde la cifra tiene que estar y sitios donde no puede estar. Los dos extremos no pueden quedarse los dos sin ella, así que nada que vea a los dos la conserva.</string>
+    <string name="because_xy_chain">Supón que la primera casilla no es la cifra. Sigue la cadena y la última casilla queda forzada a serlo. Así que la tiene un extremo o el otro.</string>
+    <string name="because_forcing_chain">Sigue las dos posibilidades. Si una de ellas deja una casilla sin nada que poner, esa posibilidad nunca fue real y se va. Si las dos ponen la misma cifra en el mismo sitio, esa cifra va ahí resulte verdadera la que resulte. Nada de esto depende de que la suposición sea correcta, y eso es lo que lo convierte en una prueba y no en una conjetura.</string>
+    <string name="because_death_blossom">Sea lo que sea la casilla, echa su propia cifra fuera del grupo correspondiente, y ese grupo queda lleno y tiene que usar todas las cifras que le quedan. Si todos los grupos tienen la misma cifra sobrante, esa cifra cae en uno de ellos caiga como caiga la casilla. Cualquier cosa que la vea en todos ellos la pierde.</string>
+    <string name="because_als_xy_wing">Si la cifra amenazada desaparece del primer grupo, ese grupo queda lleno y tiene que llevarse la cifra que comparte con el del medio. El grupo del medio pierde entonces esa cifra, así que también queda lleno y se lleva la que comparte con el tercero. El tercer grupo queda lleno igualmente y tiene que usar la cifra amenazada. Así que ninguna casilla que la vea en los dos grupos de los extremos puede tenerla.</string>
+    <string name="because_sue_de_coq">Las casillas compartidas gastarán todas sus cifras menos dos, y los dos grupos de los lados reclaman exactamente esas dos. Así que cada cifra del grupo de la línea se gasta dentro de la línea, y cada cifra del grupo del bloque se gasta dentro del bloque. Nada más en ninguno de los dos puede tenerlas.</string>
+    <string name="because_als_xz">Una cifra compartida solo puede aparecer en uno de los dos grupos, lo que bloquea al otro y lo obliga a usar todas las cifras que tiene. Así que la segunda cifra compartida cae en un grupo o en el otro.</string>
+
+    <string name="technique_naked_single">Único desnudo</string>
+    <string name="technique_hidden_single">Único oculto</string>
+    <string name="technique_locked_candidates_pointing">Pareja o trío apuntador</string>
+    <string name="technique_locked_candidates_claiming">Pareja o trío reclamante</string>
+    <string name="technique_naked_pair">Pareja desnuda</string>
+    <string name="technique_hidden_pair">Pareja oculta</string>
+    <string name="technique_naked_triple">Trío desnudo</string>
+    <string name="technique_hidden_triple">Trío oculto</string>
+    <string name="technique_naked_quad">Cuarteto desnudo</string>
+    <string name="technique_hidden_quad">Cuarteto oculto</string>
+    <string name="technique_x_wing">X-Wing</string>
+    <string name="technique_simple_colouring">Coloreado simple</string>
+    <string name="technique_xy_wing">XY-Wing</string>
+    <string name="technique_xyz_wing">XYZ-Wing</string>
+    <string name="technique_w_wing">W-Wing</string>
+    <string name="technique_swordfish">Swordfish</string>
+    <string name="technique_remote_pairs">Parejas remotas</string>
+    <string name="technique_unique_rectangle">Rectángulo único</string>
+    <string name="technique_bug_plus_one">BUG más uno</string>
+    <string name="technique_jellyfish">Jellyfish</string>
+    <string name="technique_multi_colouring">Coloreado múltiple</string>
+    <string name="technique_x_chain">X-Chain</string>
+    <string name="technique_xy_chain">XY-Chain</string>
+    <string name="technique_als_xz">ALS XZ</string>
+    <string name="technique_sue_de_coq">Sue de Coq</string>
+    <string name="technique_als_xy_wing">ALS XY-Wing</string>
+    <string name="technique_death_blossom">Death blossom</string>
+    <string name="technique_forcing_chain">Cadena forzada</string>
+    <string name="daily_title">Diario</string>
+    <string name="daily_no_streak">Todavía no hay racha. Resuelve el sudoku de hoy para empezar una.</string>
+    <string name="daily_previous_month">ANTES</string>
+    <string name="daily_next_month">DESPUÉS</string>
+    <string name="daily_cell_solved">resuelto</string>
+    <string name="daily_cell_attempted">jugado pero sin terminar</string>
+    <string name="daily_cell_unplayed">sin jugar</string>
+    <string name="daily_cell_future">todavía no</string>
+    <string name="daily_play_today">Jugar el de hoy</string>
+    <plurals name="daily_streak">
+        <item quantity="one">%1$d día seguido</item>
+        <item quantity="other">%1$d días seguidos</item>
+    </plurals>
+    <string name="daily_cell">%1$d, %2$s, %3$s</string>
+    <string name="daily_cell_today">hoy, %1$d, %2$s, %3$s</string>
+    <string name="stat_difficulty">Dificultad</string>
+    <string name="stat_mistakes">Errores</string>
+    <string name="stat_hints">Pistas</string>
+    <string name="stat_time">Tiempo</string>
+    <string name="stat_pause">Pausa</string>
+
+    <string name="stage_first_steps">Primeros pasos</string>
+    <string name="stage_one_at_a_time">Una cifra detrás de otra</string>
+    <string name="stage_notes">Notas</string>
+    <string name="stage_locked_to_a_line">Cifras atadas a una línea</string>
+    <string name="stage_groups">Grupos</string>
+    <string name="stage_patterns">Patrones a lo ancho del tablero</string>
+    <string name="stage_wings">Wings</string>
+    <string name="stage_colouring">Coloreado</string>
+    <string name="stage_one_answer">Suponer una sola solución</string>
+    <string name="stage_chains">Cadenas</string>
+    <string name="stage_the_far_end">El otro extremo</string>
+    <string name="stage_the_deep_end">La parte honda</string>
+
+    <string name="lesson_what_is_title">Qué es un sudoku</string>
+    <string name="lesson_what_is_summary">Cada fila, cada columna y cada bloque tienen cada cifra una vez.</string>
+    <string name="lesson_what_is_1">Esto es un sudoku. Uno pequeño, cuatro casillas por cuatro, para que quepa entero en la cabeza. El tablero de tamaño normal funciona exactamente igual.</string>
+    <string name="lesson_what_is_2">Esto es una fila. Tiene que contener las cifras 1, 2, 3 y 4, cada una de ellas una vez. Sin repetir y sin dejarse ninguna.</string>
+    <string name="lesson_what_is_3">Esto es una columna. La misma regla: 1, 2, 3 y 4, cada una de ellas una vez.</string>
+    <string name="lesson_what_is_4">Ese es todo el juego. No hay aritmética ninguna, no hay nada que sumar. Es una sola regla sobre dónde puede estar una cifra.</string>
+    <string name="lesson_what_is_5">Estas dos casillas están vacías. Rellenarlas de forma que la regla siga cumpliéndose es lo que significa resolver.</string>
+
+    <string name="lesson_houses_title">Filas, columnas y bloques</string>
+    <string name="lesson_houses_summary">Una casilla está en tres casas a la vez y comparte una regla con las tres.</string>
+    <string name="lesson_houses_1">La regla hablaba de filas y columnas. Hay un tercer tipo de grupo, y es el que hace que un sudoku merezca la pena.</string>
+    <string name="lesson_houses_2">Aquí está otra vez una fila.</string>
+    <string name="lesson_houses_3">Aquí una columna.</string>
+    <string name="lesson_houses_4">Y aquí un bloque, marcado por las líneas más gruesas. También tiene cada cifra una vez.</string>
+    <string name="lesson_houses_5">Así que esta casilla pertenece a tres grupos a la vez. Todas las casillas con las que comparte un grupo están iluminadas, y ninguna de ellas puede tener la misma cifra que ella. A esos tres grupos se les llama casas, y esa palabra se usa de aquí en adelante.</string>
+
+    <string name="lesson_givens_title">Pistas iniciales</string>
+    <string name="lesson_givens_summary">Las cifras impresas al principio son fijas, y son las que hacen que la solución sea la única.</string>
+    <string name="lesson_givens_1">Estas cifras venían con el sudoku. Se llaman pistas iniciales y no se pueden cambiar ni borrar.</string>
+    <string name="lesson_givens_2">Están dibujadas de forma distinta a las que pones tú, así que siempre se sabe cuál es cuál. En esta app las iniciales son las más gruesas.</string>
+    <string name="lesson_givens_3">Estas son las casillas que rellenas tú.</string>
+    <string name="lesson_givens_4">Un sudoku bien hecho tiene exactamente una manera de rellenarlas. Eso es una promesa sobre el sudoku, no sobre ti: si te atascas, sigue habiendo una sola solución, y siempre se puede razonar. Todos los sudokus de esta app están hechos así.</string>
+
+    <string name="lesson_first_four_title">Tu primera solución</string>
+    <string name="lesson_first_four_summary">Mira lo que una casilla no puede ser, y a veces solo queda una cifra.</string>
+    <string name="lesson_first_four_1">Ahora resuelve uno. Hay dos casillas vacías, y la regla basta para rellenar las dos.</string>
+    <string name="lesson_first_four_2">Empieza por esta fila. Ya tiene un 1 y un 4, así que las dos casillas vacías se reparten el 2 y el 3. La pregunta es en qué orden.</string>
+    <string name="lesson_first_four_3">Esta casilla no puede ser 2, porque su columna ya tiene uno. Así que es 3.</string>
+    <string name="lesson_first_four_4">Queda una casilla vacía y una cifra sin usar en la fila.</string>
+    <string name="lesson_first_four_5">Te toca. Pon la cifra que va aquí.</string>
+    <string name="lesson_first_four_wrong">No exactamente. Mira la fila: ¿qué cifra del 1 al 4 le falta todavía?</string>
+    <string name="lesson_first_four_6">Resuelto. Eso es un sudoku, sea cual sea el tamaño del tablero.</string>
+
+    <string name="lesson_first_six_title">Un tablero más grande</string>
+    <string name="lesson_first_six_summary">Los bloques no siempre son cuadrados, y a la regla le da igual.</string>
+    <string name="lesson_first_six_1">Seis por seis. La regla no ha cambiado, pero los bloques sí: son tres de ancho y dos de alto.</string>
+    <string name="lesson_first_six_2">Esto es un bloque. Tres a lo ancho, dos a lo alto, seis casillas, cada cifra del 1 al 6 una vez.</string>
+    <string name="lesson_first_six_3">Eso pilla a mucha gente al principio, porque el ojo espera un cuadrado. Merece la pena parar un momento: encuentra el bloque en el que está esta casilla antes de buscar ninguna otra cosa.</string>
+    <string name="lesson_first_six_4">Te toca. Al bloque de arriba a la izquierda le falta una cifra.</string>
+    <string name="lesson_first_six_wrong">Esa no. Cuenta lo que ya tiene el bloque y busca la cifra del 1 al 6 que no está.</string>
+    <string name="lesson_first_six_5">Bien. De aquí en adelante los tableros son de nueve por nueve y los bloques vuelven a ser cuadrados, pero la costumbre de mirar las tres casas es la que hay que conservar.</string>
+
+    <string name="lesson_naked_single_title">El único desnudo</string>
+    <string name="lesson_naked_single_summary">Una casilla en la que solo queda una cifra tiene que llevarla.</string>
+    <string name="lesson_naked_single_1">Un tablero de tamaño normal, y la primera técnica con nombre. Es la más sencilla que hay, y hasta en los sudokus más difíciles es la que termina la mayoría de las casillas.</string>
+    <string name="lesson_naked_single_2">Mira esta casilla a solas. Pregúntate qué puede llevar.</string>
+    <string name="lesson_naked_single_3">Todas las casillas que descartan algo están iluminadas. Entre su fila, su columna y su bloque, ocho de las nueve cifras ya aparecen en algún sitio que ella ve.</string>
+    <string name="lesson_naked_single_4">Así que queda una cifra, y la casilla tiene que llevarla. No hay nada más posible. Eso es un único desnudo: desnudo porque se ve mirando una sola casilla, único porque sobrevive una sola cifra.</string>
+    <string name="lesson_naked_single_5">La app lo llama por su nombre cuando te da una pista. Ahora sabes qué significa.</string>
+    <string name="lesson_hidden_single_title">El único oculto</string>
+    <string name="lesson_hidden_single_summary">Una cifra a la que solo le queda un sitio en una casa tiene que ir ahí.</string>
+    <string name="lesson_hidden_single_1">El otro tipo de único, y el que encuentra más casillas. Un único desnudo es una casilla a la que le queda una cifra. Este es la imagen en el espejo: una cifra a la que le queda una casilla.</string>
+    <string name="lesson_hidden_single_2">Coge una casa y elige una cifra que todavía le falte. Pregúntate dónde puede ir esa cifra dentro de la casa.</string>
+    <string name="lesson_hidden_single_3">En este bloque la respuesta es una casilla. Todas las demás casillas vacías del bloque quedan descartadas por su propia fila o columna.</string>
+    <string name="lesson_hidden_single_4">Así que la cifra va ahí, aunque esa casilla por sí sola pueda llevar varias cifras. Por eso se llama oculto: la cifra está escondida entre las otras.</string>
+    <string name="lesson_hidden_single_5">Esta es la que merece la pena aprender bien. En la mayoría de los sudokus es la que te mantiene en marcha cuando se acaban los únicos desnudos.</string>
+    <string name="lesson_hidden_single_turn">Te toca. Pon la cifra que no tiene otro sitio en este bloque.</string>
+    <string name="lesson_hidden_single_wrong">Esa no. Pregúntate qué cifra le falta al bloque y comprueba dónde podría caber cada una de verdad.</string>
+
+    <string name="lesson_scanning_title">Cómo mirar</string>
+    <string name="lesson_scanning_summary">Barre una cifra por todo el tablero en vez de estudiar las casillas de una en una.</string>
+    <string name="lesson_scanning_1">Ya conoces dos técnicas. Conocerlas no es lo mismo que encontrarlas, y encontrarlas es lo que lleva tiempo.</string>
+    <string name="lesson_scanning_2">No leas el tablero casilla por casilla. Coge una cifra, por ejemplo la que ya aparece más veces, y mira los tres bloques de una banda.</string>
+    <string name="lesson_scanning_3">Para cada bloque hazte una sola pregunta: ¿dónde puede ir esta cifra? Las filas y columnas que ya la tienen tachan casi todas las respuestas, y muchas veces solo queda una casilla.</string>
+    <string name="lesson_scanning_4">Luego pasa a la siguiente banda, y cuando la cifra esté agotada, pasa a la siguiente cifra. Eso es barrer, y es lo que están haciendo los que resuelven rápido cuando parece que solo miran fijamente.</string>
+    <string name="lesson_scanning_5">Ser sistemático no cuesta nada y ahorra la sensación de estar atascado, que suele ser la sensación de haber mirado el mismo rincón cuatro veces.</string>
+
+    <string name="lesson_first_nine_title">Un tablero entero, solo con únicos</string>
+    <string name="lesson_first_nine_summary">Todo lo aprendido hasta aquí basta para terminar un sudoku completo.</string>
+    <string name="lesson_first_nine_1">Un nueve por nueve de verdad, de nivel Fácil. Cada paso en él es un único, desnudo u oculto, y no hay nada aquí que no hayas visto.</string>
+    <string name="lesson_first_nine_2">Aquí tienes uno para empezar. Esta casilla tiene ocho de las nueve cifras descartadas por lo que ve.</string>
+    <string name="lesson_first_nine_3">Esa es la forma de un sudoku Fácil. Únicos hasta el final, y sin adivinar en ningún momento.</string>
+    <string name="lesson_first_nine_4">Cuando salgas de esta lección, juega uno. La siguiente etapa va de notas, y las notas solo empiezan a valer la pena en sudokus más difíciles que este.</string>
+    <string name="lesson_first_nine_turn">Te toca. Aquí solo cabe una cifra.</string>
+    <string name="lesson_first_nine_wrong">Vuelve a mirar la fila, la columna y el bloque de esta casilla, y haz la lista de lo que ya tienen.</string>
+
+    <string name="lesson_pencil_marks_title">Notas</string>
+    <string name="lesson_pencil_marks_summary">Una nota es el registro de lo que ya dedujiste, para no tener que deducirlo otra vez.</string>
+    <string name="lesson_pencil_marks_1">De aquí en adelante los sudokus dejan de caer con únicos, y vas a necesitar apuntar cosas. Una nota, o marca de lápiz, es una cifra pequeña en una casilla que dice que esa cifra sigue siendo posible ahí.</string>
+    <string name="lesson_pencil_marks_2">Mira esta casilla. Deducir que solo puede ser una de dos cifras lleva unos segundos. Escribir esas dos cifras significa que la próxima vez que la mires no lleva ninguno.</string>
+    <string name="lesson_pencil_marks_3">Eso es todo lo que es una nota. No es una conjetura ni un compromiso. Es el registro de una deducción que ya hiciste.</string>
+    <string name="lesson_pencil_marks_4">Todas las técnicas de aquí en adelante van de patrones en las notas y no de patrones en las cifras. Parejas, tríos, peces y cadenas se leen todos en las notas.</string>
+    <string name="lesson_pencil_marks_5">Nadie resuelve un sudoku difícil de cabeza, y quien no apunta nada en un Experto no está siendo listo, está siendo lento.</string>
+
+    <string name="lesson_when_to_mark_title">Cuándo escribirlas</string>
+    <string name="lesson_when_to_mark_summary">Pon notas cuando se acaben los únicos, no antes.</string>
+    <string name="lesson_when_to_mark_1">Hay dos formas de usar las notas, y la diferencia importa.</string>
+    <string name="lesson_when_to_mark_2">La primera es llenar todas las casillas vacías con todas las cifras posibles, de golpe, antes de hacer nada más. Es exhaustiva, a mano lleva varios minutos, y en un sudoku fácil casi todo se desperdicia porque los únicos habrían terminado el tablero igualmente.</string>
+    <string name="lesson_when_to_mark_3">La segunda es marcar solo donde estás trabajando. Estas cuatro casillas merecen notas porque algo está pasando entre ellas. El resto del tablero no.</string>
+    <string name="lesson_when_to_mark_4">El consejo honesto: resuelve primero los únicos y empieza a marcar cuando dejes de encontrarlos. Sobre papel eso ahorra tiempo de verdad. En esta app, llenar todas las notas es un toque, así que el coste es menor, pero un tablero lleno de números sigue siendo más difícil de leer que uno con notas solo donde importan.</string>
+
+    <string name="lesson_marks_true_title">Mantener las notas honestas</string>
+    <string name="lesson_marks_true_summary">Una nota desfasada es peor que ninguna nota.</string>
+    <string name="lesson_marks_true_1">Las notas tienen un peligro. Cada cifra que pones deja algunas de ellas equivocadas, y una nota equivocada te mete en un argumento que no puede ser correcto.</string>
+    <string name="lesson_marks_true_2">Pon una cifra aquí, y todas las casillas que la ven pierden esa cifra como posibilidad. Si esas notas no se borran, la siguiente técnica que veas podría estar montada sobre una de ellas.</string>
+    <string name="lesson_marks_true_3">Esta app puede hacerlo por ti. Hay un ajuste que se llama borrar las notas que una cifra puesta descarta, y viene encendido. Sobre papel se hace a mano, y es de donde salen casi todos los errores.</string>
+    <string name="lesson_marks_true_4">Cuando un sudoku se tuerce y no ves por qué, lo primero que hay que sospechar es una nota vieja. El botón de pista te dirá si una cifra que has puesto no puede ser correcta.</string>
+
+    <string name="lesson_pointing_title">La pareja apuntadora</string>
+    <string name="lesson_pointing_summary">Si una cifra de un bloque está atrapada en una línea, deja esa línea libre en el resto.</string>
+    <string name="lesson_pointing_1">La primera técnica que quita posibilidades en vez de poner una cifra. Casi todas las de aquí en adelante hacen eso, y cuesta acostumbrarse: avanzas sin escribir ni una cifra.</string>
+    <string name="lesson_pointing_2">Mira dónde puede ir una cifra en este bloque. Todos los sitios posibles caen en la misma columna.</string>
+    <string name="lesson_pointing_3">El bloque tiene que contener esa cifra en algún sitio. Así que acabe donde acabe, está en esa columna.</string>
+    <string name="lesson_pointing_4">Lo que significa que el resto de la columna no puede tenerla. Estas casillas pierden esa cifra como posibilidad, aunque estén lejísimos del bloque.</string>
+    <string name="lesson_pointing_5">Se llama apuntadora porque la pareja de dentro del bloque apunta a lo largo de la línea y la despeja.</string>
+
+    <string name="lesson_claiming_title">La pareja reclamante</string>
+    <string name="lesson_claiming_summary">Si una cifra de una línea está atrapada en un bloque, deja ese bloque libre en el resto.</string>
+    <string name="lesson_claiming_1">El mismo argumento leído al revés, y merece la pena verlo aparte porque el ojo lo encuentra en otro sitio.</string>
+    <string name="lesson_claiming_2">Esta vez empieza por una línea. Mira dónde puede ir una cifra a lo largo de esta fila.</string>
+    <string name="lesson_claiming_3">Todos los sitios posibles están dentro del mismo bloque. La fila tiene que contener esa cifra en algún sitio, así que la cifra está en ese bloque.</string>
+    <string name="lesson_claiming_4">Lo que significa que el resto del bloque la pierde. Estas casillas ya no pueden tenerla.</string>
+    <string name="lesson_claiming_5">Apuntar mira un bloque y despeja una línea. Reclamar mira una línea y despeja un bloque. Dos nombres, una idea, y verás las dos en cualquier sudoku difícil.</string>
+
+    <string name="lesson_naked_pair_title">La pareja desnuda</string>
+    <string name="lesson_naked_pair_summary">Dos casillas con las mismas dos cifras son dueñas de las dos.</string>
+    <string name="lesson_naked_pair_1">Ahora los grupos. Este es el más pequeño y el patrón que hace evidentes a los demás.</string>
+    <string name="lesson_naked_pair_2">Estas dos casillas están en la misma casa, y cada una solo puede ser una de las mismas dos cifras.</string>
+    <string name="lesson_naked_pair_3">Entre las dos se llevarán esas dos cifras, una cada una. Cuál es cuál da igual y no hace falta saberlo.</string>
+    <string name="lesson_naked_pair_4">Así que ninguna otra casilla de esa casa puede llevar ninguna de las dos. Esta casilla pierde una de ellas.</string>
+    <string name="lesson_naked_pair_5">Desnuda, otra vez, porque se ve leyendo las dos casillas. No hay nada escondido y ninguna otra casilla entra en el argumento.</string>
+
+    <string name="lesson_hidden_pair_title">La pareja oculta</string>
+    <string name="lesson_hidden_pair_summary">Dos cifras a las que solo les quedan los mismos dos sitios son dueñas de esas casillas.</string>
+    <string name="lesson_hidden_pair_1">La imagen en el espejo de la pareja desnuda, igual que el único oculto refleja al desnudo.</string>
+    <string name="lesson_hidden_pair_2">En esta casa, dos cifras solo pueden ir cada una en las mismas dos casillas.</string>
+    <string name="lesson_hidden_pair_3">Esas dos cifras se llevarán esas dos casillas entre ellas. Así que por mucho que esas casillas parecieran poder llevar otra cosa, no pueden.</string>
+    <string name="lesson_hidden_pair_4">Las dos casillas pierden todas las demás notas. Ahora son una pareja desnuda, y muchas veces para eso sirve el patrón: para convertir una pareja oculta en una desnuda que despeja el resto de la casa.</string>
+    <string name="lesson_hidden_pair_5">Las parejas ocultas cuestan más de ver que las desnudas porque hay que mirar cifras en vez de casillas. Merecen el esfuerzo en un tablero que se ha parado.</string>
+
+    <string name="lesson_naked_triple_title">El trío desnudo</string>
+    <string name="lesson_naked_triple_summary">Tres casillas que comparten tres cifras son dueñas de ellas, aunque ninguna tenga las tres.</string>
+    <string name="lesson_naked_triple_1">Una pareja con una casilla más, y una pega que pilla a todo el mundo la primera vez.</string>
+    <string name="lesson_naked_triple_2">Estas tres casillas están en la misma casa, y entre las tres usan solo tres cifras distintas.</string>
+    <string name="lesson_naked_triple_3">Aquí viene la pega: ninguna de ellas tiene por qué llevar las tres. Dos cifras en una casilla, dos en la siguiente y dos en la tercera es un trío, mientras entre todas aparezcan solo tres cifras.</string>
+    <string name="lesson_naked_triple_4">Las tres casillas se llevarán las tres cifras entre ellas, así que todas las demás casillas de la casa pierden las tres. Eso es un montón de notas que se van de golpe.</string>
+    <string name="lesson_naked_triple_5">Cuando busques, cuenta las cifras distintas entre dos o tres casillas en vez de buscar notas idénticas. Esa es la costumbre que encuentra tríos.</string>
+
+    <string name="lesson_hidden_triple_title">El trío oculto</string>
+    <string name="lesson_hidden_triple_summary">Tres cifras a las que solo les quedan tres sitios son dueñas de esas casillas.</string>
+    <string name="lesson_hidden_triple_1">La misma relación que la pareja oculta, una talla más, y de verdad difícil de ver.</string>
+    <string name="lesson_hidden_triple_2">En esta casa, tres cifras solo pueden ir entre las mismas tres casillas.</string>
+    <string name="lesson_hidden_triple_3">Así que esas tres casillas llevan esas tres cifras, y todas las demás notas que hay en ellas se pueden ir.</string>
+    <string name="lesson_hidden_triple_4">No los busques primero. Búscalos cuando a una casa le queden varias casillas y no haya funcionado nada más. Casi siempre hay un patrón desnudo en la misma casa que es más fácil de ver.</string>
+
+    <string name="lesson_quads_title">Cuartetos</string>
+    <string name="lesson_quads_summary">La misma idea otra vez con cuatro, y conviene conocerla aunque rara vez merezca la pena buscarla.</string>
+    <string name="lesson_quads_1">Parejas, tríos y ahora cuartetos. El argumento no cambia: cuatro casillas que entre ellas usan cuatro cifras son dueñas de esas cifras, y cuatro cifras con solo cuatro sitios son dueñas de esas casillas.</string>
+    <string name="lesson_quads_2">Aquí hay un cuarteto desnudo. Cuatro casillas, cuatro cifras entre ellas, y el resto de la casa pierde las cuatro.</string>
+    <string name="lesson_quads_3">Y aquí va el consejo honesto. Los cuartetos son reales y son legales, pero son raros, y un cuarteto en una casa con cinco o seis casillas vacías suele significar que hay un patrón más simple en las otras casillas que se te ha pasado.</string>
+    <string name="lesson_quads_4">Aquí tienes un cuarteto oculto, para completar. Cuatro cifras con cuatro sitios.</string>
+    <string name="lesson_quads_5">Apréndete a reconocerlos para que una pista que nombre uno tenga sentido. No gastes el tiempo buscándolos.</string>
+
+    <string name="lesson_x_wing_title">El X-Wing</string>
+    <string name="lesson_x_wing_summary">Una cifra fijada a dos columnas en dos filas deja esas columnas libres en el resto.</string>
+    <string name="lesson_x_wing_1">El primer patrón que abarca todo el tablero en vez de vivir dentro de una casa. Tiene una forma, y en cuanto la hayas visto la verás en todas partes.</string>
+    <string name="lesson_x_wing_2">Coge una cifra. En estas dos filas solo puede ir en dos casillas cada una, y esas casillas están en las mismas dos columnas. Cuatro casillas, en rectángulo.</string>
+    <string name="lesson_x_wing_3">Ahora piénsalo. Cada fila tiene que llevar la cifra una vez. Use la esquina que use una fila, la otra tiene que usar la contraria. No hay una tercera opción.</string>
+    <string name="lesson_x_wing_4">Así que entre las dos, las dos filas se llevan esa cifra en las dos columnas. Todo lo demás en esas columnas la pierde.</string>
+    <string name="lesson_x_wing_5">Funciona igual cambiando filas por columnas. Dos columnas cuya cifra está confinada en las mismas dos filas despejan esas filas.</string>
+
+    <string name="lesson_swordfish_title">El Swordfish</string>
+    <string name="lesson_swordfish_summary">El mismo argumento que un X-Wing, con tres líneas en vez de dos.</string>
+    <string name="lesson_swordfish_1">Un X-Wing con una fila más. El nombre no ayuda, pero el patrón es una extensión directa.</string>
+    <string name="lesson_swordfish_2">Tres filas, una cifra, y en cada fila esa cifra está confinada en casillas de las mismas tres columnas.</string>
+    <string name="lesson_swordfish_3">No hace falta que todas las filas usen las tres columnas. Con dos de las tres basta, mientras ninguna fila se salga de ellas.</string>
+    <string name="lesson_swordfish_4">Las tres filas se llevan la cifra en esas tres columnas entre ellas, así que el resto de esas columnas la pierde.</string>
+    <string name="lesson_swordfish_5">Si puedes seguir el X-Wing puedes seguir este. Encontrarlo es otra cosa: aquí es donde llenar las notas deja de ser opcional.</string>
+
+    <string name="lesson_jellyfish_title">El Jellyfish</string>
+    <string name="lesson_jellyfish_summary">Cuatro líneas. El mismo patrón otra vez, y el último que merece la pena aprender.</string>
+    <string name="lesson_jellyfish_1">Cuatro filas, una cifra, cuatro columnas. El argumento no ha cambiado desde el X-Wing y no va a cambiar más.</string>
+    <string name="lesson_jellyfish_2">Aquí hay uno. Cuatro filas, y la cifra en cada una está confinada en las mismas cuatro columnas.</string>
+    <string name="lesson_jellyfish_3">Más allá de cuatro no hay nada que aprender. En teoría existe una versión de cinco líneas, pero en un tablero de nueve por nueve todas se pueden encontrar como un patrón más pequeño en las cuatro columnas que sobran, así que nadie las busca.</string>
+    <string name="lesson_jellyfish_4">Este es el borde de lo que merece la pena cazar por patrones. A partir de aquí, las cadenas aprovechan mejor tu atención.</string>
+
+    <string name="lesson_xy_wing_title">El XY-Wing</string>
+    <string name="lesson_xy_wing_summary">Tres casillas de dos cifras cada una, y una casilla que pierde caiga como caiga.</string>
+    <string name="lesson_xy_wing_1">Los wings piden otra forma de pensar. Hasta ahora encontrabas un patrón y leías una conclusión. Aquí se razona por casos.</string>
+    <string name="lesson_xy_wing_2">Empieza por esta casilla. Tiene exactamente dos cifras posibles y es la bisagra del patrón.</string>
+    <string name="lesson_xy_wing_3">Tiene dos amigas, cada una comparte una casa con ella y cada una lleva dos cifras: una compartida con la bisagra y otra compartida entre ellas.</string>
+    <string name="lesson_xy_wing_4">Ahora el argumento. La bisagra es una de sus dos cifras. Si es la primera, el ala izquierda queda forzada a la cifra compartida. Si es la segunda, el ala derecha queda forzada a esa misma cifra compartida. En cualquier caso, una de las alas la lleva.</string>
+    <string name="lesson_xy_wing_5">Así que ninguna casilla que vea a las dos alas puede llevar esa cifra. Esta la pierde.</string>
+    <string name="lesson_xy_wing_6">Nunca llegas a saber qué es la bisagra en realidad. Ese es el asunto, y es lo que hace que los wings se sientan distintos a todo lo anterior.</string>
+
+    <string name="lesson_xyz_wing_title">El XYZ-Wing</string>
+    <string name="lesson_xyz_wing_summary">Como un XY-Wing, pero la bisagra también puede ser la cifra compartida, así que la conclusión es más débil.</string>
+    <string name="lesson_xyz_wing_1">Un cambio sobre el XY-Wing, y hace la conclusión más pequeña.</string>
+    <string name="lesson_xyz_wing_2">Aquí la bisagra lleva tres cifras en vez de dos, y la cifra compartida es una de ellas.</string>
+    <string name="lesson_xyz_wing_3">Así que ahora hay tres casos, no dos. Puede llevar la cifra compartida cualquiera de las alas, o la propia bisagra.</string>
+    <string name="lesson_xyz_wing_4">Eso significa que una casilla solo pierde la cifra si ve a las tres, no solo a las dos alas. Menos casillas cumplen eso, y por eso este patrón elimina menos que su primo más simple.</string>
+    <string name="lesson_xyz_wing_5">Conviene conocerlo porque la forma parece casi idéntica, y leerlo como un XY-Wing te dejaría eliminar una cifra a la que no tienes derecho.</string>
+
+    <string name="lesson_w_wing_title">El W-Wing</string>
+    <string name="lesson_w_wing_summary">Dos parejas idénticas unidas por una línea que tiene que llevar una de sus cifras.</string>
+    <string name="lesson_w_wing_1">El tercer wing, y el que menos cuentas necesita.</string>
+    <string name="lesson_w_wing_2">Dos casillas, que no comparten casa, cada una con las mismas dos cifras.</string>
+    <string name="lesson_w_wing_3">Ahora busca una casa donde una de esas dos cifras solo pueda ir en dos sitios, y donde esos dos sitios vean cada uno a una de las casillas de la pareja. Esa casa es el enlace.</string>
+    <string name="lesson_w_wing_4">La casa del enlace tiene que llevar esa cifra en uno de sus dos sitios, y sea cual sea, obliga a una de las casillas de la pareja a llevarse la otra cifra. Así que una de la pareja lleva la otra cifra, siempre.</string>
+    <string name="lesson_w_wing_5">Cualquier casilla que vea a las dos de la pareja la pierde. Esta la ve.</string>
+
+    <string name="lesson_rectangle_title">El rectángulo único</string>
+    <string name="lesson_rectangle_summary">Un sudoku con una sola solución no puede contener un cuadro que pueda girar.</string>
+    <string name="lesson_rectangle_1">Esta técnica es de otra clase que todas las demás, y merece la pena decir por qué antes de usarla.</string>
+    <string name="lesson_rectangle_2">Mira estas cuatro casillas. Están en dos filas, dos columnas y exactamente dos bloques, y cada una puede llevar las mismas dos cifras.</string>
+    <string name="lesson_rectangle_3">Si eso fuera todo, el sudoku tendría dos soluciones: rellena el rectángulo de una manera, o cambia las dos diagonales, y los dos tableros cumplen todas las reglas. Un sudoku bien hecho no tiene dos soluciones.</string>
+    <string name="lesson_rectangle_4">Así que no puede ser todo. Una de esas casillas tiene que llevar otra cosa, y eso es lo que te deja eliminar.</string>
+    <string name="lesson_rectangle_5">Aquí sobreviven las posibilidades de más y la pareja compartida se tacha de estas casillas.</string>
+    <string name="lesson_rectangle_6">La pega, dicha claramente: este argumento supone que el sudoku está bien hecho. Es cierto para todos los de esta app, porque el generador lo comprueba. Úsalo en un tablero de origen desconocido y puede engañarte.</string>
+
+    <string name="lesson_bug_title">BUG más uno</string>
+    <string name="lesson_bug_summary">Si todas las casillas menos una tuvieran dos candidatos, el sudoku sería ambiguo. Así que esa una es especial.</string>
+    <string name="lesson_bug_1">La misma suposición que el rectángulo único, con otra forma.</string>
+    <string name="lesson_bug_2">Supón que un tablero llega a una posición donde cada casilla sin resolver tiene exactamente dos posibilidades, y cada cifra aparece exactamente dos veces en cada casa. Un tablero así siempre tiene dos soluciones.</string>
+    <string name="lesson_bug_3">Así que un sudoku bien hecho nunca puede llegar ahí. Si encuentras una posición que está a una casilla, donde exactamente una casilla tiene tres posibilidades en vez de dos, esa casilla es la que salva al sudoku de ser ambiguo.</string>
+    <string name="lesson_bug_4">La cifra que aparece tres veces en sus casas es la que tiene que llevar. Es un patrón raro y un final rapidísimo cuando aparece.</string>
+
+    <string name="lesson_colouring_title">Coloreado simple</string>
+    <string name="lesson_colouring_summary">Sigue una cifra por las casas donde solo tiene dos sitios y busca una contradicción.</string>
+    <string name="lesson_colouring_1">Cadenas, con calma. El coloreado es la entrada más fácil a ellas y por debajo es el mismo razonamiento.</string>
+    <string name="lesson_colouring_2">Elige una cifra. Busca una casa donde solo tenga dos casillas posibles. Esas dos están enlazadas: exactamente una de ellas es la cifra.</string>
+    <string name="lesson_colouring_3">Colorea una de la pareja y sigue los enlaces. Toda casilla conectada así acaba de uno de dos colores, y un color entero es el correcto mientras el otro está mal. No sabes cuál.</string>
+    <string name="lesson_colouring_4">Ahora busca la contradicción. Si una casilla ve dos casillas del mismo color, ese color no puede ser el correcto, así que la casilla pierde la cifra. Aquí es lo que pasa.</string>
+    <string name="lesson_colouring_5">Dos colores, una contradicción y sin adivinar en ningún punto. Ese es todo el método.</string>
+
+    <string name="lesson_remote_pairs_title">Parejas remotas</string>
+    <string name="lesson_remote_pairs_summary">Una cadena de parejas idénticas alterna, así que los extremos son contrarios.</string>
+    <string name="lesson_remote_pairs_1">El coloreado aplicado a casillas en vez de a una sola cifra.</string>
+    <string name="lesson_remote_pairs_2">Aquí hay una cadena de casillas que llevan todas las mismas dos cifras, cada una enlazada con la siguiente por una casa compartida.</string>
+    <string name="lesson_remote_pairs_3">Como cada enlace es una pareja, las cifras alternan a lo largo de la cadena. La primera casilla se lleva una, la segunda la otra, y así.</string>
+    <string name="lesson_remote_pairs_4">Así que los dos extremos de una cadena de longitud par son contrarios: llevan cifras distintas. Cualquier casilla que vea a los dos extremos pierde las dos cifras, porque cada extremo lleva una.</string>
+    <string name="lesson_remote_pairs_5">Es la cadena más fácil de ver, porque todas las casillas de dentro tienen el mismo aspecto.</string>
+
+    <string name="lesson_multi_colouring_title">Coloreado múltiple</string>
+    <string name="lesson_multi_colouring_summary">Dos cadenas de coloreado que interactúan se descartan entre sí.</string>
+    <string name="lesson_multi_colouring_1">El coloreado simple usa una cadena. A veces una cadena no tiene contradicción dentro pero dos juntas sí.</string>
+    <string name="lesson_multi_colouring_2">Aquí hay casillas de dos cadenas distintas para la misma cifra.</string>
+    <string name="lesson_multi_colouring_3">Si un color de una cadena ve un color de la otra, esos dos colores no pueden ser correctos los dos. Seguir eso elimina la cifra de las casillas que ven a los dos colores que sobran.</string>
+    <string name="lesson_multi_colouring_4">La conclusión cae aquí.</string>
+    <string name="lesson_multi_colouring_5">Aquí es donde el coloreado deja de ser algo que quepa en la cabeza y empieza a pedir una nota escrita de qué casilla es de qué color.</string>
+
+    <string name="lesson_x_chain_title">La X-Chain</string>
+    <string name="lesson_x_chain_summary">Una cifra, enlaces que alternan entre fuertes y débiles, y una eliminación en los extremos.</string>
+    <string name="lesson_x_chain_1">La forma general de todo lo de la etapa anterior. Una cifra y una cadena de enlaces alternos.</string>
+    <string name="lesson_x_chain_2">Un enlace fuerte son dos casillas donde al menos una tiene que llevar la cifra, que es lo que da una casa con solo dos sitios. Un enlace débil son dos casillas donde como mucho una puede llevarla, que es cualquier par de casillas que comparten casa.</string>
+    <string name="lesson_x_chain_3">Altérnalos: fuerte, débil, fuerte, y así, empezando y terminando en fuerte. Entonces pase lo que pase en el medio, uno de los dos extremos lleva la cifra.</string>
+    <string name="lesson_x_chain_4">Así que cualquier casilla que vea a los dos extremos la pierde.</string>
+    <string name="lesson_x_chain_5">El coloreado es esta cadena dibujada en dos colores. La cadena es más general porque puede pasar por casillas a las que el coloreado no llega.</string>
+
+    <string name="lesson_xy_chain_title">La XY-Chain</string>
+    <string name="lesson_xy_chain_summary">Una cadena de casillas de dos candidatos, donde los extremos comparten una cifra.</string>
+    <string name="lesson_xy_chain_1">La misma idea alterna, pero pasando por casillas en vez de siguiendo una sola cifra.</string>
+    <string name="lesson_xy_chain_2">Cada casilla de esta cadena tiene exactamente dos posibilidades, y cada una comparte una casa con la siguiente.</string>
+    <string name="lesson_xy_chain_3">Dentro de una casilla, tomar una cifra fuerza la otra, y ese es el enlace fuerte. Entre casillas, una casa compartida hace el débil. Alternarlos lleva el argumento a lo largo de la cadena.</string>
+    <string name="lesson_xy_chain_4">Si los dos extremos de la cadena pueden llevar la misma cifra, entonces uno de ellos la lleva, caiga la cadena como caiga. Cualquier casilla que vea a los dos extremos pierde esa cifra.</string>
+    <string name="lesson_xy_chain_5">Esta es la técnica que termina la mayoría de los sudokus Experto, y encontrar una es sobre todo cuestión de seguir con paciencia las casillas de dos cifras y no de ser listo.</string>
+
+    <string name="lesson_writing_chains_title">Escribir una cadena</string>
+    <string name="lesson_writing_chains_summary">Una cadena que no puedes comprobar es una conjetura con pasos de más.</string>
+    <string name="lesson_writing_chains_1">Una lección práctica antes de la última técnica, porque las cadenas son donde la gente se convence de cosas que no son verdad.</string>
+    <string name="lesson_writing_chains_2">Una cadena es una sucesión de afirmaciones, y cada una tiene que sostenerse. En pantalla parece un conjunto de casillas resaltadas, y resaltar no es un argumento.</string>
+    <string name="lesson_writing_chains_3">Escríbela en una línea: esta casilla es 4 o 7; si es 4 entonces aquella es 9; si aquella es 9 entonces esta otra es 4. Cada flecha es un enlace y cada enlace tiene un motivo.</string>
+    <string name="lesson_writing_chains_4">Luego comprueba la alternancia. Fuerte, débil, fuerte, débil, y fuerte en los dos extremos. Una cadena que empieza o termina en un enlace débil no prueba nada, y esa es la forma más común de que una cadena salga mal.</string>
+    <string name="lesson_writing_chains_5">Si no puedes escribirla, no la has encontrado. Eso no es una regla sobre ser ordenado, es la diferencia entre una deducción y una corazonada.</string>
+
+    <string name="lesson_sue_de_coq_title">Sue de Coq</string>
+    <string name="lesson_sue_de_coq_summary">Donde un bloque cruza una línea, y el cruce tiene más cifras que sitio.</string>
+    <string name="lesson_sue_de_coq_1">Un bloque y una columna se solapan en tres casillas. Esas tres casillas pertenecen a los dos a la vez, y de eso vive esta técnica.</string>
+    <string name="lesson_sue_de_coq_2">Mira dos de ellas aquí. Entre las dos tienen 2, 6, 7 y 8: cuatro cifras para dos casillas. Dos de ellas entran, y dos sobran para otro sitio.</string>
+    <string name="lesson_sue_de_coq_3">Más abajo en la misma columna hay una casilla con 6 y 7. En otro punto del mismo bloque hay una casilla con 2 y 8. Entre las dos, esas casillas quieren exactamente las cuatro cifras que tiene el cruce, repartidas por igual y sin compartir nada.</string>
+    <string name="lesson_sue_de_coq_4">Cuéntalo. Tres casillas de la columna se llevan ahora tres cifras distintas de las cuatro, y tres casillas del bloque hacen lo mismo. Solo hay una forma de que la cuenta salga: el 6 y el 7 se gastan dentro de la columna, y el 2 y el 8 dentro del bloque.</string>
+    <string name="lesson_sue_de_coq_5">Así que nada más en esa columna puede ser un 6 o un 7. Dos casillas pierden uno aquí.</string>
+    <string name="lesson_sue_de_coq_6">El mismo argumento corre al revés para el bloque. Un patrón, dos casas, dos conjuntos de eliminaciones distintos, y sin una sola cadena.</string>
+
+    <string name="lesson_als_title">ALS-XZ</string>
+    <string name="lesson_als_summary">Dos conjuntos casi bloqueados que comparten una cifra, y la eliminación que sale de ahí.</string>
+    <string name="lesson_als_1">La regla sobre la que están montados los niveles más difíciles. Todo lo que hay por encima de esta etapa es una variación de ella.</string>
+    <string name="lesson_als_2">Un conjunto casi bloqueado es un grupo de casillas de una casa que tiene exactamente una cifra más que casillas. Cuatro casillas con cinco cifras entre ellas. Si perdiera una cifra sería un conjunto bloqueado, de ahí el nombre.</string>
+    <string name="lesson_als_3">Coge dos de ellos que compartan dos cifras. Llama restringida a una de las cifras compartidas, y exige que todos los sitios donde aparece en un conjunto vean todos los sitios donde aparece en el otro.</string>
+    <string name="lesson_als_4">Entonces solo puede estar en uno de los dos conjuntos. El conjunto que no se la lleve queda bloqueado, lo que fija dentro de él la otra cifra compartida. Y así, cualquier casilla que vea esa cifra en los dos conjuntos la pierde.</string>
+    <string name="lesson_als_5">Aquí está la eliminación que sale de ahí.</string>
+    <string name="lesson_als_6">Si esto necesita varias lecturas, ese es el número normal. Todas las técnicas a partir de aquí son esta con otra forma.</string>
+
+    <string name="lesson_deep_end_title">Qué pide la parte honda</string>
+    <string name="lesson_deep_end_summary">Qué cambia en Demencial y Pesadilla, y por qué estos niveles piden papel.</string>
+    <string name="lesson_deep_end_1">Todo lo de hasta aquí se puede ver. Miras una fila, un bloque, un par de casillas, y la respuesta está delante en cuanto conoces la forma.</string>
+    <string name="lesson_deep_end_2">Los dos niveles más difíciles no son así. Piden seguir un argumento a lo largo de tres o cuatro pasos y sostenerlo entero en la cabeza a la vez, y eso casi nadie lo hace mirando.</string>
+    <string name="lesson_deep_end_3">Así que escríbelo. Un lápiz y el reverso de un sobre no son trampa ni señal de que se te dé mal. Es lo que hace todo el que resuelve estos.</string>
+    <string name="lesson_deep_end_4">Las reglas de aquí son todas la misma idea: un grupo de casillas al que le falta una cifra para estar lleno. Quita esa cifra y el grupo queda forzado, y un grupo forzado fuerza al siguiente. Eso es toda la parte honda.</string>
+    <string name="lesson_deep_end_5">Nada de lo que viene es una conjetura. Cada paso está probado, cada pista te enseñará la prueba, y si un sudoku de aquí te gana, volver a él dentro de una semana es lo normal.</string>
+
+    <string name="lesson_als_xy_title">ALS-XY-Wing</string>
+    <string name="lesson_als_xy_summary">Tres grupos en cadena, y la cifra que no sobrevive en ninguno de los extremos.</string>
+    <string name="lesson_als_xy_1">Tres grupos esta vez, unidos en línea: uno en cada extremo y otro en el medio separándolos.</string>
+    <string name="lesson_als_xy_2">Empieza por los dos de la izquierda. r3c9 tiene 1 y 3. r1c8 tiene 3 y 7. Comparten bloque, así que solo uno de ellos puede ser el 3.</string>
+    <string name="lesson_als_xy_3">Ahora el grupo que baja por la columna 8: tres casillas con 1, 3, 7 y 9 entre ellas. Cuatro cifras, tres casillas, así que le falta una cifra para estar lleno. Comparte el 7 con r1c8, y todos sus 7 están en esa misma columna, así que otra vez solo un lado puede llevárselo.</string>
+    <string name="lesson_als_xy_4">Supón que una de las dos casillas marcadas de la columna 9 es un 1. Ve a r3c9, así que r3c9 no es 1, así que es 3. Entonces r1c8 no es 3, así que es 7. Entonces al grupo no le queda ningún 7, así que está lleno y tiene que usar el 1, el 3 y el 9.</string>
+    <string name="lesson_als_xy_5">Pero esas casillas también ven todos los 1 del grupo, así que el grupo tampoco puede tener un 1. El argumento se come a sí mismo, y el 1 se va.</string>
+    <string name="lesson_als_xy_6">Dos uniones, tres grupos, y cada paso fuerza al siguiente. Léelo dos veces: es una cadena, y las cadenas solo tienen sentido de enlace en enlace.</string>
+
+    <string name="lesson_blossom_title">Death blossom</string>
+    <string name="lesson_blossom_summary">Una casilla con un grupo esperando detrás de cada una de sus cifras.</string>
+    <string name="lesson_blossom_1">Esta tiene una forma que se ve: un tallo, y un pétalo por cada cifra que el tallo podría ser.</string>
+    <string name="lesson_blossom_2">El tallo es r1c4. Es un 5 o un 6, y nada más. Dos posibilidades son dos casos, y esta técnica se ocupa de los dos a la vez.</string>
+    <string name="lesson_blossom_3">Digamos que es un 5. Entonces r1c7, en la misma fila, con 5 y 8, no puede ser el 5. Así que es el 8.</string>
+    <string name="lesson_blossom_4">Digamos en cambio que es un 6. Mira estas tres casillas del mismo bloque: entre ellas tienen 2, 6, 7 y 8. Cuatro cifras, tres casillas, una menos de lo lleno. El tallo ve a las tres, así que su 6 les quita el 6.</string>
+    <string name="lesson_blossom_5">Ahora están llenas, y tres casillas llenas usan tres cifras: 2, 7 y 8. Solo una de ellas puede ser el 8, así que ahí va el 8.</string>
+    <string name="lesson_blossom_6">Junta los dos casos. O hay un 8 en r1c7 o hay un 8 en ese bloque, y no hay un tercer caso. Cualquier casilla que vea los dos sitios pierde su 8, y dos de ellas lo ven.</string>
+    <string name="lesson_blossom_7">Fíjate en lo que nunca hizo falta saber: qué cifra es el tallo en realidad. Los dos caminos acaban en un 8, así que la respuesta no depende de la bifurcación.</string>
+
+    <string name="lesson_fork_title">Cadena forzada</string>
+    <string name="lesson_fork_summary">Coge una casilla por los dos caminos y mira cuál sobrevive. Lo más difícil de la app.</string>
+    <string name="lesson_fork_1">La última técnica, y la única que no es un patrón. Aquí no hay nada que ver. Solo hay trabajo.</string>
+    <string name="lesson_fork_2">Esta casilla es un 2 o un 7. Todo lo demás del tablero está exprimido, y nada dice cuál de las dos es.</string>
+    <string name="lesson_fork_3">Así que prueba una. Di que es un 2, a lápiz, y sigue solo las consecuencias fáciles: una casilla a la que le queda una cifra, o una cifra a la que le queda un sitio en su casa.</string>
+    <string name="lesson_fork_4">Llegan enseguida. Aquí se fuerza un 2, luego un 7 allí, luego un 3, un 5, un 9. Sigue. Catorce cifras después, mira la casilla marcada.</string>
+    <string name="lesson_fork_5">No le queda nada. Todas las cifras que podían ir ahí se las ha llevado otra cosa. Eso no es mala suerte, es una contradicción, y significa que el 2 nunca fue posible.</string>
+    <string name="lesson_fork_6">Así que bórralo todo y escribe el 7. No porque el 7 tenga mejor pinta, sino porque el 2 ha quedado probado imposible, y dos posibilidades menos una dejan una.</string>
+    <string name="lesson_fork_7">Esto es una prueba por casos, y es lo que la gente quiere decir con sacar un sudoku sobre papel. Usa papel. Nadie sostiene catorce cifras forzadas en la cabeza, y necesitar escribirlas no es una debilidad.</string>
+    <string name="lesson_fork_8">Ahora ponla.</string>
+    <string name="lesson_fork_wrong">La cifra que murió es la otra. El 2 llevaba a una casilla sin nada dentro, así que lo que queda es el 7.</string>
+
+    <string name="lesson_nothing_applies_title">Cuando no se aplica nada</string>
+    <string name="lesson_nothing_applies_summary">Vuelve a comprobar antes de adivinar, porque un sudoku de esta app siempre tiene un paso siguiente.</string>
+    <string name="lesson_nothing_applies_1">Llegarás a posiciones en las que lo has mirado todo y no has encontrado nada. Esto es lo que hay que hacer, y lo que no.</string>
+    <string name="lesson_nothing_applies_2">Lo que no hay que hacer es adivinar. Todos los sudokus de esta app se resuelven razonando, y una conjetura que resulta acertada no te enseña nada mientras que una equivocada te cuesta el tablero entero.</string>
+    <string name="lesson_nothing_applies_3">Vuelve a comprobar en este orden. Primero, ¿son verdaderas todas tus notas? Una nota vieja es la causa más común de una posición imposible, y esta app las borra por ti si la dejas. Segundo, ¿es correcta de verdad una cifra que has puesto? Pulsa pista y te lo dirá.</string>
+    <string name="lesson_nothing_applies_4">Luego vuelve a buscar lo barato. Casi nunca es una cadena que se te ha pasado. Casi siempre es un único oculto en una casa que dejaste de mirar hace veinte jugadas.</string>
+
+    <string name="lesson_look_first_title">Qué buscar primero</string>
+    <string name="lesson_look_first_summary">Los patrones baratos primero, siempre, porque son comunes y abren el tablero.</string>
+    <string name="lesson_look_first_1">Ya conoces todas las técnicas que esta app sabe nombrar. Lo último que queda por aprender es el orden en el que mirar.</string>
+    <string name="lesson_look_first_2">Únicos primero, siempre. Desnudos y luego ocultos. Son con diferencia los más comunes y cada uno que pones hace más fácil encontrar todas las demás técnicas.</string>
+    <string name="lesson_look_first_3">Luego las eliminaciones baratas: parejas apuntadoras y reclamantes. Se comprueban rápido, casa por casa, y muchas veces desbloquean un único al momento.</string>
+    <string name="lesson_look_first_4">Luego parejas y tríos en las casas con menos casillas vacías. Luego los peces, luego los wings. Las cadenas al final, siempre, porque son las que más trabajo dan y las menos comunes.</string>
+    <string name="lesson_look_first_5">Cazar un Jellyfish antes de comprobar los únicos es el equivalente sudoku de reescribir un programa antes de leer el mensaje de error. La app clasifica los sudokus por lo más difícil que necesitan, pero un Maestro sigue siendo sobre todo únicos.</string>
+    <string name="lesson_together_title">Un Maestro, juntos</string>
+    <string name="lesson_together_summary">Un sudoku difícil es sobre todo pasos fáciles con unos pocos difíciles dentro.</string>
+    <string name="lesson_together_1">La última lección. Este es el tablero por el que ha ido pasando el curso, de nivel Maestro, y aquí está la solución entera nombrada técnica a técnica.</string>
+    <string name="lesson_together_2">Abre con un único desnudo. Casi todos lo hacen.</string>
+    <string name="lesson_together_3">Luego un único oculto, en el bloque de al lado.</string>
+    <string name="lesson_together_4">Ahora se para, y una pareja apuntadora despeja una columna para que los únicos puedan volver a empezar. Fíjate en que ese paso no puso ninguna cifra y aun así hubo avance.</string>
+    <string name="lesson_together_5">Una pareja desnuda un poco más adelante, haciendo el mismo trabajo en una casa.</string>
+    <string name="lesson_together_6">Más adentro, un X-Wing. A estas alturas el tablero está medio lleno y las notas están haciendo el trabajo.</string>
+    <string name="lesson_together_7">Y cerca del final, el que se gana el nivel: un ALS-XZ. Una eliminación, y el resto vuelven a ser únicos.</string>
+    <string name="lesson_together_8">Eso es lo que significa Maestro aquí. No ochenta y un pasos difíciles, sino setenta fáciles y un puñado que necesitan todo lo que has aprendido.</string>
+    <string name="lesson_together_9">Has visto todas las técnicas que esta app sabe nombrar. Ve a jugar una partida. Cada sudoku viene con tres pistas y no hay ninguna vergüenza en gastarlas, y si prefieres tener todas las que quieras, el límite es un interruptor en los ajustes.</string>
+    <string name="lesson_step_of">%1$d de %2$d</string>
+    <string name="lesson_back">Atrás</string>
+    <string name="lesson_next">Siguiente</string>
+    <string name="lesson_done">Hecho</string>
+    <string name="lesson_replay">Otra vez</string>
+    <string name="lesson_show_me">Enséñamelo</string>
+    <string name="lesson_cell_at">Fila %1$d, columna %2$d.</string>
+    <string name="course_title">Aprender</string>
+    <string name="course_lesson_done">terminada</string>
+    <string name="course_lesson_next">siguiente</string>
+    <string name="course_lesson_todo">sin empezar</string>
+    <plurals name="course_progress">
+        <item quantity="one">%1$d de %2$d lección</item>
+        <item quantity="other">%1$d de %2$d lecciones</item>
+    </plurals>
+    <string name="settings_hint_detail">CUÁNTO DICE UNA PISTA</string>
+    <string name="hint_detail_region">Solo la región</string>
+    <string name="hint_detail_region_note">Qué bloque o línea mirar, y nada más.</string>
+    <string name="hint_detail_name">La técnica</string>
+    <string name="hint_detail_name_note">Qué clase de paso es, para que sepas qué buscar.</string>
+    <string name="hint_detail_cells">Las casillas</string>
+    <string name="hint_detail_cells_note">Las casillas en las que se apoya el argumento, iluminadas en el tablero.</string>
+    <string name="hint_detail_full">El argumento entero</string>
+    <string name="hint_detail_full_note">Todo, incluida la jugada. Para ir trabajando el curso.</string>
+    <string name="path_title">Cómo se resolvió</string>
+    <string name="path_placed">La fila %1$d, columna %2$d es un %3$d.</string>
+    <string name="outcome_path">VER CÓMO SE RESOLVIÓ</string>
+    <string name="settings_your_data">Tus datos</string>
+    <string name="settings_data_note">Todo lo que esta app sabe de ti está en este teléfono. Exportar lo escribe en un archivo que eliges tú, para que un teléfono nuevo siga donde lo dejó este. No se envía nada a ninguna parte.</string>
+    <string name="settings_export">Exportar mi progreso</string>
+    <string name="settings_import">Importar desde un archivo</string>
+    <string name="settings_reset_course">Reiniciar el curso, conservando mis partidas</string>
+    <string name="settings_exported">Guardado. Lecciones: %1$d. Partidas: %2$d.</string>
+    <string name="settings_imported">Añadido. Lecciones: %1$d. Partidas: %2$d.</string>
+    <string name="settings_imported_ignored">Añadido. Lecciones: %1$d. Partidas: %2$d. Dejadas fuera, porque venían de una versión más nueva: %3$d.</string>
+    <string name="settings_import_empty">Ese archivo está vacío.</string>
+    <string name="settings_import_not_ours">Eso no parece una exportación de Sendoku.</string>
+    <string name="settings_import_future">Ese archivo lo escribió una versión más nueva de Sendoku.</string>
+    <string name="settings_import_failed">No se pudo leer ese archivo, y no se ha cambiado nada en este teléfono.</string>
+    <string name="settings_course_reset">El curso vuelve a estar al principio. Tus partidas siguen intactas.</string>
+    <string name="practice_looking">Buscando una posición…</string>
+    <string name="practice_find">Encuentra el %1$s.</string>
+    <string name="practice_keep_going">Ese es uno de ellos. Sigue.</string>
+    <string name="practice_wrong">Esa casilla no. Vuelve a leer la regla: un %1$s no se apoya en ella.</string>
+    <string name="practice_right">Ese es el %1$s. Lo que descarta está marcado.</string>
+    <string name="practice_revealed">Aquí está el %1$s, y lo que descarta.</string>
+    <string name="practice_show_me">Enséñamelo</string>
+    <string name="practice_another">Otro</string>
+    <string name="practice_skip">Saltar</string>
+    <string name="practice_title">Práctica</string>
+    <string name="practice_none">Todavía no hay nada que practicar. Termina primero una lección que enseñe una técnica.</string>
+    <string name="glossary_learn_this">APRENDER ESTO</string>
+    <string name="hint_learn_this">Enséñame esto</string>
+    <string name="outcome_learn">Aprender %1$s</string>
+    <string name="course_finished">Todo, hecho. Todo lo que la app sabe nombrar, lo sabes nombrar tú. Los sudokus son lo que queda.</string>
+    <string name="outcome_lost_hints">SIN PISTAS DISPONIBLES</string>
+    <string name="outcome_share">Compartir</string>
+    <string name="card_solved">Resuelto</string>
+    <string name="card_lost">Ganó el sudoku</string>
+    <string name="settings_hints">Pistas</string>
+    <string name="settings_hint_limit">Terminar la partida a las tres pistas</string>
+    <string name="settings_hint_note">Encendido por defecto. Tres pistas son gratis, y la cuarta cuesta la partida, lo que convierte una pista en una decisión y no en un reflejo. Apágalo mientras vas trabajando el curso.</string>
+    <string name="account_title">Tú</string>
+    <string name="account_no_account">No hay ninguna cuenta con la que entrar. Todo lo de abajo está en este teléfono y en ningún otro sitio.</string>
+    <string name="account_solved">Resueltos</string>
+    <string name="account_streak">Racha</string>
+    <string name="account_played">Jugados</string>
+    <string name="account_time">Tiempo</string>
+    <string name="account_lessons">Lecciones</string>
+    <string name="account_stats">Estadísticas</string>
+    <string name="account_stats_detail">Cada nivel, tus mejores tiempos y qué técnicas has visto</string>
+    <string name="account_settings_detail">El aspecto, el tablero, los límites y tus datos</string>
+    <string name="account_about_detail">Lo que promete esta app y las licencias sobre las que se sostiene</string>
+    <string name="tab_home">Inicio</string>
+    <string name="tab_learn">Aprender</string>
+    <string name="tab_account">Tú</string>
+    <plurals name="hint_menu_left">
+        <item quantity="one">Las dos últimas cuestan una pista, y te queda %1$d.</item>
+        <item quantity="other">Las dos últimas cuestan una pista, y te quedan %1$d.</item>
+    </plurals>
+    <plurals name="hint_check_wrong">
+        <item quantity="one">%1$d cifra que has puesto está mal. Encontrarla sigue siendo cosa tuya.</item>
+        <item quantity="other">%1$d cifras que has puesto están mal. Encontrarlas sigue siendo cosa tuya.</item>
+    </plurals>
+    <plurals name="path_summary">
+        <item quantity="one">%1$d paso, la regla más barata primero, exactamente como lo valoró la app.</item>
+        <item quantity="other">%1$d pasos, la regla más barata primero, exactamente como lo valoró la app.</item>
+    </plurals>
+    <plurals name="path_struck">
+        <item quantity="one">Descarta %1$d nota.</item>
+        <item quantity="other">Descarta %1$d notas.</item>
+    </plurals>
+</resources>

@@ -33,3 +33,7 @@ out/
 # OS
 .DS_Store
 *~
+
+# The virtual environment tools/subset-fonts.py asks for. The fonts it builds are
+# committed; the toolchain that built them is not.
+.venv/

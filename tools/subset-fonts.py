@@ -34,6 +34,29 @@ GOOGLE = "https://github.com/google/fonts/raw/main"
 # and the couple of marks the board and the share card add on their own.
 EXTRA = "0123456789:/%·…"
 
+# What these four faces are not asked to draw.
+#
+# None of them has a single kana or kanji in it, and the subsets that do exist are around a
+# thousand glyphs where a Japanese face is tens of thousands. Bundling Japanese four times
+# over would cost more than the whole app. Android carries Noto Sans CJK JP and picks it up
+# per character when the face in use cannot draw one, so Japanese renders on every phone
+# without a byte from us, and the only thing that changes is which file the shapes come from.
+#
+# Without this the script stops on 日本語, the name of Japanese in the language picker, which
+# is written in Japanese in every language including English.
+JAPANESE = [
+    (0x3000, 0x303F),  # CJK punctuation
+    (0x3040, 0x309F),  # hiragana
+    (0x30A0, 0x30FF),  # katakana
+    (0x3400, 0x4DBF),  # CJK ideographs, extension A
+    (0x4E00, 0x9FFF),  # CJK ideographs
+    (0xFF00, 0xFFEF),  # halfwidth and fullwidth forms
+]
+
+
+def is_japanese(character: str) -> bool:
+    return any(low <= ord(character) <= high for low, high in JAPANESE)
+
 # One family per theme, and the two weights each one ships. Regular and the heavier of the
 # two are real files; anything between them is the nearest of these, which is what Compose
 # does on its own. Every one of these is under the SIL Open Font License.
@@ -103,8 +126,12 @@ def cut(path: str, out: str, text: str, weight):
 
 
 def main() -> int:
-    text = charset()
-    print(f"{len(text)} characters, taken from the shipped strings")
+    everything = charset()
+    text = "".join(c for c in everything if not is_japanese(c))
+    japanese = "".join(c for c in everything if is_japanese(c))
+    print(f"{len(everything)} characters, taken from the shipped strings")
+    print(f"  {len(text)} for the four bundled faces")
+    print(f"  {len(japanese)} left to the phone's own Japanese font: {japanese}")
     os.makedirs(OUT, exist_ok=True)
     total = 0
     for slug, label, weights in FAMILIES:

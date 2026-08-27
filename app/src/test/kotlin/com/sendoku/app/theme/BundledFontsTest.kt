@@ -28,6 +28,26 @@ class BundledFontsTest {
         "JetBrains Mono" to listOf("jetbrains_mono_regular.ttf", "jetbrains_mono_bold.ttf"),
     )
 
+    /**
+     * What no bundled face is asked to draw.
+     *
+     * Kept in step with JAPANESE in tools/subset-fonts.py. None of the four has a kana or a
+     * kanji in it and none of them is going to: Android carries Noto Sans CJK JP and picks it
+     * up per character, so Japanese renders on every phone without a byte from us. The one
+     * thing to hold onto is that this list stays small and deliberate rather than growing
+     * into a hole the guard below can fall through.
+     */
+    private val japanese = listOf(
+        0x3000..0x303F,
+        0x3040..0x309F,
+        0x30A0..0x30FF,
+        0x3400..0x4DBF,
+        0x4E00..0x9FFF,
+        0xFF00..0xFFEF,
+    )
+
+    private fun Char.isJapanese(): Boolean = japanese.any { code in it }
+
     /** Every character the shipped strings can put on screen, plus what the board adds. */
     private val charset: Set<Char> by lazy {
         val found = HashSet<Char>()
@@ -40,7 +60,7 @@ class BundledFontsTest {
                     found += match.groupValues[1].toSet()
                 }
             }
-        found.filter { !it.isWhitespace() && it.code >= 0x20 }.toSet()
+        found.filter { !it.isWhitespace() && it.code >= 0x20 && !it.isJapanese() }.toSet()
     }
 
     private fun open(name: String): Font {
@@ -56,9 +76,10 @@ class BundledFontsTest {
         // testing nothing.
         assertTrue("only ${charset.size} characters were found", charset.size > 150)
         assertTrue("no Cyrillic was found", charset.any { it.code in 0x400..0x4FF })
-        for (c in "äöüßğşıİçÇ") {
-            assertTrue("the German and Turkish characters are missing from the set", c in charset)
+        for (c in "äöüßğşıİçÇñáíóúü¿") {
+            assertTrue("$c is missing from the set the faces are cut to", c in charset)
         }
+        assertTrue("Japanese should be left to the phone rather than cut into the faces", '日' !in charset)
     }
 
     @Test
