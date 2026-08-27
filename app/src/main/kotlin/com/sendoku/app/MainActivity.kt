@@ -200,6 +200,8 @@ class MainActivity : ComponentActivity() {
                     placed = it.placed,
                     total = it.total,
                     elapsed = it.elapsed,
+                    givens = it.givens,
+                    entries = it.entries,
                 )
             }
         }

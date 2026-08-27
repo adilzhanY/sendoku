@@ -15,8 +15,10 @@
     <string name="home_new_puzzle">Nuevo sudoku</string>
     <string name="home_resume">Continuar</string>
     <string name="home_in_progress">EMPEZADO</string>
-    <string name="home_percent">%1$s, %2$d%%</string>
     <string name="home_placed">Puestas: %1$d de %2$d</string>
+    <string name="home_or_start">O EMPIEZA ALGO NUEVO</string>
+    <string name="home_your_level">TU NIVEL</string>
+    <string name="home_all_levels">TODOS LOS NIVELES</string>
 
     <string name="grade_gentle">Fácil</string>
     <string name="grade_steady">Medio</string>

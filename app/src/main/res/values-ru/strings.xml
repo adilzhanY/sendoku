@@ -14,8 +14,10 @@
     <string name="home_new_puzzle">Новая</string>
     <string name="home_resume">Продолжить</string>
     <string name="home_in_progress">НЕЗАКОНЧЕННАЯ</string>
-    <string name="home_percent">%1$s, %2$d%%</string>
     <string name="home_placed">Заполнено: %1$d из %2$d</string>
+    <string name="home_or_start">ИЛИ НАЧНИТЕ НОВУЮ</string>
+    <string name="home_your_level">ВАШ УРОВЕНЬ</string>
+    <string name="home_all_levels">ВСЕ УРОВНИ</string>
 
     <string name="grade_gentle">Лёгкий</string>
     <string name="grade_steady">Средний</string>

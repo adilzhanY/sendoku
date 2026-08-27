@@ -21,8 +21,10 @@
     <string name="home_new_puzzle">لغز جديد</string>
     <string name="home_resume">متابعة</string>
     <string name="home_in_progress">قيد اللعب</string>
-    <string name="home_percent">%1$s، %2$d%%</string>
     <string name="home_placed">الموضوع: %1$d من %2$d</string>
+    <string name="home_or_start">أو ابدأ لعبة جديدة</string>
+    <string name="home_your_level">مستواك</string>
+    <string name="home_all_levels">كل المستويات</string>
 
     <string name="grade_gentle">سهل</string>
     <string name="grade_steady">متوسط</string>

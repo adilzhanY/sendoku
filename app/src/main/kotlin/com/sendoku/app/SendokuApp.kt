@@ -48,6 +48,7 @@ import com.sendoku.app.ui.ReadableWidth
 import com.sendoku.app.ui.SettingsScreen
 import com.sendoku.app.ui.SolvePathScreen
 import com.sendoku.app.ui.StatsScreen
+import com.sendoku.app.ui.dailyStreak
 import com.sendoku.engine.Grade
 import com.sendoku.engine.technique.TechniqueId
 import kotlinx.coroutines.CoroutineScope
@@ -180,12 +181,17 @@ private fun Screens(
 ) {
     when (val here = navigator.current) {
         Destination.Home -> {
+            val today = remember { java.time.LocalDate.now() }
             HomeScreen(
                 state = HomeState(
                     solvedByGrade = counts,
                     // Read from storage, not from the live game. On a cold start there is no
                     // live game yet, and the home screen would say there is nothing to resume.
                     inProgress = saved,
+                    // The daily tile says how many days in a row, which is the only reason a
+                    // daily is worth having and used to be two screens away on the calendar.
+                    streak = dailyStreak(dailyDays.solved, today),
+                    today = today,
                 ),
                 // Starting a game is an effect of navigating, not of drawing. Doing it in a
                 // LaunchedEffect on the play screen meant that coming back from the glossary

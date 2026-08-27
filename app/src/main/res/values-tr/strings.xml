@@ -13,8 +13,10 @@
     <string name="home_new_puzzle">Yeni bulmaca</string>
     <string name="home_resume">Devam et</string>
     <string name="home_in_progress">DEVAM EDEN</string>
-    <string name="home_percent">%1$s, %%%2$d</string>
     <string name="home_placed">Yerleşen: %2$d içinden %1$d</string>
+    <string name="home_or_start">YA DA YENİ BAŞLA</string>
+    <string name="home_your_level">SENİN SEVİYEN</string>
+    <string name="home_all_levels">TÜM SEVİYELER</string>
 
     <string name="grade_gentle">Kolay</string>
     <string name="grade_steady">Orta</string>

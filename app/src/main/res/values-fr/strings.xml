@@ -19,8 +19,10 @@
     <string name="home_new_puzzle">Nouvelle grille</string>
     <string name="home_resume">Reprendre</string>
     <string name="home_in_progress">EN COURS</string>
-    <string name="home_percent">%1$s, %2$d %%</string>
     <string name="home_placed">Placés : %1$d sur %2$d</string>
+    <string name="home_or_start">OU COMMENCER AUTRE CHOSE</string>
+    <string name="home_your_level">VOTRE NIVEAU</string>
+    <string name="home_all_levels">TOUS LES NIVEAUX</string>
 
     <string name="grade_gentle">Facile</string>
     <string name="grade_steady">Moyen</string>

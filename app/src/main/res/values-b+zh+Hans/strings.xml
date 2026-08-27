@@ -18,8 +18,10 @@
     <string name="home_new_puzzle">新题</string>
     <string name="home_resume">继续</string>
     <string name="home_in_progress">进行中</string>
-    <string name="home_percent">%1$s，%2$d%%</string>
     <string name="home_placed">已填 %1$d／%2$d</string>
+    <string name="home_or_start">或者开始新的一局</string>
+    <string name="home_your_level">当前难度</string>
+    <string name="home_all_levels">全部难度</string>
 
     <string name="grade_gentle">简单</string>
     <string name="grade_steady">普通</string>
