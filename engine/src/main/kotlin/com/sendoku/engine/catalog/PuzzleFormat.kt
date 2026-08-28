@@ -52,6 +52,9 @@ public object PuzzleFormat {
     /** Ratings are stored as hundredths, which is finer than any grade boundary needs. */
     private const val RATING_SCALE = 100.0
 
+    /** Two bytes, which is what the rating occupies between the mask and the technique. */
+    private const val RATING_BYTES = 2
+
     /** Bytes one puzzle occupies once the file is decompressed. */
     public fun recordBytes(dims: Dimensions): Int =
         solutionBytes(dims) + maskBytes(dims) + 2 + 1 + 1 + TechniqueId.entries.size
@@ -103,6 +106,19 @@ public object PuzzleFormat {
             val at = offsetOf(index) + solutionBytes + maskBytes
             val raw = ((bytes[at].toInt() and 0xFF) shl 8) or (bytes[at + 1].toInt() and 0xFF)
             return raw / RATING_SCALE
+        }
+
+        /**
+         * The hardest technique one puzzle needs, read without decoding the grid.
+         *
+         * One byte at a known offset, the same trick the rating uses. It is what makes it
+         * cheap to ask the batch for every puzzle that needs an X-Wing: four thousand byte
+         * reads rather than four thousand grids.
+         */
+        fun hardestAt(index: Int): TechniqueId? {
+            val at = offsetOf(index) + solutionBytes + maskBytes + RATING_BYTES
+            val ordinal = bytes[at].toInt() and 0xFF
+            return if (ordinal == 0) null else TechniqueId.entries[ordinal - 1]
         }
 
         fun decode(index: Int): RatedPuzzle {

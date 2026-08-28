@@ -37,9 +37,11 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.sendoku.app.R
 import com.sendoku.app.theme.Sendoku
 import com.sendoku.app.ui.BackButton
+import com.sendoku.app.ui.OneLine
 
 /**
  * The course, as a map rather than a list.
@@ -68,6 +70,8 @@ public fun CourseScreen(
     onPractise: () -> Unit,
     onBack: (() -> Unit)?,
     modifier: Modifier = Modifier,
+    /** Opens the list of techniques you can ask the batch for a puzzle about. */
+    onByTechnique: () -> Unit = {},
 ) {
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
@@ -178,24 +182,40 @@ public fun CourseScreen(
 
             // Practice used to be one word in the top corner, which is where the thing that
             // makes a technique stick had no business being.
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = dimens.spaceM)
-                    .heightIn(min = dimens.minTouchTarget)
-                    .clip(RoundedCornerShape(dimens.radiusM))
-                    .background(colors.surface)
-                    .clickable(onClick = onPractise)
-                    .testTag("course:practise"),
-                contentAlignment = Alignment.Center,
+            Row(
+                modifier = Modifier.fillMaxWidth().padding(top = dimens.spaceM),
+                horizontalArrangement = Arrangement.spacedBy(dimens.padGap),
             ) {
-                Text(
-                    text = stringResource(R.string.practice_title),
-                    style = Sendoku.type.label,
-                    color = colors.muted,
+                Foot(stringResource(R.string.practice_title), "course:practise", onPractise, Modifier.weight(1f))
+                // Reading about a technique and finding one on a real board are different
+                // skills, and only the second one finishes a puzzle. This is the second one.
+                Foot(
+                    label = stringResource(R.string.technique_pick_title),
+                    tag = "course:bytechnique",
+                    onClick = onByTechnique,
+                    modifier = Modifier.weight(1f),
                 )
             }
         }
+    }
+}
+
+/** One of the two quiet buttons at the foot of the map. */
+@Composable
+private fun Foot(label: String, tag: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
+    val colors = Sendoku.colors
+    val dimens = Sendoku.dimens
+    Box(
+        modifier = modifier
+            .heightIn(min = dimens.minTouchTarget)
+            .clip(RoundedCornerShape(dimens.radiusM))
+            .background(colors.surface)
+            .clickable(onClick = onClick)
+            .testTag(tag)
+            .padding(horizontal = dimens.spaceS),
+        contentAlignment = Alignment.Center,
+    ) {
+        OneLine(label, Sendoku.type.label, colors.muted, min = 9.sp)
     }
 }
 

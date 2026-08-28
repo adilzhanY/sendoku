@@ -794,6 +794,14 @@
     <string name="practice_another">Ещё</string>
     <string name="practice_skip">Пропустить</string>
     <string name="practice_title">Практика</string>
+    <string name="technique_pick_title">Найдите, на чём потренироваться</string>
+    <string name="technique_pick_body">Каждая головоломка здесь оценена тем же решателем, который пишет подсказки, поэтому известно, на каком правиле держится каждая. Выберите приём и получите головоломку, которую без него не закончить.</string>
+    <string name="technique_pick_none">В этой версии таких головоломок нет</string>
+    <string name="technique_pick_play">Сыграть</string>
+    <plurals name="technique_pick_count">
+        <item quantity="one">%1$d головоломка держится на нём</item>
+        <item quantity="other">%1$d головоломок держатся на нём</item>
+    </plurals>
     <string name="practice_none">Пока нечего отрабатывать. Сначала пройдите урок с техникой.</string>
     <string name="glossary_learn_this">Учить</string>
     <string name="hint_learn_this">Научи меня</string>

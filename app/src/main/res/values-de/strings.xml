@@ -405,6 +405,14 @@
     <string name="practice_another">Noch eins</string>
     <string name="practice_skip">Überspringen</string>
     <string name="practice_title">Üben</string>
+    <string name="technique_pick_title">Finde eins zum Üben</string>
+    <string name="technique_pick_body">Jedes Rätsel hier wurde von demselben Löser bewertet, der auch die Tipps schreibt, also ist bekannt, auf welcher Regel jedes einzelne beruht. Wähle eine Technik und bekomme ein Rätsel, das ohne sie nicht zu schaffen ist.</string>
+    <string name="technique_pick_none">In dieser Version gibt es dazu kein Rätsel</string>
+    <string name="technique_pick_play">Eins spielen</string>
+    <plurals name="technique_pick_count">
+        <item quantity="one">%1$d Rätsel beruht darauf</item>
+        <item quantity="other">%1$d Rätsel beruhen darauf</item>
+    </plurals>
     <string name="practice_none">Noch nichts zu üben. Schließen Sie zuerst eine Lektion ab, die eine Technik beibringt.</string>
 
     <string name="glossary_learn_this">Das lernen</string>

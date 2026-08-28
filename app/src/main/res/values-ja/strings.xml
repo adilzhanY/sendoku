@@ -780,6 +780,13 @@
     <string name="practice_another">別の問題</string>
     <string name="practice_skip">とばす</string>
     <string name="practice_title">練習</string>
+    <string name="technique_pick_title">練習する問題を探す</string>
+    <string name="technique_pick_body">ここにある問題はすべて、ヒントを書くのと同じソルバーで判定されているので、どの規則が要になっているかが分かっています。手筋を選ぶと、それなしでは解けない問題が出ます。</string>
+    <string name="technique_pick_none">このバージョンにはありません</string>
+    <string name="technique_pick_play">問題を解く</string>
+    <plurals name="technique_pick_count">
+        <item quantity="other">%1$d 問がこの手筋を要します</item>
+    </plurals>
     <string name="practice_none">まだ練習できるものがありません。まずテクニックを教えるレッスンを終えてください。</string>
     <string name="glossary_learn_this">これを学ぶ</string>
     <string name="hint_learn_this">これを教えて</string>

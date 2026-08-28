@@ -38,6 +38,7 @@ import com.sendoku.app.theme.Sendoku
 import com.sendoku.app.ui.AboutScreen
 import com.sendoku.app.ui.AccountScreen
 import com.sendoku.app.ui.BottomBar
+import com.sendoku.app.ui.ByTechniqueScreen
 import com.sendoku.app.ui.CodeMiss
 import com.sendoku.app.ui.DailyScreen
 import com.sendoku.app.ui.GameScreen
@@ -52,6 +53,7 @@ import com.sendoku.app.ui.ReadableWidth
 import com.sendoku.app.ui.SettingsScreen
 import com.sendoku.app.ui.SolvePathScreen
 import com.sendoku.app.ui.StatsScreen
+import com.sendoku.app.ui.TechniqueSupply
 import com.sendoku.app.ui.dailyStreak
 import com.sendoku.engine.Grade
 import com.sendoku.engine.catalog.CodeFault
@@ -59,6 +61,7 @@ import com.sendoku.engine.catalog.CodeResult
 import com.sendoku.engine.catalog.PuzzleCode
 import com.sendoku.engine.catalog.PuzzleRef
 import com.sendoku.engine.technique.TechniqueId
+import com.sendoku.engine.technique.Techniques
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
@@ -289,8 +292,40 @@ private fun Screens(
             )
         }
 
-        is Destination.Play, Destination.Resume, is Destination.Daily, is Destination.Shared ->
+        is Destination.Play, Destination.Resume, is Destination.Daily, is Destination.Shared,
+        is Destination.Needing,
+        ->
             PlayHost(model, loading, navigator, scope, onSpendHint, modifier)
+
+        Destination.ByTechnique -> {
+            // Read once, off the batch, and only when this screen is open. It is one byte
+            // per puzzle, which is four kilobytes of reading, and it never changes.
+            var supply by remember { mutableStateOf(emptyList<TechniqueSupply>()) }
+            LaunchedEffect(Unit) {
+                val counts = model.techniqueSupply()
+                supply = Techniques.ladder.map { technique ->
+                    TechniqueSupply(
+                        technique = technique.id,
+                        count = counts[technique.id] ?: 0,
+                        hasLesson = Curriculum.teaching(technique.id) != null,
+                    )
+                }
+            }
+            ByTechniqueScreen(
+                supply = supply,
+                onPlay = { technique ->
+                    model.startNeeding(technique) { found ->
+                        if (found) navigator.go(Destination.Needing(technique.name))
+                    }
+                },
+                onLearn = { technique ->
+                    val lesson = Curriculum.teaching(technique)
+                    navigator.go(if (lesson == null) Destination.Glossary else Destination.LessonAt(lesson.id.name))
+                },
+                onBack = { navigator.back() },
+                modifier = modifier,
+            )
+        }
 
         Destination.Calendar -> {
             DailyScreen(
@@ -310,6 +345,7 @@ private fun Screens(
                 progress = course,
                 onOpen = { navigator.go(Destination.LessonAt(it.name)) },
                 onPractise = { navigator.go(Destination.Practice("")) },
+                onByTechnique = { navigator.go(Destination.ByTechnique) },
                 onBack = if (navigator.canGoBack) ({ navigator.back() }) else null,
                 modifier = modifier,
             )
@@ -424,6 +460,11 @@ private fun Screens(
                     if (lesson != null) navigator.go(Destination.LessonAt(lesson.id.name))
                 },
                 modifier = modifier,
+                onPlay = { technique ->
+                    model.startNeeding(technique) { found ->
+                        if (found) navigator.go(Destination.Needing(technique.name))
+                    }
+                },
             )
         }
 

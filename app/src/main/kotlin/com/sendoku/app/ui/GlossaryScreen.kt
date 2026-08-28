@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import com.sendoku.app.R
 import com.sendoku.app.learn.Curriculum
@@ -32,7 +33,13 @@ import com.sendoku.engine.technique.TechniqueId
  * never go.
  */
 @Composable
-public fun GlossaryScreen(onBack: () -> Unit, onLesson: (TechniqueId) -> Unit, modifier: Modifier = Modifier) {
+public fun GlossaryScreen(
+    onBack: () -> Unit,
+    onLesson: (TechniqueId) -> Unit,
+    modifier: Modifier = Modifier,
+    /** Deals a puzzle that turns on this technique, when the batch has one. */
+    onPlay: (TechniqueId) -> Unit = {},
+) {
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
     val ladder = TechniqueId.entries.sortedBy { it.cost }
@@ -91,6 +98,19 @@ public fun GlossaryScreen(onBack: () -> Unit, onLesson: (TechniqueId) -> Unit, m
                             color = colors.accent,
                         )
                     }
+                    // The other half of knowing a technique: finding one on a real board.
+                    // The glossary is where somebody looks a rule up, which is exactly the
+                    // moment they would like a puzzle to try it on.
+                    Text(
+                        text = stringResource(R.string.technique_pick_play),
+                        style = Sendoku.type.overline,
+                        color = colors.accent,
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(dimens.radiusS))
+                            .clickable { onPlay(technique) }
+                            .testTag("glossary:play:${'$'}{technique.name}")
+                            .padding(vertical = dimens.spaceXs),
+                    )
                     Text(
                         text = stringResource(TechniqueCopy.lookFor(technique)),
                         style = Sendoku.type.body,

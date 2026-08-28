@@ -797,6 +797,14 @@
     <string name="practice_another">Another</string>
     <string name="practice_skip">Skip</string>
     <string name="practice_title">Practice</string>
+    <string name="technique_pick_title">Find one to practise on</string>
+    <string name="technique_pick_body">Every puzzle here was rated by the same solver that writes the hints, so it is known which rule each one turns on. Pick a technique and get a puzzle that cannot be finished without it.</string>
+    <string name="technique_pick_none">No puzzle in this version turns on it</string>
+    <string name="technique_pick_play">Play one</string>
+    <plurals name="technique_pick_count">
+        <item quantity="one">%1$d puzzle turns on it</item>
+        <item quantity="other">%1$d puzzles turn on it</item>
+    </plurals>
     <string name="practice_none">Nothing to practise yet. Finish a lesson that teaches a technique first.</string>
     <string name="glossary_learn_this">Learn this</string>
     <string name="hint_learn_this">Teach me this</string>

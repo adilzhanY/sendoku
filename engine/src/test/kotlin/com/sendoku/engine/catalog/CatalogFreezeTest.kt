@@ -92,6 +92,26 @@ class CatalogFreezeTest {
         }
     }
 
+    @Test
+    fun `the technique index agrees with the puzzles it points at`() {
+        // Read as a byte at a known offset rather than by decoding the grid, which is the
+        // only reason asking the batch for every puzzle needing an X-Wing is cheap. A wrong
+        // offset would hand back puzzles that need something else entirely.
+        val reader = CatalogReader.from(
+            checkNotNull(javaClass.getResourceAsStream("/catalog/classic.sdkb")),
+        )
+        var checked = 0
+        for ((technique, count) in reader.needing) {
+            val indices = reader.indicesNeeding(technique)
+            assertEquals(count, indices.size)
+            for (index in indices.take(3)) {
+                assertEquals(technique, reader.puzzleAt(index).hardest, "puzzle $index")
+                checked++
+            }
+        }
+        assertTrue(checked > 0, "the batch names no techniques at all")
+    }
+
     private companion object {
         /** What shipped in 1.0. Later releases add to the end, so this number stays. */
         const val FROZEN_COUNT = 4000

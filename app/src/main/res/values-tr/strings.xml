@@ -404,6 +404,14 @@
     <string name="practice_another">Bir tane daha</string>
     <string name="practice_skip">Atla</string>
     <string name="practice_title">Alıştırma</string>
+    <string name="technique_pick_title">Alıştırma yapacak bir bulmaca bul</string>
+    <string name="technique_pick_body">Buradaki her bulmaca, ipuçlarını yazan çözücünün aynısıyla derecelendirildi, yani her birinin hangi kurala dayandığı biliniyor. Bir teknik seç, onsuz bitirilemeyecek bir bulmaca al.</string>
+    <string name="technique_pick_none">Bu sürümde buna dayanan bulmaca yok</string>
+    <string name="technique_pick_play">Bir tane oyna</string>
+    <plurals name="technique_pick_count">
+        <item quantity="one">%1$d bulmaca buna dayanıyor</item>
+        <item quantity="other">%1$d bulmaca buna dayanıyor</item>
+    </plurals>
     <string name="practice_none">Henüz alıştırma yapılacak bir şey yok. Önce bir teknik öğreten bir dersi bitirin.</string>
 
     <string name="glossary_learn_this">Bunu öğren</string>

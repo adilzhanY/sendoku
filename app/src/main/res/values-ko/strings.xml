@@ -773,6 +773,13 @@
     <string name="practice_another">다른 문제</string>
     <string name="practice_skip">건너뛰기</string>
     <string name="practice_title">연습</string>
+    <string name="technique_pick_title">연습할 문제 찾기</string>
+    <string name="technique_pick_body">여기 있는 문제는 모두 힌트를 쓰는 것과 같은 풀이기로 평가했기 때문에, 각 문제가 어떤 규칙에 기대고 있는지 알고 있습니다. 기법을 고르면 그것 없이는 끝낼 수 없는 문제가 나옵니다.</string>
+    <string name="technique_pick_none">이 버전에는 해당하는 문제가 없습니다</string>
+    <string name="technique_pick_play">한 판 풀기</string>
+    <plurals name="technique_pick_count">
+        <item quantity="other">%1$d문제가 이 기법에 기댑니다</item>
+    </plurals>
     <string name="practice_none">아직 연습할 것이 없어요. 기법을 가르치는 수업을 먼저 끝내 주세요.</string>
     <string name="glossary_learn_this">이것 배우기</string>
     <string name="hint_learn_this">이것을 가르쳐 주세요</string>

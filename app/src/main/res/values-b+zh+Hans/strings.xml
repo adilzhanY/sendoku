@@ -776,6 +776,13 @@
     <string name="practice_another">换一题</string>
     <string name="practice_skip">跳过</string>
     <string name="practice_title">练习</string>
+    <string name="technique_pick_title">找一道题来练</string>
+    <string name="technique_pick_body">这里的每道题都由写提示的同一个求解器评过级，所以每道题靠的是哪条规则都是已知的。选一个技巧，就能拿到一道离开它就做不完的题。</string>
+    <string name="technique_pick_none">这个版本里没有这样的题</string>
+    <string name="technique_pick_play">来一道</string>
+    <plurals name="technique_pick_count">
+        <item quantity="other">%1$d 道题靠它</item>
+    </plurals>
     <string name="practice_none">还没有可以练的内容。先学完一课有技巧的课程。</string>
     <string name="glossary_learn_this">学这个</string>
     <string name="hint_learn_this">教我这个</string>

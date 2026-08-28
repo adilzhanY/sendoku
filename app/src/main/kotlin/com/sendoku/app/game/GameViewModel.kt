@@ -10,6 +10,7 @@ import com.sendoku.app.ui.GameEvent
 import com.sendoku.app.ui.reduce
 import com.sendoku.engine.Grade
 import com.sendoku.engine.catalog.PuzzleRef
+import com.sendoku.engine.technique.TechniqueId
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -104,6 +105,27 @@ public class GameViewModel(
             onResult(found != null)
         }
     }
+
+    /**
+     * Starts a puzzle that turns on [technique], and says whether there was one.
+     *
+     * It plays as an ordinary game at whatever grade the puzzle turns out to be, because it
+     * is one: a puzzle chosen for the rule it needs is still a puzzle off the ladder, and
+     * winning it counts for exactly as much as winning any other.
+     */
+    public fun startNeeding(technique: TechniqueId, onResult: (Boolean) -> Unit = {}) {
+        scope.launch {
+            _loading.value = true
+            val settings = settingsStore.settings.first()
+            val found = puzzles.needing(technique)
+            if (found != null) _state.value = found.play(settings)
+            _loading.value = false
+            onResult(found != null)
+        }
+    }
+
+    /** How many puzzles in the batch turn on each technique. */
+    public suspend fun techniqueSupply(): Map<TechniqueId, Int> = puzzles.supply()
 
     public fun startNew(grade: Grade) {
         scope.launch {

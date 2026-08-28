@@ -783,6 +783,14 @@
     <string name="practice_another">Un autre</string>
     <string name="practice_skip">Passer</string>
     <string name="practice_title">Entraînement</string>
+    <string name="technique_pick_title">Trouvez-en une pour vous entraîner</string>
+    <string name="technique_pick_body">Chaque grille ici a été évaluée par le solveur qui écrit les indices, on sait donc sur quelle règle chacune repose. Choisissez une technique et recevez une grille impossible à finir sans elle.</string>
+    <string name="technique_pick_none">Aucune grille de cette version ne repose dessus</string>
+    <string name="technique_pick_play">En jouer une</string>
+    <plurals name="technique_pick_count">
+        <item quantity="one">%1$d grille repose dessus</item>
+        <item quantity="other">%1$d grilles reposent dessus</item>
+    </plurals>
     <string name="practice_none">Rien à travailler pour l\'instant. Terminez d\'abord une leçon qui enseigne une technique.</string>
     <string name="glossary_learn_this">Apprendre ceci</string>
     <string name="hint_learn_this">Apprenez-moi ceci</string>

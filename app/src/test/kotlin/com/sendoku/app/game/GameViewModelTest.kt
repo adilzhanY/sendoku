@@ -12,6 +12,7 @@ import com.sendoku.engine.Symmetry
 import com.sendoku.engine.catalog.GradedGenerator
 import com.sendoku.engine.catalog.PuzzleRef
 import com.sendoku.engine.catalog.RatedPuzzle
+import com.sendoku.engine.technique.TechniqueId
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.SupervisorJob
@@ -126,6 +127,11 @@ class GameViewModelTest {
 
         /** The tests here never share a puzzle; the code reader has its own tests. */
         override suspend fun byCode(ref: PuzzleRef): Dealt? = null
+
+        /** Nor do they ask for one by technique; the batch is what answers that. */
+        override suspend fun needing(technique: TechniqueId): Dealt? = null
+
+        override suspend fun supply(): Map<TechniqueId, Int> = emptyMap()
     }
 
     @Test

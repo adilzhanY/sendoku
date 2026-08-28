@@ -2,6 +2,7 @@ package com.sendoku.engine.catalog
 
 import com.sendoku.engine.Dimensions
 import com.sendoku.engine.Grade
+import com.sendoku.engine.technique.TechniqueId
 import java.io.InputStream
 
 /**
@@ -43,6 +44,31 @@ public class CatalogReader private constructor(private val body: PuzzleFormat.Bo
 
     /** The indices of every puzzle of [grade], in file order. */
     public fun indicesOf(grade: Grade): List<Int> = byGrade[grade].orEmpty()
+
+    /**
+     * Which puzzles need which technique at their hardest, built on first use.
+     *
+     * The same shape as the grade index and for the same reason: reading one byte per puzzle
+     * is cheap, and decoding four thousand grids to answer "which of these needs an X-Wing"
+     * is not. A puzzle appears under exactly one technique, the hardest one it forces.
+     */
+    private val byHardest: Map<TechniqueId, List<Int>> by lazy {
+        val buckets = HashMap<TechniqueId, MutableList<Int>>()
+        for (index in 0 until size) {
+            val hardest = body.hardestAt(index) ?: continue
+            buckets.getOrPut(hardest) { ArrayList() }.add(index)
+        }
+        buckets
+    }
+
+    /** The hardest technique one puzzle needs, read without decoding it. */
+    public fun hardestAt(index: Int): TechniqueId? = body.hardestAt(index)
+
+    /** The indices of every puzzle whose hardest technique is [technique], in file order. */
+    public fun indicesNeeding(technique: TechniqueId): List<Int> = byHardest[technique].orEmpty()
+
+    /** How many puzzles in the batch top out at each technique. */
+    public val needing: Map<TechniqueId, Int> get() = byHardest.mapValues { it.value.size }
 
     /** How many puzzles of each grade the batch holds. */
     public val counts: Map<Grade, Int> get() = byGrade.mapValues { it.value.size }

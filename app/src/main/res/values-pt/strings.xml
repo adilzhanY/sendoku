@@ -784,6 +784,14 @@
     <string name="practice_another">Outro</string>
     <string name="practice_skip">Pular</string>
     <string name="practice_title">Treino</string>
+    <string name="technique_pick_title">Ache um para praticar</string>
+    <string name="technique_pick_body">Cada puzzle aqui foi avaliado pelo mesmo solucionador que escreve as dicas, então se sabe em qual regra cada um se apoia. Escolha uma técnica e receba um puzzle que não dá para terminar sem ela.</string>
+    <string name="technique_pick_none">Esta versão não tem nenhum que dependa dela</string>
+    <string name="technique_pick_play">Jogar um</string>
+    <plurals name="technique_pick_count">
+        <item quantity="one">%1$d puzzle depende dela</item>
+        <item quantity="other">%1$d puzzles dependem dela</item>
+    </plurals>
     <string name="practice_none">Ainda não há nada para treinar. Termine primeiro uma lição que ensine uma técnica.</string>
     <string name="glossary_learn_this">Aprender isto</string>
     <string name="hint_learn_this">Me ensine isto</string>

@@ -779,6 +779,14 @@
     <string name="practice_another">Un altro</string>
     <string name="practice_skip">Salta</string>
     <string name="practice_title">Esercizio</string>
+    <string name="technique_pick_title">Trovane uno su cui esercitarti</string>
+    <string name="technique_pick_body">Ogni schema qui è stato valutato dallo stesso risolutore che scrive gli aiuti, quindi si sa su quale regola si regge ciascuno. Scegli una tecnica e ricevi uno schema che senza di essa non si finisce.</string>
+    <string name="technique_pick_none">In questa versione non ce n\'è nessuno</string>
+    <string name="technique_pick_play">Giocane uno</string>
+    <plurals name="technique_pick_count">
+        <item quantity="one">%1$d schema si regge su questa</item>
+        <item quantity="other">%1$d schemi si reggono su questa</item>
+    </plurals>
     <string name="practice_none">Ancora niente da esercitare. Finisci prima una lezione che insegna una tecnica.</string>
     <string name="glossary_learn_this">Impara questo</string>
     <string name="hint_learn_this">Insegnami questo</string>

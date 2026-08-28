@@ -779,6 +779,14 @@
     <string name="practice_another">Otro</string>
     <string name="practice_skip">Saltar</string>
     <string name="practice_title">Práctica</string>
+    <string name="technique_pick_title">Busca uno para practicar</string>
+    <string name="technique_pick_body">Cada puzle de aquí fue valorado por el mismo solucionador que escribe las pistas, así que se sabe en qué regla se apoya cada uno. Elige una técnica y recibe un puzle que no se puede terminar sin ella.</string>
+    <string name="technique_pick_none">Esta versión no tiene ninguno que dependa de ella</string>
+    <string name="technique_pick_play">Jugar uno</string>
+    <plurals name="technique_pick_count">
+        <item quantity="one">%1$d puzle depende de ella</item>
+        <item quantity="other">%1$d puzles dependen de ella</item>
+    </plurals>
     <string name="practice_none">Todavía no hay nada que practicar. Termina primero una lección que enseñe una técnica.</string>
     <string name="glossary_learn_this">Aprender esto</string>
     <string name="hint_learn_this">Enséñame esto</string>

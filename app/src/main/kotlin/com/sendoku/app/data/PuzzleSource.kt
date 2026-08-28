@@ -14,6 +14,7 @@ import com.sendoku.engine.catalog.PuzzleRef
 import com.sendoku.engine.catalog.PuzzleSupply
 import com.sendoku.engine.catalog.RatedPuzzle
 import com.sendoku.engine.catalog.Supplied
+import com.sendoku.engine.technique.TechniqueId
 import com.sendoku.engine.technique.TechniqueSolver
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -44,6 +45,18 @@ public interface PuzzleSource {
      * reasoning at all.
      */
     public suspend fun byCode(ref: PuzzleRef): Dealt?
+
+    /**
+     * A puzzle whose hardest rule is [technique], or null when the batch holds none.
+     *
+     * Never generated live. Hunting for a puzzle that tops out at exactly one technique is
+     * far harder than hunting for one of a given grade, and the batch either has one or it
+     * does not, which is a thing the screen can say plainly.
+     */
+    public suspend fun needing(technique: TechniqueId): Dealt?
+
+    /** How many puzzles in the batch turn on each technique. */
+    public suspend fun supply(): Map<TechniqueId, Int>
 }
 
 /**
@@ -114,6 +127,23 @@ public class CatalogPuzzleSource(private val open: () -> java.io.InputStream) : 
             usage = report.usage,
         )
     }
+
+    override suspend fun needing(technique: TechniqueId): Dealt? = withContext(Dispatchers.Default) {
+        val choices = reader.indicesNeeding(technique)
+        if (choices.isEmpty()) {
+            null
+        } else {
+            // Preferring one this device has not seen, and settling for one it has rather
+            // than refusing: somebody practising a technique wants another go at it more
+            // than they want a puzzle they have never met.
+            val fresh = choices.filter { it !in played }
+            val index = (fresh.ifEmpty { choices }).random(Random.Default)
+            played.add(index)
+            Dealt(reader.puzzleAt(index), index)
+        }
+    }
+
+    override suspend fun supply(): Map<TechniqueId, Int> = withContext(Dispatchers.Default) { reader.needing }
 
     override suspend fun daily(epochDay: Long): Dealt = withContext(Dispatchers.Default) {
         // Never from the live generator and never marked as played: the daily is chosen by

@@ -809,6 +809,14 @@
     <string name="practice_another">لغز آخر</string>
     <string name="practice_skip">تخطَّ</string>
     <string name="practice_title">تدريب</string>
+    <string name="technique_pick_title">ابحث عن لغز للتدرب عليه</string>
+    <string name="technique_pick_body">قُيّم كل لغز هنا بالحلّال نفسه الذي يكتب التلميحات، فمعروف على أي قاعدة يقوم كل واحد منها. اختر أسلوبًا واحصل على لغز لا يمكن إنهاؤه بدونه.</string>
+    <string name="technique_pick_none">لا يوجد في هذا الإصدار لغز يقوم عليه</string>
+    <string name="technique_pick_play">العب واحدًا</string>
+    <plurals name="technique_pick_count">
+        <item quantity="one">لغز واحد يقوم عليه</item>
+        <item quantity="other">%1$d ألغاز تقوم عليه</item>
+    </plurals>
     <string name="practice_none">لا شيء للتدرب عليه بعد. أنهِ أولًا درسًا يعلّم أسلوبًا.</string>
     <string name="glossary_learn_this">تعلّم هذا</string>
     <string name="hint_learn_this">علّمني هذا</string>
