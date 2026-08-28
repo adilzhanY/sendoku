@@ -188,6 +188,10 @@ public fun SudokuBoard(
 
             GridLines(state = state, modifier = Modifier.fillMaxSize())
 
+            // Over the grid lines and under the hint, because a cage is part of the puzzle
+            // and a hint is the app talking about it.
+            CageOverlay(state = state, modifier = Modifier.fillMaxSize())
+
             // One pass over the top for everything a hint draws. Eighty one cells all changing
             // their own brightness is eighty one recompositions for something that is really a
             // single picture, and the outline has to land on one pixel the way the rules do.

@@ -135,6 +135,7 @@ private fun Entry(game: FinishedGame, onClick: () -> Unit) {
                 val marker = when (game.origin) {
                     PuzzleOrigin.SHARED -> R.string.code_shared
                     PuzzleOrigin.ENTERED -> R.string.enter_marker
+                    PuzzleOrigin.KILLER -> R.string.killer_marker
                     else -> null
                 }
                 // A clean solve is the one thing in a history row worth being proud of.

@@ -84,6 +84,21 @@ tasks.register<JavaExec>("generateCatalog") {
 }
 
 /*
+ * The Killer batch, which is a separate file and a separate job.
+ *
+ * It is not part of the classic one because a Killer's difficulty comes out of its cage
+ * layout rather than out of clue removal, so there is no per grade target to aim at and no
+ * shared code worth sharing.
+ */
+tasks.register<JavaExec>("generateKillerCatalog") {
+    group = "sendoku"
+    description = "Generates a batch of rated Killer puzzles and writes it to a compressed file."
+    mainClass.set("com.sendoku.engine.killer.KillerBatchMainKt")
+    classpath = sourceSets["main"].runtimeClasspath
+    workingDir = rootProject.projectDir
+}
+
+/*
  * The fast loop.
  *
  * `test` runs everything, including the checks that re-solve three thousand shipped puzzles,

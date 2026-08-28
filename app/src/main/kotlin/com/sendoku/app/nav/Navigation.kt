@@ -50,6 +50,9 @@ public sealed interface Destination {
     /** Playing the puzzle that was just typed in. */
     public data object Entered : Destination
 
+    /** Playing a Killer. */
+    public data object Killer : Destination
+
     /** A puzzle chosen because it turns on one particular technique. */
     public data class Needing(val technique: String) : Destination
 
@@ -166,6 +169,7 @@ public class Navigator(stack: List<Destination> = listOf(Destination.Home)) {
             Destination.ByTechnique -> "bytechnique"
             Destination.Enter -> "enter"
             Destination.Entered -> "entered"
+            Destination.Killer -> "killer"
             is Destination.Needing -> "needing:$technique"
             Destination.Calendar -> "calendar"
             Destination.Course -> "course"
@@ -204,6 +208,7 @@ public class Navigator(stack: List<Destination> = listOf(Destination.Home)) {
             value == "bytechnique" -> Destination.ByTechnique
             value == "enter" -> Destination.Enter
             value == "entered" -> Destination.Entered
+            value == "killer" -> Destination.Killer
             value.startsWith("needing:") -> Destination.Needing(value.removePrefix("needing:"))
             else -> Destination.Home
         }

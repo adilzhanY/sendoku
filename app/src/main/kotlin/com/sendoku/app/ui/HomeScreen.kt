@@ -116,6 +116,8 @@ public fun HomeScreen(
     miss: CodeMiss? = null,
     onCode: (String) -> Unit = {},
     onEnter: () -> Unit = {},
+    /** Null when this build ships no Killer puzzles, in which case nothing is offered. */
+    onKiller: (() -> Unit)? = null,
 ) {
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
@@ -177,6 +179,22 @@ public fun HomeScreen(
                 }
 
                 Column(verticalArrangement = Arrangement.spacedBy(dimens.spaceS)) {
+                    // A second game rather than a ninth level, so it sits beside the ladder
+                    // instead of on it: winning a Killer says nothing about whether somebody
+                    // is ready for a harder ordinary puzzle.
+                    if (onKiller != null) {
+                        Overline(stringResource(R.string.killer_title))
+                        Tile(
+                            overline = stringResource(R.string.killer_title),
+                            title = stringResource(R.string.home_new_puzzle),
+                            detail = stringResource(R.string.killer_note),
+                            accent = false,
+                            tag = "home:killer",
+                            onClick = onKiller,
+                            modifier = Modifier.fillMaxWidth(),
+                        )
+                    }
+
                     CodeBox(fault = fault, miss = miss, onCode = onCode, onEnter = onEnter)
 
                     // Opened out to begin with when the screen is tall enough to be worth

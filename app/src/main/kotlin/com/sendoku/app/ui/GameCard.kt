@@ -45,7 +45,16 @@ internal fun rememberGameCard(state: GameState, solved: Boolean = state.isSolved
     appName = stringResource(R.string.app_name),
     chooser = stringResource(R.string.outcome_share),
     title = stringResource(if (solved) R.string.card_solved else R.string.card_lost),
-    grade = stringResource(gradeName(state.grade)),
+    // A Killer says so, because the same grade means a different afternoon.
+    grade = if (state.cages.isEmpty()) {
+        stringResource(gradeName(state.grade))
+    } else {
+        stringResource(
+            R.string.killer_card,
+            stringResource(R.string.killer_title),
+            stringResource(gradeName(state.grade)),
+        )
+    },
     lines = listOfNotNull(
         ShareCard.Line(stringResource(R.string.stat_time), state.elapsed.clock()),
         ShareCard.Line(

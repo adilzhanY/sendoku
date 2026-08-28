@@ -32,10 +32,36 @@ public object Combinations {
      * Every digit that appears in at least one combination, as a bitmask.
      *
      * This is the useful form for a technique: any digit outside it cannot appear anywhere
-     * in the cage, whatever else is true of the board.
+     * in the cage, whatever else is true of the board. It is also the form the Killer solver
+     * asks for at every node of its search, which is why the ordinary grid size gets a flat
+     * table rather than a map lookup and a fold: the first version of this cost more time in
+     * hashing and allocation than the pruning saved.
      */
-    public fun possibleDigits(size: Int, sum: Int, top: Int = DEFAULT_TOP): Int =
-        of(size, sum, top).fold(0) { mask, combination -> mask or combination }
+    public fun possibleDigits(size: Int, sum: Int, top: Int = DEFAULT_TOP): Int {
+        if (top == DEFAULT_TOP) {
+            if (size !in 1..DEFAULT_TOP || sum !in 0..MOST) return 0
+            return table[size * (MOST + 1) + sum]
+        }
+        return of(size, sum, top).fold(0) { mask, combination -> mask or combination }
+    }
+
+    /** The largest sum nine distinct digits can make, which is the width of the table. */
+    private const val MOST = 45
+
+    /**
+     * Worked out once, on the way in: every size and sum a nine by nine cage can have.
+     *
+     * Four hundred and sixty integers, built in a few hundred microseconds, and after that
+     * the solver's hottest question is an array index.
+     */
+    private val table: IntArray = IntArray((DEFAULT_TOP + 1) * (MOST + 1)).also { built ->
+        for (size in 1..DEFAULT_TOP) {
+            for (sum in 0..MOST) {
+                built[size * (MOST + 1) + sum] =
+                    build(size, sum, DEFAULT_TOP).fold(0) { mask, combination -> mask or combination }
+            }
+        }
+    }
 
     /**
      * The combinations that are still possible given what each cell can hold.

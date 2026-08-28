@@ -8,6 +8,7 @@ import com.sendoku.engine.Dimensions
 import com.sendoku.engine.Geometry
 import com.sendoku.engine.Grade
 import com.sendoku.engine.catalog.RatedPuzzle
+import com.sendoku.engine.killer.Cage
 import com.sendoku.engine.technique.CellDigit
 import com.sendoku.engine.technique.Deduction
 import com.sendoku.engine.technique.TechniqueId
@@ -110,6 +111,14 @@ public data class GameState(
      * as it actually grew rather than every key ever pressed.
      */
     val placements: List<Placement> = emptyList(),
+    /**
+     * The cages, when this is a Killer rather than an ordinary sudoku.
+     *
+     * Empty for every classic puzzle, which is what the rest of the game reads it as: no
+     * cages, no cage rules, no sums drawn, and every screen behaves exactly as it did. A
+     * variant is a list that is usually empty rather than a second kind of game state.
+     */
+    val cages: List<Cage> = emptyList(),
     /**
      * Whether a pencil mark was ever written on this board.
      *
@@ -219,6 +228,20 @@ public data class GameState(
                         clashing.add(cell)
                         clashing.add(peer)
                     }
+                }
+            }
+            // A cage never repeats a digit, and a cage that has overrun its sum is broken
+            // even when no digit repeats anywhere. Both are rules of the game rather than
+            // guesses about the answer, so they are marked the same way a repeat is.
+            for (cage in cages) {
+                val digits = cage.cells.map { cells[it].digit }.filter { it != Board.EMPTY }
+                val repeated = digits.groupingBy { it }.eachCount().filterValues { it > 1 }.keys
+                val full = digits.size == cage.size
+                val over = digits.sum() > cage.sum || (full && digits.sum() != cage.sum)
+                for (cell in cage.cells) {
+                    val digit = cells[cell].digit
+                    if (digit == Board.EMPTY) continue
+                    if (digit in repeated || over) clashing.add(cell)
                 }
             }
             return clashing
@@ -611,6 +634,7 @@ public data class GameState(
             dailyEpochDay: Long? = null,
             origin: PuzzleOrigin = if (dailyEpochDay != null) PuzzleOrigin.DAILY else PuzzleOrigin.LADDER,
             catalogIndex: Int? = null,
+            cages: List<Cage> = emptyList(),
         ): GameState {
             val givens = rated.puzzle.givens
             val dims = givens.dims
@@ -627,6 +651,7 @@ public data class GameState(
                 dailyEpochDay = dailyEpochDay,
                 origin = origin,
                 catalogIndex = catalogIndex,
+                cages = cages,
                 settings = settings,
             )
         }

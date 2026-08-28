@@ -51,6 +51,8 @@ public data class InProgressRow(
     val placements: String = "",
     /** Whether a note was ever written on this board. */
     val notesUsed: Boolean = false,
+    /** The cages, when this is a Killer, as one character per cell. Empty otherwise. */
+    val cages: String = "",
 ) {
     public companion object {
         public const val ONLY_ROW: Int = 1
@@ -328,6 +330,7 @@ public abstract class SendokuDatabase : RoomDatabase() {
                 connection.execSQL("ALTER TABLE in_progress ADD COLUMN tints TEXT NOT NULL DEFAULT ''")
                 connection.execSQL("ALTER TABLE in_progress ADD COLUMN placements TEXT NOT NULL DEFAULT ''")
                 connection.execSQL("ALTER TABLE in_progress ADD COLUMN notesUsed INTEGER NOT NULL DEFAULT 0")
+                connection.execSQL("ALTER TABLE in_progress ADD COLUMN cages TEXT NOT NULL DEFAULT ''")
                 // Nullable on the finished table, because a game recorded before this column
                 // existed cannot be claimed as clean: nobody knows whether it was.
                 connection.execSQL("ALTER TABLE finished ADD COLUMN notesUsed INTEGER")
@@ -363,6 +366,7 @@ internal fun InProgressRow.toSaved(): SavedGame = SavedGame(
     tints = tints,
     placements = placements,
     notesUsed = notesUsed,
+    cages = cages,
 )
 
 internal fun SavedGame.toRow(savedAt: Long): InProgressRow = InProgressRow(
@@ -385,6 +389,7 @@ internal fun SavedGame.toRow(savedAt: Long): InProgressRow = InProgressRow(
     tints = tints,
     placements = placements,
     notesUsed = notesUsed,
+    cages = cages,
 )
 
 internal fun FinishedRow.toFinished(): FinishedGame = FinishedGame(

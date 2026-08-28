@@ -169,6 +169,28 @@ public class GameViewModel(
         }
     }
 
+    /** Starts a Killer, and says whether this build had one to start. */
+    public fun startKiller(onResult: (Boolean) -> Unit = {}) {
+        scope.launch {
+            _loading.value = true
+            val settings = settingsStore.settings.first()
+            val dealt = puzzles.killer()
+            if (dealt != null) {
+                _state.value = GameState.start(
+                    rated = dealt.puzzle,
+                    settings = settings,
+                    origin = PuzzleOrigin.KILLER,
+                    cages = dealt.cages,
+                )
+            }
+            _loading.value = false
+            onResult(dealt != null)
+        }
+    }
+
+    /** Whether this build ships any Killer puzzles at all. */
+    public suspend fun hasKiller(): Boolean = puzzles.killer() != null
+
     public fun startNew(grade: Grade) {
         scope.launch {
             _loading.value = true

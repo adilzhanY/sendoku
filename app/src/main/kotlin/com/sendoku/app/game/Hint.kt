@@ -5,6 +5,8 @@ import com.sendoku.engine.CandidateGrid
 import com.sendoku.engine.Geometry
 import com.sendoku.engine.House
 import com.sendoku.engine.HouseKind
+import com.sendoku.engine.killer.CageTechniques
+import com.sendoku.engine.killer.KillerPuzzle
 import com.sendoku.engine.technique.CellDigit
 import com.sendoku.engine.technique.Deduction
 import com.sendoku.engine.technique.TechniqueId
@@ -133,11 +135,22 @@ public object HintEngine {
 
         // Skip anything that would change nothing. A deduction whose eliminations are all
         // already known is true and useless, and offering it again is how the loop started.
-        val deduction = Techniques.ladder.firstNotNullOfOrNull { technique ->
-            technique.find(grid)?.takeIf {
-                it.placements.isNotEmpty() ||
-                    it.eliminations.any { e -> e !in state.eliminated }
-            }
+        fun worthSaying(found: Deduction?): Deduction? = found?.takeIf {
+            it.placements.isNotEmpty() || it.eliminations.any { e -> e !in state.eliminated }
+        }
+
+        // On a Killer both ladders are walked, mixed by cost, exactly as the rater walks
+        // them. The cheapest true thing is the right hint whether it is about a cage or
+        // about a row, and a hint engine that preferred one kind would teach the wrong
+        // lesson about where to look next.
+        val cages = state.cages
+        val deduction = if (cages.isEmpty()) {
+            Techniques.ladder.firstNotNullOfOrNull { worthSaying(it.find(grid)) }
+        } else {
+            val puzzle = KillerPuzzle(state.dims, cages, state.solution)
+            val rungs = Techniques.ladder.map { it.id.cost to { worthSaying(it.find(grid)) } } +
+                CageTechniques.ladder.map { it.id.cost to { worthSaying(it.find(grid, puzzle)) } }
+            rungs.sortedBy { it.first }.firstNotNullOfOrNull { it.second() }
         } ?: return Hint.Stuck
         return Hint.Step(
             deduction = deduction,

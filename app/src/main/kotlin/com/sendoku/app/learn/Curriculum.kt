@@ -2,6 +2,8 @@ package com.sendoku.app.learn
 
 import com.sendoku.app.R
 import com.sendoku.engine.Dimensions
+import com.sendoku.engine.killer.Cage
+import com.sendoku.engine.killer.CageTechniques
 import com.sendoku.engine.technique.TechniqueId
 import com.sendoku.engine.technique.Techniques
 
@@ -23,6 +25,53 @@ import com.sendoku.engine.technique.Techniques
  * third cell of the second row.
  */
 public object Curriculum {
+
+    /**
+     * The six by six the two Killer lessons are taught on.
+     *
+     * Empty, because a Killer has no clues: the cages are the puzzle. Six by six rather than
+     * nine by nine for the same reason the first lessons of all are: a row of six adding to
+     * twenty one is a sentence somebody can check by eye, and forty five across nine cells is
+     * a claim they have to take on trust.
+     */
+    private const val KILLER_SIX = "...................................."
+
+    /**
+     * The same board a few digits in, for the lesson about a cage single.
+     *
+     * Found by walking the ladder forward until that rule was the one that applied from a
+     * clean slate: it is the one cage rule that cannot be shown on an empty grid, because it
+     * is about a cage the rest of the board has narrowed down.
+     */
+    private const val KILLER_SIX_PART_WAY = "..........36...............3........"
+
+    /**
+     * Its cages, which are the whole of the puzzle.
+     *
+     * Generated rather than invented, so the layout is a real one with exactly one answer.
+     * The three the lessons lean on are the single cell of one, the fifteen that can only be
+     * four, five and six, and the ten that can only be four and six.
+     */
+    private val KILLER_SIX_CAGES = listOf(
+        Cage.of(5, 0, 1),
+        Cage.of(10, 2, 3),
+        Cage.of(1, 4),
+        Cage.of(15, 5, 11, 17),
+        Cage.of(6, 7, 8),
+        Cage.of(9, 6, 12),
+        Cage.of(5, 9, 10),
+        Cage.of(5, 13, 14),
+        Cage.of(9, 15, 16, 22),
+        Cage.of(8, 18, 24),
+        Cage.of(10, 19, 25),
+        Cage.of(9, 20, 21, 27),
+        Cage.of(3, 23),
+        Cage.of(7, 26, 32),
+        Cage.of(9, 28, 34),
+        Cage.of(3, 29, 35),
+        Cage.of(6, 30, 31),
+        Cage.of(6, 33),
+    )
 
     /**
      * Four by four is where the rules are obvious rather than asserted.
@@ -831,6 +880,59 @@ public object Curriculum {
                 Step.YourTurn(R.string.lesson_fork_8, cell = 12, digit = 7, wrong = R.string.lesson_fork_wrong),
             ),
         ),
+        Lesson(
+            id = LessonId.WHAT_A_CAGE_IS,
+            stage = Stage.CAGES,
+            title = R.string.lesson_cage_is_title,
+            summary = R.string.lesson_cage_is_summary,
+            teaches = listOf(TechniqueId.CAGE_SUM),
+            dims = Dimensions.SIX,
+            board = KILLER_SIX,
+            cages = KILLER_SIX_CAGES,
+            steps = listOf(
+                Step.Say(R.string.lesson_cage_is_1),
+                Step.Show(R.string.lesson_cage_is_2, focus = setOf(4)),
+                Step.Place(R.string.lesson_cage_is_3, cell = 4, digit = 1),
+                Step.Show(R.string.lesson_cage_is_4a, focus = setOf(0, 1)),
+                Step.Show(R.string.lesson_cage_is_4, focus = setOf(5, 11, 17)),
+                Step.Say(R.string.lesson_cage_is_5),
+            ),
+        ),
+        Lesson(
+            id = LessonId.ONE_HOME_IN_A_CAGE,
+            stage = Stage.CAGES,
+            title = R.string.lesson_cage_home_title,
+            summary = R.string.lesson_cage_home_summary,
+            teaches = listOf(TechniqueId.CAGE_SINGLE),
+            dims = Dimensions.SIX,
+            // Three digits in, because a cage single cannot appear on an empty board: it is
+            // the rule that fires once the rest of the grid has narrowed a cage down.
+            board = KILLER_SIX_PART_WAY,
+            cages = KILLER_SIX_CAGES,
+            steps = listOf(
+                Step.Say(R.string.lesson_cage_home_1),
+                Step.Show(R.string.lesson_cage_home_2, focus = setOf(2, 3)),
+                Step.Place(R.string.lesson_cage_home_3, cell = 2, digit = 6),
+                Step.Say(R.string.lesson_cage_home_4),
+            ),
+        ),
+        Lesson(
+            id = LessonId.CAGES_IN_A_HOUSE,
+            stage = Stage.CAGES,
+            title = R.string.lesson_cage_house_title,
+            summary = R.string.lesson_cage_house_summary,
+            teaches = listOf(TechniqueId.CAGE_LOCKED, TechniqueId.CAGE_INNIE),
+            dims = Dimensions.SIX,
+            board = KILLER_SIX,
+            cages = KILLER_SIX_CAGES,
+            steps = listOf(
+                Step.Say(R.string.lesson_cage_house_1),
+                Step.Show(R.string.lesson_cage_house_2, focus = setOf(2, 3)),
+                Step.Show(R.string.lesson_cage_house_3, focus = setOf(0, 1, 2, 3, 4, 5)),
+                Step.Place(R.string.lesson_cage_house_4, cell = 5, digit = 5),
+                Step.Say(R.string.lesson_cage_house_5),
+            ),
+        ),
     )
 
     /**
@@ -854,13 +956,19 @@ public object Curriculum {
     public fun teaching(technique: TechniqueId): Lesson? = lessons.firstOrNull { technique in it.teaches }
 
     /**
-     * What the engine says the cost of each technique is, for the ordering test.
+     * The order the course teaches rules in: the ordinary ladder, then the cage ladder.
      *
-     * Read from the ladder rather than copied, so adding a technique to the engine and
+     * Read from the ladders rather than copied, so adding a technique to the engine and
      * forgetting to place its lesson is a test failure rather than a course that teaches
      * XY-Wings before pairs.
+     *
+     * Not simply the engine's ladder any more, because the cage rules are not on it: they
+     * cannot fire on a board without cages, so mixing them into the classic ladder would put
+     * a Killer lesson in the middle of the singles. They are taught last, together, for the
+     * same reason the Killer stage comes last.
      */
-    public val ladderOrder: List<TechniqueId> = Techniques.ladder.map { it.id }
+    public val ladderOrder: List<TechniqueId> =
+        Techniques.ladder.map { it.id } + CageTechniques.ladder.map { it.id }
 
     private fun row(index: Int, size: Int): Set<Int> = (0 until size).map { index * size + it }.toSet()
 

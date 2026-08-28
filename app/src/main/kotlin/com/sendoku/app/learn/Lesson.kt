@@ -2,6 +2,7 @@ package com.sendoku.app.learn
 
 import androidx.annotation.StringRes
 import com.sendoku.engine.Dimensions
+import com.sendoku.engine.killer.Cage
 import com.sendoku.engine.technique.TechniqueId
 
 /**
@@ -25,6 +26,15 @@ public enum class Stage(@StringRes public val title: Int) {
     CHAINS(com.sendoku.app.R.string.stage_chains),
     THE_FAR_END(com.sendoku.app.R.string.stage_the_far_end),
     THE_DEEP_END(com.sendoku.app.R.string.stage_the_deep_end),
+
+    /**
+     * Killer, which is a different game rather than a harder one.
+     *
+     * Last in the course because it is the only stage that is not about the grid everybody
+     * already knows, and because everything before it applies inside a Killer as well: the
+     * cage rules are what is added, not what replaces the rest.
+     */
+    CAGES(com.sendoku.app.R.string.stage_cages),
 }
 
 /**
@@ -94,6 +104,14 @@ public data class Lesson(
     val dims: Dimensions,
     /** The starting grid, as text the engine can parse. Empty means an empty grid. */
     val board: String,
+    /**
+     * The cages, for a lesson that teaches a Killer rule.
+     *
+     * Empty for every other lesson, which is nearly all of them. A cage rule cannot be shown
+     * on a board without cages, and a board with cages drawn on it is the whole of what makes
+     * one of these lessons different from the rest.
+     */
+    val cages: List<Cage> = emptyList(),
     val steps: List<Step>,
 ) {
     /** The one sentence the player keeps. Shown at the end and again in the course map. */
@@ -150,4 +168,7 @@ public enum class LessonId {
     ALS_XY_WING,
     DEATH_BLOSSOM,
     FORCING_CHAIN,
+    WHAT_A_CAGE_IS,
+    CAGES_IN_A_HOUSE,
+    ONE_HOME_IN_A_CAGE,
 }

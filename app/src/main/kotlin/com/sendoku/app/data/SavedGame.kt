@@ -11,6 +11,7 @@ import com.sendoku.engine.Digits
 import com.sendoku.engine.Dimensions
 import com.sendoku.engine.Grade
 import com.sendoku.engine.Solver
+import com.sendoku.engine.killer.Cage
 import com.sendoku.engine.technique.TechniqueId
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
@@ -64,6 +65,14 @@ public data class SavedGame(
     val placements: String = "",
     /** Whether a note was ever written on this board. */
     val notesUsed: Boolean = false,
+    /**
+     * The cages, when this is a Killer, as one character per cell naming its cage.
+     *
+     * Sums are not stored: a cage's sum is its cells added up in the solution, which is
+     * already here, so writing it as well would let a damaged row disagree with itself.
+     * Empty for an ordinary puzzle, which is every puzzle before Killer existed.
+     */
+    val cages: String = "",
 ) {
 
     /**
@@ -112,6 +121,7 @@ public data class SavedGame(
             tints = decodeTints(tints, dims.cellCount),
             placements = decodePlacements(placements),
             notesUsed = notesUsed,
+            cages = decodeCages(cages, solutionBoard),
             settings = settings,
         )
     }
@@ -146,6 +156,7 @@ public data class SavedGame(
             tints = encodeTints(state.tints, state.dims.cellCount),
             placements = encodePlacements(state.placements),
             notesUsed = state.notesUsed,
+            cages = encodeCages(state.cages, state.dims.cellCount),
         )
 
         /**
@@ -159,6 +170,36 @@ public data class SavedGame(
             for (set in marks) {
                 require(set.mask in 0..0xFFF) { "a mark set of ${set.mask} does not fit" }
                 append(set.mask.toString(RADIX).padStart(MARK_WIDTH, '0'))
+            }
+        }
+
+        /**
+         * One character per cell naming its cage, in base thirty six.
+         *
+         * A grid has at most eighty one cages and a digit and a letter between them cover
+         * thirty six, so a cage index above thirty five is written as the last character
+         * rather than wrapping: at that point the layout is one cage per cell and there is
+         * nothing to draw anyway. Every layout this app generates has under forty.
+         */
+        internal fun encodeCages(cages: List<Cage>, cellCount: Int): String {
+            if (cages.isEmpty()) return ""
+            val owner = IntArray(cellCount)
+            for ((index, cage) in cages.withIndex()) {
+                for (cell in cage.cells) owner[cell] = index
+            }
+            return buildString { for (cell in 0 until cellCount) append(owner[cell].digitToChar(CAGE_RADIX)) }
+        }
+
+        /** The other way round, with each cage's sum added up out of the solution. */
+        internal fun decodeCages(encoded: String, solution: Board): List<Cage> {
+            if (encoded.isEmpty()) return emptyList()
+            val members = LinkedHashMap<Int, MutableList<Int>>()
+            for ((cell, char) in encoded.withIndex()) {
+                val index = runCatching { char.digitToInt(CAGE_RADIX) }.getOrNull() ?: return emptyList()
+                members.getOrPut(index) { ArrayList() }.add(cell)
+            }
+            return members.entries.sortedBy { it.key }.map { (_, cells) ->
+                Cage(cells.sumOf { solution.atIndex(it) }, cells.sorted())
             }
         }
 
@@ -230,6 +271,7 @@ public data class SavedGame(
         private const val EMPTY_CHAR = '.'
         private const val SEPARATOR = ","
         private const val PLACEMENT_PARTS = 3
+        private const val CAGE_RADIX = 36
     }
 }
 

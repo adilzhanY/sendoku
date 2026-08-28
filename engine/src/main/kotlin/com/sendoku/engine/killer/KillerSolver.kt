@@ -26,15 +26,43 @@ public class KillerSolver(private val dims: Dimensions, private val puzzle: Kill
     /** Counts solutions, stopping at [limit]. The generator only ever asks for two. */
     public fun countSolutions(limit: Int = 2): Int {
         require(limit >= 1) { "limit must be at least 1" }
-        return Search(dims, puzzle).run(limit)
+        return Search(dims, puzzle.cages, puzzle.cageOfCell).run(limit)
     }
 
     public fun hasUniqueSolution(): Boolean = countSolutions(limit = 2) == 1
 
     /** The first grid found, or null when the cages describe nothing at all. */
-    public fun solve(): Board? = Search(dims, puzzle).first()
+    public fun solve(): Board? = Search(dims, puzzle.cages, puzzle.cageOfCell).first()
 
-    private class Search(private val dims: Dimensions, private val puzzle: KillerPuzzle) {
+    public companion object {
+
+        /**
+         * The grid a set of cages describes, without being told the answer first.
+         *
+         * [KillerPuzzle] cannot be built without a solution, because it checks that every
+         * cage's sum matches it, which is the right check everywhere except here: a layout
+         * that has just been drawn, or one written down in a lesson, is exactly the case
+         * where the answer is the thing being asked for.
+         */
+        public fun solve(dims: Dimensions, cages: List<Cage>): Board? =
+            Search(dims, cages, ownerMap(dims, cages)).first()
+
+        /** How many grids a set of cages describes, stopping at [limit]. */
+        public fun countSolutions(dims: Dimensions, cages: List<Cage>, limit: Int = 2): Int =
+            Search(dims, cages, ownerMap(dims, cages)).run(limit)
+
+        private fun ownerMap(dims: Dimensions, cages: List<Cage>): IntArray = IntArray(dims.cellCount).also { map ->
+            for ((index, cage) in cages.withIndex()) {
+                for (cell in cage.cells) map[cell] = index
+            }
+        }
+    }
+
+    private class Search(
+        private val dims: Dimensions,
+        private val cages: List<Cage>,
+        private val cageOfCell: IntArray,
+    ) {
         private val size = dims.size
         private val cells = IntArray(dims.cellCount)
         private val rowMask = IntArray(size)
@@ -42,9 +70,9 @@ public class KillerSolver(private val dims: Dimensions, private val puzzle: Kill
         private val boxMask = IntArray(size)
 
         /** Per cage: which digits it holds, how much is left to reach, how many cells are unfilled. */
-        private val cageMask = IntArray(puzzle.cages.size)
-        private val cageLeft = IntArray(puzzle.cages.size) { puzzle.cages[it].sum }
-        private val cageEmpty = IntArray(puzzle.cages.size) { puzzle.cages[it].size }
+        private val cageMask = IntArray(cages.size)
+        private val cageLeft = IntArray(cages.size) { cages[it].sum }
+        private val cageEmpty = IntArray(cages.size) { cages[it].size }
 
         private var solutions = 0
         private var found: IntArray? = null
@@ -86,7 +114,7 @@ public class KillerSolver(private val dims: Dimensions, private val puzzle: Kill
             val row = bestIndex / size
             val col = bestIndex % size
             val box = dims.boxOf(row, col)
-            val cage = puzzle.cageOfCell[bestIndex]
+            val cage = cageOfCell[bestIndex]
 
             var remaining = bestMask
             while (remaining != 0) {
@@ -124,7 +152,7 @@ public class KillerSolver(private val dims: Dimensions, private val puzzle: Kill
                 rowMask[row].inv() and
                 colMask[col].inv() and
                 boxMask[dims.boxOf(row, col)].inv() and
-                cageMask[puzzle.cageOfCell[index]].inv()
+                cageMask[cageOfCell[index]].inv()
         }
 
         /** Can what is left of this cage still add up to what it owes? */

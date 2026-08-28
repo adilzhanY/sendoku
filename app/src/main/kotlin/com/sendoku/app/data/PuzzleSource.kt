@@ -14,6 +14,8 @@ import com.sendoku.engine.catalog.PuzzleRef
 import com.sendoku.engine.catalog.PuzzleSupply
 import com.sendoku.engine.catalog.RatedPuzzle
 import com.sendoku.engine.catalog.Supplied
+import com.sendoku.engine.killer.Cage
+import com.sendoku.engine.killer.KillerCatalogReader
 import com.sendoku.engine.technique.TechniqueId
 import com.sendoku.engine.technique.TechniqueSolver
 import kotlinx.coroutines.Dispatchers
@@ -57,7 +59,19 @@ public interface PuzzleSource {
 
     /** How many puzzles in the batch turn on each technique. */
     public suspend fun supply(): Map<TechniqueId, Int>
+
+    /**
+     * A Killer, or null when this build ships none.
+     *
+     * Its own batch and its own reader, because a Killer is a solved grid and a way of
+     * cutting it into cages rather than a grid with clues in it, and nothing about the
+     * classic file describes that.
+     */
+    public suspend fun killer(): DealtKiller?
 }
+
+/** A Killer as handed over: the puzzle to play, and the cages drawn over it. */
+public data class DealtKiller(val puzzle: RatedPuzzle, val cages: List<Cage>)
 
 /**
  * The batch that ships inside the app, with live generation behind it.
@@ -145,6 +159,41 @@ public class CatalogPuzzleSource(private val open: () -> java.io.InputStream) : 
 
     override suspend fun supply(): Map<TechniqueId, Int> = withContext(Dispatchers.Default) { reader.needing }
 
+    /**
+     * Puzzles this device has already been handed, for Killer, kept apart from the classic
+     * ones because the two batches number their puzzles separately.
+     */
+    private val playedKillers = HashSet<Int>()
+
+    override suspend fun killer(): DealtKiller? = withContext(Dispatchers.Default) {
+        val batch = killers ?: return@withContext null
+        if (batch.size == 0) return@withContext null
+        val fresh = (0 until batch.size).filter { it !in playedKillers }
+        val index = (fresh.ifEmpty { (0 until batch.size).toList() }).random(Random.Default)
+        playedKillers.add(index)
+        val rated = batch.puzzleAt(index)
+        DealtKiller(
+            puzzle = RatedPuzzle(
+                // A Killer has no clues, so the board starts empty and the solution is what
+                // the cages describe.
+                puzzle = Puzzle(givens = Board(rated.puzzle.dims), solution = rated.puzzle.solution),
+                rating = rated.rating,
+                grade = rated.grade,
+                hardest = rated.hardest,
+                symmetry = Symmetry.NONE,
+                usage = rated.usage,
+            ),
+            cages = rated.puzzle.cages,
+        )
+    }
+
+    /** Null when this build ships no Killer batch, which is a fact the home screen reads. */
+    private val killers: KillerCatalogReader? by lazy {
+        runCatching {
+            CatalogPuzzleSource::class.java.getResourceAsStream(KILLER)?.use { KillerCatalogReader.from(it) }
+        }.getOrNull()
+    }
+
     override suspend fun daily(epochDay: Long): Dealt = withContext(Dispatchers.Default) {
         // Never from the live generator and never marked as played: the daily is chosen by
         // the date, and it has to be the same grid whether or not this device has met it.
@@ -167,5 +216,6 @@ public class CatalogPuzzleSource(private val open: () -> java.io.InputStream) : 
             CatalogPuzzleSource { context.assets.open(name) }
 
         private const val CATALOG = "/catalog/classic.sdkb"
+        private const val KILLER = "/catalog/killer.sdkk"
     }
 }

@@ -1,5 +1,6 @@
 package com.sendoku.app.data
 
+import com.sendoku.app.game.PuzzleOrigin
 import com.sendoku.engine.Grade
 import com.sendoku.engine.technique.TechniqueId
 import java.time.Instant
@@ -41,6 +42,14 @@ public data class Statistics(
     val totalHints: Int,
     /** Solved with no hints, no mistakes and no notes written. */
     val cleanSolves: Int = 0,
+    /**
+     * Killers solved, counted apart from the ladder.
+     *
+     * A Killer is graded on the same scale, but it is a different game: counting a Steady
+     * Killer among the Steady puzzles beaten would put a number on the ladder that nobody
+     * climbed. It is still a game finished, so it is still in the totals.
+     */
+    val killerSolved: Int = 0,
 ) {
     val isEmpty: Boolean get() = totalSolved == 0 && byGrade.values.all { it.played == 0 }
 
@@ -55,7 +64,11 @@ public data class Statistics(
             val days = solved.map { it.finishedAt.toLocalDate(zone) }.toSortedSet()
 
             return Statistics(
-                byGrade = Grade.entries.associateWith { grade -> record(grade, games) },
+                // The ladder only. A Killer is graded on the same scale and is not a rung
+                // of it, so it is counted on its own rather than mixed in here.
+                byGrade = Grade.entries.associateWith { grade ->
+                    record(grade, games.filter { it.origin != PuzzleOrigin.KILLER })
+                },
                 currentStreak = currentStreak(days, today),
                 longestStreak = longestStreak(days),
                 hardestRating = solved.maxOfOrNull { it.rating },
@@ -63,6 +76,7 @@ public data class Statistics(
                 hardestTechnique = solved.mapNotNull { it.hardest }.groupingBy { it }.eachCount(),
                 totalSolved = solved.size,
                 cleanSolves = solved.count { it.isClean },
+                killerSolved = solved.count { it.origin == PuzzleOrigin.KILLER },
                 gamesPlayed = games.size,
                 totalTime = solved.fold(Duration.ZERO) { sum, game -> sum + game.elapsed },
                 totalHints = solved.sumOf { it.hintsUsed },

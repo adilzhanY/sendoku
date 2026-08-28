@@ -232,6 +232,8 @@ private fun Screens(
     when (val here = navigator.current) {
         Destination.Home -> {
             val today = remember { java.time.LocalDate.now() }
+            var hasKiller by rememberSaveable { mutableStateOf(false) }
+            LaunchedEffect(Unit) { hasKiller = model.hasKiller() }
             // Cleared on every attempt, so a message never outlives the code it was about.
             var codeFault by rememberSaveable { mutableStateOf<CodeFault?>(null) }
             var codeMiss by rememberSaveable { mutableStateOf<CodeMiss?>(null) }
@@ -269,6 +271,13 @@ private fun Screens(
                 fault = shownFault,
                 miss = shownMiss,
                 onEnter = { navigator.go(Destination.Enter) },
+                // Offered only when this build has a batch to offer from, which is a fact
+                // about the file rather than a setting.
+                onKiller = if (hasKiller) {
+                    { model.startKiller { started -> if (started) navigator.go(Destination.Killer) } }
+                } else {
+                    null
+                },
                 onCode = { text ->
                     codeFault = null
                     codeMiss = null
@@ -296,7 +305,7 @@ private fun Screens(
         }
 
         is Destination.Play, Destination.Resume, is Destination.Daily, is Destination.Shared,
-        is Destination.Needing, Destination.Entered,
+        is Destination.Needing, Destination.Entered, Destination.Killer,
         ->
             PlayHost(model, loading, navigator, scope, onSpendHint, modifier)
 

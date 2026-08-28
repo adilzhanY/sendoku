@@ -24,6 +24,15 @@ public enum class PuzzleOrigin {
     /** Typed in by the player, from a newspaper or from anywhere else. */
     ENTERED,
 
+    /**
+     * A Killer, which is a different game on the same grid.
+     *
+     * It earns nothing on the classic ladder, because winning a Killer says nothing about
+     * whether somebody is ready for a harder ordinary puzzle. When Killer has a ladder of
+     * its own to climb, this is what its progress will be counted from.
+     */
+    KILLER,
+
     ;
 
     /** Whether winning this opens the level above it. */

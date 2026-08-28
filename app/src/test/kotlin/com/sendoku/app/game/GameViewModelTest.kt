@@ -1,6 +1,7 @@
 package com.sendoku.app.game
 
 import com.sendoku.app.data.Dealt
+import com.sendoku.app.data.DealtKiller
 import com.sendoku.app.data.FinishedGame
 import com.sendoku.app.data.GameRepository
 import com.sendoku.app.data.PuzzleSource
@@ -132,6 +133,9 @@ class GameViewModelTest {
         override suspend fun needing(technique: TechniqueId): Dealt? = null
 
         override suspend fun supply(): Map<TechniqueId, Int> = emptyMap()
+
+        /** No Killer here either; the Killer batch has its own tests. */
+        override suspend fun killer(): DealtKiller? = null
     }
 
     @Test

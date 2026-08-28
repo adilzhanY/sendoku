@@ -3,6 +3,9 @@ package com.sendoku.app.learn
 import com.sendoku.engine.Board
 import com.sendoku.engine.CandidateGrid
 import com.sendoku.engine.Solver
+import com.sendoku.engine.killer.CageTechniques
+import com.sendoku.engine.killer.KillerPuzzle
+import com.sendoku.engine.killer.KillerSolver
 import com.sendoku.engine.technique.Techniques
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
@@ -32,6 +35,16 @@ class CurriculumTest {
     fun `every lesson board is a legal position with one solution`() {
         for (lesson in Curriculum.lessons) {
             val board = Board.parse(lesson.dims, lesson.board)
+            // A Killer lesson starts from an empty grid, because a Killer has no clues at
+            // all: what makes its answer the only one is the cages, so that is what is asked.
+            if (lesson.cages.isNotEmpty()) {
+                assertEquals(
+                    "${lesson.id} draws cages with more than one answer",
+                    1,
+                    KillerSolver.countSolutions(lesson.dims, lesson.cages, limit = 2),
+                )
+                continue
+            }
             val solver = Solver(lesson.dims)
             assertTrue("${lesson.id} starts from a position that breaks the rules", solver.isLegal(board))
             assertTrue("${lesson.id} starts from a position with more than one answer", solver.hasUniqueSolution(board))
@@ -42,7 +55,11 @@ class CurriculumTest {
     fun `every digit a lesson places is the digit the answer wants`() {
         for (lesson in Curriculum.lessons) {
             val board = Board.parse(lesson.dims, lesson.board)
-            val solution = Solver(lesson.dims).solve(board)
+            val solution = if (lesson.cages.isNotEmpty()) {
+                KillerSolver.solve(lesson.dims, lesson.cages)
+            } else {
+                Solver(lesson.dims).solve(board)
+            }
             assertNotNull("${lesson.id} cannot be solved", solution)
             requireNotNull(solution)
             for (step in lesson.steps) {
@@ -168,9 +185,15 @@ class CurriculumTest {
     fun `the course starts small and only then gets bigger`() {
         // Sixteen cells before eighty one, so the first sentence about a row is one the player
         // can check by looking rather than one they have to believe.
-        val sizes = Curriculum.lessons.map { it.dims.cellCount }
-        assertEquals("the course does not start on the smallest grid", 16, sizes.first())
-        assertEquals("grid sizes go up and down through the course", sizes.sorted(), sizes)
+        // The Killer stage starts small again, on purpose and for the same reason: a row of
+        // six adding to twenty one is a sentence somebody can check by eye, and forty five
+        // across nine cells is a claim they have to take on trust. So it is judged on its
+        // own rather than as a step backwards in the ordinary course.
+        val classic = Curriculum.lessons.filter { it.stage != Stage.CAGES }.map { it.dims.cellCount }
+        assertEquals("the course does not start on the smallest grid", 16, classic.first())
+        assertEquals("grid sizes go up and down through the course", classic.sorted(), classic)
+        val killer = Curriculum.of(Stage.CAGES).map { it.dims.cellCount }
+        assertTrue("the Killer lessons do not start small", killer.all { it <= 36 })
     }
 
     @Test
@@ -180,6 +203,12 @@ class CurriculumTest {
         // teaching a rule its own hints would contradict.
         for (lesson in Curriculum.lessons) {
             if (lesson.teaches.isEmpty()) continue
+            // A cage rule is checked against the cage ladder, on the board the lesson draws,
+            // for the same reason and to the same standard.
+            if (lesson.cages.isNotEmpty()) {
+                assertCageLessonAgrees(lesson)
+                continue
+            }
             val grid = CandidateGrid.ofOrNull(Board.parse(lesson.dims, lesson.board))
             assertNotNull("${lesson.id} starts from a position with a contradiction in it", grid)
             requireNotNull(grid)
@@ -197,6 +226,27 @@ class CurriculumTest {
                     shown.any { it in agreed },
                 )
             }
+        }
+    }
+
+    /** The Killer half of the test above: the cage ladder has to agree with the lesson. */
+    private fun assertCageLessonAgrees(lesson: Lesson) {
+        val solution = checkNotNull(KillerSolver.solve(lesson.dims, lesson.cages)) {
+            "${lesson.id} draws cages that describe nothing"
+        }
+        val puzzle = KillerPuzzle(lesson.dims, lesson.cages, solution)
+        val grid = checkNotNull(CandidateGrid.ofOrNull(Board.parse(lesson.dims, lesson.board)))
+        val shown = lesson.steps.filterIsInstance<Step.Show>().flatMap { it.focus }.toSet()
+        for (technique in lesson.teaches) {
+            val finder = CageTechniques.ladder.first { it.id == technique }
+            val found = finder.find(grid, puzzle)
+            assertNotNull("${lesson.id} teaches $technique on a board where it does not apply", found)
+            requireNotNull(found)
+            val agreed = found.placements.map { it.cell }.toSet() + found.focusCells
+            assertTrue(
+                "${lesson.id} points at $shown, the engine's $technique is at $agreed",
+                shown.any { it in agreed },
+            )
         }
     }
 

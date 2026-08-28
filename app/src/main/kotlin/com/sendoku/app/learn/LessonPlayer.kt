@@ -392,6 +392,9 @@ internal fun stateAt(lesson: Lesson, index: Int, answered: Boolean): GameState {
             val digit = board.atIndex(cell)
             Cell(digit = digit, isGiven = digit != Board.EMPTY && givens.atIndex(cell) != Board.EMPTY)
         },
+        // The cages, for the lessons that teach a Killer rule. Empty everywhere else, which
+        // is what every other lesson has always been.
+        cages = lesson.cages,
         // A lesson has no clock and no mistake limit. Neither belongs in a place somebody is
         // being taught something.
         settings = GameSettings(showTimer = false, mistakeLimit = null),
