@@ -833,6 +833,10 @@
     <string name="card_lost">Не сдалась</string>
     <string name="settings_hint_limit">Заканчивать игру после трёх подсказок</string>
     <string name="settings_hint_note">Включено по умолчанию. Три подсказки бесплатны, а четвёртая стоит игры, и подсказка становится решением, а не рефлексом. Выключите, пока проходите курс.</string>
+    <string name="settings_post_mortem">Показывать, куда ушло время</string>
+    <string name="settings_post_mortem_note">После победы называть два места, где решение замедлилось, и что там было на доске. О решении без долгих пауз ничего не говорится.</string>
+    <string name="post_mortem_line">Здесь вы остановились на %1$s. Тут можно было найти %2$s.</string>
+    <string name="post_mortem_title">Куда ушло время</string>
     <string name="account_title">Вы</string>
     <string name="account_no_account">Здесь нет аккаунта, в который нужно входить. Всё, что ниже, лежит на этом телефоне и больше нигде.</string>
     <string name="account_solved">Решено</string>

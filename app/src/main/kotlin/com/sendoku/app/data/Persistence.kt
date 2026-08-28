@@ -47,6 +47,8 @@ public data class InProgressRow(
     val catalogIndex: Int? = null,
     /** Cells the player has tinted, or empty when none are. */
     val tints: String = "",
+    /** Every digit placed and when, so a solve can be looked back over in two sittings. */
+    val placements: String = "",
 ) {
     public companion object {
         public const val ONLY_ROW: Int = 1
@@ -314,6 +316,7 @@ public abstract class SendokuDatabase : RoomDatabase() {
                 // Colours are working notes on a game in progress, so only that table needs
                 // them. A finished game is a result, and a result has no working notes.
                 connection.execSQL("ALTER TABLE in_progress ADD COLUMN tints TEXT NOT NULL DEFAULT ''")
+                connection.execSQL("ALTER TABLE in_progress ADD COLUMN placements TEXT NOT NULL DEFAULT ''")
             }
         }
 
@@ -344,6 +347,7 @@ internal fun InProgressRow.toSaved(): SavedGame = SavedGame(
     origin = PuzzleOrigin.of(origin),
     catalogIndex = catalogIndex,
     tints = tints,
+    placements = placements,
 )
 
 internal fun SavedGame.toRow(savedAt: Long): InProgressRow = InProgressRow(
@@ -363,6 +367,8 @@ internal fun SavedGame.toRow(savedAt: Long): InProgressRow = InProgressRow(
     dailyEpochDay = dailyEpochDay,
     origin = origin.name,
     catalogIndex = catalogIndex,
+    tints = tints,
+    placements = placements,
 )
 
 internal fun FinishedRow.toFinished(): FinishedGame = FinishedGame(

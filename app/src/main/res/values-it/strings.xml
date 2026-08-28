@@ -818,6 +818,10 @@
     <string name="card_lost">Ha vinto lo schema</string>
     <string name="settings_hint_limit">Chiudi la partita dopo tre aiuti</string>
     <string name="settings_hint_note">Acceso di default. Tre aiuti sono gratis, e il quarto costa la partita, il che rende un aiuto una decisione e non un riflesso. Spegnilo mentre lavori sul corso.</string>
+    <string name="settings_post_mortem">Dire dove è andato il tempo</string>
+    <string name="settings_post_mortem_note">Dopo una vittoria, indicare i due punti in cui la risoluzione ha rallentato e che cosa c\'era sulla griglia. Di una risoluzione senza pause non si dice nulla.</string>
+    <string name="post_mortem_line">Qui ti sei fermato per %1$s. C\'era un %2$s da trovare.</string>
+    <string name="post_mortem_title">Dove è andato il tempo</string>
     <string name="account_title">Tu</string>
     <string name="account_no_account">Non c\'è nessun account con cui entrare. Tutto quello che segue è su questo telefono e in nessun altro posto.</string>
     <string name="account_solved">Risolti</string>

@@ -836,6 +836,10 @@
     <string name="card_lost">Beaten by</string>
     <string name="settings_hint_limit">End the game after three hints</string>
     <string name="settings_hint_note">On by default. Three hints are free, and the fourth costs the game, which makes a hint a decision rather than a reflex. Turn it off while you are working through the course.</string>
+    <string name="settings_post_mortem">Say where the time went</string>
+    <string name="settings_post_mortem_note">After a win, name the two places the solve slowed down and what was on the board there. Nothing is said about a solve that never slowed down.</string>
+    <string name="post_mortem_line">You stopped here for %1$s. A %2$s was there to be found.</string>
+    <string name="post_mortem_title">Where the time went</string>
     <string name="account_title">You</string>
     <string name="account_no_account">There is no account to sign into. Everything below is on this phone and nowhere else.</string>
     <string name="account_solved">Solved</string>

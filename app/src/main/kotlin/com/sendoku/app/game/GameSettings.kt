@@ -93,6 +93,15 @@ public data class GameSettings(
      */
     val hintDetail: HintLevel = HintLevel.NAME,
 
+    /**
+     * After a win, say where the time went.
+     *
+     * On, because the moment somebody has just finished a puzzle is the one moment they are
+     * interested in what was on the board, and because it says nothing at all unless the
+     * solve actually had a long pause in it. Off for anybody who would rather just win.
+     */
+    val postMortem: Boolean = true,
+
     /** A small buzz when a digit goes in. On, because a board gives no other feedback. */
     val haptics: Boolean = true,
 

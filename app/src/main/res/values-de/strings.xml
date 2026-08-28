@@ -446,6 +446,10 @@
 
     <string name="settings_hint_limit">Spiel nach drei Tipps beenden</string>
     <string name="settings_hint_note">Standardmäßig an. Drei Tipps sind frei, der vierte kostet das Spiel, und das macht einen Tipp zu einer Entscheidung statt zu einem Reflex. Schalten Sie es aus, solange Sie den Kurs durcharbeiten.</string>
+    <string name="settings_post_mortem">Sagen, wohin die Zeit ging</string>
+    <string name="settings_post_mortem_note">Nach einem Sieg die zwei Stellen nennen, an denen es langsamer wurde, und was dort auf dem Brett stand. Zu einem Lösen ohne Pausen wird nichts gesagt.</string>
+    <string name="post_mortem_line">Hier hast du %1$s gebraucht. Ein %2$s war da zu finden.</string>
+    <string name="post_mortem_title">Wohin die Zeit ging</string>
 
     <string name="account_title">Sie</string>
     <string name="account_no_account">Es gibt kein Konto, in das man sich einloggen könnte. Alles hier unten liegt auf diesem Telefon und sonst nirgends.</string>

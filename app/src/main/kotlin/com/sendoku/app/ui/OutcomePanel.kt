@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sendoku.app.R
 import com.sendoku.app.game.GameState
+import com.sendoku.app.game.PostMortem
 import com.sendoku.app.learn.Curriculum
 import com.sendoku.app.theme.Sendoku
 import com.sendoku.engine.technique.TechniqueId
@@ -163,6 +164,35 @@ public fun OutcomePanel(
                             .padding(dimens.spaceS)
                             .testTag("outcome:learn"),
                     )
+                }
+            }
+
+            // Where the time actually went. Only after a win, only when the setting is on,
+            // and only when there was a pause worth naming: a fast clean solve is told
+            // nothing at all, because an app that finds a lesson in every win turns winning
+            // into being marked.
+            if (won && state.settings.postMortem) {
+                val moments = remember(state.placements) { PostMortem.of(state) }
+                if (moments.isNotEmpty()) {
+                    Text(
+                        text = stringResource(R.string.post_mortem_title),
+                        style = Sendoku.type.overline,
+                        color = colors.muted,
+                        modifier = Modifier.padding(top = dimens.spaceS),
+                    )
+                    for (moment in moments) {
+                        Text(
+                            text = stringResource(
+                                R.string.post_mortem_line,
+                                moment.spent.clock(),
+                                stringResource(TechniqueCopy.nameOf(moment.available)),
+                            ),
+                            style = Sendoku.type.body,
+                            color = colors.muted,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier.testTag("outcome:moment"),
+                        )
+                    }
                 }
             }
 

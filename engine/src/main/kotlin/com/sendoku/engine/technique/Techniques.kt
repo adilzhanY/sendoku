@@ -1,5 +1,8 @@
 package com.sendoku.engine.technique
 
+import com.sendoku.engine.Board
+import com.sendoku.engine.CandidateGrid
+
 /** The full set of rules Sendoku knows, and the order it tries them in. */
 public object Techniques {
 
@@ -82,4 +85,16 @@ public object Techniques {
     )
 
     public fun byId(id: TechniqueId): Technique? = ladder.firstOrNull { it.id == id }
+
+    /**
+     * The cheapest deduction available on [board] right now, or null when nothing applies.
+     *
+     * One step, not a solve. It answers "what could have been seen at this moment", which is
+     * the question a post mortem asks about the place where somebody sat for four minutes.
+     */
+    public fun availableOn(board: Board): Deduction? {
+        val grid = CandidateGrid.ofOrNull(board) ?: return null
+        if (grid.isSolved || grid.hasContradiction) return null
+        return ladder.firstNotNullOfOrNull { it.find(grid) }
+    }
 }

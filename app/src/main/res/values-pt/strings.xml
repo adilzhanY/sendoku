@@ -823,6 +823,10 @@
     <string name="card_lost">Perdido para</string>
     <string name="settings_hint_limit">Encerrar o jogo após três dicas</string>
     <string name="settings_hint_note">Ligado por padrão. Três dicas são de graça, e a quarta custa o jogo, o que faz de uma dica uma decisão em vez de um reflexo. Desligue enquanto estiver fazendo o curso.</string>
+    <string name="settings_post_mortem">Dizer para onde foi o tempo</string>
+    <string name="settings_post_mortem_note">Depois de uma vitória, apontar os dois lugares onde a resolução travou e o que havia no tabuleiro ali. De uma resolução sem pausas não se diz nada.</string>
+    <string name="post_mortem_line">Você parou %1$s aqui. Havia um %2$s para achar.</string>
+    <string name="post_mortem_title">Para onde foi o tempo</string>
     <string name="account_title">Você</string>
     <string name="account_no_account">Não há conta nenhuma para entrar. Tudo abaixo está neste telefone e em nenhum outro lugar.</string>
     <string name="account_solved">Resolvidos</string>

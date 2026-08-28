@@ -225,6 +225,12 @@ public fun SettingsScreen(
             color = colors.muted,
             modifier = Modifier.padding(vertical = dimens.spaceS),
         )
+        Toggle(
+            label = stringResource(R.string.settings_post_mortem),
+            checked = settings.postMortem,
+            note = stringResource(R.string.settings_post_mortem_note),
+        ) { onChange(settings.copy(postMortem = it)) }
+
         Label(stringResource(R.string.settings_hint_detail))
         for (level in HintLevel.entries) {
             Choice(

@@ -445,6 +445,10 @@
 
     <string name="settings_hint_limit">Üç ipucundan sonra oyunu bitir</string>
     <string name="settings_hint_note">Varsayılan olarak açık. Üç ipucu bedava, dördüncüsü oyuna mal olur; bu da ipucunu bir refleks değil bir karar hâline getirir. Kursu çalışırken kapatın.</string>
+    <string name="settings_post_mortem">Zamanın nereye gittiğini söyle</string>
+    <string name="settings_post_mortem_note">Kazandıktan sonra, çözümün yavaşladığı iki yeri ve orada tahtada ne olduğunu söyle. Hiç yavaşlamayan bir çözüm hakkında bir şey söylenmez.</string>
+    <string name="post_mortem_line">Burada %1$s durdun. Orada bir %2$s bulunabilirdi.</string>
+    <string name="post_mortem_title">Zaman nereye gitti</string>
 
     <string name="account_title">Siz</string>
     <string name="account_no_account">Giriş yapılacak bir hesap yok. Aşağıdaki her şey bu telefonda, başka hiçbir yerde değil.</string>

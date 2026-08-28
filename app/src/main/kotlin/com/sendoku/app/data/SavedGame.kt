@@ -3,6 +3,7 @@ package com.sendoku.app.data
 import com.sendoku.app.game.Cell
 import com.sendoku.app.game.GameSettings
 import com.sendoku.app.game.GameState
+import com.sendoku.app.game.Placement
 import com.sendoku.app.game.PuzzleOrigin
 import com.sendoku.engine.Board
 import com.sendoku.engine.Candidates
@@ -53,6 +54,14 @@ public data class SavedGame(
      * every game anybody played before this existed.
      */
     val tints: String = "",
+    /**
+     * Every digit placed and when, as `cell.digit.seconds` triples.
+     *
+     * Written down because the post mortem is about a whole solve and a solve can be put
+     * down and picked up tomorrow. Fifty or so triples is a few hundred characters, which is
+     * nothing next to being unable to say anything about a game that took two sittings.
+     */
+    val placements: String = "",
 ) {
 
     /**
@@ -99,6 +108,7 @@ public data class SavedGame(
             origin = origin,
             catalogIndex = catalogIndex,
             tints = decodeTints(tints, dims.cellCount),
+            placements = decodePlacements(placements),
             settings = settings,
         )
     }
@@ -131,6 +141,7 @@ public data class SavedGame(
             origin = state.origin,
             catalogIndex = state.catalogIndex,
             tints = encodeTints(state.tints, state.dims.cellCount),
+            placements = encodePlacements(state.placements),
         )
 
         /**
@@ -144,6 +155,23 @@ public data class SavedGame(
             for (set in marks) {
                 require(set.mask in 0..0xFFF) { "a mark set of ${set.mask} does not fit" }
                 append(set.mask.toString(RADIX).padStart(MARK_WIDTH, '0'))
+            }
+        }
+
+        /** Cell, digit and clock reading, three numbers a piece, separated by full stops. */
+        internal fun encodePlacements(placements: List<Placement>): String =
+            placements.joinToString(SEPARATOR) { "${it.cell}.${it.digit}.${it.at}" }
+
+        /** The other way round, dropping anything that does not read as three numbers. */
+        internal fun decodePlacements(encoded: String): List<Placement> {
+            if (encoded.isEmpty()) return emptyList()
+            return encoded.split(SEPARATOR).mapNotNull { entry ->
+                val parts = entry.split('.')
+                if (parts.size != PLACEMENT_PARTS) return@mapNotNull null
+                val cell = parts[0].toIntOrNull() ?: return@mapNotNull null
+                val digit = parts[1].toIntOrNull() ?: return@mapNotNull null
+                val at = parts[2].toIntOrNull() ?: return@mapNotNull null
+                Placement(cell, digit, at)
             }
         }
 
@@ -196,6 +224,8 @@ public data class SavedGame(
         private const val RADIX = 32
         private const val MARK_WIDTH = 3
         private const val EMPTY_CHAR = '.'
+        private const val SEPARATOR = ","
+        private const val PLACEMENT_PARTS = 3
     }
 }
 

@@ -822,6 +822,10 @@
     <string name="card_lost">Battu par</string>
     <string name="settings_hint_limit">Terminer la partie après trois indices</string>
     <string name="settings_hint_note">Activé par défaut. Trois indices sont gratuits, et le quatrième coûte la partie, ce qui fait d\'un indice une décision plutôt qu\'un réflexe. Désactivez-le pendant que vous suivez le cours.</string>
+    <string name="settings_post_mortem">Dire où est passé le temps</string>
+    <string name="settings_post_mortem_note">Après une victoire, nommer les deux endroits où la résolution a ralenti et ce qu\'il y avait sur la grille. Rien n\'est dit d\'une résolution sans pause.</string>
+    <string name="post_mortem_line">Vous vous êtes arrêté %1$s ici. Un %2$s était là.</string>
+    <string name="post_mortem_title">Où est passé le temps</string>
     <string name="account_title">Vous</string>
     <string name="account_no_account">Il n\'y a aucun compte où se connecter. Tout ce qui suit est sur ce téléphone et nulle part ailleurs.</string>
     <string name="account_solved">Résolues</string>

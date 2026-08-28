@@ -818,6 +818,10 @@
     <string name="card_lost">Ganó el sudoku</string>
     <string name="settings_hint_limit">Terminar la partida a las tres pistas</string>
     <string name="settings_hint_note">Encendido por defecto. Tres pistas son gratis, y la cuarta cuesta la partida, lo que convierte una pista en una decisión y no en un reflejo. Apágalo mientras vas trabajando el curso.</string>
+    <string name="settings_post_mortem">Decir dónde se fue el tiempo</string>
+    <string name="settings_post_mortem_note">Al ganar, nombrar los dos puntos donde el solucionar se frenó y qué había en el tablero allí. De un solucionar sin pausas no se dice nada.</string>
+    <string name="post_mortem_line">Aquí te detuviste %1$s. Había un %2$s por encontrar.</string>
+    <string name="post_mortem_title">Dónde se fue el tiempo</string>
     <string name="account_title">Tú</string>
     <string name="account_no_account">No hay ninguna cuenta con la que entrar. Todo lo de abajo está en este teléfono y en ningún otro sitio.</string>
     <string name="account_solved">Resueltos</string>

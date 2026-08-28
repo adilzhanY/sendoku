@@ -42,6 +42,13 @@ public enum class MoveKind {
 @Immutable
 public data class Move(val kind: MoveKind, val cell: Int, val before: Map<Int, Cell>, val after: Map<Int, Cell>)
 
+/** One digit landing on the board, and the clock reading when it did. */
+public data class Placement(val cell: Int, val digit: Int, val at: Int)
+
+/** What a placement move put where, for the record of how the board grew. */
+private fun GameState.placementOf(move: Move): Placement =
+    Placement(move.cell, move.after[move.cell]?.digit ?: Board.EMPTY, elapsed.inWholeSeconds.toInt())
+
 /**
  * Everything about a game in progress.
  *
@@ -91,6 +98,18 @@ public data class GameState(
      * marked, and nothing in the game reads it except the drawing.
      */
     val tints: Map<Int, Int> = emptyMap(),
+    /**
+     * Every digit placed, in order, with the clock reading when it landed.
+     *
+     * Kept so a finished game can say where the time went. The gaps between these are the
+     * only record of a player sitting and looking, which is the interesting part of a solve
+     * and the part no other number here can see: a puzzle finished in twelve minutes says
+     * nothing about the four of them spent staring at one box.
+     *
+     * Undoing a placement takes its entry back out, so the list always describes the board
+     * as it actually grew rather than every key ever pressed.
+     */
+    val placements: List<Placement> = emptyList(),
     /** Where this puzzle came from. Only a ladder or a daily game opens the level above. */
     val origin: PuzzleOrigin = PuzzleOrigin.LADDER,
     /**
@@ -467,6 +486,10 @@ public data class GameState(
             past = past.dropLast(1),
             future = future + move,
             eliminated = emptySet(),
+            // A placement taken back never happened, as far as the record of how the board
+            // grew is concerned. Otherwise the post mortem would reconstruct a board the
+            // player never actually had in front of them.
+            placements = if (move.kind == MoveKind.PLACE) placements.dropLast(1) else placements,
         )
     }
 
@@ -476,6 +499,7 @@ public data class GameState(
             cells = replaced(move.after),
             selected = move.cell,
             past = past + move,
+            placements = if (move.kind == MoveKind.PLACE) placements + placementOf(move) else placements,
             future = future.dropLast(1),
             eliminated = emptySet(),
         )
@@ -550,9 +574,11 @@ public data class GameState(
     private fun apply(kind: MoveKind, at: Int, changes: Map<Int, Cell>): GameState {
         val before = changes.keys.associateWith { cells[it] }
         if (before == changes) return this
+        val move = Move(kind, at, before, changes)
         return copy(
             cells = replaced(changes),
-            past = past + Move(kind, at, before, changes),
+            past = past + move,
+            placements = if (kind == MoveKind.PLACE) placements + placementOf(move) else placements,
             // Doing something new throws away the branch you had undone your way out of.
             future = emptyList(),
             // A hand made move can put a ruled out candidate back, so what the hints had

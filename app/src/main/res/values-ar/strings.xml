@@ -848,6 +848,10 @@
     <string name="card_lost">هزمه اللغز</string>
     <string name="settings_hint_limit">إنهاء اللعبة بعد ثلاثة تلميحات</string>
     <string name="settings_hint_note">مفعّل افتراضيًا. ثلاثة تلميحات مجانية، والرابع يكلف اللعبة، وهذا يجعل التلميح قرارًا لا ردة فعل. عطّله ما دمت تتابع الدورة.</string>
+    <string name="settings_post_mortem">قل أين ذهب الوقت</string>
+    <string name="settings_post_mortem_note">بعد الفوز، اذكر الموضعين اللذين تباطأ فيهما الحل وما كان على الشبكة هناك. ولا يُقال شيء عن حل لم يتباطأ.</string>
+    <string name="post_mortem_line">توقفت هنا %1$s. كان هناك %2$s يمكن إيجاده.</string>
+    <string name="post_mortem_title">أين ذهب الوقت</string>
     <string name="account_title">أنت</string>
     <string name="account_no_account">لا يوجد حساب لتسجيل الدخول إليه. كل ما يلي على هذا الهاتف ولا مكان آخر.</string>
     <string name="account_solved">محلولة</string>
