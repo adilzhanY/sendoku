@@ -78,6 +78,19 @@ public data class GameState(
      * would mark today.
      */
     val dailyEpochDay: Long? = null,
+    /**
+     * Cells the player has tinted, and which tint each one carries.
+     *
+     * A working note, not a claim. Serious solvers colour a chain by hand on paper: pick a
+     * digit with two homes in a house, follow what each choice forces, and look for the
+     * contradiction. The course teaches that across three lessons and the board had no way
+     * to do it, which is the gap somebody notices the first time they reach the levels past
+     * Extreme.
+     *
+     * It never touches the rules. A tinted cell is not right, wrong, given or entered, it is
+     * marked, and nothing in the game reads it except the drawing.
+     */
+    val tints: Map<Int, Int> = emptyMap(),
     /** Where this puzzle came from. Only a ladder or a daily game opens the level above. */
     val origin: PuzzleOrigin = PuzzleOrigin.LADDER,
     /**

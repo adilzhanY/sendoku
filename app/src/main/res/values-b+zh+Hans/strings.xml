@@ -100,6 +100,13 @@
     </plurals>
     <string name="cell_actions_clear_notes">清除笔记</string>
     <string name="why_not_title">为什么不行？</string>
+    <string name="tint_title">颜色</string>
+    <string name="cell_tinted">%1$s，颜色：%2$s</string>
+    <string name="tint_clear_all">清除所有颜色</string>
+    <string name="tint_one">橙色</string>
+    <string name="tint_two">蓝色</string>
+    <string name="tint_three">紫色</string>
+    <string name="tint_four">绿色</string>
     <string name="why_not_prompt">点一个数字，告诉你是什么挡住了它。</string>
     <string name="why_not_taken">%2$s的第%3$d行第%4$d列已经有一个%1$d了。</string>
     <string name="why_not_filled">这一格里已经有%1$d了。请先擦掉。</string>

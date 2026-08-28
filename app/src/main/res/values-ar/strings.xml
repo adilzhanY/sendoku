@@ -114,6 +114,13 @@
     </plurals>
     <string name="cell_actions_clear_notes">امسح الملاحظات</string>
     <string name="why_not_title">لماذا لا؟</string>
+    <string name="tint_title">لون</string>
+    <string name="cell_tinted">%1$s، اللون %2$s</string>
+    <string name="tint_clear_all">أزل كل الألوان</string>
+    <string name="tint_one">برتقالي</string>
+    <string name="tint_two">أزرق</string>
+    <string name="tint_three">بنفسجي</string>
+    <string name="tint_four">أخضر</string>
     <string name="why_not_prompt">المس رقمًا لتعرف ما الذي يمنعه.</string>
     <string name="why_not_taken">يوجد %1$d بالفعل في %2$s، الصف %3$d، العمود %4$d.</string>
     <string name="why_not_filled">هذه الخانة تحتوي على %1$d بالفعل. امسحه أولًا.</string>

@@ -104,6 +104,13 @@
     </plurals>
     <string name="cell_actions_clear_notes">Effacer les notes</string>
     <string name="why_not_title">Pourquoi pas ?</string>
+    <string name="tint_title">Couleur</string>
+    <string name="cell_tinted">%1$s, colorée %2$s</string>
+    <string name="tint_clear_all">Enlever toutes les couleurs</string>
+    <string name="tint_one">Orange</string>
+    <string name="tint_two">Bleu</string>
+    <string name="tint_three">Violet</string>
+    <string name="tint_four">Vert</string>
     <string name="why_not_prompt">Touchez un chiffre pour savoir ce qui l\'en empêche.</string>
     <string name="why_not_taken">Il y a déjà un %1$d %2$s, ligne %3$d, colonne %4$d.</string>
     <string name="why_not_filled">Cette case contient déjà un %1$d. Effacez-le d\'abord.</string>

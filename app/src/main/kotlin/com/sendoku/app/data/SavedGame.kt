@@ -45,6 +45,14 @@ public data class SavedGame(
     val origin: PuzzleOrigin = PuzzleOrigin.LADDER,
     /** Its place in the shipped batch, when it came from there, so it can be shared short. */
     val catalogIndex: Int? = null,
+    /**
+     * Cells the player has tinted, written as one character per cell.
+     *
+     * A dot for no tint and a digit for which one, so it reads like the board next to it and
+     * a corrupt value is obvious on sight. Empty when nothing has been coloured, which is
+     * every game anybody played before this existed.
+     */
+    val tints: String = "",
 ) {
 
     /**
@@ -90,6 +98,7 @@ public data class SavedGame(
             dailyEpochDay = dailyEpochDay,
             origin = origin,
             catalogIndex = catalogIndex,
+            tints = decodeTints(tints, dims.cellCount),
             settings = settings,
         )
     }
@@ -121,6 +130,7 @@ public data class SavedGame(
             dailyEpochDay = state.dailyEpochDay,
             origin = state.origin,
             catalogIndex = state.catalogIndex,
+            tints = encodeTints(state.tints, state.dims.cellCount),
         )
 
         /**
@@ -135,6 +145,33 @@ public data class SavedGame(
                 require(set.mask in 0..0xFFF) { "a mark set of ${set.mask} does not fit" }
                 append(set.mask.toString(RADIX).padStart(MARK_WIDTH, '0'))
             }
+        }
+
+        /** One character per cell: a dot for no tint, otherwise which one. */
+        internal fun encodeTints(tints: Map<Int, Int>, cellCount: Int): String {
+            if (tints.isEmpty()) return ""
+            return buildString {
+                for (index in 0 until cellCount) {
+                    val tint = tints[index]
+                    append(if (tint == null) EMPTY_CHAR else ('0' + tint))
+                }
+            }
+        }
+
+        /**
+         * The other way round, forgiving anything it does not recognise.
+         *
+         * A saved game from a build with more tints than this one comes back with the ones
+         * it knows and drops the rest, which is a colour missing rather than a crash.
+         */
+        internal fun decodeTints(encoded: String, cellCount: Int): Map<Int, Int> {
+            if (encoded.length != cellCount) return emptyMap()
+            val tints = HashMap<Int, Int>()
+            for (index in 0 until cellCount) {
+                val char = encoded[index]
+                if (char in '0'..'9') tints[index] = char - '0'
+            }
+            return tints
         }
 
         internal fun decodeMarks(encoded: String, cellCount: Int): List<Candidates> {

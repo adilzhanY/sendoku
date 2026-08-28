@@ -105,6 +105,13 @@
     </plurals>
     <string name="cell_actions_clear_notes">Rub out the notes</string>
     <string name="why_not_title">Why not?</string>
+    <string name="tint_title">Colour</string>
+    <string name="cell_tinted">%1$s, coloured %2$s</string>
+    <string name="tint_clear_all">Clear every colour</string>
+    <string name="tint_one">Orange</string>
+    <string name="tint_two">Blue</string>
+    <string name="tint_three">Purple</string>
+    <string name="tint_four">Green</string>
     <string name="why_not_prompt">Tap a digit to be told what is stopping it.</string>
     <string name="why_not_taken">There is already a %1$d in %2$s, at row %3$d, column %4$d.</string>
     <string name="why_not_filled">This cell already holds a %1$d. Rub it out first.</string>

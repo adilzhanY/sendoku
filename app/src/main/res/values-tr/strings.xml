@@ -91,6 +91,13 @@
     <string name="cell_actions_clue">Bu rakam bulmacayla birlikte geldi, değiştirilemez.</string>
     <string name="cell_actions_clear_notes">Notları sil</string>
     <string name="why_not_title">Neden olmaz?</string>
+    <string name="tint_title">Renk</string>
+    <string name="cell_tinted">%1$s, rengi %2$s</string>
+    <string name="tint_clear_all">Bütün renkleri kaldır</string>
+    <string name="tint_one">Turuncu</string>
+    <string name="tint_two">Mavi</string>
+    <string name="tint_three">Mor</string>
+    <string name="tint_four">Yeşil</string>
     <string name="why_not_prompt">Bir rakama dokunun, onu neyin engellediğini söyleyelim.</string>
     <string name="why_not_taken">%2$s içinde zaten bir %1$d var, satır %3$d, sütun %4$d.</string>
     <string name="why_not_filled">Bu hücrede zaten bir %1$d var. Önce onu silin.</string>

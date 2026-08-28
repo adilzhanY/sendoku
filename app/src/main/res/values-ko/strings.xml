@@ -97,6 +97,13 @@
     </plurals>
     <string name="cell_actions_clear_notes">메모 지우기</string>
     <string name="why_not_title">왜 안 될까요?</string>
+    <string name="tint_title">색</string>
+    <string name="cell_tinted">%1$s, 색: %2$s</string>
+    <string name="tint_clear_all">모든 색 지우기</string>
+    <string name="tint_one">주황</string>
+    <string name="tint_two">파랑</string>
+    <string name="tint_three">보라</string>
+    <string name="tint_four">초록</string>
     <string name="why_not_prompt">숫자를 누르면 무엇이 막고 있는지 알려드려요.</string>
     <string name="why_not_taken">%2$s의 %3$d행 %4$d열에 이미 %1$d이(가) 있어요.</string>
     <string name="why_not_filled">이 칸에는 이미 %1$d이(가) 있어요. 먼저 지워 주세요.</string>

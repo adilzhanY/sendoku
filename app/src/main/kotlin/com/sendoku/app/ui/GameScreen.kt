@@ -47,8 +47,10 @@ import com.sendoku.app.game.GameState
 import com.sendoku.app.game.Hint
 import com.sendoku.app.game.HintEngine
 import com.sendoku.app.game.HintLevel
+import com.sendoku.app.game.clearTints
 import com.sendoku.app.game.logicCells
 import com.sendoku.app.game.struckCells
+import com.sendoku.app.game.tint
 import com.sendoku.app.theme.Sendoku
 import kotlinx.coroutines.delay
 import kotlin.time.Duration
@@ -604,6 +606,12 @@ public sealed interface GameEvent {
     public data object FillAllMarks : GameEvent
     public data object ClearMarks : GameEvent
 
+    /** Tints a cell, or takes the tint off it. A working note, not a move. */
+    public data class Tint(val cell: Int, val tint: Int) : GameEvent
+
+    /** Takes every tint off the board. */
+    public data object ClearTints : GameEvent
+
     /** The player asked the hint to take the wrong digits it found back off the board. */
     public data class EraseCells(val cells: Set<Int>) : GameEvent
 
@@ -629,5 +637,7 @@ public fun GameState.reduce(event: GameEvent): GameState = when (event) {
     GameEvent.FillMarks -> fillMarks()
     GameEvent.FillAllMarks -> fillAllMarks()
     GameEvent.ClearMarks -> clearMarks()
+    is GameEvent.Tint -> tint(event.cell, event.tint)
+    GameEvent.ClearTints -> clearTints()
     is GameEvent.Accept -> applyHint(event.deduction)
 }

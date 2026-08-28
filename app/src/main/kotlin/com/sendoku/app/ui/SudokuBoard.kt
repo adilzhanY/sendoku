@@ -50,6 +50,7 @@ import com.sendoku.app.R
 import com.sendoku.app.game.Cell
 import com.sendoku.app.game.GameState
 import com.sendoku.app.theme.Sendoku
+import com.sendoku.app.theme.chainTints
 import com.sendoku.engine.Board
 import com.sendoku.engine.House
 import com.sendoku.engine.HouseKind
@@ -154,6 +155,7 @@ public fun SudokuBoard(
                             BoardCell(
                                 cell = state.cells[index],
                                 isSelected = state.selected == index,
+                                tint = state.tints[index]?.let { colors.chainTints.getOrNull(it) },
                                 isPeer = index in peers,
                                 isMatch = index in matches,
                                 isConflict = index in conflicts || index in wrong,
@@ -354,6 +356,8 @@ private fun GridLines(state: GameState, modifier: Modifier = Modifier) {
 private fun BoardCell(
     cell: Cell,
     isSelected: Boolean,
+    /** The colour the player put on this cell while following a chain, if they did. */
+    tint: Color?,
     isPeer: Boolean,
     isMatch: Boolean,
     isConflict: Boolean,
@@ -400,6 +404,10 @@ private fun BoardCell(
 
     Box(
         modifier = modifier
+            // Underneath everything the board says about the cell itself. A tint is the
+            // player's own mark and it must never argue with a conflict, a hint or the
+            // selection: those are the app talking, and the app goes on top.
+            .background(tint ?: Color.Transparent)
             .background(wash)
             .then(
                 if (onClick == null) {
@@ -526,7 +534,12 @@ internal fun describe(state: GameState, index: Int, conflicting: Boolean, role: 
 
         else -> stringResource(R.string.cell_empty, position)
     }
-    val said = if (conflicting) stringResource(R.string.cell_repeated, body) else body
+    val plain = if (conflicting) stringResource(R.string.cell_repeated, body) else body
+    // A colour the player put on a cell carries meaning, which is the whole point of it, so
+    // it has to be said rather than only shown.
+    val said = state.tints[index]
+        ?.let { stringResource(R.string.cell_tinted, plain, stringResource(tintName(it))) }
+        ?: plain
     // Colour is not a cue for everybody, and a dimmed board is nothing at all to somebody
     // using a screen reader, so what the highlight means is said out loud.
     return when (role) {
@@ -541,4 +554,12 @@ internal fun describe(state: GameState, index: Int, conflicting: Boolean, role: 
 @Composable
 private fun Dp.toSp(fraction: Float): TextUnit = with(LocalDensity.current) {
     (this@toSp * fraction).toSp()
+}
+
+/** What a tint is called, since a colour is nothing to somebody who cannot see it. */
+internal fun tintName(index: Int): Int = when (index) {
+    0 -> R.string.tint_one
+    1 -> R.string.tint_two
+    2 -> R.string.tint_three
+    else -> R.string.tint_four
 }

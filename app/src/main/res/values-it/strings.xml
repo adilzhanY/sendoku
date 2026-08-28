@@ -100,6 +100,13 @@
     </plurals>
     <string name="cell_actions_clear_notes">Cancella le note</string>
     <string name="why_not_title">Perché no?</string>
+    <string name="tint_title">Colore</string>
+    <string name="cell_tinted">%1$s, colorata %2$s</string>
+    <string name="tint_clear_all">Togli tutti i colori</string>
+    <string name="tint_one">Arancione</string>
+    <string name="tint_two">Blu</string>
+    <string name="tint_three">Viola</string>
+    <string name="tint_four">Verde</string>
     <string name="why_not_prompt">Tocca una cifra e ti dico che cosa la blocca.</string>
     <string name="why_not_taken">C\'è già un %1$d in %2$s, alla riga %3$d, colonna %4$d.</string>
     <string name="why_not_filled">Questa cella contiene già un %1$d. Cancellalo prima.</string>

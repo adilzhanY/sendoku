@@ -103,6 +103,13 @@
     </plurals>
     <string name="cell_actions_clear_notes">Стереть пометки</string>
     <string name="why_not_title">Почему нет?</string>
+    <string name="tint_title">Цвет</string>
+    <string name="cell_tinted">%1$s, цвет: %2$s</string>
+    <string name="tint_clear_all">Убрать все цвета</string>
+    <string name="tint_one">Оранжевый</string>
+    <string name="tint_two">Синий</string>
+    <string name="tint_three">Фиолетовый</string>
+    <string name="tint_four">Зелёный</string>
     <string name="why_not_prompt">Нажмите цифру, и мы скажем, что ей мешает.</string>
     <string name="why_not_taken">Цифра %1$d уже есть в доме %2$s, в строке %3$d, столбце %4$d.</string>
     <string name="why_not_filled">В этой клетке уже стоит %1$d. Сначала сотрите её.</string>

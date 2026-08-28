@@ -100,6 +100,13 @@
     </plurals>
     <string name="cell_actions_clear_notes">Borrar las notas</string>
     <string name="why_not_title">¿Por qué no?</string>
+    <string name="tint_title">Color</string>
+    <string name="cell_tinted">%1$s, coloreada %2$s</string>
+    <string name="tint_clear_all">Quitar todos los colores</string>
+    <string name="tint_one">Naranja</string>
+    <string name="tint_two">Azul</string>
+    <string name="tint_three">Morado</string>
+    <string name="tint_four">Verde</string>
     <string name="why_not_prompt">Toca una cifra y te digo qué se lo impide.</string>
     <string name="why_not_taken">Ya hay un %1$d en %2$s, en la fila %3$d, columna %4$d.</string>
     <string name="why_not_filled">Esta casilla ya tiene un %1$d. Bórralo primero.</string>

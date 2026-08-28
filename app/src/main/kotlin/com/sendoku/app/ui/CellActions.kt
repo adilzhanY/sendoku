@@ -1,8 +1,10 @@
 package com.sendoku.app.ui
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -25,13 +27,19 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.LiveRegionMode
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.liveRegion
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import com.sendoku.app.R
 import com.sendoku.app.game.GameState
 import com.sendoku.app.game.WhyNot
 import com.sendoku.app.theme.Sendoku
+import com.sendoku.app.theme.chainTints
 
 /**
  * The sheet a long press on a cell brings up.
@@ -95,8 +103,65 @@ public fun CellActionSheet(state: GameState, cell: Int, onAction: (GameEvent) ->
                 }
             }
 
+            // Colouring lives here rather than on the toolbar, because it is used in bursts
+            // while following one chain and never once a game like the rest of the toolbar.
+            TintRow(state, cell, onAction)
+
             WhyNotPanel(state, cell)
         }
+    }
+}
+
+/**
+ * The four tints, and a way to take them all off.
+ *
+ * A tint is the player's own working note, so nothing in the game reads it: it does not make
+ * a cell right or wrong, it survives a digit being typed over it, and undo does not walk
+ * back through it. It is a pencil, and the board is paper.
+ */
+@Composable
+private fun TintRow(state: GameState, cell: Int, onAction: (GameEvent) -> Unit) {
+    val colors = Sendoku.colors
+    val dimens = Sendoku.dimens
+    val current = state.tints[cell]
+
+    Text(
+        text = stringResource(R.string.tint_title),
+        style = Sendoku.type.overline,
+        color = colors.muted,
+        modifier = Modifier.padding(top = dimens.spaceM, bottom = dimens.spaceXs),
+    )
+    Row(
+        modifier = Modifier.fillMaxWidth().testTag("tint:row"),
+        horizontalArrangement = Arrangement.spacedBy(dimens.padGap),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        for ((index, tint) in colors.chainTints.withIndex()) {
+            val chosen = current == index
+            val name = stringResource(tintName(index))
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .heightIn(min = dimens.minTouchTarget)
+                    .clip(RoundedCornerShape(dimens.radiusS))
+                    .background(tint)
+                    .border(
+                        width = if (chosen) 2.dp else 1.dp,
+                        color = if (chosen) colors.accent else colors.hairline,
+                        shape = RoundedCornerShape(dimens.radiusS),
+                    )
+                    .clickable { onAction(GameEvent.Tint(cell, index)) }
+                    .testTag("tint:$index")
+                    .semantics {
+                        contentDescription = name
+                        role = Role.Button
+                        this.selected = chosen
+                    },
+            )
+        }
+    }
+    SheetAction(stringResource(R.string.tint_clear_all), enabled = state.tints.isNotEmpty()) {
+        onAction(GameEvent.ClearTints)
     }
 }
 

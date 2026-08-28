@@ -92,6 +92,13 @@
     <string name="cell_actions_clue">Diese Ziffer kam mit dem Rätsel und lässt sich nicht ändern.</string>
     <string name="cell_actions_clear_notes">Notizen wegradieren</string>
     <string name="why_not_title">Warum nicht?</string>
+    <string name="tint_title">Farbe</string>
+    <string name="cell_tinted">%1$s, gefärbt %2$s</string>
+    <string name="tint_clear_all">Alle Farben entfernen</string>
+    <string name="tint_one">Orange</string>
+    <string name="tint_two">Blau</string>
+    <string name="tint_three">Violett</string>
+    <string name="tint_four">Grün</string>
     <string name="why_not_prompt">Tippen Sie eine Ziffer an, und Sie erfahren, was ihr im Weg steht.</string>
     <string name="why_not_taken">In %2$s steht bereits eine %1$d, in Zeile %3$d, Spalte %4$d.</string>
     <string name="why_not_filled">In dieser Zelle steht schon eine %1$d. Radieren Sie sie zuerst weg.</string>

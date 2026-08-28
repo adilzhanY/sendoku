@@ -105,6 +105,13 @@
     </plurals>
     <string name="cell_actions_clear_notes">Apagar as anotações</string>
     <string name="why_not_title">Por que não?</string>
+    <string name="tint_title">Cor</string>
+    <string name="cell_tinted">%1$s, colorida %2$s</string>
+    <string name="tint_clear_all">Tirar todas as cores</string>
+    <string name="tint_one">Laranja</string>
+    <string name="tint_two">Azul</string>
+    <string name="tint_three">Roxo</string>
+    <string name="tint_four">Verde</string>
     <string name="why_not_prompt">Toque em um número para saber o que o impede.</string>
     <string name="why_not_taken">Já existe um %1$d %2$s, na linha %3$d, coluna %4$d.</string>
     <string name="why_not_filled">Esta casa já tem um %1$d. Apague antes.</string>

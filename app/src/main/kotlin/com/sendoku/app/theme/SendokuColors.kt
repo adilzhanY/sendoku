@@ -80,6 +80,19 @@ public data class SendokuColors(
     /** Candidates a hint is about to strike out. */
     val hintStrike: Color,
 
+    /**
+     * The tints a player can put on a cell while following a chain.
+     *
+     * Four of them, and they have to survive being laid under a selection, a peer wash, a
+     * match wash and a conflict wash without any two of them becoming the same colour. They
+     * differ in lightness as well as in hue, so somebody who cannot tell red from green can
+     * still tell one chain from the other.
+     *
+     * Not part of the theme's argument about itself. Every theme uses the same four, tuned
+     * for dark or light, because a chain is a chain whatever the board looks like.
+     */
+    val tints: List<Color>? = null,
+
     /** True for a dark theme. Drives the status bar icons and nothing else. */
     val isDark: Boolean,
 )
@@ -154,4 +167,29 @@ public val DeepFieldLight: SendokuColors = SendokuColors(
     hintLogic = Color(0x3800695E),
     hintStrike = Color(0x1A00695E),
     isDark = false,
+)
+
+/** The four tints, which are the same in every theme and differ only by light or dark. */
+public val SendokuColors.chainTints: List<Color> get() = tints ?: if (isDark) DARK_TINTS else LIGHT_TINTS
+
+/**
+ * Four tints for a dark board: a warm one, a cool one, a light one and a deep one.
+ *
+ * Kept apart in lightness as much as in hue. Two chains coloured with the same weight of
+ * colour are two chains nobody can follow at a glance, which is the only thing colouring is
+ * for.
+ */
+private val DARK_TINTS: List<Color> = listOf(
+    Color(0x59F2B36B),
+    Color(0x596BA8F2),
+    Color(0x59B98CE0),
+    Color(0x5966D9B0),
+)
+
+/** The same four on a light board, which needs more of each to read against white. */
+private val LIGHT_TINTS: List<Color> = listOf(
+    Color(0x66E08A2E),
+    Color(0x662E7BE0),
+    Color(0x668A4FD1),
+    Color(0x6612A87A),
 )

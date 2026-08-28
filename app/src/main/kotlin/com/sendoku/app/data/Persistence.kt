@@ -45,6 +45,8 @@ public data class InProgressRow(
     val origin: String? = null,
     /** Its place in the shipped batch, or null when it did not come from there. */
     val catalogIndex: Int? = null,
+    /** Cells the player has tinted, or empty when none are. */
+    val tints: String = "",
 ) {
     public companion object {
         public const val ONLY_ROW: Int = 1
@@ -296,7 +298,8 @@ public abstract class SendokuDatabase : RoomDatabase() {
         }
 
         /**
-         * Version 4 to 5: where a puzzle came from, and where in the batch it sits.
+         * Version 4 to 5: where a puzzle came from, where in the batch it sits, and the
+         * colours a player has put on the board.
          *
          * Nullable and with no default, like the two before it. Every game already recorded
          * was dealt off the ladder or off the calendar, and both of those count towards
@@ -308,6 +311,9 @@ public abstract class SendokuDatabase : RoomDatabase() {
                 connection.execSQL("ALTER TABLE in_progress ADD COLUMN origin TEXT")
                 connection.execSQL("ALTER TABLE finished ADD COLUMN catalogIndex INTEGER")
                 connection.execSQL("ALTER TABLE in_progress ADD COLUMN catalogIndex INTEGER")
+                // Colours are working notes on a game in progress, so only that table needs
+                // them. A finished game is a result, and a result has no working notes.
+                connection.execSQL("ALTER TABLE in_progress ADD COLUMN tints TEXT NOT NULL DEFAULT ''")
             }
         }
 
@@ -337,6 +343,7 @@ internal fun InProgressRow.toSaved(): SavedGame = SavedGame(
     dailyEpochDay = dailyEpochDay,
     origin = PuzzleOrigin.of(origin),
     catalogIndex = catalogIndex,
+    tints = tints,
 )
 
 internal fun SavedGame.toRow(savedAt: Long): InProgressRow = InProgressRow(

@@ -104,6 +104,13 @@
     </plurals>
     <string name="cell_actions_clear_notes">メモを消す</string>
     <string name="why_not_title">なぜ入らない？</string>
+    <string name="tint_title">色</string>
+    <string name="cell_tinted">%1$s、色は%2$s</string>
+    <string name="tint_clear_all">色をすべて消す</string>
+    <string name="tint_one">オレンジ</string>
+    <string name="tint_two">青</string>
+    <string name="tint_three">紫</string>
+    <string name="tint_four">緑</string>
     <string name="why_not_prompt">数字をタップすると、何が邪魔しているかを教えます。</string>
     <string name="why_not_taken">%2$sの%3$d行%4$d列に、すでに%1$dがあります。</string>
     <string name="why_not_filled">このマスにはすでに%1$dが入っています。先に消してください。</string>

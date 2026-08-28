@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 5,
-    "identityHash": "af8d40c82e04ece47eaaca48a53a5efb",
+    "identityHash": "6a672dc27436433447eb53dc63e377b0",
     "entities": [
       {
         "tableName": "in_progress",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `givens` TEXT NOT NULL, `solution` TEXT NOT NULL, `entries` TEXT NOT NULL, `marks` TEXT NOT NULL, `grade` TEXT NOT NULL, `rating` REAL NOT NULL, `hardest` TEXT, `selected` INTEGER, `pencilMode` INTEGER NOT NULL, `elapsedSeconds` INTEGER NOT NULL, `mistakes` INTEGER NOT NULL, `hintsUsed` INTEGER NOT NULL, `savedAt` INTEGER NOT NULL, `dailyEpochDay` INTEGER, `origin` TEXT, `catalogIndex` INTEGER, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `givens` TEXT NOT NULL, `solution` TEXT NOT NULL, `entries` TEXT NOT NULL, `marks` TEXT NOT NULL, `grade` TEXT NOT NULL, `rating` REAL NOT NULL, `hardest` TEXT, `selected` INTEGER, `pencilMode` INTEGER NOT NULL, `elapsedSeconds` INTEGER NOT NULL, `mistakes` INTEGER NOT NULL, `hintsUsed` INTEGER NOT NULL, `savedAt` INTEGER NOT NULL, `dailyEpochDay` INTEGER, `origin` TEXT, `catalogIndex` INTEGER, `tints` TEXT NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -104,6 +104,12 @@
             "fieldPath": "catalogIndex",
             "columnName": "catalogIndex",
             "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "tints",
+            "columnName": "tints",
+            "affinity": "TEXT",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -291,7 +297,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'af8d40c82e04ece47eaaca48a53a5efb')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '6a672dc27436433447eb53dc63e377b0')"
     ]
   }
 }

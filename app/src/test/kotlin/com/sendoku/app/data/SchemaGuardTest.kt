@@ -29,7 +29,7 @@ class SchemaGuardTest {
         2 to "fcaf9351619be1300598cb1a60f15054",
         3 to "9b3a2aafca5804d51ac97550ae7c1416",
         4 to "f5a2ab7cf6c0185e996d0da5b962a1f8",
-        5 to "af8d40c82e04ece47eaaca48a53a5efb",
+        5 to "6a672dc27436433447eb53dc63e377b0",
     )
 
     @Test
