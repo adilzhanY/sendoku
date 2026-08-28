@@ -382,6 +382,10 @@
     <string name="technique_als_xy_wing">ALS XY-Wing</string>
     <string name="technique_death_blossom">Death blossom</string>
     <string name="technique_forcing_chain">Forcing chain</string>
+    <string name="technique_cage_sum">Cage sum</string>
+    <string name="technique_cage_single">Cage single</string>
+    <string name="technique_cage_locked">Locked cage</string>
+    <string name="technique_cage_innie">Innies and outies</string>
     <string name="daily_title">Daily</string>
     <string name="daily_no_streak">No streak yet. Solve today\'s puzzle to start one.</string>
     <string name="daily_previous_month">Earlier</string>

@@ -346,6 +346,10 @@
     <string name="technique_als_xy_wing">ALS XY-Wing</string>
     <string name="technique_death_blossom">Death Blossom</string>
     <string name="technique_forcing_chain">Zorlama zinciri</string>
+    <string name="technique_cage_sum">Kafes toplamı</string>
+    <string name="technique_cage_single">Kafes teki</string>
+    <string name="technique_cage_locked">Kilitli kafes</string>
+    <string name="technique_cage_innie">İçler ve dışlar</string>
 
     <string name="daily_title">Günlük</string>
     <string name="daily_no_streak">Henüz seri yok. Başlatmak için bugünün bulmacasını çözün.</string>

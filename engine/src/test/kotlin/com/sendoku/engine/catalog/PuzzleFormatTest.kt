@@ -98,7 +98,10 @@ class PuzzleFormatTest {
                 ByteArrayOutputStream().also { PuzzleFormat.write(it, classic, puzzles) }.toByteArray(),
             ),
         ).use { it.copyTo(raw) }
-        assertEquals(PuzzleFormat.HEADER_BYTES + puzzles.size * width, raw.size())
+        // One byte more than the header used to be: version 2 writes down how many usage
+        // slots each record has, so adding a technique can never again change the width of
+        // a file that was already written.
+        assertEquals(PuzzleFormat.HEADER_BYTES + 1 + puzzles.size * width, raw.size())
     }
 
     @Test

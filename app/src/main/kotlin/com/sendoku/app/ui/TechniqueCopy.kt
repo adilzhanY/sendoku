@@ -55,11 +55,21 @@ public object TechniqueCopy {
         TechniqueId.ALS_XY_WING -> R.string.technique_als_xy_wing
         TechniqueId.DEATH_BLOSSOM -> R.string.technique_death_blossom
         TechniqueId.FORCING_CHAIN -> R.string.technique_forcing_chain
+        TechniqueId.CAGE_SUM -> R.string.technique_cage_sum
+        TechniqueId.CAGE_SINGLE -> R.string.technique_cage_single
+        TechniqueId.CAGE_LOCKED -> R.string.technique_cage_locked
+        TechniqueId.CAGE_INNIE -> R.string.technique_cage_innie
     }
 
-    /** One line: what kind of thing to go and look for. Shown at the first tap. */
+    /**
+     * One line: what kind of thing to go and look for. Shown at the first tap.
+     *
+     * Null for the cage rules, which have names but no player facing explanation yet: the
+     * words that teach them belong with their lessons rather than ahead of them, and a
+     * screen that would show one asks first rather than inventing a sentence.
+     */
     @StringRes
-    public fun lookFor(id: TechniqueId): Int = when (id) {
+    public fun lookFor(id: TechniqueId): Int? = when (id) {
         TechniqueId.NAKED_SINGLE -> R.string.look_naked_single
         TechniqueId.HIDDEN_SINGLE -> R.string.look_hidden_single
         TechniqueId.LOCKED_CANDIDATES_POINTING -> R.string.look_locked_candidates_pointing
@@ -88,11 +98,12 @@ public object TechniqueCopy {
         TechniqueId.ALS_XY_WING -> R.string.look_als_xy_wing
         TechniqueId.DEATH_BLOSSOM -> R.string.look_death_blossom
         TechniqueId.FORCING_CHAIN -> R.string.look_forcing_chain
+        TechniqueId.CAGE_SUM, TechniqueId.CAGE_SINGLE, TechniqueId.CAGE_LOCKED, TechniqueId.CAGE_INNIE -> null
     }
 
     /** Why it works. Shown at the last tap, once the player has seen the cells. */
     @StringRes
-    public fun because(id: TechniqueId): Int = when (id) {
+    public fun because(id: TechniqueId): Int? = when (id) {
         TechniqueId.NAKED_SINGLE -> R.string.because_naked_single
         TechniqueId.HIDDEN_SINGLE -> R.string.because_hidden_single
         TechniqueId.LOCKED_CANDIDATES_POINTING -> R.string.because_locked_candidates_pointing
@@ -121,6 +132,7 @@ public object TechniqueCopy {
         TechniqueId.ALS_XY_WING -> R.string.because_als_xy_wing
         TechniqueId.DEATH_BLOSSOM -> R.string.because_death_blossom
         TechniqueId.FORCING_CHAIN -> R.string.because_forcing_chain
+        TechniqueId.CAGE_SUM, TechniqueId.CAGE_SINGLE, TechniqueId.CAGE_LOCKED, TechniqueId.CAGE_INNIE -> null
     }
 
     /** The region a hint is about, if it is about one. */

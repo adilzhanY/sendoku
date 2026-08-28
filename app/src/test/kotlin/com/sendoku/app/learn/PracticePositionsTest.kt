@@ -69,7 +69,11 @@ class PracticePositionsTest {
         // you a real board with one on it. Not "and nothing cheaper applies", which is neither
         // achievable on a digits only board nor desirable, since finding the X-Wing on a grid
         // that also has a single in it is the actual skill.
-        val missing = TechniqueId.entries.filter { PracticePositions.find(it, puzzles(3000), dims) == null }
+        // Cage rules excluded: they cannot appear on a board without cages, and the
+        // batch this searches is an ordinary one.
+        val missing = TechniqueId.entries
+            .filterNot { it.isCage }
+            .filter { PracticePositions.find(it, puzzles(3000), dims) == null }
         assertTrue("no practice position exists for: $missing", missing.isEmpty())
     }
 

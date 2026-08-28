@@ -76,7 +76,9 @@ class TechniqueCoverageTest {
 
     @Test
     fun `every technique has a position of its own`() {
-        assertEquals(TechniqueId.entries.toSet(), TechniquePositions.byTechnique.keys)
+        // The cage rules have their own positions, in the Killer tests, because they cannot
+        // be shown on a board without cages.
+        assertEquals(TechniqueId.entries.filterNot { it.isCage }.toSet(), TechniquePositions.byTechnique.keys)
     }
 
     @Test
@@ -105,7 +107,7 @@ class TechniqueCoverageTest {
 
     @Test
     fun `two thirds of the ladder is tested in complete isolation`() {
-        val isolated = TechniqueId.entries.count { it !in expectedOverlap }
+        val isolated = TechniqueId.entries.filterNot { it.isCage }.count { it !in expectedOverlap }
         assertTrue(isolated >= 16, "only $isolated techniques have a position all to themselves")
     }
 

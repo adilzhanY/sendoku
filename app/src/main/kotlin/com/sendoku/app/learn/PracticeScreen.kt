@@ -209,7 +209,7 @@ private fun Prompt(exercise: Exercise, picked: Set<Int>, wrong: Int?, solved: Bo
         picked.isNotEmpty() -> stringResource(R.string.practice_keep_going)
 
         else -> stringResource(R.string.practice_find, name) + " " + stringResource(
-            TechniqueCopy.lookFor(exercise.technique),
+            TechniqueCopy.lookFor(exercise.technique) ?: TechniqueCopy.nameOf(exercise.technique),
         )
     }
     Text(

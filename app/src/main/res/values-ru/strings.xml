@@ -375,6 +375,10 @@
     <string name="technique_als_xy_wing">ALS XY-Wing</string>
     <string name="technique_death_blossom">Death blossom</string>
     <string name="technique_forcing_chain">Forcing chain</string>
+    <string name="technique_cage_sum">Сумма клетки</string>
+    <string name="technique_cage_single">Единственное в клетке</string>
+    <string name="technique_cage_locked">Замкнутая клетка</string>
+    <string name="technique_cage_innie">Входы и выходы</string>
     <string name="daily_title">Ежедневная</string>
     <string name="daily_no_streak">Серии пока нет. Решите сегодняшнюю головоломку, чтобы начать.</string>
     <string name="daily_previous_month">Раньше</string>

@@ -367,6 +367,10 @@
     <string name="technique_als_xy_wing">ALS-XYウィング</string>
     <string name="technique_death_blossom">デス・ブロッサム</string>
     <string name="technique_forcing_chain">仮定法</string>
+    <string name="technique_cage_sum">ケージの合計</string>
+    <string name="technique_cage_single">ケージ内の唯一</string>
+    <string name="technique_cage_locked">閉じたケージ</string>
+    <string name="technique_cage_innie">インとアウト</string>
     <string name="daily_title">デイリー</string>
     <string name="daily_no_streak">まだ連続記録はありません。今日の問題を解くと始まります。</string>
     <string name="daily_previous_month">前の月</string>

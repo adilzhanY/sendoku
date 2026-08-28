@@ -44,6 +44,31 @@ public enum class TechniqueId(public val displayName: String, public val cost: D
     ALS_XY_WING("ALS XY-Wing", 8.4),
     DEATH_BLOSSOM("Death blossom", 8.8),
     FORCING_CHAIN("Forcing chain", 9.0),
+
+    /*
+     * The cage rules, for Killer. They sit on the same ladder as everything else, because a
+     * Killer puzzle has to be rated in the same words as an ordinary one or the levels stop
+     * meaning anything: an Expert is an Expert whether it has cages in it or not.
+     *
+     * The costs are set against the ordinary rules they most resemble. Reading a cage sum is
+     * about as hard as spotting a naked single once you know the trick, and innies and outies
+     * are arithmetic across a whole house, which is the first thing in Killer that feels like
+     * work.
+     */
+    CAGE_SUM("Cage sum", 1.2),
+    CAGE_SINGLE("Cage single", 1.8),
+    CAGE_LOCKED("Locked cage", 2.7),
+    CAGE_INNIE("Innies and outies", 3.5),
+    ;
+
+    /**
+     * Whether this rule is about cages rather than about the grid.
+     *
+     * A cage rule can never fire on an ordinary sudoku, so it is not on the classic ladder
+     * and the classic solver never sees it. Both ladders are sorted by the same costs, which
+     * is what lets a Killer be called Hard for the same reason an ordinary puzzle is.
+     */
+    public val isCage: Boolean get() = name.startsWith("CAGE_")
 }
 
 /** One digit in one cell. The cell is a row-major index into the grid. */

@@ -44,9 +44,12 @@ class HintCopyTest {
     fun everyTechniqueSaysWhatToLookForAndWhyItWorks() {
         for (language in listOf("en", "ru")) {
             val resources = context(language)
-            for (id in TechniqueId.entries) {
-                val look = resources.getString(TechniqueCopy.lookFor(id))
-                val because = resources.getString(TechniqueCopy.because(id))
+            // Every rule a player can meet. The cage rules are named and have an engine
+            // behind them; their explanations are written with their lessons, and until then
+            // they are honestly absent rather than filled with something invented.
+            for (id in TechniqueId.entries.filterNot { it.isCage }) {
+                val look = resources.getString(checkNotNull(TechniqueCopy.lookFor(id)))
+                val because = resources.getString(checkNotNull(TechniqueCopy.because(id)))
                 assertTrue("$id does not say what to look for in $language", look.isNotBlank())
                 assertTrue("$id does not say why it works in $language", because.isNotBlank())
                 assertTrue(

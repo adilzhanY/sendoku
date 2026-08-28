@@ -365,6 +365,10 @@
     <string name="technique_als_xy_wing">ALS XY-Wing</string>
     <string name="technique_death_blossom">Death blossom</string>
     <string name="technique_forcing_chain">Cadena forzada</string>
+    <string name="technique_cage_sum">Suma de la jaula</string>
+    <string name="technique_cage_single">Único en la jaula</string>
+    <string name="technique_cage_locked">Jaula encerrada</string>
+    <string name="technique_cage_innie">Entrantes y salientes</string>
     <string name="daily_title">Diario</string>
     <string name="daily_no_streak">Todavía no hay racha. Resuelve el sudoku de hoy para empezar una.</string>
     <string name="daily_previous_month">Antes</string>

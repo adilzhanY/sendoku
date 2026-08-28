@@ -42,7 +42,10 @@ public fun GlossaryScreen(
 ) {
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
-    val ladder = TechniqueId.entries.sortedBy { it.cost }
+    // Only the rules that can be explained, which is every rule an ordinary sudoku can
+    // need. The cage rules have names and an engine behind them, and no lesson yet, so they
+    // stay out of the glossary until they have one rather than appearing as a bare heading.
+    val ladder = TechniqueId.entries.filter { TechniqueCopy.lookFor(it) != null }.sortedBy { it.cost }
 
     Column(modifier = modifier.fillMaxSize().background(colors.background)) {
         Row(
@@ -111,16 +114,12 @@ public fun GlossaryScreen(
                             .testTag("glossary:play:${'$'}{technique.name}")
                             .padding(vertical = dimens.spaceXs),
                     )
-                    Text(
-                        text = stringResource(TechniqueCopy.lookFor(technique)),
-                        style = Sendoku.type.body,
-                        color = colors.given,
-                    )
-                    Text(
-                        text = stringResource(TechniqueCopy.because(technique)),
-                        style = Sendoku.type.body,
-                        color = colors.muted,
-                    )
+                    TechniqueCopy.lookFor(technique)?.let {
+                        Text(text = stringResource(it), style = Sendoku.type.body, color = colors.given)
+                    }
+                    TechniqueCopy.because(technique)?.let {
+                        Text(text = stringResource(it), style = Sendoku.type.body, color = colors.muted)
+                    }
                 }
             }
         }

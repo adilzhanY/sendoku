@@ -20,8 +20,11 @@ class TechniqueSolverTest {
 
     @Test
     fun `the ladder holds every technique exactly once`() {
-        assertEquals(TechniqueId.entries.size, Techniques.ladder.size)
-        assertEquals(TechniqueId.entries.toSet(), Techniques.ladder.map { it.id }.toSet())
+        // Every rule except the cage ones, which can never fire on an ordinary sudoku and
+        // live on the Killer ladder instead.
+        val classic = TechniqueId.entries.filterNot { it.isCage }
+        assertEquals(classic.size, Techniques.ladder.size)
+        assertEquals(classic.toSet(), Techniques.ladder.map { it.id }.toSet())
     }
 
     @Test
@@ -29,12 +32,12 @@ class TechniqueSolverTest {
         val costs = Techniques.ladder.map { it.id.cost }
         assertEquals(costs.sorted(), costs)
         assertEquals(TechniqueId.NAKED_SINGLE, Techniques.ladder.first().id)
-        assertEquals(TechniqueId.entries.maxOf { it.cost }, Techniques.ladder.last().id.cost)
+        assertEquals(TechniqueId.entries.filterNot { it.isCage }.maxOf { it.cost }, Techniques.ladder.last().id.cost)
     }
 
     @Test
     fun `every technique can be looked up by id`() {
-        for (id in TechniqueId.entries) {
+        for (id in TechniqueId.entries.filterNot { it.isCage }) {
             assertEquals(id, assertNotNull(Techniques.byId(id)).id)
         }
     }
@@ -139,7 +142,7 @@ class TechniqueSolverTest {
 
     @Test
     fun `repetition never pushes a puzzle into the next grade`() {
-        for (id in TechniqueId.entries) {
+        for (id in TechniqueId.entries.filterNot { it.isCage }) {
             val once = Grade.of(TechniqueSolver.ratingOf(listOf(step(id))))
             val many = Grade.of(TechniqueSolver.ratingOf(List(50) { step(id) }))
             assertEquals(once, many, "${id.displayName} changes grade when repeated")

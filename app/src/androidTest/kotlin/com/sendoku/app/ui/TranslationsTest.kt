@@ -96,15 +96,15 @@ class TranslationsTest {
         for (language in languages) {
             val resources = context(language)
             for (id in TechniqueId.entries) {
+                // Every rule has a name in every language, including the cage rules, which
+                // the engine can already fire even though no screen can reach them yet.
                 assertTrue("$id has no name in $language", resources.getString(TechniqueCopy.nameOf(id)).isNotBlank())
-                assertTrue(
-                    "$id has no lookFor in $language",
-                    resources.getString(TechniqueCopy.lookFor(id)).isNotBlank(),
-                )
-                assertTrue(
-                    "$id has no because in $language",
-                    resources.getString(TechniqueCopy.because(id)).isNotBlank(),
-                )
+                val look = TechniqueCopy.lookFor(id)
+                val because = TechniqueCopy.because(id)
+                assertEquals("$id explains half of itself", look == null, because == null)
+                if (look == null) continue
+                assertTrue("$id has no lookFor in $language", resources.getString(look).isNotBlank())
+                assertTrue("$id has no because in $language", resources.getString(because!!).isNotBlank())
             }
         }
     }

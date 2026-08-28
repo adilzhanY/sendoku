@@ -369,6 +369,10 @@
     <string name="technique_als_xy_wing">ALS XY-Wing</string>
     <string name="technique_death_blossom">Death blossom</string>
     <string name="technique_forcing_chain">Chaîne forcée</string>
+    <string name="technique_cage_sum">Somme de la cage</string>
+    <string name="technique_cage_single">Unique dans la cage</string>
+    <string name="technique_cage_locked">Cage enfermée</string>
+    <string name="technique_cage_innie">Entrants et sortants</string>
     <string name="daily_title">Quotidien</string>
     <string name="daily_no_streak">Pas encore de série. Résolvez la grille du jour pour en commencer une.</string>
     <string name="daily_previous_month">Avant</string>

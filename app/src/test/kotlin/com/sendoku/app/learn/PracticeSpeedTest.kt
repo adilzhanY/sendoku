@@ -26,7 +26,9 @@ class PracticeSpeedTest {
     @Test
     fun `every technique can be found, and how long it takes is printed`() {
         val slow = mutableListOf<String>()
-        for (technique in TechniqueId.entries) {
+        // The cage rules are practised on a Killer board, which is a later release. This
+        // is about the rules an ordinary puzzle can need.
+        for (technique in TechniqueId.entries.filterNot { it.isCage }) {
             var found: Exercise? = null
             val took = measureTimeMillis { found = PracticePositions.find(technique, puzzles(SEARCH), dims) }
             val state = if (found == null) "NOT FOUND" else "ok"

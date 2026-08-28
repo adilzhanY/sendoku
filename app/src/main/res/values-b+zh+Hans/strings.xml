@@ -363,6 +363,10 @@
     <string name="technique_als_xy_wing">待定数组XY翼</string>
     <string name="technique_death_blossom">死亡绽放</string>
     <string name="technique_forcing_chain">强制链</string>
+    <string name="technique_cage_sum">笼和</string>
+    <string name="technique_cage_single">笼内唯一</string>
+    <string name="technique_cage_locked">锁定笼</string>
+    <string name="technique_cage_innie">进出法</string>
     <string name="daily_title">每日一题</string>
     <string name="daily_no_streak">还没有连续记录。做完今天的题就开始了。</string>
     <string name="daily_previous_month">上个月</string>

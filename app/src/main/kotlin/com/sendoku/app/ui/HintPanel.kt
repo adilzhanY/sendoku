@@ -270,8 +270,10 @@ private fun StepCard(hint: Hint.Step, onGlossary: () -> Unit) {
             modifier = Modifier.testTag("hint:region"),
         )
 
+        // The name is the fallback rather than a blank: a rule with no explanation written
+        // yet can still be named, and being told which rule it is is most of a hint.
         HintLevel.NAME -> Text(
-            text = stringResource(TechniqueCopy.lookFor(technique)),
+            text = stringResource(TechniqueCopy.lookFor(technique) ?: TechniqueCopy.nameOf(technique)),
             style = Sendoku.type.body,
             color = colors.given,
         )
@@ -288,7 +290,7 @@ private fun StepCard(hint: Hint.Step, onGlossary: () -> Unit) {
 
         HintLevel.FULL -> {
             Text(
-                text = stringResource(TechniqueCopy.because(technique)),
+                text = stringResource(TechniqueCopy.because(technique) ?: TechniqueCopy.nameOf(technique)),
                 style = Sendoku.type.body,
                 color = colors.given,
             )

@@ -44,8 +44,14 @@ public object PuzzleFormat {
 
     private val MAGIC = byteArrayOf('S'.code.toByte(), 'D'.code.toByte(), 'K'.code.toByte(), 'B'.code.toByte())
 
-    /** Bumped whenever a record changes shape, so an old file is refused rather than misread. */
-    public const val VERSION: Int = 1
+    /**
+     * Bumped whenever a record changes shape, so an old file is refused rather than misread.
+     *
+     * Version 2 writes the number of usage slots into the header. Version 1 did not, and is
+     * still read, because the batch that ships in the app is a version 1 file and reordering
+     * or rewriting it would invalidate every share code anybody has ever sent.
+     */
+    public const val VERSION: Int = 2
 
     public const val HEADER_BYTES: Int = 11
 
@@ -55,9 +61,28 @@ public object PuzzleFormat {
     /** Two bytes, which is what the rating occupies between the mask and the technique. */
     private const val RATING_BYTES = 2
 
-    /** Bytes one puzzle occupies once the file is decompressed. */
-    public fun recordBytes(dims: Dimensions): Int =
-        solutionBytes(dims) + maskBytes(dims) + 2 + 1 + 1 + TechniqueId.entries.size
+    /**
+     * How many techniques a batch records usage for.
+     *
+     * A batch written today has one byte per technique the engine knows. That number used to
+     * be read from [TechniqueId] at the moment of reading, which was a trap with a long fuse:
+     * adding a rule to the engine changed the record width, and every batch already written,
+     * including the one shipped in the app and frozen against the share codes, was silently
+     * misread from the second record onwards. Adding the Killer cage rules is what sprang it.
+     *
+     * So the count belongs to the file. Version 1 files were all written when the engine had
+     * twenty eight techniques and do not carry it, which is what this is for. The number is
+     * measurable rather than guessed: the shipped batch is 336,011 bytes for 4,000 puzzles,
+     * which is 84 bytes a record, which is 56 bytes of puzzle and 28 of usage.
+     */
+    private const val LEGACY_USAGE_SLOTS = 28
+
+    /** The first version that writes the usage slot count into its header. */
+    private const val SLOTTED_VERSION = 2
+
+    /** Bytes one puzzle occupies once the file is decompressed, for a batch with [slots]. */
+    public fun recordBytes(dims: Dimensions, slots: Int = TechniqueId.entries.size): Int =
+        solutionBytes(dims) + maskBytes(dims) + 2 + 1 + 1 + slots
 
     private fun solutionBytes(dims: Dimensions) = (dims.cellCount + 1) / 2
 
@@ -72,6 +97,7 @@ public object PuzzleFormat {
             out.writeByte(dims.boxWidth)
             out.writeByte(dims.boxHeight)
             out.writeInt(puzzles.size)
+            out.writeByte(TechniqueId.entries.size)
             for (rated in puzzles) writeRecord(out, dims, rated)
         }
     }
@@ -91,8 +117,14 @@ public object PuzzleFormat {
      * of three thousand. Records are a fixed width, so puzzle `n` starts at a known offset
      * and nothing before it has to be looked at.
      */
-    internal class Body(val dims: Dimensions, val count: Int, private val bytes: ByteArray) {
-        private val width = recordBytes(dims)
+    internal class Body(
+        val dims: Dimensions,
+        val count: Int,
+        private val bytes: ByteArray,
+        /** How many techniques this file records usage for, which is a fact about the file. */
+        private val slots: Int,
+    ) {
+        private val width = recordBytes(dims, slots)
         private val solutionBytes = solutionBytes(dims)
         private val maskBytes = maskBytes(dims)
 
@@ -146,9 +178,13 @@ public object PuzzleFormat {
             val hardest = if (hardestOrdinal == 0) null else TechniqueId.entries[hardestOrdinal - 1]
             val symmetry = Symmetry.entries[bytes[at++].toInt() and 0xFF]
 
+            // One byte per slot the file has, not per technique this build knows. A file
+            // written before a rule existed has nothing to say about it, and a file written
+            // after this build was compiled has slots it cannot name, which are skipped.
             val usage = LinkedHashMap<TechniqueId, Int>()
-            for (id in TechniqueId.entries) {
+            for (slot in 0 until slots) {
                 val used = bytes[at++].toInt() and 0xFF
+                val id = TechniqueId.entries.getOrNull(slot) ?: continue
                 if (used > 0) usage[id] = used
             }
 
@@ -171,7 +207,7 @@ public object PuzzleFormat {
                     throw IOException("not a Sendoku batch")
                 }
                 val version = raw[4].toInt() and 0xFF
-                if (version != VERSION) {
+                if (version > VERSION) {
                     throw IOException("batch is version $version, this build reads $VERSION")
                 }
                 val dims = Dimensions(raw[5].toInt() and 0xFF, raw[6].toInt() and 0xFF)
@@ -181,11 +217,17 @@ public object PuzzleFormat {
                     (raw[10].toInt() and 0xFF)
                 if (count < 0) throw IOException("batch claims $count puzzles")
 
-                val expected = HEADER_BYTES.toLong() + count.toLong() * recordBytes(dims)
+                // Version 1 carried no slot count and was always written by an engine with
+                // twenty nine techniques. Version 2 says so in the header, which is what
+                // stops the next new rule from misreading every batch already written.
+                val header = if (version >= SLOTTED_VERSION) HEADER_BYTES + 1 else HEADER_BYTES
+                val slots = if (version >= SLOTTED_VERSION) raw[HEADER_BYTES].toInt() and 0xFF else LEGACY_USAGE_SLOTS
+
+                val expected = header.toLong() + count.toLong() * recordBytes(dims, slots)
                 if (raw.size.toLong() != expected) {
                     throw IOException("batch is ${raw.size} bytes, expected $expected for $count puzzles")
                 }
-                return Body(dims, count, raw.copyOfRange(HEADER_BYTES, raw.size))
+                return Body(dims, count, raw.copyOfRange(header, raw.size), slots)
             }
         }
     }

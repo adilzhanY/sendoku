@@ -370,6 +370,10 @@
     <string name="technique_als_xy_wing">ALS XY-Wing</string>
     <string name="technique_death_blossom">Death blossom</string>
     <string name="technique_forcing_chain">Cadeia forçada</string>
+    <string name="technique_cage_sum">Soma da gaiola</string>
+    <string name="technique_cage_single">Único na gaiola</string>
+    <string name="technique_cage_locked">Gaiola trancada</string>
+    <string name="technique_cage_innie">Entradas e saídas</string>
     <string name="daily_title">Diário</string>
     <string name="daily_no_streak">Ainda sem sequência. Resolva o jogo de hoje para começar uma.</string>
     <string name="daily_previous_month">Antes</string>

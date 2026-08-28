@@ -387,6 +387,10 @@
     <string name="technique_als_xy_wing">ALS-XY-Wing</string>
     <string name="technique_death_blossom">Death blossom</string>
     <string name="technique_forcing_chain">سلسلة إجبار</string>
+    <string name="technique_cage_sum">مجموع القفص</string>
+    <string name="technique_cage_single">الوحيد في القفص</string>
+    <string name="technique_cage_locked">قفص مغلق</string>
+    <string name="technique_cage_innie">الداخل والخارج</string>
     <string name="daily_title">لغز اليوم</string>
     <string name="daily_no_streak">لا متتالية بعد. حل لغز اليوم لتبدأ واحدة.</string>
     <string name="daily_previous_month">السابق</string>

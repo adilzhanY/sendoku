@@ -365,6 +365,10 @@
     <string name="technique_als_xy_wing">ALS XY-Wing</string>
     <string name="technique_death_blossom">Death blossom</string>
     <string name="technique_forcing_chain">Catena forzata</string>
+    <string name="technique_cage_sum">Somma della gabbia</string>
+    <string name="technique_cage_single">Unico nella gabbia</string>
+    <string name="technique_cage_locked">Gabbia bloccata</string>
+    <string name="technique_cage_innie">Interni ed esterni</string>
     <string name="daily_title">Giornaliero</string>
     <string name="daily_no_streak">Ancora nessuna serie. Risolvi lo schema di oggi per iniziarne una.</string>
     <string name="daily_previous_month">Prima</string>

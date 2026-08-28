@@ -360,6 +360,10 @@
     <string name="technique_als_xy_wing">ALS-XY-윙</string>
     <string name="technique_death_blossom">데스 블로섬</string>
     <string name="technique_forcing_chain">포싱 체인</string>
+    <string name="technique_cage_sum">케이지 합</string>
+    <string name="technique_cage_single">케이지 유일</string>
+    <string name="technique_cage_locked">잠긴 케이지</string>
+    <string name="technique_cage_innie">이니와 아우티</string>
     <string name="daily_title">오늘의 문제</string>
     <string name="daily_no_streak">아직 연속 기록이 없어요. 오늘의 문제를 풀면 시작돼요.</string>
     <string name="daily_previous_month">이전 달</string>

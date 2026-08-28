@@ -347,6 +347,10 @@
     <string name="technique_als_xy_wing">ALS XY-Wing</string>
     <string name="technique_death_blossom">Death Blossom</string>
     <string name="technique_forcing_chain">Zwangskette</string>
+    <string name="technique_cage_sum">Käfigsumme</string>
+    <string name="technique_cage_single">Käfig-Single</string>
+    <string name="technique_cage_locked">Eingeschlossener Käfig</string>
+    <string name="technique_cage_innie">Innies und Outies</string>
 
     <string name="daily_title">Täglich</string>
     <string name="daily_no_streak">Noch keine Serie. Lösen Sie das heutige Rätsel, um eine zu beginnen.</string>
