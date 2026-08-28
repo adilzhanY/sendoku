@@ -61,6 +61,10 @@ public fun AboutScreen(version: String, onBack: () -> Unit, onLicences: () -> Un
         Promise(stringResource(R.string.about_no_purchases), stringResource(R.string.about_no_purchases_detail))
         Promise(stringResource(R.string.about_offline), stringResource(R.string.about_offline_detail))
         Promise(stringResource(R.string.about_hints), stringResource(R.string.about_hints_detail))
+        // Said here because a share code looks like the sort of feature that comes with an
+        // account behind it, and this one does not. Better to say what it is not than to
+        // leave somebody waiting for a leaderboard that is never coming.
+        Promise(stringResource(R.string.about_sharing), stringResource(R.string.about_sharing_detail))
 
         Text(
             text = stringResource(R.string.about_rating),

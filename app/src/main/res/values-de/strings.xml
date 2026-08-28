@@ -233,6 +233,8 @@
     <string name="about_offline_detail">Der ganze Stapel steckt in der App.</string>
     <string name="about_hints">Tipps, die etwas beibringen</string>
     <string name="about_hints_detail">Ein Tipp nennt die Technik und erklärt den Gedanken. Er setzt nie einfach eine Ziffer ein, und er wird nie verkauft: drei gehören zu jedem Rätsel, und das Limit lässt sich in den Einstellungen abschalten.</string>
+    <string name="about_sharing">Teilen</string>
+    <string name="about_sharing_detail">Ein Rätselcode ist das Rätsel selbst, kein Konto. Es gibt niemanden, bei dem man sich anmeldet, keine Bestenliste, und die App kann eine genannte Zeit nicht prüfen: zwei Menschen spielen dasselbe Gitter und vergleichen, was es sie gekostet hat.</string>
     <string name="about_rating">Die Schwierigkeit richtet sich nach der schwersten Technik, die ein Rätsel wirklich braucht, ermittelt, indem es so gelöst wird, wie ein Mensch es täte. Deshalb bedeutet ein Sehr schwer hier dasselbe wie das letzte Sehr schwer.</string>
     <string name="about_licence">Sendoku ist freie Software unter der GNU General Public License Version 3.</string>
     <string name="about_privacy">Die Datenschutzerklärung sagt dasselbe in der Form, die der Store verlangt, unter adilzhany.github.io/sendoku/privacy</string>

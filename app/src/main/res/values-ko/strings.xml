@@ -247,6 +247,8 @@
     <string name="about_offline_detail">문제 전체가 앱 안에 들어 있어요.</string>
     <string name="about_hints">가르쳐 주는 힌트</string>
     <string name="about_hints_detail">힌트는 기법의 이름을 말하고 그 논리를 설명해요. 숫자만 채워 넣고 끝내지 않고, 팔지도 않아요. 문제마다 세 번씩 들어 있고, 제한은 설정에서 끌 수 있어요.</string>
+    <string name="about_sharing">공유</string>
+    <string name="about_sharing_detail">문제 코드는 계정이 아니라 문제 그 자체입니다. 로그인할 곳도, 순위표도 없고, 누군가가 말한 기록을 앱이 확인할 방법도 없습니다. 같은 판을 두 사람이 풀고, 각자 무엇을 치렀는지 비교할 뿐입니다.</string>
     <string name="about_rating">난이도는 그 문제가 정말로 필요로 하는 가장 어려운 기법으로 정해요. 사람이 푸는 방식 그대로 풀어 보고 계산한 값이에요. 그래서 여기의 「매우 어려움」은 지난번 「매우 어려움」과 같은 무게예요.</string>
     <string name="about_licence">Sendoku는 GNU 일반 공중 사용 허가서 버전 3에 따른 자유 소프트웨어예요.</string>
     <string name="about_privacy">개인정보처리방침은 스토어가 요구하는 형식으로 같은 내용을 적어 두었어요. adilzhany.github.io/sendoku/privacy</string>

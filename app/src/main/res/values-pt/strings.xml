@@ -256,6 +256,8 @@
     <string name="about_offline_detail">O lote inteiro viaja dentro do aplicativo.</string>
     <string name="about_hints">Dicas que ensinam</string>
     <string name="about_hints_detail">Uma dica nomeia a técnica e explica o raciocínio. Ela nunca se limita a preencher um número, e nunca é vendida: três vêm com cada jogo, e o limite se desliga nas configurações.</string>
+    <string name="about_sharing">Compartilhar</string>
+    <string name="about_sharing_detail">Um código é o próprio puzzle, não uma conta. Não há onde entrar, não há classificação e o app não pode conferir um tempo que alguém diz: duas pessoas jogam a mesma grade e comparam o que ela custou.</string>
     <string name="about_rating">A dificuldade é medida pela técnica mais difícil que um jogo realmente exige, calculada resolvendo o jogo como uma pessoa resolveria. Por isso um Muito difícil aqui significa o mesmo que o Muito difícil anterior.</string>
     <string name="about_licence">O Sendoku é software livre sob a Licença Pública Geral GNU versão 3.</string>
     <string name="about_privacy">A política de privacidade diz a mesma coisa no formato que a loja pede, em adilzhany.github.io/sendoku/privacy</string>

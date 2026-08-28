@@ -251,6 +251,8 @@
     <string name="about_offline_detail">El lote entero viaja dentro de la app.</string>
     <string name="about_hints">Pistas que enseñan</string>
     <string name="about_hints_detail">Una pista nombra la técnica y explica el razonamiento. Nunca se limita a rellenar una cifra, y nunca se vende: vienen tres con cada sudoku, y puedes quitar el límite en los ajustes.</string>
+    <string name="about_sharing">Compartir</string>
+    <string name="about_sharing_detail">Un código de puzle es el puzle en sí, no una cuenta. No hay dónde iniciar sesión, no hay clasificación y la app no puede comprobar un tiempo que alguien te diga: dos personas juegan la misma cuadrícula y comparan lo que les costó.</string>
     <string name="about_rating">La dificultad se mide por la técnica más difícil que un sudoku necesita de verdad, calculada resolviéndolo como lo haría una persona. Por eso un Muy difícil de aquí significa lo mismo que el anterior Muy difícil.</string>
     <string name="about_licence">Sendoku es software libre bajo la Licencia Pública General de GNU, versión 3.</string>
     <string name="about_privacy">La política de privacidad dice lo mismo en la forma que pide la tienda, en adilzhany.github.io/sendoku/privacy</string>

@@ -250,6 +250,8 @@
     <string name="about_offline_detail">整批题目都装在应用里。</string>
     <string name="about_hints">会教你的提示</string>
     <string name="about_hints_detail">提示会说出技巧的名字，并讲清楚推理。它不会只把数字填上了事，也从不拿来卖钱：每道题送三次，上限可以在设置里关掉。</string>
+    <string name="about_sharing">分享</string>
+    <string name="about_sharing_detail">题目代码就是题目本身，不是账号。没有地方登录，没有排行榜，应用也无法核实别人说的时间：两个人玩同一个盘面，比较各自付出了什么，仅此而已。</string>
     <string name="about_rating">难度是按一道题真正需要用到的最难技巧来定的，办法是像人一样把它解一遍。所以这里的「非常难」和你上一次做的「非常难」是同一个分量。</string>
     <string name="about_licence">Sendoku 是遵循 GNU 通用公共许可证第 3 版的自由软件。</string>
     <string name="about_privacy">隐私政策用商店要求的格式写了同样的内容，见 adilzhany.github.io/sendoku/privacy</string>

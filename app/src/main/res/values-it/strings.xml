@@ -251,6 +251,8 @@
     <string name="about_offline_detail">L\'intero lotto viaggia dentro l\'app.</string>
     <string name="about_hints">Aiuti che insegnano</string>
     <string name="about_hints_detail">Un aiuto nomina la tecnica e spiega il ragionamento. Non si limita mai a riempire una cifra, e non è mai in vendita: tre arrivano con ogni schema, e il limite si può togliere nelle impostazioni.</string>
+    <string name="about_sharing">Condividere</string>
+    <string name="about_sharing_detail">Un codice è lo schema stesso, non un account. Non c\'è dove accedere, non c\'è una classifica e l\'app non può verificare un tempo che qualcuno ti dice: due persone giocano la stessa griglia e confrontano quanto è costata.</string>
     <string name="about_rating">La difficoltà è misurata dalla tecnica più difficile che uno schema richiede davvero, calcolata risolvendolo come farebbe una persona. Per questo un Molto difficile qui significa la stessa cosa del Molto difficile precedente.</string>
     <string name="about_licence">Sendoku è software libero sotto la GNU General Public License versione 3.</string>
     <string name="about_privacy">L\'informativa sulla privacy dice la stessa cosa nella forma che chiede il negozio, su adilzhany.github.io/sendoku/privacy</string>

@@ -265,6 +265,8 @@
     <string name="about_offline_detail">The whole batch ships inside the app.</string>
     <string name="about_hints">Hints that teach</string>
     <string name="about_hints_detail">A hint names the technique and explains the reasoning. It never just fills in a digit, and it is never sold: three come with every puzzle, and you can turn the limit off in settings.</string>
+    <string name="about_sharing">Sharing</string>
+    <string name="about_sharing_detail">A puzzle code is the puzzle itself, not an account. There is nobody to sign in as, no leaderboard, and no way for the app to check a time somebody tells you: two people play the same grid and compare what it cost them, and that is all it is.</string>
     <string name="about_rating">Difficulty is rated by the hardest technique a puzzle actually needs, worked out by solving it the way a person would. That is why a Severe here means the same thing as the last Severe.</string>
     <string name="about_licence">Sendoku is free software under the GNU General Public License version 3.</string>
     <string name="about_privacy">The privacy policy says the same thing in the form the store asks for, at adilzhany.github.io/sendoku/privacy</string>

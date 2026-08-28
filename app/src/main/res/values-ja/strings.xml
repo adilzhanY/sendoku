@@ -254,6 +254,8 @@
     <string name="about_offline_detail">問題はまとめてアプリの中に入っています。</string>
     <string name="about_hints">教えてくれるヒント</string>
     <string name="about_hints_detail">ヒントはテクニックの名前を挙げ、理屈を説明します。数字を埋めるだけで終わることはなく、売り物にもしません。どの問題にも3回ついていて、上限は設定で切れます。</string>
+    <string name="about_sharing">共有について</string>
+    <string name="about_sharing_detail">パズルのコードはパズルそのものであり、アカウントではありません。ログインする場所もランキングもなく、誰かが言った時間をアプリが確かめることもできません。同じ盤面を二人で解いて、かかったものを比べる。それだけです。</string>
     <string name="about_rating">難易度は、その問題を人と同じ手順で解いたときに本当に必要になった、いちばん難しいテクニックで決めています。だからここの「とてもむずかしい」は、前に解いた「とてもむずかしい」と同じ重さです。</string>
     <string name="about_licence">SendokuはGNU General Public License version 3のもとで公開されている自由ソフトウェアです。</string>
     <string name="about_privacy">プライバシーポリシーは、ストアが求める形で同じことを書いています。adilzhany.github.io/sendoku/privacy</string>

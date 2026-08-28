@@ -15,6 +15,7 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -23,11 +24,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.sendoku.app.R
 import com.sendoku.app.theme.Sendoku
@@ -72,37 +75,43 @@ internal fun CodeBox(fault: CodeFault?, miss: CodeMiss?, onCode: (String) -> Uni
             horizontalArrangement = Arrangement.spacedBy(dimens.padGap),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Box(
-                modifier = Modifier
-                    .weight(1f)
-                    .heightIn(min = dimens.minTouchTarget)
-                    .clip(RoundedCornerShape(dimens.radiusM))
-                    .background(colors.surface)
-                    .padding(horizontal = dimens.spaceM, vertical = dimens.spaceS),
-                contentAlignment = Alignment.CenterStart,
-            ) {
-                BasicTextField(
-                    value = text,
-                    onValueChange = { text = it.take(MAX_CODE) },
-                    singleLine = true,
-                    textStyle = Sendoku.type.timer.copy(color = colors.given),
-                    cursorBrush = SolidColor(colors.accent),
-                    keyboardOptions = KeyboardOptions(
-                        // Codes are letters and digits and nothing else, and they are read
-                        // out loud in capitals even though the reader does not care.
-                        capitalization = KeyboardCapitalization.Characters,
-                        autoCorrectEnabled = false,
-                        imeAction = ImeAction.Go,
-                    ),
-                    keyboardActions = KeyboardActions(onGo = { send() }),
-                    modifier = Modifier.fillMaxWidth().testTag("home:code:field"),
-                )
-                if (text.isEmpty()) {
-                    Text(
-                        text = stringResource(R.string.code_hint),
-                        style = Sendoku.type.body,
-                        color = colors.muted,
+            // The field runs left to right in every language, because a code is Latin
+            // letters and digits and nothing else. In Arabic the chrome around it mirrors,
+            // as it should, and the code inside it does not, because a code read backwards
+            // is a different code.
+            CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .heightIn(min = dimens.minTouchTarget)
+                        .clip(RoundedCornerShape(dimens.radiusM))
+                        .background(colors.surface)
+                        .padding(horizontal = dimens.spaceM, vertical = dimens.spaceS),
+                    contentAlignment = Alignment.CenterStart,
+                ) {
+                    BasicTextField(
+                        value = text,
+                        onValueChange = { text = it.take(MAX_CODE) },
+                        singleLine = true,
+                        textStyle = Sendoku.type.timer.copy(color = colors.given),
+                        cursorBrush = SolidColor(colors.accent),
+                        keyboardOptions = KeyboardOptions(
+                            // Codes are letters and digits and nothing else, and they are
+                            // read out loud in capitals even though the reader does not care.
+                            capitalization = KeyboardCapitalization.Characters,
+                            autoCorrectEnabled = false,
+                            imeAction = ImeAction.Go,
+                        ),
+                        keyboardActions = KeyboardActions(onGo = { send() }),
+                        modifier = Modifier.fillMaxWidth().testTag("home:code:field"),
                     )
+                    if (text.isEmpty()) {
+                        Text(
+                            text = stringResource(R.string.code_hint),
+                            style = Sendoku.type.body,
+                            color = colors.muted,
+                        )
+                    }
                 }
             }
             Box(

@@ -255,6 +255,8 @@
     <string name="about_offline_detail">Le lot entier voyage dans l\'application.</string>
     <string name="about_hints">Des indices qui enseignent</string>
     <string name="about_hints_detail">Un indice nomme la technique et explique le raisonnement. Il ne se contente jamais de remplir une case, et il n\'est jamais vendu : trois viennent avec chaque grille, et la limite se désactive dans les réglages.</string>
+    <string name="about_sharing">Partage</string>
+    <string name="about_sharing_detail">Un code est la grille elle-même, pas un compte. Il n\'y a nulle part où se connecter, pas de classement, et l\'application ne peut pas vérifier un temps qu\'on vous annonce : deux personnes jouent la même grille et comparent ce qu\'elle leur a coûté.</string>
     <string name="about_rating">La difficulté est mesurée par la technique la plus difficile qu\'une grille demande vraiment, calculée en la résolvant comme le ferait une personne. C\'est pourquoi un Très difficile ici veut dire la même chose que le dernier Très difficile.</string>
     <string name="about_licence">Sendoku est un logiciel libre sous licence GNU General Public License version 3.</string>
     <string name="about_privacy">La politique de confidentialité dit la même chose dans la forme demandée par la boutique, sur adilzhany.github.io/sendoku/privacy</string>

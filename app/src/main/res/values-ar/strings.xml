@@ -273,6 +273,8 @@
     <string name="about_offline_detail">الدفعة كاملة تسافر داخل التطبيق.</string>
     <string name="about_hints">تلميحات تُعلّم</string>
     <string name="about_hints_detail">التلميح يسمي الأسلوب ويشرح الاستنتاج. لا يكتفي أبدًا بملء رقم، ولا يُباع أبدًا: ثلاثة مع كل لغز، والحد يمكن تعطيله من الإعدادات.</string>
+    <string name="about_sharing">المشاركة</string>
+    <string name="about_sharing_detail">رمز اللغز هو اللغز نفسه، وليس حسابًا. لا يوجد مكان لتسجيل الدخول، ولا قائمة متصدرين، ولا يمكن للتطبيق التحقق من وقت يخبرك به أحد: شخصان يلعبان الشبكة نفسها ويقارنان ما كلّفتهما، وهذا كل شيء.</string>
     <string name="about_rating">تُقاس الصعوبة بأصعب أسلوب يحتاجه اللغز فعلًا، محسوبًا بحله كما يحله إنسان. لذلك «صعب جدًا» هنا يعني ما عناه «صعب جدًا» السابق.</string>
     <string name="about_licence">Sendoku برنامج حر بموجب رخصة جنو العمومية العامة، الإصدار الثالث.</string>
     <string name="about_privacy">سياسة الخصوصية تقول الشيء نفسه بالصيغة التي يطلبها المتجر، على adilzhany.github.io/sendoku/privacy</string>

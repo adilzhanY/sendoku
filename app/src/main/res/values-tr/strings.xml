@@ -232,6 +232,8 @@
     <string name="about_offline_detail">Bütün bulmaca destesi uygulamanın içinde.</string>
     <string name="about_hints">Öğreten ipuçları</string>
     <string name="about_hints_detail">Bir ipucu tekniğin adını söyler ve akıl yürütmeyi açıklar. Asla öylece bir rakam doldurmaz ve asla satılmaz: her bulmacayla üç tane gelir, sınırı da ayarlardan kapatabilirsiniz.</string>
+    <string name="about_sharing">Paylaşmak</string>
+    <string name="about_sharing_detail">Bulmaca kodu bir hesap değil, bulmacanın kendisidir. Giriş yapılacak bir yer yok, sıralama yok, ve uygulama söylenen bir süreyi doğrulayamaz: iki kişi aynı ızgarayı oynar ve neye mal olduğunu karşılaştırır.</string>
     <string name="about_rating">Zorluk, bir bulmacanın gerçekten ihtiyaç duyduğu en zor tekniğe göre belirlenir; bu da bulmacayı bir insanın çözeceği gibi çözerek bulunur. Buradaki bir Çok zor, bir önceki Çok zor ile aynı anlama gelsin diye.</string>
     <string name="about_licence">Sendoku, GNU General Public License sürüm 3 altında özgür yazılımdır.</string>
     <string name="about_privacy">Gizlilik politikası aynı şeyi mağazanın istediği biçimde söyler: adilzhany.github.io/sendoku/privacy</string>
