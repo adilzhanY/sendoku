@@ -11,6 +11,7 @@ import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.SQLiteConnection
 import androidx.sqlite.execSQL
+import com.sendoku.app.game.PuzzleOrigin
 import com.sendoku.engine.Grade
 import com.sendoku.engine.technique.TechniqueId
 import kotlinx.coroutines.flow.Flow
@@ -40,6 +41,10 @@ public data class InProgressRow(
     val savedAt: Long,
     /** The day this puzzle belongs to, when it came from the calendar rather than the ladder. */
     val dailyEpochDay: Long? = null,
+    /** Where it came from, or null for a game saved before this column existed. */
+    val origin: String? = null,
+    /** Its place in the shipped batch, or null when it did not come from there. */
+    val catalogIndex: Int? = null,
 ) {
     public companion object {
         public const val ONLY_ROW: Int = 1
@@ -76,6 +81,15 @@ public data class FinishedRow(
      * square they played rather than the square their timezone happens to fall in.
      */
     val dailyEpochDay: Long? = null,
+    /**
+     * Where the puzzle came from, or null for a game finished before this column existed.
+     *
+     * Everything recorded before it was dealt off the ladder or off the calendar, both of
+     * which count, so null reads as a ladder game and no row has to be rewritten.
+     */
+    val origin: String? = null,
+    /** Its place in the shipped batch, or null when it did not come from there. */
+    val catalogIndex: Int? = null,
 )
 
 /**
@@ -226,7 +240,7 @@ public abstract class SendokuDatabase : RoomDatabase() {
     public abstract fun mastery(): TechniqueMasteryDao
 
     public companion object {
-        public const val VERSION: Int = 4
+        public const val VERSION: Int = 5
         public const val NAME: String = "sendoku.db"
 
         /**
@@ -281,7 +295,28 @@ public abstract class SendokuDatabase : RoomDatabase() {
             }
         }
 
-        public val MIGRATIONS: Array<Migration> = arrayOf(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
+        /**
+         * Version 4 to 5: where a puzzle came from, and where in the batch it sits.
+         *
+         * Nullable and with no default, like the two before it. Every game already recorded
+         * was dealt off the ladder or off the calendar, and both of those count towards
+         * opening the next level, which is exactly what a null reads as.
+         */
+        public val MIGRATION_4_5: Migration = object : Migration(4, 5) {
+            override fun migrate(connection: SQLiteConnection) {
+                connection.execSQL("ALTER TABLE finished ADD COLUMN origin TEXT")
+                connection.execSQL("ALTER TABLE in_progress ADD COLUMN origin TEXT")
+                connection.execSQL("ALTER TABLE finished ADD COLUMN catalogIndex INTEGER")
+                connection.execSQL("ALTER TABLE in_progress ADD COLUMN catalogIndex INTEGER")
+            }
+        }
+
+        public val MIGRATIONS: Array<Migration> = arrayOf(
+            MIGRATION_1_2,
+            MIGRATION_2_3,
+            MIGRATION_3_4,
+            MIGRATION_4_5,
+        )
     }
 }
 
@@ -300,6 +335,8 @@ internal fun InProgressRow.toSaved(): SavedGame = SavedGame(
     mistakes = mistakes,
     hintsUsed = hintsUsed,
     dailyEpochDay = dailyEpochDay,
+    origin = PuzzleOrigin.of(origin),
+    catalogIndex = catalogIndex,
 )
 
 internal fun SavedGame.toRow(savedAt: Long): InProgressRow = InProgressRow(
@@ -317,6 +354,8 @@ internal fun SavedGame.toRow(savedAt: Long): InProgressRow = InProgressRow(
     hintsUsed = hintsUsed,
     savedAt = savedAt,
     dailyEpochDay = dailyEpochDay,
+    origin = origin.name,
+    catalogIndex = catalogIndex,
 )
 
 internal fun FinishedRow.toFinished(): FinishedGame = FinishedGame(
@@ -331,6 +370,8 @@ internal fun FinishedRow.toFinished(): FinishedGame = FinishedGame(
     solved = solved,
     finishedAt = finishedAt,
     dailyEpochDay = dailyEpochDay,
+    origin = PuzzleOrigin.of(origin),
+    catalogIndex = catalogIndex,
 )
 
 internal fun FinishedGame.toRow(): FinishedRow = FinishedRow(
@@ -345,4 +386,6 @@ internal fun FinishedGame.toRow(): FinishedRow = FinishedRow(
     solved = solved,
     finishedAt = finishedAt,
     dailyEpochDay = dailyEpochDay,
+    origin = origin.name,
+    catalogIndex = catalogIndex,
 )

@@ -22,6 +22,18 @@
     <string name="home_or_start">或者开始新的一局</string>
     <string name="home_your_level">当前难度</string>
     <string name="home_all_levels">全部难度</string>
+    <string name="code_title">玩别人发给你的题目</string>
+    <string name="code_hint">粘贴代码</string>
+    <string name="code_play">开始</string>
+    <string name="code_unreadable">这看起来不像 Sendoku 的代码。</string>
+    <string name="code_typo">里面有代码中不会出现的字符。请和别人发给你的对一下。</string>
+    <string name="code_cut_short">这个代码不完整。请对方再完整发一次。</string>
+    <string name="code_too_new">这个代码来自更新版本的 Sendoku。</string>
+    <string name="code_missing">代码可以读出来，但这个版本里没有这道题。</string>
+    <string name="code_unplayable">这个盘面无法只靠推理完成，Sendoku 不会假装能讲解它。</string>
+    <string name="code_shared">别人发给你的</string>
+    <string name="code_share">把这道题发给朋友</string>
+    <string name="code_invitation">来试试这道 %1$s 题目。同一个盘面。</string>
 
     <string name="grade_gentle">简单</string>
     <string name="grade_steady">普通</string>

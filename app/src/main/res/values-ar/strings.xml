@@ -25,6 +25,18 @@
     <string name="home_or_start">أو ابدأ لعبة جديدة</string>
     <string name="home_your_level">مستواك</string>
     <string name="home_all_levels">كل المستويات</string>
+    <string name="code_title">العب لغزًا أُرسل إليك</string>
+    <string name="code_hint">الصق رمزًا</string>
+    <string name="code_play">العب</string>
+    <string name="code_unreadable">هذا لا يبدو رمز Sendoku.</string>
+    <string name="code_typo">فيه حرف لا يظهر في أي رمز. قارنه بما أُرسل إليك.</string>
+    <string name="code_cut_short">وصل هذا الرمز ناقصًا. اطلبه مرة أخرى كاملًا.</string>
+    <string name="code_too_new">صُنع هذا الرمز بإصدار أحدث من Sendoku.</string>
+    <string name="code_missing">الرمز مقروء، لكن لا يوجد هذا اللغز في هذا الإصدار.</string>
+    <string name="code_unplayable">لا يمكن إنهاء هذه الشبكة بالاستنتاج وحده، ولن يتظاهر Sendoku بأنه يستطيع شرحها.</string>
+    <string name="code_shared">أُرسل إليك</string>
+    <string name="code_share">أرسل هذا اللغز إلى صديق</string>
+    <string name="code_invitation">جرّب هذا اللغز من مستوى %1$s. الشبكة نفسها.</string>
 
     <string name="grade_gentle">سهل</string>
     <string name="grade_steady">متوسط</string>

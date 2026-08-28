@@ -23,6 +23,18 @@
     <string name="home_or_start">Ou commencer autre chose</string>
     <string name="home_your_level">Votre niveau</string>
     <string name="home_all_levels">Tous les niveaux</string>
+    <string name="code_title">Jouer une grille qu\'on vous a envoyée</string>
+    <string name="code_hint">Collez un code</string>
+    <string name="code_play">Jouer</string>
+    <string name="code_unreadable">Cela ne ressemble pas à un code Sendoku.</string>
+    <string name="code_typo">Il y a un caractère qui n\'existe dans aucun code. Comparez avec celui qu\'on vous a envoyé.</string>
+    <string name="code_cut_short">Ce code est arrivé incomplet. Demandez qu\'on vous le renvoie en entier.</string>
+    <string name="code_too_new">Ce code vient d\'une version de Sendoku plus récente que celle-ci.</string>
+    <string name="code_missing">Le code se lit bien, mais cette version n\'a pas cette grille.</string>
+    <string name="code_unplayable">Cette grille ne peut pas être finie par le raisonnement, et Sendoku ne prétendra pas savoir l\'expliquer.</string>
+    <string name="code_shared">Envoyée par quelqu\'un</string>
+    <string name="code_share">Envoyer cette grille à quelqu\'un</string>
+    <string name="code_invitation">Essayez cette grille %1$s. La même grille, et rien d\'autre n\'est nécessaire pour comparer.</string>
 
     <string name="grade_gentle">Facile</string>
     <string name="grade_steady">Moyen</string>

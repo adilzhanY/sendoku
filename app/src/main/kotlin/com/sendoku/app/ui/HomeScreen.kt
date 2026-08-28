@@ -53,6 +53,7 @@ import com.sendoku.app.data.SavedGame
 import com.sendoku.app.theme.Sendoku
 import com.sendoku.app.theme.SendokuIcons
 import com.sendoku.engine.Grade
+import com.sendoku.engine.catalog.CodeFault
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -109,6 +110,11 @@ public fun HomeScreen(
     onResume: () -> Unit,
     onDaily: () -> Unit,
     modifier: Modifier = Modifier,
+    /** What went wrong with the last code pasted, if anything did. */
+    fault: CodeFault? = null,
+    /** Set when the code read correctly and named a puzzle this app could not open. */
+    miss: CodeMiss? = null,
+    onCode: (String) -> Unit = {},
 ) {
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
@@ -170,6 +176,8 @@ public fun HomeScreen(
                 }
 
                 Column(verticalArrangement = Arrangement.spacedBy(dimens.spaceS)) {
+                    CodeBox(fault = fault, miss = miss, onCode = onCode)
+
                     // Opened out to begin with when the screen is tall enough to be worth
                     // filling, and folded into chips when it is not. A short phone, or a
                     // large font, gets the page that fits; everybody else gets the page that

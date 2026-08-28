@@ -5,6 +5,7 @@ import com.sendoku.app.data.FinishedRow
 import com.sendoku.app.data.LessonProgressRow
 import com.sendoku.app.data.SendokuDatabase
 import com.sendoku.app.data.TechniqueMasteryRow
+import com.sendoku.app.game.PuzzleOrigin
 import com.sendoku.engine.Grade
 import com.sendoku.engine.technique.TechniqueId
 
@@ -49,6 +50,7 @@ public class BackupStore(private val database: SendokuDatabase, private val appV
                     solved = it.solved,
                     finishedAt = it.finishedAt,
                     dailyEpochDay = it.dailyEpochDay,
+                    origin = it.origin,
                 )
             },
         )
@@ -128,6 +130,9 @@ public class BackupStore(private val database: SendokuDatabase, private val appV
                     solved = record.solved,
                     finishedAt = record.finishedAt,
                     dailyEpochDay = record.dailyEpochDay,
+                    // Checked rather than trusted: a file is somebody else's data, and an
+                    // origin this build has never heard of reads as an ordinary game.
+                    origin = PuzzleOrigin.of(record.origin).name,
                 ),
             )
             gameCount++

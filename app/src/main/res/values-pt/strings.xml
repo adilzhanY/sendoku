@@ -24,6 +24,18 @@
     <string name="home_or_start">Ou comece algo novo</string>
     <string name="home_your_level">Seu nível</string>
     <string name="home_all_levels">Todos os níveis</string>
+    <string name="code_title">Jogue um puzzle que te enviaram</string>
+    <string name="code_hint">Cole um código</string>
+    <string name="code_play">Jogar</string>
+    <string name="code_unreadable">Isso não parece um código do Sendoku.</string>
+    <string name="code_typo">Há um caractere que nenhum código tem. Compare com o que te enviaram.</string>
+    <string name="code_cut_short">Esse código chegou incompleto. Peça de novo, inteiro.</string>
+    <string name="code_too_new">Esse código foi feito por uma versão mais nova do Sendoku.</string>
+    <string name="code_missing">O código é legível, mas esta versão não tem esse puzzle.</string>
+    <string name="code_unplayable">Essa grade não pode ser terminada só com raciocínio, e o Sendoku não vai fingir que sabe explicá-la.</string>
+    <string name="code_shared">Enviado para você</string>
+    <string name="code_share">Envie este puzzle para alguém</string>
+    <string name="code_invitation">Tente este puzzle %1$s. A mesma grade, e não precisa de mais nada para comparar.</string>
 
     <string name="grade_gentle">Fácil</string>
     <string name="grade_steady">Médio</string>

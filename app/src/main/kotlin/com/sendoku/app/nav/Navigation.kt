@@ -32,6 +32,15 @@ public sealed interface Destination {
     /** The month view, from which a day is chosen. */
     public data object Calendar : Destination
 
+    /**
+     * A puzzle somebody sent, named by its code.
+     *
+     * The code travels rather than the puzzle, so this destination survives being written
+     * down and restored like any other, and a code that turns out to name nothing sends the
+     * player back where they came from with a reason.
+     */
+    public data class Shared(val code: String) : Destination
+
     /** The course map. */
     public data object Course : Destination
 
@@ -141,6 +150,7 @@ public class Navigator(stack: List<Destination> = listOf(Destination.Home)) {
             is Destination.Play -> "play:${grade.name}"
             Destination.Resume -> "resume"
             is Destination.Daily -> "daily:$epochDay"
+            is Destination.Shared -> "shared:$code"
             Destination.Calendar -> "calendar"
             Destination.Course -> "course"
             Destination.Account -> "account"
@@ -174,6 +184,7 @@ public class Navigator(stack: List<Destination> = listOf(Destination.Home)) {
             value.startsWith("lesson:") -> Destination.LessonAt(value.removePrefix("lesson:"))
             value.startsWith("practice:") -> Destination.Practice(value.removePrefix("practice:"))
             value.startsWith("daily:") -> Destination.Daily(value.removePrefix("daily:").toLong())
+            value.startsWith("shared:") -> Destination.Shared(value.removePrefix("shared:"))
             else -> Destination.Home
         }
     }

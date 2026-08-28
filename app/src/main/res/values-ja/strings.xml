@@ -26,6 +26,18 @@
     <string name="home_or_start">新しく始める</string>
     <string name="home_your_level">今のレベル</string>
     <string name="home_all_levels">すべてのレベル</string>
+    <string name="code_title">送られた問題を遊ぶ</string>
+    <string name="code_hint">コードを貼り付け</string>
+    <string name="code_play">プレイ</string>
+    <string name="code_unreadable">Sendoku のコードではないようです。</string>
+    <string name="code_typo">コードに使われない文字が入っています。送られたものと見比べてください。</string>
+    <string name="code_cut_short">コードが途中までしか届いていません。もう一度、全部を送ってもらってください。</string>
+    <string name="code_too_new">このコードは、より新しいバージョンの Sendoku で作られたものです。</string>
+    <string name="code_missing">コードは読めましたが、このバージョンにその問題はありません。</string>
+    <string name="code_unplayable">この盤面は論理だけでは解けないため、Sendoku は解説できるふりをしません。</string>
+    <string name="code_shared">受け取った問題</string>
+    <string name="code_share">この問題を友だちに送る</string>
+    <string name="code_invitation">この %1$s の問題をどうぞ。同じ盤面です。</string>
 
     <string name="grade_gentle">やさしい</string>
     <string name="grade_steady">ふつう</string>

@@ -2,12 +2,14 @@ package com.sendoku.app.game
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.sendoku.app.data.Dealt
 import com.sendoku.app.data.GameRepository
 import com.sendoku.app.data.PuzzleSource
 import com.sendoku.app.data.SettingsStore
 import com.sendoku.app.ui.GameEvent
 import com.sendoku.app.ui.reduce
 import com.sendoku.engine.Grade
+import com.sendoku.engine.catalog.PuzzleRef
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -66,7 +68,7 @@ public class GameViewModel(
             _loading.value = true
             val settings = settingsStore.settings.first()
             val resumed = repository.loadInProgress(settings)
-            _state.value = resumed ?: GameState.start(puzzles.next(fallbackGrade), settings)
+            _state.value = resumed ?: puzzles.next(fallbackGrade).play(settings)
             _loading.value = false
         }
     }
@@ -76,8 +78,30 @@ public class GameViewModel(
         scope.launch {
             _loading.value = true
             val settings = settingsStore.settings.first()
-            _state.value = GameState.start(puzzles.daily(epochDay), settings, dailyEpochDay = epochDay)
+            _state.value = puzzles.daily(epochDay).play(settings, dailyEpochDay = epochDay)
             _loading.value = false
+        }
+    }
+
+    /**
+     * Starts the puzzle a share code names, or reports why it could not.
+     *
+     * A code is the one way a puzzle arrives from outside this phone, so it is also the one
+     * place the app has to be careful. A code that reads correctly can still name a puzzle
+     * this build does not have, and a grid that arrives in full can still be unsolvable, have
+     * two answers, or need reasoning past the end of the ladder. All three come back as a
+     * refusal with a reason rather than as a board that behaves strangely later.
+     */
+    public fun startShared(ref: PuzzleRef, onResult: (Boolean) -> Unit = {}) {
+        scope.launch {
+            _loading.value = true
+            val settings = settingsStore.settings.first()
+            val found = puzzles.byCode(ref)
+            if (found != null) {
+                _state.value = found.play(settings, origin = PuzzleOrigin.SHARED)
+            }
+            _loading.value = false
+            onResult(found != null)
         }
     }
 
@@ -85,7 +109,7 @@ public class GameViewModel(
         scope.launch {
             _loading.value = true
             val settings = settingsStore.settings.first()
-            _state.value = GameState.start(puzzles.next(grade), settings)
+            _state.value = puzzles.next(grade).play(settings)
             _loading.value = false
         }
     }
@@ -135,6 +159,19 @@ public class GameViewModel(
         clockStoppedByBackground = false
         onEvent(GameEvent.Resume)
     }
+
+    /** A dealt puzzle, made playable. Keeps the batch index so the game can be shared short. */
+    private fun Dealt.play(
+        settings: GameSettings,
+        dailyEpochDay: Long? = null,
+        origin: PuzzleOrigin = if (dailyEpochDay != null) PuzzleOrigin.DAILY else PuzzleOrigin.LADDER,
+    ): GameState = GameState.start(
+        rated = puzzle,
+        settings = settings,
+        dailyEpochDay = dailyEpochDay,
+        origin = origin,
+        catalogIndex = catalogIndex,
+    )
 
     public companion object {
         internal const val SAVE_AFTER_MILLIS = 400L

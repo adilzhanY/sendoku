@@ -18,6 +18,18 @@
     <string name="home_or_start">Или начните новую</string>
     <string name="home_your_level">Ваш уровень</string>
     <string name="home_all_levels">Все уровни</string>
+    <string name="code_title">Сыграть присланную головоломку</string>
+    <string name="code_hint">Вставьте код</string>
+    <string name="code_play">Играть</string>
+    <string name="code_unreadable">Это не похоже на код Sendoku.</string>
+    <string name="code_typo">В коде есть символ, которого в кодах не бывает. Сверьте его с тем, что вам прислали.</string>
+    <string name="code_cut_short">Код пришёл не полностью. Попросите прислать его целиком.</string>
+    <string name="code_too_new">Этот код сделан более новой версией Sendoku.</string>
+    <string name="code_missing">Код читается, но в этой версии такой головоломки нет.</string>
+    <string name="code_unplayable">Эту сетку нельзя решить рассуждением, поэтому Sendoku не станет делать вид, что может её объяснить.</string>
+    <string name="code_shared">Прислано вам</string>
+    <string name="code_share">Отправить головоломку другу</string>
+    <string name="code_invitation">Попробуйте эту головоломку уровня %1$s. Та же сетка, сравнить можно и так.</string>
 
     <string name="grade_gentle">Лёгкий</string>
     <string name="grade_steady">Средний</string>

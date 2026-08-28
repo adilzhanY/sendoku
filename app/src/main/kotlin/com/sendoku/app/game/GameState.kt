@@ -78,6 +78,15 @@ public data class GameState(
      * would mark today.
      */
     val dailyEpochDay: Long? = null,
+    /** Where this puzzle came from. Only a ladder or a daily game opens the level above. */
+    val origin: PuzzleOrigin = PuzzleOrigin.LADDER,
+    /**
+     * Where in the shipped batch this puzzle sits, when it came from there.
+     *
+     * Only so it can be named in five characters when it is shared. Null for a puzzle made
+     * on the phone or one that arrived as a grid, and those are written out in full instead.
+     */
+    val catalogIndex: Int? = null,
     val settings: GameSettings = GameSettings(),
     /**
      * Candidates that hints have already ruled out, this session only.
@@ -552,6 +561,8 @@ public data class GameState(
             rated: RatedPuzzle,
             settings: GameSettings = GameSettings(),
             dailyEpochDay: Long? = null,
+            origin: PuzzleOrigin = if (dailyEpochDay != null) PuzzleOrigin.DAILY else PuzzleOrigin.LADDER,
+            catalogIndex: Int? = null,
         ): GameState {
             val givens = rated.puzzle.givens
             val dims = givens.dims
@@ -566,6 +577,8 @@ public data class GameState(
                     Cell(digit = digit, isGiven = digit != Board.EMPTY)
                 },
                 dailyEpochDay = dailyEpochDay,
+                origin = origin,
+                catalogIndex = catalogIndex,
                 settings = settings,
             )
         }

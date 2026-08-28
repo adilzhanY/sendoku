@@ -15,6 +15,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -137,10 +138,10 @@ public fun OutcomePanel(
                     // Taken from the rating rather than from what the player did, because a
                     // player may well have found a longer way round. This describes the
                     // puzzle, not the solve.
-                    text = stringResource(
-                        R.string.outcome_needed,
-                        stringResource(TechniqueCopy.nameOf(technique)).lowercase(),
-                    ),
+                    // Lower cased so it reads as a sentence, unless the name carries
+                    // capitals of its own: "needed a naked single" is right, and so is
+                    // "Needed a XYZ-Wing", but "needed a xyz-wing" is a name spelled wrong.
+                    text = stringResource(R.string.outcome_needed, sentenceCased(technique)),
                     style = Sendoku.type.body,
                     color = colors.muted,
                     textAlign = TextAlign.Center,
@@ -179,6 +180,30 @@ public fun OutcomePanel(
                     .testTag("outcome:path"),
             )
 
+            // The puzzle itself, as five characters somebody else can paste. The card above
+            // is the boast; this is the grid, and a friend who wants to try the same one
+            // needs the second thing rather than the first.
+            val code = remember(state.cells, state.catalogIndex) { ShareCode.of(state) }
+            val invitation = stringResource(R.string.code_invitation, stringResource(gradeName(state.grade)))
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(dimens.radiusM))
+                    .clickable { ShareCode.send(context, code, invitation, card.chooser) }
+                    .testTag("outcome:code")
+                    .padding(horizontal = dimens.spaceS, vertical = dimens.spaceXs),
+                horizontalArrangement = Arrangement.spacedBy(dimens.spaceS),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Text(code, style = Sendoku.type.timer, color = colors.accent)
+                Text(
+                    text = stringResource(R.string.code_share),
+                    style = Sendoku.type.body,
+                    color = colors.muted,
+                    modifier = Modifier.weight(1f),
+                )
+            }
+
             Row(
                 modifier = Modifier.fillMaxWidth().padding(top = dimens.spaceM),
                 horizontalArrangement = Arrangement.spacedBy(dimens.padGap),
@@ -214,6 +239,13 @@ private fun Stat(label: String, value: String, modifier: Modifier = Modifier) {
         OneLine(value, Sendoku.type.title, Sendoku.colors.given)
         OneLine(label, Sendoku.type.overline, Sendoku.colors.muted)
     }
+}
+
+/** A technique name as it belongs inside a sentence, with acronyms left alone. */
+@Composable
+private fun sentenceCased(technique: com.sendoku.engine.technique.TechniqueId): String {
+    val name = stringResource(TechniqueCopy.nameOf(technique))
+    return if (name.drop(1).any { it.isUpperCase() }) name else name.lowercase()
 }
 
 @Composable

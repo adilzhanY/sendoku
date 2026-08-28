@@ -101,6 +101,13 @@ public data class GameRecord(
     val solved: Boolean,
     val finishedAt: Long,
     val dailyEpochDay: Long? = null,
+    /**
+     * Where the puzzle came from, when the version that wrote the file knew.
+     *
+     * Optional and defaulted, like the board before it. A file from an older build imports
+     * with every game reading as a ladder game, which is what every game in it was.
+     */
+    val origin: String? = null,
 )
 
 /** Why a file could not be read, in terms a player can act on. */

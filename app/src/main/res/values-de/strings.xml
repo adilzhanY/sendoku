@@ -18,6 +18,18 @@
     <string name="home_or_start">Oder neu anfangen</string>
     <string name="home_your_level">Deine Stufe</string>
     <string name="home_all_levels">Alle Stufen</string>
+    <string name="code_title">Ein zugeschicktes Rätsel spielen</string>
+    <string name="code_hint">Code einfügen</string>
+    <string name="code_play">Spielen</string>
+    <string name="code_unreadable">Das sieht nicht nach einem Sendoku-Code aus.</string>
+    <string name="code_typo">Da steht ein Zeichen, das in keinem Code vorkommt. Vergleiche es mit dem, was du bekommen hast.</string>
+    <string name="code_cut_short">Dieser Code kam unvollständig an. Lass ihn dir noch einmal schicken, am Stück.</string>
+    <string name="code_too_new">Dieser Code stammt aus einer neueren Version von Sendoku.</string>
+    <string name="code_missing">Der Code ist lesbar, aber diese Version hat kein solches Rätsel.</string>
+    <string name="code_unplayable">Dieses Gitter lässt sich nicht durch Nachdenken lösen, und Sendoku tut nicht so, als könnte es das erklären.</string>
+    <string name="code_shared">Dir geschickt</string>
+    <string name="code_share">Dieses Rätsel verschicken</string>
+    <string name="code_invitation">Probier dieses %1$s-Rätsel. Dasselbe Gitter, und man braucht nichts weiter, um zu vergleichen.</string>
 
     <string name="grade_gentle">Leicht</string>
     <string name="grade_steady">Mittel</string>

@@ -11,6 +11,7 @@ import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performScrollTo
 import com.sendoku.app.game.GameState
 import com.sendoku.app.theme.SendokuTheme
 import com.sendoku.engine.Dimensions
@@ -120,7 +121,9 @@ class GameFlowTest {
         }
         play(solved)
         compose.onNodeWithText("Solved").assertIsDisplayed()
-        compose.onNodeWithText("Home").assertIsDisplayed()
+        // The panel scrolls: at a large font scale in a long language it is taller than the
+        // board it covers, and the way off a finished game is at the bottom of it.
+        compose.onNodeWithText("Home").performScrollTo().assertIsDisplayed()
     }
 
     @Test

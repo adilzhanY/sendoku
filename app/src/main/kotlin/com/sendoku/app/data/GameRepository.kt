@@ -2,6 +2,7 @@ package com.sendoku.app.data
 
 import com.sendoku.app.game.GameSettings
 import com.sendoku.app.game.GameState
+import com.sendoku.app.game.PuzzleOrigin
 import com.sendoku.engine.Grade
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
@@ -92,8 +93,17 @@ public class RoomGameRepository(private val inProgress: InProgressDao, private v
         finished.clear()
     }
 
+    /**
+     * What the player has earned, which is not the same as what they have played.
+     *
+     * A puzzle that arrived as a code from somebody else, or one typed in from a newspaper,
+     * is not a level the player has climbed to. Winning one is worth having in the history
+     * and in the statistics, and it opens nothing: somebody sent a Nightmare code to a
+     * beginner on their first day, and the beginner is welcome to play it and get no closer
+     * to Nightmare being theirs.
+     */
     override fun solvedByGrade(): Flow<Map<Grade, Int>> = finished.watchAll().map { rows ->
-        rows.filter { it.solved }
+        rows.filter { it.solved && PuzzleOrigin.of(it.origin).earnsProgress }
             .groupingBy { Grade.valueOf(it.grade) }
             .eachCount()
     }

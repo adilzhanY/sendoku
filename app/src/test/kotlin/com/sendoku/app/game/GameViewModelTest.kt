@@ -1,5 +1,6 @@
 package com.sendoku.app.game
 
+import com.sendoku.app.data.Dealt
 import com.sendoku.app.data.FinishedGame
 import com.sendoku.app.data.GameRepository
 import com.sendoku.app.data.PuzzleSource
@@ -9,6 +10,7 @@ import com.sendoku.engine.Dimensions
 import com.sendoku.engine.Grade
 import com.sendoku.engine.Symmetry
 import com.sendoku.engine.catalog.GradedGenerator
+import com.sendoku.engine.catalog.PuzzleRef
 import com.sendoku.engine.catalog.RatedPuzzle
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -119,8 +121,11 @@ class GameViewModelTest {
 
     private inner class RotatingPuzzles : PuzzleSource {
         var handedOut = 0
-        override suspend fun next(grade: Grade): RatedPuzzle = puzzles[handedOut++ % puzzles.size]
-        override suspend fun daily(epochDay: Long): RatedPuzzle = puzzles[(epochDay % puzzles.size).toInt()]
+        override suspend fun next(grade: Grade): Dealt = Dealt(puzzles[handedOut++ % puzzles.size])
+        override suspend fun daily(epochDay: Long): Dealt = Dealt(puzzles[(epochDay % puzzles.size).toInt()])
+
+        /** The tests here never share a puzzle; the code reader has its own tests. */
+        override suspend fun byCode(ref: PuzzleRef): Dealt? = null
     }
 
     @Test

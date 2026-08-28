@@ -20,6 +20,18 @@
     <string name="home_or_start">Or start something</string>
     <string name="home_your_level">Your level</string>
     <string name="home_all_levels">All levels</string>
+    <string name="code_title">Play a puzzle you were sent</string>
+    <string name="code_hint">Paste a code</string>
+    <string name="code_play">Play</string>
+    <string name="code_unreadable">That does not look like a Sendoku code.</string>
+    <string name="code_typo">There is a character in there that no code has. Check it against the one you were sent.</string>
+    <string name="code_cut_short">That code arrived incomplete. Ask for it again, in one piece.</string>
+    <string name="code_too_new">That code was made by a newer version of Sendoku than this one.</string>
+    <string name="code_missing">That code reads correctly, but this version has no such puzzle.</string>
+    <string name="code_unplayable">That grid cannot be finished by reasoning alone, so Sendoku will not pretend to be able to explain it.</string>
+    <string name="code_shared">Sent to you</string>
+    <string name="code_share">Send this puzzle to a friend</string>
+    <string name="code_invitation">Try this %1$s puzzle. Same grid, no app needed to compare.</string>
 
     <!-- Grades -->
     <string name="grade_gentle">Easy</string>

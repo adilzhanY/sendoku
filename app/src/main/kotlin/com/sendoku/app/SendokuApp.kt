@@ -7,10 +7,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -35,6 +38,7 @@ import com.sendoku.app.theme.Sendoku
 import com.sendoku.app.ui.AboutScreen
 import com.sendoku.app.ui.AccountScreen
 import com.sendoku.app.ui.BottomBar
+import com.sendoku.app.ui.CodeMiss
 import com.sendoku.app.ui.DailyScreen
 import com.sendoku.app.ui.GameScreen
 import com.sendoku.app.ui.GlossaryScreen
@@ -50,6 +54,10 @@ import com.sendoku.app.ui.SolvePathScreen
 import com.sendoku.app.ui.StatsScreen
 import com.sendoku.app.ui.dailyStreak
 import com.sendoku.engine.Grade
+import com.sendoku.engine.catalog.CodeFault
+import com.sendoku.engine.catalog.CodeResult
+import com.sendoku.engine.catalog.PuzzleCode
+import com.sendoku.engine.catalog.PuzzleRef
 import com.sendoku.engine.technique.TechniqueId
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
@@ -90,6 +98,9 @@ public fun SendokuApp(
     version: String,
     scope: CoroutineScope,
     modifier: Modifier = Modifier,
+    /** A code the app was opened with, or null when it was opened the ordinary way. */
+    opening: String? = null,
+    onOpened: () -> Unit = {},
 ) {
     val navigator = rememberSaveable(saver = Navigator.Saver) { Navigator() }
     val loading by model.loading.collectAsState()
@@ -107,6 +118,35 @@ public fun SendokuApp(
     // because the way out of a home screen is out of the app.
     BackHandler(enabled = navigator.canGoBack) { navigator.back() }
 
+    // A link opens a puzzle once. It is read through the same reader a pasted code goes
+    // through, so a link that names nothing lands on the home screen with the same sentence
+    // rather than on a blank board.
+    var linkMiss by rememberSaveable { mutableStateOf<CodeMiss?>(null) }
+    var linkFault by rememberSaveable { mutableStateOf<CodeFault?>(null) }
+    LaunchedEffect(opening) {
+        val code = opening ?: return@LaunchedEffect
+        onOpened()
+        when (val result = PuzzleCode.read(code)) {
+            is CodeResult.Failed -> {
+                linkFault = result.fault
+                navigator.home()
+            }
+
+            is CodeResult.Ok -> model.startShared(result.ref) { opened ->
+                if (opened) {
+                    navigator.go(Destination.Shared(code))
+                } else {
+                    linkMiss = if (result.ref is PuzzleRef.Batch) {
+                        CodeMiss.NOT_IN_THIS_VERSION
+                    } else {
+                        CodeMiss.CANNOT_BE_REASONED
+                    }
+                    navigator.home()
+                }
+            }
+        }
+    }
+
     ReadableWidth(modifier) { pane ->
         Column(Modifier.fillMaxSize()) {
             Box(Modifier.weight(1f)) {
@@ -115,6 +155,8 @@ public fun SendokuApp(
                     model = model,
                     scope = scope,
                     counts = counts,
+                    linkFault = linkFault,
+                    linkMiss = linkMiss,
                     saved = saved,
                     stats = stats,
                     played = played,
@@ -156,6 +198,9 @@ private fun Screens(
     model: GameViewModel,
     scope: CoroutineScope,
     counts: Map<Grade, Int>,
+    /** What went wrong with a code the app was opened by, if anything did. */
+    linkFault: CodeFault?,
+    linkMiss: CodeMiss?,
     saved: InProgressSummary?,
     stats: Statistics,
     played: List<com.sendoku.app.data.FinishedGame>,
@@ -182,6 +227,12 @@ private fun Screens(
     when (val here = navigator.current) {
         Destination.Home -> {
             val today = remember { java.time.LocalDate.now() }
+            // Cleared on every attempt, so a message never outlives the code it was about.
+            var codeFault by rememberSaveable { mutableStateOf<CodeFault?>(null) }
+            var codeMiss by rememberSaveable { mutableStateOf<CodeMiss?>(null) }
+            // A link that failed says so here too, since this is where the player lands.
+            val shownFault = codeFault ?: linkFault
+            val shownMiss = codeMiss ?: linkMiss
             HomeScreen(
                 state = HomeState(
                     solvedByGrade = counts,
@@ -207,11 +258,38 @@ private fun Screens(
                 // The calendar, not straight into today. A daily is only worth having if a
                 // missed day is visible and a caught up day is possible, and both live there.
                 onDaily = { navigator.go(Destination.Calendar) },
+                // A code is the one thing that arrives from outside the phone, so it is read
+                // here rather than inside the screen: the screen shows what went wrong, and
+                // this decides whether anything did.
+                fault = shownFault,
+                miss = shownMiss,
+                onCode = { text ->
+                    codeFault = null
+                    codeMiss = null
+                    when (val result = PuzzleCode.read(text)) {
+                        is CodeResult.Failed -> codeFault = result.fault
+
+                        is CodeResult.Ok -> model.startShared(result.ref) { opened ->
+                            if (opened) {
+                                navigator.go(Destination.Shared(text))
+                            } else {
+                                // A code that reads and opens nothing is two different
+                                // problems: a batch this build does not have, or a grid the
+                                // ladder cannot finish. Only one of them is worth resending.
+                                codeMiss = if (result.ref is PuzzleRef.Batch) {
+                                    CodeMiss.NOT_IN_THIS_VERSION
+                                } else {
+                                    CodeMiss.CANNOT_BE_REASONED
+                                }
+                            }
+                        }
+                    }
+                },
                 modifier = modifier,
             )
         }
 
-        is Destination.Play, Destination.Resume, is Destination.Daily ->
+        is Destination.Play, Destination.Resume, is Destination.Daily, is Destination.Shared ->
             PlayHost(model, loading, navigator, scope, onSpendHint, modifier)
 
         Destination.Calendar -> {

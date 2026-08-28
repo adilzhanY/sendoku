@@ -27,6 +27,7 @@ import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import com.sendoku.app.R
 import com.sendoku.app.data.FinishedGame
+import com.sendoku.app.game.PuzzleOrigin
 import com.sendoku.app.theme.Sendoku
 import java.text.DateFormat
 import java.util.Date
@@ -124,6 +125,16 @@ private fun Entry(game: FinishedGame, onClick: () -> Unit) {
                 if (game.dailyEpochDay != null) {
                     Text(
                         text = stringResource(R.string.home_daily),
+                        style = Sendoku.type.overline,
+                        color = colors.accent,
+                    )
+                }
+                // And so does a puzzle somebody sent, which is a different kind of game to
+                // have played: it opened nothing, and it can be played again by whoever
+                // sent it.
+                if (game.origin == PuzzleOrigin.SHARED) {
+                    Text(
+                        text = stringResource(R.string.code_shared),
                         style = Sendoku.type.overline,
                         color = colors.accent,
                     )

@@ -17,6 +17,18 @@
     <string name="home_or_start">Ya da yeni başla</string>
     <string name="home_your_level">Senin seviyen</string>
     <string name="home_all_levels">Tüm seviyeler</string>
+    <string name="code_title">Sana gönderilen bulmacayı oyna</string>
+    <string name="code_hint">Kodu yapıştır</string>
+    <string name="code_play">Oyna</string>
+    <string name="code_unreadable">Bu bir Sendoku koduna benzemiyor.</string>
+    <string name="code_typo">İçinde hiçbir kodda bulunmayan bir karakter var. Sana gönderilenle karşılaştır.</string>
+    <string name="code_cut_short">Bu kod eksik geldi. Tek parça hâlinde tekrar iste.</string>
+    <string name="code_too_new">Bu kod Sendoku\'nun daha yeni bir sürümünde yapılmış.</string>
+    <string name="code_missing">Kod okunuyor ama bu sürümde öyle bir bulmaca yok.</string>
+    <string name="code_unplayable">Bu ızgara akıl yürütmeyle çözülemiyor, Sendoku da açıklayabiliyormuş gibi yapmaz.</string>
+    <string name="code_shared">Sana gönderildi</string>
+    <string name="code_share">Bu bulmacayı bir arkadaşına gönder</string>
+    <string name="code_invitation">Şu %1$s bulmacayı dene. Aynı ızgara, karşılaştırmak için başka bir şey gerekmiyor.</string>
 
     <string name="grade_gentle">Kolay</string>
     <string name="grade_steady">Orta</string>

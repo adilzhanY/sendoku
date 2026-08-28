@@ -19,6 +19,18 @@
     <string name="home_or_start">Oppure inizia qualcosa</string>
     <string name="home_your_level">Il tuo livello</string>
     <string name="home_all_levels">Tutti i livelli</string>
+    <string name="code_title">Gioca uno schema che ti hanno mandato</string>
+    <string name="code_hint">Incolla un codice</string>
+    <string name="code_play">Gioca</string>
+    <string name="code_unreadable">Questo non sembra un codice di Sendoku.</string>
+    <string name="code_typo">C\'è un carattere che nessun codice contiene. Confrontalo con quello che ti hanno mandato.</string>
+    <string name="code_cut_short">Quel codice è arrivato incompleto. Fattelo mandare di nuovo, tutto intero.</string>
+    <string name="code_too_new">Quel codice viene da una versione di Sendoku più recente di questa.</string>
+    <string name="code_missing">Il codice si legge, ma questa versione non ha quello schema.</string>
+    <string name="code_unplayable">Quella griglia non si può finire ragionando, e Sendoku non finge di saperla spiegare.</string>
+    <string name="code_shared">Mandato a te</string>
+    <string name="code_share">Manda questo schema a qualcuno</string>
+    <string name="code_invitation">Prova questo schema %1$s. La stessa griglia, e non serve altro per confrontarsi.</string>
 
     <string name="grade_gentle">Facile</string>
     <string name="grade_steady">Medio</string>

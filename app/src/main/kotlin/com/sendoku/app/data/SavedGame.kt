@@ -3,6 +3,7 @@ package com.sendoku.app.data
 import com.sendoku.app.game.Cell
 import com.sendoku.app.game.GameSettings
 import com.sendoku.app.game.GameState
+import com.sendoku.app.game.PuzzleOrigin
 import com.sendoku.engine.Board
 import com.sendoku.engine.Candidates
 import com.sendoku.engine.Digits
@@ -40,6 +41,10 @@ public data class SavedGame(
     val mistakes: Int,
     val hintsUsed: Int,
     val dailyEpochDay: Long? = null,
+    /** Where the puzzle came from, so a shared or entered game does not open a level. */
+    val origin: PuzzleOrigin = PuzzleOrigin.LADDER,
+    /** Its place in the shipped batch, when it came from there, so it can be shared short. */
+    val catalogIndex: Int? = null,
 ) {
 
     /**
@@ -83,6 +88,8 @@ public data class SavedGame(
             mistakes = mistakes,
             hintsUsed = hintsUsed,
             dailyEpochDay = dailyEpochDay,
+            origin = origin,
+            catalogIndex = catalogIndex,
             settings = settings,
         )
     }
@@ -112,6 +119,8 @@ public data class SavedGame(
             mistakes = state.mistakes,
             hintsUsed = state.hintsUsed,
             dailyEpochDay = state.dailyEpochDay,
+            origin = state.origin,
+            catalogIndex = state.catalogIndex,
         )
 
         /**
@@ -167,6 +176,10 @@ public data class FinishedGame(
     val solved: Boolean,
     val finishedAt: Long,
     val dailyEpochDay: Long? = null,
+    /** Where the puzzle came from. Only a ladder or a daily win opens the level above. */
+    val origin: PuzzleOrigin = PuzzleOrigin.LADDER,
+    /** Its place in the shipped batch, when it came from there, so it can be shared short. */
+    val catalogIndex: Int? = null,
 ) {
 
     /**
@@ -203,6 +216,8 @@ public data class FinishedGame(
             mistakes = mistakes,
             hintsUsed = hintsUsed,
             dailyEpochDay = dailyEpochDay,
+            origin = origin,
+            catalogIndex = catalogIndex,
             settings = settings,
         )
     }
@@ -224,6 +239,8 @@ public data class FinishedGame(
             solved = state.isSolved,
             finishedAt = finishedAt,
             dailyEpochDay = state.dailyEpochDay,
+            origin = state.origin,
+            catalogIndex = state.catalogIndex,
         )
     }
 }

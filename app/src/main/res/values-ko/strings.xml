@@ -19,6 +19,18 @@
     <string name="home_or_start">새로 시작하기</string>
     <string name="home_your_level">현재 난이도</string>
     <string name="home_all_levels">모든 난이도</string>
+    <string name="code_title">받은 문제 풀기</string>
+    <string name="code_hint">코드 붙여넣기</string>
+    <string name="code_play">시작</string>
+    <string name="code_unreadable">Sendoku 코드가 아닌 것 같습니다.</string>
+    <string name="code_typo">코드에 없는 문자가 들어 있습니다. 받은 코드와 비교해 보세요.</string>
+    <string name="code_cut_short">코드가 잘린 채로 도착했습니다. 전체를 다시 보내 달라고 하세요.</string>
+    <string name="code_too_new">이 코드는 더 새로운 버전의 Sendoku에서 만들어졌습니다.</string>
+    <string name="code_missing">코드는 읽히지만, 이 버전에는 그런 문제가 없습니다.</string>
+    <string name="code_unplayable">이 판은 추론만으로는 풀 수 없어서, Sendoku는 설명할 수 있는 척하지 않습니다.</string>
+    <string name="code_shared">받은 문제</string>
+    <string name="code_share">이 문제를 친구에게 보내기</string>
+    <string name="code_invitation">이 %1$s 문제를 풀어 보세요. 같은 판입니다.</string>
 
     <string name="grade_gentle">쉬움</string>
     <string name="grade_steady">보통</string>

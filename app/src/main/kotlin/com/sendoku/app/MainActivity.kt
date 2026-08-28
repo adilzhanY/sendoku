@@ -1,6 +1,7 @@
 package com.sendoku.app
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -17,6 +18,9 @@ import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
@@ -219,6 +223,25 @@ class MainActivity : ComponentActivity() {
         super.attachBaseContext(Languages.wrap(newBase))
     }
 
+    /**
+     * A puzzle code out of the intent that started the app, if there was one.
+     *
+     * `sendoku://p/A-4TQ` and nothing else. The code itself is checked later by the reader
+     * that checks every other code, so this only has to find the text and hand it over.
+     */
+    private fun codeFrom(intent: Intent?): String? {
+        if (intent?.action != Intent.ACTION_VIEW) return null
+        val data = intent.data ?: return null
+        if (data.scheme != "sendoku") return null
+        return data.lastPathSegment?.takeIf { it.isNotBlank() }
+    }
+
+    /** A link arriving while the app is already open. */
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         // Holds the system splash until the first game is ready, so the app never shows an
         // empty board on the way in.
@@ -229,6 +252,8 @@ class MainActivity : ComponentActivity() {
         splash.setKeepOnScreenCondition { false }
 
         setContent {
+            // The link the app was launched by, if it was launched by one.
+            var opening by rememberSaveable { mutableStateOf(codeFrom(intent)) }
             val look by settings.appearance.collectAsState(initial = Appearance())
             SendokuTheme(
                 themeId = look.theme,
@@ -328,6 +353,11 @@ class MainActivity : ComponentActivity() {
                             lifecycleScope.launch { hints.record(technique, level) }
                         },
                         hintLog = hints.log,
+                        // A code the app was opened with, handed over once. Read from the
+                        // intent rather than held, because an activity recreated by a
+                        // rotation must not open the same puzzle a second time.
+                        opening = opening,
+                        onOpened = { opening = null },
                         version = BuildConfig.VERSION_NAME,
                         savedGame = savedSummary,
                         scope = lifecycleScope,

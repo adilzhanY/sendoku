@@ -19,6 +19,18 @@
     <string name="home_or_start">O empieza algo nuevo</string>
     <string name="home_your_level">Tu nivel</string>
     <string name="home_all_levels">Todos los niveles</string>
+    <string name="code_title">Juega un puzle que te enviaron</string>
+    <string name="code_hint">Pega un código</string>
+    <string name="code_play">Jugar</string>
+    <string name="code_unreadable">Eso no parece un código de Sendoku.</string>
+    <string name="code_typo">Hay un carácter que no aparece en ningún código. Compáralo con el que te enviaron.</string>
+    <string name="code_cut_short">Ese código llegó incompleto. Pide que te lo envíen entero.</string>
+    <string name="code_too_new">Ese código lo hizo una versión de Sendoku más nueva que esta.</string>
+    <string name="code_missing">El código se lee bien, pero esta versión no tiene ese puzle.</string>
+    <string name="code_unplayable">Esa cuadrícula no se puede terminar razonando, y Sendoku no va a fingir que puede explicarla.</string>
+    <string name="code_shared">Te lo enviaron</string>
+    <string name="code_share">Envía este puzle a alguien</string>
+    <string name="code_invitation">Prueba este puzle %1$s. La misma cuadrícula, y no hace falta nada más para comparar.</string>
 
     <string name="grade_gentle">Fácil</string>
     <string name="grade_steady">Medio</string>
