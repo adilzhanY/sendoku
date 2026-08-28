@@ -62,6 +62,8 @@ public data class SavedGame(
      * nothing next to being unable to say anything about a game that took two sittings.
      */
     val placements: String = "",
+    /** Whether a note was ever written on this board. */
+    val notesUsed: Boolean = false,
 ) {
 
     /**
@@ -109,6 +111,7 @@ public data class SavedGame(
             catalogIndex = catalogIndex,
             tints = decodeTints(tints, dims.cellCount),
             placements = decodePlacements(placements),
+            notesUsed = notesUsed,
             settings = settings,
         )
     }
@@ -142,6 +145,7 @@ public data class SavedGame(
             catalogIndex = state.catalogIndex,
             tints = encodeTints(state.tints, state.dims.cellCount),
             placements = encodePlacements(state.placements),
+            notesUsed = state.notesUsed,
         )
 
         /**
@@ -247,7 +251,17 @@ public data class FinishedGame(
     val origin: PuzzleOrigin = PuzzleOrigin.LADDER,
     /** Its place in the shipped batch, when it came from there, so it can be shared short. */
     val catalogIndex: Int? = null,
+    /**
+     * Whether a note was ever written while solving this.
+     *
+     * The third of the three facts a clean solve is made of. The other two, no hints and no
+     * mistakes, were already recorded because they are how a game can be lost.
+     */
+    val notesUsed: Boolean = false,
 ) {
+
+    /** Solved with no hints, no mistakes and no notes written. Nothing else counts. */
+    public val isClean: Boolean get() = solved && hintsUsed == 0 && mistakes == 0 && !notesUsed
 
     /**
      * The game as it ended, rebuilt well enough to look at and to share.
@@ -308,6 +322,7 @@ public data class FinishedGame(
             dailyEpochDay = state.dailyEpochDay,
             origin = state.origin,
             catalogIndex = state.catalogIndex,
+            notesUsed = state.notesUsed,
         )
     }
 }

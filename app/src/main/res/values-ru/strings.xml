@@ -837,6 +837,10 @@
     <string name="settings_post_mortem_note">После победы называть два места, где решение замедлилось, и что там было на доске. О решении без долгих пауз ничего не говорится.</string>
     <string name="post_mortem_line">Здесь вы остановились на %1$s. Тут можно было найти %2$s.</string>
     <string name="post_mortem_title">Куда ушло время</string>
+    <string name="clean_line">Чистое решение: без подсказок, без ошибок, без пометок.</string>
+    <string name="clean_mark">Чисто</string>
+    <string name="clean_stat">Чистых решений</string>
+    <string name="clean_note">Чистых решений: %1$d из %2$d.</string>
     <string name="account_title">Вы</string>
     <string name="account_no_account">Здесь нет аккаунта, в который нужно входить. Всё, что ниже, лежит на этом телефоне и больше нигде.</string>
     <string name="account_solved">Решено</string>

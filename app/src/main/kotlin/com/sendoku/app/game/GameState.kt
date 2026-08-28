@@ -110,6 +110,14 @@ public data class GameState(
      * as it actually grew rather than every key ever pressed.
      */
     val placements: List<Placement> = emptyList(),
+    /**
+     * Whether a pencil mark was ever written on this board.
+     *
+     * A fact rather than a state: rubbing every note out again does not make a solve
+     * noteless, because the notes were used. It is the only one of the three clean marks
+     * that is not already recorded, and it is one boolean.
+     */
+    val notesUsed: Boolean = false,
     /** Where this puzzle came from. Only a ladder or a daily game opens the level above. */
     val origin: PuzzleOrigin = PuzzleOrigin.LADDER,
     /**
@@ -578,6 +586,7 @@ public data class GameState(
         return copy(
             cells = replaced(changes),
             past = past + move,
+            notesUsed = notesUsed || kind == MoveKind.MARK,
             placements = if (kind == MoveKind.PLACE) placements + placementOf(move) else placements,
             // Doing something new throws away the branch you had undone your way out of.
             future = emptyList(),

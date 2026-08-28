@@ -137,6 +137,14 @@ private fun Entry(game: FinishedGame, onClick: () -> Unit) {
                     PuzzleOrigin.ENTERED -> R.string.enter_marker
                     else -> null
                 }
+                // A clean solve is the one thing in a history row worth being proud of.
+                if (game.isClean) {
+                    Text(
+                        text = stringResource(R.string.clean_mark),
+                        style = Sendoku.type.overline,
+                        color = colors.accent,
+                    )
+                }
                 if (marker != null) {
                     Text(
                         text = stringResource(marker),

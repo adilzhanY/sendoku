@@ -92,6 +92,10 @@ public fun StatsScreen(
             Note(pluralStringResource(R.plurals.stats_longest_run, statistics.longestStreak, statistics.longestStreak))
         }
         Note(stringResource(R.string.stats_totals, statistics.totalTime.readable(), statistics.totalHints))
+        // Only worth a line once there is one. A player with none does not need reminding.
+        if (statistics.cleanSolves > 0) {
+            Note(stringResource(R.string.clean_note, statistics.cleanSolves, statistics.totalSolved))
+        }
 
         Section(stringResource(R.string.stats_by_grade))
         // Easiest first, the same order the home screen uses. Two lists of the same six

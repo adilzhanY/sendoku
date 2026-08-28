@@ -822,6 +822,10 @@
     <string name="settings_post_mortem_note">Al ganar, nombrar los dos puntos donde el solucionar se frenó y qué había en el tablero allí. De un solucionar sin pausas no se dice nada.</string>
     <string name="post_mortem_line">Aquí te detuviste %1$s. Había un %2$s por encontrar.</string>
     <string name="post_mortem_title">Dónde se fue el tiempo</string>
+    <string name="clean_line">Solución limpia: sin pistas, sin errores, sin notas.</string>
+    <string name="clean_mark">Limpia</string>
+    <string name="clean_stat">Soluciones limpias</string>
+    <string name="clean_note">Soluciones limpias: %1$d de %2$d.</string>
     <string name="account_title">Tú</string>
     <string name="account_no_account">No hay ninguna cuenta con la que entrar. Todo lo de abajo está en este teléfono y en ningún otro sitio.</string>
     <string name="account_solved">Resueltos</string>

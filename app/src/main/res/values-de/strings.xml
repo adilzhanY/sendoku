@@ -450,6 +450,10 @@
     <string name="settings_post_mortem_note">Nach einem Sieg die zwei Stellen nennen, an denen es langsamer wurde, und was dort auf dem Brett stand. Zu einem Lösen ohne Pausen wird nichts gesagt.</string>
     <string name="post_mortem_line">Hier hast du %1$s gebraucht. Ein %2$s war da zu finden.</string>
     <string name="post_mortem_title">Wohin die Zeit ging</string>
+    <string name="clean_line">Sauber gelöst: keine Tipps, keine Fehler, keine Notizen.</string>
+    <string name="clean_mark">Sauber</string>
+    <string name="clean_stat">Saubere Lösungen</string>
+    <string name="clean_note">Saubere Lösungen: %1$d von %2$d.</string>
 
     <string name="account_title">Sie</string>
     <string name="account_no_account">Es gibt kein Konto, in das man sich einloggen könnte. Alles hier unten liegt auf diesem Telefon und sonst nirgends.</string>

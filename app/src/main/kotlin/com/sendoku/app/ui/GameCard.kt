@@ -46,7 +46,7 @@ internal fun rememberGameCard(state: GameState, solved: Boolean = state.isSolved
     chooser = stringResource(R.string.outcome_share),
     title = stringResource(if (solved) R.string.card_solved else R.string.card_lost),
     grade = stringResource(gradeName(state.grade)),
-    lines = listOf(
+    lines = listOfNotNull(
         ShareCard.Line(stringResource(R.string.stat_time), state.elapsed.clock()),
         ShareCard.Line(
             label = stringResource(R.string.stat_mistakes),
@@ -60,6 +60,13 @@ internal fun rememberGameCard(state: GameState, solved: Boolean = state.isSolved
                 ?.let { stringResource(R.string.mistakes_of, state.hintsUsed, it) }
                 ?: state.hintsUsed.toString(),
         ),
+        // Only when it is true, and only on a win. Three zeroes on the card already say the
+        // same thing to somebody who reads them; this says it to somebody who glances.
+        if (solved && state.hintsUsed == 0 && state.mistakes == 0 && !state.notesUsed) {
+            ShareCard.Line(stringResource(R.string.clean_stat), stringResource(R.string.clean_mark))
+        } else {
+            null
+        },
     ),
     // The board as it was left, so the picture shows the puzzle rather than describing it.
     grid = ShareCard.Grid(

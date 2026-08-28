@@ -821,6 +821,10 @@
     <string name="settings_post_mortem_note">クリア後に、解答が止まった二か所と、そのとき盤面に何があったかを伝えます。止まらなかった解答については何も言いません。</string>
     <string name="post_mortem_line">ここで %1$s 止まりました。そこには %2$s がありました。</string>
     <string name="post_mortem_title">時間の使いどころ</string>
+    <string name="clean_line">完全自力：ヒントなし、ミスなし、メモなし。</string>
+    <string name="clean_mark">自力</string>
+    <string name="clean_stat">自力クリア</string>
+    <string name="clean_note">自力クリア：%2$d 問中 %1$d 問。</string>
     <string name="account_title">あなた</string>
     <string name="account_no_account">ログインするアカウントはありません。以下はすべてこの端末の中だけにあります。</string>
     <string name="account_solved">クリア</string>

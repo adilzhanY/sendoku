@@ -49,6 +49,8 @@ public data class InProgressRow(
     val tints: String = "",
     /** Every digit placed and when, so a solve can be looked back over in two sittings. */
     val placements: String = "",
+    /** Whether a note was ever written on this board. */
+    val notesUsed: Boolean = false,
 ) {
     public companion object {
         public const val ONLY_ROW: Int = 1
@@ -94,6 +96,14 @@ public data class FinishedRow(
     val origin: String? = null,
     /** Its place in the shipped batch, or null when it did not come from there. */
     val catalogIndex: Int? = null,
+    /**
+     * Whether a note was written, or null for a game finished before this column existed.
+     *
+     * Null is not false. A game from before this was recorded cannot be claimed as a clean
+     * solve, because nobody knows whether it was one, and inventing the answer would put a
+     * mark on somebody's history that they never earned.
+     */
+    val notesUsed: Boolean? = null,
 )
 
 /**
@@ -317,6 +327,10 @@ public abstract class SendokuDatabase : RoomDatabase() {
                 // them. A finished game is a result, and a result has no working notes.
                 connection.execSQL("ALTER TABLE in_progress ADD COLUMN tints TEXT NOT NULL DEFAULT ''")
                 connection.execSQL("ALTER TABLE in_progress ADD COLUMN placements TEXT NOT NULL DEFAULT ''")
+                connection.execSQL("ALTER TABLE in_progress ADD COLUMN notesUsed INTEGER NOT NULL DEFAULT 0")
+                // Nullable on the finished table, because a game recorded before this column
+                // existed cannot be claimed as clean: nobody knows whether it was.
+                connection.execSQL("ALTER TABLE finished ADD COLUMN notesUsed INTEGER")
             }
         }
 
@@ -348,6 +362,7 @@ internal fun InProgressRow.toSaved(): SavedGame = SavedGame(
     catalogIndex = catalogIndex,
     tints = tints,
     placements = placements,
+    notesUsed = notesUsed,
 )
 
 internal fun SavedGame.toRow(savedAt: Long): InProgressRow = InProgressRow(
@@ -369,6 +384,7 @@ internal fun SavedGame.toRow(savedAt: Long): InProgressRow = InProgressRow(
     catalogIndex = catalogIndex,
     tints = tints,
     placements = placements,
+    notesUsed = notesUsed,
 )
 
 internal fun FinishedRow.toFinished(): FinishedGame = FinishedGame(
@@ -385,6 +401,9 @@ internal fun FinishedRow.toFinished(): FinishedGame = FinishedGame(
     dailyEpochDay = dailyEpochDay,
     origin = PuzzleOrigin.of(origin),
     catalogIndex = catalogIndex,
+    // Null reads as "notes were used", which is the answer that never claims a mark the
+    // player did not earn.
+    notesUsed = notesUsed ?: true,
 )
 
 internal fun FinishedGame.toRow(): FinishedRow = FinishedRow(
@@ -401,4 +420,5 @@ internal fun FinishedGame.toRow(): FinishedRow = FinishedRow(
     dailyEpochDay = dailyEpochDay,
     origin = origin.name,
     catalogIndex = catalogIndex,
+    notesUsed = notesUsed,
 )

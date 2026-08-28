@@ -826,6 +826,10 @@
     <string name="settings_post_mortem_note">Après une victoire, nommer les deux endroits où la résolution a ralenti et ce qu\'il y avait sur la grille. Rien n\'est dit d\'une résolution sans pause.</string>
     <string name="post_mortem_line">Vous vous êtes arrêté %1$s ici. Un %2$s était là.</string>
     <string name="post_mortem_title">Où est passé le temps</string>
+    <string name="clean_line">Résolue proprement : sans indice, sans erreur, sans note.</string>
+    <string name="clean_mark">Propre</string>
+    <string name="clean_stat">Résolutions propres</string>
+    <string name="clean_note">Résolutions propres : %1$d sur %2$d.</string>
     <string name="account_title">Vous</string>
     <string name="account_no_account">Il n\'y a aucun compte où se connecter. Tout ce qui suit est sur ce téléphone et nulle part ailleurs.</string>
     <string name="account_solved">Résolues</string>

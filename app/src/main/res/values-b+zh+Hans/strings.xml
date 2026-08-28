@@ -817,6 +817,10 @@
     <string name="settings_post_mortem_note">获胜后，指出解题变慢的两个地方，以及当时盘面上有什么。对没有停顿的解题不作评论。</string>
     <string name="post_mortem_line">你在这里停了 %1$s。当时那里有一个 %2$s。</string>
     <string name="post_mortem_title">时间花在哪里</string>
+    <string name="clean_line">干净通关：没用提示，没有错误，没记笔记。</string>
+    <string name="clean_mark">干净</string>
+    <string name="clean_stat">干净通关</string>
+    <string name="clean_note">干净通关：%2$d 局中 %1$d 局。</string>
     <string name="account_title">你</string>
     <string name="account_no_account">没有可以登录的账号。下面的一切都只在这台手机上。</string>
     <string name="account_solved">已完成</string>

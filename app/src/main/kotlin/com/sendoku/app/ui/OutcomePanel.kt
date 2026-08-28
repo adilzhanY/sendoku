@@ -167,6 +167,18 @@ public fun OutcomePanel(
                 }
             }
 
+            // Three facts, said in one line and only when all three are true. A puzzle
+            // solved with two hints does not need to be told it was not clean.
+            if (won && state.hintsUsed == 0 && state.mistakes == 0 && !state.notesUsed) {
+                Text(
+                    text = stringResource(R.string.clean_line),
+                    style = Sendoku.type.body,
+                    color = colors.accent,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.testTag("outcome:clean"),
+                )
+            }
+
             // Where the time actually went. Only after a win, only when the setting is on,
             // and only when there was a pause worth naming: a fast clean solve is told
             // nothing at all, because an app that finds a lesson in every win turns winning

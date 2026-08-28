@@ -39,6 +39,8 @@ public data class Statistics(
     val gamesPlayed: Int,
     val totalTime: Duration,
     val totalHints: Int,
+    /** Solved with no hints, no mistakes and no notes written. */
+    val cleanSolves: Int = 0,
 ) {
     val isEmpty: Boolean get() = totalSolved == 0 && byGrade.values.all { it.played == 0 }
 
@@ -60,6 +62,7 @@ public data class Statistics(
                 hardestGrade = solved.maxByOrNull { it.rating }?.grade,
                 hardestTechnique = solved.mapNotNull { it.hardest }.groupingBy { it }.eachCount(),
                 totalSolved = solved.size,
+                cleanSolves = solved.count { it.isClean },
                 gamesPlayed = games.size,
                 totalTime = solved.fold(Duration.ZERO) { sum, game -> sum + game.elapsed },
                 totalHints = solved.sumOf { it.hintsUsed },

@@ -814,6 +814,10 @@
     <string name="settings_post_mortem_note">이긴 뒤에, 풀이가 느려진 두 지점과 그때 판에 무엇이 있었는지 알려줍니다. 멈춤이 없던 풀이에 대해서는 아무 말도 하지 않습니다.</string>
     <string name="post_mortem_line">여기서 %1$s 멈췄습니다. 그때 %2$s이(가) 있었습니다.</string>
     <string name="post_mortem_title">시간이 어디로 갔나</string>
+    <string name="clean_line">깔끔한 풀이: 힌트 없음, 실수 없음, 메모 없음.</string>
+    <string name="clean_mark">깔끔</string>
+    <string name="clean_stat">깔끔한 풀이</string>
+    <string name="clean_note">깔끔한 풀이: %2$d판 중 %1$d판.</string>
     <string name="account_title">나</string>
     <string name="account_no_account">로그인할 계정이 없어요. 아래의 모든 것은 이 휴대폰 안에만 있어요.</string>
     <string name="account_solved">완성</string>

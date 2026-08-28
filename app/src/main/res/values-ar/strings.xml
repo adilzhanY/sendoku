@@ -852,6 +852,10 @@
     <string name="settings_post_mortem_note">بعد الفوز، اذكر الموضعين اللذين تباطأ فيهما الحل وما كان على الشبكة هناك. ولا يُقال شيء عن حل لم يتباطأ.</string>
     <string name="post_mortem_line">توقفت هنا %1$s. كان هناك %2$s يمكن إيجاده.</string>
     <string name="post_mortem_title">أين ذهب الوقت</string>
+    <string name="clean_line">حل نظيف: بلا تلميحات، بلا أخطاء، بلا ملاحظات.</string>
+    <string name="clean_mark">نظيف</string>
+    <string name="clean_stat">حلول نظيفة</string>
+    <string name="clean_note">حلول نظيفة: %1$d من %2$d.</string>
     <string name="account_title">أنت</string>
     <string name="account_no_account">لا يوجد حساب لتسجيل الدخول إليه. كل ما يلي على هذا الهاتف ولا مكان آخر.</string>
     <string name="account_solved">محلولة</string>

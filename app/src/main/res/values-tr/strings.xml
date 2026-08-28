@@ -449,6 +449,10 @@
     <string name="settings_post_mortem_note">Kazandıktan sonra, çözümün yavaşladığı iki yeri ve orada tahtada ne olduğunu söyle. Hiç yavaşlamayan bir çözüm hakkında bir şey söylenmez.</string>
     <string name="post_mortem_line">Burada %1$s durdun. Orada bir %2$s bulunabilirdi.</string>
     <string name="post_mortem_title">Zaman nereye gitti</string>
+    <string name="clean_line">Temiz çözüm: ipucu yok, hata yok, not yok.</string>
+    <string name="clean_mark">Temiz</string>
+    <string name="clean_stat">Temiz çözüm</string>
+    <string name="clean_note">Temiz çözüm: %2$d içinden %1$d.</string>
 
     <string name="account_title">Siz</string>
     <string name="account_no_account">Giriş yapılacak bir hesap yok. Aşağıdaki her şey bu telefonda, başka hiçbir yerde değil.</string>

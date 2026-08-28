@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 5,
-    "identityHash": "0462709bd4d66fe0b852d949ac722ac4",
+    "identityHash": "0c118db3ad787f9471b57c948d6c2a00",
     "entities": [
       {
         "tableName": "in_progress",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `givens` TEXT NOT NULL, `solution` TEXT NOT NULL, `entries` TEXT NOT NULL, `marks` TEXT NOT NULL, `grade` TEXT NOT NULL, `rating` REAL NOT NULL, `hardest` TEXT, `selected` INTEGER, `pencilMode` INTEGER NOT NULL, `elapsedSeconds` INTEGER NOT NULL, `mistakes` INTEGER NOT NULL, `hintsUsed` INTEGER NOT NULL, `savedAt` INTEGER NOT NULL, `dailyEpochDay` INTEGER, `origin` TEXT, `catalogIndex` INTEGER, `tints` TEXT NOT NULL, `placements` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `givens` TEXT NOT NULL, `solution` TEXT NOT NULL, `entries` TEXT NOT NULL, `marks` TEXT NOT NULL, `grade` TEXT NOT NULL, `rating` REAL NOT NULL, `hardest` TEXT, `selected` INTEGER, `pencilMode` INTEGER NOT NULL, `elapsedSeconds` INTEGER NOT NULL, `mistakes` INTEGER NOT NULL, `hintsUsed` INTEGER NOT NULL, `savedAt` INTEGER NOT NULL, `dailyEpochDay` INTEGER, `origin` TEXT, `catalogIndex` INTEGER, `tints` TEXT NOT NULL, `placements` TEXT NOT NULL, `notesUsed` INTEGER NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -116,6 +116,12 @@
             "columnName": "placements",
             "affinity": "TEXT",
             "notNull": true
+          },
+          {
+            "fieldPath": "notesUsed",
+            "columnName": "notesUsed",
+            "affinity": "INTEGER",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -127,7 +133,7 @@
       },
       {
         "tableName": "finished",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `givens` TEXT NOT NULL, `grade` TEXT NOT NULL, `rating` REAL NOT NULL, `hardest` TEXT, `elapsedSeconds` INTEGER NOT NULL, `hintsUsed` INTEGER NOT NULL, `mistakes` INTEGER NOT NULL, `solved` INTEGER NOT NULL, `finishedAt` INTEGER NOT NULL, `board` TEXT, `dailyEpochDay` INTEGER, `origin` TEXT, `catalogIndex` INTEGER)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `givens` TEXT NOT NULL, `grade` TEXT NOT NULL, `rating` REAL NOT NULL, `hardest` TEXT, `elapsedSeconds` INTEGER NOT NULL, `hintsUsed` INTEGER NOT NULL, `mistakes` INTEGER NOT NULL, `solved` INTEGER NOT NULL, `finishedAt` INTEGER NOT NULL, `board` TEXT, `dailyEpochDay` INTEGER, `origin` TEXT, `catalogIndex` INTEGER, `notesUsed` INTEGER)",
         "fields": [
           {
             "fieldPath": "id",
@@ -206,6 +212,11 @@
           {
             "fieldPath": "catalogIndex",
             "columnName": "catalogIndex",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "notesUsed",
+            "columnName": "notesUsed",
             "affinity": "INTEGER"
           }
         ],
@@ -303,7 +314,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0462709bd4d66fe0b852d949ac722ac4')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0c118db3ad787f9471b57c948d6c2a00')"
     ]
   }
 }
