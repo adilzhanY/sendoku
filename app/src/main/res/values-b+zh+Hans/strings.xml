@@ -34,6 +34,18 @@
     <string name="code_shared">别人发给你的</string>
     <string name="code_share">把这道题发给朋友</string>
     <string name="code_invitation">来试试这道 %1$s 题目。同一个盘面。</string>
+    <string name="enter_title">输入一道题</string>
+    <string name="enter_marker">手动输入</string>
+    <plurals name="enter_help">
+        <item quantity="other">目前 %1$d 个提示数。先点格子，再点数字。填完后检查一下。</item>
+    </plurals>
+    <string name="enter_impossible">这个盘面无法完成，其中一个提示数是错的。</string>
+    <string name="enter_ambiguous">这个盘面答案不止一个，算不上一道题。你仍然可以玩。</string>
+    <string name="enter_beyond">答案唯一，但仅靠推理到不了，所以 Sendoku 无法一步步讲解。</string>
+    <string name="enter_ready">答案唯一。这是一道 %1$s 题目，评分 %2$s。</string>
+    <string name="enter_clear">清空</string>
+    <string name="enter_check">检查</string>
+    <string name="enter_play">开始</string>
 
     <string name="grade_gentle">简单</string>
     <string name="grade_steady">普通</string>

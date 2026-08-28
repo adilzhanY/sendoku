@@ -32,6 +32,19 @@
     <string name="code_shared">Sent to you</string>
     <string name="code_share">Send this puzzle to a friend</string>
     <string name="code_invitation">Try this %1$s puzzle. Same grid, no app needed to compare.</string>
+    <string name="enter_title">Type in a puzzle</string>
+    <string name="enter_marker">Typed in</string>
+    <plurals name="enter_help">
+        <item quantity="one">%1$d clue so far. Tap a cell, then a digit. Check it when the grid is in.</item>
+        <item quantity="other">%1$d clues so far. Tap a cell, then a digit. Check it when the grid is in.</item>
+    </plurals>
+    <string name="enter_impossible">There is no way to finish this grid. One of the clues must be wrong.</string>
+    <string name="enter_ambiguous">This grid has more than one answer, so it is not really a puzzle. You can still play it.</string>
+    <string name="enter_beyond">One answer, but it cannot be reached by reasoning alone, so Sendoku cannot explain it step by step.</string>
+    <string name="enter_ready">One answer. This is a %1$s puzzle, rated %2$s.</string>
+    <string name="enter_clear">Clear</string>
+    <string name="enter_check">Check</string>
+    <string name="enter_play">Play</string>
 
     <!-- Grades -->
     <string name="grade_gentle">Easy</string>

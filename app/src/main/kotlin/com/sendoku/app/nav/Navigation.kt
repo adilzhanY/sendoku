@@ -44,6 +44,12 @@ public sealed interface Destination {
     /** The list of techniques the batch can hand you a puzzle for. */
     public data object ByTechnique : Destination
 
+    /** Typing in a puzzle from somewhere that is not this app. */
+    public data object Enter : Destination
+
+    /** Playing the puzzle that was just typed in. */
+    public data object Entered : Destination
+
     /** A puzzle chosen because it turns on one particular technique. */
     public data class Needing(val technique: String) : Destination
 
@@ -158,6 +164,8 @@ public class Navigator(stack: List<Destination> = listOf(Destination.Home)) {
             is Destination.Daily -> "daily:$epochDay"
             is Destination.Shared -> "shared:$code"
             Destination.ByTechnique -> "bytechnique"
+            Destination.Enter -> "enter"
+            Destination.Entered -> "entered"
             is Destination.Needing -> "needing:$technique"
             Destination.Calendar -> "calendar"
             Destination.Course -> "course"
@@ -194,6 +202,8 @@ public class Navigator(stack: List<Destination> = listOf(Destination.Home)) {
             value.startsWith("daily:") -> Destination.Daily(value.removePrefix("daily:").toLong())
             value.startsWith("shared:") -> Destination.Shared(value.removePrefix("shared:"))
             value == "bytechnique" -> Destination.ByTechnique
+            value == "enter" -> Destination.Enter
+            value == "entered" -> Destination.Entered
             value.startsWith("needing:") -> Destination.Needing(value.removePrefix("needing:"))
             else -> Destination.Home
         }

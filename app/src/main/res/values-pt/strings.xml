@@ -36,6 +36,19 @@
     <string name="code_shared">Enviado para você</string>
     <string name="code_share">Envie este puzzle para alguém</string>
     <string name="code_invitation">Tente este puzzle %1$s. A mesma grade, e não precisa de mais nada para comparar.</string>
+    <string name="enter_title">Digite um puzzle</string>
+    <string name="enter_marker">Digitado</string>
+    <plurals name="enter_help">
+        <item quantity="one">%1$d pista até agora. Toque numa casa e depois num dígito. Confira quando a grade estiver pronta.</item>
+        <item quantity="other">%1$d pistas até agora. Toque numa casa e depois num dígito. Confira quando a grade estiver pronta.</item>
+    </plurals>
+    <string name="enter_impossible">Não há como terminar esta grade. Alguma pista está errada.</string>
+    <string name="enter_ambiguous">Esta grade tem mais de uma resposta, então não é bem um puzzle. Ainda dá para jogar.</string>
+    <string name="enter_beyond">Uma resposta só, mas não dá para chegar nela só raciocinando, então o Sendoku não consegue explicar passo a passo.</string>
+    <string name="enter_ready">Uma resposta só. É um puzzle %1$s, avaliado em %2$s.</string>
+    <string name="enter_clear">Limpar</string>
+    <string name="enter_check">Conferir</string>
+    <string name="enter_play">Jogar</string>
 
     <string name="grade_gentle">Fácil</string>
     <string name="grade_steady">Médio</string>

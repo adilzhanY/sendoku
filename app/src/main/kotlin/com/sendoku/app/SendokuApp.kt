@@ -41,6 +41,7 @@ import com.sendoku.app.ui.BottomBar
 import com.sendoku.app.ui.ByTechniqueScreen
 import com.sendoku.app.ui.CodeMiss
 import com.sendoku.app.ui.DailyScreen
+import com.sendoku.app.ui.EnterPuzzleScreen
 import com.sendoku.app.ui.GameScreen
 import com.sendoku.app.ui.GlossaryScreen
 import com.sendoku.app.ui.HistoryGameScreen
@@ -54,6 +55,7 @@ import com.sendoku.app.ui.SettingsScreen
 import com.sendoku.app.ui.SolvePathScreen
 import com.sendoku.app.ui.StatsScreen
 import com.sendoku.app.ui.TechniqueSupply
+import com.sendoku.app.ui.Verdict
 import com.sendoku.app.ui.dailyStreak
 import com.sendoku.engine.Grade
 import com.sendoku.engine.catalog.CodeFault
@@ -266,6 +268,7 @@ private fun Screens(
                 // this decides whether anything did.
                 fault = shownFault,
                 miss = shownMiss,
+                onEnter = { navigator.go(Destination.Enter) },
                 onCode = { text ->
                     codeFault = null
                     codeMiss = null
@@ -293,9 +296,27 @@ private fun Screens(
         }
 
         is Destination.Play, Destination.Resume, is Destination.Daily, is Destination.Shared,
-        is Destination.Needing,
+        is Destination.Needing, Destination.Entered,
         ->
             PlayHost(model, loading, navigator, scope, onSpendHint, modifier)
+
+        Destination.Enter -> {
+            // The verdict is cleared the moment the grid changes, since it was about the
+            // grid as it stood. A screen saying "one answer" over a board that has been
+            // typed on since is worse than one saying nothing.
+            var verdict by remember { mutableStateOf<Verdict>(Verdict.Unknown) }
+            EnterPuzzleScreen(
+                verdict = verdict,
+                onCheck = { givens -> model.check(givens) { verdict = it } },
+                onPlay = { givens ->
+                    model.startEntered(givens) { started ->
+                        if (started) navigator.go(Destination.Entered)
+                    }
+                },
+                onBack = { navigator.back() },
+                modifier = modifier,
+            )
+        }
 
         Destination.ByTechnique -> {
             // Read once, off the batch, and only when this screen is open. It is one byte

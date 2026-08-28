@@ -30,6 +30,19 @@
     <string name="code_shared">Dir geschickt</string>
     <string name="code_share">Dieses Rätsel verschicken</string>
     <string name="code_invitation">Probier dieses %1$s-Rätsel. Dasselbe Gitter, und man braucht nichts weiter, um zu vergleichen.</string>
+    <string name="enter_title">Rätsel eingeben</string>
+    <string name="enter_marker">Eingegeben</string>
+    <plurals name="enter_help">
+        <item quantity="one">Bisher %1$d Hinweis. Tippe eine Zelle an, dann eine Ziffer. Prüfe es, wenn das Gitter steht.</item>
+        <item quantity="other">Bisher %1$d Hinweise. Tippe eine Zelle an, dann eine Ziffer. Prüfe es, wenn das Gitter steht.</item>
+    </plurals>
+    <string name="enter_impossible">Dieses Gitter lässt sich nicht zu Ende bringen. Einer der Hinweise muss falsch sein.</string>
+    <string name="enter_ambiguous">Dieses Gitter hat mehr als eine Lösung, also ist es kein richtiges Rätsel. Spielen kannst du es trotzdem.</string>
+    <string name="enter_beyond">Eine Lösung, aber durch Nachdenken allein nicht erreichbar, also kann Sendoku sie nicht Schritt für Schritt erklären.</string>
+    <string name="enter_ready">Eine Lösung. Das ist ein Rätsel der Stufe %1$s, bewertet mit %2$s.</string>
+    <string name="enter_clear">Leeren</string>
+    <string name="enter_check">Prüfen</string>
+    <string name="enter_play">Spielen</string>
 
     <string name="grade_gentle">Leicht</string>
     <string name="grade_steady">Mittel</string>

@@ -37,6 +37,19 @@
     <string name="code_shared">أُرسل إليك</string>
     <string name="code_share">أرسل هذا اللغز إلى صديق</string>
     <string name="code_invitation">جرّب هذا اللغز من مستوى %1$s. الشبكة نفسها.</string>
+    <string name="enter_title">أدخل لغزًا</string>
+    <string name="enter_marker">مُدخل يدويًا</string>
+    <plurals name="enter_help">
+        <item quantity="one">تلميح واحد حتى الآن. المس خانة ثم رقمًا. تحقق منه عندما تكتمل الشبكة.</item>
+        <item quantity="other">%1$d تلميحات حتى الآن. المس خانة ثم رقمًا. تحقق منه عندما تكتمل الشبكة.</item>
+    </plurals>
+    <string name="enter_impossible">لا سبيل لإنهاء هذه الشبكة. أحد التلميحات خاطئ.</string>
+    <string name="enter_ambiguous">لهذه الشبكة أكثر من حل، فهي ليست لغزًا حقًا. ومع ذلك يمكنك لعبها.</string>
+    <string name="enter_beyond">حل واحد، لكن لا يمكن الوصول إليه بالاستنتاج وحده، فلا يستطيع Sendoku شرحه خطوة بخطوة.</string>
+    <string name="enter_ready">حل واحد. هذا لغز من مستوى %1$s، تقييمه %2$s.</string>
+    <string name="enter_clear">مسح</string>
+    <string name="enter_check">تحقق</string>
+    <string name="enter_play">العب</string>
 
     <string name="grade_gentle">سهل</string>
     <string name="grade_steady">متوسط</string>

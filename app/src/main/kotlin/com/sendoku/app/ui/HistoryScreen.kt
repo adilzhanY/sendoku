@@ -129,12 +129,17 @@ private fun Entry(game: FinishedGame, onClick: () -> Unit) {
                         color = colors.accent,
                     )
                 }
-                // And so does a puzzle somebody sent, which is a different kind of game to
-                // have played: it opened nothing, and it can be played again by whoever
-                // sent it.
-                if (game.origin == PuzzleOrigin.SHARED) {
+                // And so does a puzzle somebody sent, or one typed in from somewhere else.
+                // Both are a different kind of game to have played: neither opened a level,
+                // and both can be played again by whoever brought them.
+                val marker = when (game.origin) {
+                    PuzzleOrigin.SHARED -> R.string.code_shared
+                    PuzzleOrigin.ENTERED -> R.string.enter_marker
+                    else -> null
+                }
+                if (marker != null) {
                     Text(
-                        text = stringResource(R.string.code_shared),
+                        text = stringResource(marker),
                         style = Sendoku.type.overline,
                         color = colors.accent,
                     )

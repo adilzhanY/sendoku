@@ -31,6 +31,19 @@
     <string name="code_shared">Mandato a te</string>
     <string name="code_share">Manda questo schema a qualcuno</string>
     <string name="code_invitation">Prova questo schema %1$s. La stessa griglia, e non serve altro per confrontarsi.</string>
+    <string name="enter_title">Inserisci uno schema</string>
+    <string name="enter_marker">Inserito a mano</string>
+    <plurals name="enter_help">
+        <item quantity="one">%1$d indizio finora. Tocca una casella, poi una cifra. Controlla quando la griglia è pronta.</item>
+        <item quantity="other">%1$d indizi finora. Tocca una casella, poi una cifra. Controlla quando la griglia è pronta.</item>
+    </plurals>
+    <string name="enter_impossible">Non c\'è modo di finire questa griglia. Uno degli indizi è sbagliato.</string>
+    <string name="enter_ambiguous">Questa griglia ha più di una soluzione, quindi non è davvero uno schema. Puoi comunque giocarla.</string>
+    <string name="enter_beyond">Una sola soluzione, ma non si raggiunge solo ragionando, quindi Sendoku non può spiegarla passo dopo passo.</string>
+    <string name="enter_ready">Una sola soluzione. È uno schema %1$s, valutato %2$s.</string>
+    <string name="enter_clear">Svuota</string>
+    <string name="enter_check">Controlla</string>
+    <string name="enter_play">Gioca</string>
 
     <string name="grade_gentle">Facile</string>
     <string name="grade_steady">Medio</string>

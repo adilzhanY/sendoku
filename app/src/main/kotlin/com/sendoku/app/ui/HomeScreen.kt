@@ -115,6 +115,7 @@ public fun HomeScreen(
     /** Set when the code read correctly and named a puzzle this app could not open. */
     miss: CodeMiss? = null,
     onCode: (String) -> Unit = {},
+    onEnter: () -> Unit = {},
 ) {
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
@@ -176,7 +177,7 @@ public fun HomeScreen(
                 }
 
                 Column(verticalArrangement = Arrangement.spacedBy(dimens.spaceS)) {
-                    CodeBox(fault = fault, miss = miss, onCode = onCode)
+                    CodeBox(fault = fault, miss = miss, onCode = onCode, onEnter = onEnter)
 
                     // Opened out to begin with when the screen is tall enough to be worth
                     // filling, and folded into chips when it is not. A short phone, or a

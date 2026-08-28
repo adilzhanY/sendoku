@@ -31,6 +31,19 @@
     <string name="code_shared">Te lo enviaron</string>
     <string name="code_share">Envía este puzle a alguien</string>
     <string name="code_invitation">Prueba este puzle %1$s. La misma cuadrícula, y no hace falta nada más para comparar.</string>
+    <string name="enter_title">Escribe un puzle</string>
+    <string name="enter_marker">Escrito a mano</string>
+    <plurals name="enter_help">
+        <item quantity="one">%1$d pista por ahora. Toca una casilla y luego un dígito. Compruébalo cuando esté la cuadrícula.</item>
+        <item quantity="other">%1$d pistas por ahora. Toca una casilla y luego un dígito. Compruébalo cuando esté la cuadrícula.</item>
+    </plurals>
+    <string name="enter_impossible">No hay forma de terminar esta cuadrícula. Alguna pista está mal.</string>
+    <string name="enter_ambiguous">Esta cuadrícula tiene más de una respuesta, así que no es un puzle de verdad. Aun así puedes jugarla.</string>
+    <string name="enter_beyond">Una sola respuesta, pero no se llega a ella solo razonando, así que Sendoku no puede explicarla paso a paso.</string>
+    <string name="enter_ready">Una sola respuesta. Es un puzle %1$s, valorado en %2$s.</string>
+    <string name="enter_clear">Borrar</string>
+    <string name="enter_check">Comprobar</string>
+    <string name="enter_play">Jugar</string>
 
     <string name="grade_gentle">Fácil</string>
     <string name="grade_steady">Medio</string>

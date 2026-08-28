@@ -7,11 +7,19 @@ import com.sendoku.app.data.GameRepository
 import com.sendoku.app.data.PuzzleSource
 import com.sendoku.app.data.SettingsStore
 import com.sendoku.app.ui.GameEvent
+import com.sendoku.app.ui.Verdict
 import com.sendoku.app.ui.reduce
+import com.sendoku.engine.Board
 import com.sendoku.engine.Grade
+import com.sendoku.engine.Puzzle
+import com.sendoku.engine.Solver
+import com.sendoku.engine.Symmetry
 import com.sendoku.engine.catalog.PuzzleRef
+import com.sendoku.engine.catalog.RatedPuzzle
 import com.sendoku.engine.technique.TechniqueId
+import com.sendoku.engine.technique.TechniqueSolver
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -20,6 +28,7 @@ import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
  * The line between the game and the screen.
@@ -127,6 +136,39 @@ public class GameViewModel(
     /** How many puzzles in the batch turn on each technique. */
     public suspend fun techniqueSupply(): Map<TechniqueId, Int> = puzzles.supply()
 
+    /**
+     * Judges a grid somebody typed in.
+     *
+     * Off the main thread, because counting the answers to a nearly empty grid is the one
+     * piece of work in this app that can take a noticeable moment, and a screen that stops
+     * responding while it thinks is a screen people tap again.
+     */
+    public fun check(givens: Board, onVerdict: (Verdict) -> Unit) {
+        scope.launch {
+            onVerdict(withContext(Dispatchers.Default) { judge(givens) })
+        }
+    }
+
+    /**
+     * Starts a puzzle that was typed in.
+     *
+     * It counts in the history and in the statistics, and it opens no levels, for the same
+     * reason a shared puzzle does not: it is a puzzle the player brought, not one they
+     * climbed to.
+     */
+    public fun startEntered(givens: Board, onResult: (Boolean) -> Unit = {}) {
+        scope.launch {
+            _loading.value = true
+            val settings = settingsStore.settings.first()
+            val rated = withContext(Dispatchers.Default) { rate(givens) }
+            if (rated != null) {
+                _state.value = GameState.start(rated, settings, origin = PuzzleOrigin.ENTERED)
+            }
+            _loading.value = false
+            onResult(rated != null)
+        }
+    }
+
     public fun startNew(grade: Grade) {
         scope.launch {
             _loading.value = true
@@ -180,6 +222,42 @@ public class GameViewModel(
         if (!clockStoppedByBackground) return
         clockStoppedByBackground = false
         onEvent(GameEvent.Resume)
+    }
+
+    /**
+     * What the app can honestly say about a grid it did not deal.
+     *
+     * Three questions in order, because the answers only make sense that way. Does it have
+     * an answer at all, does it have exactly one, and can the ladder reach that one by
+     * reasoning. A grid can fail the last of those and still be a perfectly good sudoku, and
+     * saying so is more honest than pretending the hint engine could carry it.
+     */
+    private fun judge(givens: Board): Verdict {
+        val solutions = Solver(givens.dims).countSolutions(givens, limit = 2)
+        return when {
+            solutions == 0 -> Verdict.Impossible
+
+            solutions > 1 -> Verdict.Ambiguous
+
+            else -> {
+                val report = TechniqueSolver().solve(givens.copy())
+                if (report.isSolved) Verdict.Ready(report.grade, report.rating) else Verdict.BeyondTheLadder
+            }
+        }
+    }
+
+    /** A typed grid as something playable, or null when it has no single answer. */
+    private fun rate(givens: Board): RatedPuzzle? {
+        val solution = Solver(givens.dims).solve(givens) ?: return null
+        val report = TechniqueSolver().solve(givens.copy())
+        return RatedPuzzle(
+            puzzle = Puzzle(givens = givens, solution = solution),
+            rating = report.rating,
+            grade = report.grade,
+            hardest = report.hardest,
+            symmetry = Symmetry.NONE,
+            usage = report.usage,
+        )
     }
 
     /** A dealt puzzle, made playable. Keeps the batch index so the game can be shared short. */

@@ -50,7 +50,13 @@ import com.sendoku.engine.catalog.CodeFault
  * send it again.
  */
 @Composable
-internal fun CodeBox(fault: CodeFault?, miss: CodeMiss?, onCode: (String) -> Unit, modifier: Modifier = Modifier) {
+internal fun CodeBox(
+    fault: CodeFault?,
+    miss: CodeMiss?,
+    onCode: (String) -> Unit,
+    modifier: Modifier = Modifier,
+    onEnter: () -> Unit = {},
+) {
     val colors = Sendoku.colors
     val dimens = Sendoku.dimens
     var text by rememberSaveable { mutableStateOf("") }
@@ -131,6 +137,21 @@ internal fun CodeBox(fault: CodeFault?, miss: CodeMiss?, onCode: (String) -> Uni
                 )
             }
         }
+
+        // The other way a puzzle comes in from outside: off a page rather than out of a
+        // message. Same screen, same board, same hints, and it belongs next to this because
+        // both of them answer "I have a puzzle that did not come from this app".
+        Text(
+            text = stringResource(R.string.enter_title),
+            style = Sendoku.type.overline,
+            color = colors.accent,
+            modifier = Modifier
+                .padding(top = dimens.spaceXs)
+                .clip(RoundedCornerShape(dimens.radiusS))
+                .clickable(onClick = onEnter)
+                .testTag("home:enter")
+                .padding(vertical = dimens.spaceXs, horizontal = dimens.spaceXs),
+        )
 
         val message = codeMessage(fault, miss)
         if (message != null) {

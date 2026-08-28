@@ -35,6 +35,19 @@
     <string name="code_shared">Envoyée par quelqu\'un</string>
     <string name="code_share">Envoyer cette grille à quelqu\'un</string>
     <string name="code_invitation">Essayez cette grille %1$s. La même grille, et rien d\'autre n\'est nécessaire pour comparer.</string>
+    <string name="enter_title">Saisir une grille</string>
+    <string name="enter_marker">Saisie à la main</string>
+    <plurals name="enter_help">
+        <item quantity="one">%1$d indice pour l\'instant. Touchez une case, puis un chiffre. Vérifiez quand la grille est entrée.</item>
+        <item quantity="other">%1$d indices pour l\'instant. Touchez une case, puis un chiffre. Vérifiez quand la grille est entrée.</item>
+    </plurals>
+    <string name="enter_impossible">Il n\'y a aucun moyen de finir cette grille. Un des indices doit être faux.</string>
+    <string name="enter_ambiguous">Cette grille a plusieurs solutions, ce n\'est donc pas vraiment une grille de sudoku. Vous pouvez quand même la jouer.</string>
+    <string name="enter_beyond">Une seule solution, mais impossible à atteindre par le seul raisonnement, donc Sendoku ne peut pas l\'expliquer étape par étape.</string>
+    <string name="enter_ready">Une seule solution. C\'est une grille %1$s, notée %2$s.</string>
+    <string name="enter_clear">Effacer</string>
+    <string name="enter_check">Vérifier</string>
+    <string name="enter_play">Jouer</string>
 
     <string name="grade_gentle">Facile</string>
     <string name="grade_steady">Moyen</string>

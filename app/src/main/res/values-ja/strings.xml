@@ -38,6 +38,18 @@
     <string name="code_shared">受け取った問題</string>
     <string name="code_share">この問題を友だちに送る</string>
     <string name="code_invitation">この %1$s の問題をどうぞ。同じ盤面です。</string>
+    <string name="enter_title">問題を入力する</string>
+    <string name="enter_marker">手入力</string>
+    <plurals name="enter_help">
+        <item quantity="other">現在 %1$d 個の手がかり。マスを選んでから数字を押してください。入力が終わったら確認します。</item>
+    </plurals>
+    <string name="enter_impossible">この盤面は完成できません。手がかりのどれかが間違っています。</string>
+    <string name="enter_ambiguous">この盤面には答えが複数あるので、問題としては成立していません。それでも遊べます。</string>
+    <string name="enter_beyond">答えは一つですが、論理だけでは到達できないため、Sendoku は手順を説明できません。</string>
+    <string name="enter_ready">答えは一つ。%1$s の問題で、評価は %2$s です。</string>
+    <string name="enter_clear">全消去</string>
+    <string name="enter_check">確認</string>
+    <string name="enter_play">プレイ</string>
 
     <string name="grade_gentle">やさしい</string>
     <string name="grade_steady">ふつう</string>

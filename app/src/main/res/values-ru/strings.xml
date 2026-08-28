@@ -30,6 +30,19 @@
     <string name="code_shared">Прислано вам</string>
     <string name="code_share">Отправить головоломку другу</string>
     <string name="code_invitation">Попробуйте эту головоломку уровня %1$s. Та же сетка, сравнить можно и так.</string>
+    <string name="enter_title">Ввести головоломку</string>
+    <string name="enter_marker">Введено вручную</string>
+    <plurals name="enter_help">
+        <item quantity="one">Пока %1$d подсказка. Нажмите на клетку, потом на цифру. Когда закончите, проверьте.</item>
+        <item quantity="other">Пока %1$d подсказок. Нажмите на клетку, потом на цифру. Когда закончите, проверьте.</item>
+    </plurals>
+    <string name="enter_impossible">Эту сетку невозможно закончить. Одна из подсказок неверна.</string>
+    <string name="enter_ambiguous">У этой сетки больше одного решения, так что это не совсем головоломка. Сыграть всё равно можно.</string>
+    <string name="enter_beyond">Решение одно, но добраться до него рассуждением нельзя, поэтому Sendoku не сможет объяснить его по шагам.</string>
+    <string name="enter_ready">Решение одно. Это головоломка уровня %1$s, оценка %2$s.</string>
+    <string name="enter_clear">Очистить</string>
+    <string name="enter_check">Проверить</string>
+    <string name="enter_play">Играть</string>
 
     <string name="grade_gentle">Лёгкий</string>
     <string name="grade_steady">Средний</string>

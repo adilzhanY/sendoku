@@ -29,6 +29,19 @@
     <string name="code_shared">Sana gönderildi</string>
     <string name="code_share">Bu bulmacayı bir arkadaşına gönder</string>
     <string name="code_invitation">Şu %1$s bulmacayı dene. Aynı ızgara, karşılaştırmak için başka bir şey gerekmiyor.</string>
+    <string name="enter_title">Bulmaca gir</string>
+    <string name="enter_marker">Elle girildi</string>
+    <plurals name="enter_help">
+        <item quantity="one">Şimdiye kadar %1$d ipucu. Bir kareye, sonra bir rakama dokun. Izgara tamamlanınca kontrol et.</item>
+        <item quantity="other">Şimdiye kadar %1$d ipucu. Bir kareye, sonra bir rakama dokun. Izgara tamamlanınca kontrol et.</item>
+    </plurals>
+    <string name="enter_impossible">Bu ızgara bitirilemiyor. İpuçlarından biri yanlış olmalı.</string>
+    <string name="enter_ambiguous">Bu ızgaranın birden fazla çözümü var, yani tam olarak bulmaca değil. Yine de oynayabilirsin.</string>
+    <string name="enter_beyond">Tek çözüm var ama yalnızca akıl yürüterek ulaşılamıyor, bu yüzden Sendoku bunu sırayla anlatamaz.</string>
+    <string name="enter_ready">Tek çözüm. Bu %1$s seviyesinde bir bulmaca, derecesi %2$s.</string>
+    <string name="enter_clear">Temizle</string>
+    <string name="enter_check">Kontrol et</string>
+    <string name="enter_play">Oyna</string>
 
     <string name="grade_gentle">Kolay</string>
     <string name="grade_steady">Orta</string>
