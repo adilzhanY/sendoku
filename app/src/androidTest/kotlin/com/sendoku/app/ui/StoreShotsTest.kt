@@ -6,6 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.test.captureToImage
 import androidx.compose.ui.test.junit4.v2.createComposeRule
+import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performClick
@@ -192,13 +193,11 @@ class StoreShotsTest {
                 )
             }
         }
-        // Open the hint, then walk it up to the full explanation. The panel's own buttons,
-        // not the toolbar: tapping the toolbar again just asks the same question over.
+        // The toolbar key opens the menu of what to ask for, and the menu's own explain
+        // button is what produces the full write-up. Two taps, not one.
         compose.onNodeWithText("Hint", ignoreCase = true).performClick()
         compose.waitForIdle()
-        compose.onNodeWithText("Show me where", ignoreCase = true).performClick()
-        compose.waitForIdle()
-        compose.onNodeWithText("Explain it", ignoreCase = true).performClick()
+        compose.onNodeWithTag("hint:menu:explain").performClick()
         shot("1-hint")
     }
 
