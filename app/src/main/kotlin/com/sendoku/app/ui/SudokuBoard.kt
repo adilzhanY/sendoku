@@ -474,11 +474,11 @@ private fun PencilMarks(cell: Cell, struck: Set<Int>, emphasis: Int?, markSize: 
                     // sevens. Tinting the whole cell instead says something is happening
                     // here and nothing at all about which digit is in trouble.
                     val dying = digit in struck
-                    // The digit in hand. Bold and a different colour was not enough to see
-                    // at this size, and the point of the whole feature is to find these
-                    // marks across the grid without reading them one at a time. So it is
-                    // bold, the accent colour, and a third bigger than its neighbours, which
-                    // is a difference visible from arm's length.
+                    // The digit in hand. Bold and the accent colour, at the same size as
+                    // every other mark. It used to be a third bigger as well, which read
+                    // well until the taller line box ran out of room in a third of a cell
+                    // and shaved the bottom off a 2. A mark that is clipped is worse than
+                    // one that is merely the same size as its neighbours.
                     val held = digit == emphasis
                     Text(
                         text = if (digit in cell.marks) digit.toString() else "",
@@ -488,7 +488,7 @@ private fun PencilMarks(cell: Cell, struck: Set<Int>, emphasis: Int?, markSize: 
                             held -> colors.accent
                             else -> colors.pencil
                         },
-                        fontSize = if (held) markSize * HELD_MARK else markSize,
+                        fontSize = markSize,
                         fontWeight = if (held) FontWeight.Black else null,
                         textAlign = TextAlign.Center,
                         textDecoration = if (dying) TextDecoration.LineThrough else null,
@@ -499,9 +499,6 @@ private fun PencilMarks(cell: Cell, struck: Set<Int>, emphasis: Int?, markSize: 
         }
     }
 }
-
-/** How much bigger a pencil mark gets when its digit is the one in hand. */
-private const val HELD_MARK = 1.35f
 
 /**
  * The line under a digit that repeats.
