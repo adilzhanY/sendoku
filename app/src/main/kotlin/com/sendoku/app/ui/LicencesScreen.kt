@@ -19,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import com.sendoku.app.R
 import com.sendoku.app.theme.Sendoku
@@ -40,6 +41,7 @@ public fun LicencesScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
     val dimens = Sendoku.dimens
     val context = LocalContext.current
     val licences = remember { readLicences(context) }
+    val fontLicence = remember { readFontLicence(context) }
 
     Column(modifier = modifier.fillMaxSize().background(colors.background)) {
         Row(
@@ -52,7 +54,7 @@ public fun LicencesScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
         }
 
         LazyColumn(
-            modifier = Modifier.fillMaxSize().padding(horizontal = dimens.spaceM),
+            modifier = Modifier.fillMaxSize().padding(horizontal = dimens.spaceM).testTag("licences:list"),
             verticalArrangement = Arrangement.spacedBy(dimens.spaceS),
             contentPadding = PaddingValues(bottom = dimens.spaceXl),
         ) {
@@ -68,9 +70,34 @@ public fun LicencesScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
                     Text(entry.licence, style = Sendoku.type.body, color = colors.muted)
                 }
             }
+
+            // The four typefaces are all under the same licence, and that licence asks to
+            // travel with the fonts rather than be named and left on a website. So it is
+            // here in full, once, under the list that names which font each copyright
+            // belongs to. It is not translated, because a licence is not translated.
+            if (fontLicence.isNotBlank()) {
+                item {
+                    Text(
+                        text = fontLicence,
+                        style = Sendoku.type.body,
+                        color = colors.muted,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(dimens.radiusM))
+                            .background(colors.surface)
+                            .padding(dimens.spaceM)
+                            .testTag("licences:ofl"),
+                    )
+                }
+            }
         }
     }
 }
+
+/** The full text of the font licence, blank rather than crashing if it is somehow missing. */
+private fun readFontLicence(context: android.content.Context): String = runCatching {
+    context.assets.open("ofl-1.1.txt").bufferedReader().use { it.readText() }.trim()
+}.getOrDefault("")
 
 /** Reads the list the build generated. Blank rather than crashing if it is somehow missing. */
 private fun readLicences(context: android.content.Context): List<Licence> = runCatching {
