@@ -25,7 +25,7 @@ import androidx.core.graphics.createBitmap
  * There is nothing on here about the app being free, carrying no advertisements and tracking
  * nobody. All three are true and none of them belongs on somebody's photograph.
  *
- * The mark is the same five by five grid spelling an S that the launcher icon uses, drawn from
+ * The mark is the same one the launcher icon wears, a sudoku box with one cell lit, drawn from
  * the same description rather than loaded from a bitmap, so it is crisp at any size and there
  * is no second copy of the logo to keep in step.
  *
@@ -73,11 +73,9 @@ public object ShareCard {
     )
 
     private val MARK = listOf(
-        ".####",
-        "#....",
-        ".###.",
-        "....#",
-        "####.",
+        "...",
+        ".#.",
+        "...",
     )
 
     /** One line of the stats block: what it is, and what it says. */
@@ -245,11 +243,11 @@ public object ShareCard {
         }
     }
 
-    /** The S, as rounded squares on a five by five grid. */
+    /** The box, as nine rounded squares with one of them lit. */
     private fun drawMark(canvas: Canvas, paint: Paint, left: Float, top: Float, side: Float) {
-        val gap = side * 0.11f / (MARK.size - 1)
+        val gap = side * 0.10f / (MARK.size - 1)
         val cell = (side - gap * (MARK.size - 1)) / MARK.size
-        val radius = cell * 0.2f
+        val radius = cell * 0.25f
         for ((row, line) in MARK.withIndex()) {
             for ((column, mark) in line.withIndex()) {
                 val x = left + column * (cell + gap)
