@@ -6,7 +6,7 @@ title: Sendoku privacy policy
 
 Last updated: 30 August 2026
 
-Sendoku is made by Adilzhan Yerzhan. It does not collect anything.
+Sendoku is made by one person, and it does not collect anything.
 
 There is no account, no sign in, and no server. The app requests no Android permissions at
 all, not even internet access, so it cannot send data anywhere even if it wanted to. You can
