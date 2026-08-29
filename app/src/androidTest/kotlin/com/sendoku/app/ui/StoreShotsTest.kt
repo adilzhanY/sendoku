@@ -70,8 +70,12 @@ class StoreShotsTest {
 
     /** The same frame the app puts around a screen, so a tablet shot is framed like a tablet. */
     @Composable
-    private fun Scene(dark: Boolean = true, content: @Composable (Modifier) -> Unit) {
-        SendokuTheme(themeId = SendokuThemeId.DEEP_FIELD, dark = dark) {
+    private fun Scene(
+        theme: SendokuThemeId = SendokuThemeId.DEEP_FIELD,
+        dark: Boolean = true,
+        content: @Composable (Modifier) -> Unit,
+    ) {
+        SendokuTheme(themeId = theme, dark = dark) {
             ReadableWidth { pane -> content(pane) }
         }
     }
@@ -214,9 +218,29 @@ class StoreShotsTest {
     }
 
     @Test
-    fun light() {
+    fun themeDeepField() = theme(SendokuThemeId.DEEP_FIELD, dark = true)
+
+    @Test
+    fun themeInk() = theme(SendokuThemeId.INK, dark = false)
+
+    // Zen in its light mode on purpose. Zen dark and Terminal are both dark grey green, and
+    // side by side in one picture they read as the same theme twice.
+    @Test
+    fun themeZen() = theme(SendokuThemeId.ZEN, dark = false)
+
+    @Test
+    fun themeTerminal() = theme(SendokuThemeId.TERMINAL, dark = true)
+
+    /**
+     * The same board in one theme, written out as an ingredient rather than a screenshot.
+     *
+     * The x prefix says so: `tools/store-cards.py` builds these four into the one themes card
+     * that gets uploaded, and never uploads them singly. A store listing has eight slots and
+     * spending four of them on the same grid in four colours would be a poor trade.
+     */
+    private fun theme(id: SendokuThemeId, dark: Boolean) {
         compose.setContent {
-            Scene(dark = false) { pane ->
+            Scene(theme = id, dark = dark) { pane ->
                 GameScreen(
                     state = midGame(Grade.TRICKY, seed = 4, placed = 30),
                     onEvent = {},
@@ -230,7 +254,7 @@ class StoreShotsTest {
                 )
             }
         }
-        shot("5-light")
+        shot("x-theme-" + id.name.lowercase())
     }
 
     @Test

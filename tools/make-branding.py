@@ -177,13 +177,27 @@ def svg_wordmark(width=1600, height=400, background=None):
 
 
 def svg_feature(width=1024, height=500):
-    """The store feature graphic. Mark on the left, name and one promise on the right."""
+    """
+    The store feature graphic. Mark on the left, name and one promise on the right.
+
+    A glow behind the mark, because this graphic is shown as a wide band at the top of the
+    listing and a flat near black rectangle reads there as a picture that failed to load. The
+    right third is left quiet on purpose: Play draws its own title and install button over
+    parts of this image in some placements, and anything put there competes with them.
+    """
     mark_side = height * 0.52
     on, off = cells(mark_side, width * 0.09, (height - mark_side) / 2)
     out = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" '
         f'viewBox="0 0 {width} {height}">',
+        "<defs>",
+        f'<radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">'
+        f'<stop offset="0%" stop-color="{TEAL}" stop-opacity="0.20"/>'
+        f'<stop offset="100%" stop-color="{TEAL}" stop-opacity="0"/></radialGradient>',
+        "</defs>",
         f'<rect width="{width}" height="{height}" fill="{INK}"/>',
+        f'<ellipse cx="{width * 0.20}" cy="{height * 0.5}" rx="{width * 0.34}" '
+        f'ry="{height * 0.62}" fill="url(#glow)"/>',
     ]
     for d in off:
         out.append(f'<path d="{d}" fill="{SLATE}" fill-opacity="0.26"/>')
@@ -196,7 +210,9 @@ def svg_feature(width=1024, height=500):
         f'<text x="{left}" y="{height * 0.60}" font-family="Inter, Noto Sans, sans-serif" '
         f'font-weight="500" font-size="{height * 0.058}" letter-spacing="{height * 0.012}" '
         f'fill="{TEAL}">HARDER THAN IT LOOKS</text>',
-        f'<text x="{left}" y="{height * 0.72}" font-family="Inter, Noto Sans, sans-serif" '
+        f'<rect x="{left}" y="{height * 0.655}" width="{width * 0.07}" height="{height * 0.012}" '
+        f'fill="{TEAL}"/>',
+        f'<text x="{left}" y="{height * 0.78}" font-family="Inter, Noto Sans, sans-serif" '
         f'font-weight="400" font-size="{height * 0.046}" fill="{MUTED}">'
         f'Rated by technique, not by clue count.</text>',
         "</svg>",
