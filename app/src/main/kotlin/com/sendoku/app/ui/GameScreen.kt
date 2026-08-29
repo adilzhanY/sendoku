@@ -162,9 +162,7 @@ public fun GameScreen(
                     horizontalArrangement = Arrangement.spacedBy(dimens.spaceL),
                 ) {
                     Box(Modifier.fillMaxHeight().weight(1f), contentAlignment = Alignment.Center) {
-                        BoardArea(state, onNextPuzzle, onHome, {
-                            longPressed = it
-                        }, boardCap, hint, onGlossary, onPath, live = hint == null && !menuOpen) {
+                        BoardArea(state, { longPressed = it }, boardCap, hint, hint == null && !menuOpen) {
                             feedback(GameEvent.Select(it))
                         }
                     }
@@ -215,9 +213,7 @@ public fun GameScreen(
                         modifier = Modifier.fillMaxWidth(),
                         contentAlignment = Alignment.Center,
                     ) {
-                        BoardArea(state, onNextPuzzle, onHome, {
-                            longPressed = it
-                        }, boardCap, hint, onGlossary, onPath, live = hint == null && !menuOpen) {
+                        BoardArea(state, { longPressed = it }, boardCap, hint, hint == null && !menuOpen) {
                             feedback(GameEvent.Select(it))
                         }
                     }
@@ -247,15 +243,14 @@ public fun GameScreen(
         }
         content()
 
-        // Over everything, not just the board. Covering the board alone left the number pad
-        // sitting there next to a screen that says tap anywhere to carry on, and in landscape
-        // it covered a third of the screen while the rest carried on looking playable.
-        if (!state.isOver && !state.isRunning) {
-            PauseOverlay(
-                elapsed = state.elapsed.clock(),
-                onResume = { onEvent(GameEvent.Resume) },
-            )
-        }
+        Overlays(
+            state = state,
+            onNextPuzzle = onNextPuzzle,
+            onHome = onHome,
+            onGlossary = onGlossary,
+            onPath = onPath,
+            onResume = { onEvent(GameEvent.Resume) },
+        )
     }
 
     longPressed?.let { cell ->
@@ -303,13 +298,9 @@ public fun GameScreen(
 @Composable
 private fun BoardArea(
     state: GameState,
-    onNextPuzzle: () -> Unit,
-    onHome: () -> Unit,
     onLongPress: (Int) -> Unit,
     cap: androidx.compose.ui.unit.Dp,
     hint: Hint?,
-    onLearn: (com.sendoku.engine.technique.TechniqueId) -> Unit,
-    onPath: () -> Unit,
     live: Boolean,
     onSelect: (Int) -> Unit,
 ) {
@@ -339,16 +330,38 @@ private fun BoardArea(
                 live = live,
                 modifier = Modifier.fillMaxWidth(),
             )
-            if (state.isOver) {
-                OutcomePanel(
-                    state = state,
-                    onNextPuzzle = onNextPuzzle,
-                    onHome = onHome,
-                    onLearn = onLearn,
-                    onPath = onPath,
-                )
-            }
         }
+    }
+}
+
+/**
+ * The two screens that cover the game rather than sit inside it.
+ *
+ * Both are drawn over everything, not just the board. Covering the board alone left the
+ * number pad sitting there next to a screen that says tap anywhere to carry on, and it put
+ * the three buttons that are the only way off a finished game below the fold, under a
+ * quarter of a screen of empty space where that pad had been.
+ */
+@Composable
+private fun Overlays(
+    state: GameState,
+    onNextPuzzle: () -> Unit,
+    onHome: () -> Unit,
+    onGlossary: (com.sendoku.engine.technique.TechniqueId?) -> Unit,
+    onPath: () -> Unit,
+    onResume: () -> Unit,
+) {
+    if (state.isOver) {
+        OutcomePanel(
+            state = state,
+            onNextPuzzle = onNextPuzzle,
+            onHome = onHome,
+            onLearn = onGlossary,
+            onPath = onPath,
+        )
+    }
+    if (!state.isOver && !state.isRunning) {
+        PauseOverlay(elapsed = state.elapsed.clock(), onResume = onResume)
     }
 }
 

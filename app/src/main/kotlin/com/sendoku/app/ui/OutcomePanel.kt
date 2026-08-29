@@ -227,23 +227,44 @@ public fun OutcomePanel(
             // needs the second thing rather than the first.
             val code = remember(state.cells, state.catalogIndex) { ShareCode.of(state) }
             val invitation = stringResource(R.string.code_invitation, stringResource(gradeName(state.grade)))
-            Row(
+            Column(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(dimens.radiusM))
                     .clickable { ShareCode.send(context, code, invitation, card.chooser) }
                     .testTag("outcome:code")
                     .padding(horizontal = dimens.spaceS, vertical = dimens.spaceXs),
-                horizontalArrangement = Arrangement.spacedBy(dimens.spaceS),
-                verticalAlignment = Alignment.CenterVertically,
+                verticalArrangement = Arrangement.spacedBy(dimens.spaceXs),
             ) {
-                Text(code, style = Sendoku.type.timer, color = colors.accent)
-                Text(
-                    text = stringResource(R.string.code_share),
-                    style = Sendoku.type.body,
-                    color = colors.muted,
-                    modifier = Modifier.weight(1f),
-                )
+                // A puzzle out of the shipped batch is named in five characters, and those
+                // five read as a headline with the invitation beside them. A grid written
+                // out in full is nearer forty, and at headline size beside a label it left
+                // the label a single letter wide, running down the edge of the screen one
+                // character per line. So a long code drops to body size and takes the whole
+                // width, and the invitation goes underneath it.
+                val short = code.length <= SHORT_CODE
+                if (short) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(dimens.spaceS),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Text(code, style = Sendoku.type.timer, color = colors.accent)
+                        Text(
+                            text = stringResource(R.string.code_share),
+                            style = Sendoku.type.body,
+                            color = colors.muted,
+                            modifier = Modifier.weight(1f),
+                        )
+                    }
+                } else {
+                    Text(code, style = Sendoku.type.body, color = colors.accent)
+                    Text(
+                        text = stringResource(R.string.code_share),
+                        style = Sendoku.type.body,
+                        color = colors.muted,
+                    )
+                }
             }
 
             Row(
@@ -289,6 +310,9 @@ private fun sentenceCased(technique: com.sendoku.engine.technique.TechniqueId): 
     val name = stringResource(TechniqueCopy.nameOf(technique))
     return if (name.drop(1).any { it.isUpperCase() }) name else name.lowercase()
 }
+
+/** The longest code that still reads as a name rather than as a payload. */
+private const val SHORT_CODE = 12
 
 @Composable
 private fun OutcomeButton(
