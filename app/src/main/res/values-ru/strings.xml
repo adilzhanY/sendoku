@@ -201,7 +201,12 @@
     <string name="language_chinese">简体中文</string>
     <string name="language_korean">한국어</string>
     <string name="language_arabic">العربية</string>
-    <string name="first_run_prompt">Sendoku написан на семи языках. На каком читаете вы?</string>
+    <plurals name="first_run_prompt">
+        <item quantity="one">Sendoku написан на %1$d языке. На каком читаете вы?</item>
+        <item quantity="few">Sendoku написан на %1$d языках. На каком читаете вы?</item>
+        <item quantity="many">Sendoku написан на %1$d языках. На каком читаете вы?</item>
+        <item quantity="other">Sendoku написан на %1$d языках. На каком читаете вы?</item>
+    </plurals>
     <string name="first_run_system_is">На телефоне выбран %1$s</string>
     <string name="first_run_no_translation">На телефоне выбран язык, которого у Sendoku пока нет. Ближе всего английский.</string>
     <string name="first_run_continue">Начать игру</string>

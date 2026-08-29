@@ -25,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
@@ -77,8 +78,14 @@ public fun FirstRunLanguage(onChoose: (Language) -> Unit, modifier: Modifier = M
         verticalArrangement = Arrangement.spacedBy(dimens.spaceS),
     ) {
         Text(stringResource(R.string.app_name), style = Sendoku.type.display, color = colors.given)
+        // Counted rather than spelled out. Every one of the twelve translations of this
+        // sentence carried the number of languages the app had on the day that translation
+        // was written, so the screen said seven in eight of them, eight in Portuguese, nine
+        // in Chinese, ten in Korean and eleven in Arabic. A number nobody remembers to update
+        // is a number that should not be typed.
+        val written = Language.entries.count { it != Language.SYSTEM }
         Text(
-            text = stringResource(R.string.first_run_prompt),
+            text = pluralStringResource(R.plurals.first_run_prompt, written, written),
             style = Sendoku.type.body,
             color = colors.muted,
             modifier = Modifier.padding(bottom = dimens.spaceS),

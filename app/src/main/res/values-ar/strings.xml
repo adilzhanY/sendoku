@@ -214,7 +214,14 @@
     <string name="language_chinese">简体中文</string>
     <string name="language_korean">한국어</string>
     <string name="language_arabic">العربية</string>
-    <string name="first_run_prompt">Sendoku مكتوب بإحدى عشرة لغة. بأي لغة تقرأ؟</string>
+    <plurals name="first_run_prompt">
+        <item quantity="zero">Sendoku مكتوب بـ %1$d لغة. بأي لغة تقرأ؟</item>
+        <item quantity="one">Sendoku مكتوب بلغة واحدة. بأي لغة تقرأ؟</item>
+        <item quantity="two">Sendoku مكتوب بلغتين. بأي لغة تقرأ؟</item>
+        <item quantity="few">Sendoku مكتوب بـ %1$d لغات. بأي لغة تقرأ؟</item>
+        <item quantity="many">Sendoku مكتوب بـ %1$d لغة. بأي لغة تقرأ؟</item>
+        <item quantity="other">Sendoku مكتوب بـ %1$d لغة. بأي لغة تقرأ؟</item>
+    </plurals>
     <string name="first_run_system_is">هاتفك مضبوط على %1$s</string>
     <string name="first_run_no_translation">هاتفك مضبوط على لغة لا يتحدثها Sendoku بعد. الإنجليزية هي الأقرب المتوفرة.</string>
     <string name="first_run_continue">ابدأ اللعب</string>
