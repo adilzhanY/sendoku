@@ -155,19 +155,24 @@ class StoreShotsTest {
     }
 
     /**
-     * Solves the board with the app's own hint engine until it reaches a position where the
-     * cheapest thing that works is genuinely hard.
+     * Solves the board with the app's own hint engine until the next step is the technique
+     * asked for.
      *
      * A hint screenshot taken on a fresh board says NAKED SINGLE, which is the opposite of the
-     * pitch. This walks the puzzle forward to the first place a wing or a chain is needed, so
-     * the picture shows the app doing the thing nobody else does.
+     * pitch. Naming the technique rather than a cost also means the picture does not change
+     * character when a rule's cost is retuned.
      */
-    private fun untilHard(grade: Grade, seed: Int, minimumCost: Double): GameState {
-        var state = GameState.start(puzzle(grade, seed))
+    private fun untilHard(grade: Grade, seed: Int, wanted: TechniqueId): GameState {
+        // A puzzle that actually needs the rule, found by asking the rater rather than by
+        // hoping. Walking a puzzle that never needs an X-Wing just solves it.
+        val maker = GradedGenerator(Dimensions.CLASSIC, Random(seed))
+        var made: RatedPuzzle? = null
+        while (made == null || made.grade != grade || wanted !in made.usage) made = maker.next(Symmetry.ROTATIONAL)
+        var state = GameState.start(made)
         repeat(400) {
             val hint = HintEngine.next(state)
             if (hint !is Hint.Step) return state
-            if (hint.deduction.technique.cost >= minimumCost) return state
+            if (hint.deduction.technique == wanted) return state
             val before = state
             state = state.applyHint(hint.deduction)
             if (state == before) return state
@@ -180,7 +185,7 @@ class StoreShotsTest {
         compose.setContent {
             Scene { pane ->
                 GameScreen(
-                    state = untilHard(Grade.BEYOND, seed = 7, minimumCost = 4.2)
+                    state = untilHard(Grade.BEYOND, seed = 7, TechniqueId.X_WING)
                         .tick(14.minutes + 30.seconds),
                     onEvent = {},
                     onNextPuzzle = {},
@@ -198,6 +203,13 @@ class StoreShotsTest {
         compose.onNodeWithText("Hint", ignoreCase = true).performClick()
         compose.waitForIdle()
         compose.onNodeWithTag("hint:menu:explain").performClick()
+        compose.waitForIdle()
+        // Forward to the last card of the deck, the one with the cells lit on the board and
+        // the argument written out under them. The earlier cards deliberately say less.
+        repeat(2) {
+            compose.onNodeWithTag("hint:more").performClick()
+            compose.waitForIdle()
+        }
         shot("1-hint")
     }
 
@@ -267,11 +279,15 @@ class StoreShotsTest {
 
     @Test
     fun solved() {
-        var state = GameState.start(puzzle(Grade.DIABOLICAL, seed = 12))
+        // Wound on before the last digit goes in, because a finished game stops taking ticks
+        // and a winning screen reading 0:00 sells nothing. Dealt a batch index too, so the
+        // code under it is the five characters a shipped puzzle gets rather than a whole grid.
+        var state = GameState.start(puzzle(Grade.DIABOLICAL, seed = 12), catalogIndex = 412)
+            .tick(27.minutes + 41.seconds)
         for (index in state.cells.indices) {
             if (state.cells[index].isEmpty) state = state.select(index).enter(state.solution.atIndex(index))
         }
-        val finished = state.tick(27.minutes + 41.seconds)
+        val finished = state
         compose.setContent {
             Scene { pane ->
                 GameScreen(
