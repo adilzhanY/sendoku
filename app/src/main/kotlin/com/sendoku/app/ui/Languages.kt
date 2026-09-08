@@ -52,6 +52,16 @@ public enum class Language(public val tag: String, @StringRes public val label: 
      */
     ARABIC("ar-u-nu-latn", R.string.language_arabic),
     UKRAINIAN("uk", R.string.language_ukrainian),
+
+    /**
+     * Indonesian, written id here and in as a resource folder.
+     *
+     * Indonesian changed its ISO code from in to id in 1989 and Java never followed. The tag
+     * is what goes out to the system, and BCP 47 wants id. What comes back from a Locale on
+     * Android is in, because that is the code Java kept. So the two are not the same string
+     * and comparing them directly says this language is not chosen when it is.
+     */
+    INDONESIAN("id", R.string.language_indonesian),
 }
 
 /**
@@ -83,11 +93,24 @@ public object Languages {
     /** What the app is set to, or [Language.SYSTEM] when it is following the phone. */
     public fun current(context: Context): Language {
         val tag = stored(context)
+        if (tag.isEmpty()) return Language.SYSTEM
         // Compared on the language alone, because that is all a stored locale carries back.
         // A tag with a script in it, like zh-Hans, still comes home as zh.
-        return Language.entries.firstOrNull { it.tag.isNotEmpty() && it.tag.substringBefore('-') == tag }
-            ?: Language.SYSTEM
+        return Language.entries.firstOrNull { it.tag.isNotEmpty() && sameLanguage(it.tag, tag) } ?: Language.SYSTEM
     }
+
+    /**
+     * Whether two language codes name the same language.
+     *
+     * Not a string comparison, because three languages renamed themselves and Java kept the
+     * old code for compatibility: Indonesian id is in, Hebrew he is iw, Yiddish yi is ji.
+     * Android still does this, so a Locale for Indonesian reports in while every modern list,
+     * including the tag on the enum and the one handed to the system, says id. Putting both
+     * sides through a Locale settles it rather than listing the pairs here, and it keeps
+     * working if a fourth language is ever added to that list.
+     */
+    internal fun sameLanguage(one: String, other: String): Boolean =
+        Locale.forLanguageTag(one).language == Locale.forLanguageTag(other).language
 
     /**
      * Chooses a language and applies it now.

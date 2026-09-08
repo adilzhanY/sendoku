@@ -208,6 +208,7 @@
     <string name="language_korean">한국어</string>
     <string name="language_arabic">العربية</string>
     <string name="language_ukrainian">Українська</string>
+    <string name="language_indonesian">Bahasa Indonesia</string>
     <plurals name="first_run_prompt">
         <item quantity="one">Sendoku is written in %1$d language. Which one do you read?</item>
         <item quantity="other">Sendoku is written in %1$d languages. Which one do you read?</item>

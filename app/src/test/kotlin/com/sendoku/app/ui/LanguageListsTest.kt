@@ -32,6 +32,10 @@ class LanguageListsTest {
 
         "zh-Hans" -> "values-b+zh+Hans"
 
+        // Indonesian changed its ISO code from in to id in 1989 and Java never followed, so
+        // Android still looks resources up under in. A values-id folder is never read.
+        "id" -> "values-in"
+
         // The numbering system in a tag is about how digits are drawn, not about which file
         // is read. Resources resolve on the language alone, so ar-u-nu-latn reads values-ar.
         else -> "values-" + tag.substringBefore("-u-")
@@ -40,6 +44,10 @@ class LanguageListsTest {
     /** A language tag as the resourceConfigurations allowlist writes it. */
     private fun configOf(tag: String) = when (tag) {
         "zh-Hans" -> "b+zh+Hans"
+
+        // The allowlist filters on the resource qualifier, which is the folder name.
+        "id" -> "in"
+
         else -> tag.substringBefore("-u-")
     }
 
@@ -61,8 +69,9 @@ class LanguageListsTest {
     }
 
     private val resourceConfigurations: List<String> by lazy {
-        val line = File("build.gradle.kts").readLines().first { it.contains("resourceConfigurations +=") }
-        Regex(""""([^"]+)"""").findAll(line).map { it.groupValues[1] }.toList()
+        val build = File("build.gradle.kts").readText()
+        val call = build.substringAfter("val languages = ").substringBefore("\n")
+        Regex(""""([^"]+)"""").findAll(call).flatMap { it.groupValues[1].split(" ") }.toList()
     }
 
     @Test
@@ -97,7 +106,11 @@ class LanguageListsTest {
     fun `every language the picker offers is in locales_config`() {
         // This is what puts Sendoku in the phone's own per app language screen, and what
         // tells the Play Store which languages the listing may claim.
-        assertEquals("locales_config.xml has drifted from the picker", tags, localesConfig)
+        // Compared through the folder spelling, because Indonesian is id on the enum and in
+        // in both the folder and here: lint reads these as plain strings and reports a
+        // translation nothing declares when the two spellings disagree.
+        val expected = tags.map { if (it == "id") "in" else it }
+        assertEquals("locales_config.xml has drifted from the picker", expected, localesConfig)
     }
 
     @Test

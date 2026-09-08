@@ -10,6 +10,7 @@ import androidx.compose.ui.test.junit4.v2.createComposeRule
 import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performScrollTo
 import androidx.test.platform.app.InstrumentationRegistry
 import com.sendoku.app.theme.SendokuTheme
 import org.junit.Assert.assertEquals
@@ -53,7 +54,12 @@ class FirstRunLanguageTest {
     fun everyLanguageIsOfferedInItsOwnWords() {
         shownOn("en")
         for (language in Language.entries) {
-            compose.onNodeWithTag("first-run:${language.name.lowercase()}").assertIsDisplayed()
+            // Scrolled to first. At eighteen languages the list is taller than a phone, which
+            // is what the screen's own scroll is for, and a row below the fold is offered
+            // rather than missing.
+            compose.onNodeWithTag("first-run:${language.name.lowercase()}")
+                .performScrollTo()
+                .assertIsDisplayed()
         }
     }
 

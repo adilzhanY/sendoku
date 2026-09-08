@@ -196,6 +196,7 @@
     <string name="language_korean">한국어</string>
     <string name="language_arabic">العربية</string>
     <string name="language_ukrainian">Українська</string>
+    <string name="language_indonesian">Bahasa Indonesia</string>
     <plurals name="first_run_prompt">
         <item quantity="other">Sendoku 有 %1$d 种语言。你用哪一种阅读？</item>
     </plurals>

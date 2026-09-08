@@ -18,4 +18,12 @@
     <locale android:name="ko" />
     <locale android:name="ar-u-nu-latn" />
     <locale android:name="uk" />
+    <!--
+      Indonesian, written in rather than id.
+
+      Both parse to the same locale, because Java rewrites id to in and Android still does.
+      This one is written the way the resource folder is, since lint compares the two as plain
+      strings and reports a translation nothing declares when they differ.
+    -->
+    <locale android:name="in" />
 </locale-config>

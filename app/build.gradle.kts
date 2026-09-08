@@ -50,11 +50,14 @@ android {
         // en-XA doubles the length of every string and ar-XB mirrors the layout, both without
         // needing a translator. They are the cheapest way to find a layout that only breaks in
         // German or only breaks in Arabic.
-        // Every language the app is written in, and nothing else. This list is what actually
-        // ends up in the APK: a translation missing from here is stripped at package time,
-        // and the app quietly falls back to English with no error anywhere.
-        resourceConfigurations +=
-            listOf("en", "ru", "de", "tr", "es", "it", "ja", "fr", "pt", "b+zh+Hans", "ko", "ar", "uk", "en-rXA", "ar-rXB")
+        // Every language the app is written in, plus the two pseudolocales, and nothing else.
+        // This list is what actually ends up in the APK: a tag missing from here is stripped
+        // at package time and the app falls back to English with no error anywhere, which is
+        // what LanguageListsTest is there to catch. One space separated string rather than a
+        // list of literals, because at eighteen languages the formatter puts a list of
+        // literals on a line each and this has to stay readable.
+        val languages = "en ru de tr es it ja fr pt b+zh+Hans ko ar uk in en-rXA ar-rXB"
+        resourceConfigurations += languages.split(" ")
     }
 
     /*

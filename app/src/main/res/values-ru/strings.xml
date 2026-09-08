@@ -202,6 +202,7 @@
     <string name="language_korean">한국어</string>
     <string name="language_arabic">العربية</string>
     <string name="language_ukrainian">Українська</string>
+    <string name="language_indonesian">Bahasa Indonesia</string>
     <plurals name="first_run_prompt">
         <item quantity="one">Sendoku написан на %1$d языке. На каком читаете вы?</item>
         <item quantity="few">Sendoku написан на %1$d языках. На каком читаете вы?</item>

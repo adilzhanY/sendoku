@@ -52,6 +52,20 @@ class LanguageChangeTest {
     }
 
     @Test
+    fun everyLanguageComesBackAsItself() {
+        // Choosing a language and asking what is chosen has to give the same answer for all
+        // eighteen. It did not for Indonesian: the tag going out is id and what Android hands
+        // back is in, because Java kept the code Indonesian stopped using in 1989. The picker
+        // therefore showed the phone row marked while the app was in Indonesian.
+        for (language in Language.entries - Language.SYSTEM) {
+            onActivity { activity ->
+                Languages.choose(activity, language)
+                assertEquals("${language.name} did not come back as itself", language, Languages.current(activity))
+            }
+        }
+    }
+
+    @Test
     fun followingThePhoneIsTheAbsenceOfAChoice() {
         onActivity { Languages.choose(it, Language.SYSTEM) }
         assertEquals(Language.SYSTEM, Languages.current(context))

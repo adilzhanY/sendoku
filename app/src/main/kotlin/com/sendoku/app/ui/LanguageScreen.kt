@@ -106,8 +106,11 @@ public fun LanguageScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
  */
 @Composable
 internal fun phoneLanguage(): Language? {
+    // Compared through a Locale rather than as strings, for the same reason Languages.current
+    // is: a phone set to Indonesian reports in, and the tag on the enum says id.
     val phone = LocalConfiguration.current.locales[0]?.language.orEmpty()
-    return Language.entries.firstOrNull { it.tag.isNotEmpty() && it.tag.substringBefore('-') == phone }
+    if (phone.isEmpty()) return null
+    return Language.entries.firstOrNull { it.tag.isNotEmpty() && Languages.sameLanguage(it.tag, phone) }
 }
 
 /** One language. A radio row, because the choice is exclusive and only one can be on. */

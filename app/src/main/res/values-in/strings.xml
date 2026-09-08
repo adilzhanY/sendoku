@@ -1,0 +1,898 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Indonesian, and the folder is values-in rather than values-id.
+
+  Indonesian changed its ISO code from in to id in 1989 and Java never followed, so on Android
+  a Locale for Indonesian still reports its language as in. Resources are looked up by that
+  code, so a values-id folder is simply never read and the app falls back to English with
+  nothing to show for the translation. Lint catches the folder; Languages.current has to
+  handle the other half, which is that the tag going out is id and the code coming back is in.
+
+  Indonesian has no plural form at all: a noun is the same whether there is one of it or a
+  hundred, so every plurals block here is a single other item, which is what the language
+  actually does rather than a shortcut.
+
+  The technique names keep their English forms where that is what solvers say, and the ones
+  that describe themselves are translated.
+-->
+<resources>
+    <string name="app_name">Sendoku</string>
+
+    <string name="home_choose_level">Pilih tingkat</string>
+    <string name="home_daily">Harian</string>
+    <string name="home_new_puzzle">Teka-teki baru</string>
+    <string name="home_resume">Lanjutkan</string>
+    <string name="home_in_progress">Belum selesai</string>
+    <string name="home_placed">Terisi: %1$d dari %2$d</string>
+    <string name="home_or_start">Atau mulai sesuatu</string>
+    <string name="home_your_level">Tingkat Anda</string>
+    <string name="home_all_levels">Semua tingkat</string>
+    <string name="killer_title">Killer</string>
+    <string name="killer_note">Sangkar, dan tiap sangkar punya jumlahnya</string>
+    <string name="killer_marker">Killer</string>
+    <string name="killer_card">%1$s, %2$s</string>
+    <string name="code_title">Mainkan teka-teki yang dikirim ke Anda</string>
+    <string name="code_hint">Tempel sebuah kode</string>
+    <string name="code_play">Main</string>
+    <string name="code_unreadable">Itu tidak tampak seperti kode Sendoku.</string>
+    <string name="code_typo">Ada karakter di dalamnya yang tidak dipakai kode mana pun. Cocokkan lagi dengan yang dikirim ke Anda.</string>
+    <string name="code_cut_short">Kode itu datang tidak lengkap. Mintalah lagi, utuh.</string>
+    <string name="code_too_new">Kode itu dibuat oleh versi Sendoku yang lebih baru daripada ini.</string>
+    <string name="code_missing">Kode itu terbaca dengan benar, tetapi versi ini tidak punya teka-teki tersebut.</string>
+    <string name="code_unplayable">Kisi itu tidak bisa diselesaikan hanya dengan penalaran, jadi Sendoku tidak akan berpura-pura mampu menjelaskannya.</string>
+    <string name="code_shared">Dikirim untuk Anda</string>
+    <string name="code_share">Kirim teka-teki ini ke teman</string>
+    <string name="code_invitation">Coba teka-teki %1$s ini. Kisi yang sama, dan tidak perlu aplikasi untuk membandingkan.</string>
+    <string name="enter_title">Ketik sebuah teka-teki</string>
+    <string name="enter_marker">Diketik sendiri</string>
+    <plurals name="enter_help">
+        <item quantity="other">Baru %1$d petunjuk. Ketuk sebuah sel, lalu sebuah angka. Periksa setelah kisinya masuk.</item>
+    </plurals>
+    <string name="enter_impossible">Kisi ini tidak mungkin diselesaikan. Salah satu petunjuknya pasti keliru.</string>
+    <string name="enter_ambiguous">Kisi ini punya lebih dari satu jawaban, jadi sebenarnya bukan teka-teki. Anda tetap bisa memainkannya.</string>
+    <string name="enter_beyond">Satu jawaban, tetapi tidak bisa dicapai hanya dengan penalaran, jadi Sendoku tidak bisa menjelaskannya langkah demi langkah.</string>
+    <string name="enter_ready">Satu jawaban. Ini teka-teki %1$s, dinilai %2$s.</string>
+    <string name="enter_clear">Kosongkan</string>
+    <string name="enter_check">Periksa</string>
+    <string name="enter_play">Main</string>
+
+    <string name="grade_gentle">Mudah</string>
+    <string name="grade_steady">Sedang</string>
+    <string name="grade_tricky">Sulit</string>
+    <string name="grade_severe">Sangat sulit</string>
+    <string name="grade_diabolical">Ahli</string>
+    <string name="grade_beyond">Master</string>
+    <string name="grade_insane">Gila</string>
+    <string name="grade_nightmare">Mimpi buruk</string>
+    <string name="grade_locked">Menangkan satu teka-teki %1$s untuk membuka ini</string>
+    <string name="gate_gentle">satu angka yang jelas dalam satu waktu</string>
+    <string name="gate_steady">pasangan, dan angka yang terkunci pada satu garis</string>
+    <string name="gate_tricky">tripel, dan pola yang melintasi kisi</string>
+    <string name="gate_severe">wing, pewarnaan dan persegi panjang</string>
+    <string name="gate_diabolical">rantai penalaran</string>
+    <string name="gate_beyond">lebih jauh daripada kebanyakan aplikasi</string>
+    <string name="gate_insane">kelompok sel yang dirantai jadi satu</string>
+    <string name="gate_nightmare">satu sel dicoba dua-duanya, di atas kertas</string>
+    <string name="grade_advanced">Lanjutan</string>
+    <string name="grade_advanced_talkback">tingkat lanjutan, yang memerlukan teknik dari kursus</string>
+
+    <string name="tool_undo">Urungkan</string>
+    <string name="tool_redo">Ulangi</string>
+    <string name="tool_erase">Hapus</string>
+    <string name="tool_notes">Catatan</string>
+    <string name="tool_hint">Bantuan</string>
+    <string name="paused">Jeda</string>
+    <string name="paused_tap">Ketuk di mana saja untuk melanjutkan</string>
+    <string name="mistakes_of">%1$d dari %2$d</string>
+
+    <string name="cell_position">Baris %1$d, kolom %2$d</string>
+    <string name="cell_clue">%1$s, %2$d, petunjuk</string>
+    <string name="cell_digit">%1$s, %2$d</string>
+    <string name="cell_empty">%1$s, kosong</string>
+    <string name="cell_noted">%1$s, kosong, dicatat %2$s</string>
+    <string name="cell_hint_argument">%1$s. Bagian dari bantuan.</string>
+    <string name="cell_hint_struck">%1$s. Bantuan mencoret sebuah catatan di sini.</string>
+    <string name="cell_hint_region">%1$s. Di dalam wilayah yang dibicarakan bantuan.</string>
+    <string name="cell_repeated">%1$s, berulang</string>
+    <string name="pad_all_placed">%1$d, semua sudah terpasang</string>
+    <string name="pad_one_left">%1$d, tersisa satu</string>
+    <plurals name="pad_left">
+        <item quantity="other">%1$d, tersisa %2$d</item>
+    </plurals>
+    <string name="pad_scanning">%1$s, menampilkan ke mana angka ini bisa masuk</string>
+    <string name="pad_notes_mode">%1$s, mode catatan</string>
+
+    <string name="cell_actions_title">BARIS %1$d, KOLOM %2$d</string>
+    <string name="cell_actions_clue">Yang ini datang bersama teka-tekinya, jadi tidak bisa diubah.</string>
+    <plurals name="cell_actions_note_all">
+        <item quantity="other">Catat semua %1$d kandidat</item>
+    </plurals>
+    <string name="cell_actions_clear_notes">Hapus catatannya</string>
+    <string name="why_not_title">Kenapa tidak?</string>
+    <string name="tint_title">Warna</string>
+    <string name="cell_tinted">%1$s, diwarnai %2$s</string>
+    <string name="tint_clear_all">Bersihkan semua warna</string>
+    <string name="tint_one">Jingga</string>
+    <string name="tint_two">Biru</string>
+    <string name="tint_three">Ungu</string>
+    <string name="tint_four">Hijau</string>
+    <string name="why_not_prompt">Ketuk sebuah angka untuk tahu apa yang menghalanginya.</string>
+    <string name="why_not_taken">Sudah ada %1$d di %2$s, pada baris %3$d, kolom %4$d.</string>
+    <string name="why_not_filled">Sel ini sudah berisi %1$d. Hapus dulu.</string>
+    <string name="why_not_possible">Tidak ada apa pun di papan yang melarang %1$d. Itu tidak membuatnya benar, hanya mungkin.</string>
+    <string name="cell_actions_clear">Kosongkan selnya</string>
+
+    <string name="leave_title">Tinggalkan teka-teki ini?</string>
+    <string name="leave_body">Ia akan menunggu di tempat Anda meninggalkannya.</string>
+    <string name="leave_confirm">Tinggalkan</string>
+    <string name="leave_cancel">Tetap di sini</string>
+
+    <string name="outcome_solved">Terpecahkan</string>
+    <string name="outcome_lost">Kesalahan habis</string>
+    <string name="outcome_rated">%1$s, dinilai %2$s</string>
+    <string name="outcome_hints">Bantuan</string>
+    <string name="outcome_mistakes">Kesalahan</string>
+    <string name="outcome_moves">Langkah</string>
+    <string name="outcome_needed">Perlu %1$s</string>
+    <string name="outcome_home">Beranda</string>
+    <string name="outcome_another">%1$s lagi</string>
+
+    <string name="hint_remove_one">Singkirkan</string>
+    <string name="hint_remove_many">Singkirkan semuanya</string>
+    <string name="hint_look_here_title">Lihat ke sini</string>
+    <string name="hint_look_here">Ada sesuatu untuk ditemukan %1$s. Hanya itu yang dikatakan bantuan ini.</string>
+    <string name="hint_look_around">Ada satu langkah untuk ditemukan. Yang ini tersebar di seluruh kisi, bukan duduk di satu wilayah.</string>
+    <string name="hint_what_kind">Langkah macam apa?</string>
+    <string name="hint_menu_title">Bantuan</string>
+    <string name="hint_menu_difficulty">Langkah berikutnya memerlukan teknik pada tingkat %1$s.</string>
+    <string name="hint_menu_broken">Ada yang Anda pasang keliru, jadi tidak ada lagi yang bisa disimpulkan sampai itu diperbaiki.</string>
+    <string name="hint_menu_check">Apa ada yang keliru?</string>
+    <string name="hint_menu_look">Ke mana saya harus melihat?</string>
+    <string name="hint_menu_explain">Jelaskan langkah berikutnya</string>
+    <string name="hint_menu_free">Bertanya di sini tidak ada biayanya. Batasnya dimatikan.</string>
+    <string name="hint_check_clean">Tidak ada satu pun yang Anda pasang yang keliru.</string>
+    <string name="hint_close">Tutup</string>
+    <string name="hint_previous">Mundur satu langkah</string>
+    <string name="hint_cells_here">Sel yang menjadi dasarnya disorot %1$s.</string>
+    <string name="hint_where">Tunjukkan di mana</string>
+    <string name="hint_explain">Jelaskan</string>
+    <string name="hint_do_it">Lakukan</string>
+    <string name="hint_evidence">Barisnya sudah punya %1$s. Kolomnya punya %2$s. Kotaknya punya %3$s. Bersama-sama itu semua angka kecuali %4$d.</string>
+    <string name="hint_rests_on_earlier">Sebagian dari ini bersandar pada catatan yang sudah dicoret bantuan sebelumnya. Catatan itu tertulis di papan, jadi Anda bisa mengikutinya dari sana.</string>
+    <string name="hint_what_is_this">Apa ini?</string>
+    <string name="hint_wrong_title">Ada yang keliru</string>
+    <string name="hint_wrong_one">Salah satu angka yang Anda pasang tidak mungkin benar. Angka itu disorot.</string>
+    <string name="hint_wrong_many">%1$d angka yang Anda pasang tidak mungkin benar. Semuanya disorot.</string>
+    <string name="hint_wrong_until_one">Tidak ada lagi yang bisa disimpulkan sampai itu diperbaiki.</string>
+    <string name="hint_wrong_until_many">Tidak ada lagi yang bisa disimpulkan sampai semuanya diperbaiki.</string>
+    <string name="hint_done_title">Selesai</string>
+    <string name="hint_done_body">Teka-tekinya sudah selesai.</string>
+    <string name="hint_stuck_title">Tidak ada yang bisa disarankan</string>
+    <string name="hint_stuck_body">Papan ini sah, tetapi tidak satu pun teknik yang diketahui Sendoku berlaku padanya. Itu seharusnya tidak terjadi pada teka-teki dari aplikasi ini.</string>
+    <string name="hint_in_region">di %1$s</string>
+    <string name="hint_in_regions">di %1$s dan %2$s</string>
+    <string name="hint_outcome_place">Jadi baris %1$d, kolom %2$d pasti %3$d.</string>
+    <string name="hint_outcome_strike_one">Jadi %1$d bisa disingkirkan dari %2$s.</string>
+    <string name="hint_outcome_strike_two">Jadi %1$d dan %2$d bisa disingkirkan dari %3$s.</string>
+    <plurals name="hint_cells">
+        <item quantity="other">%1$d sel</item>
+    </plurals>
+
+    <string name="house_row">baris %1$d</string>
+    <string name="house_column">kolom %1$d</string>
+    <string name="house_box">kotak %1$d</string>
+
+    <string name="glossary_title">Teknik</string>
+    <string name="back">Kembali</string>
+
+    <string name="settings_title">Pengaturan</string>
+    <string name="settings_language">Bahasa</string>
+    <string name="language_system">Ikuti ponsel</string>
+    <string name="language_english">English</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_german">Deutsch</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_italian">Italiano</string>
+    <string name="language_japanese">日本語</string>
+    <string name="language_french">Français</string>
+    <string name="language_portuguese">Português (Brasil)</string>
+    <string name="language_chinese">简体中文</string>
+    <string name="language_korean">한국어</string>
+    <string name="language_arabic">العربية</string>
+    <string name="language_ukrainian">Українська</string>
+    <string name="language_indonesian">Bahasa Indonesia</string>
+    <plurals name="first_run_prompt">
+        <item quantity="other">Sendoku ditulis dalam %1$d bahasa. Yang mana yang Anda baca?</item>
+    </plurals>
+    <string name="first_run_system_is">Ponsel Anda diatur ke %1$s</string>
+    <string name="first_run_no_translation">Ponsel Anda diatur ke bahasa yang belum dikuasai Sendoku. Bahasa Inggris adalah yang paling dekat.</string>
+    <string name="first_run_continue">Mulai bermain</string>
+    <string name="settings_interface">Tampilan</string>
+    <string name="settings_rules">Aturan permainan</string>
+    <string name="settings_light_or_dark">Terang atau gelap</string>
+    <string name="settings_terminal_is_dark">Terminal tetap gelap apa pun pengaturan ponsel. Itu memang disengaja.</string>
+    <string name="settings_board">Papan</string>
+    <string name="settings_highlight_peers">Sorot baris, kolom dan kotaknya</string>
+    <string name="settings_highlight_same">Sorot angka yang sama di tempat lain</string>
+    <string name="settings_auto_clear">Hapus catatan yang digugurkan oleh angka yang dipasang</string>
+    <string name="settings_auto_notes">Isi catatan di setiap sel</string>
+    <string name="settings_auto_notes_note">Aplikasi yang mengurus pembukuannya. Di atas tingkat Ahli ini hampir wajib.</string>
+    <string name="settings_highlight_homes">Tunjukkan ke mana angka yang dipilih masih bisa masuk</string>
+    <string name="settings_auto_check">Beri tahu saya langsung ketika sebuah angka keliru</string>
+    <string name="settings_auto_check_note">Dengan ini menyala, mencoba tidak ada ruginya, jadi teka-tekinya kehilangan hampir seluruh ketegangannya.</string>
+    <string name="settings_auto_check_forced">Menyala selama batas kesalahan berjalan, karena kesalahan yang dihitung harus bisa Anda lihat. Matikan batasnya di bawah untuk bermain tanpa keduanya.</string>
+    <string name="settings_flag_conflicts">Tandai angka yang berulang dalam satu baris, kolom atau kotak</string>
+    <string name="settings_clock">Jam</string>
+    <string name="settings_show_timer">Tampilkan pengatur waktu</string>
+    <string name="settings_feedback">Umpan balik</string>
+    <string name="settings_haptics">Getar ketika sebuah angka masuk</string>
+    <string name="settings_sound">Suara</string>
+    <string name="settings_sound_note">Nada lembut selagi Anda bermain. Mematikannya cukup satu ketukan, dan mode senyap ponsel mengalahkan keduanya.</string>
+    <string name="settings_mistake_limit">Akhiri permainan setelah tiga kesalahan</string>
+    <string name="settings_mistake_note">Menyala secara bawaan, pada tiga. Matikan untuk tingkat yang sulit, di mana kehilangan satu jam karena satu keteledoran terasa menyiksa.</string>
+    <string name="settings_about">Tentang Sendoku</string>
+
+    <string name="theme_deep_field">Deep Field</string>
+    <string name="theme_deep_field_summary">Hitam sungguhan, satu aksen sian, tidak ada yang lain</string>
+    <string name="theme_ink">Ink and Paper</string>
+    <string name="theme_ink_summary">Buku teka-teki koran, dicetak di kertas hangat</string>
+    <string name="theme_zen">Slate Zen</string>
+    <string name="theme_zen_summary">Sage dan batu, dan sesedikit mungkin selain itu</string>
+    <string name="theme_terminal">Terminal</string>
+    <string name="theme_terminal_summary">Monospasi, tepi tajam, hanya gelap</string>
+    <string name="mode_system">Ikuti sistem</string>
+    <string name="mode_light">Selalu terang</string>
+    <string name="mode_dark">Selalu gelap</string>
+
+    <string name="stats_title">Statistik</string>
+    <string name="stats_solved">Terpecahkan</string>
+    <string name="stats_streak">Rentetan</string>
+    <string name="stats_hardest">Tersulit</string>
+    <string name="stats_hardest_note">Yang tersulit yang pernah Anda selesaikan adalah %1$s.</string>
+    <plurals name="stats_longest_run">
+        <item quantity="other">Rentetan terpanjang Anda adalah %1$d hari.</item>
+    </plurals>
+    <string name="stats_totals">%1$s terpakai, bantuan yang diambil: %2$d.</string>
+    <string name="stats_by_grade">Menurut tingkat</string>
+    <string name="stats_hints_title">Apa yang Anda tanyakan</string>
+    <string name="stats_hints_note">Anda paling sering bertanya tentang %1$s. Itulah pelajaran yang layak ditengok lagi.</string>
+    <string name="stats_needed">Apa yang diperlukan teka-teki Anda</string>
+    <string name="stats_solved_count">Terpecahkan: %1$d</string>
+    <string name="stats_solved_and_lost">Terpecahkan: %1$d, kalah: %2$d</string>
+    <string name="stats_average">rata-rata %1$s</string>
+    <string name="stats_reset">Setel ulang statistik</string>
+    <string name="stats_reset_title">Buang riwayat Anda?</string>
+    <string name="stats_reset_body">Setiap teka-teki yang selesai, setiap rentetan dan setiap waktu terbaik. Tidak ada salinannya di mana pun, jadi ini tidak bisa dibatalkan.</string>
+    <string name="stats_reset_confirm">Setel ulang</string>
+    <string name="stats_reset_cancel">Simpan saja</string>
+    <string name="stats_empty_title">Belum ada apa-apa</string>
+    <string name="stats_empty_body">Selesaikan satu teka-teki dan halaman ini akan terisi: berapa lama tiap tingkat memakan waktu Anda, sejauh mana Anda sudah mendaki, dan teknik apa saja yang diperlukan teka-teki Anda.</string>
+
+    <string name="about_title">Tentang</string>
+    <string name="about_version">Sendoku %1$s</string>
+    <string name="about_tagline">Aplikasi sudoku untuk orang yang sudah kehabisan sudoku sulit.</string>
+    <string name="about_no_ads">Tanpa iklan</string>
+    <string name="about_no_ads_detail">Tidak di antara teka-teki, tidak untuk bantuan, tidak pernah.</string>
+    <string name="about_no_tracking">Tanpa pelacakan</string>
+    <string name="about_no_tracking_detail">Tidak ada yang diukur dan tidak ada yang dikirim. Tidak ada server.</string>
+    <string name="about_no_purchases">Tanpa pembelian</string>
+    <string name="about_no_purchases_detail">Setiap teka-teki dan setiap bantuan sudah ada di sini.</string>
+    <string name="about_offline">Bekerja tanpa internet</string>
+    <string name="about_offline_detail">Seluruh kumpulan teka-teki ikut di dalam aplikasi.</string>
+    <string name="about_hints">Bantuan yang mengajari</string>
+    <string name="about_hints_detail">Sebuah bantuan menyebut nama tekniknya dan menjelaskan penalarannya. Ia tidak pernah sekadar mengisi sebuah angka, dan tidak pernah dijual: tiga bantuan datang bersama tiap teka-teki, dan batasnya bisa dimatikan di pengaturan.</string>
+    <string name="about_sharing">Berbagi</string>
+    <string name="about_sharing_detail">Kode teka-teki adalah teka-tekinya sendiri, bukan sebuah akun. Tidak ada akun untuk masuk, tidak ada papan peringkat, dan tidak ada cara bagi aplikasi untuk memeriksa waktu yang disebutkan seseorang: dua orang memainkan kisi yang sama lalu membandingkan apa yang harus mereka bayar untuknya, dan hanya itu.</string>
+    <string name="about_rating">Kesulitan dinilai dari teknik tersulit yang sungguh diperlukan sebuah teka-teki, dihitung dengan menyelesaikannya sebagaimana seorang manusia menyelesaikannya. Itulah sebabnya Sangat sulit di sini berarti sama dengan Sangat sulit yang terakhir.</string>
+    <string name="about_licence">Sendoku adalah perangkat lunak bebas di bawah GNU General Public License versi 3.</string>
+    <string name="about_privacy">Kebijakan privasi mengatakan hal yang sama dalam bentuk yang diminta toko, di adilzhany.github.io/sendoku/privacy</string>
+    <string name="about_licences">Lisensi sumber terbuka</string>
+    <string name="licences_title">Lisensi</string>
+
+    <string name="look_naked_single">Ada sel yang hanya tersisa satu angka yang bisa masuk ke dalamnya.</string>
+    <string name="look_hidden_single">Ada angka yang hanya tersisa satu tempat untuk ditempati.</string>
+    <string name="look_locked_candidates_pointing">Dalam satu kotak, sebuah angka terkurung pada satu baris atau kolom.</string>
+    <string name="look_locked_candidates_claiming">Pada satu garis, sebuah angka hanya bisa duduk di dalam satu kotak.</string>
+    <string name="look_naked_pair">Dua sel dalam satu wilayah memuat dua angka yang sama dan tidak ada lainnya.</string>
+    <string name="look_hidden_pair">Dua angka dalam satu wilayah tidak punya tempat lain selain dua sel yang sama.</string>
+    <string name="look_naked_triple">Tiga sel dalam satu wilayah berbagi tiga angka di antara mereka.</string>
+    <string name="look_hidden_triple">Tiga angka terkurung dalam tiga sel yang sama.</string>
+    <string name="look_naked_quad">Empat sel dalam satu wilayah berbagi empat angka di antara mereka.</string>
+    <string name="look_hidden_quad">Empat angka terkurung dalam empat sel yang sama.</string>
+    <string name="look_x_wing">Dua baris memuat sebuah angka pada dua kolom yang sama, atau sebaliknya.</string>
+    <string name="look_swordfish">Tiga baris memuat sebuah angka di dalam tiga kolom yang sama.</string>
+    <string name="look_jellyfish">Empat baris memuat sebuah angka di dalam empat kolom yang sama.</string>
+    <string name="look_xy_wing">Tiga sel dengan dua angka masing-masing, tersusun sehingga satu angka terdesak keluar.</string>
+    <string name="look_xyz_wing">Seperti XY-Wing, tetapi sel tengahnya punya angka ketiga juga.</string>
+    <string name="look_w_wing">Dua sel dengan pasangan yang sama, disambung oleh sebuah angka yang hanya punya dua rumah.</string>
+    <string name="look_simple_colouring">Satu angka membentuk rantai yang berselang-seling sepanjang jalan.</string>
+    <string name="look_multi_colouring">Dua rantai terpisah pada satu angka, diadu satu sama lain.</string>
+    <string name="look_remote_pairs">Sebuah rantai sel yang semuanya memuat dua angka yang persis sama.</string>
+    <string name="look_unique_rectangle">Empat sel membentuk persegi panjang yang akan memberi teka-teki ini dua jawaban.</string>
+    <string name="look_bug_plus_one">Setiap sel kecuali satu tinggal punya dua angka.</string>
+    <string name="look_x_chain">Sebuah rantai pada satu angka, berselang-seling antara harus dan tidak bisa.</string>
+    <string name="look_xy_chain">Sebuah rantai sel berangka dua, masing-masing memaksa yang berikutnya.</string>
+    <string name="look_forcing_chain">Sebuah sel dengan tepat dua kemungkinan, ketika tidak ada lagi yang tersisa untuk ditemukan.</string>
+    <string name="look_death_blossom">Satu sel, dan sebuah kelompok untuk tiap angka yang mungkin jadi isinya, di mana sel itu bisa melihat angka tersebut di seluruh kelompok.</string>
+    <string name="look_als_xy_wing">Tiga kelompok, masing-masing kurang satu angka untuk penuh, disambung dalam satu garis oleh dua angka berbeda.</string>
+    <string name="look_sue_de_coq">Sebuah kotak dan garis yang bersilangan, di mana sel bersamanya memuat dua angka lebih banyak daripada tempat yang tersedia.</string>
+    <string name="look_als_xz">Dua kelompok sel, masing-masing kurang satu angka untuk terkunci.</string>
+
+    <string name="because_naked_single">Setiap angka lain sudah muncul di barisnya, kolomnya atau kotaknya, jadi hanya satu yang tersisa. Angka itu harus masuk ke sini.</string>
+    <string name="because_hidden_single">Wilayah ini perlu angka tersebut di suatu tempat, dan setiap sel lain di dalamnya sudah gugur, jadi ini satu-satunya tempat yang tersisa.</string>
+    <string name="because_locked_candidates_pointing">Kotak itu harus memuat angka tersebut di suatu tempat, dan semua tempat yang mungkin terletak pada satu garis. Jadi angka itu ada di garis tersebut, dan tidak bisa berada di tempat lain sepanjang garis itu.</string>
+    <string name="because_locked_candidates_claiming">Garis itu harus memuat angka tersebut di suatu tempat, dan semua tempat yang mungkin ada di dalam satu kotak. Jadi angka itu ada di kotak tersebut, dan tidak bisa berada di tempat lain dalam kotak itu.</string>
+    <string name="because_naked_pair">Kedua sel itu akan mengambil kedua angka tersebut, satu masing-masing. Tidak ada sel lain di wilayah itu yang bisa memiliki salah satunya.</string>
+    <string name="because_hidden_pair">Wilayah itu perlu kedua angka tersebut, dan hanya dua sel ini yang bisa menampungnya, jadi masing-masing mengambil satu. Semua isi lain dari kedua sel itu gugur.</string>
+    <string name="because_naked_triple">Tiga sel, tiga angka, satu masing-masing. Tidak ada lagi di wilayah itu yang bisa memakainya, walaupun tidak satu sel pun memuat ketiganya.</string>
+    <string name="because_hidden_triple">Tiga angka yang tidak punya tempat lain mengisi tiga sel di antara mereka, jadi apa pun yang lain di sel-sel itu mustahil.</string>
+    <string name="because_naked_quad">Empat sel mengambil empat angka di antara mereka, yang mengunci keempatnya dari sisa wilayah itu.</string>
+    <string name="because_hidden_quad">Empat angka yang terkurung dalam empat sel mengisi sel-sel itu di antara mereka, jadi tidak ada lagi yang bisa tinggal di sana.</string>
+    <string name="because_x_wing">Masing-masing dari kedua baris itu perlu angka tersebut sekali, dan keduanya hanya bisa menempatkannya pada dua kolom yang sama. Bersama-sama mereka menghabiskan kedua kolom itu, jadi tidak ada baris lain yang bisa memiliki angka itu di sana.</string>
+    <string name="because_swordfish">Tiga baris memerlukan angka itu, dan hanya ada tiga kolom untuk menaruhnya. Ketiga baris menghabiskan ketiga kolom, jadi tidak ada lagi di kolom-kolom itu yang bisa memilikinya.</string>
+    <string name="because_jellyfish">Empat baris dan empat kolom, alasan yang sama sekali lagi. Keempat baris mengisi keempat kolom di antara mereka.</string>
+    <string name="because_xy_wing">Sel tengah adalah salah satu dari dua angkanya. Bagaimanapun juga, salah satu dari dua sel luar terpaksa mengambil angka bersama itu, jadi apa pun yang melihat keduanya tidak mungkin angka tersebut.</string>
+    <string name="because_xyz_wing">Sel tengah juga bisa menjadi angka bersama itu, jadi kesimpulannya lebih lemah: hanya sel yang melihat ketiganya yang kehilangan angka itu.</string>
+    <string name="because_w_wing">Kalau tidak satu pun dari sel pasangan itu mengambil angka kedua, keduanya akan mengambil angka pertama, dan wilayah penyambungnya tidak punya tempat lagi untuk menaruhnya. Jadi salah satunya adalah angka kedua.</string>
+    <string name="because_simple_colouring">Warnai rantai itu berselang-seling dan tepat satu warna yang benar. Entah sebuah warna mendarat dua kali dalam satu wilayah dan karenanya salah, atau sebuah sel di luar melihat kedua warna dan kehilangan angka itu bagaimanapun hasilnya.</string>
+    <string name="because_multi_colouring">Satu warna dari rantai pertama berbenturan dengan sebuah warna dari rantai kedua, yang memaksa angka itu ke salah satu dari dua warna yang berlawanan. Apa pun yang melihat kedua warna itu tidak bisa memuatnya.</string>
+    <string name="because_remote_pairs">Tetangga dalam rantai saling melihat, jadi mereka berselang-seling. Kedua ujungnya terpisah oleh jumlah langkah ganjil dan karenanya masing-masing memuat satu angka, dan apa pun yang melihat keduanya tidak bisa memuat satu pun.</string>
+    <string name="because_unique_rectangle">Kalau keempat sel itu tidak memuat apa-apa selain dua angka yang sama, angka-angka itu bisa ditukar mengelilingi persegi panjangnya dan teka-tekinya akan punya dua jawaban. Jawabannya satu, jadi susunan itu mustahil.</string>
+    <string name="because_bug_plus_one">Kalau kandidat tambahan itu disingkirkan, setiap angka akan muncul tepat dua kali di setiap wilayah, dan kisi semacam itu selalu punya jumlah jawaban genap. Teka-teki ini punya satu, jadi kandidat tambahan itulah jawabannya.</string>
+    <string name="because_x_chain">Rantai itu berselang-seling antara tempat angka itu harus berada dan tempat ia tidak bisa berada. Kedua ujungnya tidak mungkin sama-sama kosong dari angka itu, jadi apa pun yang melihat keduanya kehilangan angka tersebut.</string>
+    <string name="because_xy_chain">Andaikan sel pertama bukan angka itu. Ikuti rantainya dan sel terakhir terpaksa menjadi angka itu. Jadi salah satu ujung memuatnya.</string>
+    <string name="because_forcing_chain">Ikuti kedua kemungkinan. Kalau salah satunya meninggalkan sebuah sel tanpa apa pun yang bisa dimasukkan, kemungkinan itu memang tidak pernah nyata dan bisa dibuang. Kalau keduanya menaruh angka yang sama di tempat yang sama, angka itu memang milik tempat tersebut, mana pun yang ternyata benar. Tidak ada di sini yang bergantung pada benarnya andaian tadi, dan itulah yang membuatnya sebuah bukti, bukan tebakan.</string>
+    <string name="because_death_blossom">Apa pun isi sel itu nantinya, ia menendang angkanya sendiri keluar dari kelompok yang cocok, dan kelompok itu lalu menjadi penuh dan harus memakai semua angka yang tersisa padanya. Kalau semua kelompok memuat angka cadangan yang sama, angka itu mendarat di salah satunya bagaimanapun sel tadi jatuh. Apa pun yang bisa melihatnya di semua kelompok kehilangan angka itu.</string>
+    <string name="because_als_xy_wing">Kalau angka yang terancam itu hilang dari kelompok pertama, kelompok itu penuh dan harus mengambil angka yang dibaginya dengan kelompok tengah. Kelompok tengah lalu kehilangan angka itu, jadi ia pun penuh dan mengambil angka yang dibaginya dengan kelompok ketiga. Kelompok ketiga lalu penuh juga, dan harus memakai angka yang terancam tadi. Jadi sel mana pun yang bisa melihatnya di kedua kelompok luar tidak bisa memuatnya.</string>
+    <string name="because_sue_de_coq">Sel bersama itu akan menghabiskan semua angkanya kecuali dua, dan kedua kelompok di kedua sisi menuntut tepat kedua angka itu. Jadi setiap angka dari kelompok di garis itu terpakai di dalam garis, dan setiap angka dari kelompok di kotak itu terpakai di dalam kotak. Tidak ada lagi di keduanya yang bisa memilikinya.</string>
+    <string name="because_als_xz">Satu angka bersama hanya bisa muncul di salah satu dari dua kelompok itu, yang mengunci kelompok yang lain dan memaksanya memakai semua angka yang dimilikinya. Jadi angka bersama kedua mendarat di satu kelompok atau yang lain.</string>
+
+    <string name="technique_naked_single">Naked single</string>
+    <string name="technique_hidden_single">Hidden single</string>
+    <string name="technique_locked_candidates_pointing">Pointing pair atau triple</string>
+    <string name="technique_locked_candidates_claiming">Claiming pair atau triple</string>
+    <string name="technique_naked_pair">Naked pair</string>
+    <string name="technique_hidden_pair">Hidden pair</string>
+    <string name="technique_naked_triple">Naked triple</string>
+    <string name="technique_hidden_triple">Hidden triple</string>
+    <string name="technique_naked_quad">Naked quad</string>
+    <string name="technique_hidden_quad">Hidden quad</string>
+    <string name="technique_x_wing">X-Wing</string>
+    <string name="technique_simple_colouring">Pewarnaan sederhana</string>
+    <string name="technique_xy_wing">XY-Wing</string>
+    <string name="technique_xyz_wing">XYZ-Wing</string>
+    <string name="technique_w_wing">W-Wing</string>
+    <string name="technique_swordfish">Swordfish</string>
+    <string name="technique_remote_pairs">Remote pairs</string>
+    <string name="technique_unique_rectangle">Unique rectangle</string>
+    <string name="technique_bug_plus_one">BUG plus satu</string>
+    <string name="technique_jellyfish">Jellyfish</string>
+    <string name="technique_multi_colouring">Pewarnaan ganda</string>
+    <string name="technique_x_chain">X-Chain</string>
+    <string name="technique_xy_chain">XY-Chain</string>
+    <string name="technique_als_xz">ALS XZ</string>
+    <string name="technique_sue_de_coq">Sue de Coq</string>
+    <string name="technique_als_xy_wing">ALS XY-Wing</string>
+    <string name="technique_death_blossom">Death blossom</string>
+    <string name="technique_forcing_chain">Forcing chain</string>
+    <string name="technique_cage_sum">Jumlah sangkar</string>
+    <string name="technique_cage_single">Single dalam sangkar</string>
+    <string name="technique_cage_locked">Sangkar terkunci</string>
+    <string name="technique_cage_innie">Innie dan outie</string>
+    <string name="daily_title">Harian</string>
+    <string name="daily_no_streak">Belum ada rentetan. Pecahkan teka-teki hari ini untuk memulainya.</string>
+    <string name="daily_previous_month">Sebelumnya</string>
+    <string name="daily_next_month">Sesudahnya</string>
+    <string name="daily_cell_solved">terpecahkan</string>
+    <string name="daily_cell_attempted">dimainkan tetapi belum selesai</string>
+    <string name="daily_cell_unplayed">belum dimainkan</string>
+    <string name="daily_cell_future">belum waktunya</string>
+    <string name="daily_play_today">Mainkan hari ini</string>
+    <plurals name="daily_streak">
+        <item quantity="other">%1$d hari berturut-turut</item>
+    </plurals>
+    <string name="daily_cell">%1$d, %2$s, %3$s</string>
+    <string name="daily_cell_today">hari ini, %1$d, %2$s, %3$s</string>
+    <string name="stat_mistakes">Kesalahan</string>
+    <string name="stat_hints">Bantuan</string>
+    <string name="stat_time">Waktu</string>
+    <string name="stat_pause">Jeda</string>
+    <string name="game_daily_title">%1$s, %2$s</string>
+
+    <string name="stage_first_steps">Langkah pertama</string>
+    <string name="stage_one_at_a_time">Satu angka dalam satu waktu</string>
+    <string name="stage_notes">Catatan</string>
+    <string name="stage_locked_to_a_line">Angka yang terkunci pada satu garis</string>
+    <string name="stage_groups">Kelompok</string>
+    <string name="stage_patterns">Pola yang melintasi kisi</string>
+    <string name="stage_wings">Wing</string>
+    <string name="stage_colouring">Pewarnaan</string>
+    <string name="stage_one_answer">Mengandaikan satu jawaban</string>
+    <string name="stage_chains">Rantai</string>
+    <string name="stage_the_far_end">Ujung yang jauh</string>
+    <string name="stage_the_deep_end">Bagian terdalam</string>
+    <string name="stage_cages">Sangkar</string>
+    <string name="lesson_cage_is_title">Apa itu sangkar</string>
+    <string name="lesson_cage_is_summary">Bentuk bergaris putus-putus itu adalah sangkar, dan angka kecilnya adalah jumlah isi sel-selnya.</string>
+    <string name="lesson_cage_is_1">Killer dimulai tanpa satu angka pun. Sebagai gantinya kisinya dipotong menjadi sangkar, digambar dengan garis putus-putus, dan angka kecil di sudut sebuah sangkar adalah jumlah isi sel-selnya. Selebihnya sudoku biasa.</string>
+    <string name="lesson_cage_is_2">Sangkar berisi satu sel adalah petunjuk yang ditulis dengan cara lain. Yang ini bertuliskan satu, jadi angka satu masuk ke sana dan tidak ada yang perlu dipikirkan.</string>
+    <string name="lesson_cage_is_3">Terpasang. Sekarang sebuah sangkar yang perlu dipikirkan.</string>
+    <string name="lesson_cage_is_4a">Yang ini lima dalam dua sel. Itu satu dan empat, atau dua dan tiga, jadi belum pasti, tetapi lima dan enam sudah pasti tidak ada di dalamnya.</string>
+    <string name="lesson_cage_is_4">Tiga sel berjumlah lima belas. Dalam kisi enam kali enam tiga angka terbesar adalah empat, lima dan enam, dan jumlahnya tepat lima belas. Jadi sangkar ini memuat ketiganya dalam urutan apa pun, dan tidak ada lagi yang bisa ada di dalamnya.</string>
+    <string name="lesson_cage_is_5">Sebuah sangkar tidak pernah mengulang angka. Aturan itulah yang membuat sebuah jumlah berbicara begitu banyak: tanpanya, lima belas dalam tiga sel bisa saja lima, lima dan lima.</string>
+    <string name="lesson_cage_house_title">Sangkar di dalam sebuah wilayah</string>
+    <string name="lesson_cage_house_summary">Sebuah baris, kolom dan kotak masing-masing berjumlah total yang sudah diketahui, dan sangkar di dalamnya mengerjakan sisanya.</string>
+    <string name="lesson_cage_house_1">Setiap baris, kolom dan kotak memuat tiap angka sekali, jadi masing-masing berjumlah total yang sama. Dalam kisi enam kali enam total itu adalah dua puluh satu.</string>
+    <string name="lesson_cage_house_2">Kedua sel ini berjumlah sepuluh. Satu-satunya dua angka berbeda yang menghasilkan sepuluh adalah empat dan enam, jadi sangkar ini memiliki keduanya, dan tidak ada sel lain di baris ini yang bisa berisi empat atau enam.</string>
+    <string name="lesson_cage_house_3">Sekarang seluruh barisnya. Barisnya berjumlah dua puluh satu, dan tiga sangkar duduk sepenuhnya di dalamnya: lima, sepuluh dan satu. Itu enam belas yang sudah terhitung.</string>
+    <string name="lesson_cage_house_4">Jadi sel yang tersisa adalah dua puluh satu dikurangi enam belas, yaitu lima.</string>
+    <string name="lesson_cage_house_5">Pemain menyebutnya innie. Aritmetika yang sama bekerja sebaliknya juga: ketika sebuah sangkar menjulur keluar dari sebuah wilayah, yang menjulur itulah selisihnya, dan itu disebut outie.</string>
+    <string name="lesson_cage_home_title">Satu rumah dalam sangkar</string>
+    <string name="lesson_cage_home_summary">Sebuah angka yang harus dimuat sangkarnya, dengan hanya satu sel tersisa yang bisa menampungnya.</string>
+    <string name="lesson_cage_home_1">Setelah agak jauh masuk ke dalam Killer, sangkar mulai berbicara lebih banyak daripada sekadar jumlahnya. Tiga angka sudah terpasang di sini.</string>
+    <string name="lesson_cage_home_2">Sangkar ini sepuluh dalam dua sel, jadi ia memuat empat dan enam. Tetapi sudah ada enam di kotak sebelah kanan, dan itu menggugurkan angka tersebut dari sel kanan sangkar ini.</string>
+    <string name="lesson_cage_home_3">Jadi angka enam tinggal punya satu rumah, dan ia masuk di sebelah kiri. Jumlahnya berkata bahwa sangkar itu memuat enam; sisa papan berkata di mana.</string>
+    <string name="lesson_cage_home_4">Itulah single dalam sangkar. Ia adalah hidden single versi Killer: bukan satu-satunya angka yang bisa ditampung sebuah sel, melainkan satu-satunya sel yang bisa ditempati sebuah angka.</string>
+
+    <string name="lesson_what_is_title">Apa itu sudoku</string>
+    <string name="lesson_what_is_summary">Setiap baris, setiap kolom dan setiap kotak memuat tiap angka sekali.</string>
+    <string name="lesson_what_is_1">Ini sebuah sudoku. Yang kecil, empat sel kali empat, jadi semuanya muat di kepala sekaligus. Kisi ukuran penuh bekerja persis sama.</string>
+    <string name="lesson_what_is_2">Ini sebuah baris. Ia harus memuat angka 1, 2, 3 dan 4, masing-masing sekali. Tidak ada yang berulang, dan tidak ada yang tertinggal.</string>
+    <string name="lesson_what_is_3">Ini sebuah kolom. Aturan yang sama: 1, 2, 3 dan 4, masing-masing sekali.</string>
+    <string name="lesson_what_is_4">Itu seluruh permainannya. Tidak ada aritmetika di dalamnya, dan tidak ada yang perlu dijumlahkan. Ini satu aturan tentang di mana sebuah angka boleh berada.</string>
+    <string name="lesson_what_is_5">Kedua sel ini kosong. Mengisinya sehingga aturannya tetap berlaku, itulah arti menyelesaikan.</string>
+
+    <string name="lesson_houses_title">Baris, kolom dan kotak</string>
+    <string name="lesson_houses_summary">Sebuah sel duduk dalam tiga wilayah sekaligus, dan berbagi satu aturan dengan ketiganya.</string>
+    <string name="lesson_houses_1">Aturan tadi menyebut baris dan kolom. Ada jenis kelompok ketiga, dan itulah yang membuat sudoku layak diselesaikan.</string>
+    <string name="lesson_houses_2">Ini baris lagi.</string>
+    <string name="lesson_houses_3">Ini sebuah kolom.</string>
+    <string name="lesson_houses_4">Dan ini sebuah kotak, ditandai oleh garis yang lebih tebal. Ia juga memuat tiap angka sekali.</string>
+    <string name="lesson_houses_5">Jadi sel ini termasuk dalam tiga kelompok pada waktu yang sama. Setiap sel yang berbagi kelompok dengannya disorot, dan tidak satu pun boleh memuat angka yang sama dengannya. Ketiga kelompok itu disebut wilayah, dan kata itulah yang dipakai selanjutnya.</string>
+
+    <string name="lesson_givens_title">Angka pemberian</string>
+    <string name="lesson_givens_summary">Angka yang tercetak di awal bersifat tetap, dan angka itulah yang membuat jawabannya satu-satunya.</string>
+    <string name="lesson_givens_1">Angka-angka ini datang bersama teka-tekinya. Mereka disebut angka pemberian, dan tidak bisa diubah atau dihapus.</string>
+    <string name="lesson_givens_2">Mereka digambar berbeda dari angka yang Anda pasang, jadi Anda selalu bisa membedakannya. Dalam aplikasi ini angka pemberian adalah yang lebih tebal.</string>
+    <string name="lesson_givens_3">Inilah sel-sel yang Anda isi.</string>
+    <string name="lesson_givens_4">Teka-teki yang dibuat dengan benar punya tepat satu cara untuk mengisinya. Itu janji tentang teka-tekinya, bukan tentang Anda: kalau Anda mentok, jawabannya tetap cuma satu, dan selalu bisa dinalar. Setiap teka-teki di aplikasi ini dibuat seperti itu.</string>
+
+    <string name="lesson_first_four_title">Penyelesaian pertama Anda</string>
+    <string name="lesson_first_four_summary">Lihat apa yang tidak mungkin jadi isi sebuah sel, dan kadang hanya satu angka yang tersisa.</string>
+    <string name="lesson_first_four_1">Sekarang selesaikan satu. Dua sel kosong, dan aturannya cukup untuk mengisi keduanya.</string>
+    <string name="lesson_first_four_2">Mulai dari baris ini. Ia sudah punya 1 dan 4, jadi kedua sel kosong memuat 2 dan 3. Pertanyaannya cuma yang mana di mana.</string>
+    <string name="lesson_first_four_3">Sel ini tidak mungkin 2, karena kolomnya sudah punya satu. Jadi ia 3.</string>
+    <string name="lesson_first_four_4">Tersisa satu sel kosong, dan satu angka yang belum terpakai di baris itu.</string>
+    <string name="lesson_first_four_5">Giliran Anda. Pasang angka yang seharusnya ada di sini.</string>
+    <string name="lesson_first_four_wrong">Belum tepat. Lihat barisnya: angka mana dari 1 sampai 4 yang masih hilang darinya?</string>
+    <string name="lesson_first_four_6">Terpecahkan. Itulah sudoku, berapa pun ukuran kisinya.</string>
+
+    <string name="lesson_first_six_title">Kisi yang lebih besar</string>
+    <string name="lesson_first_six_summary">Kotak tidak selalu persegi, dan aturannya tidak peduli.</string>
+    <string name="lesson_first_six_1">Enam kali enam. Aturannya tidak berubah, tetapi kotaknya berubah: tiga lebar dan dua tinggi.</string>
+    <string name="lesson_first_six_2">Ini satu kotak. Tiga melintang, dua ke bawah, enam sel, tiap angka dari 1 sampai 6 sekali.</string>
+    <string name="lesson_first_six_3">Itu menjebak orang pada awalnya, karena mata mengharapkan persegi. Luangkan sesaat: temukan kotak tempat sel ini berada sebelum mencari apa pun yang lain.</string>
+    <string name="lesson_first_six_4">Giliran Anda. Satu angka hilang dari kotak kiri atas.</string>
+    <string name="lesson_first_six_wrong">Bukan yang itu. Hitung apa yang sudah ada di kotak itu, lalu cari angka dari 1 sampai 6 yang tidak ada di sana.</string>
+    <string name="lesson_first_six_5">Bagus. Mulai sekarang kisinya sembilan kali sembilan dan kotaknya persegi lagi, tetapi kebiasaan memeriksa ketiga wilayah itulah yang perlu dipertahankan.</string>
+
+    <string name="lesson_naked_single_title">Naked single</string>
+    <string name="lesson_naked_single_summary">Sel yang hanya tersisa satu angka harus memuatnya.</string>
+    <string name="lesson_naked_single_1">Kisi ukuran penuh, dan teknik pertama yang punya nama. Ini yang paling sederhana yang ada, dan bahkan pada teka-teki tersulit sekalipun teknik inilah yang menyelesaikan sebagian besar sel.</string>
+    <string name="lesson_naked_single_2">Lihat sel ini sendirian. Tanyakan apa yang bisa jadi isinya.</string>
+    <string name="lesson_naked_single_3">Setiap sel yang menggugurkan sesuatu disorot. Antara barisnya, kolomnya dan kotaknya, delapan dari sembilan angka sudah muncul di suatu tempat yang bisa dilihatnya.</string>
+    <string name="lesson_naked_single_4">Jadi satu angka tersisa, dan sel itu harus memuatnya. Tidak ada kemungkinan lain. Itulah naked single: naked karena bisa dilihat hanya dengan memandang satu sel, single karena satu angka bertahan.</string>
+    <string name="lesson_naked_single_5">Aplikasi ini menyebut namanya ketika memberi Anda bantuan. Sekarang Anda tahu artinya.</string>
+    <string name="lesson_hidden_single_title">Hidden single</string>
+    <string name="lesson_hidden_single_summary">Angka yang hanya tersisa satu tempat dalam sebuah wilayah harus masuk ke sana.</string>
+    <string name="lesson_hidden_single_1">Jenis single yang satunya, dan yang menemukan lebih banyak sel. Naked single adalah sel dengan satu angka tersisa. Ini bayangan cerminnya: angka dengan satu sel tersisa.</string>
+    <string name="lesson_hidden_single_2">Ambil sebuah wilayah, dan pilih sebuah angka yang masih diperlukannya. Tanyakan di mana dalam wilayah itu angka tersebut bisa masuk.</string>
+    <string name="lesson_hidden_single_3">Di kotak ini jawabannya satu sel. Setiap sel kosong lain di kotak itu gugur oleh baris atau kolomnya sendiri.</string>
+    <string name="lesson_hidden_single_4">Jadi angka itu masuk ke sana, walaupun sel tersebut punya beberapa angka yang bisa ditampungnya sendiri. Itulah sebabnya ia disebut hidden: angkanya bersembunyi di antara yang lain.</string>
+    <string name="lesson_hidden_single_5">Yang ini layak dipelajari sungguh-sungguh. Pada kebanyakan teka-teki, teknik inilah yang membuat Anda terus bergerak setelah naked single habis.</string>
+    <string name="lesson_hidden_single_turn">Giliran Anda. Pasang angka yang tidak punya tempat lain di kotak ini.</string>
+    <string name="lesson_hidden_single_wrong">Bukan yang itu. Tanyakan angka mana yang masih diperlukan kotak itu, lalu periksa di mana masing-masing sebenarnya bisa muat.</string>
+
+    <string name="lesson_scanning_title">Cara melihat</string>
+    <string name="lesson_scanning_summary">Sapukan satu angka ke seluruh kisi, bukan mempelajari sel satu per satu.</string>
+    <string name="lesson_scanning_1">Sekarang Anda tahu dua teknik. Mengetahuinya tidak sama dengan menemukannya, dan menemukannya itulah yang memakan waktu.</string>
+    <string name="lesson_scanning_2">Jangan membaca kisi sel demi sel. Ambil satu angka, misalnya yang paling sering sudah muncul, lalu lihat tiga kotak dalam satu pita.</string>
+    <string name="lesson_scanning_3">Untuk tiap kotak ajukan satu pertanyaan saja: di mana angka ini bisa masuk? Baris dan kolom yang sudah memuatnya mencoret sebagian besar jawabannya, dan sering hanya satu sel yang tersisa.</string>
+    <string name="lesson_scanning_4">Lalu pindah ke pita berikutnya, dan ketika angka itu habis, pindah ke angka berikutnya. Itulah pemindaian, dan itulah yang sebenarnya dilakukan pemain cepat ketika mereka tampak hanya menatap.</string>
+    <string name="lesson_scanning_5">Bersikap sistematis tidak ada biayanya dan menghemat rasa mentok, yang biasanya adalah rasa sudah memandangi sudut yang sama empat kali.</string>
+
+    <string name="lesson_first_nine_title">Kisi penuh, hanya dengan single</string>
+    <string name="lesson_first_nine_summary">Semua yang sudah Anda pelajari sejauh ini cukup untuk menyelesaikan satu teka-teki utuh.</string>
+    <string name="lesson_first_nine_1">Sembilan kali sembilan sungguhan, pada tingkat Mudah. Setiap langkah di dalamnya adalah single, naked atau hidden, dan tidak ada apa pun di sini yang belum Anda temui.</string>
+    <string name="lesson_first_nine_2">Ini satu untuk memulai. Sel ini punya delapan dari sembilan angka yang gugur oleh apa yang bisa dilihatnya.</string>
+    <string name="lesson_first_nine_3">Itulah bentuk sebuah teka-teki Mudah. Single, sampai akhir, dan tidak ada tebakan di titik mana pun.</string>
+    <string name="lesson_first_nine_4">Saat Anda meninggalkan pelajaran ini, mainkan satu. Tahap berikutnya tentang catatan, dan catatan baru mulai berguna pada teka-teki yang lebih sulit daripada ini.</string>
+    <string name="lesson_first_nine_turn">Giliran Anda. Satu angka mungkin di sini.</string>
+    <string name="lesson_first_nine_wrong">Lihat lagi baris, kolom dan kotak tempat sel ini berada, lalu daftar apa yang sudah ada di dalamnya.</string>
+
+    <string name="lesson_pencil_marks_title">Catatan</string>
+    <string name="lesson_pencil_marks_summary">Sebuah catatan adalah rekaman dari apa yang sudah Anda simpulkan, supaya tidak perlu menyimpulkannya lagi.</string>
+    <string name="lesson_pencil_marks_1">Mulai sekarang teka-tekinya tidak lagi menyerah pada single, dan Anda perlu mencatat. Sebuah catatan, atau coretan pensil, adalah angka kecil di dalam sel yang mengatakan bahwa angka itu masih mungkin di sana.</string>
+    <string name="lesson_pencil_marks_2">Lihat sel ini. Menyimpulkan bahwa ia hanya bisa jadi salah satu dari dua angka memakan beberapa detik. Menuliskan kedua angka itu berarti lain kali Anda melihatnya tidak memakan waktu sama sekali.</string>
+    <string name="lesson_pencil_marks_3">Hanya itulah sebuah catatan. Ia bukan tebakan dan bukan komitmen. Ia rekaman dari kesimpulan yang sudah Anda buat.</string>
+    <string name="lesson_pencil_marks_4">Setiap teknik mulai sekarang adalah tentang pola dalam catatan, bukan pola dalam angka. Pasangan, tripel, ikan dan rantai semuanya dibaca dari catatan.</string>
+    <string name="lesson_pencil_marks_5">Tidak ada yang menyelesaikan sudoku sulit di kepala, dan pemain yang tidak mencatat apa-apa pada tingkat Ahli bukan sedang pintar, ia sedang lambat.</string>
+
+    <string name="lesson_when_to_mark_title">Kapan menulisnya</string>
+    <string name="lesson_when_to_mark_summary">Isi catatan ketika single sudah habis, bukan sebelumnya.</string>
+    <string name="lesson_when_to_mark_1">Ada dua cara memakai catatan, dan perbedaannya penting.</string>
+    <string name="lesson_when_to_mark_2">Yang pertama adalah mengisi tiap sel kosong dengan tiap angka yang mungkin, sekaligus, sebelum melakukan apa pun yang lain. Itu menyeluruh, memakan beberapa menit kalau dikerjakan tangan, dan pada teka-teki mudah sebagian besarnya sia-sia karena single toh akan menyelesaikan kisinya.</string>
+    <string name="lesson_when_to_mark_3">Yang kedua adalah menandai hanya di tempat Anda sedang bekerja. Keempat sel ini layak ditandai karena ada sesuatu yang terjadi di antara mereka. Sisa kisinya tidak.</string>
+    <string name="lesson_when_to_mark_4">Saran jujurnya: selesaikan single dulu, dan mulai menandai ketika Anda berhenti menemukannya. Di atas kertas itu menghemat waktu sungguhan. Dalam aplikasi ini, mengisi semua catatan cukup satu ketukan, jadi biayanya lebih kecil, tetapi kisi yang penuh angka tetap lebih sulit dibaca daripada kisi yang bercatatan hanya di tempat yang penting.</string>
+
+    <string name="lesson_marks_true_title">Menjaga catatan tetap jujur</string>
+    <string name="lesson_marks_true_summary">Catatan yang sudah usang lebih buruk daripada tidak ada catatan sama sekali.</string>
+    <string name="lesson_marks_true_1">Catatan punya satu bahaya. Setiap angka yang Anda pasang membuat sebagian dari catatan itu keliru, dan catatan yang keliru akan menyeret Anda ke penalaran yang tidak mungkin benar.</string>
+    <string name="lesson_marks_true_2">Pasang sebuah angka di sini, dan tiap sel yang bisa dilihatnya kehilangan angka itu sebagai kemungkinan. Kalau catatan itu tidak dihapus, teknik berikutnya yang Anda temukan bisa jadi dibangun di atas salah satunya.</string>
+    <string name="lesson_marks_true_3">Aplikasi ini bisa melakukannya untuk Anda. Ada pengaturan bernama hapus catatan yang digugurkan oleh angka yang dipasang, dan itu menyala secara bawaan. Di atas kertas Anda melakukannya sendiri, dan dari sanalah kebanyakan kesalahan berasal.</string>
+    <string name="lesson_marks_true_4">Ketika sebuah teka-teki melenceng dan Anda tidak tahu kenapa, catatan usang adalah hal pertama yang patut dicurigai. Tombol bantuan akan memberi tahu Anda ketika sebuah angka yang Anda pasang tidak mungkin benar.</string>
+
+    <string name="lesson_pointing_title">Pointing pair</string>
+    <string name="lesson_pointing_summary">Kalau sebuah angka dalam sebuah kotak terkurung pada satu garis, angka itu meninggalkan garis tersebut di tempat lain.</string>
+    <string name="lesson_pointing_1">Teknik pertama yang menyingkirkan kemungkinan alih-alih memasang angka. Kebanyakan teknik mulai sekarang melakukan itu, dan perlu waktu untuk terbiasa: Anda maju tanpa menulis satu angka pun.</string>
+    <string name="lesson_pointing_2">Lihat ke mana satu angka bisa masuk di kotak ini. Semua tempat yang mungkin terletak pada kolom yang sama.</string>
+    <string name="lesson_pointing_3">Kotak itu harus memuat angka tersebut di suatu tempat. Jadi di mana pun ia berakhir, ia ada di kolom itu.</string>
+    <string name="lesson_pointing_4">Yang berarti sisa kolomnya tidak bisa memilikinya. Sel-sel ini kehilangan angka itu sebagai kemungkinan, walaupun letaknya jauh dari kotak tadi.</string>
+    <string name="lesson_pointing_5">Ia disebut pointing karena pasangan di dalam kotak menunjuk sepanjang garis dan membersihkannya.</string>
+
+    <string name="lesson_claiming_title">Claiming pair</string>
+    <string name="lesson_claiming_summary">Kalau sebuah angka pada sebuah garis terkurung dalam satu kotak, angka itu meninggalkan kotak tersebut di tempat lain.</string>
+    <string name="lesson_claiming_1">Penalaran yang sama dibaca terbalik, dan layak dibahas terpisah karena mata menemukannya di tempat yang berbeda.</string>
+    <string name="lesson_claiming_2">Kali ini mulai dari sebuah garis. Lihat ke mana satu angka bisa masuk sepanjang baris ini.</string>
+    <string name="lesson_claiming_3">Semua tempat yang mungkin ada di dalam kotak yang sama. Baris itu harus memuat angka tersebut di suatu tempat, jadi angka itu ada di kotak tersebut.</string>
+    <string name="lesson_claiming_4">Yang berarti sisa kotaknya kehilangannya. Sel-sel ini tidak bisa lagi memuatnya.</string>
+    <string name="lesson_claiming_5">Pointing melihat sebuah kotak dan membersihkan sebuah garis. Claiming melihat sebuah garis dan membersihkan sebuah kotak. Dua nama, satu gagasan, dan Anda akan bertemu keduanya di tiap teka-teki sulit.</string>
+
+    <string name="lesson_naked_pair_title">Naked pair</string>
+    <string name="lesson_naked_pair_summary">Dua sel yang memuat dua angka yang sama memiliki keduanya.</string>
+    <string name="lesson_naked_pair_1">Sekarang kelompok. Ini yang terkecil di antara mereka dan pola yang membuat sisanya jadi jelas.</string>
+    <string name="lesson_naked_pair_2">Kedua sel ini berada dalam wilayah yang sama, dan masing-masing hanya bisa jadi salah satu dari dua angka yang sama.</string>
+    <string name="lesson_naked_pair_3">Di antara mereka, keduanya akan mengambil kedua angka itu, satu masing-masing. Yang mana di mana tidak penting dan Anda tidak perlu tahu.</string>
+    <string name="lesson_naked_pair_4">Jadi tidak ada sel lain di wilayah itu yang bisa memuat salah satu angka tersebut. Sel ini kehilangan salah satunya.</string>
+    <string name="lesson_naked_pair_5">Naked lagi, karena Anda bisa melihatnya hanya dengan membaca kedua sel itu. Tidak ada yang tersembunyi dan tidak ada sel lain yang terlibat dalam penalarannya.</string>
+
+    <string name="lesson_hidden_pair_title">Hidden pair</string>
+    <string name="lesson_hidden_pair_summary">Dua angka yang hanya tersisa dua tempat yang sama memiliki sel-sel itu.</string>
+    <string name="lesson_hidden_pair_1">Bayangan cermin dari naked pair, persis seperti hidden single mencerminkan naked single.</string>
+    <string name="lesson_hidden_pair_2">Dalam wilayah ini, dua angka masing-masing hanya bisa masuk ke dua sel yang sama.</string>
+    <string name="lesson_hidden_pair_3">Kedua angka itu akan mengambil kedua sel tersebut di antara mereka. Jadi apa pun yang tampaknya bisa dimuat sel-sel itu, ternyata tidak bisa.</string>
+    <string name="lesson_hidden_pair_4">Kedua sel itu kehilangan semua catatan lainnya. Sekarang mereka menjadi naked pair, dan sering itulah gunanya pola ini: mengubah hidden pair menjadi naked pair yang membersihkan sisa wilayahnya.</string>
+    <string name="lesson_hidden_pair_5">Hidden pair lebih sulit dilihat daripada naked pair karena Anda harus memandang angka, bukan sel. Pada kisi yang mandek, itu sepadan dengan usahanya.</string>
+
+    <string name="lesson_naked_triple_title">Naked triple</string>
+    <string name="lesson_naked_triple_summary">Tiga sel yang berbagi tiga angka memilikinya, walaupun tidak ada satu pun yang memuat ketiganya.</string>
+    <string name="lesson_naked_triple_1">Sebuah pasangan dengan satu sel tambahan, dan satu kerutan yang menjebak semua orang pada kali pertama.</string>
+    <string name="lesson_naked_triple_2">Ketiga sel ini duduk dalam wilayah yang sama, dan di antara mereka hanya terpakai tiga angka berbeda.</string>
+    <string name="lesson_naked_triple_3">Inilah kerutannya: tidak satu pun dari mereka harus memuat ketiganya. Dua angka di satu sel, dua di sel berikutnya, dua di sel ketiga tetap sebuah tripel, asalkan hanya tiga angka yang muncul di seluruh ketiganya.</string>
+    <string name="lesson_naked_triple_4">Ketiga sel itu akan mengambil ketiga angka di antara mereka, jadi tiap sel lain di wilayah itu kehilangan ketiganya. Itu banyak catatan yang hilang sekaligus.</string>
+    <string name="lesson_naked_triple_5">Ketika berburu, hitung angka yang berbeda pada dua atau tiga sel alih-alih mencari catatan yang identik. Kebiasaan itulah yang menemukan tripel.</string>
+
+    <string name="lesson_hidden_triple_title">Hidden triple</string>
+    <string name="lesson_hidden_triple_summary">Tiga angka yang hanya tersisa tiga tempat memiliki sel-sel itu.</string>
+    <string name="lesson_hidden_triple_1">Hubungan yang sama dengan hidden pair, satu ukuran lebih besar, dan sungguh sulit dilihat.</string>
+    <string name="lesson_hidden_triple_2">Dalam wilayah ini, tiga angka hanya bisa masuk ke tiga sel yang sama di antara mereka.</string>
+    <string name="lesson_hidden_triple_3">Jadi ketiga sel itu memuat ketiga angka tersebut, dan tiap catatan lain di dalamnya bisa dibuang.</string>
+    <string name="lesson_hidden_triple_4">Jangan memburu ini lebih dulu. Cari ketika sebuah wilayah tinggal punya beberapa sel dan tidak ada lagi yang berhasil. Sebagian besar waktu, pola naked di wilayah yang sama lebih mudah dilihat.</string>
+
+    <string name="lesson_quads_title">Kuadrupel</string>
+    <string name="lesson_quads_summary">Gagasan yang sama sekali lagi dengan empat, layak diketahui tetapi jarang layak diburu.</string>
+    <string name="lesson_quads_1">Pasangan, tripel, dan sekarang kuadrupel. Penalarannya tidak berubah: empat sel yang di antara mereka memakai empat angka memiliki angka-angka itu, dan empat angka yang hanya punya empat tempat memiliki sel-sel itu.</string>
+    <string name="lesson_quads_2">Ini sebuah naked quad. Empat sel, empat angka di antara mereka, dan sisa wilayahnya kehilangan keempatnya.</string>
+    <string name="lesson_quads_3">Dan ini saran jujurnya. Kuadrupel itu nyata dan sah, tetapi langka, dan sebuah kuadrupel dalam wilayah berisi lima atau enam sel kosong biasanya berarti ada pola yang lebih sederhana di sel-sel lain yang Anda lewatkan.</string>
+    <string name="lesson_quads_4">Ini sebuah hidden quad, untuk kelengkapan. Empat angka dengan empat tempat tersisa.</string>
+    <string name="lesson_quads_5">Belajarlah mengenalinya supaya bantuan yang menyebut namanya masuk akal. Jangan habiskan waktu Anda mencarinya.</string>
+
+    <string name="lesson_x_wing_title">X-Wing</string>
+    <string name="lesson_x_wing_summary">Sebuah angka yang terpaku pada dua kolom dalam dua baris meninggalkan kolom-kolom itu di tempat lain.</string>
+    <string name="lesson_x_wing_1">Pola pertama yang membentang di seluruh kisi alih-alih duduk dalam satu wilayah. Ia punya bentuk, dan begitu Anda melihat bentuknya, Anda akan melihatnya di mana-mana.</string>
+    <string name="lesson_x_wing_2">Ambil satu angka. Pada kedua baris ini, angka itu hanya bisa masuk ke dua sel di masing-masing baris, dan sel-sel itu ada di dua kolom yang sama. Empat sel, membentuk persegi panjang.</string>
+    <string name="lesson_x_wing_3">Sekarang pikirkan sampai tuntas. Tiap baris harus memuat angka itu sekali. Sudut mana pun yang dipakai satu baris, baris yang lain harus memakai sudut yang berseberangan. Tidak ada pilihan ketiga.</string>
+    <string name="lesson_x_wing_4">Jadi di antara mereka, kedua baris itu memakai angka tersebut di kedua kolom itu. Apa pun yang lain di kolom-kolom itu kehilangannya.</string>
+    <string name="lesson_x_wing_5">Ini juga bekerja dengan kolom dan baris ditukar. Dua kolom yang angkanya terkurung pada dua baris yang sama akan membersihkan baris-baris itu.</string>
+
+    <string name="lesson_swordfish_title">Swordfish</string>
+    <string name="lesson_swordfish_summary">Penalaran yang sama dengan X-Wing, dengan tiga garis alih-alih dua.</string>
+    <string name="lesson_swordfish_1">Sebuah X-Wing dengan satu baris tambahan. Namanya tidak membantu tetapi polanya perpanjangan langsung.</string>
+    <string name="lesson_swordfish_2">Tiga baris, satu angka, dan di tiap baris angka itu terkurung dalam sel-sel di tiga kolom yang sama.</string>
+    <string name="lesson_swordfish_3">Tidak tiap baris harus memakai ketiga kolom. Dua dari tiga sudah cukup, asalkan tidak ada baris yang menyimpang keluar.</string>
+    <string name="lesson_swordfish_4">Ketiga baris itu memakai angka tersebut di ketiga kolom itu di antara mereka, jadi sisa kolom-kolom itu kehilangannya.</string>
+    <string name="lesson_swordfish_5">Kalau Anda bisa mengikuti X-Wing, Anda bisa mengikuti ini. Menemukannya urusan lain: di sinilah mengisi catatan berhenti menjadi pilihan.</string>
+
+    <string name="lesson_jellyfish_title">Jellyfish</string>
+    <string name="lesson_jellyfish_summary">Empat garis. Pola yang sama sekali lagi, dan yang terakhir yang layak dipelajari.</string>
+    <string name="lesson_jellyfish_1">Empat baris, satu angka, empat kolom. Penalarannya tidak berubah sejak X-Wing dan tidak akan berubah lagi.</string>
+    <string name="lesson_jellyfish_2">Ini satu. Empat baris, dan angka di masing-masing terkurung dalam empat kolom yang sama.</string>
+    <string name="lesson_jellyfish_3">Di atas empat tidak ada lagi yang perlu dipelajari. Versi lima garis ada secara teori, tetapi pada kisi sembilan kali sembilan setiap versi itu bisa ditemukan sebagai pola yang lebih kecil di empat kolom yang tersisa, jadi tidak ada yang mencarinya.</string>
+    <string name="lesson_jellyfish_4">Ini batas terjauh dari yang layak diburu lewat pola. Setelah ini, rantai adalah penggunaan perhatian Anda yang lebih baik.</string>
+
+    <string name="lesson_xy_wing_title">XY-Wing</string>
+    <string name="lesson_xy_wing_summary">Tiga sel dengan dua angka masing-masing, dan satu sel yang rugi bagaimanapun hasilnya.</string>
+    <string name="lesson_xy_wing_1">Wing memerlukan cara berpikir yang berbeda. Sampai sekarang Anda menemukan sebuah pola dan membaca kesimpulannya. Di sini Anda bernalar dengan kasus.</string>
+    <string name="lesson_xy_wing_2">Mulai dari sel ini. Ia memuat tepat dua angka yang mungkin, dan ia adalah engsel polanya.</string>
+    <string name="lesson_xy_wing_3">Ia punya dua teman, masing-masing berbagi wilayah dengannya, dan masing-masing memuat dua angka: satu dibagi dengan engselnya, satu dibagi satu sama lain.</string>
+    <string name="lesson_xy_wing_4">Sekarang penalarannya. Engsel itu salah satu dari dua angkanya. Kalau ia yang pertama, sayap kiri terpaksa mengambil angka bersama. Kalau ia yang kedua, sayap kanan terpaksa mengambil angka bersama yang sama. Bagaimanapun juga, salah satu sayap memuatnya.</string>
+    <string name="lesson_xy_wing_5">Jadi sel mana pun yang bisa melihat kedua sayap tidak bisa memuat angka itu. Yang ini kehilangannya.</string>
+    <string name="lesson_xy_wing_6">Anda tidak pernah tahu engselnya sebenarnya apa. Itulah intinya, dan itulah yang membuat wing terasa berbeda dari semua yang sebelumnya.</string>
+
+    <string name="lesson_xyz_wing_title">XYZ-Wing</string>
+    <string name="lesson_xyz_wing_summary">Seperti XY-Wing, tetapi engselnya juga bisa jadi angka bersama, sehingga kesimpulannya lebih lemah.</string>
+    <string name="lesson_xyz_wing_1">Satu perubahan pada XY-Wing, dan itu membuat kesimpulannya lebih kecil.</string>
+    <string name="lesson_xyz_wing_2">Di sini engselnya memuat tiga angka, bukan dua, dan angka bersamanya salah satu dari ketiganya.</string>
+    <string name="lesson_xyz_wing_3">Jadi sekarang ada tiga kasus, bukan dua. Salah satu sayap bisa memuat angka bersama itu, atau engselnya sendiri.</string>
+    <string name="lesson_xyz_wing_4">Itu berarti sebuah sel hanya kehilangan angka itu kalau ia bisa melihat ketiganya, bukan hanya kedua sayapnya. Lebih sedikit sel yang memenuhi syarat, dan itulah sebabnya pola ini menyingkirkan lebih sedikit daripada sepupunya yang lebih sederhana.</string>
+    <string name="lesson_xyz_wing_5">Layak diketahui karena bentuknya tampak nyaris sama, dan membacanya sebagai XY-Wing akan membuat Anda menyingkirkan angka yang tidak berhak Anda singkirkan.</string>
+
+    <string name="lesson_w_wing_title">W-Wing</string>
+    <string name="lesson_w_wing_summary">Dua pasangan identik disambung oleh sebuah garis yang harus memuat salah satu angkanya.</string>
+    <string name="lesson_w_wing_1">Wing ketiga, dan yang paling sedikit perlu hitung-hitungan.</string>
+    <string name="lesson_w_wing_2">Dua sel, tidak berbagi wilayah, masing-masing memuat dua angka yang sama.</string>
+    <string name="lesson_w_wing_3">Sekarang cari sebuah wilayah di mana salah satu dari dua angka itu hanya bisa masuk ke dua tempat, dan kedua tempat itu masing-masing melihat salah satu sel pasangan tadi. Wilayah itulah penyambungnya.</string>
+    <string name="lesson_w_wing_4">Wilayah penyambung itu harus memuat angka tersebut di salah satu dari dua tempatnya, dan yang mana pun itu, ia memaksa salah satu sel pasangan untuk mengambil angka yang lain. Jadi salah satu dari pasangan itu memuat angka yang lain, selalu.</string>
+    <string name="lesson_w_wing_5">Sel mana pun yang melihat kedua sel pasangan kehilangannya. Yang ini begitu.</string>
+
+    <string name="lesson_rectangle_title">Unique rectangle</string>
+    <string name="lesson_rectangle_summary">Teka-teki dengan satu jawaban tidak mungkin memuat persegi yang bisa diputar.</string>
+    <string name="lesson_rectangle_1">Teknik ini berbeda jenisnya dari semua yang lain, dan layak dijelaskan alasannya sebelum dipakai.</string>
+    <string name="lesson_rectangle_2">Lihat keempat sel ini. Mereka duduk dalam dua baris, dua kolom dan tepat dua kotak, dan masing-masing bisa memuat dua angka yang sama.</string>
+    <string name="lesson_rectangle_3">Kalau itu keseluruhan ceritanya, teka-tekinya akan punya dua jawaban: isi persegi panjangnya dengan satu cara, atau tukar kedua diagonalnya, dan kedua kisi itu menaati semua aturan. Teka-teki yang dibuat dengan benar tidak punya dua jawaban.</string>
+    <string name="lesson_rectangle_4">Jadi itu tidak mungkin keseluruhan ceritanya. Salah satu sel itu harus memuat sesuatu yang lain, dan itulah yang memungkinkan Anda menyingkirkan.</string>
+    <string name="lesson_rectangle_5">Di sini kemungkinan tambahannya bertahan dan pasangan bersamanya dicoret dari sel-sel ini.</string>
+    <string name="lesson_rectangle_6">Jebakannya, disebutkan terus terang: penalaran ini mengandaikan teka-tekinya dibuat dengan benar. Itu berlaku untuk tiap teka-teki di aplikasi ini, karena generatornya memeriksa. Pakai pada kisi dari sumber yang tidak diketahui dan ia bisa menyesatkan Anda.</string>
+
+    <string name="lesson_bug_title">BUG plus satu</string>
+    <string name="lesson_bug_summary">Kalau tiap sel kecuali satu punya dua kandidat, teka-tekinya akan bermakna ganda. Jadi yang satu itu istimewa.</string>
+    <string name="lesson_bug_1">Andaian yang sama dengan unique rectangle, mengenakan bentuk yang berbeda.</string>
+    <string name="lesson_bug_2">Andaikan sebuah kisi mencapai posisi di mana tiap sel yang belum terisi memuat tepat dua kemungkinan, dan tiap angka muncul tepat dua kali di tiap wilayah. Kisi semacam itu selalu punya dua jawaban.</string>
+    <string name="lesson_bug_3">Jadi teka-teki yang dibuat dengan benar tidak akan pernah mencapainya. Kalau Anda menemukan posisi yang tinggal berjarak satu sel, di mana tepat satu sel memuat tiga kemungkinan alih-alih dua, sel itulah yang menyelamatkan teka-tekinya dari kegandaan makna.</string>
+    <string name="lesson_bug_4">Angka yang muncul tiga kali di wilayah-wilayahnya adalah angka yang harus dimuat sel itu. Ini pola yang langka dan penyelesaian yang sangat cepat kalau muncul.</string>
+
+    <string name="lesson_colouring_title">Pewarnaan sederhana</string>
+    <string name="lesson_colouring_summary">Ikuti satu angka melewati sel-sel di mana ia hanya punya dua rumah, dan cari sebuah pertentangan.</string>
+    <string name="lesson_colouring_1">Rantai, pelan-pelan. Pewarnaan adalah jalan termudah masuk ke dalamnya dan penalaran di bawahnya sama.</string>
+    <string name="lesson_colouring_2">Pilih sebuah angka. Cari wilayah di mana ia hanya punya dua sel yang mungkin. Kedua sel itu terhubung: tepat satu di antaranya adalah angka tersebut.</string>
+    <string name="lesson_colouring_3">Warnai salah satu dari pasangan itu, lalu ikuti hubungannya. Setiap sel yang terhubung dengan cara ini berakhir dengan salah satu dari dua warna, dan satu warna utuh benar sementara yang lain salah. Anda tidak tahu yang mana.</string>
+    <string name="lesson_colouring_4">Sekarang cari pertentangannya. Kalau sebuah sel bisa melihat dua sel berwarna sama, warna itu tidak mungkin yang benar, jadi sel tersebut kehilangan angkanya. Di sinilah itu terjadi.</string>
+    <string name="lesson_colouring_5">Dua warna, satu pertentangan, dan tidak ada tebakan di mana pun di dalamnya. Itulah seluruh metodenya.</string>
+
+    <string name="lesson_remote_pairs_title">Remote pairs</string>
+    <string name="lesson_remote_pairs_summary">Sebuah rantai pasangan identik berselang-seling, jadi ujung-ujungnya berlawanan.</string>
+    <string name="lesson_remote_pairs_1">Pewarnaan yang diterapkan pada sel, bukan pada satu angka.</string>
+    <string name="lesson_remote_pairs_2">Ini sebuah rantai sel yang semuanya memuat dua angka yang sama, masing-masing terhubung ke berikutnya oleh wilayah bersama.</string>
+    <string name="lesson_remote_pairs_3">Karena tiap sambungan adalah sebuah pasangan, angkanya berselang-seling sepanjang rantai. Sel pertama mengambil satu, sel kedua mengambil yang lain, dan seterusnya.</string>
+    <string name="lesson_remote_pairs_4">Jadi kedua ujung rantai berpanjang genap adalah berlawanan: mereka memuat angka yang berbeda. Sel mana pun yang bisa melihat kedua ujungnya harus kehilangan kedua angka itu, karena masing-masing dimuat oleh salah satu ujung.</string>
+    <string name="lesson_remote_pairs_5">Ini rantai yang paling mudah dilihat, karena tiap sel di dalamnya tampak sama.</string>
+
+    <string name="lesson_multi_colouring_title">Pewarnaan ganda</string>
+    <string name="lesson_multi_colouring_summary">Dua rantai pewarnaan yang saling berinteraksi menggugurkan satu sama lain.</string>
+    <string name="lesson_multi_colouring_1">Pewarnaan sederhana memakai satu rantai. Kadang satu rantai tidak punya pertentangan di dalamnya tetapi dua rantai bersama punya.</string>
+    <string name="lesson_multi_colouring_2">Ini sel-sel dari dua rantai terpisah untuk angka yang sama.</string>
+    <string name="lesson_multi_colouring_3">Kalau sebuah warna di satu rantai melihat sebuah warna di rantai yang lain, kedua warna itu tidak mungkin sama-sama benar. Mengikuti itu sampai tuntas menyingkirkan angka tersebut dari sel-sel yang melihat dua warna yang tersisa.</string>
+    <string name="lesson_multi_colouring_4">Kesimpulannya mendarat di sini.</string>
+    <string name="lesson_multi_colouring_5">Di sinilah pewarnaan berhenti menjadi sesuatu yang bisa Anda simpan di kepala dan mulai menuntut catatan tertulis tentang sel mana berwarna apa.</string>
+
+    <string name="lesson_x_chain_title">X-Chain</string>
+    <string name="lesson_x_chain_summary">Satu angka, sambungan yang berselang-seling antara kuat dan lemah, dan sebuah penyingkiran di ujungnya.</string>
+    <string name="lesson_x_chain_1">Bentuk umum dari semua yang ada di tahap sebelumnya. Satu angka, dan sebuah rantai sambungan yang berselang-seling.</string>
+    <string name="lesson_x_chain_2">Sambungan kuat adalah dua sel di mana setidaknya satu harus memuat angka itu, dan itulah yang diberikan sebuah wilayah yang hanya punya dua tempat. Sambungan lemah adalah dua sel di mana paling banyak satu yang bisa, dan itu berlaku untuk dua sel mana pun yang berbagi wilayah.</string>
+    <string name="lesson_x_chain_3">Selang-selingkan mereka: kuat, lemah, kuat, dan seterusnya, dimulai dan diakhiri dengan kuat. Maka apa pun yang terjadi di tengah, salah satu dari kedua ujung memuat angka itu.</string>
+    <string name="lesson_x_chain_4">Jadi sel mana pun yang melihat kedua ujungnya kehilangan angka tersebut.</string>
+    <string name="lesson_x_chain_5">Pewarnaan adalah rantai ini digambar dalam dua warna. Rantai lebih umum karena ia bisa melewati sel yang tidak terjangkau pewarnaan.</string>
+
+    <string name="lesson_xy_chain_title">XY-Chain</string>
+    <string name="lesson_xy_chain_summary">Sebuah rantai sel berkandidat dua, di mana kedua ujungnya berbagi sebuah angka.</string>
+    <string name="lesson_xy_chain_1">Gagasan selang-seling yang sama, tetapi melangkah melewati sel alih-alih mengikuti satu angka.</string>
+    <string name="lesson_xy_chain_2">Tiap sel dalam rantai ini memuat tepat dua kemungkinan, dan masing-masing berbagi wilayah dengan yang berikutnya.</string>
+    <string name="lesson_xy_chain_3">Di dalam sebuah sel, mengambil satu angka memaksa yang lain, dan itulah sambungan kuatnya. Di antara sel, wilayah bersama membuat sambungan lemahnya. Menyelang-nyelingkan keduanya menjalankan penalaran sepanjang rantai.</string>
+    <string name="lesson_xy_chain_4">Kalau kedua ujung rantai bisa memuat angka yang sama, maka salah satunya pasti memuatnya, bagaimanapun rantai itu jatuh. Sel mana pun yang melihat kedua ujungnya kehilangan angka tersebut.</string>
+    <string name="lesson_xy_chain_5">Inilah teknik yang menyelesaikan sebagian besar teka-teki tingkat Ahli, dan menemukannya lebih merupakan soal mengikuti sel berkandidat dua dengan sabar daripada soal kepintaran.</string>
+
+    <string name="lesson_writing_chains_title">Menuliskan sebuah rantai</string>
+    <string name="lesson_writing_chains_summary">Rantai yang tidak bisa Anda periksa adalah tebakan dengan langkah tambahan.</string>
+    <string name="lesson_writing_chains_1">Satu pelajaran praktis sebelum teknik terakhir, karena rantailah tempat orang meyakinkan diri akan hal-hal yang tidak benar.</string>
+    <string name="lesson_writing_chains_2">Sebuah rantai adalah rangkaian klaim, dan tiap klaim harus bertahan. Di layar ia tampak seperti sekumpulan sel yang disorot, dan sorotan bukanlah penalaran.</string>
+    <string name="lesson_writing_chains_3">Tuliskan sebagai satu baris: sel ini entah 4 atau 7; kalau ia 4 maka yang itu 9; kalau yang itu 9 maka yang satunya lagi 4. Tiap panah adalah sebuah sambungan dan tiap sambungan punya alasan.</string>
+    <string name="lesson_writing_chains_4">Lalu periksa selang-selingnya. Kuat, lemah, kuat, lemah, dan kuat di kedua ujung. Rantai yang dimulai atau diakhiri dengan sambungan lemah tidak membuktikan apa-apa, dan itulah cara paling umum sebuah rantai jadi keliru.</string>
+    <string name="lesson_writing_chains_5">Kalau Anda tidak bisa menuliskannya, Anda belum menemukannya. Itu bukan aturan tentang kerapian, itu perbedaan antara kesimpulan dan firasat.</string>
+
+    <string name="lesson_sue_de_coq_title">Sue de Coq</string>
+    <string name="lesson_sue_de_coq_summary">Tempat sebuah kotak menyilang sebuah garis, dan persilangannya punya lebih banyak angka daripada tempat.</string>
+    <string name="lesson_sue_de_coq_1">Sebuah kotak dan sebuah kolom bertumpang tindih pada tiga sel. Ketiga sel itu milik keduanya sekaligus, dan itulah yang menghidupi teknik ini.</string>
+    <string name="lesson_sue_de_coq_2">Lihat dua di antaranya di sini. Di antara mereka termuat 2, 6, 7 dan 8: empat angka untuk dua sel. Dua di antaranya masuk, dan dua tersisa untuk tempat lain.</string>
+    <string name="lesson_sue_de_coq_3">Lebih jauh ke bawah di kolom yang sama ada sebuah sel yang memuat 6 dan 7. Di tempat lain dalam kotak yang sama ada sebuah sel yang memuat 2 dan 8. Di antara mereka, kedua sel itu menginginkan tepat keempat angka yang ada di persilangan tadi, terbagi rata dan tanpa ada yang berbagi.</string>
+    <string name="lesson_sue_de_coq_4">Hitunglah. Tiga sel kolom itu sekarang mengambil tiga angka berbeda dari yang empat, dan tiga sel kotak itu melakukan hal yang sama. Hanya ada satu cara agar aritmetikanya cocok: 6 dan 7 habis terpakai di dalam kolom, dan 2 dan 8 di dalam kotak.</string>
+    <string name="lesson_sue_de_coq_5">Jadi tidak ada lagi di kolom itu yang bisa jadi 6 atau 7. Dua sel kehilangan satu di sini.</string>
+    <string name="lesson_sue_de_coq_6">Penalaran yang sama berjalan terbalik untuk kotaknya. Satu pola, dua wilayah, dua himpunan penyingkiran yang terpisah, dan tidak ada rantai di mana pun di dalamnya.</string>
+
+    <string name="lesson_als_title">ALS-XZ</string>
+    <string name="lesson_als_summary">Dua himpunan yang hampir terkunci berbagi sebuah angka, dan penyingkiran yang mengikutinya.</string>
+    <string name="lesson_als_1">Aturan yang menjadi dasar tingkat-tingkat tersulit. Semua yang di atas tahap ini adalah variasi darinya.</string>
+    <string name="lesson_als_2">Himpunan yang hampir terkunci adalah sekelompok sel dalam satu wilayah yang memuat tepat satu angka lebih banyak daripada jumlah selnya. Empat sel dengan lima angka di antara mereka. Kalau ia kehilangan satu angka ia akan menjadi himpunan terkunci, dari sanalah namanya.</string>
+    <string name="lesson_als_3">Ambil dua di antaranya, yang berbagi dua angka. Sebut salah satu angka bersama itu sebagai yang terbatas, dan syaratkan bahwa tiap tempat kemunculannya di satu himpunan melihat tiap tempat kemunculannya di himpunan yang lain.</string>
+    <string name="lesson_als_4">Maka ia hanya bisa berada di salah satu dari dua himpunan itu. Himpunan yang tidak mendapatkannya menjadi terkunci, dan itu memakukan angka bersama yang lain di dalamnya. Jadi sel mana pun yang melihat angka itu di kedua himpunan kehilangannya.</string>
+    <string name="lesson_als_5">Inilah penyingkiran yang keluar darinya.</string>
+    <string name="lesson_als_6">Kalau ini perlu dibaca beberapa kali, itu jumlah yang wajar. Setiap teknik setelah titik ini adalah yang satu ini mengenakan bentuk yang berbeda.</string>
+
+    <string name="lesson_deep_end_title">Apa yang diminta bagian terdalam</string>
+    <string name="lesson_deep_end_summary">Apa yang berubah di tingkat Gila dan Mimpi buruk, dan mengapa tingkat ini perlu kertas.</string>
+    <string name="lesson_deep_end_1">Semua sampai di sini bisa dilihat. Anda memandang sebuah baris, sebuah kotak, sepasang sel, dan jawabannya ada di depan Anda begitu Anda tahu bentuknya.</string>
+    <string name="lesson_deep_end_2">Dua tingkat tersulit tidak seperti itu. Mereka meminta Anda mengikuti penalaran melewati tiga atau empat langkah dan menahan semuanya di kepala sekaligus, dan hampir tidak ada yang bisa melakukannya hanya dengan memandang.</string>
+    <string name="lesson_deep_end_3">Jadi tuliskan. Pensil dan bagian belakang amplop bukan kecurangan dan bukan tanda bahwa Anda buruk dalam hal ini. Itulah yang dilakukan semua orang yang menyelesaikannya.</string>
+    <string name="lesson_deep_end_4">Semua aturan di sini adalah gagasan yang sama: sekelompok sel yang kurang satu angka untuk penuh. Ambil angka itu dan kelompoknya jadi terpaksa, dan kelompok yang terpaksa membuat kelompok berikutnya terpaksa. Itulah seluruh bagian terdalamnya.</string>
+    <string name="lesson_deep_end_5">Tidak ada tebakan di bawah sini. Tiap langkah terbukti, tiap bantuan akan menunjukkan buktinya, dan kalau sebuah teka-teki di sini mengalahkan Anda, kembali lagi seminggu kemudian adalah jalan yang wajar.</string>
+
+    <string name="lesson_als_xy_title">ALS-XY-Wing</string>
+    <string name="lesson_als_xy_summary">Tiga kelompok dalam sebuah rantai, dan angka yang tidak bisa bertahan di kedua ujungnya.</string>
+    <string name="lesson_als_xy_1">Tiga kelompok kali ini, disambung dalam satu garis: satu di tiap ujung dan satu di tengah yang memisahkan keduanya.</string>
+    <string name="lesson_als_xy_2">Mulai dari dua yang di kiri. r3c9 memuat 1 dan 3. r1c8 memuat 3 dan 7. Mereka berbagi sebuah kotak, jadi hanya satu di antaranya yang bisa jadi 3.</string>
+    <string name="lesson_als_xy_3">Sekarang kelompok yang turun di kolom 8: tiga sel yang di antara mereka memuat 1, 3, 7 dan 9. Empat angka, tiga sel, jadi ia kurang satu angka untuk penuh. Ia berbagi 7 dengan r1c8, dan tiap 7 di dalamnya ada di kolom yang sama itu, jadi lagi-lagi hanya satu pihak yang bisa mengambilnya.</string>
+    <string name="lesson_als_xy_4">Andaikan salah satu dari dua sel bertanda di kolom 9 adalah 1. Ia melihat r3c9, jadi r3c9 bukan 1, jadi ia 3. Lalu r1c8 bukan 3, jadi ia 7. Lalu kelompoknya tidak punya 7 tersisa, jadi ia penuh, dan ia harus memakai 1, 3 dan 9.</string>
+    <string name="lesson_als_xy_5">Tetapi sel-sel itu juga melihat tiap 1 di dalam kelompok, jadi kelompoknya tidak bisa punya 1 juga. Penalarannya memakan dirinya sendiri, dan angka 1 itu gugur.</string>
+    <string name="lesson_als_xy_6">Dua sambungan, tiga kelompok, dan tiap langkah memaksa yang berikutnya. Baca dua kali: ini sebuah rantai, dan rantai hanya masuk akal satu sambungan pada satu waktu.</string>
+
+    <string name="lesson_blossom_title">Death blossom</string>
+    <string name="lesson_blossom_summary">Satu sel dengan sebuah kelompok menunggu di balik tiap angkanya.</string>
+    <string name="lesson_blossom_1">Yang ini punya bentuk yang bisa Anda lihat: sebuah tangkai, dan sehelai kelopak untuk tiap angka yang mungkin jadi isi tangkainya.</string>
+    <string name="lesson_blossom_2">Tangkainya adalah r1c4. Ia 5 atau 6, dan tidak ada yang lain. Dua kemungkinan berarti dua kasus, dan teknik ini menangani keduanya sekaligus.</string>
+    <string name="lesson_blossom_3">Katakanlah ia 5. Maka r1c7, di baris yang sama, memuat 5 dan 8, tidak mungkin jadi 5. Jadi ia 8.</string>
+    <string name="lesson_blossom_4">Katakanlah sebaliknya ia 6. Lihat ketiga sel ini di kotak yang sama: di antara mereka termuat 2, 6, 7 dan 8. Empat angka, tiga sel, kurang satu untuk penuh. Tangkainya melihat ketiganya, jadi angka 6 miliknya mengambil 6 dari mereka.</string>
+    <string name="lesson_blossom_5">Sekarang mereka penuh, dan tiga sel penuh memakai tiga angka: 2, 7 dan 8. Hanya satu di antaranya yang bisa jadi 8, jadi di situlah angka 8 masuk.</string>
+    <string name="lesson_blossom_6">Satukan kedua kasus itu. Entah ada 8 di r1c7 atau ada 8 di kotak tersebut, dan tidak ada kasus ketiga. Sel mana pun yang bisa melihat kedua tempat itu kehilangan angka 8 miliknya, dan dua sel memang begitu.</string>
+    <string name="lesson_blossom_7">Perhatikan apa yang tidak pernah perlu Anda ketahui: angka mana sebenarnya isi tangkainya. Kedua jalan berakhir pada 8, jadi jawabannya tidak bergantung pada percabangannya.</string>
+
+    <string name="lesson_fork_title">Forcing chain</string>
+    <string name="lesson_fork_summary">Coba sebuah sel dua-duanya dan lihat mana yang bertahan. Hal tersulit di aplikasi ini.</string>
+    <string name="lesson_fork_1">Teknik terakhir, dan satu-satunya yang bukan sebuah pola. Tidak ada apa pun di sini untuk dilihat. Yang ada hanya kerja.</string>
+    <string name="lesson_fork_2">Sel ini 2 atau 7. Semua yang lain di papan sudah diperas kering, dan tidak ada yang mengatakan yang mana di antara keduanya.</string>
+    <string name="lesson_fork_3">Jadi coba satu. Katakanlah ia 2, dengan pensil, dan ikuti hanya akibat yang mudah: sebuah sel dengan satu angka tersisa, atau sebuah angka dengan satu rumah tersisa di wilayahnya.</string>
+    <string name="lesson_fork_4">Akibatnya datang cepat. Sebuah 2 terpaksa di sini, lalu sebuah 7 di sana, lalu sebuah 3, sebuah 5, sebuah 9. Terus jalan. Empat belas angka kemudian, lihat sel yang bertanda.</string>
+    <string name="lesson_fork_5">Ia tidak punya apa-apa lagi. Tiap angka yang bisa masuk ke sana sudah diambil sesuatu yang lain. Itu bukan nasib buruk, itu sebuah pertentangan, dan artinya angka 2 tadi memang tidak pernah mungkin.</string>
+    <string name="lesson_fork_6">Jadi hapus semuanya dan tulis 7. Bukan karena 7 tampak lebih baik, tetapi karena 2 sudah terbukti mustahil, dan dua kemungkinan dikurangi satu menyisakan satu.</string>
+    <string name="lesson_fork_7">Ini pembuktian dengan kasus, dan inilah yang orang maksud dengan mengerjakan teka-teki di atas kertas. Pakailah kertas. Tidak ada yang menahan empat belas angka terpaksa di kepalanya, dan perlu menuliskannya bukan kelemahan.</string>
+    <string name="lesson_fork_8">Sekarang pasang.</string>
+    <string name="lesson_fork_wrong">Angka yang satunya lagi yang mati. Angka 2 membawa ke sebuah sel yang tidak berisi apa-apa, jadi yang tersisa adalah 7.</string>
+
+    <string name="lesson_nothing_applies_title">Ketika tidak ada yang berlaku</string>
+    <string name="lesson_nothing_applies_summary">Periksa ulang sebelum menebak, karena teka-teki dari aplikasi ini selalu punya langkah berikutnya.</string>
+    <string name="lesson_nothing_applies_1">Anda akan sampai pada posisi di mana Anda sudah melihat segalanya dan tidak menemukan apa-apa. Inilah yang harus dilakukan, dan yang tidak.</string>
+    <string name="lesson_nothing_applies_2">Yang tidak boleh dilakukan adalah menebak. Setiap teka-teki di aplikasi ini bisa diselesaikan dengan penalaran, dan tebakan yang kebetulan benar tidak mengajari Anda apa-apa sementara tebakan yang salah merenggut seluruh kisi Anda.</string>
+    <string name="lesson_nothing_applies_3">Periksa ulang dengan urutan ini. Pertama, apa semua catatan Anda benar? Catatan usang adalah penyebab paling umum dari posisi yang mustahil, dan aplikasi ini akan menghapusnya untuk Anda kalau Anda izinkan. Kedua, apa angka yang Anda pasang memang benar? Tekan bantuan dan ia akan memberi tahu.</string>
+    <string name="lesson_nothing_applies_4">Lalu cari lagi hal-hal yang murah. Hampir tidak pernah rantai yang Anda lewatkan. Hampir selalu sebuah hidden single di wilayah yang berhenti Anda perhatikan dua puluh langkah yang lalu.</string>
+
+    <string name="lesson_look_first_title">Apa yang dicari lebih dulu</string>
+    <string name="lesson_look_first_summary">Pola murah lebih dulu, selalu, karena mereka umum dan mereka membuka kisinya.</string>
+    <string name="lesson_look_first_1">Sekarang Anda tahu setiap teknik yang bisa disebutkan aplikasi ini. Hal terakhir yang perlu dipelajari adalah urutan mencarinya.</string>
+    <string name="lesson_look_first_2">Single lebih dulu, tiap kali. Naked, lalu hidden. Mereka jauh lebih umum daripada yang lain dan tiap satu yang Anda pasang membuat teknik lain lebih mudah ditemukan.</string>
+    <string name="lesson_look_first_3">Lalu penyingkiran yang murah: pointing dan claiming pair. Mereka cepat diperiksa, wilayah demi wilayah, dan sering langsung membuka sebuah single.</string>
+    <string name="lesson_look_first_4">Lalu pasangan dan tripel di wilayah dengan sel kosong paling sedikit. Lalu ikan, lalu wing. Rantai terakhir, selalu, karena mereka paling banyak kerjanya dan paling jarang muncul.</string>
+    <string name="lesson_look_first_5">Memburu Jellyfish sebelum memeriksa single itu setara dengan menulis ulang sebuah program sebelum membaca pesan kesalahannya. Aplikasi ini menilai teka-teki berdasarkan hal tersulit yang diperlukannya, tetapi sebuah Master pun sebagian besarnya single.</string>
+    <string name="lesson_together_title">Sebuah Master, bersama-sama</string>
+    <string name="lesson_together_summary">Teka-teki sulit sebagian besarnya langkah mudah dengan beberapa langkah sulit di dalamnya.</string>
+    <string name="lesson_together_1">Pelajaran terakhir. Ini kisi yang sudah dijalani kursus ini, pada tingkat Master, dan inilah seluruh penyelesaiannya disebutkan teknik demi teknik.</string>
+    <string name="lesson_together_2">Ia dibuka dengan sebuah naked single. Hampir semuanya begitu.</string>
+    <string name="lesson_together_3">Lalu sebuah hidden single, di kotak sebelah.</string>
+    <string name="lesson_together_4">Sekarang ia mandek, dan sebuah pointing pair membersihkan sebuah kolom sehingga single bisa dimulai lagi. Perhatikan bahwa tidak ada angka yang dipasang oleh langkah itu dan kemajuan tetap terjadi.</string>
+    <string name="lesson_together_5">Sebuah naked pair sedikit kemudian, mengerjakan tugas yang sama di dalam sebuah wilayah.</string>
+    <string name="lesson_together_6">Lebih dalam lagi, sebuah X-Wing. Pada titik ini kisinya sudah setengah penuh dan catatanlah yang mengerjakan tugasnya.</string>
+    <string name="lesson_together_7">Dan mendekati akhir, yang membuatnya bertingkat ini: sebuah ALS-XZ. Satu penyingkiran, dan sisanya single lagi.</string>
+    <string name="lesson_together_8">Itulah arti Master di sini. Bukan delapan puluh satu langkah sulit, melainkan tujuh puluh langkah mudah dan segelintir yang memerlukan semua yang sudah Anda pelajari.</string>
+    <string name="lesson_together_9">Anda sudah bertemu setiap teknik yang bisa disebutkan aplikasi ini. Pergilah dan mainkan satu. Tiga bantuan datang bersama tiap teka-teki dan tidak ada yang memalukan dalam memakainya, dan kalau Anda lebih suka sebanyak yang Anda mau, batasnya adalah sebuah sakelar di pengaturan.</string>
+    <string name="lesson_step_of">%1$d dari %2$d</string>
+    <string name="lesson_back">Kembali</string>
+    <string name="lesson_next">Lanjut</string>
+    <string name="lesson_done">Selesai</string>
+    <string name="lesson_replay">Ulangi</string>
+    <string name="lesson_show_me">Tunjukkan</string>
+    <string name="lesson_cell_at">Baris %1$d, kolom %2$d.</string>
+    <string name="course_title">Belajar</string>
+    <string name="course_lesson_done">selesai</string>
+    <string name="course_lesson_next">berikutnya</string>
+    <string name="course_lesson_todo">belum dimulai</string>
+    <string name="course_you_are_here">Anda di sini</string>
+    <string name="course_continue">Lanjutkan</string>
+    <string name="course_stage_done">Selesai %1$d dari %2$d</string>
+    <plurals name="course_progress">
+        <item quantity="other">%1$d dari %2$d pelajaran</item>
+    </plurals>
+    <string name="settings_hint_detail">Seberapa banyak yang dikatakan bantuan</string>
+    <string name="hint_detail_region">Hanya wilayahnya</string>
+    <string name="hint_detail_region_note">Kotak atau garis mana yang harus dilihat, dan tidak lebih.</string>
+    <string name="hint_detail_name">Tekniknya</string>
+    <string name="hint_detail_name_note">Langkah macam apa itu, supaya Anda tahu apa yang dicari.</string>
+    <string name="hint_detail_cells">Sel-selnya</string>
+    <string name="hint_detail_cells_note">Sel yang menjadi dasar penalarannya, disorot di papan.</string>
+    <string name="hint_detail_full">Seluruh penalarannya</string>
+    <string name="hint_detail_full_note">Semuanya, termasuk langkahnya. Untuk mengerjakan kursusnya.</string>
+    <string name="path_title">Bagaimana ini diselesaikan</string>
+    <string name="path_placed">Baris %1$d, kolom %2$d adalah %3$d.</string>
+    <string name="outcome_path">Tunjukkan bagaimana ini diselesaikan</string>
+    <string name="settings_your_data">Data Anda</string>
+    <string name="settings_data_note">Semua yang diketahui aplikasi ini tentang Anda ada di ponsel ini. Ekspor menuliskannya ke berkas pilihan Anda, sehingga ponsel baru bisa melanjutkan dari tempat ponsel ini berhenti. Tidak ada yang dikirim ke mana pun.</string>
+    <string name="settings_export">Ekspor kemajuan saya</string>
+    <string name="settings_import">Impor dari sebuah berkas</string>
+    <string name="settings_reset_course">Setel ulang kursus, tetap simpan permainan saya</string>
+    <string name="settings_exported">Tersimpan. Pelajaran: %1$d. Permainan: %2$d.</string>
+    <string name="settings_imported">Ditambahkan. Pelajaran: %1$d. Permainan: %2$d.</string>
+    <string name="settings_imported_ignored">Ditambahkan. Pelajaran: %1$d. Permainan: %2$d. Dilewati, karena berasal dari versi yang lebih baru: %3$d.</string>
+    <string name="settings_import_empty">Berkas itu kosong.</string>
+    <string name="settings_import_not_ours">Itu tidak tampak seperti hasil ekspor Sendoku.</string>
+    <string name="settings_import_future">Berkas itu ditulis oleh versi Sendoku yang lebih baru.</string>
+    <string name="settings_import_failed">Berkas itu tidak bisa dibaca, dan tidak ada yang berubah di ponsel ini.</string>
+    <string name="settings_course_reset">Kursus kembali ke awal. Permainan Anda tidak tersentuh.</string>
+    <string name="practice_looking">Mencari sebuah posisi…</string>
+    <string name="practice_find">Temukan %1$s.</string>
+    <string name="practice_keep_going">Itu salah satunya. Lanjutkan.</string>
+    <string name="practice_wrong">Bukan sel itu. Baca lagi aturannya: sebuah %1$s tidak bersandar padanya.</string>
+    <string name="practice_right">Itulah %1$s. Apa yang disingkirkannya sudah ditandai.</string>
+    <string name="practice_revealed">Inilah %1$s, dan apa yang disingkirkannya.</string>
+    <string name="practice_show_me">Tunjukkan</string>
+    <string name="practice_another">Yang lain</string>
+    <string name="practice_skip">Lewati</string>
+    <string name="practice_title">Latihan</string>
+    <string name="technique_pick_title">Cari satu untuk dilatih</string>
+    <string name="technique_pick_body">Setiap teka-teki di sini dinilai oleh pemecah yang sama dengan yang menulis bantuannya, jadi sudah diketahui aturan mana yang menjadi kunci masing-masing. Pilih sebuah teknik dan dapatkan teka-teki yang tidak bisa diselesaikan tanpanya.</string>
+    <string name="technique_pick_none">Tidak ada teka-teki di versi ini yang berkunci padanya</string>
+    <string name="technique_pick_play">Mainkan satu</string>
+    <plurals name="technique_pick_count">
+        <item quantity="other">%1$d teka-teki berkunci padanya</item>
+    </plurals>
+    <string name="practice_none">Belum ada yang bisa dilatih. Selesaikan dulu sebuah pelajaran yang mengajarkan sebuah teknik.</string>
+    <string name="glossary_learn_this">Pelajari ini</string>
+    <string name="hint_learn_this">Ajari saya ini</string>
+    <string name="outcome_learn">Pelajari %1$s</string>
+    <string name="course_finished">Semuanya, selesai. Semua yang bisa disebutkan aplikasi ini, bisa Anda sebutkan. Sisanya adalah teka-tekinya sendiri.</string>
+    <string name="outcome_lost_hints">Bantuan habis</string>
+    <string name="outcome_share">Bagikan</string>
+    <string name="card_solved">Terpecahkan</string>
+    <string name="card_lost">Dikalahkan oleh</string>
+    <string name="settings_hint_limit">Akhiri permainan setelah tiga bantuan</string>
+    <string name="settings_hint_note">Menyala secara bawaan. Tiga bantuan gratis, dan yang keempat mengorbankan permainannya, yang membuat bantuan jadi sebuah keputusan alih-alih refleks. Matikan selagi Anda mengerjakan kursusnya.</string>
+    <string name="settings_post_mortem">Sebutkan ke mana waktunya pergi</string>
+    <string name="settings_post_mortem_note">Setelah menang, sebutkan dua tempat penyelesaiannya melambat dan apa yang ada di papan di sana. Tidak ada yang dikatakan tentang penyelesaian yang tidak pernah melambat.</string>
+    <string name="post_mortem_line">Anda berhenti di sini selama %1$s. Ada %2$s yang bisa ditemukan.</string>
+    <string name="post_mortem_title">Ke mana waktunya pergi</string>
+    <string name="clean_line">Penyelesaian bersih: tanpa bantuan, tanpa kesalahan, tanpa catatan.</string>
+    <string name="clean_mark">Bersih</string>
+    <string name="clean_stat">Penyelesaian bersih</string>
+    <string name="clean_note">Penyelesaian bersih: %1$d dari %2$d.</string>
+    <string name="account_title">Anda</string>
+    <string name="account_no_account">Tidak ada akun untuk masuk. Semua di bawah ini ada di ponsel ini dan tidak di tempat lain.</string>
+    <string name="account_solved">Terpecahkan</string>
+    <string name="account_streak">Rentetan hari</string>
+    <string name="account_played">Dimainkan</string>
+    <string name="account_time">Lama bermain</string>
+    <string name="account_lessons">Pelajaran</string>
+    <string name="account_about_detail">Apa yang dijanjikan aplikasi ini, dan lisensi yang menjadi dasarnya</string>
+    <string name="account_hardest">Tersulit yang terpecahkan</string>
+    <string name="account_hardest_note">Dikalahkan pada %1$s, dalam %2$s</string>
+    <string name="account_beaten">Apa yang sudah Anda kalahkan</string>
+    <string name="account_recent">Lima minggu terakhir</string>
+    <string name="account_hints">Bantuan terpakai</string>
+    <string name="account_empty">Selesaikan satu teka-teki dan halaman ini akan terisi: apa yang sudah Anda kalahkan di tiap tingkat, dan tiap hari Anda bermain.</string>
+    <string name="account_stats">Statistik</string>
+    <string name="account_history">Riwayat</string>
+    <string name="history_title">Riwayat</string>
+    <string name="history_lost">Kalah</string>
+    <string name="history_empty_body">Selesaikan sebuah teka-teki dan ia mendarat di sini, dengan papan seperti yang Anda tinggalkan, siap dibagikan kapan pun Anda mau.</string>
+    <string name="history_no_board">Yang ini selesai sebelum aplikasi menyimpan papan, jadi tidak ada yang bisa digambar. Angkanya sajalah yang ada.</string>
+    <string name="tab_home">Beranda</string>
+    <string name="tab_learn">Belajar</string>
+    <string name="tab_account">Anda</string>
+    <plurals name="hint_menu_left">
+        <item quantity="other">Dua yang terakhir memakai satu bantuan, dan Anda punya %1$d tersisa.</item>
+    </plurals>
+    <plurals name="hint_check_wrong">
+        <item quantity="other">%1$d angka yang Anda pasang keliru. Menemukannya tetap tugas Anda.</item>
+    </plurals>
+    <plurals name="path_summary">
+        <item quantity="other">%1$d langkah, aturan termurah lebih dulu, persis seperti aplikasi menilainya.</item>
+    </plurals>
+    <plurals name="path_struck">
+        <item quantity="other">Menyingkirkan %1$d coretan pensil.</item>
+    </plurals>
+</resources>
