@@ -49,6 +49,7 @@ import com.sendoku.app.ui.HistoryScreen
 import com.sendoku.app.ui.HomeScreen
 import com.sendoku.app.ui.HomeState
 import com.sendoku.app.ui.InProgressSummary
+import com.sendoku.app.ui.LanguageScreen
 import com.sendoku.app.ui.LicencesScreen
 import com.sendoku.app.ui.ReadableWidth
 import com.sendoku.app.ui.SettingsScreen
@@ -482,6 +483,10 @@ private fun Screens(
             LicencesScreen(onBack = { navigator.back() }, modifier = modifier)
         }
 
+        Destination.Language -> {
+            LanguageScreen(onBack = { navigator.back() }, modifier = modifier)
+        }
+
         Destination.Glossary -> {
             GlossaryScreen(
                 onBack = { navigator.back() },
@@ -506,6 +511,7 @@ private fun Screens(
                 onAppearanceChange = appearanceChange,
                 onBack = { navigator.back() },
                 onAbout = { navigator.go(Destination.About) },
+                onLanguage = { navigator.go(Destination.Language) },
                 onExport = onExport,
                 onImport = onImport,
                 onResetCourse = onResetCourse,

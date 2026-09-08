@@ -65,4 +65,25 @@ class NavigatorTest {
         restored.back()
         assertEquals(Destination.Account, restored.current)
     }
+
+    @Test
+    fun `the language page is a destination like any other`() {
+        // It was a block inside settings, which meant it could not be navigated to, saved or
+        // restored. Now it can be all three, and a destination that does not survive the saver
+        // is one that sends the player home when they turn the phone sideways.
+        val navigator = Navigator()
+        navigator.switchTo(Destination.Account)
+        navigator.go(Destination.Settings)
+        navigator.go(Destination.Language)
+
+        assertFalse("the bar was drawn over the language page", navigator.atRoot)
+
+        val scope = SaverScope { true }
+        val saved = with(Navigator.Saver) { requireNotNull(scope.save(navigator)) }
+        val restored = requireNotNull(Navigator.Saver.restore(saved))
+
+        assertEquals(Destination.Language, restored.current)
+        assertTrue(restored.back())
+        assertEquals("back from the language page is settings", Destination.Settings, restored.current)
+    }
 }

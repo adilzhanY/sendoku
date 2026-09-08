@@ -290,6 +290,7 @@ class StoreShotsTest {
                     onAppearanceChange = {},
                     onBack = {},
                     onAbout = {},
+                    onLanguage = {},
                     onExport = {},
                     onImport = {},
                     onResetCourse = {},

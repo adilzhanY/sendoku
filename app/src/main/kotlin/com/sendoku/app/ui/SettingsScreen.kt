@@ -1,11 +1,9 @@
 package com.sendoku.app.ui
 
-import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -22,16 +20,11 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -60,6 +53,7 @@ public fun SettingsScreen(
     onAppearanceChange: (Appearance) -> Unit,
     onBack: () -> Unit,
     onAbout: () -> Unit,
+    onLanguage: () -> Unit,
     onExport: () -> Unit,
     onImport: () -> Unit,
     onResetCourse: () -> Unit,
@@ -90,9 +84,9 @@ public fun SettingsScreen(
         // Seven groups, each behind its own mark, and the order is the order somebody reaches
         // for them. Sound first, because it is the one setting a person goes looking for in a
         // hurry: somebody who does not want noise wants it off now, not after scrolling past
-        // four themes, and if they cannot find it they close the app instead. Language second,
-        // for the same reason turned around: somebody who cannot read the app cannot go
-        // looking for the setting that fixes that.
+        // four themes, and if they cannot find it they close the app instead. Language last,
+        // and behind a row rather than in front of eighteen: it is chosen once and then never
+        // again, and it used to be most of a screen that everybody scrolled past every time.
         Section(SendokuIcons.Sound, stringResource(R.string.settings_feedback))
         Toggle(
             label = stringResource(R.string.settings_sound),
@@ -101,30 +95,6 @@ public fun SettingsScreen(
         ) { onChange(settings.copy(sound = it)) }
         Toggle(label = stringResource(R.string.settings_haptics), checked = settings.haptics) {
             onChange(settings.copy(haptics = it))
-        }
-
-        Section(SendokuIcons.Globe, stringResource(R.string.settings_language))
-        val activity = LocalActivity.current
-        val here = LocalContext.current
-        var language by remember { mutableStateOf(Languages.current(here)) }
-        // Two at a time, until the text is too big for two. Thirteen rows in one column is
-        // half a screen of scrolling in the middle of the page, and every group under it pays
-        // for that. But a language is a proper noun and may not be broken in half: at twice
-        // the font scale two columns turned Italiano into Italian over o, so past a point the
-        // list goes back to one column, where every name fits whole.
-        val columns = if (LocalDensity.current.fontScale > 1.3f) 1 else 2
-        FlowRow(maxItemsInEachRow = columns) {
-            for (choice in Language.entries) {
-                Choice(
-                    label = stringResource(choice.label),
-                    detail = null,
-                    selected = language == choice,
-                    modifier = Modifier.weight(1f),
-                ) {
-                    language = choice
-                    activity?.let { Languages.choose(it, choice) }
-                }
-            }
         }
 
         // How the app looks and what it shows while you play, which is furniture rather than
@@ -263,6 +233,18 @@ public fun SettingsScreen(
         // group called ABOUT SENDOKU whose only row says About is a stutter, not a signpost.
         Section(SendokuIcons.Info, stringResource(R.string.settings_about))
         Action(stringResource(R.string.account_about_detail), "settings:about", onAbout)
+
+        // Last, and one row rather than a list of eighteen. The row says the language rather
+        // than the word Language, for the same reason the row above says About Sendoku rather
+        // than About: a heading and a row that say the same word are a stutter, not a
+        // signpost. Saying the language also makes the setting readable without opening it,
+        // and it is written in that language rather than in the app's, which is what makes
+        // this the way out for somebody who has set the app to something they cannot read.
+        Section(SendokuIcons.Globe, stringResource(R.string.settings_language))
+        val here = LocalContext.current
+        val chosen = Languages.current(here)
+        val inForce = if (chosen == Language.SYSTEM) phoneLanguage() ?: Language.ENGLISH else chosen
+        Action(stringResource(inForce.label), "settings:language", onLanguage)
     }
 }
 

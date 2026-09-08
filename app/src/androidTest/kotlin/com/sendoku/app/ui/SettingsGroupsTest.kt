@@ -38,6 +38,7 @@ class SettingsGroupsTest {
                     onAppearanceChange = {},
                     onBack = {},
                     onAbout = {},
+                    onLanguage = {},
                     onExport = {},
                     onImport = {},
                     onResetCourse = {},
@@ -50,11 +51,12 @@ class SettingsGroupsTest {
     @Test
     fun everyGroupIsThere() {
         show()
-        for (heading in listOf("Feedback", "Language", "Interface", "The board", "Game rules", "Your data")) {
+        for (heading in listOf("Feedback", "Interface", "The board", "Game rules", "Your data", "Language")) {
             compose.onNodeWithText(heading).performScrollTo().assertIsDisplayed()
         }
-        // The last one says what is behind it rather than repeating its own heading.
+        // The last two say what is behind them rather than repeating their own heading.
         compose.onNodeWithTag("settings:about").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithTag("settings:language").performScrollTo().assertIsDisplayed()
     }
 
     @Test

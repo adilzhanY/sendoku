@@ -70,6 +70,15 @@ public sealed interface Destination {
 
     public data object Settings : Destination
 
+    /**
+     * The language picker, on a page of its own.
+     *
+     * It used to be a block in the middle of settings. Eighteen languages is too many rows to
+     * put between the sound switches and the themes, and a language is chosen once and then
+     * never again, so it earns a row rather than a screenful.
+     */
+    public data object Language : Destination
+
     /** Every technique the app knows, for somebody who has just met one. */
     public data object Glossary : Destination
 
@@ -177,6 +186,7 @@ public class Navigator(stack: List<Destination> = listOf(Destination.Home)) {
             is Destination.LessonAt -> "lesson:$lesson"
             is Destination.Practice -> "practice:$technique"
             Destination.Settings -> "settings"
+            Destination.Language -> "language"
             Destination.Glossary -> "glossary"
             is Destination.Path -> "path:$givens"
             Destination.Stats -> "stats"
@@ -190,6 +200,7 @@ public class Navigator(stack: List<Destination> = listOf(Destination.Home)) {
             value == "home" -> Destination.Home
             value == "resume" -> Destination.Resume
             value == "settings" -> Destination.Settings
+            value == "language" -> Destination.Language
             value == "glossary" -> Destination.Glossary
             value == "stats" -> Destination.Stats
             value == "history" -> Destination.History

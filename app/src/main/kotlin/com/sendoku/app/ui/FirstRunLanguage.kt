@@ -23,7 +23,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
@@ -51,7 +50,9 @@ public fun languageAnswered(asked: Boolean, hasGame: Boolean, hasHistory: Boolea
  *
  * The app has always followed the phone, and settings has always been able to change it. What
  * was missing is the moment where somebody whose phone is in one language but who reads
- * another finds out that this app has theirs at all. Seven languages is worth one screen.
+ * another finds out that this app has theirs at all. Eighteen languages is worth one screen,
+ * and it is the only screen that asks: after this the setting lives at the end of settings,
+ * behind one row, because it is chosen once and then never again.
  *
  * The answer is preselected, so the whole thing is one tap for almost everybody. Following
  * the phone stays the default, because it is right for most people and it keeps being right
@@ -63,9 +64,10 @@ public fun FirstRunLanguage(onChoose: (Language) -> Unit, modifier: Modifier = M
     val dimens = Sendoku.dimens
 
     // What the phone is set to, and whether that is one of ours. A phone in Portuguese gets
-    // told so rather than being quietly given English as though it were the same thing.
-    val phone = LocalConfiguration.current.locales[0]?.language.orEmpty()
-    val spoken = Language.entries.firstOrNull { it.tag.isNotEmpty() && it.tag.substringBefore('-') == phone }
+    // told so rather than being quietly given English as though it were the same thing. The
+    // same question the settings row and the language page ask, asked in one place, so the
+    // three of them cannot come to different answers about what following the phone means.
+    val spoken = phoneLanguage()
 
     var chosen by remember { mutableStateOf(if (spoken != null) Language.SYSTEM else Language.ENGLISH) }
 
