@@ -6,7 +6,7 @@
   <br/>
   <img src="https://img.shields.io/badge/Android-8.0%2B-0A0E12?style=for-the-badge&labelColor=0A0E12&color=4FE8DA" alt="Android 8.0 and up" />
   <img src="https://img.shields.io/badge/Kotlin-Compose-0A0E12?style=for-the-badge&labelColor=0A0E12&color=4FE8DA" alt="Kotlin and Jetpack Compose" />
-  <img src="https://img.shields.io/badge/APK-3.1%20MB-0A0E12?style=for-the-badge&labelColor=0A0E12&color=4FE8DA" alt="3.1 MB APK" />
+  <img src="https://img.shields.io/badge/APK-3.8%20MB-0A0E12?style=for-the-badge&labelColor=0A0E12&color=4FE8DA" alt="3.8 MB APK" />
   <img src="https://img.shields.io/badge/tests-860%20passing-0A0E12?style=for-the-badge&labelColor=0A0E12&color=4FE8DA" alt="860 tests passing" />
   <img src="https://img.shields.io/badge/licence-GPL--3.0-0A0E12?style=for-the-badge&labelColor=0A0E12&color=4FE8DA" alt="GPL 3.0" />
 </div>
@@ -199,9 +199,9 @@ free. Both of those are true and neither belongs on somebody's photograph.
 | **App** | Jetpack Compose, Material 3, minSdk 26, one Activity, no fragments |
 | **Storage** | Room, on the phone. No account, no cloud, no export unless you ask for one |
 | **Puzzles** | 4,000 classic and 200 Killer in a gzipped binary batch, 227 KB for both |
-| **Tests** | 681 on the JVM and 179 on a device. The solver and the generator are where a silent bug ships broken puzzles |
-| **Size** | 3.1 MB installed, R8 shrunk |
-| **Languages** | 12, including Arabic right to left and four scripts Android supplies the font for |
+| **Tests** | 693 on the JVM and 188 on a device. The solver and the generator are where a silent bug ships broken puzzles |
+| **Size** | 3.8 MB installed, R8 shrunk. Six more languages and a serif that can draw Vietnamese account for the growth |
+| **Languages** | 18, including Arabic right to left and seven scripts Android supplies the font for |
 
 A few decisions worth naming:
 
