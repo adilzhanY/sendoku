@@ -204,6 +204,7 @@
     <string name="language_vietnamese">Tiếng Việt</string>
     <string name="language_hindi">हिन्दी</string>
     <string name="language_bengali">বাংলা</string>
+    <string name="language_thai">ไทย</string>
     <plurals name="first_run_prompt">
         <item quantity="other">Sendoku は %1$d の言語で書かれています。どの言語で読みますか。</item>
     </plurals>

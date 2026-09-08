@@ -208,6 +208,7 @@
     <string name="language_vietnamese">Tiếng Việt</string>
     <string name="language_hindi">हिन्दी</string>
     <string name="language_bengali">বাংলা</string>
+    <string name="language_thai">ไทย</string>
     <plurals name="first_run_prompt">
         <item quantity="one">Sendoku %1$d টি ভাষায় লেখা। আপনি কোনটি পড়েন?</item>
         <item quantity="other">Sendoku %1$d টি ভাষায় লেখা। আপনি কোনটি পড়েন?</item>

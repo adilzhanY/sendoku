@@ -74,6 +74,7 @@ public enum class Language(public val tag: String, @StringRes public val label: 
      * so this reads values-bn exactly as bn would.
      */
     BENGALI("bn-u-nu-latn", R.string.language_bengali),
+    THAI("th", R.string.language_thai),
 }
 
 /**

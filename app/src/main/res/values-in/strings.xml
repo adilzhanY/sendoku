@@ -205,6 +205,7 @@
     <string name="language_vietnamese">Tiếng Việt</string>
     <string name="language_hindi">हिन्दी</string>
     <string name="language_bengali">বাংলা</string>
+    <string name="language_thai">ไทย</string>
     <plurals name="first_run_prompt">
         <item quantity="other">Sendoku ditulis dalam %1$d bahasa. Yang mana yang Anda baca?</item>
     </plurals>

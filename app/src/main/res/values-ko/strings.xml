@@ -197,6 +197,7 @@
     <string name="language_vietnamese">Tiếng Việt</string>
     <string name="language_hindi">हिन्दी</string>
     <string name="language_bengali">বাংলা</string>
+    <string name="language_thai">ไทย</string>
     <plurals name="first_run_prompt">
         <item quantity="other">Sendoku는 %1$d개 언어로 쓰여 있어요. 어떤 언어로 읽으시겠어요?</item>
     </plurals>

@@ -1,0 +1,903 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Thai.
+
+  Thai has no plural form, so every plurals block here is a single other item, which is what
+  the language does rather than a shortcut.
+
+  Thai is also written without spaces between words, so where a line breaks is decided by a
+  dictionary rather than by looking for a space. Compose already asks for that: the body style
+  uses LineBreak.Paragraph, which is the high quality strategy, and Android breaks Thai with
+  ICU under it. Nothing here has to be shortened to make a line fit.
+
+  Thai script is not in any of the four bundled faces and is not going to be: Android carries
+  Noto for it and picks it up per character.
+
+  The vocabulary is fixed throughout: แถว is a row, คอลัมน์ is a column, กล่อง is a box, เขต is any
+  of the three, ช่อง is a cell and โน้ต is a pencil mark.
+-->
+<resources>
+    <string name="app_name">Sendoku</string>
+
+    <string name="home_choose_level">เลือกระดับ</string>
+    <string name="home_daily">ประจำวัน</string>
+    <string name="home_new_puzzle">ปริศนาใหม่</string>
+    <string name="home_resume">เล่นต่อ</string>
+    <string name="home_in_progress">ยังไม่จบ</string>
+    <string name="home_placed">ใส่แล้ว: %1$d จาก %2$d</string>
+    <string name="home_or_start">หรือเริ่มอย่างอื่น</string>
+    <string name="home_your_level">ระดับของคุณ</string>
+    <string name="home_all_levels">ทุกระดับ</string>
+    <string name="killer_title">Killer</string>
+    <string name="killer_note">กรง และทุกกรงมีผลรวมของมันเอง</string>
+    <string name="killer_marker">Killer</string>
+    <string name="killer_card">%1$s, %2$s</string>
+    <string name="code_title">เล่นปริศนาที่มีคนส่งมาให้</string>
+    <string name="code_hint">วางรหัสลงที่นี่</string>
+    <string name="code_play">เล่น</string>
+    <string name="code_unreadable">นั่นดูไม่เหมือนรหัสของ Sendoku</string>
+    <string name="code_typo">ในนั้นมีอักขระที่ไม่มีในรหัสใด ลองเทียบกับรหัสที่ส่งมาให้คุณอีกครั้ง</string>
+    <string name="code_cut_short">รหัสนั้นมาไม่ครบ ขอใหม่อีกครั้งแบบเต็ม</string>
+    <string name="code_too_new">รหัสนั้นสร้างโดย Sendoku รุ่นที่ใหม่กว่ารุ่นนี้</string>
+    <string name="code_missing">รหัสนั้นอ่านได้ถูกต้อง แต่รุ่นนี้ไม่มีปริศนาดังกล่าว</string>
+    <string name="code_unplayable">ตารางนั้นทำให้จบด้วยการให้เหตุผลอย่างเดียวไม่ได้ Sendoku จึงจะไม่ทำเป็นว่าอธิบายมันได้</string>
+    <string name="code_shared">ส่งมาให้คุณ</string>
+    <string name="code_share">ส่งปริศนานี้ให้เพื่อน</string>
+    <string name="code_invitation">ลองปริศนา %1$s นี้ดู ตารางเดียวกัน และไม่ต้องมีแอปเพื่อเทียบกัน</string>
+    <string name="enter_title">พิมพ์ปริศนาเข้ามา</string>
+    <string name="enter_marker">พิมพ์เอง</string>
+    <plurals name="enter_help">
+        <item quantity="other">ตอนนี้มี %1$d ตัว แตะที่ช่อง แล้วแตะตัวเลข เมื่อใส่ตารางครบแล้วให้ตรวจดู</item>
+    </plurals>
+    <string name="enter_impossible">ไม่มีทางทำตารางนี้ให้จบได้ ต้องมีเลขที่ให้มาสักตัวที่ผิด</string>
+    <string name="enter_ambiguous">ตารางนี้มีคำตอบมากกว่าหนึ่ง จึงไม่ใช่ปริศนาจริง ๆ แต่คุณยังเล่นได้</string>
+    <string name="enter_beyond">คำตอบมีเดียว แต่ไปถึงด้วยการให้เหตุผลอย่างเดียวไม่ได้ Sendoku จึงอธิบายทีละขั้นไม่ได้</string>
+    <string name="enter_ready">คำตอบเดียว นี่คือปริศนา %1$s ระดับ %2$s</string>
+    <string name="enter_clear">ล้างทั้งหมด</string>
+    <string name="enter_check">ตรวจ</string>
+    <string name="enter_play">เล่น</string>
+
+    <string name="grade_gentle">ง่าย</string>
+    <string name="grade_steady">ปานกลาง</string>
+    <string name="grade_tricky">ยาก</string>
+    <string name="grade_severe">ยากมาก</string>
+    <string name="grade_diabolical">ผู้เชี่ยวชาญ</string>
+    <string name="grade_beyond">ปรมาจารย์</string>
+    <string name="grade_insane">บ้าคลั่ง</string>
+    <string name="grade_nightmare">ฝันร้าย</string>
+    <string name="grade_locked">ชนะปริศนา %1$s หนึ่งข้อเพื่อเปิดระดับนี้</string>
+    <string name="gate_gentle">ทีละตัวเลขที่ชัดเจน</string>
+    <string name="gate_steady">คู่ และตัวเลขที่ถูกล็อกไว้กับเส้น</string>
+    <string name="gate_tricky">สามตัว และรูปแบบที่พาดทั้งตาราง</string>
+    <string name="gate_severe">wing การระบายสี และสี่เหลี่ยม</string>
+    <string name="gate_diabolical">โซ่ของการให้เหตุผล</string>
+    <string name="gate_beyond">ไกลกว่าที่แอปส่วนใหญ่ไปถึง</string>
+    <string name="gate_insane">กลุ่มช่องที่ร้อยเข้าด้วยกัน</string>
+    <string name="gate_nightmare">ช่องเดียวที่ลองทั้งสองทาง บนกระดาษ</string>
+    <string name="grade_advanced">ขั้นสูง</string>
+    <string name="grade_advanced_talkback">ระดับขั้นสูง ซึ่งต้องใช้เทคนิคจากบทเรียน</string>
+
+    <string name="tool_undo">เลิกทำ</string>
+    <string name="tool_redo">ทำซ้ำ</string>
+    <string name="tool_erase">ลบ</string>
+    <string name="tool_notes">โน้ต</string>
+    <string name="tool_hint">คำใบ้</string>
+    <string name="paused">หยุดพัก</string>
+    <string name="paused_tap">แตะที่ไหนก็ได้เพื่อเล่นต่อ</string>
+    <string name="mistakes_of">%1$d จาก %2$d</string>
+
+    <string name="cell_position">แถว %1$d คอลัมน์ %2$d</string>
+    <string name="cell_clue">%1$s, %2$d, เลขที่ให้มา</string>
+    <string name="cell_digit">%1$s, %2$d</string>
+    <string name="cell_empty">%1$s, ว่าง</string>
+    <string name="cell_noted">%1$s, ว่าง, โน้ตไว้ %2$s</string>
+    <string name="cell_hint_argument">%1$s ส่วนหนึ่งของคำใบ้</string>
+    <string name="cell_hint_struck">%1$s คำใบ้กำลังขีดโน้ตออกตรงนี้</string>
+    <string name="cell_hint_region">%1$s อยู่ในเขตที่คำใบ้พูดถึง</string>
+    <string name="cell_repeated">%1$s, ซ้ำ</string>
+    <string name="pad_all_placed">%1$d, ใส่ครบแล้ว</string>
+    <string name="pad_one_left">%1$d, เหลืออีกหนึ่ง</string>
+    <plurals name="pad_left">
+        <item quantity="other">%1$d, เหลืออีก %2$d</item>
+    </plurals>
+    <string name="pad_scanning">%1$s, กำลังแสดงว่ามันลงได้ตรงไหน</string>
+    <string name="pad_notes_mode">%1$s, โหมดโน้ต</string>
+
+    <string name="cell_actions_title">แถว %1$d คอลัมน์ %2$d</string>
+    <string name="cell_actions_clue">ตัวนี้มาพร้อมกับปริศนา จึงเปลี่ยนไม่ได้</string>
+    <plurals name="cell_actions_note_all">
+        <item quantity="other">โน้ตตัวเลือกทั้ง %1$d ตัว</item>
+    </plurals>
+    <string name="cell_actions_clear_notes">ลบโน้ตทิ้ง</string>
+    <string name="why_not_title">ทำไมถึงไม่ได้</string>
+    <string name="tint_title">สี</string>
+    <string name="cell_tinted">%1$s, สี %2$s</string>
+    <string name="tint_clear_all">ล้างสีทั้งหมด</string>
+    <string name="tint_one">ส้ม</string>
+    <string name="tint_two">น้ำเงิน</string>
+    <string name="tint_three">ม่วง</string>
+    <string name="tint_four">เขียว</string>
+    <string name="why_not_prompt">แตะตัวเลขเพื่อดูว่าอะไรขวางมันอยู่</string>
+    <string name="why_not_taken">มี %1$d อยู่แล้วใน %2$s ที่แถว %3$d คอลัมน์ %4$d</string>
+    <string name="why_not_filled">ช่องนี้มี %1$d อยู่แล้ว ลบออกก่อน</string>
+    <string name="why_not_possible">ไม่มีอะไรบนกระดานที่ห้าม %1$d นั่นไม่ได้ทำให้มันถูก แค่ทำให้มันเป็นไปได้</string>
+    <string name="cell_actions_clear">ล้างช่อง</string>
+
+    <string name="leave_title">ออกจากปริศนานี้ไหม</string>
+    <string name="leave_body">มันจะรอคุณอยู่ตรงที่คุณทิ้งไว้</string>
+    <string name="leave_confirm">ออก</string>
+    <string name="leave_cancel">อยู่ต่อ</string>
+
+    <string name="outcome_solved">แก้ได้แล้ว</string>
+    <string name="outcome_lost">ผิดครบจำนวนแล้ว</string>
+    <string name="outcome_rated">%1$s ระดับ %2$s</string>
+    <string name="outcome_hints">คำใบ้</string>
+    <string name="outcome_mistakes">ที่ผิด</string>
+    <string name="outcome_moves">การเดิน</string>
+    <string name="outcome_needed">ต้องใช้ %1$s</string>
+    <string name="outcome_home">หน้าแรก</string>
+    <string name="outcome_another">%1$s อีกข้อ</string>
+
+    <string name="hint_remove_one">เอาออก</string>
+    <string name="hint_remove_many">เอาออกทั้งหมด</string>
+    <string name="hint_look_here_title">ดูตรงนี้</string>
+    <string name="hint_look_here">มีอะไรให้หาใน %1$s คำใบ้นี้บอกแค่นั้น</string>
+    <string name="hint_look_around">มีขั้นหนึ่งให้หา ขั้นนี้กระจายอยู่ทั่วตาราง ไม่ได้อยู่ในเขตเดียว</string>
+    <string name="hint_what_kind">เป็นขั้นแบบไหน</string>
+    <string name="hint_menu_title">ช่วยเหลือ</string>
+    <string name="hint_menu_difficulty">ขั้นต่อไปต้องใช้เทคนิคระดับ %1$s</string>
+    <string name="hint_menu_broken">มีบางอย่างที่คุณใส่ไว้ผิด จึงยังหาอะไรต่อไม่ได้จนกว่าจะแก้</string>
+    <string name="hint_menu_check">มีตรงไหนผิดไหม</string>
+    <string name="hint_menu_look">ฉันควรดูตรงไหน</string>
+    <string name="hint_menu_explain">อธิบายขั้นต่อไป</string>
+    <string name="hint_menu_free">ถามตรงนี้ไม่เสียอะไร ขีดจำกัดปิดอยู่</string>
+    <string name="hint_check_clean">ไม่มีตัวใดที่คุณใส่ไว้ผิดเลย</string>
+    <string name="hint_close">ปิด</string>
+    <string name="hint_previous">ถอยหนึ่งขั้น</string>
+    <string name="hint_cells_here">ช่องที่มันอาศัยอยู่ถูกเน้นไว้ %1$s</string>
+    <string name="hint_where">บอกหน่อยว่าตรงไหน</string>
+    <string name="hint_explain">อธิบายหน่อย</string>
+    <string name="hint_do_it">ทำเลย</string>
+    <string name="hint_evidence">แถวของมันมี %1$s อยู่แล้ว คอลัมน์มี %2$s กล่องมี %3$s รวมกันแล้วครบทุกตัวยกเว้น %4$d</string>
+    <string name="hint_rests_on_earlier">ส่วนหนึ่งของเรื่องนี้อาศัยโน้ตที่คำใบ้ก่อนหน้าขีดออกไปแล้ว โน้ตเหล่านั้นเขียนไว้บนกระดาน คุณจึงตามต่อจากตรงนั้นได้</string>
+    <string name="hint_what_is_this">นี่คืออะไร</string>
+    <string name="hint_wrong_title">มีบางอย่างผิด</string>
+    <string name="hint_wrong_one">ตัวเลขที่คุณใส่ไว้ตัวหนึ่งถูกไม่ได้ มันถูกเน้นไว้แล้ว</string>
+    <string name="hint_wrong_many">ตัวเลขที่คุณใส่ไว้ %1$d ตัวถูกไม่ได้ ทั้งหมดถูกเน้นไว้แล้ว</string>
+    <string name="hint_wrong_until_one">จะยังหาอะไรต่อไม่ได้จนกว่าจะแก้ตัวนั้น</string>
+    <string name="hint_wrong_until_many">จะยังหาอะไรต่อไม่ได้จนกว่าจะแก้ทั้งหมด</string>
+    <string name="hint_done_title">เสร็จแล้ว</string>
+    <string name="hint_done_body">ปริศนาจบแล้ว</string>
+    <string name="hint_stuck_title">ไม่มีอะไรจะแนะนำ</string>
+    <string name="hint_stuck_body">กระดานนี้ถูกกติกา แต่ไม่มีเทคนิคใดที่ Sendoku รู้จักใช้กับมันได้ เรื่องนี้ไม่ควรเกิดกับปริศนาจากแอป</string>
+    <string name="hint_in_region">ใน %1$s</string>
+    <string name="hint_in_regions">ใน %1$s และ %2$s</string>
+    <string name="hint_outcome_place">ดังนั้นแถว %1$d คอลัมน์ %2$d ต้องเป็น %3$d</string>
+    <string name="hint_outcome_strike_one">ดังนั้น %1$d ตัดออกจาก %2$s ได้</string>
+    <string name="hint_outcome_strike_two">ดังนั้น %1$d และ %2$d ตัดออกจาก %3$s ได้</string>
+    <plurals name="hint_cells">
+        <item quantity="other">%1$d ช่อง</item>
+    </plurals>
+
+    <string name="house_row">แถว %1$d</string>
+    <string name="house_column">คอลัมน์ %1$d</string>
+    <string name="house_box">กล่อง %1$d</string>
+
+    <string name="glossary_title">เทคนิค</string>
+    <string name="back">ย้อนกลับ</string>
+
+    <string name="settings_title">การตั้งค่า</string>
+    <string name="settings_language">ภาษา</string>
+    <string name="language_system">ตามเครื่อง</string>
+    <string name="language_english">English</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_german">Deutsch</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_italian">Italiano</string>
+    <string name="language_japanese">日本語</string>
+    <string name="language_french">Français</string>
+    <string name="language_portuguese">Português (Brasil)</string>
+    <string name="language_chinese">简体中文</string>
+    <string name="language_korean">한국어</string>
+    <string name="language_arabic">العربية</string>
+    <string name="language_ukrainian">Українська</string>
+    <string name="language_indonesian">Bahasa Indonesia</string>
+    <string name="language_vietnamese">Tiếng Việt</string>
+    <string name="language_hindi">हिन्दी</string>
+    <string name="language_bengali">বাংলা</string>
+    <string name="language_thai">ไทย</string>
+    <plurals name="first_run_prompt">
+        <item quantity="other">Sendoku เขียนไว้ %1$d ภาษา คุณอ่านภาษาไหน</item>
+    </plurals>
+    <string name="first_run_system_is">เครื่องของคุณตั้งไว้เป็น %1$s</string>
+    <string name="first_run_no_translation">เครื่องของคุณตั้งเป็นภาษาที่ Sendoku ยังพูดไม่ได้ ภาษาอังกฤษคือสิ่งที่ใกล้เคียงที่สุดที่มี</string>
+    <string name="first_run_continue">เริ่มเล่น</string>
+    <string name="settings_interface">หน้าตา</string>
+    <string name="settings_rules">กติกาของเกม</string>
+    <string name="settings_light_or_dark">สว่างหรือมืด</string>
+    <string name="settings_terminal_is_dark">Terminal เป็นธีมมืดเสมอไม่ว่าเครื่องจะตั้งไว้อย่างไร นั่นตั้งใจให้เป็นแบบนั้น</string>
+    <string name="settings_board">กระดาน</string>
+    <string name="settings_highlight_peers">เน้นแถว คอลัมน์ และกล่อง</string>
+    <string name="settings_highlight_same">เน้นตัวเลขเดียวกันที่อยู่ที่อื่น</string>
+    <string name="settings_auto_clear">ลบโน้ตที่ตัวเลขซึ่งเพิ่งใส่ตัดออกไป</string>
+    <string name="settings_auto_notes">ใส่โน้ตไว้ทุกช่องตลอดเวลา</string>
+    <string name="settings_auto_notes_note">แอปเป็นคนจดให้ เหนือระดับผู้เชี่ยวชาญขึ้นไปแทบจะขาดไม่ได้</string>
+    <string name="settings_highlight_homes">แสดงว่าตัวเลขที่เลือกยังลงได้ตรงไหนบ้าง</string>
+    <string name="settings_auto_check">บอกฉันทันทีเมื่อใส่ตัวเลขผิด</string>
+    <string name="settings_auto_check_note">เปิดไว้แล้วการลองก็ไม่เสียอะไร ปริศนาจึงเสียความตึงเครียดไปเกือบหมด</string>
+    <string name="settings_auto_check_forced">เปิดอยู่ตลอดที่ขีดจำกัดความผิดพลาดทำงาน เพราะความผิดที่ถูกนับต้องเป็นความผิดที่คุณมองเห็น ปิดขีดจำกัดข้างล่างเพื่อเล่นโดยไม่มีทั้งสองอย่าง</string>
+    <string name="settings_flag_conflicts">ทำเครื่องหมายตัวเลขที่ซ้ำในแถว คอลัมน์ หรือกล่อง</string>
+    <string name="settings_clock">นาฬิกา</string>
+    <string name="settings_show_timer">แสดงเวลาที่จับไว้</string>
+    <string name="settings_feedback">การตอบสนอง</string>
+    <string name="settings_haptics">สั่นเมื่อตัวเลขลงช่อง</string>
+    <string name="settings_sound">เสียง</string>
+    <string name="settings_sound_note">เสียงโน้ตเบา ๆ ระหว่างเล่น ปิดได้ในแตะเดียว และโหมดเงียบของเครื่องมีน้ำหนักเหนือทั้งสองอย่าง</string>
+    <string name="settings_mistake_limit">จบเกมหลังผิดสามครั้ง</string>
+    <string name="settings_mistake_note">เปิดไว้เป็นค่าตั้งต้น ที่สามครั้ง ปิดมันสำหรับระดับยาก ๆ ซึ่งการเสียเวลาไปหนึ่งชั่วโมงเพราะพลาดครั้งเดียวนั้นทรมานมาก</string>
+    <string name="settings_about">เกี่ยวกับ Sendoku</string>
+
+    <string name="theme_deep_field">Deep Field</string>
+    <string name="theme_deep_field_summary">ดำสนิท สีฟ้าครามหนึ่งจุดเน้น ไม่มีอย่างอื่น</string>
+    <string name="theme_ink">Ink and Paper</string>
+    <string name="theme_ink_summary">หนังสือปริศนาในหนังสือพิมพ์ พิมพ์บนกระดาษสีอุ่น</string>
+    <string name="theme_zen">Slate Zen</string>
+    <string name="theme_zen_summary">เขียวเสจกับหิน และอย่างอื่นน้อยที่สุดเท่าที่จะน้อยได้</string>
+    <string name="theme_terminal">Terminal</string>
+    <string name="theme_terminal_summary">ตัวอักษรความกว้างเท่ากัน ขอบคม มืดอย่างเดียว</string>
+    <string name="mode_system">ตามระบบ</string>
+    <string name="mode_light">สว่างเสมอ</string>
+    <string name="mode_dark">มืดเสมอ</string>
+
+    <string name="stats_title">สถิติ</string>
+    <string name="stats_solved">แก้ได้แล้ว</string>
+    <string name="stats_streak">ต่อเนื่อง</string>
+    <string name="stats_hardest">ยากที่สุด</string>
+    <string name="stats_hardest_note">ข้อที่ยากที่สุดที่คุณทำจบคือ %1$s</string>
+    <plurals name="stats_longest_run">
+        <item quantity="other">ช่วงต่อเนื่องที่ยาวที่สุดของคุณคือ %1$d วัน</item>
+    </plurals>
+    <string name="stats_totals">ใช้ไป %1$s ขอคำใบ้ไป: %2$d</string>
+    <string name="stats_by_grade">แยกตามระดับ</string>
+    <string name="stats_hints_title">สิ่งที่คุณถามมา</string>
+    <string name="stats_hints_note">คุณถามเรื่อง %1$s บ่อยที่สุด บทเรียนนั้นแหละที่ควรกลับไปดู</string>
+    <string name="stats_needed">สิ่งที่ปริศนาของคุณต้องใช้</string>
+    <string name="stats_solved_count">แก้ได้แล้ว: %1$d</string>
+    <string name="stats_solved_and_lost">แก้ได้แล้ว: %1$d, แพ้: %2$d</string>
+    <string name="stats_average">เฉลี่ย %1$s</string>
+    <string name="stats_reset">ล้างสถิติ</string>
+    <string name="stats_reset_title">ทิ้งประวัติของคุณไหม</string>
+    <string name="stats_reset_body">ทุกปริศนาที่จบแล้ว ทุกช่วงต่อเนื่อง และทุกเวลาที่ดีที่สุด ไม่มีสำเนาอยู่ที่ไหนเลย จึงย้อนคืนไม่ได้</string>
+    <string name="stats_reset_confirm">ล้าง</string>
+    <string name="stats_reset_cancel">เก็บไว้</string>
+    <string name="stats_empty_title">ยังไม่มีอะไร</string>
+    <string name="stats_empty_body">ทำปริศนาให้จบสักข้อแล้วหน้านี้จะเต็มขึ้นมา ว่าแต่ละระดับใช้เวลาคุณเท่าไร คุณไต่ขึ้นมาได้ไกลแค่ไหน และปริศนาของคุณต้องใช้เทคนิคอะไรบ้าง</string>
+
+    <string name="about_title">เกี่ยวกับ</string>
+    <string name="about_version">Sendoku %1$s</string>
+    <string name="about_tagline">แอปซูโดกุสำหรับคนที่ซูโดกุยาก ๆ หมดแล้ว</string>
+    <string name="about_no_ads">ไม่มีโฆษณา</string>
+    <string name="about_no_ads_detail">ไม่มีระหว่างปริศนา ไม่มีเพื่อแลกคำใบ้ ไม่มีเลย</string>
+    <string name="about_no_tracking">ไม่มีการติดตาม</string>
+    <string name="about_no_tracking_detail">ไม่มีอะไรถูกวัดและไม่มีอะไรถูกส่งออกไป ไม่มีเซิร์ฟเวอร์เลย</string>
+    <string name="about_no_purchases">ไม่มีการซื้อ</string>
+    <string name="about_no_purchases_detail">ทุกปริศนาและทุกคำใบ้อยู่ที่นี่หมดแล้ว</string>
+    <string name="about_offline">ใช้งานได้โดยไม่ต้องต่อเน็ต</string>
+    <string name="about_offline_detail">ชุดปริศนาทั้งชุดมาพร้อมกับตัวแอป</string>
+    <string name="about_hints">คำใบ้ที่สอน</string>
+    <string name="about_hints_detail">คำใบ้จะเรียกชื่อเทคนิคและอธิบายเหตุผล มันไม่เคยเพียงแค่เติมตัวเลขให้ และไม่เคยถูกขาย ทุกปริศนามีมาให้สามครั้ง และปิดขีดจำกัดได้ในการตั้งค่า</string>
+    <string name="about_sharing">การแบ่งปัน</string>
+    <string name="about_sharing_detail">รหัสปริศนาคือตัวปริศนาเอง ไม่ใช่บัญชีผู้ใช้ ที่นี่ไม่มีใครให้เข้าสู่ระบบ ไม่มีกระดานอันดับ และแอปก็ไม่มีทางตรวจสอบเวลาที่ใครบอกคุณ สองคนเล่นตารางเดียวกันแล้วเทียบกันว่าใครเสียอะไรไปเท่าไร แค่นั้นเอง</string>
+    <string name="about_rating">ความยากวัดจากเทคนิคที่ยากที่สุดซึ่งปริศนานั้นต้องใช้จริง ๆ คำนวณได้ด้วยการแก้มันแบบที่คนจะแก้ ด้วยเหตุนี้ ยากมาก ที่นี่จึงหมายความเหมือนกับ ยากมาก ครั้งก่อน</string>
+    <string name="about_licence">Sendoku เป็นซอฟต์แวร์เสรีภายใต้ GNU General Public License รุ่นที่ 3</string>
+    <string name="about_privacy">นโยบายความเป็นส่วนตัวบอกเรื่องเดียวกันในรูปแบบที่สโตร์ขอ ที่ adilzhany.github.io/sendoku/privacy</string>
+    <string name="about_licences">สัญญาอนุญาตโอเพนซอร์ส</string>
+    <string name="licences_title">สัญญาอนุญาต</string>
+
+    <string name="look_naked_single">มีช่องหนึ่งที่เหลือตัวเลขลงได้เพียงตัวเดียว</string>
+    <string name="look_hidden_single">มีตัวเลขหนึ่งที่เหลือที่ลงได้เพียงที่เดียว</string>
+    <string name="look_locked_candidates_pointing">ในกล่องหนึ่ง ตัวเลขหนึ่งติดอยู่บนแถวหรือคอลัมน์เดียว</string>
+    <string name="look_locked_candidates_claiming">บนเส้นหนึ่ง ตัวเลขหนึ่งลงได้เฉพาะภายในกล่องเดียว</string>
+    <string name="look_naked_pair">สองช่องในเขตเดียวกันมีตัวเลขสองตัวเดียวกันและไม่มีอย่างอื่น</string>
+    <string name="look_hidden_pair">ตัวเลขสองตัวในเขตหนึ่งไม่มีที่ไปนอกจากสองช่องเดียวกันนั้น</string>
+    <string name="look_naked_triple">สามช่องในเขตหนึ่งแบ่งตัวเลขสามตัวกันเอง</string>
+    <string name="look_hidden_triple">ตัวเลขสามตัวถูกจำกัดอยู่ในสามช่องเดียวกัน</string>
+    <string name="look_naked_quad">สี่ช่องในเขตหนึ่งแบ่งตัวเลขสี่ตัวกันเอง</string>
+    <string name="look_hidden_quad">ตัวเลขสี่ตัวถูกจำกัดอยู่ในสี่ช่องเดียวกัน</string>
+    <string name="look_x_wing">สองแถวมีตัวเลขหนึ่งอยู่ในสองคอลัมน์เดียวกัน หรือกลับกัน</string>
+    <string name="look_swordfish">สามแถวมีตัวเลขหนึ่งอยู่ภายในสามคอลัมน์เดียวกัน</string>
+    <string name="look_jellyfish">สี่แถวมีตัวเลขหนึ่งอยู่ภายในสี่คอลัมน์เดียวกัน</string>
+    <string name="look_xy_wing">สามช่องที่มีตัวเลขช่องละสองตัว วางไว้จนตัวเลขหนึ่งถูกบีบออกไป</string>
+    <string name="look_xyz_wing">เหมือน XY-Wing แต่ช่องกลางมีตัวเลขที่สามด้วย</string>
+    <string name="look_w_wing">สองช่องที่มีคู่เดียวกัน เชื่อมกันด้วยตัวเลขที่มีบ้านอยู่แค่สองหลัง</string>
+    <string name="look_simple_colouring">ตัวเลขหนึ่งสร้างโซ่ที่สลับกันตลอดทั้งเส้น</string>
+    <string name="look_multi_colouring">โซ่สองเส้นแยกกันบนตัวเลขเดียวกัน เอามาชนกัน</string>
+    <string name="look_remote_pairs">โซ่ของช่องที่มีตัวเลขสองตัวเดียวกันเป๊ะทุกช่อง</string>
+    <string name="look_unique_rectangle">สี่ช่องประกอบเป็นสี่เหลี่ยมที่จะทำให้ปริศนามีสองคำตอบ</string>
+    <string name="look_bug_plus_one">ทุกช่องยกเว้นช่องเดียวเหลือตัวเลขแค่สองตัว</string>
+    <string name="look_x_chain">โซ่บนตัวเลขเดียว สลับระหว่างต้องเป็นกับเป็นไม่ได้</string>
+    <string name="look_xy_chain">โซ่ของช่องสองตัวเลข ที่แต่ละช่องบังคับช่องถัดไป</string>
+    <string name="look_forcing_chain">ช่องที่มีความเป็นไปได้สองอย่างพอดี เมื่อไม่เหลืออย่างอื่นให้หาแล้ว</string>
+    <string name="look_death_blossom">ช่องหนึ่ง และกลุ่มหนึ่งสำหรับทุกตัวเลขที่มันเป็นได้ โดยช่องนั้นมองเห็นตัวเลขนั้นทั่วทั้งกลุ่ม</string>
+    <string name="look_als_xy_wing">สามกลุ่ม แต่ละกลุ่มขาดอีกตัวเดียวจะเต็ม เชื่อมเป็นเส้นด้วยตัวเลขสองตัวที่ต่างกัน</string>
+    <string name="look_sue_de_coq">กล่องกับเส้นตัดกัน โดยช่องที่ใช้ร่วมกันมีตัวเลขมากกว่าที่ว่างอยู่สองตัว</string>
+    <string name="look_als_xz">ช่องสองกลุ่ม แต่ละกลุ่มขาดอีกตัวเดียวจะถูกล็อก</string>
+
+    <string name="because_naked_single">ตัวเลขอื่นทุกตัวปรากฏอยู่ในแถว คอลัมน์ หรือกล่องของมันแล้ว จึงเหลือแค่ตัวเดียว ตัวนั้นแหละที่ต้องลงตรงนี้</string>
+    <string name="because_hidden_single">เขตนี้ต้องมีตัวเลขนี้อยู่ที่ไหนสักแห่ง และช่องอื่นทุกช่องในเขตถูกตัดออกหมดแล้ว นี่จึงเป็นที่เดียวที่เหลืออยู่</string>
+    <string name="because_locked_candidates_pointing">กล่องนั้นต้องมีตัวเลขนี้อยู่ที่ไหนสักแห่ง และทุกที่ที่มันลงได้อยู่บนเส้นเดียวกัน ตัวเลขจึงอยู่บนเส้นนั้น และอยู่ที่อื่นตลอดเส้นนั้นไม่ได้</string>
+    <string name="because_locked_candidates_claiming">เส้นนั้นต้องมีตัวเลขนี้อยู่ที่ไหนสักแห่ง และทุกที่ที่มันลงได้อยู่ภายในกล่องเดียว ตัวเลขจึงอยู่ในกล่องนั้น และอยู่ที่อื่นในกล่องไม่ได้</string>
+    <string name="because_naked_pair">สองช่องนั้นจะแบ่งตัวเลขสองตัวนั้นกันไปช่องละตัว ไม่มีช่องอื่นในเขตที่มีตัวใดตัวหนึ่งได้</string>
+    <string name="because_hidden_pair">เขตนั้นต้องการทั้งสองตัว และมีแค่สองช่องนี้ที่รับได้ จึงรับไปช่องละตัว ทุกอย่างที่เหลือในสองช่องนั้นตกไป</string>
+    <string name="because_naked_triple">สามช่อง สามตัวเลข ช่องละตัว ไม่มีอะไรอื่นในเขตที่ใช้มันได้ แม้ว่าจะไม่มีช่องไหนมีครบทั้งสามตัว</string>
+    <string name="because_hidden_triple">ตัวเลขสามตัวที่ไม่มีที่อื่นไปเติมเต็มสามช่องกันเอง ทุกอย่างอื่นในช่องเหล่านั้นจึงเป็นไปไม่ได้</string>
+    <string name="because_naked_quad">สี่ช่องรับตัวเลขสี่ตัวกันเอง ซึ่งล็อกทั้งสี่ตัวออกจากส่วนที่เหลือของเขต</string>
+    <string name="because_hidden_quad">ตัวเลขสี่ตัวที่ถูกจำกัดอยู่ในสี่ช่องเติมเต็มช่องเหล่านั้นกันเอง จึงไม่มีอะไรอื่นอยู่ที่นั่นได้</string>
+    <string name="because_x_wing">แต่ละแถวในสองแถวนั้นต้องการตัวเลขนี้หนึ่งครั้ง และทั้งสองแถววางมันได้แค่ในสองคอลัมน์เดียวกัน รวมกันแล้วมันใช้ทั้งสองคอลัมน์จนหมด จึงไม่มีแถวอื่นที่มีตัวเลขนี้ตรงนั้นได้</string>
+    <string name="because_swordfish">สามแถวต้องการตัวเลขนี้ และมีแค่สามคอลัมน์ให้วาง สามแถวใช้ทั้งสามคอลัมน์จนหมด จึงไม่มีอะไรอื่นในคอลัมน์เหล่านั้นที่มีมันได้</string>
+    <string name="because_jellyfish">สี่แถวกับสี่คอลัมน์ เหตุผลเดิมอีกครั้ง สี่แถวเติมเต็มทั้งสี่คอลัมน์กันเอง</string>
+    <string name="because_xy_wing">ช่องกลางเป็นหนึ่งในสองตัวเลขของมัน ไม่ว่าทางไหน ช่องนอกช่องใดช่องหนึ่งก็ถูกบังคับให้เป็นตัวเลขร่วม อะไรที่มองเห็นทั้งสองช่องจึงเป็นตัวเลขนั้นไม่ได้</string>
+    <string name="because_xyz_wing">ช่องกลางเป็นตัวเลขร่วมได้ด้วย ข้อสรุปจึงอ่อนกว่า มีเพียงช่องที่มองเห็นครบทั้งสามเท่านั้นที่เสียตัวเลขนั้นไป</string>
+    <string name="because_w_wing">ถ้าไม่มีช่องคู่ไหนรับตัวเลขที่สอง ทั้งสองช่องก็จะรับตัวแรก และเขตที่เชื่อมอยู่ก็จะไม่มีที่ให้วางมันเลย ดังนั้นช่องใดช่องหนึ่งต้องเป็นตัวเลขที่สอง</string>
+    <string name="because_simple_colouring">ระบายโซ่นั้นสลับสีแล้วจะมีสีหนึ่งพอดีที่ถูก ไม่สีหนึ่งลงซ้ำสองครั้งในเขตเดียวกันซึ่งแปลว่าผิด ก็ช่องข้างนอกช่องหนึ่งมองเห็นทั้งสองสีและเสียตัวเลขนั้นไปไม่ว่าผลจะออกทางไหน</string>
+    <string name="because_multi_colouring">สีหนึ่งของโซ่แรกขัดกับสีหนึ่งของโซ่ที่สอง ซึ่งบีบให้ตัวเลขไปอยู่ในสีตรงข้ามสีใดสีหนึ่ง อะไรที่มองเห็นทั้งสองสีนั้นก็มีมันไม่ได้</string>
+    <string name="because_remote_pairs">ช่องที่ติดกันในโซ่มองเห็นกัน มันจึงสลับกัน ปลายทั้งสองห่างกันเป็นจำนวนขั้นคี่ จึงมีตัวเลขปลายละตัว และอะไรที่มองเห็นทั้งสองปลายก็มีไม่ได้สักตัว</string>
+    <string name="because_unique_rectangle">ถ้าสี่ช่องนั้นไม่มีอะไรนอกจากตัวเลขสองตัวเดียวกัน ก็สลับมันรอบสี่เหลี่ยมได้และปริศนาจะมีสองคำตอบ แต่มันมีคำตอบเดียว การจัดวางแบบนั้นจึงเป็นไปไม่ได้</string>
+    <string name="because_bug_plus_one">ถ้าเอาตัวเลือกที่เกินมาออก ตัวเลขทุกตัวจะปรากฏสองครั้งพอดีในทุกเขต และตารางแบบนั้นมีจำนวนคำตอบเป็นเลขคู่เสมอ ปริศนานี้มีคำตอบเดียว ตัวเลือกที่เกินมานั้นจึงคือคำตอบ</string>
+    <string name="because_x_chain">โซ่สลับระหว่างที่ที่ตัวเลขต้องอยู่กับที่ที่มันอยู่ไม่ได้ ปลายทั้งสองจะว่างจากมันพร้อมกันไม่ได้ อะไรที่มองเห็นทั้งสองปลายจึงเสียมันไป</string>
+    <string name="because_xy_chain">สมมติว่าช่องแรกไม่ใช่ตัวเลขนั้น ตามโซ่ไปแล้วช่องสุดท้ายจะถูกบังคับให้เป็นมัน ดังนั้นปลายใดปลายหนึ่งต้องมีมัน</string>
+    <string name="because_forcing_chain">ลองตามไปทั้งสองทาง ถ้าทางหนึ่งทิ้งช่องที่ไม่มีอะไรใส่ลงไปได้เลย ทางนั้นก็ไม่เคยเป็นจริงและตัดทิ้งได้ ถ้าทั้งสองทางใส่ตัวเลขเดียวกันลงที่เดียวกัน ตัวเลขนั้นก็เป็นของที่นั่นไม่ว่าทางไหนจะจริง ที่นี่ไม่มีอะไรขึ้นอยู่กับว่าข้อสมมติถูกหรือไม่ และนั่นแหละที่ทำให้มันเป็นการพิสูจน์ ไม่ใช่การเดา</string>
+    <string name="because_death_blossom">ไม่ว่าช่องนั้นจะกลายเป็นอะไร มันก็เตะตัวเลขของตัวเองออกจากกลุ่มที่ตรงกัน แล้วกลุ่มนั้นก็เต็มและต้องใช้ตัวเลขที่เหลือทั้งหมด ถ้าทุกกลุ่มมีตัวเลขสำรองตัวเดียวกัน ตัวเลขนั้นก็จะไปลงในกลุ่มใดกลุ่มหนึ่งไม่ว่าช่องนั้นจะเอนไปทางไหน อะไรที่มองเห็นมันในทุกกลุ่มก็เสียมันไป</string>
+    <string name="because_als_xy_wing">ถ้าตัวเลขที่กำลังถูกคุกคามหายไปจากกลุ่มแรก กลุ่มนั้นก็เต็มและต้องรับตัวเลขที่มันใช้ร่วมกับกลุ่มกลาง กลุ่มกลางก็เสียตัวเลขนั้นไป มันจึงเต็มด้วยและรับตัวเลขที่ใช้ร่วมกับกลุ่มที่สาม กลุ่มที่สามก็เต็มเช่นกัน และต้องใช้ตัวเลขที่ถูกคุกคามนั้น ช่องใดก็ตามที่มองเห็นมันในกลุ่มนอกทั้งสองจึงมีมันไม่ได้</string>
+    <string name="because_sue_de_coq">ช่องที่ใช้ร่วมกันจะใช้ตัวเลขของมันจนหมดเหลือสองตัว และกลุ่มสองข้างก็เรียกร้องสองตัวนั้นพอดี ตัวเลขทุกตัวของกลุ่มที่อยู่บนเส้นจึงถูกใช้ไปภายในเส้น และตัวเลขทุกตัวของกลุ่มที่อยู่ในกล่องก็ถูกใช้ไปภายในกล่อง ไม่มีอะไรอื่นในทั้งสองที่มีมันได้</string>
+    <string name="because_als_xz">ตัวเลขร่วมตัวหนึ่งปรากฏได้ในกลุ่มเดียวจากสองกลุ่มเท่านั้น ซึ่งล็อกอีกกลุ่มและบังคับให้มันใช้ตัวเลขที่มีทั้งหมด ตัวเลขร่วมตัวที่สองจึงไปลงในกลุ่มใดกลุ่มหนึ่ง</string>
+
+    <string name="technique_naked_single">Naked single</string>
+    <string name="technique_hidden_single">Hidden single</string>
+    <string name="technique_locked_candidates_pointing">Pointing pair หรือ triple</string>
+    <string name="technique_locked_candidates_claiming">Claiming pair หรือ triple</string>
+    <string name="technique_naked_pair">Naked pair</string>
+    <string name="technique_hidden_pair">Hidden pair</string>
+    <string name="technique_naked_triple">Naked triple</string>
+    <string name="technique_hidden_triple">Hidden triple</string>
+    <string name="technique_naked_quad">Naked quad</string>
+    <string name="technique_hidden_quad">Hidden quad</string>
+    <string name="technique_x_wing">X-Wing</string>
+    <string name="technique_simple_colouring">การระบายสีอย่างง่าย</string>
+    <string name="technique_xy_wing">XY-Wing</string>
+    <string name="technique_xyz_wing">XYZ-Wing</string>
+    <string name="technique_w_wing">W-Wing</string>
+    <string name="technique_swordfish">Swordfish</string>
+    <string name="technique_remote_pairs">Remote pairs</string>
+    <string name="technique_unique_rectangle">Unique rectangle</string>
+    <string name="technique_bug_plus_one">BUG บวกหนึ่ง</string>
+    <string name="technique_jellyfish">Jellyfish</string>
+    <string name="technique_multi_colouring">การระบายหลายสี</string>
+    <string name="technique_x_chain">X-Chain</string>
+    <string name="technique_xy_chain">XY-Chain</string>
+    <string name="technique_als_xz">ALS XZ</string>
+    <string name="technique_sue_de_coq">Sue de Coq</string>
+    <string name="technique_als_xy_wing">ALS XY-Wing</string>
+    <string name="technique_death_blossom">Death blossom</string>
+    <string name="technique_forcing_chain">โซ่บังคับ</string>
+    <string name="technique_cage_sum">ผลรวมของกรง</string>
+    <string name="technique_cage_single">single ในกรง</string>
+    <string name="technique_cage_locked">กรงที่ถูกล็อก</string>
+    <string name="technique_cage_innie">Innie กับ outie</string>
+    <string name="daily_title">ประจำวัน</string>
+    <string name="daily_no_streak">ยังไม่มีช่วงต่อเนื่อง แก้ปริศนาของวันนี้เพื่อเริ่มต้น</string>
+    <string name="daily_previous_month">ก่อนหน้า</string>
+    <string name="daily_next_month">ถัดไป</string>
+    <string name="daily_cell_solved">แก้ได้แล้ว</string>
+    <string name="daily_cell_attempted">เล่นแล้วแต่ยังไม่จบ</string>
+    <string name="daily_cell_unplayed">ยังไม่ได้เล่น</string>
+    <string name="daily_cell_future">ยังไม่ถึง</string>
+    <string name="daily_play_today">เล่นของวันนี้</string>
+    <plurals name="daily_streak">
+        <item quantity="other">%1$d วันติดต่อกัน</item>
+    </plurals>
+    <string name="daily_cell">%1$d, %2$s, %3$s</string>
+    <string name="daily_cell_today">วันนี้, %1$d, %2$s, %3$s</string>
+    <string name="stat_mistakes">ที่ผิด</string>
+    <string name="stat_hints">คำใบ้</string>
+    <string name="stat_time">เวลา</string>
+    <string name="stat_pause">พัก</string>
+    <string name="game_daily_title">%1$s, %2$s</string>
+
+    <string name="stage_first_steps">ก้าวแรก</string>
+    <string name="stage_one_at_a_time">ทีละตัวเลข</string>
+    <string name="stage_notes">โน้ต</string>
+    <string name="stage_locked_to_a_line">ตัวเลขที่ถูกล็อกไว้กับเส้น</string>
+    <string name="stage_groups">กลุ่ม</string>
+    <string name="stage_patterns">รูปแบบที่พาดทั้งตาราง</string>
+    <string name="stage_wings">Wing</string>
+    <string name="stage_colouring">การระบายสี</string>
+    <string name="stage_one_answer">การถือว่ามีคำตอบเดียว</string>
+    <string name="stage_chains">โซ่</string>
+    <string name="stage_the_far_end">ปลายที่ไกลออกไป</string>
+    <string name="stage_the_deep_end">น้ำลึก</string>
+    <string name="stage_cages">กรง</string>
+    <string name="lesson_cage_is_title">กรงคืออะไร</string>
+    <string name="lesson_cage_is_summary">รูปเส้นประคือกรง และเลขตัวเล็กคือผลรวมของช่องในกรง</string>
+    <string name="lesson_cage_is_1">Killer เริ่มต้นโดยไม่มีตัวเลขเลยสักตัว แทนที่จะมี ตารางถูกตัดเป็นกรงซึ่งวาดด้วยเส้นประ และเลขตัวเล็กที่มุมของกรงคือผลรวมของช่องในกรงนั้น ที่เหลือคือซูโดกุธรรมดา</string>
+    <string name="lesson_cage_is_2">กรงที่มีช่องเดียวคือเลขที่ให้มาซึ่งเขียนอีกแบบ อันนี้เขียนว่าหนึ่ง เลขหนึ่งจึงลงตรงนั้นและไม่มีอะไรต้องคิด</string>
+    <string name="lesson_cage_is_3">ใส่แล้ว ต่อไปคือกรงที่ต้องคิดสักหน่อย</string>
+    <string name="lesson_cage_is_4a">อันนี้คือห้าในสองช่อง นั่นคือหนึ่งกับสี่ หรือสองกับสาม จึงยังไม่ลงตัว แต่ที่แน่ ๆ คือในนั้นไม่มีห้าและไม่มีหก</string>
+    <string name="lesson_cage_is_4">สามช่องที่รวมกันได้สิบห้า ในตารางหกคูณหก ตัวเลขที่ใหญ่ที่สุดสามตัวคือสี่ ห้า และหก และรวมกันได้สิบห้าพอดี กรงนี้จึงมีสามตัวนั้นเรียงกันอย่างใดอย่างหนึ่ง และไม่มีอะไรอื่นอยู่ในนั้นได้</string>
+    <string name="lesson_cage_is_5">กรงไม่เคยมีตัวเลขซ้ำ กติกาข้อนี้แหละที่ทำให้ผลรวมบอกอะไรได้มากขนาดนั้น ถ้าไม่มีมัน สิบห้าในสามช่องอาจเป็นห้า ห้า และห้าก็ได้</string>
+    <string name="lesson_cage_house_title">กรงภายในเขตหนึ่ง</string>
+    <string name="lesson_cage_house_summary">แถว คอลัมน์ และกล่อง ต่างก็รวมได้เท่ากับผลรวมที่รู้อยู่แล้ว และกรงที่อยู่ข้างในทำที่เหลือ</string>
+    <string name="lesson_cage_house_1">ทุกแถว คอลัมน์ และกล่องมีตัวเลขแต่ละตัวหนึ่งครั้ง ทั้งหมดจึงรวมได้เท่ากัน ในตารางหกคูณหกผลรวมนั้นคือยี่สิบเอ็ด</string>
+    <string name="lesson_cage_house_2">สองช่องนี้รวมกันได้สิบ ตัวเลขต่างกันคู่เดียวที่ได้สิบคือสี่กับหก กรงนี้จึงเป็นเจ้าของทั้งสองตัว และไม่มีช่องอื่นในแถวนี้ที่เป็นสี่หรือหกได้</string>
+    <string name="lesson_cage_house_3">ทีนี้ทั้งแถว มันรวมได้ยี่สิบเอ็ด และมีสามกรงอยู่ในนั้นทั้งกรง คือห้า สิบ และหนึ่ง นั่นคือสิบหกที่นับได้แล้ว</string>
+    <string name="lesson_cage_house_4">ช่องที่เหลือจึงเป็นยี่สิบเอ็ดลบสิบหก ซึ่งคือห้า</string>
+    <string name="lesson_cage_house_5">คนแก้ปริศนาเรียกสิ่งนั้นว่า innie การคำนวณเดียวกันใช้กลับทางได้ด้วย เมื่อกรงโผล่ออกนอกเขต ส่วนที่โผล่ออกมาก็คือผลต่าง และนั่นคือ outie</string>
+    <string name="lesson_cage_home_title">บ้านหลังเดียวในกรง</string>
+    <string name="lesson_cage_home_summary">ตัวเลขที่กรงต้องมี โดยเหลือช่องเดียวที่รับมันได้</string>
+    <string name="lesson_cage_home_1">พอเข้าไปใน Killer ได้สักระยะ กรงจะเริ่มบอกอะไรมากกว่าแค่ผลรวมของมัน ตรงนี้มีตัวเลขใส่ไว้แล้วสามตัว</string>
+    <string name="lesson_cage_home_2">กรงนี้คือสิบในสองช่อง ในนั้นจึงมีสี่กับหก แต่ในกล่องทางขวามีหกอยู่แล้ว ซึ่งตัดตัวเลขนั้นออกจากช่องขวาของกรง</string>
+    <string name="lesson_cage_home_3">หกจึงเหลือบ้านหลังเดียว และมันลงทางซ้าย ผลรวมบอกว่ากรงมีหก ส่วนที่เหลือของกระดานบอกว่าอยู่ตรงไหน</string>
+    <string name="lesson_cage_home_4">นั่นคือ single ในกรง มันคือ hidden single ของ Killer ไม่ใช่ตัวเลขตัวเดียวที่ช่องรับได้ แต่เป็นช่องเดียวที่ตัวเลขลงได้</string>
+
+    <string name="lesson_what_is_title">ซูโดกุคืออะไร</string>
+    <string name="lesson_what_is_summary">ทุกแถว ทุกคอลัมน์ และทุกกล่องมีตัวเลขแต่ละตัวหนึ่งครั้ง</string>
+    <string name="lesson_what_is_1">นี่คือซูโดกุ ขนาดเล็ก สี่คูณสี่ช่อง ทุกอย่างจึงอยู่ในหัวได้พร้อมกัน ตารางขนาดเต็มทำงานเหมือนกันเป๊ะ</string>
+    <string name="lesson_what_is_2">นี่คือแถว มันต้องมีตัวเลข 1, 2, 3 และ 4 ตัวละหนึ่งครั้ง ไม่ซ้ำ และไม่ขาด</string>
+    <string name="lesson_what_is_3">นี่คือคอลัมน์ กติกาเดียวกัน 1, 2, 3 และ 4 ตัวละหนึ่งครั้ง</string>
+    <string name="lesson_what_is_4">นั่นคือทั้งหมดของเกม ในนั้นไม่มีการคำนวณ และไม่มีอะไรต้องบวก มันคือกติกาข้อเดียวว่าตัวเลขได้รับอนุญาตให้อยู่ตรงไหน</string>
+    <string name="lesson_what_is_5">สองช่องนี้ว่างอยู่ การเติมมันให้กติกายังคงเป็นจริง นั่นแหละคือความหมายของการแก้ปริศนา</string>
+
+    <string name="lesson_houses_title">แถว คอลัมน์ และกล่อง</string>
+    <string name="lesson_houses_summary">ช่องหนึ่งอยู่ในสามเขตพร้อมกัน และใช้กติกาเดียวกันร่วมกับทั้งสาม</string>
+    <string name="lesson_houses_1">กติกาพูดถึงแถวกับคอลัมน์ ยังมีกลุ่มแบบที่สามอีก และนั่นแหละที่ทำให้ซูโดกุคุ้มค่าแก่การแก้</string>
+    <string name="lesson_houses_2">นี่คือแถวอีกครั้ง</string>
+    <string name="lesson_houses_3">นี่คือคอลัมน์</string>
+    <string name="lesson_houses_4">และนี่คือกล่อง ทำเครื่องหมายด้วยเส้นที่หนากว่า มันมีตัวเลขแต่ละตัวหนึ่งครั้งเช่นกัน</string>
+    <string name="lesson_houses_5">ช่องนี้จึงเป็นของสามกลุ่มพร้อมกัน ทุกช่องที่อยู่กลุ่มเดียวกับมันถูกเน้นไว้ และไม่มีช่องไหนมีตัวเลขเดียวกับมันได้ สามกลุ่มนั้นเรียกว่าเขต และต่อจากนี้จะใช้คำนี้</string>
+
+    <string name="lesson_givens_title">เลขที่ให้มา</string>
+    <string name="lesson_givens_summary">ตัวเลขที่พิมพ์ไว้ตั้งแต่ต้นนั้นตายตัว และมันคือสิ่งที่ทำให้คำตอบมีเพียงหนึ่งเดียว</string>
+    <string name="lesson_givens_1">ตัวเลขเหล่านี้มาพร้อมกับปริศนา เรียกว่าเลขที่ให้มา และเปลี่ยนหรือลบไม่ได้</string>
+    <string name="lesson_givens_2">มันถูกวาดต่างจากตัวเลขที่คุณใส่ คุณจึงแยกออกได้เสมอ ในแอปนี้เลขที่ให้มาคือตัวที่หนากว่า</string>
+    <string name="lesson_givens_3">ส่วนนี่คือช่องที่คุณเป็นคนเติม</string>
+    <string name="lesson_givens_4">ปริศนาที่ทำมาอย่างถูกต้องมีวิธีเติมเพียงวิธีเดียวพอดี นั่นเป็นคำสัญญาเกี่ยวกับตัวปริศนา ไม่ใช่เกี่ยวกับคุณ ถ้าคุณติด คำตอบก็ยังมีเดียวอยู่ดี และให้เหตุผลไปถึงได้เสมอ ปริศนาทุกข้อในแอปนี้ทำมาแบบนั้น</string>
+
+    <string name="lesson_first_four_title">การแก้ครั้งแรกของคุณ</string>
+    <string name="lesson_first_four_summary">ดูว่าช่องหนึ่งเป็นอะไรไม่ได้ แล้วบางครั้งจะเหลือตัวเลขแค่ตัวเดียว</string>
+    <string name="lesson_first_four_1">ทีนี้ลองแก้สักข้อ มีสองช่องว่างอยู่ และกติกาก็พอสำหรับเติมทั้งสองช่อง</string>
+    <string name="lesson_first_four_2">เริ่มจากแถวนี้ มันมี 1 กับ 4 อยู่แล้ว สองช่องว่างจึงแบ่ง 2 กับ 3 กันไป คำถามมีแค่ว่าตัวไหนอยู่ตรงไหน</string>
+    <string name="lesson_first_four_3">ช่องนี้เป็น 2 ไม่ได้ เพราะคอลัมน์ของมันมี 2 อยู่แล้ว มันจึงเป็น 3</string>
+    <string name="lesson_first_four_4">เหลือช่องว่างหนึ่งช่อง และตัวเลขหนึ่งตัวที่ยังไม่ได้ใช้ในแถว</string>
+    <string name="lesson_first_four_5">ตาคุณแล้ว ใส่ตัวเลขที่เป็นของตรงนี้</string>
+    <string name="lesson_first_four_wrong">ยังไม่ใช่ ดูที่แถว ตัวเลขไหนจาก 1 ถึง 4 ที่ยังขาดไป</string>
+    <string name="lesson_first_four_6">แก้ได้แล้ว ซูโดกุก็คือแบบนี้ ไม่ว่าตารางจะใหญ่แค่ไหน</string>
+
+    <string name="lesson_first_six_title">ตารางที่ใหญ่ขึ้น</string>
+    <string name="lesson_first_six_summary">กล่องไม่ได้เป็นสี่เหลี่ยมจัตุรัสเสมอไป และกติกาก็ไม่สนใจเรื่องนั้น</string>
+    <string name="lesson_first_six_1">หกคูณหก กติกาไม่เปลี่ยน แต่กล่องเปลี่ยน มันกว้างสามและสูงสอง</string>
+    <string name="lesson_first_six_2">นี่คือกล่องหนึ่ง สามช่องตามขวาง สองช่องลงล่าง หกช่อง ตัวเลข 1 ถึง 6 ตัวละหนึ่งครั้ง</string>
+    <string name="lesson_first_six_3">ตอนแรกเรื่องนี้หลอกคนได้ เพราะตาคาดหวังสี่เหลี่ยมจัตุรัส ให้เวลาสักครู่ หากล่องที่ช่องนี้อยู่ให้เจอก่อนจะไปหาอย่างอื่น</string>
+    <string name="lesson_first_six_4">ตาคุณแล้ว กล่องบนซ้ายขาดตัวเลขไปหนึ่งตัว</string>
+    <string name="lesson_first_six_wrong">ไม่ใช่ตัวนั้น นับดูว่ากล่องมีอะไรอยู่แล้วบ้าง แล้วหาตัวเลขจาก 1 ถึง 6 ที่ไม่อยู่ในนั้น</string>
+    <string name="lesson_first_six_5">ดีมาก ต่อจากนี้ตารางจะเป็นเก้าคูณเก้าและกล่องจะกลับเป็นสี่เหลี่ยมจัตุรัสอีก แต่นิสัยการตรวจทั้งสามเขตนี่แหละที่ควรเก็บไว้</string>
+
+    <string name="lesson_naked_single_title">Naked single</string>
+    <string name="lesson_naked_single_summary">ช่องที่เหลือตัวเลขตัวเดียวต้องมีตัวนั้น</string>
+    <string name="lesson_naked_single_1">ตารางขนาดเต็ม และเทคนิคแรกที่มีชื่อ มันง่ายที่สุดเท่าที่มี และแม้ในปริศนาที่ยากที่สุด มันก็ยังเป็นตัวที่ปิดช่องได้มากที่สุด</string>
+    <string name="lesson_naked_single_2">ดูช่องนี้ช่องเดียว ถามว่ามันมีอะไรได้บ้าง</string>
+    <string name="lesson_naked_single_3">ทุกช่องที่ตัดอะไรออกถูกเน้นไว้ ระหว่างแถว คอลัมน์ และกล่องของมัน แปดในเก้าตัวเลขปรากฏอยู่ที่ไหนสักแห่งที่มันมองเห็นแล้ว</string>
+    <string name="lesson_naked_single_4">จึงเหลือตัวเลขตัวเดียว และช่องนั้นต้องมีมัน ไม่มีอย่างอื่นเป็นไปได้ นั่นคือ naked single naked เพราะเห็นได้จากการดูช่องเดียว single เพราะเหลือรอดตัวเลขเดียว</string>
+    <string name="lesson_naked_single_5">แอปเรียกชื่อนี้ตอนที่ให้คำใบ้คุณ ตอนนี้คุณรู้แล้วว่ามันหมายถึงอะไร</string>
+    <string name="lesson_hidden_single_title">Hidden single</string>
+    <string name="lesson_hidden_single_summary">ตัวเลขที่เหลือที่ลงเพียงที่เดียวในเขตหนึ่งต้องลงตรงนั้น</string>
+    <string name="lesson_hidden_single_1">single อีกแบบหนึ่ง และเป็นแบบที่หาช่องได้มากกว่า naked single คือช่องที่เหลือตัวเลขตัวเดียว อันนี้คือภาพสะท้อนของมัน คือตัวเลขที่เหลือช่องเดียว</string>
+    <string name="lesson_hidden_single_2">หยิบเขตหนึ่งขึ้นมา แล้วเลือกตัวเลขที่มันยังต้องการ ถามว่าในเขตนั้นตัวเลขนี้ลงได้ตรงไหน</string>
+    <string name="lesson_hidden_single_3">ในกล่องนี้คำตอบคือช่องเดียว ช่องว่างอื่นทุกช่องในกล่องถูกตัดออกด้วยแถวหรือคอลัมน์ของมันเอง</string>
+    <string name="lesson_hidden_single_4">ตัวเลขจึงลงตรงนั้น แม้ว่าช่องนั้นเองจะมีตัวเลขหลายตัวที่รับได้ก็ตาม นั่นแหละคือเหตุผลที่เรียกว่า hidden ตัวเลขซ่อนตัวอยู่ท่ามกลางตัวอื่น</string>
+    <string name="lesson_hidden_single_5">อันนี้แหละที่ควรเรียนให้แม่น ในปริศนาส่วนใหญ่ มันคือสิ่งที่พาคุณไปต่อหลังจาก naked single หมดแล้ว</string>
+    <string name="lesson_hidden_single_turn">ตาคุณแล้ว ใส่ตัวเลขที่ไม่มีที่อื่นให้ไปในกล่องนี้</string>
+    <string name="lesson_hidden_single_wrong">ไม่ใช่ตัวนั้น ถามว่ากล่องยังต้องการตัวเลขไหน แล้วตรวจดูว่าแต่ละตัวลงได้ตรงไหนจริง ๆ</string>
+
+    <string name="lesson_scanning_title">วิธีมอง</string>
+    <string name="lesson_scanning_summary">กวาดตัวเลขตัวหนึ่งไปทั่วตาราง แทนที่จะศึกษาทีละช่อง</string>
+    <string name="lesson_scanning_1">ตอนนี้คุณรู้สองเทคนิคแล้ว การรู้ไม่เหมือนกับการหาเจอ และการหาเจอนี่แหละที่กินเวลา</string>
+    <string name="lesson_scanning_2">อย่าอ่านตารางทีละช่อง หยิบตัวเลขหนึ่งตัว เช่นตัวที่ปรากฏบ่อยที่สุดอยู่แล้ว แล้วดูสามกล่องในแถบเดียวกัน</string>
+    <string name="lesson_scanning_3">ถามแต่ละกล่องด้วยคำถามเดียว ตัวเลขนี้ลงได้ตรงไหน แถวและคอลัมน์ที่มีมันอยู่แล้วจะขีดคำตอบออกไปเกือบหมด และบ่อยครั้งจะเหลือแค่ช่องเดียว</string>
+    <string name="lesson_scanning_4">แล้วย้ายไปแถบถัดไป และเมื่อตัวเลขนั้นหมดแล้วก็ย้ายไปตัวเลขถัดไป นั่นแหละคือการกวาด และนั่นคือสิ่งที่คนแก้เร็ว ๆ กำลังทำอยู่ตอนที่ดูเหมือนพวกเขาแค่จ้องเฉย ๆ</string>
+    <string name="lesson_scanning_5">การทำอย่างเป็นระบบไม่เสียอะไรเลยและช่วยให้ไม่รู้สึกว่าติด ซึ่งความรู้สึกนั้นมักจะเป็นแค่ความรู้สึกว่ามองมุมเดิมไปแล้วสี่รอบ</string>
+
+    <string name="lesson_first_nine_title">ตารางเต็ม ด้วย single ล้วน ๆ</string>
+    <string name="lesson_first_nine_summary">ทุกอย่างที่คุณเรียนมาถึงตอนนี้พอสำหรับทำปริศนาทั้งข้อให้จบ</string>
+    <string name="lesson_first_nine_1">เก้าคูณเก้าของจริง ที่ระดับง่าย ทุกขั้นในนั้นคือ single ไม่ naked ก็ hidden และที่นี่ไม่มีอะไรที่คุณยังไม่เคยเจอ</string>
+    <string name="lesson_first_nine_2">นี่ไว้ให้เริ่มต้น ช่องนี้มีแปดในเก้าตัวเลขถูกตัดออกด้วยสิ่งที่มันมองเห็น</string>
+    <string name="lesson_first_nine_3">นั่นคือหน้าตาของปริศนาระดับง่าย single ไปจนจบ และไม่มีการเดาที่จุดใดเลย</string>
+    <string name="lesson_first_nine_4">พอออกจากบทเรียนนี้แล้วลองเล่นสักข้อ ขั้นถัดไปว่าด้วยโน้ต และโน้ตจะเริ่มคุ้มค่าก็ต่อเมื่อปริศนายากกว่านี้</string>
+    <string name="lesson_first_nine_turn">ตาคุณแล้ว ตรงนี้มีตัวเลขที่เป็นไปได้ตัวเดียว</string>
+    <string name="lesson_first_nine_wrong">ดูแถว คอลัมน์ และกล่องที่ช่องนี้อยู่อีกครั้ง แล้วไล่ดูว่ามันมีอะไรอยู่แล้วบ้าง</string>
+
+    <string name="lesson_pencil_marks_title">โน้ต</string>
+    <string name="lesson_pencil_marks_summary">โน้ตคือบันทึกสิ่งที่คุณคิดออกแล้ว เพื่อจะได้ไม่ต้องคิดใหม่</string>
+    <string name="lesson_pencil_marks_1">ต่อจากนี้ปริศนาจะไม่ยอมแพ้ให้ single อีกแล้ว และคุณจะต้องจดบางอย่างไว้ โน้ตหรือรอยดินสอ คือตัวเลขเล็ก ๆ ในช่องที่บอกว่าตัวเลขนั้นยังเป็นไปได้ตรงนั้น</string>
+    <string name="lesson_pencil_marks_2">ดูช่องนี้ การคิดออกว่ามันเป็นได้แค่หนึ่งในสองตัวเลขใช้เวลาไม่กี่วินาที การเขียนสองตัวนั้นลงไปแปลว่าครั้งหน้าที่มองจะไม่ใช้เวลาเลย</string>
+    <string name="lesson_pencil_marks_3">โน้ตมีแค่นั้นแหละ มันไม่ใช่การเดาและไม่ใช่การผูกมัด มันคือบันทึกของข้อสรุปที่คุณคิดออกไปแล้ว</string>
+    <string name="lesson_pencil_marks_4">ทุกเทคนิคต่อจากนี้ว่าด้วยรูปแบบในโน้ต ไม่ใช่รูปแบบในตัวเลข คู่ สามตัว ปลา และโซ่ ล้วนอ่านออกมาจากโน้ตทั้งนั้น</string>
+    <string name="lesson_pencil_marks_5">ไม่มีใครแก้ซูโดกุยาก ๆ ในหัวได้ และคนที่ไม่จดอะไรเลยในระดับผู้เชี่ยวชาญไม่ได้ฉลาด แต่ช้า</string>
+
+    <string name="lesson_when_to_mark_title">จะจดเมื่อไร</string>
+    <string name="lesson_when_to_mark_summary">ใส่โน้ตตอนที่ single หมดแล้ว ไม่ใช่ก่อนหน้านั้น</string>
+    <string name="lesson_when_to_mark_1">มีสองวิธีในการใช้โน้ต และความต่างนั้นสำคัญ</string>
+    <string name="lesson_when_to_mark_2">วิธีแรกคือเติมตัวเลขที่เป็นไปได้ทุกตัวลงในทุกช่องว่างพร้อมกันหมดก่อนทำอย่างอื่น วิธีนี้ละเอียด ทำด้วยมือใช้เวลาหลายนาที และในปริศนาง่าย ๆ ส่วนใหญ่ก็เสียเปล่า เพราะ single จะปิดตารางได้อยู่แล้ว</string>
+    <string name="lesson_when_to_mark_3">วิธีที่สองคือทำเครื่องหมายเฉพาะตรงที่คุณกำลังทำงานอยู่ สี่ช่องนี้ควรทำเครื่องหมายเพราะมีอะไรกำลังเกิดขึ้นระหว่างมัน ส่วนที่เหลือของตารางไม่ต้อง</string>
+    <string name="lesson_when_to_mark_4">คำแนะนำตามจริง แก้ single ให้หมดก่อน แล้วเริ่มทำเครื่องหมายเมื่อคุณหามันไม่เจอแล้ว บนกระดาษวิธีนี้ประหยัดเวลาจริง ในแอปนี้การเติมโน้ตทั้งหมดใช้แตะครั้งเดียว ต้นทุนจึงน้อยกว่า แต่ตารางที่เต็มไปด้วยตัวเลขก็ยังอ่านยากกว่าตารางที่มีโน้ตเฉพาะตรงที่จำเป็นอยู่ดี</string>
+
+    <string name="lesson_marks_true_title">การรักษาโน้ตให้ซื่อตรง</string>
+    <string name="lesson_marks_true_summary">โน้ตที่ล้าสมัยแล้วแย่กว่าการไม่มีโน้ตเลย</string>
+    <string name="lesson_marks_true_1">โน้ตมีอันตรายอยู่อย่างหนึ่ง ทุกตัวเลขที่คุณใส่ทำให้บางโน้ตผิดไป และโน้ตที่ผิดจะพาคุณเข้าสู่การให้เหตุผลที่ถูกไม่ได้เลย</string>
+    <string name="lesson_marks_true_2">ใส่ตัวเลขตรงนี้ แล้วทุกช่องที่มันมองเห็นก็เสียตัวเลขนั้นไปจากความเป็นไปได้ ถ้าโน้ตเหล่านั้นไม่ถูกลบ เทคนิคถัดไปที่คุณเห็นอาจสร้างอยู่บนโน้ตตัวใดตัวหนึ่งในนั้น</string>
+    <string name="lesson_marks_true_3">แอปนี้ทำให้คุณได้ มีการตั้งค่าชื่อว่า ลบโน้ตที่ตัวเลขซึ่งเพิ่งใส่ตัดออกไป และมันเปิดไว้เป็นค่าตั้งต้น บนกระดาษคุณต้องทำเอง และความผิดพลาดส่วนใหญ่มาจากตรงนั้น</string>
+    <string name="lesson_marks_true_4">เมื่อปริศนาเพี้ยนไปและคุณไม่รู้ว่าเพราะอะไร ให้สงสัยโน้ตที่ล้าสมัยเป็นอย่างแรก ปุ่มคำใบ้จะบอกคุณเมื่อตัวเลขที่คุณใส่ไว้ถูกไม่ได้</string>
+
+    <string name="lesson_pointing_title">Pointing pair</string>
+    <string name="lesson_pointing_summary">ถ้าตัวเลขในกล่องหนึ่งติดอยู่บนเส้นเดียว มันก็หายไปจากเส้นนั้นในทุกที่อื่น</string>
+    <string name="lesson_pointing_1">เทคนิคแรกที่ตัดความเป็นไปได้ออกแทนที่จะใส่ตัวเลข เทคนิคส่วนใหญ่ต่อจากนี้ทำแบบนั้น และต้องใช้เวลาปรับตัว คุณคืบหน้าได้โดยไม่ได้เขียนตัวเลขลงไปสักตัว</string>
+    <string name="lesson_pointing_2">ดูว่าตัวเลขหนึ่งลงได้ตรงไหนบ้างในกล่องนี้ ทุกที่ที่มันลงได้อยู่บนคอลัมน์เดียวกัน</string>
+    <string name="lesson_pointing_3">กล่องต้องมีตัวเลขนั้นอยู่ที่ไหนสักแห่ง ไม่ว่ามันจะไปลงตรงไหน มันก็อยู่ในคอลัมน์นั้น</string>
+    <string name="lesson_pointing_4">ซึ่งแปลว่าส่วนที่เหลือของคอลัมน์มีมันไม่ได้ ช่องเหล่านี้เสียตัวเลขนั้นไปจากความเป็นไปได้ ทั้งที่อยู่ไกลจากกล่องนั้นมาก</string>
+    <string name="lesson_pointing_5">มันชื่อ pointing เพราะคู่ที่อยู่ในกล่องชี้ไปตามเส้นและกวาดเส้นนั้นให้โล่ง</string>
+
+    <string name="lesson_claiming_title">Claiming pair</string>
+    <string name="lesson_claiming_summary">ถ้าตัวเลขบนเส้นหนึ่งติดอยู่ในกล่องเดียว มันก็หายไปจากกล่องนั้นในทุกที่อื่น</string>
+    <string name="lesson_claiming_1">เหตุผลเดียวกันอ่านกลับทาง และคุ้มที่จะแยกมาดูเพราะตาไปเจอมันคนละที่</string>
+    <string name="lesson_claiming_2">คราวนี้เริ่มจากเส้น ดูว่าตัวเลขหนึ่งลงได้ตรงไหนบ้างตามแถวนี้</string>
+    <string name="lesson_claiming_3">ทุกที่ที่มันลงได้อยู่ในกล่องเดียวกัน แถวต้องมีตัวเลขนั้นอยู่ที่ไหนสักแห่ง ตัวเลขจึงอยู่ในกล่องนั้น</string>
+    <string name="lesson_claiming_4">ซึ่งแปลว่าส่วนที่เหลือของกล่องเสียมันไป ช่องเหล่านี้มีมันไม่ได้อีกแล้ว</string>
+    <string name="lesson_claiming_5">pointing มองที่กล่องแล้วกวาดเส้น claiming มองที่เส้นแล้วกวาดกล่อง สองชื่อ ความคิดเดียว และคุณจะเจอทั้งสองในปริศนายากทุกข้อ</string>
+
+    <string name="lesson_naked_pair_title">Naked pair</string>
+    <string name="lesson_naked_pair_summary">สองช่องที่มีตัวเลขสองตัวเดียวกันเป็นเจ้าของทั้งสองตัว</string>
+    <string name="lesson_naked_pair_1">ทีนี้ถึงกลุ่ม อันนี้เล็กที่สุดในบรรดากลุ่ม และเป็นรูปแบบที่ทำให้ที่เหลือชัดเจนขึ้น</string>
+    <string name="lesson_naked_pair_2">สองช่องนี้อยู่ในเขตเดียวกัน และแต่ละช่องเป็นได้แค่หนึ่งในสองตัวเลขเดียวกันนั้น</string>
+    <string name="lesson_naked_pair_3">มันจะแบ่งตัวเลขทั้งสองนั้นกันไปช่องละตัว ตัวไหนอยู่ตรงไหนไม่สำคัญและคุณไม่จำเป็นต้องรู้</string>
+    <string name="lesson_naked_pair_4">ไม่มีช่องอื่นในเขตนั้นที่มีตัวใดตัวหนึ่งได้ ช่องนี้เสียไปหนึ่งตัว</string>
+    <string name="lesson_naked_pair_5">naked อีกครั้ง เพราะเห็นได้จากการอ่านสองช่องนั้น ไม่มีอะไรซ่อนอยู่และไม่มีช่องอื่นเข้ามาเกี่ยวในเหตุผล</string>
+
+    <string name="lesson_hidden_pair_title">Hidden pair</string>
+    <string name="lesson_hidden_pair_summary">ตัวเลขสองตัวที่เหลือที่ลงเพียงสองที่เดียวกันเป็นเจ้าของช่องเหล่านั้น</string>
+    <string name="lesson_hidden_pair_1">ภาพสะท้อนของ naked pair เหมือนกับที่ hidden single สะท้อน naked single</string>
+    <string name="lesson_hidden_pair_2">ในเขตนี้ ตัวเลขสองตัว ทั้งคู่ ลงได้แค่ในสองช่องเดียวกันนั้น</string>
+    <string name="lesson_hidden_pair_3">ตัวเลขสองตัวนั้นจะแบ่งสองช่องนั้นกันไป ไม่ว่าช่องเหล่านั้นจะดูเหมือนมีอะไรได้อีก มันก็มีไม่ได้</string>
+    <string name="lesson_hidden_pair_4">สองช่องนั้นเสียโน้ตอื่นทั้งหมดไป ตอนนี้มันกลายเป็น naked pair และบ่อยครั้งนั่นคือจุดประสงค์ของรูปแบบนี้ คือเปลี่ยน hidden pair ให้เป็น naked pair ที่กวาดส่วนที่เหลือของเขตให้โล่ง</string>
+    <string name="lesson_hidden_pair_5">hidden pair เห็นยากกว่า naked pair เพราะคุณต้องมองที่ตัวเลข ไม่ใช่ที่ช่อง บนตารางที่ตันแล้ว มันคุ้มกับความพยายาม</string>
+
+    <string name="lesson_naked_triple_title">Naked triple</string>
+    <string name="lesson_naked_triple_summary">สามช่องที่แบ่งตัวเลขสามตัวเป็นเจ้าของมัน แม้ไม่มีช่องไหนมีครบทั้งสาม</string>
+    <string name="lesson_naked_triple_1">คู่ที่เพิ่มมาอีกช่อง กับจุดพลิกหนึ่งอย่างที่หลอกทุกคนในครั้งแรก</string>
+    <string name="lesson_naked_triple_2">สามช่องนี้อยู่ในเขตเดียวกัน และรวมกันแล้วใช้ตัวเลขต่างกันเพียงสามตัว</string>
+    <string name="lesson_naked_triple_3">จุดพลิกคือ ไม่จำเป็นว่าช่องไหนต้องมีครบทั้งสาม สองตัวในช่องหนึ่ง สองตัวในช่องถัดไป สองตัวในช่องที่สาม ก็เป็นสามตัวได้ ตราบใดที่รวมทั้งสามช่องแล้วมีตัวเลขปรากฏแค่สามตัว</string>
+    <string name="lesson_naked_triple_4">สามช่องนั้นจะแบ่งตัวเลขสามตัวกันไป ช่องอื่นทุกช่องในเขตจึงเสียไปทั้งสามตัว นั่นคือโน้ตหายไปเยอะมากในคราวเดียว</string>
+    <string name="lesson_naked_triple_5">เวลาไล่หา ให้นับตัวเลขที่ต่างกันบนสองหรือสามช่อง แทนที่จะมองหาโน้ตที่เหมือนกันเป๊ะ นิสัยแบบนั้นแหละที่หาสามตัวเจอ</string>
+
+    <string name="lesson_hidden_triple_title">Hidden triple</string>
+    <string name="lesson_hidden_triple_summary">ตัวเลขสามตัวที่เหลือที่ลงเพียงสามที่เป็นเจ้าของช่องเหล่านั้น</string>
+    <string name="lesson_hidden_triple_1">ความสัมพันธ์เดียวกับ hidden pair ใหญ่ขึ้นหนึ่งขนาด และหายากจริง ๆ</string>
+    <string name="lesson_hidden_triple_2">ในเขตนี้ ตัวเลขสามตัวรวมกันลงได้แค่ในสามช่องเดียวกันนั้น</string>
+    <string name="lesson_hidden_triple_3">สามช่องนั้นจึงมีตัวเลขสามตัวนั้น และโน้ตอื่นทุกตัวในช่องเหล่านั้นตัดออกได้</string>
+    <string name="lesson_hidden_triple_4">อย่าไล่หาอันนี้ก่อน ให้หามันตอนที่เขตหนึ่งเหลือไม่กี่ช่องและอย่างอื่นใช้ไม่ได้ผลแล้ว ส่วนใหญ่แล้วรูปแบบ naked ในเขตเดียวกันจะเห็นง่ายกว่า</string>
+
+    <string name="lesson_quads_title">สี่ตัว</string>
+    <string name="lesson_quads_summary">ความคิดเดิมกับสี่ตัว ควรรู้ไว้แต่ไม่ค่อยคุ้มที่จะไล่หา</string>
+    <string name="lesson_quads_1">คู่ สามตัว และตอนนี้สี่ตัว เหตุผลไม่เปลี่ยน สี่ช่องที่รวมกันใช้ตัวเลขสี่ตัวเป็นเจ้าของตัวเลขเหล่านั้น และตัวเลขสี่ตัวที่มีที่ลงแค่สี่ที่เป็นเจ้าของช่องเหล่านั้น</string>
+    <string name="lesson_quads_2">นี่คือ naked quad สี่ช่อง สี่ตัวเลขรวมกัน และส่วนที่เหลือของเขตเสียไปทั้งสี่ตัว</string>
+    <string name="lesson_quads_3">และนี่คือคำแนะนำตามจริง สี่ตัวมีจริงและถูกกติกา แต่หายาก และสี่ตัวในเขตที่มีช่องว่างห้าหรือหกช่องมักแปลว่ามีรูปแบบที่ง่ายกว่าอยู่ในช่องอื่นซึ่งคุณมองข้ามไป</string>
+    <string name="lesson_quads_4">นี่คือ hidden quad เพื่อความครบถ้วน ตัวเลขสี่ตัวกับที่ลงที่เหลือสี่ที่</string>
+    <string name="lesson_quads_5">เรียนให้จำมันได้ เพื่อว่าคำใบ้ที่เรียกชื่อมันจะเข้าใจได้ อย่าเสียเวลาไปตามหามัน</string>
+
+    <string name="lesson_x_wing_title">X-Wing</string>
+    <string name="lesson_x_wing_summary">ตัวเลขที่ถูกตรึงไว้กับสองคอลัมน์ในสองแถวจะหายไปจากคอลัมน์เหล่านั้นในทุกที่อื่น</string>
+    <string name="lesson_x_wing_1">รูปแบบแรกที่พาดทั้งตารางแทนที่จะอยู่ในเขตเดียว มันมีรูปร่าง และเมื่อคุณเห็นรูปร่างนั้นแล้ว คุณจะเห็นมันไปทุกที่</string>
+    <string name="lesson_x_wing_2">หยิบตัวเลขหนึ่งตัว ในสองแถวนี้ มันลงได้แค่สองช่องต่อแถว และช่องเหล่านั้นอยู่ในสองคอลัมน์เดียวกัน สี่ช่อง เป็นรูปสี่เหลี่ยม</string>
+    <string name="lesson_x_wing_3">ทีนี้คิดให้ตลอด แต่ละแถวต้องมีตัวเลขนั้นหนึ่งครั้ง แถวหนึ่งใช้มุมไหน อีกแถวก็ต้องใช้มุมตรงข้าม ไม่มีทางเลือกที่สาม</string>
+    <string name="lesson_x_wing_4">สองแถวนั้นรวมกันจึงใช้ตัวเลขนั้นในทั้งสองคอลัมน์ อย่างอื่นในคอลัมน์เหล่านั้นเสียมันไป</string>
+    <string name="lesson_x_wing_5">มันใช้ได้กับการสลับแถวกับคอลัมน์ด้วย สองคอลัมน์ที่ตัวเลขถูกจำกัดอยู่ในสองแถวเดียวกันจะกวาดแถวเหล่านั้นให้โล่ง</string>
+
+    <string name="lesson_swordfish_title">Swordfish</string>
+    <string name="lesson_swordfish_summary">เหตุผลเดียวกับ X-Wing แต่ใช้สามเส้นแทนสองเส้น</string>
+    <string name="lesson_swordfish_1">X-Wing ที่เพิ่มแถวมาอีกหนึ่ง ชื่อไม่ช่วยอะไรแต่ตัวรูปแบบเป็นการต่อยอดตรง ๆ</string>
+    <string name="lesson_swordfish_2">สามแถว ตัวเลขหนึ่งตัว และในแต่ละแถวตัวเลขนั้นถูกจำกัดอยู่ในช่องของสามคอลัมน์เดียวกัน</string>
+    <string name="lesson_swordfish_3">ไม่จำเป็นว่าทุกแถวต้องใช้ครบทั้งสามคอลัมน์ สองในสามก็พอ ตราบใดที่ไม่มีแถวไหนหลุดออกไปนอกนั้น</string>
+    <string name="lesson_swordfish_4">สามแถวรวมกันใช้ตัวเลขนั้นในสามคอลัมน์นั้น ส่วนที่เหลือของคอลัมน์เหล่านั้นจึงเสียมันไป</string>
+    <string name="lesson_swordfish_5">ถ้าคุณตาม X-Wing ทันก็ตามอันนี้ทัน ส่วนการหามันเจอเป็นอีกเรื่อง ตรงนี้แหละที่การใส่โน้ตเลิกเป็นทางเลือก</string>
+
+    <string name="lesson_jellyfish_title">Jellyfish</string>
+    <string name="lesson_jellyfish_summary">สี่เส้น รูปแบบเดิมอีกครั้ง และเป็นอันสุดท้ายที่คุ้มจะเรียน</string>
+    <string name="lesson_jellyfish_1">สี่แถว ตัวเลขหนึ่งตัว สี่คอลัมน์ เหตุผลไม่เปลี่ยนเลยตั้งแต่ X-Wing และจะไม่เปลี่ยนอีก</string>
+    <string name="lesson_jellyfish_2">นี่คืออันหนึ่ง สี่แถว และตัวเลขในแต่ละแถวถูกจำกัดอยู่ในสี่คอลัมน์เดียวกัน</string>
+    <string name="lesson_jellyfish_3">เกินสี่ไปแล้วไม่มีอะไรให้เรียนอีก แบบห้าเส้นมีอยู่ในทางทฤษฎี แต่บนตารางเก้าคูณเก้าทุกแบบสามารถหาเจอได้ในรูปแบบที่เล็กกว่าในสี่คอลัมน์ที่เหลือ จึงไม่มีใครไปตามหามัน</string>
+    <string name="lesson_jellyfish_4">นี่คือขอบไกลสุดของสิ่งที่คุ้มจะไล่หาด้วยรูปแบบ เลยจากนี้ไป การใช้ความสนใจไปกับโซ่จะคุ้มกว่า</string>
+
+    <string name="lesson_xy_wing_title">XY-Wing</string>
+    <string name="lesson_xy_wing_summary">สามช่องที่มีตัวเลขช่องละสองตัว และหนึ่งช่องที่เสียเปรียบไม่ว่าผลจะออกทางไหน</string>
+    <string name="lesson_xy_wing_1">wing ต้องใช้วิธีคิดแบบอื่น จนถึงตอนนี้คุณหารูปแบบเจอแล้วอ่านข้อสรุปออกมา ตรงนี้คุณให้เหตุผลด้วยการแยกกรณี</string>
+    <string name="lesson_xy_wing_2">เริ่มจากช่องนี้ มันมีตัวเลขที่เป็นไปได้สองตัวพอดี และมันคือบานพับของรูปแบบทั้งหมด</string>
+    <string name="lesson_xy_wing_3">มันมีเพื่อนสองช่อง แต่ละช่องอยู่เขตเดียวกับมัน และแต่ละช่องมีตัวเลขสองตัว ตัวหนึ่งใช้ร่วมกับบานพับ อีกตัวใช้ร่วมกันเอง</string>
+    <string name="lesson_xy_wing_4">ทีนี้มาถึงเหตุผล บานพับเป็นหนึ่งในสองตัวเลขของมัน ถ้าเป็นตัวแรก ปีกซ้ายก็ถูกบังคับให้เป็นตัวเลขร่วม ถ้าเป็นตัวที่สอง ปีกขวาก็ถูกบังคับให้เป็นตัวเลขร่วมตัวเดียวกันนั้น ไม่ว่าทางไหน ปีกใดปีกหนึ่งก็ต้องมีมัน</string>
+    <string name="lesson_xy_wing_5">ช่องใดก็ตามที่มองเห็นทั้งสองปีกจึงมีตัวเลขนั้นไม่ได้ ช่องนี้เสียมันไป</string>
+    <string name="lesson_xy_wing_6">คุณไม่เคยรู้เลยว่าบานพับเป็นตัวไหนจริง ๆ นั่นแหละคือประเด็น และนั่นคือสิ่งที่ทำให้ wing รู้สึกต่างจากทุกอย่างก่อนหน้านี้</string>
+
+    <string name="lesson_xyz_wing_title">XYZ-Wing</string>
+    <string name="lesson_xyz_wing_summary">เหมือน XY-Wing แต่บานพับเป็นตัวเลขร่วมได้ด้วย ข้อสรุปจึงอ่อนกว่า</string>
+    <string name="lesson_xyz_wing_1">เปลี่ยนจาก XY-Wing ไปอย่างเดียว และมันทำให้ข้อสรุปเล็กลง</string>
+    <string name="lesson_xyz_wing_2">ตรงนี้บานพับมีตัวเลขสามตัวแทนที่จะเป็นสอง และตัวเลขร่วมก็เป็นหนึ่งในนั้น</string>
+    <string name="lesson_xyz_wing_3">ตอนนี้จึงมีสามกรณี ไม่ใช่สอง ปีกใดปีกหนึ่งอาจมีตัวเลขร่วม หรือบานพับเองก็ได้</string>
+    <string name="lesson_xyz_wing_4">แปลว่าช่องหนึ่งจะเสียตัวเลขนั้นก็ต่อเมื่อมันมองเห็นครบทั้งสาม ไม่ใช่แค่สองปีก มีช่องที่เข้าเงื่อนไขน้อยกว่า และนั่นคือเหตุผลที่รูปแบบนี้ตัดออกได้น้อยกว่าญาติที่ง่ายกว่าของมัน</string>
+    <string name="lesson_xyz_wing_5">ควรรู้ไว้เพราะรูปร่างดูเกือบเหมือนกัน และการอ่านมันเป็น XY-Wing จะทำให้คุณตัดตัวเลขที่คุณไม่มีสิทธิ์ตัด</string>
+
+    <string name="lesson_w_wing_title">W-Wing</string>
+    <string name="lesson_w_wing_summary">คู่ที่เหมือนกันสองคู่ เชื่อมด้วยเส้นที่ต้องมีตัวเลขของพวกมันตัวหนึ่ง</string>
+    <string name="lesson_w_wing_1">wing ตัวที่สาม และเป็นตัวที่ใช้การคำนวณน้อยที่สุด</string>
+    <string name="lesson_w_wing_2">สองช่องที่ไม่ได้อยู่เขตเดียวกัน แต่ละช่องมีตัวเลขสองตัวเดียวกัน</string>
+    <string name="lesson_w_wing_3">ทีนี้หาเขตที่ตัวเลขตัวหนึ่งในสองตัวนั้นลงได้แค่สองที่ และสองที่นั้นต่างก็มองเห็นช่องคู่ช่องละหนึ่ง เขตนั้นแหละคือตัวเชื่อม</string>
+    <string name="lesson_w_wing_4">เขตตัวเชื่อมต้องมีตัวเลขนั้นในที่ใดที่หนึ่งจากสองที่ของมัน และไม่ว่าจะเป็นที่ไหน มันก็บังคับให้ช่องคู่ช่องหนึ่งรับตัวเลขอีกตัว ดังนั้นช่องคู่ช่องใดช่องหนึ่งมีตัวเลขอีกตัวเสมอ</string>
+    <string name="lesson_w_wing_5">ช่องใดก็ตามที่มองเห็นช่องคู่ทั้งสองจะเสียมันไป ช่องนี้เป็นแบบนั้น</string>
+
+    <string name="lesson_rectangle_title">Unique rectangle</string>
+    <string name="lesson_rectangle_summary">ปริศนาที่มีคำตอบเดียวจะมีสี่เหลี่ยมที่หมุนได้ไม่ได้</string>
+    <string name="lesson_rectangle_1">เทคนิคนี้ต่างจากทุกเทคนิคอื่นโดยประเภท และควรบอกเหตุผลก่อนจะใช้มัน</string>
+    <string name="lesson_rectangle_2">ดูสี่ช่องนี้ มันอยู่ในสองแถว สองคอลัมน์ และสองกล่องพอดี และแต่ละช่องมีตัวเลขสองตัวเดียวกันได้</string>
+    <string name="lesson_rectangle_3">ถ้าเรื่องมีแค่นั้น ปริศนาก็จะมีสองคำตอบ เติมสี่เหลี่ยมแบบหนึ่ง หรือสลับเส้นทแยงทั้งสอง แล้วตารางทั้งสองแบบก็ทำตามกติกาครบ ปริศนาที่ทำมาอย่างถูกต้องไม่มีสองคำตอบ</string>
+    <string name="lesson_rectangle_4">เรื่องจึงมีแค่นั้นไม่ได้ ช่องใดช่องหนึ่งในนั้นต้องมีอย่างอื่น และนั่นแหละคือสิ่งที่ให้คุณตัดออกได้</string>
+    <string name="lesson_rectangle_5">ตรงนี้ความเป็นไปได้ที่เกินมารอดอยู่ ส่วนคู่ที่ใช้ร่วมกันถูกขีดออกจากช่องเหล่านี้</string>
+    <string name="lesson_rectangle_6">จุดที่ต้องระวัง พูดตรง ๆ เหตุผลนี้ถือว่าปริศนาทำมาอย่างถูกต้อง เรื่องนี้จริงกับทุกปริศนาในแอปนี้ เพราะตัวสร้างมันตรวจให้ ถ้าเอาไปใช้กับตารางจากแหล่งที่ไม่รู้จัก มันอาจพาคุณหลงทางได้</string>
+
+    <string name="lesson_bug_title">BUG บวกหนึ่ง</string>
+    <string name="lesson_bug_summary">ถ้าทุกช่องยกเว้นช่องเดียวมีตัวเลือกสองตัว ปริศนาก็จะกำกวม ช่องนั้นจึงพิเศษ</string>
+    <string name="lesson_bug_1">ข้อสมมติเดียวกับ unique rectangle ในรูปร่างอื่น</string>
+    <string name="lesson_bug_2">สมมติว่าตารางหนึ่งมาถึงสภาพที่ทุกช่องที่ยังไม่ได้แก้มีความเป็นไปได้สองอย่างพอดี และตัวเลขทุกตัวปรากฏสองครั้งพอดีในทุกเขต ตารางแบบนั้นมีสองคำตอบเสมอ</string>
+    <string name="lesson_bug_3">ปริศนาที่ทำมาอย่างถูกต้องจึงไปถึงสภาพนั้นไม่ได้เลย ถ้าคุณเจอสภาพที่ห่างจากตรงนั้นแค่ช่องเดียว โดยมีช่องเดียวพอดีที่มีความเป็นไปได้สามอย่างแทนที่จะเป็นสอง ช่องนั้นแหละที่ช่วยปริศนาไว้จากความกำกวม</string>
+    <string name="lesson_bug_4">ตัวเลขที่ปรากฏสามครั้งในเขตของมันคือตัวที่ช่องนั้นต้องมี มันเป็นรูปแบบที่หายากและเป็นการปิดเกมที่เร็วมากเมื่อมันโผล่มา</string>
+
+    <string name="lesson_colouring_title">การระบายสีอย่างง่าย</string>
+    <string name="lesson_colouring_summary">ตามตัวเลขหนึ่งผ่านช่องที่มันมีบ้านแค่สองหลัง แล้วมองหาข้อขัดแย้ง</string>
+    <string name="lesson_colouring_1">โซ่ แบบค่อยเป็นค่อยไป การระบายสีคือทางเข้าที่ง่ายที่สุด และข้างใต้ก็คือเหตุผลเดียวกัน</string>
+    <string name="lesson_colouring_2">เลือกตัวเลขหนึ่งตัว หาเขตที่มันมีช่องที่เป็นไปได้แค่สองช่อง สองช่องนั้นเชื่อมกัน หนึ่งในนั้นพอดีที่เป็นตัวเลขนั้น</string>
+    <string name="lesson_colouring_3">ระบายสีช่องหนึ่งในคู่ แล้วตามการเชื่อมไป ทุกช่องที่ต่อกันแบบนี้จะได้สีใดสีหนึ่งในสองสี และสีหนึ่งทั้งสีถูก อีกสีผิด คุณไม่รู้ว่าสีไหน</string>
+    <string name="lesson_colouring_4">ทีนี้มองหาข้อขัดแย้ง ถ้าช่องหนึ่งมองเห็นสองช่องที่สีเดียวกัน สีนั้นก็เป็นสีที่ถูกไม่ได้ ช่องนั้นจึงเสียตัวเลขไป ตรงนี้เกิดขึ้นแบบนั้น</string>
+    <string name="lesson_colouring_5">สองสี หนึ่งข้อขัดแย้ง และไม่มีการเดาอยู่ที่ไหนเลย วิธีทั้งหมดมีแค่นั้น</string>
+
+    <string name="lesson_remote_pairs_title">Remote pairs</string>
+    <string name="lesson_remote_pairs_summary">โซ่ของคู่ที่เหมือนกันจะสลับกัน ปลายทั้งสองจึงตรงข้ามกัน</string>
+    <string name="lesson_remote_pairs_1">การระบายสีที่ใช้กับช่อง ไม่ใช่กับตัวเลขตัวเดียว</string>
+    <string name="lesson_remote_pairs_2">นี่คือโซ่ของช่องที่ทุกช่องมีตัวเลขสองตัวเดียวกัน แต่ละช่องเชื่อมกับช่องถัดไปด้วยเขตที่ใช้ร่วมกัน</string>
+    <string name="lesson_remote_pairs_3">เพราะทุกข้อต่อเป็นคู่ ตัวเลขจึงสลับกันไปตามโซ่ ช่องแรกรับตัวหนึ่ง ช่องที่สองรับอีกตัว และเป็นอย่างนั้นไปเรื่อย ๆ</string>
+    <string name="lesson_remote_pairs_4">ปลายทั้งสองของโซ่ที่ยาวเป็นเลขคู่จึงตรงข้ามกัน คือมีตัวเลขคนละตัว ช่องใดก็ตามที่มองเห็นปลายทั้งสองต้องเสียตัวเลขทั้งสองตัว เพราะแต่ละตัวอยู่ที่ปลายใดปลายหนึ่ง</string>
+    <string name="lesson_remote_pairs_5">มันเป็นโซ่ที่เห็นง่ายที่สุด เพราะทุกช่องในนั้นหน้าตาเหมือนกันหมด</string>
+
+    <string name="lesson_multi_colouring_title">การระบายหลายสี</string>
+    <string name="lesson_multi_colouring_summary">โซ่ระบายสีสองเส้นที่ส่งผลต่อกันจะตัดกันเองออก</string>
+    <string name="lesson_multi_colouring_1">การระบายสีอย่างง่ายใช้โซ่เส้นเดียว บางครั้งโซ่เส้นเดียวไม่มีข้อขัดแย้ง แต่สองเส้นรวมกันมี</string>
+    <string name="lesson_multi_colouring_2">นี่คือช่องจากโซ่สองเส้นที่แยกกันสำหรับตัวเลขเดียวกัน</string>
+    <string name="lesson_multi_colouring_3">ถ้าสีในโซ่หนึ่งมองเห็นสีในอีกโซ่หนึ่ง สองสีนั้นก็ถูกพร้อมกันไม่ได้ ตามเรื่องนั้นไปจะตัดตัวเลขออกจากช่องที่มองเห็นสองสีที่เหลือ</string>
+    <string name="lesson_multi_colouring_4">ข้อสรุปมาลงตรงนี้</string>
+    <string name="lesson_multi_colouring_5">ตรงนี้แหละที่การระบายสีเลิกเป็นสิ่งที่เก็บไว้ในหัวได้ และเริ่มอยากให้จดไว้ว่าช่องไหนสีอะไร</string>
+
+    <string name="lesson_x_chain_title">X-Chain</string>
+    <string name="lesson_x_chain_summary">ตัวเลขหนึ่งตัว ข้อต่อที่สลับระหว่างแข็งกับอ่อน และการตัดออกที่ปลาย</string>
+    <string name="lesson_x_chain_1">รูปทั่วไปของทุกอย่างในขั้นที่ผ่านมา ตัวเลขหนึ่งตัว กับโซ่ของข้อต่อที่สลับกัน</string>
+    <string name="lesson_x_chain_2">ข้อต่อแข็งคือสองช่องที่อย่างน้อยช่องหนึ่งต้องมีตัวเลขนั้น ซึ่งเขตที่มีที่ลงแค่สองที่ให้คุณแบบนั้น ข้อต่ออ่อนคือสองช่องที่อย่างมากช่องเดียวที่มีมันได้ ซึ่งก็คือสองช่องใดก็ได้ที่อยู่เขตเดียวกัน</string>
+    <string name="lesson_x_chain_3">สลับมัน แข็ง อ่อน แข็ง ไปเรื่อย ๆ โดยเริ่มและจบด้วยแข็ง แล้วไม่ว่าตรงกลางจะเกิดอะไร ปลายใดปลายหนึ่งก็ต้องมีตัวเลขนั้น</string>
+    <string name="lesson_x_chain_4">ช่องใดก็ตามที่มองเห็นปลายทั้งสองจึงเสียมันไป</string>
+    <string name="lesson_x_chain_5">การระบายสีก็คือโซ่นี้ที่วาดด้วยสองสี โซ่ทั่วไปกว่าเพราะมันผ่านช่องที่การระบายสีเข้าไม่ถึงได้</string>
+
+    <string name="lesson_xy_chain_title">XY-Chain</string>
+    <string name="lesson_xy_chain_summary">โซ่ของช่องสองตัวเลือก ที่ปลายทั้งสองมีตัวเลขร่วมกัน</string>
+    <string name="lesson_xy_chain_1">ความคิดเรื่องการสลับแบบเดิม แต่ก้าวผ่านช่องแทนที่จะตามตัวเลขตัวเดียว</string>
+    <string name="lesson_xy_chain_2">ทุกช่องในโซ่นี้มีความเป็นไปได้สองอย่างพอดี และแต่ละช่องอยู่เขตเดียวกับช่องถัดไป</string>
+    <string name="lesson_xy_chain_3">ภายในช่อง การรับตัวเลขหนึ่งบังคับอีกตัวหนึ่ง นั่นคือข้อต่อแข็ง ระหว่างช่อง เขตที่ใช้ร่วมกันสร้างข้อต่ออ่อน การสลับทั้งสองทำให้เหตุผลวิ่งไปตามโซ่</string>
+    <string name="lesson_xy_chain_4">ถ้าปลายทั้งสองของโซ่มีตัวเลขเดียวกันได้ ปลายใดปลายหนึ่งก็ต้องมีมัน ไม่ว่าโซ่จะเอนไปทางไหน ช่องใดก็ตามที่มองเห็นปลายทั้งสองจะเสียตัวเลขนั้นไป</string>
+    <string name="lesson_xy_chain_5">นี่คือเทคนิคที่ปิดปริศนาระดับผู้เชี่ยวชาญได้เกือบทั้งหมด และการหามันเจอเป็นเรื่องของการตามช่องสองตัวเลือกอย่างอดทนมากกว่าเรื่องความฉลาด</string>
+
+    <string name="lesson_writing_chains_title">การจดโซ่ลงไป</string>
+    <string name="lesson_writing_chains_summary">โซ่ที่คุณตรวจไม่ได้ก็คือการเดาที่มีขั้นตอนเพิ่มมา</string>
+    <string name="lesson_writing_chains_1">บทเรียนเชิงปฏิบัติหนึ่งบทก่อนถึงเทคนิคสุดท้าย เพราะโซ่คือที่ที่คนหลอกตัวเองให้เชื่อในสิ่งที่ไม่จริง</string>
+    <string name="lesson_writing_chains_2">โซ่คือลำดับของข้ออ้าง และทุกข้ออ้างต้องยืนอยู่ได้ บนหน้าจอมันดูเหมือนกลุ่มช่องที่ถูกเน้น และการเน้นไม่ใช่การให้เหตุผล</string>
+    <string name="lesson_writing_chains_3">เขียนมันเป็นบรรทัดเดียว ช่องนี้ไม่เป็น 4 ก็เป็น 7 ถ้ามันเป็น 4 ช่องนั้นก็เป็น 9 ถ้าช่องนั้นเป็น 9 อีกช่องหนึ่งก็เป็น 4 ทุกลูกศรคือข้อต่อและทุกข้อต่อมีเหตุผลของมัน</string>
+    <string name="lesson_writing_chains_4">แล้วตรวจการสลับ แข็ง อ่อน แข็ง อ่อน และแข็งที่ปลายทั้งสอง โซ่ที่เริ่มหรือจบด้วยข้อต่ออ่อนพิสูจน์อะไรไม่ได้เลย และนั่นคือวิธีที่พบบ่อยที่สุดที่โซ่จะผิด</string>
+    <string name="lesson_writing_chains_5">ถ้าคุณเขียนมันลงไม่ได้ คุณก็ยังหามันไม่เจอ นั่นไม่ใช่กติกาเรื่องความเป็นระเบียบ แต่คือความต่างระหว่างข้อสรุปกับความรู้สึก</string>
+
+    <string name="lesson_sue_de_coq_title">Sue de Coq</string>
+    <string name="lesson_sue_de_coq_summary">ตรงที่กล่องตัดกับเส้น และจุดตัดนั้นมีตัวเลขมากกว่าที่ว่าง</string>
+    <string name="lesson_sue_de_coq_1">กล่องหนึ่งกับคอลัมน์หนึ่งซ้อนทับกันสามช่อง สามช่องนั้นเป็นของทั้งสองพร้อมกัน และเทคนิคนี้อยู่ได้ด้วยเรื่องนั้น</string>
+    <string name="lesson_sue_de_coq_2">ดูสองช่องในนั้นตรงนี้ รวมกันแล้วมันมี 2, 6, 7 และ 8 คือตัวเลขสี่ตัวสำหรับสองช่อง สองตัวลงข้างใน และอีกสองตัวเหลือไว้ให้ที่อื่น</string>
+    <string name="lesson_sue_de_coq_3">ลงไปข้างล่างในคอลัมน์เดียวกันมีช่องหนึ่งที่มี 6 กับ 7 ที่อื่นในกล่องเดียวกันมีช่องหนึ่งที่มี 2 กับ 8 รวมกันแล้วสองช่องนั้นต้องการตัวเลขสี่ตัวที่จุดตัดมีพอดี แบ่งกันเท่า ๆ และไม่มีตัวใดซ้ำกัน</string>
+    <string name="lesson_sue_de_coq_4">ลองนับดู สามช่องของคอลัมน์ตอนนี้รับตัวเลขต่างกันสามตัวจากสี่ตัว และสามช่องของกล่องก็ทำแบบเดียวกัน การคำนวณลงตัวได้ทางเดียว คือ 6 กับ 7 ถูกใช้หมดภายในคอลัมน์ และ 2 กับ 8 ภายในกล่อง</string>
+    <string name="lesson_sue_de_coq_5">ไม่มีอะไรอื่นในคอลัมน์นั้นที่เป็น 6 หรือ 7 ได้ สองช่องเสียไปช่องละตัวตรงนี้</string>
+    <string name="lesson_sue_de_coq_6">เหตุผลเดียวกันวิ่งกลับทางสำหรับกล่อง หนึ่งรูปแบบ สองเขต การตัดออกสองชุดแยกกัน และไม่มีโซ่อยู่ที่ไหนเลยในนั้น</string>
+
+    <string name="lesson_als_title">ALS-XZ</string>
+    <string name="lesson_als_summary">เซตเกือบล็อกสองเซตที่ใช้ตัวเลขร่วมกัน และการตัดออกที่ตามมา</string>
+    <string name="lesson_als_1">กติกาที่ระดับยากที่สุดสร้างขึ้นบนมัน ทุกอย่างเหนือขั้นนี้คือรูปแปรของมัน</string>
+    <string name="lesson_als_2">เซตเกือบล็อกคือกลุ่มช่องในเขตหนึ่งที่มีตัวเลขมากกว่าจำนวนช่องอยู่หนึ่งตัวพอดี สี่ช่องที่รวมกันมีห้าตัวเลข ถ้ามันเสียตัวเลขไปหนึ่งตัวก็จะกลายเป็นเซตล็อก ชื่อจึงมาจากตรงนั้น</string>
+    <string name="lesson_als_3">หยิบมาสองเซตที่ใช้ตัวเลขร่วมกันสองตัว เรียกตัวเลขร่วมตัวหนึ่งว่าตัวที่ถูกจำกัด และกำหนดว่าทุกที่ที่มันปรากฏในเซตหนึ่งต้องมองเห็นทุกที่ที่มันปรากฏในอีกเซตหนึ่ง</string>
+    <string name="lesson_als_4">แล้วมันก็อยู่ได้ในเซตเดียวจากสองเซตเท่านั้น เซตที่ไม่ได้มันจะกลายเป็นเซตล็อก ซึ่งตรึงตัวเลขร่วมอีกตัวไว้ข้างในนั้น ช่องใดก็ตามที่มองเห็นตัวเลขนั้นในทั้งสองเซตจึงเสียมันไป</string>
+    <string name="lesson_als_5">นี่คือการตัดออกที่ได้จากเรื่องนั้น</string>
+    <string name="lesson_als_6">ถ้าเรื่องนี้ต้องอ่านหลายรอบ นั่นก็คือจำนวนรอบปกติ ทุกเทคนิคหลังจุดนี้คืออันนี้ในรูปร่างอื่น</string>
+
+    <string name="lesson_deep_end_title">น้ำลึกเรียกร้องอะไร</string>
+    <string name="lesson_deep_end_summary">อะไรเปลี่ยนไปที่ระดับบ้าคลั่งกับฝันร้าย และทำไมระดับเหล่านี้ถึงต้องใช้กระดาษ</string>
+    <string name="lesson_deep_end_1">ทุกอย่างจนถึงตรงนี้มองเห็นได้ คุณดูแถวหนึ่ง กล่องหนึ่ง ช่องคู่หนึ่ง แล้วคำตอบก็อยู่ตรงหน้าทันทีที่คุณรู้จักรูปร่างของมัน</string>
+    <string name="lesson_deep_end_2">สองระดับที่ยากที่สุดไม่เป็นแบบนั้น มันขอให้คุณตามเหตุผลไปสามหรือสี่ขั้นแล้วเก็บทั้งหมดไว้ในหัวพร้อมกัน และแทบไม่มีใครทำได้ด้วยการมองเฉย ๆ</string>
+    <string name="lesson_deep_end_3">จดมันลงไป ดินสอกับหลังซองจดหมายไม่ใช่การโกงและไม่ใช่สัญญาณว่าคุณไม่เก่ง นั่นคือสิ่งที่ทุกคนที่แก้ระดับนี้ได้ทำกัน</string>
+    <string name="lesson_deep_end_4">กติกาทั้งหมดตรงนี้คือความคิดเดียวกัน คือกลุ่มช่องที่ขาดอีกตัวเดียวจะเต็ม เอาตัวเลขนั้นออกแล้วกลุ่มก็ถูกบังคับ และกลุ่มที่ถูกบังคับก็บังคับกลุ่มถัดไป น้ำลึกทั้งหมดมีแค่นั้น</string>
+    <string name="lesson_deep_end_5">ข้างล่างนี้ไม่มีอะไรเป็นการเดาเลย ทุกขั้นถูกพิสูจน์แล้ว ทุกคำใบ้จะแสดงการพิสูจน์ให้คุณดู และถ้าปริศนาตรงนี้เอาชนะคุณได้ การกลับมาหามันอีกทีในอีกสัปดาห์ก็เป็นเรื่องปกติ</string>
+
+    <string name="lesson_als_xy_title">ALS-XY-Wing</string>
+    <string name="lesson_als_xy_summary">สามกลุ่มในโซ่ และตัวเลขที่รอดไม่ได้ที่ปลายทั้งสอง</string>
+    <string name="lesson_als_xy_1">คราวนี้สามกลุ่ม เชื่อมเป็นเส้น กลุ่มหนึ่งที่ปลายแต่ละข้างและอีกกลุ่มตรงกลางที่คั่นมันไว้</string>
+    <string name="lesson_als_xy_2">เริ่มจากสองกลุ่มทางซ้าย r3c9 มี 1 กับ 3 ส่วน r1c8 มี 3 กับ 7 มันอยู่กล่องเดียวกัน จึงมีแค่ช่องเดียวที่เป็น 3 ได้</string>
+    <string name="lesson_als_xy_3">ทีนี้กลุ่มที่ลงไปตามคอลัมน์ 8 คือสามช่องที่รวมกันมี 1, 3, 7 และ 9 สี่ตัวเลข สามช่อง มันจึงขาดอีกตัวเดียวจะเต็ม มันใช้ 7 ร่วมกับ r1c8 และทุก 7 ในนั้นอยู่ในคอลัมน์เดียวกันนั้น จึงอีกครั้งที่มีแค่ฝ่ายเดียวที่รับมันได้</string>
+    <string name="lesson_als_xy_4">สมมติว่าช่องที่ทำเครื่องหมายไว้ช่องหนึ่งในสองช่องของคอลัมน์ 9 เป็น 1 มันมองเห็น r3c9 ดังนั้น r3c9 ไม่ใช่ 1 มันจึงเป็น 3 แล้ว r1c8 ก็ไม่ใช่ 3 มันจึงเป็น 7 แล้วกลุ่มนั้นก็ไม่เหลือ 7 มันจึงเต็ม และต้องใช้ 1, 3 และ 9</string>
+    <string name="lesson_als_xy_5">แต่ช่องเหล่านั้นก็มองเห็นทุก 1 ในกลุ่มด้วย กลุ่มจึงมี 1 ไม่ได้เช่นกัน เหตุผลกินตัวเอง และ 1 ก็ถูกตัดไป</string>
+    <string name="lesson_als_xy_6">สองข้อต่อ สามกลุ่ม และทุกขั้นบังคับขั้นถัดไป อ่านสองรอบ นี่คือโซ่ และโซ่จะเข้าใจได้ก็ทีละข้อต่อเท่านั้น</string>
+
+    <string name="lesson_blossom_title">Death blossom</string>
+    <string name="lesson_blossom_summary">ช่องหนึ่ง กับกลุ่มที่รออยู่หลังทุกตัวเลขของมัน</string>
+    <string name="lesson_blossom_1">อันนี้มีรูปร่างที่คุณมองเห็นได้ คือก้าน กับกลีบหนึ่งกลีบสำหรับทุกตัวเลขที่ก้านเป็นได้</string>
+    <string name="lesson_blossom_2">ก้านคือ r1c4 มันเป็น 5 หรือ 6 ไม่มีอย่างอื่น สองความเป็นไปได้แปลว่าสองกรณี และเทคนิคนี้จัดการทั้งสองพร้อมกัน</string>
+    <string name="lesson_blossom_3">สมมติว่ามันเป็น 5 แล้ว r1c7 ในแถวเดียวกันซึ่งมี 5 กับ 8 ก็เป็น 5 ไม่ได้ มันจึงเป็น 8</string>
+    <string name="lesson_blossom_4">สมมติกลับกันว่ามันเป็น 6 ดูสามช่องนี้ในกล่องเดียวกัน รวมกันแล้วมันมี 2, 6, 7 และ 8 สี่ตัวเลข สามช่อง ขาดอีกตัวเดียวจะเต็ม ก้านมองเห็นทั้งสามช่อง 6 ของมันจึงเอา 6 ไปจากช่องเหล่านั้น</string>
+    <string name="lesson_blossom_5">ตอนนี้มันเต็มแล้ว และสามช่องที่เต็มใช้ตัวเลขสามตัว คือ 2, 7 และ 8 มีแค่ช่องเดียวที่เป็น 8 ได้ 8 จึงลงตรงนั้น</string>
+    <string name="lesson_blossom_6">เอาสองกรณีมารวมกัน ไม่มี 8 ที่ r1c7 ก็มี 8 ในกล่องนั้น และไม่มีกรณีที่สาม ช่องใดก็ตามที่มองเห็นทั้งสองที่จะเสีย 8 ของมันไป และมีอยู่สองช่องที่เป็นแบบนั้น</string>
+    <string name="lesson_blossom_7">สังเกตสิ่งที่คุณไม่เคยต้องรู้เลย คือก้านเป็นตัวเลขอะไรจริง ๆ ทั้งสองทางจบที่ 8 คำตอบจึงไม่ได้ขึ้นอยู่กับทางแยกนั้นเลย</string>
+
+    <string name="lesson_fork_title">โซ่บังคับ</string>
+    <string name="lesson_fork_summary">ลองช่องหนึ่งทั้งสองทางแล้วดูว่าทางไหนรอด สิ่งที่ยากที่สุดในแอปนี้</string>
+    <string name="lesson_fork_1">เทคนิคสุดท้าย และเป็นอันเดียวที่ไม่ใช่รูปแบบ ตรงนี้ไม่มีอะไรให้มองหา มีแต่งานที่ต้องทำ</string>
+    <string name="lesson_fork_2">ช่องนี้เป็น 2 หรือ 7 ทุกอย่างอื่นบนกระดานถูกบีบจนแห้งแล้ว และไม่มีอะไรบอกว่ามันเป็นตัวไหนในสองตัวนั้น</string>
+    <string name="lesson_fork_3">ลองสักตัว บอกว่ามันเป็น 2 ด้วยดินสอ แล้วตามเฉพาะผลที่ง่าย ๆ คือช่องที่เหลือตัวเลขตัวเดียว หรือตัวเลขที่เหลือบ้านหลังเดียวในเขตของมัน</string>
+    <string name="lesson_fork_4">มันมาเร็วมาก 2 ถูกบังคับตรงนี้ แล้ว 7 ตรงนั้น แล้ว 3 แล้ว 5 แล้ว 9 ทำต่อไป สิบสี่ตัวเลขต่อมา ให้ดูที่ช่องที่ทำเครื่องหมายไว้</string>
+    <string name="lesson_fork_5">มันไม่เหลืออะไรเลย ตัวเลขทุกตัวที่ลงตรงนั้นได้ถูกอย่างอื่นเอาไปหมดแล้ว นั่นไม่ใช่โชคร้าย นั่นคือข้อขัดแย้ง และมันแปลว่า 2 ไม่เคยเป็นไปได้เลยตั้งแต่แรก</string>
+    <string name="lesson_fork_6">ลบทั้งหมดทิ้งแล้วเขียน 7 ไม่ใช่เพราะ 7 ดูดีกว่า แต่เพราะ 2 ถูกพิสูจน์แล้วว่าเป็นไปไม่ได้ และสองความเป็นไปได้ลบหนึ่งก็เหลือหนึ่ง</string>
+    <string name="lesson_fork_7">นี่คือการพิสูจน์ด้วยการแยกกรณี และนี่แหละคือสิ่งที่คนหมายถึงเวลาบอกว่าแก้ปริศนาบนกระดาษ ใช้กระดาษเถอะ ไม่มีใครเก็บตัวเลขที่ถูกบังคับสิบสี่ตัวไว้ในหัวได้ และการต้องจดมันลงไปไม่ใช่จุดอ่อน</string>
+    <string name="lesson_fork_8">ทีนี้ใส่มันลงไป</string>
+    <string name="lesson_fork_wrong">ตัวที่ตายไปคืออีกตัวหนึ่ง 2 พาไปสู่ช่องที่ไม่เหลืออะไรเลย สิ่งที่เหลือจึงเป็น 7</string>
+
+    <string name="lesson_nothing_applies_title">เมื่อไม่มีอะไรใช้ได้</string>
+    <string name="lesson_nothing_applies_summary">ตรวจซ้ำก่อนจะเดา เพราะปริศนาจากแอปนี้มีขั้นถัดไปเสมอ</string>
+    <string name="lesson_nothing_applies_1">คุณจะไปถึงสภาพที่ดูมาหมดทุกอย่างแล้วแต่ไม่เจออะไรเลย นี่คือสิ่งที่ควรทำ และสิ่งที่ไม่ควร</string>
+    <string name="lesson_nothing_applies_2">สิ่งที่ไม่ควรทำคือเดา ปริศนาทุกข้อในแอปนี้แก้ได้ด้วยการให้เหตุผล และการเดาที่บังเอิญถูกก็ไม่ได้สอนอะไรคุณ ส่วนการเดาที่ผิดก็เอาตารางทั้งตารางไปจากคุณ</string>
+    <string name="lesson_nothing_applies_3">ตรวจซ้ำตามลำดับนี้ หนึ่ง โน้ตของคุณจริงทั้งหมดไหม โน้ตที่ล้าสมัยคือสาเหตุที่พบบ่อยที่สุดของสภาพที่เป็นไปไม่ได้ และแอปจะลบให้คุณถ้าคุณยอม สอง ตัวเลขที่คุณใส่ถูกจริงไหม กดคำใบ้แล้วมันจะบอกคุณ</string>
+    <string name="lesson_nothing_applies_4">แล้วค่อยกลับไปหาของถูก ๆ อีกรอบ มันแทบไม่เคยเป็นโซ่ที่คุณมองข้าม มันแทบจะเป็น hidden single ในเขตที่คุณเลิกมองไปตั้งแต่ยี่สิบตาที่แล้วเสมอ</string>
+
+    <string name="lesson_look_first_title">ควรหาอะไรก่อน</string>
+    <string name="lesson_look_first_summary">รูปแบบที่ถูกก่อนเสมอ เพราะมันพบบ่อยและมันเปิดตารางออก</string>
+    <string name="lesson_look_first_1">ตอนนี้คุณรู้จักทุกเทคนิคที่แอปนี้เรียกชื่อได้แล้ว สิ่งสุดท้ายที่ต้องเรียนคือลำดับในการมองหา</string>
+    <string name="lesson_look_first_2">single ก่อนเสมอ naked แล้วค่อย hidden มันพบบ่อยกว่าอย่างอื่นมาก และทุกตัวที่คุณใส่ก็ทำให้เทคนิคอื่นทุกอันหาง่ายขึ้น</string>
+    <string name="lesson_look_first_3">แล้วค่อยการตัดออกที่ถูก คือ pointing กับ claiming pair มันตรวจได้เร็วทีละเขต และบ่อยครั้งก็เปิด single ออกมาทันที</string>
+    <string name="lesson_look_first_4">แล้วค่อยคู่กับสามตัวในเขตที่มีช่องว่างน้อยที่สุด แล้วค่อยปลา แล้วค่อย wing โซ่ไว้ท้ายสุดเสมอ เพราะมันใช้แรงมากที่สุดและพบน้อยที่สุด</string>
+    <string name="lesson_look_first_5">การไล่หา Jellyfish ก่อนจะตรวจ single ก็เหมือนกับการเขียนโปรแกรมใหม่ทั้งตัวก่อนจะอ่านข้อความแจ้งข้อผิดพลาด แอปให้ระดับปริศนาตามสิ่งที่ยากที่สุดที่มันต้องใช้ แต่ปริศนาระดับปรมาจารย์ก็ยังเป็น single เสียส่วนใหญ่</string>
+    <string name="lesson_together_title">ปรมาจารย์หนึ่งข้อ ไปด้วยกัน</string>
+    <string name="lesson_together_summary">ปริศนายากส่วนใหญ่คือขั้นที่ง่าย โดยมีขั้นยากปนอยู่ไม่กี่ขั้น</string>
+    <string name="lesson_together_1">บทเรียนสุดท้าย นี่คือตารางที่บทเรียนทั้งหมดเดินผ่านมา ที่ระดับปรมาจารย์ และนี่คือการแก้ทั้งหมดโดยเรียกชื่อทีละเทคนิค</string>
+    <string name="lesson_together_2">มันเปิดด้วย naked single แทบทุกข้อเป็นแบบนั้น</string>
+    <string name="lesson_together_3">แล้วก็ hidden single ในกล่องข้าง ๆ</string>
+    <string name="lesson_together_4">ตอนนี้มันตัน และ pointing pair กวาดคอลัมน์หนึ่งให้โล่งเพื่อให้ single เริ่มได้อีกครั้ง สังเกตว่าขั้นนั้นไม่ได้ใส่ตัวเลขลงไปเลยแต่ก็ยังคืบหน้า</string>
+    <string name="lesson_together_5">อีกสักพักก็ naked pair ทำงานแบบเดียวกันในเขตหนึ่ง</string>
+    <string name="lesson_together_6">ลึกเข้าไปอีก คือ X-Wing ถึงตอนนี้ตารางเต็มไปครึ่งหนึ่งแล้วและโน้ตกำลังทำงานอยู่</string>
+    <string name="lesson_together_7">และใกล้จบ คืออันที่ทำให้ได้ระดับนี้ ALS-XZ ตัดออกครั้งเดียว แล้วที่เหลือก็เป็น single อีกครั้ง</string>
+    <string name="lesson_together_8">ปรมาจารย์ที่นี่หมายความอย่างนั้น ไม่ใช่แปดสิบเอ็ดขั้นที่ยาก แต่เป็นเจ็ดสิบขั้นที่ง่ายกับอีกไม่กี่ขั้นที่ต้องใช้ทุกอย่างที่คุณเรียนมา</string>
+    <string name="lesson_together_9">คุณได้เจอทุกเทคนิคที่แอปนี้เรียกชื่อได้แล้ว ไปเล่นสักข้อเถอะ ทุกปริศนามีคำใบ้มาให้สามครั้งและการใช้มันไปไม่ใช่เรื่องน่าอาย และถ้าคุณอยากได้เท่าไรก็ได้ ขีดจำกัดก็เป็นแค่สวิตช์ในการตั้งค่า</string>
+    <string name="lesson_step_of">%1$d จาก %2$d</string>
+    <string name="lesson_back">ย้อนกลับ</string>
+    <string name="lesson_next">ถัดไป</string>
+    <string name="lesson_done">เสร็จแล้ว</string>
+    <string name="lesson_replay">อีกครั้ง</string>
+    <string name="lesson_show_me">ให้ดูหน่อย</string>
+    <string name="lesson_cell_at">แถว %1$d คอลัมน์ %2$d</string>
+    <string name="course_title">เรียน</string>
+    <string name="course_lesson_done">เรียนจบแล้ว</string>
+    <string name="course_lesson_next">ถัดไป</string>
+    <string name="course_lesson_todo">ยังไม่ได้เริ่ม</string>
+    <string name="course_you_are_here">คุณอยู่ตรงนี้</string>
+    <string name="course_continue">เรียนต่อ</string>
+    <string name="course_stage_done">จบแล้ว %1$d จาก %2$d</string>
+    <plurals name="course_progress">
+        <item quantity="other">%1$d จาก %2$d บทเรียน</item>
+    </plurals>
+    <string name="settings_hint_detail">คำใบ้บอกมากแค่ไหน</string>
+    <string name="hint_detail_region">แค่เขต</string>
+    <string name="hint_detail_region_note">ควรดูกล่องหรือเส้นไหน และไม่มีอะไรมากกว่านั้น</string>
+    <string name="hint_detail_name">เทคนิค</string>
+    <string name="hint_detail_name_note">มันเป็นขั้นแบบไหน เพื่อให้คุณรู้ว่าต้องหาอะไร</string>
+    <string name="hint_detail_cells">ช่องต่าง ๆ</string>
+    <string name="hint_detail_cells_note">ช่องที่เหตุผลอาศัยอยู่ เน้นไว้บนกระดาน</string>
+    <string name="hint_detail_full">เหตุผลทั้งหมด</string>
+    <string name="hint_detail_full_note">ทุกอย่าง รวมถึงการเดินด้วย สำหรับใช้เรียนตามบทเรียน</string>
+    <string name="path_title">มันถูกแก้อย่างไร</string>
+    <string name="path_placed">แถว %1$d คอลัมน์ %2$d เป็น %3$d</string>
+    <string name="outcome_path">ดูว่ามันถูกแก้อย่างไร</string>
+    <string name="settings_your_data">ข้อมูลของคุณ</string>
+    <string name="settings_data_note">ทุกอย่างที่แอปนี้รู้เกี่ยวกับคุณอยู่บนเครื่องนี้ การส่งออกจะเขียนมันลงในไฟล์ที่คุณเลือก เพื่อให้เครื่องใหม่ทำต่อจากที่เครื่องนี้ค้างไว้ได้ ไม่มีอะไรถูกส่งไปที่ไหนเลย</string>
+    <string name="settings_export">ส่งออกความคืบหน้าของฉัน</string>
+    <string name="settings_import">นำเข้าจากไฟล์</string>
+    <string name="settings_reset_course">เริ่มบทเรียนใหม่ โดยเก็บเกมของฉันไว้</string>
+    <string name="settings_exported">บันทึกแล้ว บทเรียน: %1$d เกม: %2$d</string>
+    <string name="settings_imported">เพิ่มแล้ว บทเรียน: %1$d เกม: %2$d</string>
+    <string name="settings_imported_ignored">เพิ่มแล้ว บทเรียน: %1$d เกม: %2$d ที่ข้ามไปเพราะมาจากรุ่นที่ใหม่กว่า: %3$d</string>
+    <string name="settings_import_empty">ไฟล์นั้นว่างเปล่า</string>
+    <string name="settings_import_not_ours">นั่นดูไม่เหมือนไฟล์ส่งออกของ Sendoku</string>
+    <string name="settings_import_future">ไฟล์นั้นเขียนโดย Sendoku รุ่นที่ใหม่กว่า</string>
+    <string name="settings_import_failed">อ่านไฟล์นั้นไม่ได้ และไม่มีอะไรบนเครื่องนี้ถูกเปลี่ยน</string>
+    <string name="settings_course_reset">บทเรียนกลับไปเริ่มต้นใหม่แล้ว เกมของคุณไม่ถูกแตะต้อง</string>
+    <string name="practice_looking">กำลังหาสภาพกระดาน…</string>
+    <string name="practice_find">หา %1$s ให้เจอ</string>
+    <string name="practice_keep_going">นั่นคือหนึ่งในนั้น ทำต่อไป</string>
+    <string name="practice_wrong">ไม่ใช่ช่องนั้น อ่านกติกาอีกครั้ง %1$s ไม่ได้อาศัยช่องนั้น</string>
+    <string name="practice_right">นั่นแหละคือ %1$s สิ่งที่มันตัดออกถูกทำเครื่องหมายไว้แล้ว</string>
+    <string name="practice_revealed">นี่คือ %1$s และสิ่งที่มันตัดออก</string>
+    <string name="practice_show_me">ให้ดูหน่อย</string>
+    <string name="practice_another">อีกข้อ</string>
+    <string name="practice_skip">ข้าม</string>
+    <string name="practice_title">ฝึกฝน</string>
+    <string name="technique_pick_title">หาสักข้อไว้ฝึก</string>
+    <string name="technique_pick_body">ปริศนาทุกข้อที่นี่ถูกให้ระดับโดยตัวแก้ตัวเดียวกับที่เขียนคำใบ้ จึงรู้อยู่แล้วว่าแต่ละข้ออาศัยกติกาไหน เลือกเทคนิคหนึ่งแล้วรับปริศนาที่ทำให้จบไม่ได้ถ้าไม่มีมัน</string>
+    <string name="technique_pick_none">ไม่มีปริศนาในรุ่นนี้ที่อาศัยมัน</string>
+    <string name="technique_pick_play">เล่นสักข้อ</string>
+    <plurals name="technique_pick_count">
+        <item quantity="other">มี %1$d ปริศนาที่อาศัยมัน</item>
+    </plurals>
+    <string name="practice_none">ยังไม่มีอะไรให้ฝึก ทำบทเรียนที่สอนเทคนิคสักบทให้จบก่อน</string>
+    <string name="glossary_learn_this">เรียนเรื่องนี้</string>
+    <string name="hint_learn_this">สอนเรื่องนี้ให้หน่อย</string>
+    <string name="outcome_learn">เรียน %1$s</string>
+    <string name="course_finished">จบครบทั้งหมดแล้ว ทุกอย่างที่แอปเรียกชื่อได้ คุณก็เรียกชื่อได้ ที่เหลือคือตัวปริศนาเอง</string>
+    <string name="outcome_lost_hints">คำใบ้หมดแล้ว</string>
+    <string name="outcome_share">แบ่งปัน</string>
+    <string name="card_solved">แก้ได้แล้ว</string>
+    <string name="card_lost">แพ้ให้กับ</string>
+    <string name="settings_hint_limit">จบเกมหลังใช้คำใบ้สามครั้ง</string>
+    <string name="settings_hint_note">เปิดไว้เป็นค่าตั้งต้น คำใบ้สามครั้งแรกฟรี ส่วนครั้งที่สี่แลกด้วยทั้งเกม ซึ่งทำให้คำใบ้กลายเป็นการตัดสินใจแทนที่จะเป็นปฏิกิริยาอัตโนมัติ ปิดมันไว้ตอนที่คุณกำลังเรียนตามบทเรียน</string>
+    <string name="settings_post_mortem">บอกว่าเวลาหายไปไหน</string>
+    <string name="settings_post_mortem_note">หลังชนะ ให้บอกสองจุดที่การแก้ช้าลงและตอนนั้นบนกระดานมีอะไร ถ้าการแก้ไม่เคยช้าลงเลยก็จะไม่พูดถึงอะไรทั้งนั้น</string>
+    <string name="post_mortem_line">คุณหยุดอยู่ตรงนี้ %1$s ตอนนั้นมี %2$s รออยู่ให้หา</string>
+    <string name="post_mortem_title">เวลาหายไปไหน</string>
+    <string name="clean_line">การแก้ที่สะอาด ไม่ใช้คำใบ้ ไม่ผิดเลย ไม่จดโน้ต</string>
+    <string name="clean_mark">สะอาด</string>
+    <string name="clean_stat">การแก้ที่สะอาด</string>
+    <string name="clean_note">การแก้ที่สะอาด: %1$d จาก %2$d</string>
+    <string name="account_title">คุณ</string>
+    <string name="account_no_account">ไม่มีบัญชีให้เข้าสู่ระบบ ทุกอย่างข้างล่างอยู่บนเครื่องนี้และไม่ได้อยู่ที่อื่นเลย</string>
+    <string name="account_solved">แก้ได้แล้ว</string>
+    <string name="account_streak">วันติดต่อกัน</string>
+    <string name="account_played">เล่นไปแล้ว</string>
+    <string name="account_time">เล่นไปนาน</string>
+    <string name="account_lessons">บทเรียน</string>
+    <string name="account_about_detail">แอปนี้สัญญาอะไรไว้ และยืนอยู่บนสัญญาอนุญาตใดบ้าง</string>
+    <string name="account_hardest">ข้อที่ยากที่สุดที่แก้ได้</string>
+    <string name="account_hardest_note">ชนะเมื่อ %1$s ใน %2$s</string>
+    <string name="account_beaten">สิ่งที่คุณเอาชนะมาแล้ว</string>
+    <string name="account_recent">ห้าสัปดาห์ที่ผ่านมา</string>
+    <string name="account_hints">คำใบ้ที่ใช้ไป</string>
+    <string name="account_empty">ทำปริศนาให้จบสักข้อแล้วหน้านี้จะเต็มขึ้นมา ว่าคุณเอาชนะอะไรมาบ้างในแต่ละระดับ และทุกวันที่คุณได้เล่น</string>
+    <string name="account_stats">สถิติ</string>
+    <string name="account_history">ประวัติ</string>
+    <string name="history_title">ประวัติ</string>
+    <string name="history_lost">แพ้</string>
+    <string name="history_empty_body">ทำปริศนาให้จบสักข้อแล้วมันจะมาอยู่ที่นี่ พร้อมกระดานอย่างที่คุณทิ้งไว้ พร้อมให้แบ่งปันเมื่อไรก็ได้ที่คุณต้องการ</string>
+    <string name="history_no_board">ข้อนี้จบไปก่อนที่แอปจะเริ่มเก็บกระดาน จึงไม่มีอะไรให้วาด มีแต่ตัวเลขเท่านั้น</string>
+    <string name="tab_home">หน้าแรก</string>
+    <string name="tab_learn">เรียน</string>
+    <string name="tab_account">คุณ</string>
+    <plurals name="hint_menu_left">
+        <item quantity="other">สองอย่างสุดท้ายใช้คำใบ้หนึ่งครั้ง และคุณเหลืออีก %1$d ครั้ง</item>
+    </plurals>
+    <plurals name="hint_check_wrong">
+        <item quantity="other">ตัวเลขที่คุณใส่ไว้ %1$d ตัวผิด การหามันให้เจอยังเป็นงานของคุณอยู่</item>
+    </plurals>
+    <plurals name="path_summary">
+        <item quantity="other">%1$d ขั้น กติกาที่ถูกที่สุดก่อน ตรงตามที่แอปให้ระดับมันไว้เป๊ะ</item>
+    </plurals>
+    <plurals name="path_struck">
+        <item quantity="other">ตัดรอยดินสอออก %1$d รอย</item>
+    </plurals>
+</resources>
