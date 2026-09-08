@@ -32,8 +32,8 @@ class BundledFontsTest {
      * What no bundled face is asked to draw.
      *
      * Kept in step with NOT_OURS in tools/subset-fonts.py. None of the four has a kana, a
-     * Chinese character, a Hangul syllable, an Arabic letter or a Devanagari one in it, and
-     * none of them is
+     * Chinese character, a Hangul syllable, an Arabic letter, a Devanagari one or a Bengali
+     * one in it, and none of them is
      * going to: Android carries Noto for all of these and picks it up per character, so they
      * render on every phone without a byte from us. The one thing to hold onto is that this
      * list stays small and deliberate rather than growing into a hole the guard below can
@@ -42,6 +42,7 @@ class BundledFontsTest {
     private val notOurs = listOf(
         0x0600..0x06FF, // Arabic
         0x0900..0x097F, // Devanagari
+        0x0980..0x09FF, // Bengali
         0x0750..0x077F, // Arabic supplement
         0x08A0..0x08FF, // Arabic extended-A
         0x1100..0x11FF, // Hangul jamo
@@ -99,6 +100,7 @@ class BundledFontsTest {
         assertTrue("Korean should be left to the phone too", '한' !in charset)
         assertTrue("Chinese should be left to the phone too", '数' !in charset)
         assertTrue("Devanagari should be left to the phone too", 'ह' !in charset)
+        assertTrue("Bengali should be left to the phone too", 'ব' !in charset)
     }
 
     @Test

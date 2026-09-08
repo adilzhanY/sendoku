@@ -36,8 +36,8 @@ EXTRA = "0123456789:/%·…\u00a0"
 
 # What these four faces are not asked to draw.
 #
-# None of them has a kana, a kanji, a Chinese character, a Hangul syllable, an Arabic letter or
-# a Devanagari one in it, and none of them is going to. A Chinese face alone is tens of thousands of glyphs
+# None of them has a kana, a kanji, a Chinese character, a Hangul syllable, an Arabic letter, a
+# Devanagari one or a Bengali one in it, and none of them is going to. A Chinese face alone is tens of thousands of glyphs
 # where these subsets are a couple of hundred, and bundling one for each of four themes would
 # cost several times the whole app. Android carries Noto for every one of these scripts and
 # picks it up per character when the face in use cannot draw one, so they render on every
@@ -49,6 +49,7 @@ EXTRA = "0123456789:/%·…\u00a0"
 NOT_OURS = [
     (0x0600, 0x06FF),  # Arabic
     (0x0900, 0x097F),  # Devanagari
+    (0x0980, 0x09FF),  # Bengali
     (0x0750, 0x077F),  # Arabic supplement
     (0x08A0, 0x08FF),  # Arabic extended-A
     (0x1100, 0x11FF),  # Hangul jamo

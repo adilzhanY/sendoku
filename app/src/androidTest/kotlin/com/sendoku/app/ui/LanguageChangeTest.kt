@@ -66,6 +66,20 @@ class LanguageChangeTest {
     }
 
     @Test
+    fun everyLanguageCountsInTheDigitsTheBoardCanDraw() {
+        // The board draws 0 to 9 and nothing else, because they are cut into the four bundled
+        // faces one glyph each. Three of the languages here would otherwise be numbered in
+        // their own digits: Arabic in ١ ٢ ٣, Bengali in ১ ২ ৩, and a timer counting in one
+        // system beside a grid drawn in the other is the first thing those players notice.
+        // The tag carries -u-nu-latn to stop that, and this is what says it worked.
+        for (language in Language.entries - Language.SYSTEM) {
+            val locale = java.util.Locale.forLanguageTag(language.tag)
+            val counted = String.format(locale, "%d:%02d", 12, 5)
+            assertEquals("${language.name} counts in digits the board cannot draw", "12:05", counted)
+        }
+    }
+
+    @Test
     fun followingThePhoneIsTheAbsenceOfAChoice() {
         onActivity { Languages.choose(it, Language.SYSTEM) }
         assertEquals(Language.SYSTEM, Languages.current(context))

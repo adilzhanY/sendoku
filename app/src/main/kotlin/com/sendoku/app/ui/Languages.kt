@@ -64,6 +64,16 @@ public enum class Language(public val tag: String, @StringRes public val label: 
     INDONESIAN("id", R.string.language_indonesian),
     VIETNAMESE("vi", R.string.language_vietnamese),
     HINDI("hi", R.string.language_hindi),
+
+    /**
+     * Bengali, with the numbering system named in the tag for the same reason Arabic has one.
+     *
+     * CLDR gives Bengali its own digits, ০ ১ ২ rather than 0 1 2. The board can only draw
+     * Western ones, so a timer counting in one system next to a grid drawn in the other is
+     * the first thing a Bengali player would notice. Resources still resolve on the language,
+     * so this reads values-bn exactly as bn would.
+     */
+    BENGALI("bn-u-nu-latn", R.string.language_bengali),
 }
 
 /**
