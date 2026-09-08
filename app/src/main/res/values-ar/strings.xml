@@ -214,6 +214,7 @@
     <string name="language_chinese">简体中文</string>
     <string name="language_korean">한국어</string>
     <string name="language_arabic">العربية</string>
+    <string name="language_ukrainian">Українська</string>
     <plurals name="first_run_prompt">
         <item quantity="zero">Sendoku مكتوب بـ %1$d لغة. بأي لغة تقرأ؟</item>
         <item quantity="one">Sendoku مكتوب بلغة واحدة. بأي لغة تقرأ؟</item>

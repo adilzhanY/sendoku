@@ -51,6 +51,7 @@ public enum class Language(public val tag: String, @StringRes public val label: 
      * this reads values-ar exactly as ar would.
      */
     ARABIC("ar-u-nu-latn", R.string.language_arabic),
+    UKRAINIAN("uk", R.string.language_ukrainian),
 }
 
 /**

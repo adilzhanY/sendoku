@@ -26,7 +26,7 @@ import java.util.Locale
 @RunWith(AndroidJUnit4::class)
 class TranslationsTest {
 
-    private val languages = listOf("en", "ru", "de", "tr")
+    private val languages = listOf("en", "ru", "de", "tr", "uk")
 
     /**
      * The app's resources as somebody reading [language] would get them.
