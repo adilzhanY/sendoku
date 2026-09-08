@@ -207,6 +207,7 @@
     <string name="language_arabic">العربية</string>
     <string name="language_ukrainian">Українська</string>
     <string name="language_indonesian">Bahasa Indonesia</string>
+    <string name="language_vietnamese">Tiếng Việt</string>
     <plurals name="first_run_prompt">
         <item quantity="one">Sendoku написано %1$d мовою. Якою з них ви читаєте?</item>
         <item quantity="few">Sendoku написано %1$d мовами. Якою з них ви читаєте?</item>

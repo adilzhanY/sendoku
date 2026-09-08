@@ -62,6 +62,7 @@ public enum class Language(public val tag: String, @StringRes public val label: 
      * and comparing them directly says this language is not chosen when it is.
      */
     INDONESIAN("id", R.string.language_indonesian),
+    VIETNAMESE("vi", R.string.language_vietnamese),
 }
 
 /**

@@ -71,7 +71,7 @@ public object SendokuThemes {
      */
     public fun fonts(id: SendokuThemeId): Pair<Int, Int> = when (id) {
         SendokuThemeId.DEEP_FIELD -> R.font.inter_regular to R.font.inter_semibold
-        SendokuThemeId.INK -> R.font.pt_serif_regular to R.font.pt_serif_bold
+        SendokuThemeId.INK -> R.font.source_serif_regular to R.font.source_serif_bold
         SendokuThemeId.ZEN -> R.font.manrope_regular to R.font.manrope_semibold
         SendokuThemeId.TERMINAL -> R.font.jetbrains_mono_regular to R.font.jetbrains_mono_bold
     }

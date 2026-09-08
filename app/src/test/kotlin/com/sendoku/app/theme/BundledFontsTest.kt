@@ -23,7 +23,7 @@ class BundledFontsTest {
 
     private val families = mapOf(
         "Inter" to listOf("inter_regular.ttf", "inter_semibold.ttf"),
-        "PT Serif" to listOf("pt_serif_regular.ttf", "pt_serif_bold.ttf"),
+        "Source Serif 4" to listOf("source_serif_regular.ttf", "source_serif_bold.ttf"),
         "Manrope" to listOf("manrope_regular.ttf", "manrope_semibold.ttf"),
         "JetBrains Mono" to listOf("jetbrains_mono_regular.ttf", "jetbrains_mono_bold.ttf"),
     )
@@ -85,7 +85,11 @@ class BundledFontsTest {
         // testing nothing.
         assertTrue("only ${charset.size} characters were found", charset.size > 150)
         assertTrue("no Cyrillic was found", charset.any { it.code in 0x400..0x4FF })
-        for (c in "äöüßğşıİçÇñáíóúü¿àèìòù") {
+        assertTrue("no Ukrainian was found", 'ї' in charset)
+        // Latin with marks on it, from six languages, because this is the set that a face
+        // chosen for one alphabet quietly fails to cover. PT Serif drew every character on
+        // this line and not one Vietnamese letter, which is how it lost the Ink theme.
+        for (c in "äöüßğşıİçÇñáíóúü¿àèìòùếệữơưạ") {
             assertTrue("$c is missing from the set the faces are cut to", c in charset)
         }
         assertTrue("Japanese should be left to the phone rather than cut into the faces", '日' !in charset)
@@ -134,12 +138,14 @@ class BundledFontsTest {
 
     @Test
     fun `every face is still a subset rather than the whole family`() {
-        // Whole, these four are 941 KB. The entire case for a face per theme is that they
-        // are cut down, so a file that has quietly become complete has to fail here.
+        // Whole, these four are megabytes: Source Serif 4 alone is 1.2 MB and Inter is 876
+        // KB. The entire case for a face per theme is that they are cut down, so a file that
+        // has quietly become complete has to fail here. The ceiling is generous because the
+        // set grows with every language, and a serif carrying Vietnamese is a lot of marks.
         for ((family, files) in families) {
             for (name in files) {
                 val size = File("src/main/res/font/$name").length()
-                assertTrue("$family: $name is $size bytes, which is too big to be a subset", size < 60_000)
+                assertTrue("$family: $name is $size bytes, which is too big to be a subset", size < 150_000)
             }
         }
     }

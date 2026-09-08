@@ -74,8 +74,13 @@ def is_japanese(character: str) -> bool:
 FAMILIES = [
     ("inter", "Inter", [(f"{GOOGLE}/ofl/inter/Inter%5Bopsz,wght%5D.ttf", "regular", 400),
                         (f"{GOOGLE}/ofl/inter/Inter%5Bopsz,wght%5D.ttf", "semibold", 600)]),
-    ("pt_serif", "PT Serif", [(f"{GOOGLE}/ofl/ptserif/PT_Serif-Web-Regular.ttf", "regular", None),
-                              (f"{GOOGLE}/ofl/ptserif/PT_Serif-Web-Bold.ttf", "bold", None)]),
+    # Source Serif 4 rather than PT Serif, which Ink and Paper wore until Vietnamese arrived.
+    # PT Serif is a Russian face and has no Vietnamese in it at all: fifty letters missing,
+    # every one of them an ordinary Latin letter with marks on it, so a Vietnamese word would
+    # have come out half in the theme's face and half in the phone's. Source Serif 4 is the
+    # same kind of face, a text serif meant to be read at length, and it draws all of it.
+    ("source_serif", "Source Serif 4", [(f"{GOOGLE}/ofl/sourceserif4/SourceSerif4%5Bopsz,wght%5D.ttf", "regular", 400),
+                                        (f"{GOOGLE}/ofl/sourceserif4/SourceSerif4%5Bopsz,wght%5D.ttf", "bold", 700)]),
     ("manrope", "Manrope", [(f"{GOOGLE}/ofl/manrope/Manrope%5Bwght%5D.ttf", "regular", 400),
                             (f"{GOOGLE}/ofl/manrope/Manrope%5Bwght%5D.ttf", "semibold", 600)]),
     ("jetbrains_mono", "JetBrains Mono", [(f"{GOOGLE}/ofl/jetbrainsmono/JetBrainsMono%5Bwght%5D.ttf", "regular", 400),

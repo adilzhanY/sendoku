@@ -184,6 +184,7 @@
     <string name="language_arabic">العربية</string>
     <string name="language_ukrainian">Українська</string>
     <string name="language_indonesian">Bahasa Indonesia</string>
+    <string name="language_vietnamese">Tiếng Việt</string>
     <plurals name="first_run_prompt">
         <item quantity="one">Sendoku ist in %1$d Sprache geschrieben. Welche lesen Sie?</item>
         <item quantity="other">Sendoku ist in %1$d Sprachen geschrieben. Welche lesen Sie?</item>

@@ -21,11 +21,12 @@ import com.sendoku.app.R
  * The second is that a theme is meant to be a whole look. Terminal has been calling itself
  * Terminal while borrowing whatever proportional font the phone happened to have.
  *
- * Each family is two static weights cut down to the 159 characters the app's own strings
- * can produce across English, Russian, German and Turkish. Whole, the four of them are 941
- * kilobytes; cut down they are 113, which is what makes this affordable at all. They are
- * built by tools/subset-fonts.py, which derives that character set from the shipped
- * strings rather than from a list somebody has to remember to update.
+ * Each family is two static weights cut down to exactly the characters the app's own strings
+ * can produce across every language it is written in. Whole, the four of them are megabytes;
+ * cut down they are a small fraction of that, which is what makes this affordable at all.
+ * They are built by tools/subset-fonts.py, which derives that character set from the shipped
+ * strings rather than from a list somebody has to remember to update. A face that cannot draw
+ * a language the app ships fails that script, which is how PT Serif lost its place here.
  *
  * Weights between the two shipped are resolved to the nearest, which is Compose's own rule.
  */
@@ -34,9 +35,18 @@ public val InterFont: FontFamily = FontFamily(
     Font(R.font.inter_semibold, FontWeight.SemiBold),
 )
 
-public val PtSerifFont: FontFamily = FontFamily(
-    Font(R.font.pt_serif_regular, FontWeight.Normal),
-    Font(R.font.pt_serif_bold, FontWeight.Bold),
+/**
+ * The face Ink and Paper wears.
+ *
+ * It was PT Serif until Vietnamese arrived. PT Serif is a Russian face with no Vietnamese in
+ * it at all, fifty letters short, and every one of those letters is an ordinary Latin letter
+ * with marks on it, so a Vietnamese word would have been drawn half in this theme's face and
+ * half in whatever the phone fell back to. Source Serif 4 is the same kind of face, a text
+ * serif meant to be read at length, and it draws every language the app is written in.
+ */
+public val SourceSerifFont: FontFamily = FontFamily(
+    Font(R.font.source_serif_regular, FontWeight.Normal),
+    Font(R.font.source_serif_bold, FontWeight.Bold),
 )
 
 public val ManropeFont: FontFamily = FontFamily(

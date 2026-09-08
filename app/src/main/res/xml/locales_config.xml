@@ -26,4 +26,5 @@
       strings and reports a translation nothing declares when they differ.
     -->
     <locale android:name="in" />
+    <locale android:name="vi" />
 </locale-config>

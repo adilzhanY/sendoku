@@ -217,4 +217,4 @@ public val ZenMotion: SendokuMotion = DefaultMotion.copy(
 )
 
 /** Ink uses a serif for its headings, the way a puzzle book does. */
-public val InkType: SendokuType = DefaultType.inFace(PtSerifFont)
+public val InkType: SendokuType = DefaultType.inFace(SourceSerifFont)
