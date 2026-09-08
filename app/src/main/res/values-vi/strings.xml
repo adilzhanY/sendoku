@@ -198,6 +198,7 @@
     <string name="language_ukrainian">Українська</string>
     <string name="language_indonesian">Bahasa Indonesia</string>
     <string name="language_vietnamese">Tiếng Việt</string>
+    <string name="language_hindi">हिन्दी</string>
     <plurals name="first_run_prompt">
         <item quantity="other">Sendoku được viết bằng %1$d ngôn ngữ. Bạn đọc được ngôn ngữ nào?</item>
     </plurals>
