@@ -116,6 +116,30 @@ class LanguagePageTest {
         compose.onNodeWithTag("language:japanese").performScrollTo().assertIsNotSelected()
     }
 
+    /** How far down the page a row is drawn, which is the only thing that says what order is. */
+    private fun topOf(language: Language): Float = compose
+        .onNodeWithTag("language:${language.name.lowercase()}")
+        .fetchSemanticsNode()
+        .positionInRoot
+        .y
+
+    @Test
+    fun thePageIsInTheOrderTheRuleGives() {
+        // Languages.inDisplayOrder is tested on its own, so what is checked here is that the
+        // page actually calls it. It listed them in the order the enum happened to declare
+        // until this test existed, and that order looked deliberate enough to survive review.
+        page()
+        assertTrue("following the phone is not first", topOf(Language.SYSTEM) < topOf(Language.ENGLISH))
+        // The Latin block, alphabetical, which is the part of the list people read.
+        assertTrue("Bahasa Indonesia is not before Deutsch", topOf(Language.INDONESIAN) < topOf(Language.GERMAN))
+        assertTrue("Deutsch is not before English", topOf(Language.GERMAN) < topOf(Language.ENGLISH))
+        assertTrue("Tiếng Việt is not before Türkçe", topOf(Language.VIETNAMESE) < topOf(Language.TURKISH))
+        // And the scripts in blocks behind it.
+        assertTrue("Cyrillic is not after Latin", topOf(Language.TURKISH) < topOf(Language.RUSSIAN))
+        assertTrue("Arabic is not after Cyrillic", topOf(Language.UKRAINIAN) < topOf(Language.ARABIC))
+        assertTrue("Hindi is not after Arabic", topOf(Language.ARABIC) < topOf(Language.HINDI))
+    }
+
     @Test
     fun choosingALanguageLeavesThePage() {
         // Popped before the language is applied, because applying it restarts the activity and

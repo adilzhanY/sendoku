@@ -199,7 +199,7 @@ free. Both of those are true and neither belongs on somebody's photograph.
 | **App** | Jetpack Compose, Material 3, minSdk 26, one Activity, no fragments |
 | **Storage** | Room, on the phone. No account, no cloud, no export unless you ask for one |
 | **Puzzles** | 4,000 classic and 200 Killer in a gzipped binary batch, 227 KB for both |
-| **Tests** | 693 on the JVM and 188 on a device. The solver and the generator are where a silent bug ships broken puzzles |
+| **Tests** | 703 on the JVM and 190 on a device. The solver and the generator are where a silent bug ships broken puzzles |
 | **Size** | 3.8 MB installed, R8 shrunk. Six more languages and a serif that can draw Vietnamese account for the growth |
 | **Languages** | 18, including Arabic right to left and seven scripts Android supplies the font for |
 

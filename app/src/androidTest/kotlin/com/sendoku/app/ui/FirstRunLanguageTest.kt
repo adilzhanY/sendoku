@@ -64,6 +64,20 @@ class FirstRunLanguageTest {
     }
 
     @Test
+    fun theFirstScreenIsInTheSameOrderAsTheSettingsPage() {
+        // Two pickers listing the same eighteen languages in two different orders is the sort
+        // of thing nobody notices until they go looking for one where they last saw it.
+        shownOn("en")
+        val top = { language: Language ->
+            compose.onNodeWithTag("first-run:${language.name.lowercase()}").fetchSemanticsNode().positionInRoot.y
+        }
+        assertTrue("following the phone is not first", top(Language.SYSTEM) < top(Language.ENGLISH))
+        assertTrue("Bahasa Indonesia is not before Deutsch", top(Language.INDONESIAN) < top(Language.GERMAN))
+        assertTrue("Deutsch is not before English", top(Language.GERMAN) < top(Language.ENGLISH))
+        assertTrue("Cyrillic is not after Latin", top(Language.TURKISH) < top(Language.RUSSIAN))
+    }
+
+    @Test
     fun aPhoneInALanguageWeSpeakIsAlreadyAnswered() {
         // German phone, one tap, and the app carries on following the phone rather than
         // pinning German: if they change their phone later, the app changes with it.
@@ -97,7 +111,9 @@ class FirstRunLanguageTest {
     fun choosingAnotherLanguageIsWhatComesBack() {
         var chosen: Language? = null
         shownOn("en") { chosen = it }
-        compose.onNodeWithTag("first-run:japanese").performClick()
+        // Scrolled to first. Japanese sits in the CJK block at the foot of the list now that
+        // the list is collated, and a tap on a row below the fold lands on nothing at all.
+        compose.onNodeWithTag("first-run:japanese").performScrollTo().performClick()
         compose.onNodeWithTag("first-run:continue").performClick()
         compose.waitForIdle()
         assertEquals(Language.JAPANESE, chosen)

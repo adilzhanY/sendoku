@@ -105,9 +105,9 @@ public fun FirstRunLanguage(onChoose: (Language) -> Unit, modifier: Modifier = M
             modifier = Modifier.weight(1f).verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(dimens.spaceXs),
         ) {
-            for (language in Language.entries) {
+            for ((language, label) in languagesInOrder()) {
                 Choice(
-                    label = stringResource(language.label),
+                    label = label,
                     // The one row that needs saying twice: following the phone means nothing
                     // unless you are told what the phone is currently set to.
                     detail = when {

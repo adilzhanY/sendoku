@@ -17,6 +17,7 @@ import androidx.compose.material3.RadioButton
 import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -30,6 +31,8 @@ import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
 import com.sendoku.app.R
 import com.sendoku.app.theme.Sendoku
+import java.util.Locale
+import androidx.compose.ui.text.intl.Locale as ComposeLocale
 
 /**
  * The language picker, on a page of its own.
@@ -71,9 +74,9 @@ public fun LanguageScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
             Text(stringResource(R.string.settings_language), style = Sendoku.type.title, color = colors.given)
         }
 
-        for (choice in Language.entries) {
+        for ((choice, label) in languagesInOrder()) {
             LanguageRow(
-                label = stringResource(choice.label),
+                label = label,
                 // The one row that needs saying twice: following the phone means nothing
                 // unless you are told what the phone is currently set to.
                 detail = if (choice == Language.SYSTEM && spoken != null) {
@@ -94,6 +97,29 @@ public fun LanguageScreen(onBack: () -> Unit, modifier: Modifier = Modifier) {
                 activity?.let { Languages.choose(it, choice) }
             }
         }
+    }
+}
+
+/**
+ * Every language, in the order the picker shows them, each with the words to show it as.
+ *
+ * Shared by the settings page and the first run screen, because two pickers listing the same
+ * eighteen languages in two different orders is the sort of thing nobody notices until they
+ * are looking for one and cannot find it where they last saw it. The rule itself, and why it
+ * is the rule Android's own picker uses, is on [Languages.inDisplayOrder].
+ */
+@Composable
+internal fun languagesInOrder(): List<Pair<Language, String>> {
+    val labels = Language.entries.associateWith { stringResource(it.label) }
+    // The reader's locale, which decides the collation. Read through Compose's own Locale
+    // rather than Locale.getDefault, which is the same value and is not observable: a
+    // composable that reads it does not recompose when the language changes, so the list would
+    // keep the order it was first drawn in. It changes only when the language does, and that
+    // takes the whole activity with it, so the sort is remembered rather than redone per frame.
+    val sortIn = ComposeLocale.current.toLanguageTag()
+    return remember(labels, sortIn) {
+        val order = Languages.inDisplayOrder(labels, Locale.forLanguageTag(sortIn))
+        order.map { it to labels.getValue(it) }
     }
 }
 

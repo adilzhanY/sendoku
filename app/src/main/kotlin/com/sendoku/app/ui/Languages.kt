@@ -9,6 +9,7 @@ import android.os.LocaleList
 import androidx.annotation.StringRes
 import androidx.core.content.edit
 import com.sendoku.app.R
+import java.text.Collator
 import java.util.Locale
 
 /**
@@ -102,6 +103,56 @@ public object Languages {
 
     private const val FILE = "language"
     private const val KEY = "tag"
+
+    /**
+     * The order the picker lists languages in.
+     *
+     * Not the order they were added in, which is what this was until it reached eighteen and
+     * became a list somebody has to look through rather than glance at. The rule is the one
+     * Android's own per app language screen uses, and it is worth matching exactly, because
+     * this app is registered in that screen: a player who opens it there and then opens the
+     * picker here should not be handed the same eighteen languages in two different orders.
+     *
+     * AOSP sorts on the label, which for a language is its endonym, its name in its own
+     * language, and it compares them through a Collator rather than by code point. Two things
+     * follow from that and neither is obvious. Scripts group together, because collation
+     * orders whole scripts before it orders letters, so the Latin names come first and the
+     * Cyrillic, Arabic, Indic, Thai and CJK ones follow in blocks. And the comparison is done
+     * in the reader's own locale, so a Thai reader sees Thai near the top where Thai collation
+     * puts it, rather than buried behind five scripts they cannot read.
+     *
+     * The one special case is Arabic. Its endonym is العربية, which begins with the definite
+     * article, so a plain sort files every Arabic list under A for al. AOSP strips it before
+     * comparing and so does this.
+     *
+     * What is deliberately not copied is AOSP's suggested block, which floats the current and
+     * the system language to the top. That exists because the system picker offers hundreds of
+     * locales. Eighteen fit on two screens, the current one already carries a filled radio
+     * button, and a list that rearranges itself every time the language changes is worse to
+     * come back to than one that does not move.
+     *
+     * Following the phone is pinned first regardless. It is not a language, it is the default,
+     * and it is the answer for most people.
+     *
+     * @param labels each language as it is written on screen, which is what is being sorted.
+     * @param sortIn the reader's locale, whose collation rules decide the order.
+     */
+    public fun inDisplayOrder(labels: Map<Language, String>, sortIn: Locale): List<Language> {
+        val collator = Collator.getInstance(sortIn)
+        val rest = labels.keys.filter { it != Language.SYSTEM }
+            .sortedWith(compareBy(collator) { forSorting(it, labels.getValue(it)) })
+        return if (Language.SYSTEM in labels) listOf(Language.SYSTEM) + rest else rest
+    }
+
+    /** The Arabic definite article, which a sort has to look past rather than at. */
+    private const val ARABIC_ARTICLE = "\u0627\u0644"
+
+    private fun forSorting(language: Language, label: String): String =
+        if (language == Language.ARABIC && label.startsWith(ARABIC_ARTICLE)) {
+            label.removePrefix(ARABIC_ARTICLE)
+        } else {
+            label
+        }
 
     /** What the app is set to, or [Language.SYSTEM] when it is following the phone. */
     public fun current(context: Context): Language {
