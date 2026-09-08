@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The debug build only.
+
+  LeakCanary ships a launcher icon of its own, so a debug install puts two Sendoku shaped
+  entries in the app drawer: the game, and a "Leaks" one that opens LeakCanary's own list.
+  That is a nuisance when the drawer is where you go to open the app by hand, and it is how
+  a launch by intent filter picks the wrong one. The library stays, because it is what
+  catches a leaked activity, and only its icon goes; its own README documents this alias as
+  the thing to disable for it. Leaks are reported through the notification instead.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application>
+        <activity-alias
+            android:name="leakcanary.internal.activity.LeakLauncherActivity"
+            android:enabled="false"
+            android:targetActivity="leakcanary.internal.activity.LeakActivity"
+            tools:node="replace"
+            tools:replace="android:enabled" />
+    </application>
+</manifest>
