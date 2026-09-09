@@ -135,7 +135,7 @@
     <string name="hint_remove_one">Bỏ nó ra</string>
     <string name="hint_remove_many">Bỏ chúng ra</string>
     <string name="hint_look_here_title">Nhìn vào đây</string>
-    <string name="hint_look_here">Có điều để tìm ở %1$s. Gợi ý này chỉ nói tới đó thôi.</string>
+    <string name="hint_look_here">Có điều để tìm %1$s. Gợi ý này chỉ nói tới đó thôi.</string>
     <string name="hint_look_around">Có một bước để tìm. Bước này trải khắp lưới chứ không nằm gọn trong một vùng.</string>
     <string name="hint_what_kind">Bước kiểu gì?</string>
     <string name="hint_menu_title">Trợ giúp</string>
@@ -279,7 +279,7 @@
     <string name="about_no_purchases_detail">Mọi câu đố và mọi gợi ý đều đã có sẵn ở đây.</string>
     <string name="about_offline">Chạy được khi ngoại tuyến</string>
     <string name="about_offline_detail">Toàn bộ bộ câu đố nằm sẵn trong ứng dụng.</string>
-    <string name="about_hints">Gợi ý có dạy dỗ</string>
+    <string name="about_hints">Gợi ý giúp bạn học</string>
     <string name="about_hints_detail">Một gợi ý gọi tên kỹ thuật và giải thích lập luận. Nó không bao giờ chỉ điền hộ một chữ số, và không bao giờ bị đem bán: mỗi câu đố có sẵn ba gợi ý, và bạn có thể tắt giới hạn trong phần cài đặt.</string>
     <string name="about_sharing">Chia sẻ</string>
     <string name="about_sharing_detail">Một mã câu đố chính là câu đố đó, không phải một tài khoản. Không có ai để đăng nhập, không có bảng xếp hạng, và ứng dụng không có cách nào kiểm tra thời gian mà ai đó khoe với bạn: hai người chơi cùng một lưới rồi so xem nó tốn của mỗi người bao nhiêu, chỉ có vậy thôi.</string>
@@ -312,10 +312,10 @@
     <string name="look_bug_plus_one">Mọi ô trừ một ô đều chỉ còn hai chữ số.</string>
     <string name="look_x_chain">Một chuỗi trên một chữ số, xen kẽ giữa phải có và không thể có.</string>
     <string name="look_xy_chain">Một chuỗi các ô hai chữ số, mỗi ô ép ô kế tiếp.</string>
-    <string name="look_forcing_chain">Một ô đúng hai khả năng, khi không còn gì khác để tìm.</string>
+    <string name="look_forcing_chain">Một ô có đúng hai khả năng, khi không còn gì khác để tìm.</string>
     <string name="look_death_blossom">Một ô, và một nhóm cho mỗi chữ số nó có thể là, trong đó ô ấy nhìn thấy chữ số đó ở khắp nhóm.</string>
     <string name="look_als_xy_wing">Ba nhóm, mỗi nhóm thiếu đúng một chữ số nữa là đầy, nối thành một đường bởi hai chữ số khác nhau.</string>
-    <string name="look_sue_de_coq">Một khối và một đường cắt nhau, nơi các ô chung chứa nhiều hơn chỗ của chúng hai chữ số.</string>
+    <string name="look_sue_de_coq">Một khối và một đường cắt nhau, nơi các ô chung chứa nhiều hơn đúng hai chữ số so với số chỗ chúng có.</string>
     <string name="look_als_xz">Hai nhóm ô, mỗi nhóm chỉ còn thiếu một chữ số nữa là bị khóa.</string>
 
     <string name="because_naked_single">Mọi chữ số khác đều đã xuất hiện ở hàng, cột hoặc khối của nó, nên chỉ còn lại một. Chữ số ấy phải vào đây.</string>
@@ -853,7 +853,7 @@
     <string name="settings_hint_note">Mặc định bật. Ba gợi ý là miễn phí, còn gợi ý thứ tư phải trả bằng cả ván, và điều đó biến một gợi ý thành một quyết định chứ không phải phản xạ. Hãy tắt nó trong lúc bạn học khóa học.</string>
     <string name="settings_post_mortem">Cho biết thời gian đã đi đâu</string>
     <string name="settings_post_mortem_note">Sau một ván thắng, chỉ ra hai chỗ mà lần giải chậm lại và lúc đó trên bảng có gì. Với một lần giải chưa từng chậm lại thì không nói gì cả.</string>
-    <string name="post_mortem_line">Bạn dừng ở đây %1$s. Lúc đó có một %2$s đang chờ được tìm ra.</string>
+    <string name="post_mortem_line">Bạn dừng ở đây trong %1$s. Lúc đó có một %2$s đang chờ được tìm ra.</string>
     <string name="post_mortem_title">Thời gian đã đi đâu</string>
     <string name="clean_line">Một lần giải sạch: không gợi ý, không lỗi sai, không ghi chú.</string>
     <string name="clean_mark">Sạch</string>
@@ -892,6 +892,6 @@
         <item quantity="other">%1$d bước, luật rẻ nhất trước, đúng như ứng dụng đã chấm nó.</item>
     </plurals>
     <plurals name="path_struck">
-        <item quantity="other">Loại bỏ %1$d dấu bút chì.</item>
+        <item quantity="other">Loại bỏ %1$d ghi chú.</item>
     </plurals>
 </resources>
