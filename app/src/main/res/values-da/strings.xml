@@ -1,0 +1,920 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Danish.
+
+  The vocabulary is fixed throughout and nothing else may be used for these: felt is a cell,
+  række is a row, kolonne is a column, boks is a box, område is any of the three, tal is a
+  digit, note is a pencil mark, kandidat is a candidate and givet tal is a clue that came with
+  the puzzle. Half the faults found in the older translations were a second word creeping in
+  for one of these, so they are written down here rather than remembered.
+
+  Two words are deliberately kept apart. Et tip is the help the app gives you, and at trykke is
+  what you do to the screen. German let those collide, so "off is one tap away" read there as
+  "one hint away", which in an app that limits hints says the opposite of what was meant.
+
+  The preposition for a region lives in hint_in_region and nowhere else. house_row is bare, and
+  hint_look_here and hint_cells_here take the finished phrase, so none of them adds an i of its
+  own. Four languages got that wrong and rendered "noget at finde i i række 4".
+
+  The fish and the wings keep their English names, because that is what Danish solvers say. The
+  rules that describe themselves are translated.
+-->
+<resources>
+    <string name="app_name">Sendoku</string>
+
+    <string name="home_choose_level">Vælg et niveau</string>
+    <string name="home_daily">Dagens</string>
+    <string name="home_new_puzzle">Ny opgave</string>
+    <string name="home_resume">Fortsæt</string>
+    <string name="home_in_progress">Ikke færdig</string>
+    <string name="home_placed">Udfyldt: %1$d af %2$d</string>
+    <string name="home_or_start">Eller start noget nyt</string>
+    <string name="home_your_level">Dit niveau</string>
+    <string name="home_all_levels">Alle niveauer</string>
+    <string name="killer_title">Killer</string>
+    <string name="killer_note">Bure, og hvert bur har sin egen sum</string>
+    <string name="killer_marker">Killer</string>
+    <string name="killer_card">%1$s, %2$s</string>
+    <string name="code_title">Spil en opgave, nogen har sendt dig</string>
+    <string name="code_hint">Indsæt en kode</string>
+    <string name="code_play">Spil</string>
+    <string name="code_unreadable">Det ligner ikke en Sendoku-kode.</string>
+    <string name="code_typo">Der er et tegn i den, som ingen kode har. Tjek den mod den, du fik tilsendt.</string>
+    <string name="code_cut_short">Koden kom ufuldstændig frem. Bed om den igen, hel.</string>
+    <string name="code_too_new">Koden er lavet af en nyere udgave af Sendoku end denne.</string>
+    <string name="code_missing">Koden læses rigtigt, men denne udgave har ingen opgave med det nummer.</string>
+    <string name="code_unplayable">Det gitter kan ikke gøres færdigt med ræsonnement alene, så Sendoku vil ikke lade som om, den kan forklare det.</string>
+    <string name="code_shared">Sendt til dig</string>
+    <string name="code_share">Send opgaven til en ven</string>
+    <string name="code_invitation">Prøv denne %1$s-opgave. Samme gitter, og der skal ingen app til for at sammenligne.</string>
+    <string name="enter_title">Tast en opgave ind</string>
+    <string name="enter_marker">Tastet ind</string>
+    <plurals name="enter_help">
+        <item quantity="one">%1$d givet tal indtil videre. Tryk på et felt og derefter på et tal. Tjek gitteret, når det er tastet ind.</item>
+        <item quantity="other">%1$d givne tal indtil videre. Tryk på et felt og derefter på et tal. Tjek gitteret, når det er tastet ind.</item>
+    </plurals>
+    <string name="enter_impossible">Det gitter kan ikke gøres færdigt. Et af de givne tal må være forkert.</string>
+    <string name="enter_ambiguous">Gitteret har mere end ét svar, så det er ikke rigtig en opgave. Du kan spille det alligevel.</string>
+    <string name="enter_beyond">Ét svar, men man kan ikke nå frem til det med ræsonnement alene, så Sendoku kan ikke forklare det trin for trin.</string>
+    <string name="enter_ready">Ét svar. Det er en %1$s-opgave, bedømt %2$s.</string>
+    <string name="enter_clear">Ryd</string>
+    <string name="enter_check">Tjek</string>
+    <string name="enter_play">Spil</string>
+
+    <string name="grade_gentle">Let</string>
+    <string name="grade_steady">Middel</string>
+    <string name="grade_tricky">Svær</string>
+    <string name="grade_severe">Meget svær</string>
+    <string name="grade_diabolical">Ekspert</string>
+    <string name="grade_beyond">Mester</string>
+    <string name="grade_insane">Vanvittig</string>
+    <string name="grade_nightmare">Mareridt</string>
+    <string name="grade_locked">Vind én %1$s-opgave for at åbne dette</string>
+    <string name="gate_gentle">ét klart tal ad gangen</string>
+    <string name="gate_steady">par, og tal låst til en linje</string>
+    <string name="gate_tricky">tripler, og mønstre på tværs af gitteret</string>
+    <string name="gate_severe">wings, farvning og rektangler</string>
+    <string name="gate_diabolical">kæder af ræsonnement</string>
+    <string name="gate_beyond">længere end de fleste apps går</string>
+    <string name="gate_insane">grupper af felter kædet sammen</string>
+    <string name="gate_nightmare">ét felt taget begge veje, på papir</string>
+    <string name="grade_advanced">Avanceret</string>
+    <string name="grade_advanced_talkback">et avanceret niveau, som kræver en teknik fra kurset</string>
+
+    <string name="tool_undo">Fortryd</string>
+    <string name="tool_redo">Gentag</string>
+    <string name="tool_erase">Slet</string>
+    <string name="tool_notes">Noter</string>
+    <string name="tool_hint">Tip</string>
+    <string name="paused">Pause</string>
+    <string name="paused_tap">Tryk et vilkårligt sted for at fortsætte</string>
+    <string name="mistakes_of">%1$d af %2$d</string>
+
+    <string name="cell_position">Række %1$d, kolonne %2$d</string>
+    <string name="cell_clue">%1$s, %2$d, givet tal</string>
+    <string name="cell_digit">%1$s, %2$d</string>
+    <string name="cell_empty">%1$s, tomt</string>
+    <string name="cell_noted">%1$s, tomt, noteret %2$s</string>
+    <string name="cell_hint_argument">%1$s. En del af tippet.</string>
+    <string name="cell_hint_struck">%1$s. Tippet streger en note ud her.</string>
+    <string name="cell_hint_region">%1$s. I det område, tippet handler om.</string>
+    <string name="cell_repeated">%1$s, gentaget</string>
+    <string name="pad_all_placed">%1$d, alle placeret</string>
+    <string name="pad_one_left">%1$d, ét tilbage</string>
+    <plurals name="pad_left">
+        <item quantity="one">%1$d, %2$d tilbage</item>
+        <item quantity="other">%1$d, %2$d tilbage</item>
+    </plurals>
+    <string name="pad_scanning">%1$s, viser hvor det kan stå</string>
+    <string name="pad_notes_mode">%1$s, notetilstand</string>
+
+    <string name="cell_actions_title">RÆKKE %1$d, KOLONNE %2$d</string>
+    <string name="cell_actions_clue">Dette tal fulgte med opgaven, så det kan ikke ændres.</string>
+    <plurals name="cell_actions_note_all">
+        <item quantity="one">Notér den eneste kandidat</item>
+        <item quantity="other">Notér alle %1$d kandidater</item>
+    </plurals>
+    <string name="cell_actions_clear_notes">Slet noterne</string>
+    <string name="why_not_title">Hvorfor ikke?</string>
+    <string name="tint_title">Farve</string>
+    <string name="cell_tinted">%1$s, farvet %2$s</string>
+    <string name="tint_clear_all">Fjern alle farver</string>
+    <string name="tint_one">Orange</string>
+    <string name="tint_two">Blå</string>
+    <string name="tint_three">Lilla</string>
+    <string name="tint_four">Grøn</string>
+    <string name="why_not_prompt">Tryk på et tal for at få at vide, hvad der spærrer for det.</string>
+    <string name="why_not_taken">Der er allerede et %1$d i %2$s, i række %3$d, kolonne %4$d.</string>
+    <string name="why_not_filled">Feltet indeholder allerede et %1$d. Slet det først.</string>
+    <string name="why_not_possible">Intet på brættet udelukker %1$d. Det gør det ikke rigtigt, kun muligt.</string>
+    <string name="cell_actions_clear">Ryd feltet</string>
+
+    <string name="leave_title">Forlade opgaven?</string>
+    <string name="leave_body">Den venter, hvor du slap.</string>
+    <string name="leave_confirm">Forlad</string>
+    <string name="leave_cancel">Bliv</string>
+
+    <string name="outcome_solved">Løst</string>
+    <string name="outcome_lost">Fejlene er brugt op</string>
+    <string name="outcome_rated">%1$s, bedømt %2$s</string>
+    <string name="outcome_hints">Tip</string>
+    <string name="outcome_mistakes">Fejl</string>
+    <string name="outcome_moves">Træk</string>
+    <string name="outcome_needed">Krævede: %1$s</string>
+    <string name="outcome_home">Forsiden</string>
+    <string name="outcome_another">En %1$s mere</string>
+
+    <string name="hint_remove_one">Fjern det</string>
+    <string name="hint_remove_many">Fjern dem</string>
+    <string name="hint_look_here_title">Se her</string>
+    <string name="hint_look_here">Der er noget at finde %1$s. Mere siger dette tip ikke.</string>
+    <string name="hint_look_around">Der er et trin at finde. Dette ligger spredt ud over gitteret i stedet for i ét område.</string>
+    <string name="hint_what_kind">Hvilken slags trin?</string>
+    <string name="hint_menu_title">Hjælp</string>
+    <string name="hint_menu_difficulty">Næste trin kræver en teknik på niveauet %1$s.</string>
+    <string name="hint_menu_broken">Noget af det, du har placeret, er forkert, så der følger ikke mere, før det er rettet.</string>
+    <string name="hint_menu_check">Er der noget galt?</string>
+    <string name="hint_menu_look">Hvor skal jeg kigge?</string>
+    <string name="hint_menu_explain">Forklar næste trin</string>
+    <string name="hint_menu_free">Det koster ingenting at spørge her. Grænsen er slået fra.</string>
+    <string name="hint_check_clean">Intet af det, du har placeret, er forkert.</string>
+    <string name="hint_close">Luk</string>
+    <string name="hint_previous">Et trin tilbage</string>
+    <string name="hint_cells_here">De felter, det hviler på, er fremhævet %1$s.</string>
+    <string name="hint_where">Vis mig hvor</string>
+    <string name="hint_explain">Forklar det</string>
+    <string name="hint_do_it">Gør det</string>
+    <string name="hint_evidence">Rækken har allerede %1$s. Kolonnen har %2$s. Boksen har %3$s. Tilsammen er det alle tal undtagen %4$d.</string>
+    <string name="hint_rests_on_earlier">En del af dette hviler på noter, som et tidligere tip stregede ud. De står skrevet på brættet, så du kan følge det derfra.</string>
+    <string name="hint_what_is_this">Hvad er det her?</string>
+    <string name="hint_wrong_title">Noget er galt</string>
+    <string name="hint_wrong_one">Et af de tal, du har placeret, kan ikke være rigtigt. Det er fremhævet.</string>
+    <string name="hint_wrong_many">%1$d af de tal, du har placeret, kan ikke være rigtige. De er fremhævet.</string>
+    <string name="hint_wrong_until_one">Der kan ikke udledes mere, før det er rettet.</string>
+    <string name="hint_wrong_until_many">Der kan ikke udledes mere, før de er rettet.</string>
+    <string name="hint_done_title">Færdig</string>
+    <string name="hint_done_body">Opgaven er løst.</string>
+    <string name="hint_stuck_title">Intet at foreslå</string>
+    <string name="hint_stuck_body">Brættet er lovligt, men ingen af de teknikker, Sendoku kender, passer på det. Det burde ikke ske for en opgave fra appen.</string>
+    <string name="hint_in_region">i %1$s</string>
+    <string name="hint_in_regions">i %1$s og %2$s</string>
+    <string name="hint_outcome_place">Så række %1$d, kolonne %2$d må være %3$d.</string>
+    <string name="hint_outcome_strike_one">Så %1$d kan fjernes fra %2$s.</string>
+    <string name="hint_outcome_strike_two">Så %1$d og %2$d kan fjernes fra %3$s.</string>
+    <plurals name="hint_cells">
+        <item quantity="one">ét felt</item>
+        <item quantity="other">%1$d felter</item>
+    </plurals>
+
+    <string name="house_row">række %1$d</string>
+    <string name="house_column">kolonne %1$d</string>
+    <string name="house_box">boks %1$d</string>
+
+    <string name="glossary_title">Teknikker</string>
+    <string name="back">Tilbage</string>
+
+    <string name="settings_title">Indstillinger</string>
+    <string name="settings_language">Sprog</string>
+    <string name="language_system">Følg telefonen</string>
+    <string name="language_english">English</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_german">Deutsch</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_italian">Italiano</string>
+    <string name="language_japanese">日本語</string>
+    <string name="language_french">Français</string>
+    <string name="language_portuguese">Português (Brasil)</string>
+    <string name="language_chinese">简体中文</string>
+    <string name="language_korean">한국어</string>
+    <string name="language_arabic">العربية</string>
+    <string name="language_ukrainian">Українська</string>
+    <string name="language_indonesian">Bahasa Indonesia</string>
+    <string name="language_vietnamese">Tiếng Việt</string>
+    <string name="language_hindi">हिन्दी</string>
+    <string name="language_bengali">বাংলা</string>
+    <string name="language_thai">ไทย</string>
+    <string name="language_danish">Dansk</string>
+    <plurals name="first_run_prompt">
+        <item quantity="one">Sendoku findes på %1$d sprog. Hvilket læser du?</item>
+        <item quantity="other">Sendoku findes på %1$d sprog. Hvilket læser du?</item>
+    </plurals>
+    <string name="first_run_system_is">Din telefon er sat til %1$s</string>
+    <string name="first_run_no_translation">Din telefon er sat til et sprog, Sendoku endnu ikke taler. Engelsk er det nærmeste, den har.</string>
+    <string name="first_run_continue">Begynd at spille</string>
+    <string name="settings_interface">Udseende</string>
+    <string name="settings_rules">Spillets regler</string>
+    <string name="settings_light_or_dark">Lyst eller mørkt</string>
+    <string name="settings_terminal_is_dark">Terminal er mørkt, uanset hvordan telefonen er sat op. Det er med vilje.</string>
+    <string name="settings_board">Brættet</string>
+    <string name="settings_highlight_peers">Fremhæv rækken, kolonnen og boksen</string>
+    <string name="settings_highlight_same">Fremhæv det samme tal andre steder</string>
+    <string name="settings_auto_clear">Slet noter, som et placeret tal udelukker</string>
+    <string name="settings_auto_notes">Hold noter i alle felter</string>
+    <string name="settings_auto_notes_note">Appen fører regnskabet. Over Ekspert er det næsten nødvendigt.</string>
+    <string name="settings_highlight_homes">Vis hvor det valgte tal stadig kan stå</string>
+    <string name="settings_auto_check">Sig det med det samme, når et tal er forkert</string>
+    <string name="settings_auto_check_note">Med denne slået til koster det ingenting at prøve sig frem, så opgaven mister det meste af sin spænding.</string>
+    <string name="settings_auto_check_forced">Slået til, så længe der er en grænse for fejl, for en fejl, du betaler for, skal være en, du kan se. Slå grænsen fra nedenfor for at spille uden nogen af delene.</string>
+    <string name="settings_flag_conflicts">Markér et tal, der gentages i en række, kolonne eller boks</string>
+    <string name="settings_clock">Uret</string>
+    <string name="settings_show_timer">Vis tiden</string>
+    <string name="settings_feedback">Tilbagemelding</string>
+    <string name="settings_haptics">Vibration når et tal placeres</string>
+    <string name="settings_sound">Lyde</string>
+    <string name="settings_sound_note">Bløde toner mens du spiller. Der er ét tryk til at slå dem fra, og telefonens lydløs vinder over begge dele.</string>
+    <string name="settings_mistake_limit">Afslut spillet efter tre fejl</string>
+    <string name="settings_mistake_note">Slået til som standard, ved tre. Slå den fra på de svære niveauer, hvor det er surt at miste en time på én uopmærksomhed.</string>
+    <string name="settings_about">Om Sendoku</string>
+
+    <string name="theme_deep_field">Deep Field</string>
+    <string name="theme_deep_field_summary">Ægte sort, én cyan accent, intet andet</string>
+    <string name="theme_ink">Ink and Paper</string>
+    <string name="theme_ink_summary">En opgavebog fra avisen, trykt på varmt papir</string>
+    <string name="theme_zen">Slate Zen</string>
+    <string name="theme_zen_summary">Salviegrøn og sten, og så lidt andet som muligt</string>
+    <string name="theme_terminal">Terminal</string>
+    <string name="theme_terminal_summary">Fast bredde, skarpe kanter, kun mørkt</string>
+    <string name="mode_system">Følg systemet</string>
+    <string name="mode_light">Altid lyst</string>
+    <string name="mode_dark">Altid mørkt</string>
+
+    <string name="stats_title">Statistik</string>
+    <string name="stats_solved">Løst</string>
+    <string name="stats_streak">Stime</string>
+    <string name="stats_hardest">Sværeste</string>
+    <string name="stats_hardest_note">Det sværeste, du har gjort færdigt, er %1$s.</string>
+    <plurals name="stats_longest_run">
+        <item quantity="one">Din længste stime var %1$d dag.</item>
+        <item quantity="other">Din længste stime var %1$d dage.</item>
+    </plurals>
+    <string name="stats_totals">%1$s brugt, tip taget: %2$d.</string>
+    <string name="stats_by_grade">Efter niveau</string>
+    <string name="stats_hints_title">Det, du har spurgt om</string>
+    <string name="stats_hints_note">Du spørger mest om %1$s. Det er den lektion, der er værd at vende tilbage til.</string>
+    <string name="stats_needed">Det, dine opgaver krævede</string>
+    <string name="stats_solved_count">Løst: %1$d</string>
+    <string name="stats_solved_and_lost">Løst: %1$d, tabt: %2$d</string>
+    <string name="stats_average">gns. %1$s</string>
+    <string name="stats_reset">Nulstil statistikken</string>
+    <string name="stats_reset_title">Smide din historik væk?</string>
+    <string name="stats_reset_body">Hver færdig opgave, hver stime og hver bedste tid. Der findes ingen kopi nogen steder, så det kan ikke fortrydes.</string>
+    <string name="stats_reset_confirm">Nulstil</string>
+    <string name="stats_reset_cancel">Behold den</string>
+    <string name="stats_empty_title">Ikke noget endnu</string>
+    <string name="stats_empty_body">Gør en opgave færdig, og siden fyldes op: hvor lang tid hvert niveau tager dig, hvor højt du er nået, og hvilke teknikker dine opgaver har krævet.</string>
+
+    <string name="about_title">Om</string>
+    <string name="about_version">Sendoku %1$s</string>
+    <string name="about_tagline">En sudoku-app til dem, der er løbet tør for svære sudokuer.</string>
+    <string name="about_no_ads">Ingen reklamer</string>
+    <string name="about_no_ads_detail">Ikke mellem opgaver, ikke for tip, aldrig.</string>
+    <string name="about_no_tracking">Ingen sporing</string>
+    <string name="about_no_tracking_detail">Intet måles, og intet sendes. Der findes ingen server.</string>
+    <string name="about_no_purchases">Ingen køb</string>
+    <string name="about_no_purchases_detail">Hver opgave og hvert tip er her allerede.</string>
+    <string name="about_offline">Virker uden internet</string>
+    <string name="about_offline_detail">Hele samlingen følger med inde i appen.</string>
+    <string name="about_hints">Tip, der lærer fra sig</string>
+    <string name="about_hints_detail">Et tip nævner teknikken og forklarer ræsonnementet. Det udfylder aldrig bare et tal, og det sælges aldrig: der følger tre med hver opgave, og grænsen kan slås fra i indstillingerne.</string>
+    <string name="about_sharing">Deling</string>
+    <string name="about_sharing_detail">En opgavekode er selve opgaven, ikke en konto. Der er ingen at logge ind som, ingen rangliste, og appen kan ikke tjekke en tid, nogen fortæller dig: to spiller det samme gitter og sammenligner, hvad det kostede dem, og mere er det ikke.</string>
+    <string name="about_rating">Sværhedsgraden bedømmes ud fra den sværeste teknik, en opgave faktisk kræver, fundet ved at løse den, som et menneske ville. Derfor betyder Meget svær her det samme som sidste gang, du så Meget svær.</string>
+    <string name="about_licence">Sendoku er fri software under GNU General Public License version 3.</string>
+    <string name="about_privacy">Privatlivspolitikken siger det samme i den form, butikken beder om, på adilzhany.github.io/sendoku/privacy</string>
+    <string name="about_licences">Open source-licenser</string>
+    <string name="licences_title">Licenser</string>
+
+    <string name="look_naked_single">Der er et felt, hvor kun ét tal er tilbage.</string>
+    <string name="look_hidden_single">Der er et tal, som kun har ét sted tilbage at stå.</string>
+    <string name="look_locked_candidates_pointing">I én boks sidder et tal fast på en enkelt række eller kolonne.</string>
+    <string name="look_locked_candidates_claiming">På én linje kan et tal kun stå inde i en enkelt boks.</string>
+    <string name="look_naked_pair">To felter i samme område har de samme to tal og intet andet.</string>
+    <string name="look_hidden_pair">To tal har ingen andre steder at stå i et område end de samme to felter.</string>
+    <string name="look_naked_triple">Tre felter i ét område deler tre tal mellem sig.</string>
+    <string name="look_hidden_triple">Tre tal er indespærret i de samme tre felter.</string>
+    <string name="look_naked_quad">Fire felter i ét område deler fire tal mellem sig.</string>
+    <string name="look_hidden_quad">Fire tal er indespærret i de samme fire felter.</string>
+    <string name="look_x_wing">To rækker har et tal i de samme to kolonner, eller omvendt.</string>
+    <string name="look_swordfish">Tre rækker har et tal inde i de samme tre kolonner.</string>
+    <string name="look_jellyfish">Fire rækker har et tal inde i de samme fire kolonner.</string>
+    <string name="look_xy_wing">Tre felter med to tal hver, stillet op så ét tal presses ud.</string>
+    <string name="look_xyz_wing">Som en XY-Wing, men det midterste felt har også et tredje tal.</string>
+    <string name="look_w_wing">To felter med det samme par, forbundet af et tal, der kun har to hjem.</string>
+    <string name="look_simple_colouring">Ét tal danner en kæde, der skifter hele vejen igennem.</string>
+    <string name="look_multi_colouring">To adskilte kæder på ét tal, spillet ud mod hinanden.</string>
+    <string name="look_remote_pairs">En kæde af felter, der alle har præcis de samme to tal.</string>
+    <string name="look_unique_rectangle">Fire felter danner et rektangel, som ville give opgaven to svar.</string>
+    <string name="look_bug_plus_one">Alle felter på nær ét er nede på to tal.</string>
+    <string name="look_x_chain">En kæde på ét tal, der skifter mellem skal og kan ikke.</string>
+    <string name="look_xy_chain">En kæde af felter med to tal, hvor hvert felt tvinger det næste.</string>
+    <string name="look_forcing_chain">Et felt med præcis to muligheder, når der ikke er mere tilbage at finde.</string>
+    <string name="look_death_blossom">Ét felt, og en gruppe for hvert tal det kan være, hvor feltet kan se det tal overalt i gruppen.</string>
+    <string name="look_als_xy_wing">Tre grupper, der hver mangler ét tal i at være fulde, forbundet på en linje af to forskellige tal.</string>
+    <string name="look_sue_de_coq">En boks og en linje, der krydser hinanden, hvor de fælles felter har to tal mere, end der er plads til.</string>
+    <string name="look_als_xz">To grupper af felter, der hver mangler ét tal i at være låst.</string>
+
+    <string name="because_naked_single">Alle andre tal står allerede i feltets række, kolonne eller boks, så der er kun ét tilbage. Det må stå her.</string>
+    <string name="because_hidden_single">Området skal bruge tallet et sted, og alle andre felter i det er udelukket, så dette er det eneste sted, der er tilbage.</string>
+    <string name="because_locked_candidates_pointing">Boksen skal have tallet et eller andet sted, og alle de steder, det kan stå, ligger på én linje. Så tallet står på den linje, og det kan ikke stå andre steder langs den.</string>
+    <string name="because_locked_candidates_claiming">Linjen skal have tallet et eller andet sted, og alle de steder, det kan stå, ligger inde i én boks. Så tallet står i den boks, og det kan ikke stå andre steder i boksen.</string>
+    <string name="because_naked_pair">De to felter tager de to tal mellem sig, ét hver. Intet andet felt i området kan have nogen af dem.</string>
+    <string name="because_hidden_pair">Området skal bruge begge tal, og kun de to felter kan tage dem, så de tager ét hver. Alt andet i de to felter er ude.</string>
+    <string name="because_naked_triple">Tre felter, tre tal, ét hver. Intet andet i området kan bruge dem, selv om intet enkelt felt har alle tre.</string>
+    <string name="because_hidden_triple">Tre tal uden andre steder at stå fylder tre felter mellem sig, så alt andet i de felter er umuligt.</string>
+    <string name="because_naked_quad">Fire felter tager fire tal mellem sig, og det låser alle fire ude fra resten af området.</string>
+    <string name="because_hidden_quad">Fire tal indespærret i fire felter fylder dem mellem sig, så intet andet kan bo der.</string>
+    <string name="because_x_wing">Hver af de to rækker skal bruge tallet én gang, og begge kan kun placere det i de samme to kolonner. Mellem sig bruger de begge kolonner op, så ingen anden række kan have tallet der.</string>
+    <string name="because_swordfish">Tre rækker skal bruge tallet, og der er kun tre kolonner at putte det i. De tre rækker bruger alle tre kolonner op, så intet andet i de kolonner kan have det.</string>
+    <string name="because_jellyfish">Fire rækker og fire kolonner, det samme argument igen. De fire rækker fylder alle fire kolonner mellem sig.</string>
+    <string name="because_xy_wing">Det midterste felt er et af sine to tal. Uanset hvad tvinges et af de to yderste felter til det fælles tal, så intet, der ser dem begge, kan være det.</string>
+    <string name="because_xyz_wing">Det midterste felt kan også være det fælles tal, så konklusionen er svagere: kun et felt, der ser alle tre, mister tallet.</string>
+    <string name="because_w_wing">Hvis ingen af parfelterne tog det andet tal, ville begge tage det første, og det forbindende område ville ikke have plads til det. Så det ene af dem er det andet tal.</string>
+    <string name="because_simple_colouring">Farv kæden skiftevis, og præcis én farve er rigtig. Enten lander en farve to gange i samme område og er derfor forkert, eller også ser et felt udenfor begge farver og mister tallet, uanset hvordan det falder ud.</string>
+    <string name="because_multi_colouring">En farve fra den første kæde støder sammen med en farve fra den anden, hvilket tvinger tallet ind i en af de to modsatte farver. Intet, der ser dem begge, kan have det.</string>
+    <string name="because_remote_pairs">Naboer i kæden ser hinanden, så de skifter. De to ender ligger et ulige antal trin fra hinanden og har derfor ét tal hver, og intet, der ser dem begge, kan have nogen af dem.</string>
+    <string name="because_unique_rectangle">Hvis de fire felter ikke indeholdt andet end de samme to tal, kunne de byttes rundt om rektanglet, og opgaven ville have to svar. Den har ét, så den opstilling er umulig.</string>
+    <string name="because_bug_plus_one">Hvis den ekstra kandidat blev fjernet, ville hvert tal stå præcis to gange i hvert område, og sådan et gitter har altid et lige antal svar. Opgaven har ét, så den ekstra kandidat er svaret.</string>
+    <string name="because_x_chain">Kæden skifter mellem steder, hvor tallet skal stå, og steder hvor det ikke kan. De to ender kan ikke begge være tomme for det, så alt, der ser dem begge, mister det.</string>
+    <string name="because_xy_chain">Antag, at det første felt ikke er tallet. Følg kæden, og det sidste felt tvinges til at være det. Så har den ene eller den anden ende det.</string>
+    <string name="because_forcing_chain">Følg begge muligheder. Hvis den ene efterlader et felt, der ikke kan få noget at stå i, var den mulighed aldrig virkelig og kan ryge. Hvis begge sætter det samme tal på det samme sted, hører tallet til der, uanset hvilken der viser sig at være rigtig. Intet her afhænger af, at antagelsen er sand, og det er netop det, der gør det til et bevis og ikke et gæt.</string>
+    <string name="because_death_blossom">Uanset hvad feltet viser sig at være, slår det sit eget tal ud af den tilsvarende gruppe, og den gruppe er så fuld og skal bruge alle de tal, den har tilbage. Hvis alle grupperne har det samme tal til overs, lander det tal i en af dem, uanset hvilken vej feltet falder. Alt, der kan se det i dem alle, mister det.</string>
+    <string name="because_als_xy_wing">Hvis det truede tal er væk fra den første gruppe, er den gruppe fuld og skal tage det tal, den deler med den midterste. Den midterste gruppe mister så det tal, så den er også fuld og tager det tal, den deler med den tredje. Den tredje gruppe er så også fuld og skal bruge det truede tal. Så kan intet felt, der ser det i begge yderste grupper, have det.</string>
+    <string name="because_sue_de_coq">De fælles felter bruger alle deres tal op på nær to, og de to grupper på hver side gør krav på præcis de to. Så bruges hvert tal fra gruppen på linjen inde på linjen, og hvert tal fra gruppen i boksen inde i boksen. Intet andet i nogen af dem kan have dem.</string>
+    <string name="because_als_xz">Ét fælles tal kan kun stå i den ene af de to grupper, hvilket låser den anden og tvinger den til at bruge alle de tal, den har. Så lander det andet fælles tal i den ene gruppe eller den anden.</string>
+
+    <string name="technique_naked_single">Nøgen enling</string>
+    <string name="technique_hidden_single">Skjult enling</string>
+    <string name="technique_locked_candidates_pointing">Pegende par eller tripel</string>
+    <string name="technique_locked_candidates_claiming">Krævende par eller tripel</string>
+    <string name="technique_naked_pair">Nøgent par</string>
+    <string name="technique_hidden_pair">Skjult par</string>
+    <string name="technique_naked_triple">Nøgen tripel</string>
+    <string name="technique_hidden_triple">Skjult tripel</string>
+    <string name="technique_naked_quad">Nøgen kvadrupel</string>
+    <string name="technique_hidden_quad">Skjult kvadrupel</string>
+    <string name="technique_x_wing">X-Wing</string>
+    <string name="technique_simple_colouring">Simpel farvning</string>
+    <string name="technique_xy_wing">XY-Wing</string>
+    <string name="technique_xyz_wing">XYZ-Wing</string>
+    <string name="technique_w_wing">W-Wing</string>
+    <string name="technique_swordfish">Swordfish</string>
+    <string name="technique_remote_pairs">Fjerne par</string>
+    <string name="technique_unique_rectangle">Unikt rektangel</string>
+    <string name="technique_bug_plus_one">BUG plus én</string>
+    <string name="technique_jellyfish">Jellyfish</string>
+    <string name="technique_multi_colouring">Flerfarvning</string>
+    <string name="technique_x_chain">X-Chain</string>
+    <string name="technique_xy_chain">XY-Chain</string>
+    <string name="technique_als_xz">ALS XZ</string>
+    <string name="technique_sue_de_coq">Sue de Coq</string>
+    <string name="technique_als_xy_wing">ALS XY-Wing</string>
+    <string name="technique_death_blossom">Death blossom</string>
+    <string name="technique_forcing_chain">Tvingende kæde</string>
+    <string name="technique_cage_sum">Bursum</string>
+    <string name="technique_cage_single">Enling i bur</string>
+    <string name="technique_cage_locked">Låst bur</string>
+    <string name="technique_cage_innie">Indere og ydere</string>
+    <string name="daily_title">Dagens</string>
+    <string name="daily_no_streak">Ingen stime endnu. Løs dagens opgave for at starte en.</string>
+    <string name="daily_previous_month">Tidligere</string>
+    <string name="daily_next_month">Senere</string>
+    <string name="daily_cell_solved">løst</string>
+    <string name="daily_cell_attempted">spillet, men ikke gjort færdig</string>
+    <string name="daily_cell_unplayed">ikke spillet</string>
+    <string name="daily_cell_future">endnu ikke</string>
+    <string name="daily_play_today">Spil dagens</string>
+    <plurals name="daily_streak">
+        <item quantity="one">%1$d dag i træk</item>
+        <item quantity="other">%1$d dage i træk</item>
+    </plurals>
+    <string name="daily_cell">%1$d, %2$s, %3$s</string>
+    <string name="daily_cell_today">i dag, %1$d, %2$s, %3$s</string>
+    <string name="stat_mistakes">Fejl</string>
+    <string name="stat_hints">Tip</string>
+    <string name="stat_time">Tid</string>
+    <string name="stat_pause">Pause</string>
+    <string name="game_daily_title">%1$s, %2$s</string>
+
+    <string name="stage_first_steps">Første skridt</string>
+    <string name="stage_one_at_a_time">Ét tal ad gangen</string>
+    <string name="stage_notes">Noter</string>
+    <string name="stage_locked_to_a_line">Tal låst til en linje</string>
+    <string name="stage_groups">Grupper</string>
+    <string name="stage_patterns">Mønstre på tværs af gitteret</string>
+    <string name="stage_wings">Wings</string>
+    <string name="stage_colouring">Farvning</string>
+    <string name="stage_one_answer">At antage ét svar</string>
+    <string name="stage_chains">Kæder</string>
+    <string name="stage_the_far_end">Den fjerne ende</string>
+    <string name="stage_the_deep_end">Den dybe ende</string>
+    <string name="stage_cages">Bure</string>
+    <string name="lesson_cage_is_title">Hvad et bur er</string>
+    <string name="lesson_cage_is_summary">De stiplede figurer er bure, og det lille tal er, hvad deres felter lægger sammen til.</string>
+    <string name="lesson_cage_is_1">En Killer starter helt uden tal. I stedet er gitteret skåret op i bure, tegnet med stiplede streger, og det lille tal i hjørnet af et bur er, hvad dets felter lægger sammen til. Alt andet er almindelig sudoku.</string>
+    <string name="lesson_cage_is_2">Et bur med ét felt er et givet tal skrevet på en anden måde. Der står 1 her, så et 1-tal skal derind, og der er ikke noget at regne ud.</string>
+    <string name="lesson_cage_is_3">Placeret. Nu et bur, der kræver lidt tankevirksomhed.</string>
+    <string name="lesson_cage_is_4a">Dette er 5 i to felter. Det er 1 og 4, eller 2 og 3, så det er ikke afgjort endnu, men allerede nu kan hverken 5 eller 6 stå i det.</string>
+    <string name="lesson_cage_is_4">Tre felter, der lægger sammen til 15. I et seks gange seks er de tre største tal 4, 5 og 6, og de giver præcis 15. Så buret indeholder de tre i en eller anden rækkefølge, og intet andet kan stå i det.</string>
+    <string name="lesson_cage_is_5">Et bur gentager aldrig et tal. Det er den regel, der gør en sum så veltalende: uden den kunne 15 i tre felter være 5, 5 og 5.</string>
+    <string name="lesson_cage_house_title">Bure inde i et område</string>
+    <string name="lesson_cage_house_summary">En række, en kolonne og en boks lægger hver sammen til en kendt sum, og burene indeni klarer resten.</string>
+    <string name="lesson_cage_house_1">Hver række, kolonne og boks indeholder hvert tal én gang, så de lægger alle sammen til den samme sum. I et seks gange seks er den sum 21.</string>
+    <string name="lesson_cage_house_2">De to felter lægger sammen til 10. De eneste to forskellige tal, der giver 10, er 4 og 6, så buret ejer dem begge, og intet andet felt i rækken kan være 4 eller 6.</string>
+    <string name="lesson_cage_house_3">Nu hele rækken. Den lægger sammen til 21, og tre bure ligger helt inde i den: 5, 10 og 1. Det er 16, der er gjort rede for.</string>
+    <string name="lesson_cage_house_4">Så feltet, der er tilbage, er 21 minus 16, altså 5.</string>
+    <string name="lesson_cage_house_5">Løsere kalder det en innie. Den samme regning virker den anden vej: når et bur stikker ud af et område, er det, der stikker ud, forskellen, og det er en outie.</string>
+    <string name="lesson_cage_home_title">Ét hjem i et bur</string>
+    <string name="lesson_cage_home_summary">Et tal, buret er nødt til at indeholde, med kun ét felt tilbage, der kan tage det.</string>
+    <string name="lesson_cage_home_1">Et stykke inde i en Killer begynder burene at sige mere end blot deres summer. Tre tal er allerede placeret her.</string>
+    <string name="lesson_cage_home_2">Dette bur er 10 i to felter, så det indeholder et 4-tal og et 6-tal. Men der står allerede et 6-tal i boksen til højre, og det udelukker tallet fra burets højre felt.</string>
+    <string name="lesson_cage_home_3">Så 6-tallet har ét hjem tilbage, og det står til venstre. Summen sagde, at buret indeholdt et 6-tal; resten af brættet sagde hvor.</string>
+    <string name="lesson_cage_home_4">Det er en enling i bur. Den er Killers skjulte enling: ikke det eneste tal, et felt kan tage, men det eneste felt, et tal kan stå i.</string>
+
+    <string name="lesson_what_is_title">Hvad en sudoku er</string>
+    <string name="lesson_what_is_summary">Hver række, hver kolonne og hver boks indeholder hvert tal én gang.</string>
+    <string name="lesson_what_is_1">Dette er en sudoku. En lille en, fire felter gange fire, så det hele kan være i hovedet på én gang. Et gitter i fuld størrelse virker på nøjagtig samme måde.</string>
+    <string name="lesson_what_is_2">Dette er en række. Den skal indeholde tallene 1, 2, 3 og 4, hvert af dem én gang. Ingen gentagelser, og intet udeladt.</string>
+    <string name="lesson_what_is_3">Dette er en kolonne. Samme regel: 1, 2, 3 og 4, hvert af dem én gang.</string>
+    <string name="lesson_what_is_4">Det er hele spillet. Der er ingen regning i det, og intet at lægge sammen. Det er én regel om, hvor et tal må stå.</string>
+    <string name="lesson_what_is_5">De to felter er tomme. At udfylde dem, så reglen stadig holder, er hvad det vil sige at løse.</string>
+
+    <string name="lesson_houses_title">Rækker, kolonner og bokse</string>
+    <string name="lesson_houses_summary">Et felt ligger i tre områder på én gang og deler en regel med dem alle.</string>
+    <string name="lesson_houses_1">Reglen nævnte rækker og kolonner. Der findes en tredje slags gruppe, og det er den, der gør en sudoku værd at løse.</string>
+    <string name="lesson_houses_2">Her er en række igen.</string>
+    <string name="lesson_houses_3">Her er en kolonne.</string>
+    <string name="lesson_houses_4">Og her er en boks, markeret med de tykkere streger. Den indeholder også hvert tal én gang.</string>
+    <string name="lesson_houses_5">Så feltet hører til tre grupper på samme tid. Hvert felt, det deler en gruppe med, er fremhævet, og ingen af dem kan indeholde det samme tal som det. De tre grupper kaldes områder, og det ord bruges herfra.</string>
+
+    <string name="lesson_givens_title">Givne tal</string>
+    <string name="lesson_givens_summary">Tallene, der står trykt fra starten, er faste, og det er dem, der gør svaret til det eneste.</string>
+    <string name="lesson_givens_1">Tallene her fulgte med opgaven. De kaldes givne tal, og de kan ikke ændres eller slettes.</string>
+    <string name="lesson_givens_2">De er tegnet anderledes end de tal, du placerer, så du altid kan se forskel. I denne app er de givne tal de kraftigere.</string>
+    <string name="lesson_givens_3">Det er de felter, du udfylder.</string>
+    <string name="lesson_givens_4">En ordentligt lavet opgave har præcis én måde at udfylde dem på. Det er et løfte om opgaven, ikke om dig: hvis du sidder fast, er der stadig kun ét svar, og man kan altid ræsonnere sig frem til det. Hver eneste opgave i appen er lavet sådan.</string>
+
+    <string name="lesson_first_four_title">Din første løsning</string>
+    <string name="lesson_first_four_summary">Se på, hvad et felt ikke kan være, og nogle gange er der kun ét tal tilbage.</string>
+    <string name="lesson_first_four_1">Løs nu en. To felter er tomme, og reglen er nok til at udfylde dem begge.</string>
+    <string name="lesson_first_four_2">Start med rækken her. Den har allerede et 1-tal og et 4-tal, så de to tomme felter deler 2 og 3 mellem sig. Spørgsmålet er bare hvilken vej.</string>
+    <string name="lesson_first_four_3">Feltet kan ikke være 2, for kolonnen har allerede et 2-tal. Så det er 3.</string>
+    <string name="lesson_first_four_4">Så er der ét tomt felt tilbage og ét ubrugt tal i rækken.</string>
+    <string name="lesson_first_four_5">Din tur. Placer det tal, der hører til her.</string>
+    <string name="lesson_first_four_wrong">Ikke helt. Se på rækken: hvilket tal fra 1 til 4 mangler stadig i den?</string>
+    <string name="lesson_first_four_6">Løst. Sådan er en sudoku, uanset hvor stort gitteret er.</string>
+
+    <string name="lesson_first_six_title">Et større gitter</string>
+    <string name="lesson_first_six_summary">Bokse er ikke altid kvadratiske, og det er reglen ligeglad med.</string>
+    <string name="lesson_first_six_1">Seks gange seks. Reglen har ikke ændret sig, men det har boksene: de er tre brede og to høje.</string>
+    <string name="lesson_first_six_2">Dette er én boks. Tre på tværs, to ned, seks felter, hvert tal fra 1 til 6 én gang.</string>
+    <string name="lesson_first_six_3">Det snyder folk i starten, fordi øjet forventer et kvadrat. Det er et øjeblik værd: find den boks, feltet ligger i, før du leder efter noget som helst andet.</string>
+    <string name="lesson_first_six_4">Din tur. Der mangler ét tal i boksen øverst til venstre.</string>
+    <string name="lesson_first_six_wrong">Ikke det. Tæl, hvad boksen allerede har, og find så det tal fra 1 til 6, der ikke er der.</string>
+    <string name="lesson_first_six_5">Godt. Herfra er gitrene ni gange ni, og boksene er kvadratiske igen, men vanen med at tjekke alle tre områder er den, der skal beholdes.</string>
+
+    <string name="lesson_naked_single_title">Den nøgne enling</string>
+    <string name="lesson_naked_single_summary">Et felt med kun ét tal tilbage må indeholde det.</string>
+    <string name="lesson_naked_single_1">Et gitter i fuld størrelse, og den første teknik med et navn. Det er den enkleste, der findes, og selv på de sværeste opgaver er det den, der udfylder flest felter.</string>
+    <string name="lesson_naked_single_2">Se på feltet for sig selv. Spørg, hvad det kan indeholde.</string>
+    <string name="lesson_naked_single_3">Hvert felt, der udelukker noget, er fremhævet. Mellem rækken, kolonnen og boksen står otte af de ni tal allerede et sted, feltet kan se.</string>
+    <string name="lesson_naked_single_4">Så er der ét tal tilbage, og feltet må indeholde det. Intet andet er muligt. Det er en nøgen enling: nøgen, fordi man kan se den ved at kigge på ét felt, og enling, fordi ét tal overlever.</string>
+    <string name="lesson_naked_single_5">Appen kalder den ved navn, når den giver dig et tip. Nu ved du, hvad det betyder.</string>
+    <string name="lesson_hidden_single_title">Den skjulte enling</string>
+    <string name="lesson_hidden_single_summary">Et tal med kun ét sted tilbage i et område må stå der.</string>
+    <string name="lesson_hidden_single_1">Den anden slags enling, og den, der finder flest felter. En nøgen enling er et felt med ét tal tilbage. Denne er spejlbilledet: et tal med ét felt tilbage.</string>
+    <string name="lesson_hidden_single_2">Tag et område, og vælg et tal, det stadig mangler. Spørg, hvor i området tallet kunne stå.</string>
+    <string name="lesson_hidden_single_3">I boksen her er svaret ét felt. Hvert andet tomt felt i boksen er udelukket af sin egen række eller kolonne.</string>
+    <string name="lesson_hidden_single_4">Så tallet skal derhen, selv om feltet i sig selv har flere tal, det kunne indeholde. Derfor kaldes den skjult: tallet gemmer sig blandt de andre.</string>
+    <string name="lesson_hidden_single_5">Den er værd at lære ordentligt. På de fleste opgaver er det den, der holder dig i gang, når de nøgne enlinger slipper op.</string>
+    <string name="lesson_hidden_single_turn">Din tur. Placer det tal, der ikke har andre steder at stå i boksen.</string>
+    <string name="lesson_hidden_single_wrong">Ikke det. Spørg, hvilket tal boksen stadig mangler, og tjek så, hvor hvert af dem faktisk kan være.</string>
+
+    <string name="lesson_scanning_title">Hvordan man kigger</string>
+    <string name="lesson_scanning_summary">Før ét tal hen over gitteret i stedet for at studere felterne ét ad gangen.</string>
+    <string name="lesson_scanning_1">Nu kender du to teknikker. At kende dem er ikke det samme som at finde dem, og det er at finde dem, der tager tiden.</string>
+    <string name="lesson_scanning_2">Læs ikke gitteret felt for felt. Tag ét tal, for eksempel det, der allerede står flest gange, og se på de tre bokse i et bånd.</string>
+    <string name="lesson_scanning_3">Stil hver boks ét eneste spørgsmål: hvor kan tallet stå? Rækker og kolonner, der allerede har det, streger de fleste svar ud, og ofte er der kun ét felt tilbage.</string>
+    <string name="lesson_scanning_4">Gå så videre til næste bånd, og når tallet er udtømt, videre til næste tal. Det er scanning, og det er, hvad hurtige løsere laver, når det ser ud, som om de bare stirrer.</string>
+    <string name="lesson_scanning_5">Det koster ingenting at være systematisk, og det sparer én for følelsen af at sidde fast, som som regel bare er følelsen af at have kigget på det samme hjørne fire gange.</string>
+
+    <string name="lesson_first_nine_title">Et helt gitter, kun med enlinger</string>
+    <string name="lesson_first_nine_summary">Alt, du har lært indtil nu, er nok til at gøre en hel opgave færdig.</string>
+    <string name="lesson_first_nine_1">Et rigtigt ni gange ni, på niveauet Let. Hvert trin i den er en enling, nøgen eller skjult, og der er intet her, du ikke har mødt.</string>
+    <string name="lesson_first_nine_2">Her er et at starte med. Feltet har otte af de ni tal udelukket af det, det kan se.</string>
+    <string name="lesson_first_nine_3">Sådan ser en let opgave ud. Enlinger, hele vejen til enden, og ingen gætterier på noget tidspunkt.</string>
+    <string name="lesson_first_nine_4">Når du forlader lektionen, så spil en. Næste trin handler om noter, og noter begynder først at gøre nytte på opgaver, der er sværere end denne.</string>
+    <string name="lesson_first_nine_turn">Din tur. Ét tal er muligt her.</string>
+    <string name="lesson_first_nine_wrong">Se igen på rækken, kolonnen og boksen, feltet ligger i, og skriv ned, hvad de allerede har.</string>
+
+    <string name="lesson_pencil_marks_title">Noter</string>
+    <string name="lesson_pencil_marks_summary">En note er et referat af det, du regnede ud, så du ikke skal regne det ud igen.</string>
+    <string name="lesson_pencil_marks_1">Herfra holder opgaverne op med at give efter for enlinger, og du bliver nødt til at skrive ting ned. En note, eller et blyantsmærke, er et lille tal i et felt, der siger, at tallet stadig er muligt der.</string>
+    <string name="lesson_pencil_marks_2">Se på feltet her. Det tager et par sekunder at regne ud, at det kun kan være ét af to tal. Skriver du de to tal ind, tager det nul sekunder næste gang du kigger.</string>
+    <string name="lesson_pencil_marks_3">Mere er en note ikke. Den er ikke et gæt, og den er ikke en beslutning. Den er et referat af en slutning, du allerede har draget.</string>
+    <string name="lesson_pencil_marks_4">Hver teknik herfra handler om mønstre i noterne snarere end om mønstre i tallene. Par, tripler, fisk og kæder læses alle af noterne.</string>
+    <string name="lesson_pencil_marks_5">Ingen løser en svær sudoku i hovedet, og en løser, der ikke skriver noget ned på en Ekspert, er ikke skarp, men langsom.</string>
+
+    <string name="lesson_when_to_mark_title">Hvornår de skal skrives</string>
+    <string name="lesson_when_to_mark_summary">Udfyld noter, når enlingerne slipper op, ikke før.</string>
+    <string name="lesson_when_to_mark_1">Der er to måder at bruge noter på, og forskellen betyder noget.</string>
+    <string name="lesson_when_to_mark_2">Den første er at fylde hvert tomt felt med hvert muligt tal, det hele på én gang, før man gør noget som helst andet. Det er grundigt, det tager flere minutter i hånden, og på en let opgave er det meste af det spildt, fordi enlingerne alligevel ville have gjort gitteret færdigt.</string>
+    <string name="lesson_when_to_mark_3">Den anden er kun at notere der, hvor man arbejder. De fire felter er værd at notere, fordi der foregår noget mellem dem. Resten af gitteret er det ikke.</string>
+    <string name="lesson_when_to_mark_4">Det ærlige råd: løs enlingerne først, og begynd at notere, når du holder op med at finde dem. På papir sparer det rigtig tid. I appen er det ét tryk at fylde alle noter ud, så prisen er mindre, men et gitter fuldt af tal er stadig sværere at læse end et gitter med noter kun der, hvor de betyder noget.</string>
+
+    <string name="lesson_marks_true_title">At holde noterne ærlige</string>
+    <string name="lesson_marks_true_summary">En note, der er forældet, er værre end ingen note.</string>
+    <string name="lesson_marks_true_1">Noter har én fare. Hvert tal, du placerer, gør nogle af dem forkerte, og en forkert note sender dig ud i et ræsonnement, der ikke kan holde.</string>
+    <string name="lesson_marks_true_2">Placer et tal her, og hvert felt, det kan se, mister tallet som mulighed. Bliver de noter ikke slettet, kan den næste teknik, du får øje på, være bygget på en af dem.</string>
+    <string name="lesson_marks_true_3">Appen kan gøre det for dig. Der findes en indstilling, der hedder slet noter, som et placeret tal udelukker, og den er slået til fra start. På papir gør man det i hånden, og det er der, de fleste fejl kommer fra.</string>
+    <string name="lesson_marks_true_4">Når en opgave går galt, og du ikke kan se hvorfor, er en forældet note det første, du skal mistænke. Tip-knappen fortæller dig, når et tal, du har placeret, ikke kan være rigtigt.</string>
+
+    <string name="lesson_pointing_title">Det pegende par</string>
+    <string name="lesson_pointing_summary">Er et tal i en boks låst til én linje, forsvinder det fra den linje alle andre steder.</string>
+    <string name="lesson_pointing_1">Den første teknik, der fjerner muligheder i stedet for at placere et tal. De fleste teknikker herfra gør det, og det kræver tilvænning: du kommer videre uden at skrive et eneste tal ind.</string>
+    <string name="lesson_pointing_2">Se på, hvor ét tal kan stå i boksen her. Hvert sted, det kunne være, ligger i den samme kolonne.</string>
+    <string name="lesson_pointing_3">Boksen skal indeholde tallet et eller andet sted. Så uanset hvor det ender, står det i den kolonne.</string>
+    <string name="lesson_pointing_4">Hvilket betyder, at resten af kolonnen ikke kan have det. Felterne her mister tallet som mulighed, selv om de er langt fra boksen.</string>
+    <string name="lesson_pointing_5">Det hedder pegende, fordi parret inde i boksen peger langs linjen og rydder den.</string>
+
+    <string name="lesson_claiming_title">Det krævende par</string>
+    <string name="lesson_claiming_summary">Er et tal på en linje låst til én boks, forsvinder det fra den boks alle andre steder.</string>
+    <string name="lesson_claiming_1">Det samme argument læst den anden vej, og det er værd at tage for sig, fordi øjet finder det et andet sted.</string>
+    <string name="lesson_claiming_2">Start denne gang med en linje. Se på, hvor ét tal kan stå langs rækken her.</string>
+    <string name="lesson_claiming_3">Hvert sted, det kunne være, ligger inde i den samme boks. Rækken skal indeholde tallet et eller andet sted, så tallet står i den boks.</string>
+    <string name="lesson_claiming_4">Hvilket betyder, at resten af boksen mister det. Felterne her kan ikke længere indeholde det.</string>
+    <string name="lesson_claiming_5">Pegende ser på en boks og rydder en linje. Krævende ser på en linje og rydder en boks. To navne, én idé, og du møder dem begge i enhver svær opgave.</string>
+
+    <string name="lesson_naked_pair_title">Det nøgne par</string>
+    <string name="lesson_naked_pair_summary">To felter med de samme to tal ejer dem begge.</string>
+    <string name="lesson_naked_pair_1">Nu grupperne. Dette er den mindste af dem og det mønster, der gør resten indlysende.</string>
+    <string name="lesson_naked_pair_2">De to felter ligger i det samme område, og hvert af dem kan kun være ét af de samme to tal.</string>
+    <string name="lesson_naked_pair_3">Mellem sig tager de begge tal, ét hver. Hvilket der er hvilket, betyder ikke noget, og du behøver ikke vide det.</string>
+    <string name="lesson_naked_pair_4">Så kan intet andet felt i området indeholde nogen af dem. Feltet her mister det ene.</string>
+    <string name="lesson_naked_pair_5">Nøgen igen, fordi man kan se det ved at læse de to felter. Intet er skjult, og intet andet felt indgår i argumentet.</string>
+
+    <string name="lesson_hidden_pair_title">Det skjulte par</string>
+    <string name="lesson_hidden_pair_summary">To tal med kun de samme to steder tilbage ejer de felter.</string>
+    <string name="lesson_hidden_pair_1">Spejlbilledet af det nøgne par, præcis som den skjulte enling spejler den nøgne.</string>
+    <string name="lesson_hidden_pair_2">I området her kan to tal hver kun stå i de samme to felter.</string>
+    <string name="lesson_hidden_pair_3">De to tal tager de to felter mellem sig. Så uanset hvad felterne ellers så ud til at kunne indeholde, kan de det ikke.</string>
+    <string name="lesson_hidden_pair_4">De to felter mister alle andre noter. Nu er de et nøgent par, og ofte er det, hvad mønstret er til for: at gøre et skjult par til et nøgent, der rydder resten af området.</string>
+    <string name="lesson_hidden_pair_5">Skjulte par er sværere at se end nøgne, fordi man skal kigge på tal frem for på felter. På et gitter, der er gået i stå, er det umagen værd.</string>
+
+    <string name="lesson_naked_triple_title">Den nøgne tripel</string>
+    <string name="lesson_naked_triple_summary">Tre felter, der deler tre tal, ejer dem, også selv om ingen af dem har alle tre.</string>
+    <string name="lesson_naked_triple_1">Et par med ét felt mere, og én krølle, der snyder alle første gang.</string>
+    <string name="lesson_naked_triple_2">De tre felter ligger i det samme område, og mellem sig bruger de kun tre forskellige tal.</string>
+    <string name="lesson_naked_triple_3">Her er krøllen: ingen af dem behøver at have alle tre. To tal i ét felt, to i det næste, to i det tredje er en tripel, så længe der kun optræder tre tal på tværs af dem alle.</string>
+    <string name="lesson_naked_triple_4">De tre felter tager de tre tal mellem sig, så hvert andet felt i området mister alle tre. Det er mange noter væk på én gang.</string>
+    <string name="lesson_naked_triple_5">Når du leder, så tæl de forskellige tal på tværs af to eller tre felter i stedet for at lede efter ens noter. Det er den vane, der finder tripler.</string>
+
+    <string name="lesson_hidden_triple_title">Den skjulte tripel</string>
+    <string name="lesson_hidden_triple_summary">Tre tal med kun tre steder tilbage ejer de felter.</string>
+    <string name="lesson_hidden_triple_1">Det samme forhold som det skjulte par, én størrelse op, og virkelig svært at få øje på.</string>
+    <string name="lesson_hidden_triple_2">I området her kan tre tal mellem sig kun stå i de samme tre felter.</string>
+    <string name="lesson_hidden_triple_3">Så de tre felter indeholder de tre tal, og hver anden note i dem kan ryge.</string>
+    <string name="lesson_hidden_triple_4">Led ikke efter dem først. Kig efter dem, når et område har nogle få felter tilbage, og intet andet har virket. Som regel er et nøgent mønster i det samme område lettere at se.</string>
+
+    <string name="lesson_quads_title">Kvadrupler</string>
+    <string name="lesson_quads_summary">Den samme idé igen med fire, værd at kende, men sjældent værd at lede efter.</string>
+    <string name="lesson_quads_1">Par, tripler, og nu kvadrupler. Argumentet ændrer sig ikke: fire felter, der mellem sig bruger fire tal, ejer de tal, og fire tal med kun fire steder ejer de felter.</string>
+    <string name="lesson_quads_2">Her er en nøgen kvadrupel. Fire felter, fire tal mellem sig, og resten af området mister alle fire.</string>
+    <string name="lesson_quads_3">Og her er det ærlige råd. Kvadrupler findes, og de er lovlige, men de er sjældne, og en kvadrupel i et område med fem eller seks tomme felter betyder som regel, at der er et enklere mønster i de andre felter, du har overset.</string>
+    <string name="lesson_quads_4">Her er en skjult kvadrupel, for fuldstændighedens skyld. Fire tal med fire steder tilbage.</string>
+    <string name="lesson_quads_5">Lær at genkende dem, så et tip, der nævner en, giver mening. Brug ikke tid på at lede efter dem.</string>
+
+    <string name="lesson_x_wing_title">X-Wing</string>
+    <string name="lesson_x_wing_summary">Et tal bundet til to kolonner i to rækker forsvinder fra de kolonner alle andre steder.</string>
+    <string name="lesson_x_wing_1">Det første mønster, der spænder over hele gitteret i stedet for at ligge i ét område. Det har en form, og når du først har set formen, ser du den overalt.</string>
+    <string name="lesson_x_wing_2">Tag ét tal. I de to rækker her kan det kun stå i to felter i hver, og de felter ligger i de samme to kolonner. Fire felter, i et rektangel.</string>
+    <string name="lesson_x_wing_3">Tænk det nu igennem. Hver række skal indeholde tallet én gang. Uanset hvilket hjørne den ene række bruger, må den anden bruge det modsatte. Der er ingen tredje mulighed.</string>
+    <string name="lesson_x_wing_4">Så mellem sig tager de to rækker tallet i begge de kolonner. Alt andet i de kolonner mister det.</string>
+    <string name="lesson_x_wing_5">Det virker også med kolonner og rækker byttet om. To kolonner, hvis tal er låst til de samme to rækker, rydder de rækker.</string>
+
+    <string name="lesson_swordfish_title">Swordfish</string>
+    <string name="lesson_swordfish_summary">Det samme argument som en X-Wing, med tre linjer i stedet for to.</string>
+    <string name="lesson_swordfish_1">En X-Wing med en række mere. Navnet hjælper ikke, men mønstret er en direkte forlængelse.</string>
+    <string name="lesson_swordfish_2">Tre rækker, ét tal, og i hver række er tallet låst til felter i de samme tre kolonner.</string>
+    <string name="lesson_swordfish_3">Ikke hver række behøver at bruge alle tre kolonner. To ud af tre er nok, så længe ingen række går uden for dem.</string>
+    <string name="lesson_swordfish_4">De tre rækker tager tallet i de tre kolonner mellem sig, så resten af de kolonner mister det.</string>
+    <string name="lesson_swordfish_5">Kan du følge X-Wing, kan du følge denne. At finde den er en anden sag: det er her, det holder op med at være valgfrit at udfylde sine noter.</string>
+
+    <string name="lesson_jellyfish_title">Jellyfish</string>
+    <string name="lesson_jellyfish_summary">Fire linjer. Det samme mønster igen, og det sidste, der er værd at lære.</string>
+    <string name="lesson_jellyfish_1">Fire rækker, ét tal, fire kolonner. Argumentet har ikke ændret sig siden X-Wing, og det ændrer sig ikke igen.</string>
+    <string name="lesson_jellyfish_2">Her er en. Fire rækker, og tallet i hver af dem er låst til de samme fire kolonner.</string>
+    <string name="lesson_jellyfish_3">Ud over fire er der intet at lære. En udgave med fem linjer findes i teorien, men på et ni gange ni gitter kan hver eneste af dem findes som et mindre mønster i de fire kolonner, der er tilbage, så ingen leder efter dem.</string>
+    <string name="lesson_jellyfish_4">Dette er yderkanten af, hvad der er værd at lede efter som mønster. Herefter er kæder en bedre brug af opmærksomheden.</string>
+
+    <string name="lesson_xy_wing_title">XY-Wing</string>
+    <string name="lesson_xy_wing_summary">Tre felter med to tal hver, og ét felt, der taber uanset hvad.</string>
+    <string name="lesson_xy_wing_1">Wings kræver en anden måde at tænke på. Indtil nu har du fundet et mønster og læst en konklusion af det. Her ræsonnerer du i tilfælde.</string>
+    <string name="lesson_xy_wing_2">Start med feltet her. Det har præcis to mulige tal, og det er mønstrets hængsel.</string>
+    <string name="lesson_xy_wing_3">Det har to venner, der hver deler et område med det, og hver har to tal: ét delt med hængslet, ét delt med hinanden.</string>
+    <string name="lesson_xy_wing_4">Nu argumentet. Hængslet er ét af sine to tal. Er det det første, tvinges den venstre vinge til det fælles tal. Er det det andet, tvinges den højre vinge til det samme fælles tal. Uanset hvad har den ene vinge det.</string>
+    <string name="lesson_xy_wing_5">Så kan intet felt, der kan se begge vinger, indeholde det tal. Feltet her mister det.</string>
+    <string name="lesson_xy_wing_6">Du finder aldrig ud af, hvad hængslet faktisk er. Det er pointen, og det er det, der gør wings anderledes end alt før dem.</string>
+
+    <string name="lesson_xyz_wing_title">XYZ-Wing</string>
+    <string name="lesson_xyz_wing_summary">Som en XY-Wing, men hængslet kan også være det fælles tal, så konklusionen er svagere.</string>
+    <string name="lesson_xyz_wing_1">Én ændring i forhold til XY-Wing, og den gør konklusionen mindre.</string>
+    <string name="lesson_xyz_wing_2">Her har hængslet tre tal frem for to, og det fælles tal er ét af dem.</string>
+    <string name="lesson_xyz_wing_3">Så nu er der tre tilfælde, ikke to. Begge vinger kan have det fælles tal, eller hængslet kan selv have det.</string>
+    <string name="lesson_xyz_wing_4">Det betyder, at et felt kun mister tallet, hvis det kan se alle tre, ikke bare de to vinger. Færre felter kvalificerer sig, og derfor fjerner mønstret mindre end sin enklere fætter.</string>
+    <string name="lesson_xyz_wing_5">Værd at kende, fordi formen ser næsten ens ud, og læser man den som en XY-Wing, fjerner man et tal, man ikke har ret til at fjerne.</string>
+
+    <string name="lesson_w_wing_title">W-Wing</string>
+    <string name="lesson_w_wing_summary">To ens par forbundet af en linje, der må indeholde et af deres tal.</string>
+    <string name="lesson_w_wing_1">Den tredje wing, og den, der kræver mindst regning.</string>
+    <string name="lesson_w_wing_2">To felter, der ikke deler et område, hver med de samme to tal.</string>
+    <string name="lesson_w_wing_3">Find nu et område, hvor det ene af de to tal kun kan stå to steder, og hvor de to steder hver kan se ét af parfelterne. Det område er forbindelsen.</string>
+    <string name="lesson_w_wing_4">Forbindelsesområdet skal have tallet på ét af sine to steder, og uanset hvilket, tvinger det ét af parfelterne til at tage det andet tal. Så har det ene af parret altid det andet tal.</string>
+    <string name="lesson_w_wing_5">Ethvert felt, der ser begge parfelter, mister det. Det gør feltet her.</string>
+
+    <string name="lesson_rectangle_title">Det unikke rektangel</string>
+    <string name="lesson_rectangle_summary">En opgave med ét svar kan ikke indeholde et kvadrat, der kunne dreje.</string>
+    <string name="lesson_rectangle_1">Denne teknik er af en anden slags end alle de andre, og det er værd at sige hvorfor, før man bruger den.</string>
+    <string name="lesson_rectangle_2">Se på de fire felter. De ligger i to rækker, to kolonner og præcis to bokse, og hvert af dem kan indeholde de samme to tal.</string>
+    <string name="lesson_rectangle_3">Var det hele historien, ville opgaven have to svar: udfyld rektanglet på den ene måde, eller byt begge diagonaler om, og begge gitre overholder hver regel. En ordentligt lavet opgave har ikke to svar.</string>
+    <string name="lesson_rectangle_4">Så det kan ikke være hele historien. Ét af de felter må indeholde noget andet, og det er det, der giver dig lov til at fjerne.</string>
+    <string name="lesson_rectangle_5">Her overlever de ekstra muligheder, og det fælles par streges ud af felterne.</string>
+    <string name="lesson_rectangle_6">Hagen, sagt ligeud: argumentet forudsætter, at opgaven er ordentligt lavet. Det gælder hver eneste opgave i appen, fordi generatoren tjekker efter. Brug det på et gitter fra en ukendt kilde, og det kan føre dig på vildspor.</string>
+
+    <string name="lesson_bug_title">BUG plus én</string>
+    <string name="lesson_bug_summary">Havde hvert felt på nær ét to kandidater, ville opgaven være tvetydig. Så det ene felt er særligt.</string>
+    <string name="lesson_bug_1">Den samme antagelse som det unikke rektangel, i en anden form.</string>
+    <string name="lesson_bug_2">Forestil dig, at et gitter nåede en stilling, hvor hvert uløst felt havde præcis to muligheder, og hvert tal stod præcis to gange i hvert område. Sådan et gitter har altid to svar.</string>
+    <string name="lesson_bug_3">Så en ordentligt lavet opgave kan aldrig nå den. Finder du en stilling, der er ét felt fra den, hvor præcis ét felt har tre muligheder i stedet for to, er det felt det, der redder opgaven fra at være tvetydig.</string>
+    <string name="lesson_bug_4">Det tal, der optræder tre gange i sine områder, er det, feltet må indeholde. Det er et sjældent mønster og en meget hurtig afslutning, når det dukker op.</string>
+
+    <string name="lesson_colouring_title">Simpel farvning</string>
+    <string name="lesson_colouring_summary">Følg ét tal gennem de felter, hvor det kun har to hjem, og led efter en modsigelse.</string>
+    <string name="lesson_colouring_1">Kæder, forsigtigt. Farvning er den letteste vej ind i dem og det samme ræsonnement nedenunder.</string>
+    <string name="lesson_colouring_2">Vælg et tal. Find et område, hvor det kun har to mulige felter. De to er forbundet: præcis ét af dem er tallet.</string>
+    <string name="lesson_colouring_3">Farv det ene af parret, og følg så forbindelserne. Hvert felt, der er forbundet på den måde, ender med en af to farver, og en hel farve er rigtig, mens den anden er forkert. Du ved ikke hvilken.</string>
+    <string name="lesson_colouring_4">Led nu efter modsigelsen. Kan et felt se to felter med samme farve, kan den farve ikke være den rigtige, så feltet mister tallet. Det er det, der sker her.</string>
+    <string name="lesson_colouring_5">To farver, én modsigelse, og ingen gætterier nogen steder. Det er hele metoden.</string>
+
+    <string name="lesson_remote_pairs_title">Fjerne par</string>
+    <string name="lesson_remote_pairs_summary">En kæde af ens par skifter, så enderne er modsatte.</string>
+    <string name="lesson_remote_pairs_1">Farvning anvendt på felter frem for på ét enkelt tal.</string>
+    <string name="lesson_remote_pairs_2">Her er en kæde af felter, der alle har de samme to tal, hvert forbundet til det næste af et fælles område.</string>
+    <string name="lesson_remote_pairs_3">Fordi hvert led er et par, skifter tallene langs kæden. Første felt tager det ene, andet tager det andet, og så videre.</string>
+    <string name="lesson_remote_pairs_4">Så de to ender af en kæde med lige længde er modsatte: de har forskellige tal. Ethvert felt, der kan se begge ender, må miste begge tal, fordi enderne har ét hver.</string>
+    <string name="lesson_remote_pairs_5">Det er den letteste kæde at få øje på, fordi hvert felt i den ser ens ud.</string>
+
+    <string name="lesson_multi_colouring_title">Flerfarvning</string>
+    <string name="lesson_multi_colouring_summary">To farvekæder, der rører hinanden, udelukker hinanden.</string>
+    <string name="lesson_multi_colouring_1">Simpel farvning bruger én kæde. Nogle gange har én kæde ingen modsigelse, men to kæder tilsammen har.</string>
+    <string name="lesson_multi_colouring_2">Her er felter fra to adskilte kæder for det samme tal.</string>
+    <string name="lesson_multi_colouring_3">Kan en farve i den ene kæde se en farve i den anden, kan de to farver ikke begge være rigtige. Følger man det til ende, fjernes tallet fra de felter, der ser de to farver, der er tilbage.</string>
+    <string name="lesson_multi_colouring_4">Konklusionen lander her.</string>
+    <string name="lesson_multi_colouring_5">Det er her, farvning holder op med at være noget, man kan have i hovedet, og begynder at kræve, at man skriver ned, hvilket felt der har hvilken farve.</string>
+
+    <string name="lesson_x_chain_title">X-Chain</string>
+    <string name="lesson_x_chain_summary">Ét tal, led der skifter mellem stærke og svage, og en fjernelse i enderne.</string>
+    <string name="lesson_x_chain_1">Den generelle form af alt i forrige trin. Ét tal, og en kæde af skiftende led.</string>
+    <string name="lesson_x_chain_2">Et stærkt led er to felter, hvor mindst ét må indeholde tallet, og det er, hvad et område med kun to pladser giver dig. Et svagt led er to felter, hvor højst ét kan, og det er hvilke som helst to felter, der deler et område.</string>
+    <string name="lesson_x_chain_3">Lad dem skifte: stærkt, svagt, stærkt, og så videre, med stærkt i begge ender. Så har den ene af de to ender tallet, uanset hvad der sker i midten.</string>
+    <string name="lesson_x_chain_4">Så ethvert felt, der ser begge ender, mister det.</string>
+    <string name="lesson_x_chain_5">Farvning er denne kæde tegnet i to farver. Kæden er mere generel, fordi den kan gå gennem felter, farvning ikke når.</string>
+
+    <string name="lesson_xy_chain_title">XY-Chain</string>
+    <string name="lesson_xy_chain_summary">En kæde af felter med to kandidater, hvor enderne deler et tal.</string>
+    <string name="lesson_xy_chain_1">Den samme skiftende idé, men man går gennem felter i stedet for at følge ét tal.</string>
+    <string name="lesson_xy_chain_2">Hvert felt i kæden har præcis to muligheder, og hvert deler et område med det næste.</string>
+    <string name="lesson_xy_chain_3">Inde i et felt tvinger det ene tal det andet, og det er det stærke led. Mellem felter laver et fælles område det svage. At lade dem skifte fører argumentet langs kæden.</string>
+    <string name="lesson_xy_chain_4">Kan begge ender af kæden indeholde det samme tal, så har den ene af dem det, uanset hvordan kæden falder ud. Ethvert felt, der ser begge ender, mister det tal.</string>
+    <string name="lesson_xy_chain_5">Det er teknikken, der gør de fleste Ekspert-opgaver færdige, og at finde en er mest et spørgsmål om tålmodigt at følge felter med to kandidater frem for at være skarp.</string>
+
+    <string name="lesson_writing_chains_title">At skrive en kæde ned</string>
+    <string name="lesson_writing_chains_summary">En kæde, du ikke kan tjekke, er et gæt med ekstra trin.</string>
+    <string name="lesson_writing_chains_1">Én praktisk lektion før den sidste teknik, for kæder er der, hvor folk overbeviser sig selv om ting, der ikke passer.</string>
+    <string name="lesson_writing_chains_2">En kæde er en række påstande, og hver af dem skal holde. På skærmen ser den ud som en samling fremhævede felter, og fremhævning er ikke et argument.</string>
+    <string name="lesson_writing_chains_3">Skriv den som en linje: dette felt er enten 4 eller 7; er det 4, så er det der 9; er det der 9, så er det andet 4. Hver pil er et led, og hvert led har en grund.</string>
+    <string name="lesson_writing_chains_4">Tjek så skiftet. Stærkt, svagt, stærkt, svagt, og stærkt i begge ender. En kæde, der begynder eller slutter på et svagt led, beviser ingenting, og det er den mest almindelige måde, en kæde går galt på.</string>
+    <string name="lesson_writing_chains_5">Kan du ikke skrive den ned, har du ikke fundet den. Det er ikke en regel om ordentlighed, det er forskellen på en slutning og en fornemmelse.</string>
+
+    <string name="lesson_sue_de_coq_title">Sue de Coq</string>
+    <string name="lesson_sue_de_coq_summary">Der hvor en boks krydser en linje, og krydset har flere tal end plads.</string>
+    <string name="lesson_sue_de_coq_1">En boks og en kolonne overlapper i tre felter. De tre felter hører til dem begge på én gang, og det er det, teknikken lever af.</string>
+    <string name="lesson_sue_de_coq_2">Se på to af dem her. Mellem sig har de 2, 6, 7 og 8: fire tal til to felter. To af dem kommer ind, og to er til overs til et andet sted.</string>
+    <string name="lesson_sue_de_coq_3">Længere nede i den samme kolonne sidder et felt med 6 og 7. Et andet sted i den samme boks sidder et felt med 2 og 8. Mellem sig vil de to felter have præcis de fire tal, krydset har, delt lige og uden noget til fælles.</string>
+    <string name="lesson_sue_de_coq_4">Tæl efter. Tre felter i kolonnen tager nu tre forskellige tal af de fire, og tre felter i boksen gør det samme. Regnestykket går kun op på én måde: 6 og 7 bruges op inde i kolonnen, og 2 og 8 inde i boksen.</string>
+    <string name="lesson_sue_de_coq_5">Så kan intet andet i den kolonne være 6 eller 7. To felter mister ét her.</string>
+    <string name="lesson_sue_de_coq_6">Det samme argument kører den anden vej for boksen. Ét mønster, to områder, to adskilte sæt fjernelser, og ingen kæde nogen steder i det.</string>
+
+    <string name="lesson_als_title">ALS-XZ</string>
+    <string name="lesson_als_summary">To næsten låste mængder, der deler et tal, og fjernelsen der følger.</string>
+    <string name="lesson_als_1">Reglen, de sværeste niveauer er bygget på. Alt over dette trin er en variation af den.</string>
+    <string name="lesson_als_2">En næsten låst mængde er en gruppe felter i ét område, der har præcis ét tal mere, end der er felter. Fire felter med fem tal mellem sig. Mistede den ét tal, ville den være en låst mængde, deraf navnet.</string>
+    <string name="lesson_als_3">Tag to af dem, der deler to tal. Kald det ene af de fælles tal det begrænsede, og kræv, at hvert sted det står i den ene mængde, ser hvert sted det står i den anden.</string>
+    <string name="lesson_als_4">Så kan det kun være i den ene af de to mængder. Den mængde, der ikke får det, bliver låst, og det fastlægger det andet fælles tal inde i den. Og så mister ethvert felt, der ser det tal i begge mængder, det.</string>
+    <string name="lesson_als_5">Her er den fjernelse, der kommer ud af det.</string>
+    <string name="lesson_als_6">Hvis det kræver flere gennemlæsninger, er det det normale antal. Hver teknik efter dette punkt er denne i en anden form.</string>
+
+    <string name="lesson_deep_end_title">Hvad den dybe ende kræver</string>
+    <string name="lesson_deep_end_summary">Hvad der ændrer sig på Vanvittig og Mareridt, og hvorfor de niveauer kræver papir.</string>
+    <string name="lesson_deep_end_1">Alt indtil her kan ses. Du kigger på en række, en boks, et par felter, og svaret ligger foran dig, så snart du kender formen.</string>
+    <string name="lesson_deep_end_2">De to sværeste niveauer er ikke sådan. De beder dig følge et argument gennem tre eller fire trin og holde det hele i hovedet på én gang, og det gør næsten ingen ved at kigge.</string>
+    <string name="lesson_deep_end_3">Så skriv det ned. En blyant og bagsiden af en kuvert er ikke snyd og ikke et tegn på, at du er dårlig til det. Det er, hvad alle, der løser disse, gør.</string>
+    <string name="lesson_deep_end_4">Reglerne her er alle den samme idé: en gruppe felter, der mangler ét tal i at være fuld. Tag det tal væk, og gruppen er tvunget, og en tvunget gruppe tvinger den næste. Det er hele den dybe ende.</string>
+    <string name="lesson_deep_end_5">Intet hernede er et gæt. Hvert trin er bevist, hvert tip viser dig beviset, og slår en opgave her dig, er det helt normalt at vende tilbage til den om en uge.</string>
+
+    <string name="lesson_als_xy_title">ALS-XY-Wing</string>
+    <string name="lesson_als_xy_summary">Tre grupper i en kæde, og tallet der ikke overlever i nogen af enderne.</string>
+    <string name="lesson_als_xy_1">Tre grupper denne gang, forbundet på en linje: én i hver ende og én i midten, der holder dem fra hinanden.</string>
+    <string name="lesson_als_xy_2">Start med de to til venstre. r3c9 har 1 og 3. r1c8 har 3 og 7. De deler en boks, så kun den ene af dem kan være 3-tallet.</string>
+    <string name="lesson_als_xy_3">Nu gruppen ned ad kolonne 8: tre felter med 1, 3, 7 og 9 mellem sig. Fire tal, tre felter, så den mangler ét tal i at være fuld. Den deler 7-tallet med r1c8, og hvert 7-tal i den står i den samme kolonne, så igen kan kun den ene side tage det.</string>
+    <string name="lesson_als_xy_4">Antag, at et af de to markerede felter i kolonne 9 er et 1-tal. Det ser r3c9, så r3c9 er ikke 1, så det er 3. Så er r1c8 ikke 3, så det er 7. Så har gruppen ikke noget 7-tal tilbage, så den er fuld, og den må bruge 1, 3 og 9.</string>
+    <string name="lesson_als_xy_5">Men de felter ser også hvert 1-tal i gruppen, så gruppen kan heller ikke have et 1-tal. Argumentet æder sig selv, og 1-tallet ryger.</string>
+    <string name="lesson_als_xy_6">To forbindelser, tre grupper, og hvert trin tvinger det næste. Læs det to gange: det er en kæde, og kæder giver kun mening ét led ad gangen.</string>
+
+    <string name="lesson_blossom_title">Death blossom</string>
+    <string name="lesson_blossom_summary">Ét felt med en gruppe, der venter bag hvert af dets tal.</string>
+    <string name="lesson_blossom_1">Denne har en form, man kan se: en stilk, og et kronblad for hvert tal, stilken kunne være.</string>
+    <string name="lesson_blossom_2">Stilken er r1c4. Den er 5 eller 6, og intet andet. To muligheder betyder to tilfælde, og teknikken tager dem begge på én gang.</string>
+    <string name="lesson_blossom_3">Sig, at den er 5. Så kan r1c7, i den samme række, med 5 og 8, ikke være 5-tallet. Så det er 8-tallet.</string>
+    <string name="lesson_blossom_4">Sig i stedet, at den er 6. Se på de tre felter i den samme boks: mellem sig har de 2, 6, 7 og 8. Fire tal, tre felter, ét fra at være fuld. Stilken ser alle tre, så dens 6-tal tager 6-tallet fra dem.</string>
+    <string name="lesson_blossom_5">Nu er de fulde, og tre fulde felter bruger tre tal: 2, 7 og 8. Kun ét af dem kan være 8-tallet, så det er der, 8-tallet står.</string>
+    <string name="lesson_blossom_6">Læg de to tilfælde sammen. Enten står der et 8-tal på r1c7, eller også står der et 8-tal i den boks, og et tredje tilfælde findes ikke. Ethvert felt, der kan se begge steder, mister sit 8-tal, og det gør to af dem.</string>
+    <string name="lesson_blossom_7">Læg mærke til, hvad du aldrig behøvede at vide: hvilket tal stilken faktisk er. Begge veje ender i et 8-tal, så svaret afhænger ikke af forgreningen.</string>
+
+    <string name="lesson_fork_title">Tvingende kæde</string>
+    <string name="lesson_fork_summary">Tag et felt begge veje og se, hvilken der overlever. Det sværeste i appen.</string>
+    <string name="lesson_fork_1">Den sidste teknik, og den eneste, der ikke er et mønster. Der er intet at få øje på her. Der er kun arbejde.</string>
+    <string name="lesson_fork_2">Feltet her er 2 eller 7. Alt andet på brættet er presset tørt, og intet siger, hvilket af de to det er.</string>
+    <string name="lesson_fork_3">Så prøv det ene. Sig, at det er 2, med blyant, og følg kun de lette følger: et felt med ét tal tilbage, eller et tal med ét hjem tilbage i sit område.</string>
+    <string name="lesson_fork_4">De kommer hurtigt. Et 2-tal tvinges her, så et 7-tal der, så et 3-tal, et 5-tal, et 9-tal. Bliv ved. Fjorten tal senere, se på det markerede felt.</string>
+    <string name="lesson_fork_5">Det har intet tilbage. Hvert tal, der kunne have stået der, er taget af noget andet. Det er ikke uheld, det er en modsigelse, og det betyder, at 2-tallet aldrig var muligt overhovedet.</string>
+    <string name="lesson_fork_6">Så slet det hele og skriv 7-tallet. Ikke fordi 7-tallet ser bedre ud, men fordi 2-tallet er bevist umuligt, og to muligheder minus én giver én.</string>
+    <string name="lesson_fork_7">Det er bevis ved tilfælde, og det er, hvad folk mener med at regne en opgave ud på papir. Brug papir. Ingen holder fjorten tvungne tal i hovedet, og at have brug for at skrive dem ned er ikke en svaghed.</string>
+    <string name="lesson_fork_8">Placer det nu.</string>
+    <string name="lesson_fork_wrong">Det er det andet tal, der døde. 2-tallet førte til et felt uden noget i, så det, der er tilbage, er 7-tallet.</string>
+
+    <string name="lesson_nothing_applies_title">Når intet passer</string>
+    <string name="lesson_nothing_applies_summary">Tjek efter, før du gætter, for en opgave fra appen har altid et næste trin.</string>
+    <string name="lesson_nothing_applies_1">Du når stillinger, hvor du har set på alt og ikke fundet noget. Her er, hvad du skal gøre, og hvad du ikke skal.</string>
+    <string name="lesson_nothing_applies_2">Det, du ikke skal, er at gætte. Hver eneste opgave i appen kan løses med ræsonnement, og et gæt, der tilfældigvis er rigtigt, lærer dig ingenting, mens et gæt, der er forkert, koster dig hele gitteret.</string>
+    <string name="lesson_nothing_applies_3">Tjek efter i denne rækkefølge. Først: er alle dine noter sande? En forældet note er den mest almindelige årsag til en umulig stilling, og appen sletter dem for dig, hvis du lader den. Dernæst: er et tal, du har placeret, faktisk rigtigt? Tryk på tip, og den siger det.</string>
+    <string name="lesson_nothing_applies_4">Kig så efter de billige ting igen. Det er næsten aldrig en kæde, du har overset. Det er næsten altid en skjult enling i et område, du holdt op med at se på for tyve træk siden.</string>
+
+    <string name="lesson_look_first_title">Hvad man skal lede efter først</string>
+    <string name="lesson_look_first_summary">Billige mønstre først, altid, for de er almindelige, og de åbner gitteret.</string>
+    <string name="lesson_look_first_1">Nu kender du hver teknik, appen kan nævne. Det sidste, der skal læres, er rækkefølgen at lede i.</string>
+    <string name="lesson_look_first_2">Enlinger først, hver gang. Nøgne, så skjulte. De er de mest almindelige med stor margin, og hver en, du placerer, gør hver anden teknik lettere at finde.</string>
+    <string name="lesson_look_first_3">Så de billige fjernelser: pegende og krævende par. De er hurtige at tjekke, område for område, og de åbner ofte for en enling med det samme.</string>
+    <string name="lesson_look_first_4">Så par og tripler i de områder med færrest tomme felter. Så fisk, så wings. Kæder til sidst, altid, for de er det største arbejde og de mindst almindelige.</string>
+    <string name="lesson_look_first_5">At jage en Jellyfish, før man har tjekket enlingerne, er sudokuens svar på at skrive et program om, før man læser fejlmeddelelsen. Appen bedømmer opgaver efter det sværeste, de kræver, men en Mester er stadig for det meste enlinger.</string>
+    <string name="lesson_together_title">En Mester, sammen</string>
+    <string name="lesson_together_summary">En svær opgave er for det meste lette trin med nogle få svære i.</string>
+    <string name="lesson_together_1">Den sidste lektion. Dette er det gitter, kurset har gået igennem, på niveauet Mester, og her er hele løsningen, teknik for teknik.</string>
+    <string name="lesson_together_2">Den åbner med en nøgen enling. Det gør næsten alt.</string>
+    <string name="lesson_together_3">Så en skjult enling, i boksen ved siden af.</string>
+    <string name="lesson_together_4">Nu går den i stå, og et pegende par rydder en kolonne, så enlingerne kan begynde igen. Læg mærke til, at det trin ikke placerede et eneste tal, og at der alligevel skete fremskridt.</string>
+    <string name="lesson_together_5">Et nøgent par lidt senere, der gør det samme arbejde i et område.</string>
+    <string name="lesson_together_6">Dybere inde, en X-Wing. Nu er gitteret halvt fyldt, og noterne gør arbejdet.</string>
+    <string name="lesson_together_7">Og tæt på slutningen, den der giver niveauet: en ALS-XZ. Én fjernelse, og resten er enlinger igen.</string>
+    <string name="lesson_together_8">Det er, hvad Mester betyder her. Ikke enogfirs svære trin, men halvfjerds lette og en håndfuld, der kræver alt, hvad du har lært.</string>
+    <string name="lesson_together_9">Du har mødt hver teknik, appen kan nævne. Gå ud og spil en. Der følger tre tip med hver opgave, og der er ingen skam i at bruge dem, og vil du hellere have så mange, du vil, er grænsen en kontakt i indstillingerne.</string>
+    <string name="lesson_step_of">%1$d af %2$d</string>
+    <string name="lesson_back">Tilbage</string>
+    <string name="lesson_next">Næste</string>
+    <string name="lesson_done">Færdig</string>
+    <string name="lesson_replay">Igen</string>
+    <string name="lesson_show_me">Vis mig</string>
+    <string name="lesson_cell_at">Række %1$d, kolonne %2$d.</string>
+    <string name="course_title">Lær</string>
+    <string name="course_lesson_done">færdig</string>
+    <string name="course_lesson_next">næste</string>
+    <string name="course_lesson_todo">ikke begyndt</string>
+    <string name="course_you_are_here">Du er her</string>
+    <string name="course_continue">Fortsæt</string>
+    <string name="course_stage_done">Færdig med %1$d af %2$d</string>
+    <plurals name="course_progress">
+        <item quantity="one">%1$d af %2$d lektion</item>
+        <item quantity="other">%1$d af %2$d lektioner</item>
+    </plurals>
+    <string name="settings_hint_detail">Hvor meget et tip siger</string>
+    <string name="hint_detail_region">Kun området</string>
+    <string name="hint_detail_region_note">Hvilken boks eller linje man skal se på, og ikke mere.</string>
+    <string name="hint_detail_name">Teknikken</string>
+    <string name="hint_detail_name_note">Hvilken slags trin det er, så du ved, hvad du skal lede efter.</string>
+    <string name="hint_detail_cells">Felterne</string>
+    <string name="hint_detail_cells_note">De felter, argumentet hviler på, fremhævet på brættet.</string>
+    <string name="hint_detail_full">Hele argumentet</string>
+    <string name="hint_detail_full_note">Det hele, også trækket. Til at arbejde sig gennem kurset med.</string>
+    <string name="path_title">Sådan blev den løst</string>
+    <string name="path_placed">Række %1$d, kolonne %2$d er %3$d.</string>
+    <string name="outcome_path">Vis hvordan den blev løst</string>
+    <string name="settings_your_data">Dine data</string>
+    <string name="settings_data_note">Alt, appen ved om dig, ligger på denne telefon. Eksport skriver det til en fil, du vælger, så en ny telefon kan fortsætte, hvor denne slap. Der sendes ikke noget nogen steder hen.</string>
+    <string name="settings_export">Eksportér mine fremskridt</string>
+    <string name="settings_import">Importér fra en fil</string>
+    <string name="settings_reset_course">Nulstil kurset, behold mine spil</string>
+    <string name="settings_exported">Gemt. Lektioner: %1$d. Spil: %2$d.</string>
+    <string name="settings_imported">Tilføjet. Lektioner: %1$d. Spil: %2$d.</string>
+    <string name="settings_imported_ignored">Tilføjet. Lektioner: %1$d. Spil: %2$d. Udeladt, fordi de kom fra en nyere udgave: %3$d.</string>
+    <string name="settings_import_empty">Den fil er tom.</string>
+    <string name="settings_import_not_ours">Det ligner ikke en eksport fra Sendoku.</string>
+    <string name="settings_import_future">Filen er skrevet af en nyere udgave af Sendoku.</string>
+    <string name="settings_import_failed">Filen kunne ikke læses, og der blev ikke ændret noget på telefonen.</string>
+    <string name="settings_course_reset">Kurset er tilbage ved starten. Dine spil er urørte.</string>
+    <string name="practice_looking">Leder efter en stilling…</string>
+    <string name="practice_find">Find: %1$s.</string>
+    <string name="practice_keep_going">Det er en af dem. Fortsæt.</string>
+    <string name="practice_wrong">Ikke det felt. Læs reglen igen: %1$s hviler ikke på det.</string>
+    <string name="practice_right">Det er %1$s. Det, den fjerner, er markeret.</string>
+    <string name="practice_revealed">Her er %1$s, og det den fjerner.</string>
+    <string name="practice_show_me">Vis mig</string>
+    <string name="practice_another">En til</string>
+    <string name="practice_skip">Spring over</string>
+    <string name="practice_title">Træning</string>
+    <string name="technique_pick_title">Find en at træne på</string>
+    <string name="technique_pick_body">Hver opgave her er bedømt af den samme løser, der skriver tippene, så det er kendt, hvilken regel hver enkelt hviler på. Vælg en teknik og få en opgave, der ikke kan gøres færdig uden den.</string>
+    <string name="technique_pick_none">Ingen opgave i denne udgave hviler på den</string>
+    <string name="technique_pick_play">Spil en</string>
+    <plurals name="technique_pick_count">
+        <item quantity="one">%1$d opgave hviler på den</item>
+        <item quantity="other">%1$d opgaver hviler på den</item>
+    </plurals>
+    <string name="practice_none">Der er ikke noget at træne endnu. Gør først en lektion færdig, der lærer en teknik.</string>
+    <string name="glossary_learn_this">Lær denne</string>
+    <string name="hint_learn_this">Lær mig den her</string>
+    <string name="outcome_learn">Lær: %1$s</string>
+    <string name="course_finished">Det hele, færdigt. Alt, appen kan nævne, kan du nævne. Opgaverne er resten.</string>
+    <string name="outcome_lost_hints">Tippene er brugt op</string>
+    <string name="outcome_share">Del</string>
+    <string name="card_solved">Løst</string>
+    <string name="card_lost">Slået af</string>
+    <string name="settings_hint_limit">Afslut spillet efter tre tip</string>
+    <string name="settings_hint_note">Slået til som standard. Tre tip er gratis, og det fjerde koster spillet, hvilket gør et tip til en beslutning frem for en refleks. Slå den fra, mens du arbejder dig gennem kurset.</string>
+    <string name="settings_post_mortem">Sig hvor tiden gik</string>
+    <string name="settings_post_mortem_note">Efter en sejr, nævn de to steder løsningen gik i stå, og hvad der stod på brættet der. Om en løsning, der aldrig gik i stå, siges der ingenting.</string>
+    <string name="post_mortem_line">Du stod stille her i %1$s. Der var %2$s at finde.</string>
+    <string name="post_mortem_title">Hvor tiden gik</string>
+    <string name="clean_line">En ren løsning: ingen tip, ingen fejl, ingen noter.</string>
+    <string name="clean_mark">Ren</string>
+    <string name="clean_stat">Rene løsninger</string>
+    <string name="clean_note">Rene løsninger: %1$d af %2$d.</string>
+    <string name="account_title">Dig</string>
+    <string name="account_no_account">Der er ingen konto at logge ind på. Alt herunder ligger på denne telefon og ingen andre steder.</string>
+    <string name="account_solved">Løst</string>
+    <string name="account_streak">Dage i træk</string>
+    <string name="account_played">Spillet</string>
+    <string name="account_time">Spilletid</string>
+    <string name="account_lessons">Lektioner</string>
+    <string name="account_about_detail">Hvad appen lover, og de licenser den bygger på</string>
+    <string name="account_hardest">Sværeste løste</string>
+    <string name="account_hardest_note">Slået den %1$s, på %2$s</string>
+    <string name="account_beaten">Hvad du har slået</string>
+    <string name="account_recent">De sidste fem uger</string>
+    <string name="account_hints">Brugte tip</string>
+    <string name="account_empty">Gør én opgave færdig, og siden fyldes op: hvad du har slået på hvert niveau, og hver dag du har spillet.</string>
+    <string name="account_stats">Statistik</string>
+    <string name="account_history">Historik</string>
+    <string name="history_title">Historik</string>
+    <string name="history_lost">Tabt</string>
+    <string name="history_empty_body">Gør en opgave færdig, og den lander her, med brættet som du forlod det, klar til at dele når du har lyst.</string>
+    <string name="history_no_board">Denne blev gjort færdig, før appen gemte brætter, så der er intet at tegne. Tallene er alt, der er.</string>
+    <string name="tab_home">Forside</string>
+    <string name="tab_learn">Lær</string>
+    <string name="tab_account">Dig</string>
+    <plurals name="hint_menu_left">
+        <item quantity="one">De sidste to koster et tip, og du har %1$d tilbage.</item>
+        <item quantity="other">De sidste to koster et tip, og du har %1$d tilbage.</item>
+    </plurals>
+    <plurals name="hint_check_wrong">
+        <item quantity="one">%1$d tal, du har placeret, er forkert. At finde det er stadig dit.</item>
+        <item quantity="other">%1$d tal, du har placeret, er forkerte. At finde dem er stadig dit.</item>
+    </plurals>
+    <plurals name="path_summary">
+        <item quantity="one">%1$d trin, billigste regel først, præcis som appen bedømte den.</item>
+        <item quantity="other">%1$d trin, billigste regel først, præcis som appen bedømte den.</item>
+    </plurals>
+    <plurals name="path_struck">
+        <item quantity="one">Fjerner %1$d note.</item>
+        <item quantity="other">Fjerner %1$d noter.</item>
+    </plurals>
+</resources>

@@ -76,6 +76,7 @@ public enum class Language(public val tag: String, @StringRes public val label: 
      */
     BENGALI("bn-u-nu-latn", R.string.language_bengali),
     THAI("th", R.string.language_thai),
+    DANISH("da", R.string.language_danish),
 }
 
 /**

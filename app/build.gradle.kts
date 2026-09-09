@@ -56,7 +56,7 @@ android {
         // what LanguageListsTest is there to catch. One space separated string rather than a
         // list of literals, because at eighteen languages the formatter puts a list of
         // literals on a line each and this has to stay readable.
-        val languages = "en ru de tr es it ja fr pt b+zh+Hans ko ar uk in vi hi bn th en-rXA ar-rXB"
+        val languages = "en ru de tr es it ja fr pt b+zh+Hans ko ar uk in vi hi bn th da en-rXA ar-rXB"
         resourceConfigurations += languages.split(" ")
     }
 

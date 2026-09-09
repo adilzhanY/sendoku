@@ -41,6 +41,7 @@ class LanguageOrderTest {
         Language.HINDI to "हिन्दी",
         Language.BENGALI to "বাংলা",
         Language.THAI to "ไทย",
+        Language.DANISH to "Dansk",
     )
 
     private fun order(tag: String = "en") = Languages.inDisplayOrder(labels, Locale.forLanguageTag(tag))
@@ -76,7 +77,7 @@ class LanguageOrderTest {
         // Spelled out, because this is the part of the list most people actually read.
         assertEquals(
             listOf(
-                "Bahasa Indonesia", "Deutsch", "English", "Español",
+                "Bahasa Indonesia", "Dansk", "Deutsch", "English", "Español",
                 "Français", "Italiano", "Português (Brasil)", "Tiếng Việt", "Türkçe",
             ),
             latin,

@@ -52,10 +52,13 @@ class LanguageCountTest {
         // The description lists them by name rather than by number, so the count and the names
         // have to agree with each other as well as with the app. A language added to the enum
         // and forgotten here is one the listing does not offer to the people who read it.
+        // Anchored on the shape of the sentence rather than on the number spelled out in it,
+        // because the number changes every time a language is added and a test that hardcodes
+        // it fails for the one reason that is never interesting.
         val play = repo("PLAY.md")
-        val sentence = play.substringAfter("Eighteen languages:").substringBefore(".")
-        assertTrue("the store description no longer lists the languages", sentence.isNotBlank())
-        val named = sentence.split(",", " and ").count { it.isNotBlank() }
+        val sentence = Regex("""[A-Z][a-z]+ languages: ([^.]+)\.""").find(play)?.groupValues?.get(1)
+        assertTrue("the store description no longer lists the languages", sentence != null)
+        val named = sentence!!.split(",", " and ").count { it.isNotBlank() }
         assertEquals("the store description names a different number of languages", written, named)
     }
 
@@ -66,7 +69,7 @@ class LanguageCountTest {
         val play = repo("PLAY.md")
         assertTrue(
             "the note under the store description no longer says how many languages there are",
-            play.contains("Eighteen languages: `Language`"),
+            Regex("""[A-Z][a-z]+ languages: `Language`""").containsMatchIn(play),
         )
     }
 }

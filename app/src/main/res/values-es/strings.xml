@@ -202,6 +202,7 @@
     <string name="language_hindi">हिन्दी</string>
     <string name="language_bengali">বাংলা</string>
     <string name="language_thai">ไทย</string>
+    <string name="language_danish">Dansk</string>
     <plurals name="first_run_prompt">
         <item quantity="one">Sendoku está escrito en %1$d idioma. ¿En cuál lees?</item>
         <item quantity="other">Sendoku está escrito en %1$d idiomas. ¿En cuál lees?</item>

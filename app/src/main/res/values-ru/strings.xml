@@ -209,6 +209,7 @@
     <string name="language_hindi">हिन्दी</string>
     <string name="language_bengali">বাংলা</string>
     <string name="language_thai">ไทย</string>
+    <string name="language_danish">Dansk</string>
     <plurals name="first_run_prompt">
         <item quantity="one">Sendoku написан на %1$d языке. На каком читаете вы?</item>
         <item quantity="few">Sendoku написан на %1$d языках. На каком читаете вы?</item>
