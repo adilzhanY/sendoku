@@ -118,7 +118,7 @@
     <string name="tint_three">ม่วง</string>
     <string name="tint_four">เขียว</string>
     <string name="why_not_prompt">แตะตัวเลขเพื่อดูว่าอะไรขวางมันอยู่</string>
-    <string name="why_not_taken">มี %1$d อยู่แล้วใน %2$s ที่แถว %3$d คอลัมน์ %4$d</string>
+    <string name="why_not_taken">มี %1$d อยู่แล้วใน%2$s ที่แถว %3$d คอลัมน์ %4$d</string>
     <string name="why_not_filled">ช่องนี้มี %1$d อยู่แล้ว ลบออกก่อน</string>
     <string name="why_not_possible">ไม่มีอะไรบนกระดานที่ห้าม %1$d นั่นไม่ได้ทำให้มันถูก แค่ทำให้มันเป็นไปได้</string>
     <string name="cell_actions_clear">ล้างช่อง</string>
@@ -141,7 +141,7 @@
     <string name="hint_remove_one">เอาออก</string>
     <string name="hint_remove_many">เอาออกทั้งหมด</string>
     <string name="hint_look_here_title">ดูตรงนี้</string>
-    <string name="hint_look_here">มีอะไรให้หาใน %1$s คำใบ้นี้บอกแค่นั้น</string>
+    <string name="hint_look_here">มีอะไรให้หา%1$s คำใบ้นี้บอกแค่นั้น</string>
     <string name="hint_look_around">มีขั้นหนึ่งให้หา ขั้นนี้กระจายอยู่ทั่วตาราง ไม่ได้อยู่ในเขตเดียว</string>
     <string name="hint_what_kind">เป็นขั้นแบบไหน</string>
     <string name="hint_menu_title">ช่วยเหลือ</string>
@@ -154,7 +154,7 @@
     <string name="hint_check_clean">ไม่มีตัวใดที่คุณใส่ไว้ผิดเลย</string>
     <string name="hint_close">ปิด</string>
     <string name="hint_previous">ถอยหนึ่งขั้น</string>
-    <string name="hint_cells_here">ช่องที่มันอาศัยอยู่ถูกเน้นไว้ %1$s</string>
+    <string name="hint_cells_here">ช่องที่เหตุผลอาศัยอยู่ถูกเน้นไว้%1$s</string>
     <string name="hint_where">บอกหน่อยว่าตรงไหน</string>
     <string name="hint_explain">อธิบายหน่อย</string>
     <string name="hint_do_it">ทำเลย</string>
@@ -170,8 +170,8 @@
     <string name="hint_done_body">ปริศนาจบแล้ว</string>
     <string name="hint_stuck_title">ไม่มีอะไรจะแนะนำ</string>
     <string name="hint_stuck_body">กระดานนี้ถูกกติกา แต่ไม่มีเทคนิคใดที่ Sendoku รู้จักใช้กับมันได้ เรื่องนี้ไม่ควรเกิดกับปริศนาจากแอป</string>
-    <string name="hint_in_region">ใน %1$s</string>
-    <string name="hint_in_regions">ใน %1$s และ %2$s</string>
+    <string name="hint_in_region">ใน%1$s</string>
+    <string name="hint_in_regions">ใน%1$s และ%2$s</string>
     <string name="hint_outcome_place">ดังนั้นแถว %1$d คอลัมน์ %2$d ต้องเป็น %3$d</string>
     <string name="hint_outcome_strike_one">ดังนั้น %1$d ตัดออกจาก %2$s ได้</string>
     <string name="hint_outcome_strike_two">ดังนั้น %1$d และ %2$d ตัดออกจาก %3$s ได้</string>
@@ -487,7 +487,7 @@
     <string name="lesson_naked_single_1">ตารางขนาดเต็ม และเทคนิคแรกที่มีชื่อ มันง่ายที่สุดเท่าที่มี และแม้ในปริศนาที่ยากที่สุด มันก็ยังเป็นตัวที่ปิดช่องได้มากที่สุด</string>
     <string name="lesson_naked_single_2">ดูช่องนี้ช่องเดียว ถามว่ามันมีอะไรได้บ้าง</string>
     <string name="lesson_naked_single_3">ทุกช่องที่ตัดอะไรออกถูกเน้นไว้ ระหว่างแถว คอลัมน์ และกล่องของมัน แปดในเก้าตัวเลขปรากฏอยู่ที่ไหนสักแห่งที่มันมองเห็นแล้ว</string>
-    <string name="lesson_naked_single_4">จึงเหลือตัวเลขตัวเดียว และช่องนั้นต้องมีมัน ไม่มีอย่างอื่นเป็นไปได้ นั่นคือ naked single naked เพราะเห็นได้จากการดูช่องเดียว single เพราะเหลือรอดตัวเลขเดียว</string>
+    <string name="lesson_naked_single_4">จึงเหลือตัวเลขตัวเดียว และช่องนั้นต้องมีมัน ไม่มีอย่างอื่นเป็นไปได้ นั่นคือ naked single คำว่า naked เพราะเห็นได้จากการดูช่องเดียว คำว่า single เพราะเหลือรอดตัวเลขเดียว</string>
     <string name="lesson_naked_single_5">แอปเรียกชื่อนี้ตอนที่ให้คำใบ้คุณ ตอนนี้คุณรู้แล้วว่ามันหมายถึงอะไร</string>
     <string name="lesson_hidden_single_title">Hidden single</string>
     <string name="lesson_hidden_single_summary">ตัวเลขที่เหลือที่ลงเพียงที่เดียวในเขตหนึ่งต้องลงตรงนั้น</string>
@@ -565,7 +565,7 @@
     <string name="lesson_hidden_pair_title">Hidden pair</string>
     <string name="lesson_hidden_pair_summary">ตัวเลขสองตัวที่เหลือที่ลงเพียงสองที่เดียวกันเป็นเจ้าของช่องเหล่านั้น</string>
     <string name="lesson_hidden_pair_1">ภาพสะท้อนของ naked pair เหมือนกับที่ hidden single สะท้อน naked single</string>
-    <string name="lesson_hidden_pair_2">ในเขตนี้ ตัวเลขสองตัว ทั้งคู่ ลงได้แค่ในสองช่องเดียวกันนั้น</string>
+    <string name="lesson_hidden_pair_2">ในเขตนี้ ตัวเลขสองตัวต่างก็ลงได้แค่ในสองช่องเดียวกันนั้น</string>
     <string name="lesson_hidden_pair_3">ตัวเลขสองตัวนั้นจะแบ่งสองช่องนั้นกันไป ไม่ว่าช่องเหล่านั้นจะดูเหมือนมีอะไรได้อีก มันก็มีไม่ได้</string>
     <string name="lesson_hidden_pair_4">สองช่องนั้นเสียโน้ตอื่นทั้งหมดไป ตอนนี้มันกลายเป็น naked pair และบ่อยครั้งนั่นคือจุดประสงค์ของรูปแบบนี้ คือเปลี่ยน hidden pair ให้เป็น naked pair ที่กวาดส่วนที่เหลือของเขตให้โล่ง</string>
     <string name="lesson_hidden_pair_5">hidden pair เห็นยากกว่า naked pair เพราะคุณต้องมองที่ตัวเลข ไม่ใช่ที่ช่อง บนตารางที่ตันแล้ว มันคุ้มกับความพยายาม</string>
@@ -747,7 +747,7 @@
     <string name="lesson_blossom_3">สมมติว่ามันเป็น 5 แล้ว r1c7 ในแถวเดียวกันซึ่งมี 5 กับ 8 ก็เป็น 5 ไม่ได้ มันจึงเป็น 8</string>
     <string name="lesson_blossom_4">สมมติกลับกันว่ามันเป็น 6 ดูสามช่องนี้ในกล่องเดียวกัน รวมกันแล้วมันมี 2, 6, 7 และ 8 สี่ตัวเลข สามช่อง ขาดอีกตัวเดียวจะเต็ม ก้านมองเห็นทั้งสามช่อง 6 ของมันจึงเอา 6 ไปจากช่องเหล่านั้น</string>
     <string name="lesson_blossom_5">ตอนนี้มันเต็มแล้ว และสามช่องที่เต็มใช้ตัวเลขสามตัว คือ 2, 7 และ 8 มีแค่ช่องเดียวที่เป็น 8 ได้ 8 จึงลงตรงนั้น</string>
-    <string name="lesson_blossom_6">เอาสองกรณีมารวมกัน ไม่มี 8 ที่ r1c7 ก็มี 8 ในกล่องนั้น และไม่มีกรณีที่สาม ช่องใดก็ตามที่มองเห็นทั้งสองที่จะเสีย 8 ของมันไป และมีอยู่สองช่องที่เป็นแบบนั้น</string>
+    <string name="lesson_blossom_6">เอาสองกรณีมารวมกัน ต้องมี 8 ที่ r1c7 หรือไม่ก็มี 8 ในกล่องนั้น และไม่มีกรณีที่สาม ช่องใดก็ตามที่มองเห็นทั้งสองที่จะเสีย 8 ของมันไป และมีอยู่สองช่องที่เป็นแบบนั้น</string>
     <string name="lesson_blossom_7">สังเกตสิ่งที่คุณไม่เคยต้องรู้เลย คือก้านเป็นตัวเลขอะไรจริง ๆ ทั้งสองทางจบที่ 8 คำตอบจึงไม่ได้ขึ้นอยู่กับทางแยกนั้นเลย</string>
 
     <string name="lesson_fork_title">โซ่บังคับ</string>
@@ -770,10 +770,10 @@
     <string name="lesson_nothing_applies_4">แล้วค่อยกลับไปหาของถูก ๆ อีกรอบ มันแทบไม่เคยเป็นโซ่ที่คุณมองข้าม มันแทบจะเป็น hidden single ในเขตที่คุณเลิกมองไปตั้งแต่ยี่สิบตาที่แล้วเสมอ</string>
 
     <string name="lesson_look_first_title">ควรหาอะไรก่อน</string>
-    <string name="lesson_look_first_summary">รูปแบบที่ถูกก่อนเสมอ เพราะมันพบบ่อยและมันเปิดตารางออก</string>
+    <string name="lesson_look_first_summary">รูปแบบที่หาง่ายก่อนเสมอ เพราะมันพบบ่อยและมันเปิดตารางออก</string>
     <string name="lesson_look_first_1">ตอนนี้คุณรู้จักทุกเทคนิคที่แอปนี้เรียกชื่อได้แล้ว สิ่งสุดท้ายที่ต้องเรียนคือลำดับในการมองหา</string>
     <string name="lesson_look_first_2">single ก่อนเสมอ naked แล้วค่อย hidden มันพบบ่อยกว่าอย่างอื่นมาก และทุกตัวที่คุณใส่ก็ทำให้เทคนิคอื่นทุกอันหาง่ายขึ้น</string>
-    <string name="lesson_look_first_3">แล้วค่อยการตัดออกที่ถูก คือ pointing กับ claiming pair มันตรวจได้เร็วทีละเขต และบ่อยครั้งก็เปิด single ออกมาทันที</string>
+    <string name="lesson_look_first_3">แล้วค่อยการตัดออกที่ได้มาง่าย คือ pointing กับ claiming pair มันตรวจได้เร็วทีละเขต และบ่อยครั้งก็เปิด single ออกมาทันที</string>
     <string name="lesson_look_first_4">แล้วค่อยคู่กับสามตัวในเขตที่มีช่องว่างน้อยที่สุด แล้วค่อยปลา แล้วค่อย wing โซ่ไว้ท้ายสุดเสมอ เพราะมันใช้แรงมากที่สุดและพบน้อยที่สุด</string>
     <string name="lesson_look_first_5">การไล่หา Jellyfish ก่อนจะตรวจ single ก็เหมือนกับการเขียนโปรแกรมใหม่ทั้งตัวก่อนจะอ่านข้อความแจ้งข้อผิดพลาด แอปให้ระดับปริศนาตามสิ่งที่ยากที่สุดที่มันต้องใช้ แต่ปริศนาระดับปรมาจารย์ก็ยังเป็น single เสียส่วนใหญ่</string>
     <string name="lesson_together_title">ปรมาจารย์หนึ่งข้อ ไปด้วยกัน</string>
@@ -844,7 +844,7 @@
     <string name="technique_pick_none">ไม่มีปริศนาในรุ่นนี้ที่อาศัยมัน</string>
     <string name="technique_pick_play">เล่นสักข้อ</string>
     <plurals name="technique_pick_count">
-        <item quantity="other">มี %1$d ปริศนาที่อาศัยมัน</item>
+        <item quantity="other">มีปริศนา %1$d ข้อที่อาศัยมัน</item>
     </plurals>
     <string name="practice_none">ยังไม่มีอะไรให้ฝึก ทำบทเรียนที่สอนเทคนิคสักบทให้จบก่อน</string>
     <string name="glossary_learn_this">เรียนเรื่องนี้</string>
@@ -895,9 +895,9 @@
         <item quantity="other">ตัวเลขที่คุณใส่ไว้ %1$d ตัวผิด การหามันให้เจอยังเป็นงานของคุณอยู่</item>
     </plurals>
     <plurals name="path_summary">
-        <item quantity="other">%1$d ขั้น กติกาที่ถูกที่สุดก่อน ตรงตามที่แอปให้ระดับมันไว้เป๊ะ</item>
+        <item quantity="other">%1$d ขั้น กติกาที่ง่ายที่สุดก่อน ตรงตามที่แอปให้ระดับมันไว้เป๊ะ</item>
     </plurals>
     <plurals name="path_struck">
-        <item quantity="other">ตัดรอยดินสอออก %1$d รอย</item>
+        <item quantity="other">ตัดโน้ตออก %1$d ตัว</item>
     </plurals>
 </resources>
