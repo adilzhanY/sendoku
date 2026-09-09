@@ -139,7 +139,7 @@
     <string name="hint_remove_one">इसे हटा दें</string>
     <string name="hint_remove_many">इन्हें हटा दें</string>
     <string name="hint_look_here_title">यहाँ देखिए</string>
-    <string name="hint_look_here">%1$s में कुछ खोजने को है। यह संकेत बस इतना ही कहता है।</string>
+    <string name="hint_look_here">%1$s कुछ खोजने को है। यह संकेत बस इतना ही कहता है।</string>
     <string name="hint_look_around">एक कदम खोजने को है। यह वाला पूरे ग्रिड में फैला है, किसी एक क्षेत्र में नहीं बैठा।</string>
     <string name="hint_what_kind">किस तरह का कदम?</string>
     <string name="hint_menu_title">मदद</string>
@@ -243,7 +243,7 @@
     <string name="theme_ink">Ink and Paper</string>
     <string name="theme_ink_summary">अख़बार की पहेली की किताब, गरम काग़ज़ पर छपी</string>
     <string name="theme_zen">Slate Zen</string>
-    <string name="theme_zen_summary">ऋषि हरा और पत्थर, और बाकी जितना कम हो सके</string>
+    <string name="theme_zen_summary">हल्का हरा और पत्थर, और बाकी जितना कम हो सके</string>
     <string name="theme_terminal">Terminal</string>
     <string name="theme_terminal_summary">एकसमान चौड़ाई, तीखे किनारे, सिर्फ़ गहरा</string>
     <string name="mode_system">सिस्टम के अनुसार</string>
@@ -472,7 +472,7 @@
     <string name="lesson_first_four_3">यह सेल 2 नहीं हो सकता, क्योंकि इसके स्तंभ में पहले से एक 2 है। तो यह 3 है।</string>
     <string name="lesson_first_four_4">अब एक खाली सेल बचा है, और पंक्ति में एक अंक बिना इस्तेमाल के।</string>
     <string name="lesson_first_four_5">आपकी बारी। जो अंक यहाँ का है उसे भरिए।</string>
-    <string name="lesson_first_four_wrong">बिल्कुल नहीं। पंक्ति को देखिए: 1 से 4 तक कौन सा अंक अब भी छूटा है?</string>
+    <string name="lesson_first_four_wrong">पूरी तरह सही नहीं। पंक्ति को देखिए: 1 से 4 तक कौन सा अंक अब भी छूटा है?</string>
     <string name="lesson_first_four_6">हल हो गई। सुडोकू यही है, ग्रिड चाहे जितना बड़ा हो।</string>
 
     <string name="lesson_first_six_title">एक बड़ा ग्रिड</string>
@@ -709,7 +709,7 @@
 
     <string name="lesson_sue_de_coq_title">Sue de Coq</string>
     <string name="lesson_sue_de_coq_summary">जहाँ बॉक्स रेखा को काटता है, और उस कटान में जगह से ज़्यादा अंक हैं।</string>
-    <string name="lesson_sue_de_coq_1">एक बॉक्स और एक स्तंभ तीन सेल में ऊपर-नीचे पड़ते हैं। वे तीन सेल एक साथ दोनों के हैं, और यही तकनीक इसी पर जीती है।</string>
+    <string name="lesson_sue_de_coq_1">एक बॉक्स और एक स्तंभ तीन सेल आपस में साझा करते हैं। वे तीन सेल एक साथ दोनों के हैं, और यही तकनीक इसी पर जीती है।</string>
     <string name="lesson_sue_de_coq_2">यहाँ उनमें से दो देखिए। मिलाकर उनमें 2, 6, 7 और 8 हैं: दो सेल के लिए चार अंक। उनमें से दो भीतर जाते हैं, और दो कहीं और के लिए बच जाते हैं।</string>
     <string name="lesson_sue_de_coq_3">उसी स्तंभ में और नीचे एक सेल है जिसमें 6 और 7 हैं। उसी बॉक्स में कहीं और एक सेल है जिसमें 2 और 8 हैं। मिलाकर वे दोनों सेल ठीक वही चार अंक चाहते हैं जो कटान में हैं, बराबर बँटे और कुछ भी साझा किए बिना।</string>
     <string name="lesson_sue_de_coq_4">गिनिए। स्तंभ के तीन सेल अब चारों में से तीन अलग अंक ले लेते हैं, और बॉक्स के तीन सेल भी वही करते हैं। गणित सिर्फ़ एक ही तरह बैठता है: 6 और 7 स्तंभ के भीतर ख़र्च होते हैं, और 2 और 8 बॉक्स के भीतर।</string>
@@ -785,7 +785,7 @@
     <string name="lesson_together_3">फिर एक hidden single, बग़ल वाले बॉक्स में।</string>
     <string name="lesson_together_4">अब यह अटक जाता है, और एक pointing pair एक स्तंभ साफ़ कर देता है ताकि single फिर से शुरू हो सकें। ग़ौर कीजिए कि उस कदम में कोई अंक नहीं भरा गया और फिर भी आगे बढ़ना हुआ।</string>
     <string name="lesson_together_5">थोड़ी देर बाद एक naked pair, एक क्षेत्र के भीतर वही काम करता हुआ।</string>
-    <string name="lesson_together_6">और गहराई में, एक X-Wing। तब तक ग्रिड आधा भर चुका है और काम नोट कर रहे हैं।</string>
+    <string name="lesson_together_6">और गहराई में, एक X-Wing। तब तक ग्रिड आधा भर चुका है और अब काम नोटों से हो रहा है।</string>
     <string name="lesson_together_7">और अंत के पास, वह जो यह श्रेणी दिलाता है: एक ALS-XZ। एक कटाव, और बाकी फिर से single।</string>
     <string name="lesson_together_8">यहाँ उस्ताद का यही मतलब है। इक्यासी कठिन कदम नहीं, बल्कि सत्तर आसान और मुट्ठी भर ऐसे जिनके लिए आपका सीखा सब कुछ चाहिए।</string>
     <string name="lesson_together_9">आप हर उस तकनीक से मिल चुके हैं जिसका नाम यह ऐप ले सकता है। जाइए और एक खेलिए। हर पहेली के साथ तीन संकेत आते हैं और उन्हें ख़र्च करने में कोई शर्म नहीं, और अगर आप जितने चाहें उतने चाहते हैं, तो सीमा सेटिंग में एक स्विच है।</string>
