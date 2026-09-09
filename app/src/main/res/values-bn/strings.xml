@@ -36,7 +36,7 @@
     <string name="code_unreadable">এটি Sendoku এর কোড বলে মনে হচ্ছে না।</string>
     <string name="code_typo">এর মধ্যে এমন একটি অক্ষর আছে যা কোনো কোডে থাকে না। আপনাকে পাঠানো কোডের সঙ্গে মিলিয়ে দেখুন।</string>
     <string name="code_cut_short">কোডটি অসম্পূর্ণ অবস্থায় এসেছে। আবার চান, পুরোটা।</string>
-    <string name="code_too_new">এই কোডটি Sendoku এর এর চেয়ে নতুন সংস্করণে তৈরি।</string>
+    <string name="code_too_new">এই কোডটি Sendoku এর এই সংস্করণের চেয়ে নতুন কোনো সংস্করণে তৈরি।</string>
     <string name="code_missing">কোডটি ঠিকভাবেই পড়া যাচ্ছে, কিন্তু এই সংস্করণে তেমন কোনো ধাঁধা নেই।</string>
     <string name="code_unplayable">এই ছকটি কেবল যুক্তি দিয়ে শেষ করা যায় না, তাই Sendoku ভান করবে না যে সে এটি ব্যাখ্যা করতে পারে।</string>
     <string name="code_shared">আপনাকে পাঠানো</string>
@@ -142,7 +142,7 @@
     <string name="hint_remove_one">সরিয়ে দিন</string>
     <string name="hint_remove_many">এগুলো সরিয়ে দিন</string>
     <string name="hint_look_here_title">এখানে দেখুন</string>
-    <string name="hint_look_here">%1$s এ কিছু খুঁজে পাওয়ার আছে। এই ইঙ্গিত কেবল এটুকুই বলে।</string>
+    <string name="hint_look_here">%1$s কিছু খুঁজে পাওয়ার আছে। এই ইঙ্গিত কেবল এটুকুই বলে।</string>
     <string name="hint_look_around">একটি ধাপ খুঁজে পাওয়ার আছে। এটি গোটা ছকে ছড়ানো, কোনো একটি অঞ্চলে বসে নেই।</string>
     <string name="hint_what_kind">কী ধরনের ধাপ?</string>
     <string name="hint_menu_title">সাহায্য</string>
@@ -294,7 +294,7 @@
     <string name="about_sharing">ভাগ করা</string>
     <string name="about_sharing_detail">ধাঁধার কোডটাই আসলে ধাঁধা, কোনো অ্যাকাউন্ট নয়। এখানে লগইন করার কেউ নেই, কোনো লিডারবোর্ড নেই, আর কেউ যে সময় বলল তা অ্যাপের যাচাই করার কোনো উপায়ও নেই: দুজন একই ছক খেলে আর মিলিয়ে দেখে কার কত খরচ হলো, ব্যস এইটুকুই।</string>
     <string name="about_rating">কঠিনতা মাপা হয় সেই সবচেয়ে কঠিন কৌশল দিয়ে যা ধাঁধাটির সত্যিই দরকার হয়, আর সেটি বের করা হয় মানুষ যেভাবে সমাধান করত সেভাবে সমাধান করে। এই কারণেই এখানকার খুব কঠিন আগের খুব কঠিনের মতোই।</string>
-    <string name="about_licence">Sendoku, GNU General Public License সংস্করণ ৩ এর অধীনে মুক্ত সফটওয়্যার।</string>
+    <string name="about_licence">Sendoku, GNU General Public License সংস্করণ 3 এর অধীনে মুক্ত সফটওয়্যার।</string>
     <string name="about_privacy">গোপনীয়তা নীতি একই কথা দোকান যে রূপে চায় সেই রূপে বলে, adilzhany.github.io/sendoku/privacy এ</string>
     <string name="about_licences">ওপেন সোর্স লাইসেন্স</string>
     <string name="licences_title">লাইসেন্স</string>
@@ -424,8 +424,8 @@
     <string name="stage_the_deep_end">গভীর জল</string>
     <string name="stage_cages">খাঁচা</string>
     <string name="lesson_cage_is_title">খাঁচা কী</string>
-    <string name="lesson_cage_is_summary">বিন্দু দিয়ে আঁকা আকৃতিগুলোই খাঁচা, আর ছোট সংখ্যাটি তাদের ঘরের যোগফল।</string>
-    <string name="lesson_cage_is_1">Killer শুরু হয় একটিও অঙ্ক ছাড়াই। তার বদলে ছককে খাঁচায় কাটা হয়, বিন্দু দিয়ে আঁকা, আর খাঁচার কোণে ছোট সংখ্যাটি তার ঘরগুলোর যোগফল। বাকি সবটাই সাধারণ সুডোকু।</string>
+    <string name="lesson_cage_is_summary">ছোট ছোট দাগ দিয়ে আঁকা আকৃতিগুলোই খাঁচা, আর ছোট সংখ্যাটি তাদের ঘরের যোগফল।</string>
+    <string name="lesson_cage_is_1">Killer শুরু হয় একটিও অঙ্ক ছাড়াই। তার বদলে ছককে খাঁচায় কাটা হয়, ছোট ছোট দাগ দিয়ে আঁকা, আর খাঁচার কোণে ছোট সংখ্যাটি তার ঘরগুলোর যোগফল। বাকি সবটাই সাধারণ সুডোকু।</string>
     <string name="lesson_cage_is_2">এক ঘরের খাঁচা মানে অন্যভাবে লেখা একটি দেওয়া অঙ্ক। এটিতে এক লেখা, তাই সেখানে এক বসবে আর ভাবার কিছু নেই।</string>
     <string name="lesson_cage_is_3">বসানো হলো। এবার এমন একটি খাঁচা যা নিয়ে ভাবতে হবে।</string>
     <string name="lesson_cage_is_4a">এটি দুই ঘরে পাঁচ। মানে এক আর চার, নয়তো দুই আর তিন, তাই এখনো ঠিক হয়নি, তবে এটুকু নিশ্চিত যে এতে পাঁচও নেই ছয়ও নেই।</string>
@@ -616,7 +616,7 @@
 
     <string name="lesson_jellyfish_title">Jellyfish</string>
     <string name="lesson_jellyfish_summary">চারটি রেখা। একই নকশা আবার, আর শেখার মতো শেষটি।</string>
-    <string name="lesson_jellyfish_1">চারটি সারি, একটি অঙ্ক, চারটি কলাম। X-Wing এর পর থেকে যুক্তি বদলায়নি আর আর বদলাবেও না।</string>
+    <string name="lesson_jellyfish_1">চারটি সারি, একটি অঙ্ক, চারটি কলাম। X-Wing এর পর থেকে যুক্তি বদলায়নি আর বদলাবেও না।</string>
     <string name="lesson_jellyfish_2">এই যে একটি। চারটি সারি, আর প্রতিটিতে অঙ্কটি একই চারটি কলামে আটকে।</string>
     <string name="lesson_jellyfish_3">চারের পরে শেখার কিছু নেই। পাঁচ রেখার রূপ তত্ত্বে আছে, কিন্তু নয় বাই নয় ছকে তাদের প্রতিটিই বাকি চারটি কলামে ছোট নকশা হিসেবে পাওয়া যায়, তাই কেউ সেগুলো খোঁজে না।</string>
     <string name="lesson_jellyfish_4">নকশা ধরে খোঁজার মতো জিনিসের এটিই সবচেয়ে দূরের সীমা। এরপর থেকে শৃঙ্খলে মনোযোগ দেওয়াই ভালো।</string>
@@ -660,7 +660,7 @@
     <string name="lesson_bug_1">unique rectangle এর মতোই ধারণা, অন্য চেহারায়।</string>
     <string name="lesson_bug_2">ধরুন কোনো ছক এমন অবস্থায় পৌঁছাল যেখানে প্রতিটি অমীমাংসিত ঘরে ঠিক দুটি সম্ভাবনা, আর প্রতিটি অঙ্ক প্রতিটি অঞ্চলে ঠিক দুবার আসে। এমন ছকের সবসময় দুটি উত্তর থাকে।</string>
     <string name="lesson_bug_3">তাই ঠিকভাবে বানানো ধাঁধা সেখানে কখনোই পৌঁছাতে পারে না। আপনি যদি এমন অবস্থা পান যা সেখান থেকে ঠিক এক ঘর দূরে, যেখানে ঠিক একটি ঘরে দুটির বদলে তিনটি সম্ভাবনা, তবে ওই ঘরটিই ধাঁধাকে দ্ব্যর্থক হওয়া থেকে বাঁচাচ্ছে।</string>
-    <string name="lesson_bug_4">যে অঙ্কটি তার অঞ্চলগুলোতে তিনবার আসে সেটিই ওই ঘরকে রাখতে হবে। এটি বিরল নকশা আর যখন আসে তখন খুব দ্রুত ধাঁধা শেষ করে দেয়।</string>
+    <string name="lesson_bug_4">যে অঙ্কটি তার অঞ্চলগুলোতে তিনবার আসে, ওই ঘরকে সেটিই রাখতে হবে। এটি বিরল নকশা আর যখন আসে তখন খুব দ্রুত ধাঁধা শেষ করে দেয়।</string>
 
     <string name="lesson_colouring_title">সরল রং করা</string>
     <string name="lesson_colouring_summary">একটি অঙ্ককে সেইসব ঘর দিয়ে চালান যেখানে তার কেবল দুটি ঠিকানা, আর একটি স্ববিরোধ খুঁজুন।</string>
@@ -769,7 +769,7 @@
 
     <string name="lesson_nothing_applies_title">যখন কিছুই খাটে না</string>
     <string name="lesson_nothing_applies_summary">অনুমান করার আগে আবার যাচাই করুন, কারণ এই অ্যাপের ধাঁধায় পরের ধাপ সবসময়ই থাকে।</string>
-    <string name="lesson_nothing_applies_1">আপনি এমন অবস্থায় পৌঁছাবেন যেখানে সব দেখে ফেলেছেন আর কিছুই পাননি। এটি করা উচিত, আর এটি নয়।</string>
+    <string name="lesson_nothing_applies_1">আপনি এমন অবস্থায় পৌঁছাবেন যেখানে সব দেখে ফেলেছেন আর কিছুই পাননি। তখন কী করা উচিত আর কী নয়, তা এখানে বলা হলো।</string>
     <string name="lesson_nothing_applies_2">যা করা উচিত নয় তা হলো অনুমান করা। এই অ্যাপের প্রতিটি ধাঁধা যুক্তি দিয়ে সমাধান করা যায়, আর কাকতালীয়ভাবে ঠিক হয়ে যাওয়া অনুমান আপনাকে কিছুই শেখায় না অথচ ভুল অনুমান আপনার গোটা ছক কেড়ে নেয়।</string>
     <string name="lesson_nothing_applies_3">এই ক্রমেই আবার যাচাই করুন। প্রথমত, আপনার সব নোট কি সত্যি? অসম্ভব অবস্থার সবচেয়ে সাধারণ কারণ পুরনো নোট, আর আপনি অনুমতি দিলে অ্যাপ সেগুলো আপনার হয়ে মুছে দেবে। দ্বিতীয়ত, আপনার বসানো অঙ্কটি কি সত্যিই ঠিক? ইঙ্গিত চাপুন আর সে বলে দেবে।</string>
     <string name="lesson_nothing_applies_4">তারপর সস্তা জিনিসগুলো আবার খুঁজুন। এটি প্রায় কখনোই ফেলে আসা শৃঙ্খল নয়। এটি প্রায় সবসময়ই এমন অঞ্চলের hidden single যা আপনি বিশ চাল আগে দেখা বন্ধ করে দিয়েছেন।</string>
@@ -777,7 +777,7 @@
     <string name="lesson_look_first_title">আগে কী খুঁজবেন</string>
     <string name="lesson_look_first_summary">সস্তা নকশা আগে, সবসময়, কারণ সেগুলো সাধারণ আর সেগুলো ছক খুলে দেয়।</string>
     <string name="lesson_look_first_1">এখন আপনি প্রতিটি কৌশল জানেন যার নাম এই অ্যাপ বলতে পারে। শেখার শেষ জিনিসটি হলো খোঁজার ক্রম।</string>
-    <string name="lesson_look_first_2">single আগে, প্রতিবার। naked, তারপর hidden। এগুলো বাকি সবের চেয়ে অনেক বেশি সাধারণ আর আপনার বসানো প্রতিটি বাকি প্রতিটি কৌশল খুঁজে পাওয়া সহজ করে দেয়।</string>
+    <string name="lesson_look_first_2">single আগে, প্রতিবার। naked, তারপর hidden। এগুলো বাকি সবের চেয়ে অনেক বেশি সাধারণ আর আপনার বসানো প্রতিটি অঙ্ক বাকি প্রতিটি কৌশল খুঁজে পাওয়া সহজ করে দেয়।</string>
     <string name="lesson_look_first_3">তারপর সস্তা কাটাগুলো: pointing আর claiming pair। এগুলো অঞ্চল ধরে ধরে যাচাই করা দ্রুত, আর প্রায়ই সঙ্গে সঙ্গে কোনো single খুলে দেয়।</string>
     <string name="lesson_look_first_4">তারপর সবচেয়ে কম খালি ঘরের অঞ্চলে জোড়া আর ত্রয়ী। তারপর মাছ, তারপর wing। শৃঙ্খল সবার শেষে, সবসময়, কারণ তাতে সবচেয়ে বেশি পরিশ্রম আর সেগুলো সবচেয়ে কম আসে।</string>
     <string name="lesson_look_first_5">single যাচাই না করে Jellyfish খোঁজা মানে ভুলের বার্তা না পড়ে গোটা প্রোগ্রাম আবার লেখা। অ্যাপ ধাঁধাগুলোকে তাদের দরকারি সবচেয়ে কঠিন জিনিস দিয়ে মাপে, তবে ওস্তাদ ধাঁধাও বেশির ভাগটাই single।</string>
