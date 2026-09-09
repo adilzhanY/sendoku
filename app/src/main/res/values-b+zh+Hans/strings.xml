@@ -25,7 +25,7 @@
     <string name="killer_title">杀手数独</string>
     <string name="killer_note">有笼，每个笼都要凑够它的和</string>
     <string name="killer_marker">杀手</string>
-    <string name="killer_card">%1$s・%2$s</string>
+    <string name="killer_card">%1$s·%2$s</string>
     <string name="code_title">玩别人发给你的题目</string>
     <string name="code_hint">粘贴代码</string>
     <string name="code_play">开始</string>
@@ -37,7 +37,7 @@
     <string name="code_unplayable">这个盘面无法只靠推理完成，Sendoku 不会假装能讲解它。</string>
     <string name="code_shared">别人发给你的</string>
     <string name="code_share">把这道题发给朋友</string>
-    <string name="code_invitation">来试试这道 %1$s 题目。同一个盘面。</string>
+    <string name="code_invitation">来试试这道 %1$s 题目。同一个盘面，不用装应用也能比。</string>
     <string name="enter_title">输入一道题</string>
     <string name="enter_marker">手动输入</string>
     <plurals name="enter_help">
@@ -59,7 +59,7 @@
     <string name="grade_beyond">大师</string>
     <string name="grade_insane">疯狂</string>
     <string name="grade_nightmare">噩梦</string>
-    <string name="grade_locked">通关一道「%1$s」后解锁</string>
+    <string name="grade_locked">通关一道“%1$s”后解锁</string>
     <string name="gate_gentle">一个一个地确定数字</string>
     <string name="gate_steady">数对，以及被锁在一条线上的数字</string>
     <string name="gate_tricky">三数组，以及横跨盘面的图形</string>
@@ -139,7 +139,7 @@
     <string name="hint_look_around">有一步可以找。这一步散在整个盘面上，而不是集中在某一个区域里。</string>
     <string name="hint_what_kind">是哪一类的一步？</string>
     <string name="hint_menu_title">帮助</string>
-    <string name="hint_menu_difficulty">下一步需要「%1$s」难度的技巧。</string>
+    <string name="hint_menu_difficulty">下一步需要“%1$s”难度的技巧。</string>
     <string name="hint_menu_broken">你填的某个数字是错的，改过来之前推不出别的东西。</string>
     <string name="hint_menu_check">有填错的吗？</string>
     <string name="hint_menu_look">我该看哪里？</string>
@@ -230,7 +230,7 @@
     <string name="settings_sound_note">操作时的轻声提示。关掉只需一下，而手机的静音模式优先于这两项。</string>
     <string name="settings_mistake_limit">错满三次结束本局</string>
     <string name="settings_mistake_note">默认打开，三次。高难度建议关掉：一次走神赔上一个小时是很难受的。</string>
-    <string name="settings_about">关于 SENDOKU</string>
+    <string name="settings_about">关于 Sendoku</string>
 
     <string name="theme_deep_field">深空</string>
     <string name="theme_deep_field_summary">纯黑，一点青色，别无他物</string>
@@ -254,7 +254,7 @@
     </plurals>
     <string name="stats_totals">共%1$s，用了%2$d次提示。</string>
     <string name="stats_by_grade">按难度</string>
-    <string name="stats_hints_title">你问得最多的技巧</string>
+    <string name="stats_hints_title">你问过些什么</string>
     <string name="stats_hints_note">你问得最多的是%1$s。那一课值得回头再看一遍。</string>
     <string name="stats_needed">你的题目用到了什么</string>
     <string name="stats_solved_count">已完成：%1$d</string>
@@ -283,7 +283,7 @@
     <string name="about_hints_detail">提示会说出技巧的名字，并讲清楚推理。它不会只把数字填上了事，也从不拿来卖钱：每道题送三次，上限可以在设置里关掉。</string>
     <string name="about_sharing">分享</string>
     <string name="about_sharing_detail">题目代码就是题目本身，不是账号。没有地方登录，没有排行榜，应用也无法核实别人说的时间：两个人玩同一个盘面，比较各自付出了什么，仅此而已。</string>
-    <string name="about_rating">难度是按一道题真正需要用到的最难技巧来定的，办法是像人一样把它解一遍。所以这里的「非常难」和你上一次做的「非常难」是同一个分量。</string>
+    <string name="about_rating">难度是按一道题真正需要用到的最难技巧来定的，办法是像人一样把它解一遍。所以这里的“非常难”和你上一次做的“非常难”是同一个分量。</string>
     <string name="about_licence">Sendoku 是遵循 GNU 通用公共许可证第 3 版的自由软件。</string>
     <string name="about_privacy">隐私政策用商店要求的格式写了同样的内容，见 adilzhany.github.io/sendoku/privacy</string>
     <string name="about_licences">开源许可</string>
@@ -397,7 +397,7 @@
     <string name="stat_hints">提示</string>
     <string name="stat_time">用时</string>
     <string name="stat_pause">暂停</string>
-    <string name="game_daily_title">%1$s・%2$s</string>
+    <string name="game_daily_title">%1$s·%2$s</string>
 
     <string name="stage_first_steps">入门</string>
     <string name="stage_one_at_a_time">一次确定一个数字</string>
@@ -420,19 +420,19 @@
     <string name="lesson_cage_is_4a">这个笼是两格加起来五。那就是一和四，或者二和三，还定不下来，但已经能确定里面不会有五和六。</string>
     <string name="lesson_cage_is_4">三格加起来是十五。在六宫格里最大的三个数字是四、五、六，加起来正好十五。所以这个笼里就是这三个数，顺序不定，别的数进不来。</string>
     <string name="lesson_cage_is_5">笼里的数字不重复。正是这条规则让一个和能说出这么多：否则三格十五也可以是五、五、五。</string>
-    <string name="lesson_cage_house_title">宫内的笼</string>
+    <string name="lesson_cage_house_title">区域内的笼</string>
     <string name="lesson_cage_house_summary">一行、一列、一宫的总和是已知的，剩下的交给里面的笼。</string>
     <string name="lesson_cage_house_1">每一行、每一列、每一宫都各含一次每个数字，所以它们的总和都一样。在六宫格里，这个总和是二十一。</string>
     <string name="lesson_cage_house_2">这两格加起来是十。两个不同数字凑出十只有四和六，所以这个笼把两个都占了，这一行别的格都不能是四或六。</string>
     <string name="lesson_cage_house_3">再看整行。它的和是二十一，其中三个笼完整地落在行内：五、十和一，合计十六。</string>
     <string name="lesson_cage_house_4">所以剩下那一格就是二十一减十六，等于五。</string>
-    <string name="lesson_cage_house_5">解题的人管这叫「进」。同样的算法反过来也成立：当一个笼伸出这一宫时，伸出去的部分就是差额，那叫「出」。</string>
+    <string name="lesson_cage_house_5">解题的人管这叫“进”。同样的算法反过来也成立：当一个笼伸出一个区域时，伸出去的部分就是差额，那叫“出”。</string>
     <string name="lesson_cage_home_title">笼里只剩一个位置</string>
     <string name="lesson_cage_home_summary">笼里必然含有的一个数字，而只剩一格能放它。</string>
     <string name="lesson_cage_home_1">杀手数独走了一段之后，笼说的就不只是它的和了。这里已经填了三个数字。</string>
     <string name="lesson_cage_home_2">这个笼是两格十，所以里面有一个四和一个六。可是右边那一宫里已经有六了，这就把六从笼的右格排除掉。</string>
     <string name="lesson_cage_home_3">于是六只剩左边一个位置。和告诉我们笼里有六，盘面的其余部分告诉我们它在哪。</string>
-    <string name="lesson_cage_home_4">这就是笼内唯一。它是杀手数独里的隐性唯一：不是一格只能放一个数字，而是一个数字只能放进一格。</string>
+    <string name="lesson_cage_home_4">这就是笼内唯一。它是杀手数独里的摒除法：不是一格只能放一个数字，而是一个数字只能放进一格。</string>
 
     <string name="lesson_what_is_title">数独是什么</string>
     <string name="lesson_what_is_summary">每一行、每一列、每一宫里，每个数字都恰好出现一次。</string>
@@ -444,11 +444,11 @@
 
     <string name="lesson_houses_title">行、列和宫</string>
     <string name="lesson_houses_summary">一格同时属于三个区域，并和这三个区域共用一条规则。</string>
-    <string name="lesson_houses_1">规则说的是行和列。还有第三种区域，正是它让数独值得去解。</string>
+    <string name="lesson_houses_1">规则说的是行和列。还有第三种格子组，正是它让数独值得去解。</string>
     <string name="lesson_houses_2">这是一行。</string>
     <string name="lesson_houses_3">这是一列。</string>
     <string name="lesson_houses_4">这是一宫，由较粗的线分开。它同样每个数字只出现一次。</string>
-    <string name="lesson_houses_5">所以这一格同时属于三个区域。凡是与它同处一个区域的格子都被点亮了，它们都不能和它填同一个数字。这三个区域叫作区域，后面一直用这个说法。</string>
+    <string name="lesson_houses_5">所以这一格同时属于三组格子。凡是与它同组的格子都被点亮了，它们都不能和它填同一个数字。行、列和宫这三种组叫作区域，后面一直用这个说法。</string>
 
     <string name="lesson_givens_title">题目给出的数字</string>
     <string name="lesson_givens_summary">一开始就印好的数字不能动，正是它们让答案只有一个。</string>
@@ -488,7 +488,7 @@
     <string name="lesson_hidden_single_1">另一种“只有一个”，而且它找出来的格子更多。唯余法是一格只剩一个数字。这一个是它的镜像：一个数字只剩一格。</string>
     <string name="lesson_hidden_single_2">取一个区域，挑一个它还缺的数字。想想在这个区域里，这个数字可以放在哪。</string>
     <string name="lesson_hidden_single_3">在这一宫里，答案是一格。宫里其他的空格都被各自的行或列排除了。</string>
-    <string name="lesson_hidden_single_4">所以这个数字就放在那里，哪怕那一格本身还能填好几个数字。之所以叫摒除，是因为那个数字藏在其他候选数中间。</string>
+    <string name="lesson_hidden_single_4">所以这个数字就放在那里，哪怕那一格本身还能填好几个数字。之所以叫摒除，是因为你不是看这一格能填什么，而是把这个区域里其他的位置一个个排除掉。</string>
     <string name="lesson_hidden_single_5">这一招值得好好练。在大多数题里，唯余法用尽之后，是它让你继续往下走。</string>
     <string name="lesson_hidden_single_turn">轮到你了。把这一宫里再无处可去的那个数字填上。</string>
     <string name="lesson_hidden_single_wrong">不是这个。先想这一宫缺哪个数字，再看看每一个到底能放在哪。</string>
@@ -529,7 +529,7 @@
     <string name="lesson_marks_true_summary">过期的笔记比没有笔记更糟。</string>
     <string name="lesson_marks_true_1">笔记有一个危险。你每填一个数字，都会让其中一些笔记变错，而一条错的笔记会把你带进一段根本不可能成立的推理。</string>
     <string name="lesson_marks_true_2">在这里填一个数字，凡是能看到它的格子都失去这个候选数。如果那些笔记不擦掉，你接下来看到的技巧可能就建立在其中一条上面。</string>
-    <string name="lesson_marks_true_3">这个应用可以替你做。设置里有一项叫「填入数字后自动擦掉被排除的笔记」，默认是打开的。在纸上要手工擦，绝大多数错误都是从这里来的。</string>
+    <string name="lesson_marks_true_3">这个应用可以替你做。设置里有一项叫“填入数字后自动擦掉被排除的笔记”，默认是打开的。在纸上要手工擦，绝大多数错误都是从这里来的。</string>
     <string name="lesson_marks_true_4">当一道题走岔了而你又看不出原因，第一个要怀疑的就是一条旧笔记。提示按钮会在你填的某个数字不可能正确时告诉你。</string>
 
     <string name="lesson_pointing_title">宫区块</string>
@@ -718,7 +718,7 @@
     <string name="lesson_als_6">如果这一段要读好几遍，那才是正常次数。从这里往后的每一个技巧，都是它换了个样子。</string>
 
     <string name="lesson_deep_end_title">最深处要求什么</string>
-    <string name="lesson_deep_end_summary">疯狂和噩梦有什么不同，以及为什么这两个难度需要纸。</string>
+    <string name="lesson_deep_end_summary">到了疯狂和噩梦有什么变化，以及为什么这两个难度需要纸。</string>
     <string name="lesson_deep_end_1">到此为止的一切都看得见。你看一行、一宫、两格，只要认得形状，答案就在眼前。</string>
     <string name="lesson_deep_end_2">最难的两个难度不是这样。它们要求你把一段推理走三四步，并且同时把整段记在脑子里，而这件事几乎没有人靠看就能做到。</string>
     <string name="lesson_deep_end_3">所以写下来。一支铅笔和一个信封背面既不是作弊，也不说明你不行。解这两个难度的人都是这么做的。</string>
@@ -794,7 +794,7 @@
     <string name="course_lesson_todo">未开始</string>
     <string name="course_you_are_here">你在这里</string>
     <string name="course_continue">继续</string>
-    <string name="course_stage_done">已完成 %1$d / %2$d</string>
+    <string name="course_stage_done">已完成 %1$d／%2$d</string>
     <plurals name="course_progress">
         <item quantity="other">%2$d课中的第%1$d课</item>
     </plurals>
@@ -840,7 +840,7 @@
     <plurals name="technique_pick_count">
         <item quantity="other">%1$d 道题靠它</item>
     </plurals>
-    <string name="practice_none">还没有可以练的内容。先学完一课有技巧的课程。</string>
+    <string name="practice_none">还没有可以练的内容。先学完一节讲技巧的课。</string>
     <string name="glossary_learn_this">学这个</string>
     <string name="hint_learn_this">教我这个</string>
     <string name="outcome_learn">学习%1$s</string>
@@ -853,7 +853,7 @@
     <string name="settings_hint_note">默认打开。前三次提示免费，第四次要赔上这一局，这样提示就成了一个决定而不是一个条件反射。做课程的时候可以关掉。</string>
     <string name="settings_post_mortem">说说时间花在哪里</string>
     <string name="settings_post_mortem_note">获胜后，指出解题变慢的两个地方，以及当时盘面上有什么。对没有停顿的解题不作评论。</string>
-    <string name="post_mortem_line">你在这里停了 %1$s。当时那里有一个 %2$s。</string>
+    <string name="post_mortem_line">你在这里停了 %1$s。当时那里有一个 %2$s 可以找。</string>
     <string name="post_mortem_title">时间花在哪里</string>
     <string name="clean_line">干净通关：没用提示，没有错误，没记笔记。</string>
     <string name="clean_mark">干净</string>
