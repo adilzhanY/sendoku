@@ -23,28 +23,28 @@
     <string name="killer_note">Jaulas, y cada jaula suma lo suyo</string>
     <string name="killer_marker">Killer</string>
     <string name="killer_card">%1$s, %2$s</string>
-    <string name="code_title">Juega un puzle que te enviaron</string>
+    <string name="code_title">Juega un sudoku que te enviaron</string>
     <string name="code_hint">Pega un código</string>
     <string name="code_play">Jugar</string>
     <string name="code_unreadable">Eso no parece un código de Sendoku.</string>
     <string name="code_typo">Hay un carácter que no aparece en ningún código. Compáralo con el que te enviaron.</string>
     <string name="code_cut_short">Ese código llegó incompleto. Pide que te lo envíen entero.</string>
     <string name="code_too_new">Ese código lo hizo una versión de Sendoku más nueva que esta.</string>
-    <string name="code_missing">El código se lee bien, pero esta versión no tiene ese puzle.</string>
+    <string name="code_missing">El código se lee bien, pero esta versión no tiene ese sudoku.</string>
     <string name="code_unplayable">Esa cuadrícula no se puede terminar razonando, y Sendoku no va a fingir que puede explicarla.</string>
     <string name="code_shared">Te lo enviaron</string>
-    <string name="code_share">Envía este puzle a alguien</string>
-    <string name="code_invitation">Prueba este puzle %1$s. La misma cuadrícula, y no hace falta nada más para comparar.</string>
-    <string name="enter_title">Escribe un puzle</string>
+    <string name="code_share">Envía este sudoku a alguien</string>
+    <string name="code_invitation">Prueba este sudoku %1$s. La misma cuadrícula, y no hace falta nada más para comparar.</string>
+    <string name="enter_title">Escribe un sudoku</string>
     <string name="enter_marker">Escrito a mano</string>
     <plurals name="enter_help">
-        <item quantity="one">%1$d pista por ahora. Toca una casilla y luego un dígito. Compruébalo cuando esté la cuadrícula.</item>
-        <item quantity="other">%1$d pistas por ahora. Toca una casilla y luego un dígito. Compruébalo cuando esté la cuadrícula.</item>
+        <item quantity="one">%1$d pista por ahora. Toca una casilla y luego una cifra. Compruébalo cuando esté la cuadrícula.</item>
+        <item quantity="other">%1$d pistas por ahora. Toca una casilla y luego una cifra. Compruébalo cuando esté la cuadrícula.</item>
     </plurals>
     <string name="enter_impossible">No hay forma de terminar esta cuadrícula. Alguna pista está mal.</string>
-    <string name="enter_ambiguous">Esta cuadrícula tiene más de una respuesta, así que no es un puzle de verdad. Aun así puedes jugarla.</string>
+    <string name="enter_ambiguous">Esta cuadrícula tiene más de una respuesta, así que no es un sudoku de verdad. Aun así puedes jugarla.</string>
     <string name="enter_beyond">Una sola respuesta, pero no se llega a ella solo razonando, así que Sendoku no puede explicarla paso a paso.</string>
-    <string name="enter_ready">Una sola respuesta. Es un puzle %1$s, valorado en %2$s.</string>
+    <string name="enter_ready">Una sola respuesta. Es un sudoku %1$s, valorado en %2$s.</string>
     <string name="enter_clear">Borrar</string>
     <string name="enter_check">Comprobar</string>
     <string name="enter_play">Jugar</string>
@@ -231,7 +231,7 @@
     <string name="settings_sound">Sonidos</string>
     <string name="settings_sound_note">Notas suaves mientras juegas. Apagarlas es un toque, y el modo silencio del teléfono manda sobre las dos cosas.</string>
     <string name="settings_mistake_limit">Terminar la partida a los tres errores</string>
-    <string name="settings_mistake_note">Encendido por defecto, en tres. Apágalo para los niveles altos, donde perder una hora por un descuido es miserable.</string>
+    <string name="settings_mistake_note">Encendido por defecto, en tres. Apágalo para los niveles altos, donde perder una hora por un descuido es horrible.</string>
     <string name="settings_about">Sobre Sendoku</string>
 
     <string name="theme_deep_field">Campo profundo</string>
@@ -285,7 +285,7 @@
     <string name="about_hints">Pistas que enseñan</string>
     <string name="about_hints_detail">Una pista nombra la técnica y explica el razonamiento. Nunca se limita a rellenar una cifra, y nunca se vende: vienen tres con cada sudoku, y puedes quitar el límite en los ajustes.</string>
     <string name="about_sharing">Compartir</string>
-    <string name="about_sharing_detail">Un código de puzle es el puzle en sí, no una cuenta. No hay dónde iniciar sesión, no hay clasificación y la app no puede comprobar un tiempo que alguien te diga: dos personas juegan la misma cuadrícula y comparan lo que les costó.</string>
+    <string name="about_sharing_detail">Un código de sudoku es el sudoku en sí, no una cuenta. No hay dónde iniciar sesión, no hay clasificación y la app no puede comprobar un tiempo que alguien te diga: dos personas juegan la misma cuadrícula y comparan lo que les costó.</string>
     <string name="about_rating">La dificultad se mide por la técnica más difícil que un sudoku necesita de verdad, calculada resolviéndolo como lo haría una persona. Por eso un Muy difícil de aquí significa lo mismo que el anterior Muy difícil.</string>
     <string name="about_licence">Sendoku es software libre bajo la Licencia Pública General de GNU, versión 3.</string>
     <string name="about_privacy">La política de privacidad dice lo mismo en la forma que pide la tienda, en adilzhany.github.io/sendoku/privacy</string>
@@ -380,7 +380,7 @@
     <string name="technique_forcing_chain">Cadena forzada</string>
     <string name="technique_cage_sum">Suma de la jaula</string>
     <string name="technique_cage_single">Único en la jaula</string>
-    <string name="technique_cage_locked">Jaula encerrada</string>
+    <string name="technique_cage_locked">Jaula bloqueada</string>
     <string name="technique_cage_innie">Entrantes y salientes</string>
     <string name="daily_title">Diario</string>
     <string name="daily_no_streak">Todavía no hay racha. Resuelve el sudoku de hoy para empezar una.</string>
@@ -418,25 +418,25 @@
     <string name="stage_cages">Jaulas</string>
     <string name="lesson_cage_is_title">Qué es una jaula</string>
     <string name="lesson_cage_is_summary">Las figuras de línea discontinua son jaulas, y el número pequeño es lo que suman sus casillas.</string>
-    <string name="lesson_cage_is_1">Un Killer empieza sin ningún dígito. En su lugar la cuadrícula está cortada en jaulas, dibujadas con líneas discontinuas, y el número pequeño en la esquina de una jaula es lo que suman sus casillas. Todo lo demás es un sudoku normal.</string>
+    <string name="lesson_cage_is_1">Un Killer empieza sin ninguna cifra. En su lugar la cuadrícula está cortada en jaulas, dibujadas con líneas discontinuas, y el número pequeño en la esquina de una jaula es lo que suman sus casillas. Todo lo demás es un sudoku normal.</string>
     <string name="lesson_cage_is_2">Una jaula de una casilla es una pista escrita de otra manera. Esta dice uno, así que ahí va un uno y no hay nada que pensar.</string>
     <string name="lesson_cage_is_3">Puesto. Ahora una jaula que sí hay que pensar.</string>
     <string name="lesson_cage_is_4a">Esta es cinco en dos casillas. Eso es uno y cuatro, o dos y tres, así que aún no está resuelto, pero ya no puede haber un cinco ni un seis dentro.</string>
-    <string name="lesson_cage_is_4">Tres casillas que suman quince. En un seis por seis los tres dígitos mayores son cuatro, cinco y seis, y suman justo quince. Así que esta jaula tiene esos tres en algún orden, y nada más.</string>
-    <string name="lesson_cage_is_5">Una jaula nunca repite un dígito. Esa es la regla que hace que una suma diga tanto: sin ella, quince en tres casillas podría ser cinco, cinco y cinco.</string>
+    <string name="lesson_cage_is_4">Tres casillas que suman quince. En un seis por seis las tres cifras mayores son cuatro, cinco y seis, y suman justo quince. Así que esta jaula tiene esos tres en algún orden, y nada más.</string>
+    <string name="lesson_cage_is_5">Una jaula nunca repite una cifra. Esa es la regla que hace que una suma diga tanto: sin ella, quince en tres casillas podría ser cinco, cinco y cinco.</string>
     <string name="lesson_cage_house_title">Jaulas dentro de una casa</string>
-    <string name="lesson_cage_house_summary">Una fila, una columna y una caja suman un total conocido, y las jaulas de dentro hacen el resto.</string>
-    <string name="lesson_cage_house_1">Cada fila, columna y caja lleva cada dígito una vez, así que todas suman el mismo total. En un seis por seis ese total es veintiuno.</string>
-    <string name="lesson_cage_house_2">Estas dos casillas suman diez. Diez con dos dígitos distintos solo sale con cuatro y seis, así que esta jaula se queda con los dos, y ninguna otra casilla de esta fila puede ser un cuatro o un seis.</string>
+    <string name="lesson_cage_house_summary">Una fila, una columna y un bloque suman un total conocido, y las jaulas de dentro hacen el resto.</string>
+    <string name="lesson_cage_house_1">Cada fila, columna y bloque lleva cada cifra una vez, así que todas suman el mismo total. En un seis por seis ese total es veintiuno.</string>
+    <string name="lesson_cage_house_2">Estas dos casillas suman diez. Diez con dos cifras distintas solo sale con cuatro y seis, así que esta jaula se queda con los dos, y ninguna otra casilla de esta fila puede ser un cuatro o un seis.</string>
     <string name="lesson_cage_house_3">Ahora la fila entera. Suma veintiuno, y tres jaulas están enteras dentro de ella: cinco, diez y uno. Eso es dieciséis.</string>
     <string name="lesson_cage_house_4">Así que la casilla que sobra es veintiuno menos dieciséis, o sea cinco.</string>
     <string name="lesson_cage_house_5">Los que resuelven lo llaman un entrante. La misma cuenta funciona al revés: cuando una jaula sobresale de una casa, lo que sobresale es la diferencia, y eso es un saliente.</string>
     <string name="lesson_cage_home_title">Un solo hueco en la jaula</string>
-    <string name="lesson_cage_home_summary">Un dígito que la jaula tiene que llevar, y una sola casilla que puede aceptarlo.</string>
-    <string name="lesson_cage_home_1">Ya avanzado un Killer, las jaulas empiezan a decir más que su suma. Aquí hay tres dígitos puestos.</string>
-    <string name="lesson_cage_home_2">Esta jaula es diez en dos casillas, así que lleva un cuatro y un seis. Pero en la caja de la derecha ya hay un seis, y eso descarta ese dígito en la casilla derecha de la jaula.</string>
+    <string name="lesson_cage_home_summary">Una cifra que la jaula tiene que llevar, y una sola casilla que puede aceptarla.</string>
+    <string name="lesson_cage_home_1">Ya avanzado un Killer, las jaulas empiezan a decir más que su suma. Aquí hay tres cifras puestas.</string>
+    <string name="lesson_cage_home_2">Esta jaula es diez en dos casillas, así que lleva un cuatro y un seis. Pero en el bloque de la derecha ya hay un seis, y eso descarta esa cifra en la casilla derecha de la jaula.</string>
     <string name="lesson_cage_home_3">Al seis le queda un hueco, el de la izquierda. La suma dijo que la jaula lleva un seis; el resto del tablero dijo dónde.</string>
-    <string name="lesson_cage_home_4">Eso es un único en la jaula. Es el único escondido del Killer: no el único dígito que cabe en una casilla, sino la única casilla que admite un dígito.</string>
+    <string name="lesson_cage_home_4">Eso es un único en la jaula. Es el único oculto del Killer: no la única cifra que cabe en una casilla, sino la única casilla que admite una cifra.</string>
 
     <string name="lesson_what_is_title">Qué es un sudoku</string>
     <string name="lesson_what_is_summary">Cada fila, cada columna y cada bloque tienen cada cifra una vez.</string>
@@ -465,7 +465,7 @@
     <string name="lesson_first_four_summary">Mira lo que una casilla no puede ser, y a veces solo queda una cifra.</string>
     <string name="lesson_first_four_1">Ahora resuelve uno. Hay dos casillas vacías, y la regla basta para rellenar las dos.</string>
     <string name="lesson_first_four_2">Empieza por esta fila. Ya tiene un 1 y un 4, así que las dos casillas vacías se reparten el 2 y el 3. La pregunta es en qué orden.</string>
-    <string name="lesson_first_four_3">Esta casilla no puede ser 2, porque su columna ya tiene uno. Así que es 3.</string>
+    <string name="lesson_first_four_3">Esta casilla no puede ser 2, porque su columna ya tiene un 2. Así que es 3.</string>
     <string name="lesson_first_four_4">Queda una casilla vacía y una cifra sin usar en la fila.</string>
     <string name="lesson_first_four_5">Te toca. Pon la cifra que va aquí.</string>
     <string name="lesson_first_four_wrong">No exactamente. Mira la fila: ¿qué cifra del 1 al 4 le falta todavía?</string>
@@ -489,7 +489,7 @@
     <string name="lesson_naked_single_5">La app lo llama por su nombre cuando te da una pista. Ahora sabes qué significa.</string>
     <string name="lesson_hidden_single_title">El único oculto</string>
     <string name="lesson_hidden_single_summary">Una cifra a la que solo le queda un sitio en una casa tiene que ir ahí.</string>
-    <string name="lesson_hidden_single_1">El otro tipo de único, y el que encuentra más casillas. Un único desnudo es una casilla a la que le queda una cifra. Este es la imagen en el espejo: una cifra a la que le queda una casilla.</string>
+    <string name="lesson_hidden_single_1">El otro tipo de único, y el que encuentra más casillas. Un único desnudo es una casilla a la que le queda una cifra. Esta es la imagen en el espejo: una cifra a la que le queda una casilla.</string>
     <string name="lesson_hidden_single_2">Coge una casa y elige una cifra que todavía le falte. Pregúntate dónde puede ir esa cifra dentro de la casa.</string>
     <string name="lesson_hidden_single_3">En este bloque la respuesta es una casilla. Todas las demás casillas vacías del bloque quedan descartadas por su propia fila o columna.</string>
     <string name="lesson_hidden_single_4">Así que la cifra va ahí, aunque esa casilla por sí sola pueda llevar varias cifras. Por eso se llama oculto: la cifra está escondida entre las otras.</string>
@@ -579,7 +579,7 @@
     <string name="lesson_hidden_triple_title">El trío oculto</string>
     <string name="lesson_hidden_triple_summary">Tres cifras a las que solo les quedan tres sitios son dueñas de esas casillas.</string>
     <string name="lesson_hidden_triple_1">La misma relación que la pareja oculta, una talla más, y de verdad difícil de ver.</string>
-    <string name="lesson_hidden_triple_2">En esta casa, tres cifras solo pueden ir entre las mismas tres casillas.</string>
+    <string name="lesson_hidden_triple_2">En esta casa, tres cifras solo pueden ir en las mismas tres casillas.</string>
     <string name="lesson_hidden_triple_3">Así que esas tres casillas llevan esas tres cifras, y todas las demás notas que hay en ellas se pueden ir.</string>
     <string name="lesson_hidden_triple_4">No los busques primero. Búscalos cuando a una casa le queden varias casillas y no haya funcionado nada más. Casi siempre hay un patrón desnudo en la misma casa que es más fácil de ver.</string>
 
@@ -589,7 +589,7 @@
     <string name="lesson_quads_2">Aquí hay un cuarteto desnudo. Cuatro casillas, cuatro cifras entre ellas, y el resto de la casa pierde las cuatro.</string>
     <string name="lesson_quads_3">Y aquí va el consejo honesto. Los cuartetos son reales y son legales, pero son raros, y un cuarteto en una casa con cinco o seis casillas vacías suele significar que hay un patrón más simple en las otras casillas que se te ha pasado.</string>
     <string name="lesson_quads_4">Aquí tienes un cuarteto oculto, para completar. Cuatro cifras con cuatro sitios.</string>
-    <string name="lesson_quads_5">Apréndete a reconocerlos para que una pista que nombre uno tenga sentido. No gastes el tiempo buscándolos.</string>
+    <string name="lesson_quads_5">Aprende a reconocerlos para que una pista que nombre uno tenga sentido. No gastes el tiempo buscándolos.</string>
 
     <string name="lesson_x_wing_title">El X-Wing</string>
     <string name="lesson_x_wing_summary">Una cifra fijada a dos columnas en dos filas deja esas columnas libres en el resto.</string>
@@ -640,7 +640,7 @@
     <string name="lesson_w_wing_5">Cualquier casilla que vea a las dos de la pareja la pierde. Esta la ve.</string>
 
     <string name="lesson_rectangle_title">El rectángulo único</string>
-    <string name="lesson_rectangle_summary">Un sudoku con una sola solución no puede contener un cuadro que pueda girar.</string>
+    <string name="lesson_rectangle_summary">Un sudoku con una sola solución no puede contener un cuadrado que pueda girar.</string>
     <string name="lesson_rectangle_1">Esta técnica es de otra clase que todas las demás, y merece la pena decir por qué antes de usarla.</string>
     <string name="lesson_rectangle_2">Mira estas cuatro casillas. Están en dos filas, dos columnas y exactamente dos bloques, y cada una puede llevar las mismas dos cifras.</string>
     <string name="lesson_rectangle_3">Si eso fuera todo, el sudoku tendría dos soluciones: rellena el rectángulo de una manera, o cambia las dos diagonales, y los dos tableros cumplen todas las reglas. Un sudoku bien hecho no tiene dos soluciones.</string>
@@ -743,7 +743,7 @@
     <string name="lesson_blossom_1">Esta tiene una forma que se ve: un tallo, y un pétalo por cada cifra que el tallo podría ser.</string>
     <string name="lesson_blossom_2">El tallo es r1c4. Es un 5 o un 6, y nada más. Dos posibilidades son dos casos, y esta técnica se ocupa de los dos a la vez.</string>
     <string name="lesson_blossom_3">Digamos que es un 5. Entonces r1c7, en la misma fila, con 5 y 8, no puede ser el 5. Así que es el 8.</string>
-    <string name="lesson_blossom_4">Digamos en cambio que es un 6. Mira estas tres casillas del mismo bloque: entre ellas tienen 2, 6, 7 y 8. Cuatro cifras, tres casillas, una menos de lo lleno. El tallo ve a las tres, así que su 6 les quita el 6.</string>
+    <string name="lesson_blossom_4">Digamos en cambio que es un 6. Mira estas tres casillas del mismo bloque: entre ellas tienen 2, 6, 7 y 8. Cuatro cifras, tres casillas, así que al grupo le falta una cifra para estar lleno. El tallo ve a las tres, así que su 6 les quita el 6.</string>
     <string name="lesson_blossom_5">Ahora están llenas, y tres casillas llenas usan tres cifras: 2, 7 y 8. Solo una de ellas puede ser el 8, así que ahí va el 8.</string>
     <string name="lesson_blossom_6">Junta los dos casos. O hay un 8 en r1c7 o hay un 8 en ese bloque, y no hay un tercer caso. Cualquier casilla que vea los dos sitios pierde su 8, y dos de ellas lo ven.</string>
     <string name="lesson_blossom_7">Fíjate en lo que nunca hizo falta saber: qué cifra es el tallo en realidad. Los dos caminos acaban en un 8, así que la respuesta no depende de la bifurcación.</string>
@@ -839,12 +839,12 @@
     <string name="practice_skip">Saltar</string>
     <string name="practice_title">Práctica</string>
     <string name="technique_pick_title">Busca uno para practicar</string>
-    <string name="technique_pick_body">Cada puzle de aquí fue valorado por el mismo solucionador que escribe las pistas, así que se sabe en qué regla se apoya cada uno. Elige una técnica y recibe un puzle que no se puede terminar sin ella.</string>
+    <string name="technique_pick_body">Cada sudoku de aquí fue valorado por el mismo solucionador que escribe las pistas, así que se sabe en qué regla se apoya cada uno. Elige una técnica y recibe un sudoku que no se puede terminar sin ella.</string>
     <string name="technique_pick_none">Esta versión no tiene ninguno que dependa de ella</string>
     <string name="technique_pick_play">Jugar uno</string>
     <plurals name="technique_pick_count">
-        <item quantity="one">%1$d puzle depende de ella</item>
-        <item quantity="other">%1$d puzles dependen de ella</item>
+        <item quantity="one">%1$d sudoku depende de ella</item>
+        <item quantity="other">%1$d sudokus dependen de ella</item>
     </plurals>
     <string name="practice_none">Todavía no hay nada que practicar. Termina primero una lección que enseñe una técnica.</string>
     <string name="glossary_learn_this">Aprender esto</string>
@@ -858,7 +858,7 @@
     <string name="settings_hint_limit">Terminar la partida a las tres pistas</string>
     <string name="settings_hint_note">Encendido por defecto. Tres pistas son gratis, y la cuarta cuesta la partida, lo que convierte una pista en una decisión y no en un reflejo. Apágalo mientras vas trabajando el curso.</string>
     <string name="settings_post_mortem">Decir dónde se fue el tiempo</string>
-    <string name="settings_post_mortem_note">Al ganar, nombrar los dos puntos donde el solucionar se frenó y qué había en el tablero allí. De un solucionar sin pausas no se dice nada.</string>
+    <string name="settings_post_mortem_note">Al ganar, nombrar los dos puntos donde la partida se frenó y qué había en el tablero allí. De una partida sin pausas no se dice nada.</string>
     <string name="post_mortem_line">Aquí te detuviste %1$s. Había un %2$s por encontrar.</string>
     <string name="post_mortem_title">Dónde se fue el tiempo</string>
     <string name="clean_line">Solución limpia: sin pistas, sin errores, sin notas.</string>
@@ -878,7 +878,7 @@
     <string name="account_beaten">Lo que has superado</string>
     <string name="account_recent">Las últimas cinco semanas</string>
     <string name="account_hints">Pistas usadas</string>
-    <string name="account_empty">Termina un puzle y esta página se llena: lo que has superado en cada nivel y cada día que has jugado.</string>
+    <string name="account_empty">Termina un sudoku y esta página se llena: lo que has superado en cada nivel y cada día que has jugado.</string>
     <string name="account_stats">Estadísticas</string>
     <string name="account_history">Historial</string>
     <string name="history_title">Historial</string>
