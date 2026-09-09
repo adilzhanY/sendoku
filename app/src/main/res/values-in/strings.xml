@@ -105,7 +105,7 @@
     <string name="cell_actions_title">BARIS %1$d, KOLOM %2$d</string>
     <string name="cell_actions_clue">Yang ini datang bersama teka-tekinya, jadi tidak bisa diubah.</string>
     <plurals name="cell_actions_note_all">
-        <item quantity="other">Catat semua %1$d kandidat</item>
+        <item quantity="other">Catat %1$d kandidat</item>
     </plurals>
     <string name="cell_actions_clear_notes">Hapus catatannya</string>
     <string name="why_not_title">Kenapa tidak?</string>
@@ -460,12 +460,12 @@
     <string name="lesson_givens_1">Angka-angka ini datang bersama teka-tekinya. Mereka disebut angka pemberian, dan tidak bisa diubah atau dihapus.</string>
     <string name="lesson_givens_2">Mereka digambar berbeda dari angka yang Anda pasang, jadi Anda selalu bisa membedakannya. Dalam aplikasi ini angka pemberian adalah yang lebih tebal.</string>
     <string name="lesson_givens_3">Inilah sel-sel yang Anda isi.</string>
-    <string name="lesson_givens_4">Teka-teki yang dibuat dengan benar punya tepat satu cara untuk mengisinya. Itu janji tentang teka-tekinya, bukan tentang Anda: kalau Anda mentok, jawabannya tetap cuma satu, dan selalu bisa dinalar. Setiap teka-teki di aplikasi ini dibuat seperti itu.</string>
+    <string name="lesson_givens_4">Teka-teki yang dibuat dengan benar punya tepat satu cara untuk mengisinya. Itu janji tentang teka-tekinya, bukan tentang Anda: kalau Anda menemui jalan buntu, jawabannya tetap hanya satu, dan selalu bisa dinalar. Setiap teka-teki di aplikasi ini dibuat seperti itu.</string>
 
     <string name="lesson_first_four_title">Penyelesaian pertama Anda</string>
     <string name="lesson_first_four_summary">Lihat apa yang tidak mungkin jadi isi sebuah sel, dan kadang hanya satu angka yang tersisa.</string>
     <string name="lesson_first_four_1">Sekarang selesaikan satu. Dua sel kosong, dan aturannya cukup untuk mengisi keduanya.</string>
-    <string name="lesson_first_four_2">Mulai dari baris ini. Ia sudah punya 1 dan 4, jadi kedua sel kosong memuat 2 dan 3. Pertanyaannya cuma yang mana di mana.</string>
+    <string name="lesson_first_four_2">Mulai dari baris ini. Ia sudah punya 1 dan 4, jadi kedua sel kosong memuat 2 dan 3. Pertanyaannya hanya yang mana di mana.</string>
     <string name="lesson_first_four_3">Sel ini tidak mungkin 2, karena kolomnya sudah punya satu. Jadi ia 3.</string>
     <string name="lesson_first_four_4">Tersisa satu sel kosong, dan satu angka yang belum terpakai di baris itu.</string>
     <string name="lesson_first_four_5">Giliran Anda. Pasang angka yang seharusnya ada di sini.</string>
@@ -504,7 +504,7 @@
     <string name="lesson_scanning_2">Jangan membaca kisi sel demi sel. Ambil satu angka, misalnya yang paling sering sudah muncul, lalu lihat tiga kotak dalam satu pita.</string>
     <string name="lesson_scanning_3">Untuk tiap kotak ajukan satu pertanyaan saja: di mana angka ini bisa masuk? Baris dan kolom yang sudah memuatnya mencoret sebagian besar jawabannya, dan sering hanya satu sel yang tersisa.</string>
     <string name="lesson_scanning_4">Lalu pindah ke pita berikutnya, dan ketika angka itu habis, pindah ke angka berikutnya. Itulah pemindaian, dan itulah yang sebenarnya dilakukan pemain cepat ketika mereka tampak hanya menatap.</string>
-    <string name="lesson_scanning_5">Bersikap sistematis tidak ada biayanya dan menghemat rasa mentok, yang biasanya adalah rasa sudah memandangi sudut yang sama empat kali.</string>
+    <string name="lesson_scanning_5">Bersikap sistematis tidak ada biayanya dan menghindarkan Anda dari rasa buntu, yang biasanya adalah rasa sudah memandangi sudut yang sama empat kali.</string>
 
     <string name="lesson_first_nine_title">Kisi penuh, hanya dengan single</string>
     <string name="lesson_first_nine_summary">Semua yang sudah Anda pelajari sejauh ini cukup untuk menyelesaikan satu teka-teki utuh.</string>
@@ -512,7 +512,7 @@
     <string name="lesson_first_nine_2">Ini satu untuk memulai. Sel ini punya delapan dari sembilan angka yang gugur oleh apa yang bisa dilihatnya.</string>
     <string name="lesson_first_nine_3">Itulah bentuk sebuah teka-teki Mudah. Single, sampai akhir, dan tidak ada tebakan di titik mana pun.</string>
     <string name="lesson_first_nine_4">Saat Anda meninggalkan pelajaran ini, mainkan satu. Tahap berikutnya tentang catatan, dan catatan baru mulai berguna pada teka-teki yang lebih sulit daripada ini.</string>
-    <string name="lesson_first_nine_turn">Giliran Anda. Satu angka mungkin di sini.</string>
+    <string name="lesson_first_nine_turn">Giliran Anda. Hanya satu angka yang mungkin di sini.</string>
     <string name="lesson_first_nine_wrong">Lihat lagi baris, kolom dan kotak tempat sel ini berada, lalu daftar apa yang sudah ada di dalamnya.</string>
 
     <string name="lesson_pencil_marks_title">Catatan</string>
@@ -526,7 +526,7 @@
     <string name="lesson_when_to_mark_title">Kapan menulisnya</string>
     <string name="lesson_when_to_mark_summary">Isi catatan ketika single sudah habis, bukan sebelumnya.</string>
     <string name="lesson_when_to_mark_1">Ada dua cara memakai catatan, dan perbedaannya penting.</string>
-    <string name="lesson_when_to_mark_2">Yang pertama adalah mengisi tiap sel kosong dengan tiap angka yang mungkin, sekaligus, sebelum melakukan apa pun yang lain. Itu menyeluruh, memakan beberapa menit kalau dikerjakan tangan, dan pada teka-teki mudah sebagian besarnya sia-sia karena single toh akan menyelesaikan kisinya.</string>
+    <string name="lesson_when_to_mark_2">Yang pertama adalah mengisi tiap sel kosong dengan tiap angka yang mungkin, sekaligus, sebelum melakukan apa pun yang lain. Itu menyeluruh, memakan beberapa menit kalau dikerjakan dengan tangan, dan pada teka-teki mudah sebagian besarnya sia-sia karena single toh akan menyelesaikan kisinya.</string>
     <string name="lesson_when_to_mark_3">Yang kedua adalah menandai hanya di tempat Anda sedang bekerja. Keempat sel ini layak ditandai karena ada sesuatu yang terjadi di antara mereka. Sisa kisinya tidak.</string>
     <string name="lesson_when_to_mark_4">Saran jujurnya: selesaikan single dulu, dan mulai menandai ketika Anda berhenti menemukannya. Di atas kertas itu menghemat waktu sungguhan. Dalam aplikasi ini, mengisi semua catatan cukup satu ketukan, jadi biayanya lebih kecil, tetapi kisi yang penuh angka tetap lebih sulit dibaca daripada kisi yang bercatatan hanya di tempat yang penting.</string>
 
@@ -604,7 +604,7 @@
     <string name="lesson_swordfish_summary">Penalaran yang sama dengan X-Wing, dengan tiga garis alih-alih dua.</string>
     <string name="lesson_swordfish_1">Sebuah X-Wing dengan satu baris tambahan. Namanya tidak membantu tetapi polanya perpanjangan langsung.</string>
     <string name="lesson_swordfish_2">Tiga baris, satu angka, dan di tiap baris angka itu terkurung dalam sel-sel di tiga kolom yang sama.</string>
-    <string name="lesson_swordfish_3">Tidak tiap baris harus memakai ketiga kolom. Dua dari tiga sudah cukup, asalkan tidak ada baris yang menyimpang keluar.</string>
+    <string name="lesson_swordfish_3">Tidak semua baris harus memakai ketiga kolom. Dua dari tiga sudah cukup, asalkan tidak ada baris yang menyimpang keluar.</string>
     <string name="lesson_swordfish_4">Ketiga baris itu memakai angka tersebut di ketiga kolom itu di antara mereka, jadi sisa kolom-kolom itu kehilangannya.</string>
     <string name="lesson_swordfish_5">Kalau Anda bisa mengikuti X-Wing, Anda bisa mengikuti ini. Menemukannya urusan lain: di sinilah mengisi catatan berhenti menjadi pilihan.</string>
 
@@ -755,7 +755,7 @@
     <string name="lesson_fork_2">Sel ini 2 atau 7. Semua yang lain di papan sudah diperas kering, dan tidak ada yang mengatakan yang mana di antara keduanya.</string>
     <string name="lesson_fork_3">Jadi coba satu. Katakanlah ia 2, dengan pensil, dan ikuti hanya akibat yang mudah: sebuah sel dengan satu angka tersisa, atau sebuah angka dengan satu rumah tersisa di wilayahnya.</string>
     <string name="lesson_fork_4">Akibatnya datang cepat. Sebuah 2 terpaksa di sini, lalu sebuah 7 di sana, lalu sebuah 3, sebuah 5, sebuah 9. Terus jalan. Empat belas angka kemudian, lihat sel yang bertanda.</string>
-    <string name="lesson_fork_5">Ia tidak punya apa-apa lagi. Tiap angka yang bisa masuk ke sana sudah diambil sesuatu yang lain. Itu bukan nasib buruk, itu sebuah pertentangan, dan artinya angka 2 tadi memang tidak pernah mungkin.</string>
+    <string name="lesson_fork_5">Ia tidak punya apa-apa lagi. Tiap angka yang bisa masuk ke sana sudah diambil oleh sesuatu yang lain. Itu bukan nasib buruk, itu sebuah pertentangan, dan artinya angka 2 tadi memang tidak pernah mungkin.</string>
     <string name="lesson_fork_6">Jadi hapus semuanya dan tulis 7. Bukan karena 7 tampak lebih baik, tetapi karena 2 sudah terbukti mustahil, dan dua kemungkinan dikurangi satu menyisakan satu.</string>
     <string name="lesson_fork_7">Ini pembuktian dengan kasus, dan inilah yang orang maksud dengan mengerjakan teka-teki di atas kertas. Pakailah kertas. Tidak ada yang menahan empat belas angka terpaksa di kepalanya, dan perlu menuliskannya bukan kelemahan.</string>
     <string name="lesson_fork_8">Sekarang pasang.</string>
@@ -783,7 +783,7 @@
     <string name="lesson_together_4">Sekarang ia mandek, dan sebuah pointing pair membersihkan sebuah kolom sehingga single bisa dimulai lagi. Perhatikan bahwa tidak ada angka yang dipasang oleh langkah itu dan kemajuan tetap terjadi.</string>
     <string name="lesson_together_5">Sebuah naked pair sedikit kemudian, mengerjakan tugas yang sama di dalam sebuah wilayah.</string>
     <string name="lesson_together_6">Lebih dalam lagi, sebuah X-Wing. Pada titik ini kisinya sudah setengah penuh dan catatanlah yang mengerjakan tugasnya.</string>
-    <string name="lesson_together_7">Dan mendekati akhir, yang membuatnya bertingkat ini: sebuah ALS-XZ. Satu penyingkiran, dan sisanya single lagi.</string>
+    <string name="lesson_together_7">Dan mendekati akhir, yang menentukan tingkatnya: sebuah ALS-XZ. Satu penyingkiran, dan sisanya single lagi.</string>
     <string name="lesson_together_8">Itulah arti Master di sini. Bukan delapan puluh satu langkah sulit, melainkan tujuh puluh langkah mudah dan segelintir yang memerlukan semua yang sudah Anda pelajari.</string>
     <string name="lesson_together_9">Anda sudah bertemu setiap teknik yang bisa disebutkan aplikasi ini. Pergilah dan mainkan satu. Tiga bantuan datang bersama tiap teka-teki dan tidak ada yang memalukan dalam memakainya, dan kalau Anda lebih suka sebanyak yang Anda mau, batasnya adalah sebuah sakelar di pengaturan.</string>
     <string name="lesson_step_of">%1$d dari %2$d</string>
