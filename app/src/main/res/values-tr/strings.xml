@@ -14,33 +14,33 @@
     <string name="home_resume">Devam et</string>
     <string name="home_in_progress">Devam eden</string>
     <string name="home_placed">Yerleşen: %2$d içinden %1$d</string>
-    <string name="home_or_start">Ya da yeni başla</string>
-    <string name="home_your_level">Senin seviyen</string>
+    <string name="home_or_start">Ya da yeni bir şeye başlayın</string>
+    <string name="home_your_level">Seviyeniz</string>
     <string name="home_all_levels">Tüm seviyeler</string>
     <string name="killer_title">Killer</string>
     <string name="killer_note">Kafesler, ve her kafes toplamını tutturur</string>
     <string name="killer_marker">Killer</string>
     <string name="killer_card">%1$s, %2$s</string>
-    <string name="code_title">Sana gönderilen bulmacayı oyna</string>
+    <string name="code_title">Size gönderilen bulmacayı oynayın</string>
     <string name="code_hint">Kodu yapıştır</string>
     <string name="code_play">Oyna</string>
     <string name="code_unreadable">Bu bir Sendoku koduna benzemiyor.</string>
-    <string name="code_typo">İçinde hiçbir kodda bulunmayan bir karakter var. Sana gönderilenle karşılaştır.</string>
-    <string name="code_cut_short">Bu kod eksik geldi. Tek parça hâlinde tekrar iste.</string>
+    <string name="code_typo">İçinde hiçbir kodda bulunmayan bir karakter var. Size gönderilenle karşılaştırın.</string>
+    <string name="code_cut_short">Bu kod eksik geldi. Tek parça hâlinde tekrar isteyin.</string>
     <string name="code_too_new">Bu kod Sendoku\'nun daha yeni bir sürümünde yapılmış.</string>
     <string name="code_missing">Kod okunuyor ama bu sürümde öyle bir bulmaca yok.</string>
     <string name="code_unplayable">Bu ızgara akıl yürütmeyle çözülemiyor, Sendoku da açıklayabiliyormuş gibi yapmaz.</string>
-    <string name="code_shared">Sana gönderildi</string>
-    <string name="code_share">Bu bulmacayı bir arkadaşına gönder</string>
+    <string name="code_shared">Size gönderildi</string>
+    <string name="code_share">Bu bulmacayı bir arkadaşınıza gönderin</string>
     <string name="code_invitation">Şu %1$s bulmacayı dene. Aynı ızgara, karşılaştırmak için başka bir şey gerekmiyor.</string>
     <string name="enter_title">Bulmaca gir</string>
     <string name="enter_marker">Elle girildi</string>
     <plurals name="enter_help">
-        <item quantity="one">Şimdiye kadar %1$d ipucu. Bir kareye, sonra bir rakama dokun. Izgara tamamlanınca kontrol et.</item>
-        <item quantity="other">Şimdiye kadar %1$d ipucu. Bir kareye, sonra bir rakama dokun. Izgara tamamlanınca kontrol et.</item>
+        <item quantity="one">Şimdiye kadar %1$d ipucu. Bir hücreye, sonra bir rakama dokunun. Izgara tamamlanınca kontrol edin.</item>
+        <item quantity="other">Şimdiye kadar %1$d ipucu. Bir hücreye, sonra bir rakama dokunun. Izgara tamamlanınca kontrol edin.</item>
     </plurals>
     <string name="enter_impossible">Bu ızgara bitirilemiyor. İpuçlarından biri yanlış olmalı.</string>
-    <string name="enter_ambiguous">Bu ızgaranın birden fazla çözümü var, yani tam olarak bulmaca değil. Yine de oynayabilirsin.</string>
+    <string name="enter_ambiguous">Bu ızgaranın birden fazla çözümü var, yani tam olarak bulmaca değil. Yine de oynayabilirsiniz.</string>
     <string name="enter_beyond">Tek çözüm var ama yalnızca akıl yürüterek ulaşılamıyor, bu yüzden Sendoku bunu sırayla anlatamaz.</string>
     <string name="enter_ready">Tek çözüm. Bu %1$s seviyesinde bir bulmaca, derecesi %2$s.</string>
     <string name="enter_clear">Temizle</string>
@@ -188,11 +188,11 @@
     <string name="language_bengali">বাংলা</string>
     <string name="language_thai">ไทย</string>
     <plurals name="first_run_prompt">
-        <item quantity="one">Sendoku %1$d dilde yazıldı. Sen hangisini okuyorsun?</item>
-        <item quantity="other">Sendoku %1$d dilde yazıldı. Sen hangisini okuyorsun?</item>
+        <item quantity="one">Sendoku %1$d dilde yazıldı. Siz hangisini okuyorsunuz?</item>
+        <item quantity="other">Sendoku %1$d dilde yazıldı. Siz hangisini okuyorsunuz?</item>
     </plurals>
-    <string name="first_run_system_is">Telefonun %1$s olarak ayarlı</string>
-    <string name="first_run_no_translation">Telefonun, Sendoku\'nun henüz konuşmadığı bir dile ayarlı. En yakını İngilizce.</string>
+    <string name="first_run_system_is">Telefonunuz %1$s olarak ayarlı</string>
+    <string name="first_run_no_translation">Telefonunuz, Sendoku\'nun henüz konuşmadığı bir dile ayarlı. En yakını İngilizce.</string>
     <string name="first_run_continue">Oynamaya başla</string>
     <string name="settings_interface">Arayüz</string>
     <string name="settings_rules">Oyun kuralları</string>
@@ -289,7 +289,7 @@
     <string name="look_xy_wing">İkişer rakamlı üç hücre, bir rakamı dışarı sıkıştıracak biçimde dizilmiş.</string>
     <string name="look_xyz_wing">XY-Wing gibi, ama ortadaki hücrede bir de üçüncü rakam var.</string>
     <string name="look_w_wing">Aynı ikiliyi tutan iki hücre, yalnızca iki yeri olan bir rakamla birbirine bağlı.</string>
-    <string name="look_simple_colouring">Bir rakam, boyunca dönüşümlü giden bir zincir oluşturuyor.</string>
+    <string name="look_simple_colouring">Bir rakam, baştan sona dönüşümlü giden bir zincir oluşturuyor.</string>
     <string name="look_multi_colouring">Tek bir rakam üzerinde iki ayrı zincir, birbirine karşı oynatılıyor.</string>
     <string name="look_remote_pairs">Hepsi tam olarak aynı iki rakamı tutan bir hücre zinciri.</string>
     <string name="look_unique_rectangle">Dört hücre, bulmacaya iki çözüm verecek bir dikdörtgen oluşturuyor.</string>
@@ -307,7 +307,7 @@
     <string name="because_locked_candidates_pointing">Kutu bu rakamı bir yerde tutmak zorunda ve gidebileceği bütün yerler tek bir çizgi üzerinde. Demek ki rakam o çizgi üzerinde ve çizginin başka hiçbir yerinde olamaz.</string>
     <string name="because_locked_candidates_claiming">Çizgi bu rakamı bir yerde tutmak zorunda ve gidebileceği bütün yerler tek bir kutunun içinde. Demek ki rakam o kutuda ve kutunun başka hiçbir yerinde olamaz.</string>
     <string name="because_naked_pair" tools:ignore="Typos">O iki hücre, o iki rakamı aralarında birer birer alacak. Bölgedeki başka hiçbir hücre bunlardan birini alamaz.</string>
-    <string name="because_hidden_pair">Bölgenin iki rakama da ihtiyacı var ve onları yalnızca bu iki hücre alabiliyor, demek ki birer tane alıyorlar. O iki hücredeki her şey eleniyor.</string>
+    <string name="because_hidden_pair">Bölgenin iki rakama da ihtiyacı var ve onları yalnızca bu iki hücre alabiliyor, demek ki birer tane alıyorlar. O iki hücredeki başka her şey eleniyor.</string>
     <string name="because_naked_triple">Üç hücre, üç rakam, her birine bir tane. Tek bir hücre üçünü birden tutmasa bile bölgedeki başka hiçbir şey onları kullanamaz.</string>
     <string name="because_hidden_triple">Başka gidecek yeri olmayan üç rakam, aralarında üç hücreyi dolduruyor, demek ki o hücrelerdeki başka her şey imkânsız.</string>
     <string name="because_naked_quad">Dört hücre aralarında dört rakamı alıyor, bu da dördünü bölgenin geri kalanından dışarıda bırakıyor.</string>
@@ -421,7 +421,7 @@
     <string name="course_lesson_done">tamamlandı</string>
     <string name="course_lesson_next">sırada</string>
     <string name="course_lesson_todo">başlanmadı</string>
-    <string name="course_you_are_here">Buradasın</string>
+    <string name="course_you_are_here">Buradasınız</string>
     <string name="course_continue">Devam et</string>
     <string name="course_stage_done">Biten %1$d / %2$d</string>
 
@@ -463,8 +463,8 @@
     <string name="practice_another">Bir tane daha</string>
     <string name="practice_skip">Atla</string>
     <string name="practice_title">Alıştırma</string>
-    <string name="technique_pick_title">Alıştırma yapacak bir bulmaca bul</string>
-    <string name="technique_pick_body">Buradaki her bulmaca, ipuçlarını yazan çözücünün aynısıyla derecelendirildi, yani her birinin hangi kurala dayandığı biliniyor. Bir teknik seç, onsuz bitirilemeyecek bir bulmaca al.</string>
+    <string name="technique_pick_title">Alıştırma yapacak bir bulmaca bulun</string>
+    <string name="technique_pick_body">Buradaki her bulmaca, ipuçlarını yazan çözücünün aynısıyla derecelendirildi, yani her birinin hangi kurala dayandığı biliniyor. Bir teknik seçin, onsuz bitirilemeyecek bir bulmaca alın.</string>
     <string name="technique_pick_none">Bu sürümde buna dayanan bulmaca yok</string>
     <string name="technique_pick_play">Bir tane oyna</string>
     <plurals name="technique_pick_count">
@@ -486,7 +486,7 @@
     <string name="settings_hint_note">Varsayılan olarak açık. Üç ipucu bedava, dördüncüsü oyuna mal olur; bu da ipucunu bir refleks değil bir karar hâline getirir. Kursu çalışırken kapatın.</string>
     <string name="settings_post_mortem">Zamanın nereye gittiğini söyle</string>
     <string name="settings_post_mortem_note">Kazandıktan sonra, çözümün yavaşladığı iki yeri ve orada tahtada ne olduğunu söyle. Hiç yavaşlamayan bir çözüm hakkında bir şey söylenmez.</string>
-    <string name="post_mortem_line">Burada %1$s durdun. Orada bir %2$s bulunabilirdi.</string>
+    <string name="post_mortem_line">Burada %1$s durdunuz. Orada bir %2$s bulunabilirdi.</string>
     <string name="post_mortem_title">Zaman nereye gitti</string>
     <string name="clean_line">Temiz çözüm: ipucu yok, hata yok, not yok.</string>
     <string name="clean_mark">Temiz</string>
@@ -501,17 +501,17 @@
     <string name="account_time">Oynanan süre</string>
     <string name="account_lessons">Dersler</string>
     <string name="account_about_detail">Bu uygulamanın verdiği sözler ve dayandığı lisanslar</string>
-    <string name="account_hardest">En zoru çözüldü</string>
+    <string name="account_hardest">Çözülen en zor</string>
     <string name="account_hardest_note">%1$s tarihinde, %2$s sürede</string>
-    <string name="account_beaten">Neleri geçtin</string>
+    <string name="account_beaten">Neleri geçtiniz</string>
     <string name="account_recent">Son beş hafta</string>
     <string name="account_hints">Kullanılan ipucu</string>
-    <string name="account_empty">Bir bulmacayı bitir, bu sayfa dolsun: her seviyede neleri geçtiğin ve oynadığın her gün.</string>
+    <string name="account_empty">Bir bulmacayı bitirin, bu sayfa dolsun: her seviyede neleri geçtiğiniz ve oynadığınız her gün.</string>
     <string name="account_stats">İstatistikler</string>
     <string name="account_history">Geçmiş</string>
     <string name="history_title">Geçmiş</string>
     <string name="history_lost">Kaybedildi</string>
-    <string name="history_empty_body">Bir bulmacayı bitir, bıraktığın hâliyle tahtasıyla birlikte buraya düşsün ve istediğin zaman paylaşılmaya hazır olsun.</string>
+    <string name="history_empty_body">Bir bulmacayı bitirin, bıraktığınız hâliyle tahtasıyla birlikte buraya düşsün ve istediğiniz zaman paylaşılmaya hazır olsun.</string>
     <string name="history_no_board">Bu oyun, uygulama tahtaları saklamaya başlamadan önce bitmiş, yani çizilecek bir şey yok. Elde yalnızca sayılar var.</string>
 
     <string name="tab_home">Ana sayfa</string>
@@ -912,7 +912,7 @@
     <string name="lesson_together_8">Usta seviyesinin anlamı bu. Seksen bir zor adım değil; yetmiş kolay adım ve öğrendiğiniz her şeyi isteyen bir avuç adım.</string>
     <string name="lesson_together_9">Bu uygulamanın adlandırabildiği her teknikle karşılaştınız. Gidin ve bir tane oynayın. Her bulmacayla üç ipucu gelir ve onları harcamakta utanılacak bir şey yok; dilediğiniz kadar isterseniz, sınır ayarlardaki bir düğmeden ibarettir.</string>
 
-    <string name="lesson_step_of">%2$d / %1$d</string>
+    <string name="lesson_step_of">%1$d / %2$d</string>
     <string name="lesson_back">Geri</string>
     <string name="lesson_next">İleri</string>
     <string name="lesson_done">Bitti</string>
