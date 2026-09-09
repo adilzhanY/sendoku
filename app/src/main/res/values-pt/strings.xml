@@ -28,28 +28,28 @@
     <string name="killer_note">Gaiolas, e cada gaiola tem que fechar</string>
     <string name="killer_marker">Killer</string>
     <string name="killer_card">%1$s, %2$s</string>
-    <string name="code_title">Jogue um puzzle que te enviaram</string>
+    <string name="code_title">Jogue um jogo que te enviaram</string>
     <string name="code_hint">Cole um código</string>
     <string name="code_play">Jogar</string>
     <string name="code_unreadable">Isso não parece um código do Sendoku.</string>
     <string name="code_typo">Há um caractere que nenhum código tem. Compare com o que te enviaram.</string>
     <string name="code_cut_short">Esse código chegou incompleto. Peça de novo, inteiro.</string>
     <string name="code_too_new">Esse código foi feito por uma versão mais nova do Sendoku.</string>
-    <string name="code_missing">O código é legível, mas esta versão não tem esse puzzle.</string>
+    <string name="code_missing">O código é legível, mas esta versão não tem esse jogo.</string>
     <string name="code_unplayable">Essa grade não pode ser terminada só com raciocínio, e o Sendoku não vai fingir que sabe explicá-la.</string>
     <string name="code_shared">Enviado para você</string>
-    <string name="code_share">Envie este puzzle para alguém</string>
-    <string name="code_invitation">Tente este puzzle %1$s. A mesma grade, e não precisa de mais nada para comparar.</string>
-    <string name="enter_title">Digite um puzzle</string>
+    <string name="code_share">Envie este jogo para alguém</string>
+    <string name="code_invitation">Tente este jogo %1$s. A mesma grade, e não precisa de mais nada para comparar.</string>
+    <string name="enter_title">Digite um jogo</string>
     <string name="enter_marker">Digitado</string>
     <plurals name="enter_help">
-        <item quantity="one">%1$d pista até agora. Toque numa casa e depois num dígito. Confira quando a grade estiver pronta.</item>
-        <item quantity="other">%1$d pistas até agora. Toque numa casa e depois num dígito. Confira quando a grade estiver pronta.</item>
+        <item quantity="one">%1$d pista até agora. Toque numa casa e depois num número. Confira quando a grade estiver pronta.</item>
+        <item quantity="other">%1$d pistas até agora. Toque numa casa e depois num número. Confira quando a grade estiver pronta.</item>
     </plurals>
     <string name="enter_impossible">Não há como terminar esta grade. Alguma pista está errada.</string>
-    <string name="enter_ambiguous">Esta grade tem mais de uma resposta, então não é bem um puzzle. Ainda dá para jogar.</string>
+    <string name="enter_ambiguous">Esta grade tem mais de uma resposta, então não é bem um jogo. Ainda dá para jogar.</string>
     <string name="enter_beyond">Uma resposta só, mas não dá para chegar nela só raciocinando, então o Sendoku não consegue explicar passo a passo.</string>
-    <string name="enter_ready">Uma resposta só. É um puzzle %1$s, avaliado em %2$s.</string>
+    <string name="enter_ready">Uma resposta só. É um jogo %1$s, avaliado em %2$s.</string>
     <string name="enter_clear">Limpar</string>
     <string name="enter_check">Conferir</string>
     <string name="enter_play">Jogar</string>
@@ -133,7 +133,7 @@
     <string name="outcome_hints">Dicas</string>
     <string name="outcome_mistakes">Erros</string>
     <string name="outcome_moves">Jogadas</string>
-    <string name="outcome_needed">Exigiu um %1$s</string>
+    <string name="outcome_needed">Exigiu: %1$s</string>
     <string name="outcome_home">Início</string>
     <string name="outcome_another">Outro %1$s</string>
 
@@ -172,16 +172,16 @@
     <string name="hint_in_region">%1$s</string>
     <string name="hint_in_regions">%1$s e %2$s</string>
     <string name="hint_outcome_place" tools:ignore="PluralsCandidate">Então a linha %1$d, coluna %2$d é %3$d.</string>
-    <string name="hint_outcome_strike_one" tools:ignore="PluralsCandidate">Então o %1$d pode sair %2$s.</string>
-    <string name="hint_outcome_strike_two" tools:ignore="PluralsCandidate">Então o %1$d e o %2$d podem sair %3$s.</string>
+    <string name="hint_outcome_strike_one" tools:ignore="PluralsCandidate">Então o %1$d pode sair de %2$s.</string>
+    <string name="hint_outcome_strike_two" tools:ignore="PluralsCandidate">Então o %1$d e o %2$d podem sair de %3$s.</string>
     <plurals name="hint_cells">
         <item quantity="one">%1$d casa</item>
         <item quantity="other">%1$d casas</item>
     </plurals>
 
-    <string name="house_row">da linha %1$d</string>
-    <string name="house_column">da coluna %1$d</string>
-    <string name="house_box">do bloco %1$d</string>
+    <string name="house_row">na linha %1$d</string>
+    <string name="house_column">na coluna %1$d</string>
+    <string name="house_box">no bloco %1$d</string>
 
     <string name="glossary_title">Técnicas</string>
     <string name="back">Voltar</string>
@@ -290,7 +290,7 @@
     <string name="about_hints">Dicas que ensinam</string>
     <string name="about_hints_detail">Uma dica nomeia a técnica e explica o raciocínio. Ela nunca se limita a preencher um número, e nunca é vendida: três vêm com cada jogo, e o limite se desliga nas configurações.</string>
     <string name="about_sharing">Compartilhar</string>
-    <string name="about_sharing_detail">Um código é o próprio puzzle, não uma conta. Não há onde entrar, não há classificação e o app não pode conferir um tempo que alguém diz: duas pessoas jogam a mesma grade e comparam o que ela custou.</string>
+    <string name="about_sharing_detail">Um código é o próprio puzzle, não uma conta. Não há onde entrar, não há classificação e o aplicativo não pode conferir um tempo que alguém diz: duas pessoas jogam a mesma grade e comparam o que ela custou, e é só isso.</string>
     <string name="about_rating">A dificuldade é medida pela técnica mais difícil que um jogo realmente exige, calculada resolvendo o jogo como uma pessoa resolveria. Por isso um Muito difícil aqui significa o mesmo que o Muito difícil anterior.</string>
     <string name="about_licence">O Sendoku é software livre sob a Licença Pública Geral GNU versão 3.</string>
     <string name="about_privacy">A política de privacidade diz a mesma coisa no formato que a loja pede, em adilzhany.github.io/sendoku/privacy</string>
@@ -351,7 +351,7 @@
     <string name="because_xy_chain">Suponha que a primeira casa não seja o número. Siga a cadeia e a última casa fica obrigada a sê-lo. Então uma ponta ou a outra o tem.</string>
     <string name="because_forcing_chain">Siga as duas possibilidades. Se uma delas deixa uma casa sem nada para colocar, essa possibilidade nunca foi real e vai embora. Se as duas colocam o mesmo número no mesmo lugar, esse número vai ali seja qual for a verdadeira. Nada aqui depende de a suposição estar certa, e é isso que faz disto uma prova e não um chute.</string>
     <string name="because_death_blossom">Seja qual for o número da casa, ela expulsa o próprio número do grupo correspondente, e esse grupo fica cheio e tem que usar todos os números que lhe restam. Se todos os grupos têm o mesmo número sobrando, esse número cai em um deles não importa como a casa caia. Qualquer casa que o enxergue em todos eles o perde.</string>
-    <string name="because_als_xy_wing">Se o número ameaçado some do primeiro grupo, esse grupo fica cheio e tem que ficar com o número que divide com o do meio. O grupo do meio perde então esse número, então também fica cheio e fica com o que divide com o terceiro. O terceiro grupo fica cheio igualmente e tem que usar o número ameaçado. Então nenhuma casa que o enxergue nos dois grupos das pontas pode tê-lo.</string>
+    <string name="because_als_xy_wing">Se o número ameaçado sumir do primeiro grupo, esse grupo fica cheio e tem que ficar com o número que divide com o do meio. O grupo do meio perde então esse número, então também fica cheio e fica com o que divide com o terceiro. O terceiro grupo fica cheio igualmente e tem que usar o número ameaçado. Então nenhuma casa que o enxergue nos dois grupos das pontas pode tê-lo.</string>
     <string name="because_sue_de_coq">As casas comuns vão gastar todos os seus números menos dois, e os dois grupos dos lados reivindicam exatamente esses dois. Então cada número do grupo da linha é gasto dentro da linha, e cada número do grupo do bloco dentro do bloco. Nada mais em nenhum dos dois pode tê-los.</string>
     <string name="because_als_xz">Um número comum só pode aparecer em um dos dois grupos, o que trava o outro e o obriga a usar todos os números que tem. Então o segundo número comum cai em um grupo ou no outro.</string>
 
@@ -423,25 +423,25 @@
     <string name="stage_cages">Gaiolas</string>
     <string name="lesson_cage_is_title">O que é uma gaiola</string>
     <string name="lesson_cage_is_summary">As formas tracejadas são gaiolas, e o número pequeno é a soma das suas casas.</string>
-    <string name="lesson_cage_is_1">Um Killer começa sem nenhum dígito. Em vez disso a grade é cortada em gaiolas, desenhadas com tracejado, e o número pequeno no canto de uma gaiola é a soma das suas casas. Todo o resto é sudoku normal.</string>
+    <string name="lesson_cage_is_1">Um Killer começa sem nenhum número. Em vez disso a grade é cortada em gaiolas, desenhadas com tracejado, e o número pequeno no canto de uma gaiola é a soma das suas casas. Todo o resto é sudoku normal.</string>
     <string name="lesson_cage_is_2">Uma gaiola de uma casa só é uma pista escrita de outro jeito. Esta diz um, então vai um ali, e não há nada para descobrir.</string>
     <string name="lesson_cage_is_3">Colocado. Agora uma gaiola que dá trabalho.</string>
     <string name="lesson_cage_is_4a">Esta é cinco em duas casas. Ou seja, um e quatro, ou dois e três, então ainda não está resolvido, mas um cinco ou um seis já não cabem ali.</string>
-    <string name="lesson_cage_is_4">Três casas somando quinze. Numa grade seis por seis os três maiores dígitos são quatro, cinco e seis, e somam exatamente quinze. Então esta gaiola tem esses três, em alguma ordem, e mais nada.</string>
-    <string name="lesson_cage_is_5">Uma gaiola nunca repete um dígito. É essa regra que faz uma soma dizer tanto: sem ela, quinze em três casas poderia ser cinco, cinco e cinco.</string>
-    <string name="lesson_cage_house_title">Gaiolas dentro de uma casa</string>
+    <string name="lesson_cage_is_4">Três casas somando quinze. Numa grade seis por seis os três maiores números são quatro, cinco e seis, e somam exatamente quinze. Então esta gaiola tem esses três, em alguma ordem, e mais nada.</string>
+    <string name="lesson_cage_is_5">Uma gaiola nunca repete um número. É essa regra que faz uma soma dizer tanto: sem ela, quinze em três casas poderia ser cinco, cinco e cinco.</string>
+    <string name="lesson_cage_house_title">Gaiolas dentro de uma região</string>
     <string name="lesson_cage_house_summary">Uma linha, uma coluna e um bloco somam um total conhecido, e as gaiolas de dentro fazem o resto.</string>
-    <string name="lesson_cage_house_1">Cada linha, coluna e bloco tem cada dígito uma vez, então todos somam o mesmo total. Numa grade seis por seis esse total é vinte e um.</string>
-    <string name="lesson_cage_house_2">Estas duas casas somam dez. Dez com dois dígitos diferentes só sai com quatro e seis, então esta gaiola fica com os dois, e nenhuma outra casa desta linha pode ser um quatro ou um seis.</string>
+    <string name="lesson_cage_house_1">Cada linha, coluna e bloco tem cada número uma vez, então todos somam o mesmo total. Numa grade seis por seis esse total é vinte e um.</string>
+    <string name="lesson_cage_house_2">Estas duas casas somam dez. Dez com dois números diferentes só sai com quatro e seis, então esta gaiola fica com os dois, e nenhuma outra casa desta linha pode ser um quatro ou um seis.</string>
     <string name="lesson_cage_house_3">Agora a linha inteira. Ela soma vinte e um, e três gaiolas cabem inteiras dentro dela: cinco, dez e um. Isso dá dezesseis.</string>
     <string name="lesson_cage_house_4">Então a casa que sobra é vinte e um menos dezesseis, ou seja, cinco.</string>
-    <string name="lesson_cage_house_5">Quem resolve chama isso de entrada. A mesma conta vale ao contrário: quando uma gaiola passa para fora de uma casa, o que fica de fora é a diferença, e isso é uma saída.</string>
+    <string name="lesson_cage_house_5">Quem resolve chama isso de entrada. A mesma conta vale ao contrário: quando uma gaiola passa para fora de uma região, o que fica de fora é a diferença, e isso é uma saída.</string>
     <string name="lesson_cage_home_title">Um só lugar na gaiola</string>
-    <string name="lesson_cage_home_summary">Um dígito que a gaiola tem que conter, e uma só casa que ainda o aceita.</string>
-    <string name="lesson_cage_home_1">Já com o Killer andando, as gaiolas passam a dizer mais do que a soma. Aqui já há três dígitos colocados.</string>
-    <string name="lesson_cage_home_2">Esta gaiola é dez em duas casas, então tem um quatro e um seis. Mas no bloco da direita já existe um seis, e isso tira esse dígito da casa direita da gaiola.</string>
+    <string name="lesson_cage_home_summary">Um número que a gaiola tem que conter, e uma só casa que ainda o aceita.</string>
+    <string name="lesson_cage_home_1">Já com o Killer andando, as gaiolas passam a dizer mais do que a soma. Aqui já há três números colocados.</string>
+    <string name="lesson_cage_home_2">Esta gaiola é dez em duas casas, então tem um quatro e um seis. Mas no bloco da direita já existe um seis, e isso tira esse número da casa direita da gaiola.</string>
     <string name="lesson_cage_home_3">Sobra um lugar para o seis, o da esquerda. A soma disse que a gaiola tem um seis; o resto do tabuleiro disse onde.</string>
-    <string name="lesson_cage_home_4">Isso é um único na gaiola. É o único escondido do Killer: não o único dígito que cabe numa casa, mas a única casa em que um dígito cabe.</string>
+    <string name="lesson_cage_home_4">Isso é um único na gaiola. É o único oculto do Killer: não o único número que cabe numa casa, mas a única casa em que um número cabe.</string>
 
     <string name="lesson_what_is_title">O que é um sudoku</string>
     <string name="lesson_what_is_summary">Cada linha, cada coluna e cada bloco têm cada número uma vez.</string>
@@ -452,12 +452,12 @@
     <string name="lesson_what_is_5">Estas duas casas estão vazias. Preenchê-las sem quebrar a regra é o que significa resolver.</string>
 
     <string name="lesson_houses_title">Linhas, colunas e blocos</string>
-    <string name="lesson_houses_summary">Uma casa está em três casas ao mesmo tempo, e divide uma regra com as três.</string>
+    <string name="lesson_houses_summary">Uma casa está em três regiões ao mesmo tempo, e divide uma regra com as três.</string>
     <string name="lesson_houses_1">A regra falou de linhas e colunas. Existe um terceiro tipo de grupo, e é ele que faz um sudoku valer a pena.</string>
     <string name="lesson_houses_2">Aqui está uma linha de novo.</string>
     <string name="lesson_houses_3">Aqui está uma coluna.</string>
     <string name="lesson_houses_4">E aqui está um bloco, marcado pelas linhas mais grossas. Ele também tem cada número uma vez.</string>
-    <string name="lesson_houses_5">Então esta casa pertence a três grupos ao mesmo tempo. Todas as casas com que ela divide um grupo estão iluminadas, e nenhuma delas pode ter o mesmo número que ela. Esses três grupos se chamam casas, e a palavra vale daqui em diante.</string>
+    <string name="lesson_houses_5">Então esta casa pertence a três grupos ao mesmo tempo. Todas as casas com que ela divide um grupo estão iluminadas, e nenhuma delas pode ter o mesmo número que ela. Esses três grupos se chamam regiões, e a palavra vale daqui em diante.</string>
 
     <string name="lesson_givens_title">Os números dados</string>
     <string name="lesson_givens_summary">Os números impressos no começo são fixos, e são eles que tornam a solução única.</string>
@@ -481,9 +481,9 @@
     <string name="lesson_first_six_1">Seis por seis. A regra não mudou, mas os blocos sim: são três de largura e dois de altura.</string>
     <string name="lesson_first_six_2">Isto é um bloco. Três na largura, dois na altura, seis casas, cada número de 1 a 6 uma vez.</string>
     <string name="lesson_first_six_3">Isso pega muita gente no começo, porque o olho espera um quadrado. Vale parar um instante: encontre o bloco em que esta casa está antes de procurar qualquer outra coisa.</string>
-    <string name="lesson_first_six_4">Sua vez. Falta um número no bloco de cima à esquerda.</string>
+    <string name="lesson_first_six_4">Sua vez. Falta um número no bloco de cima, à esquerda.</string>
     <string name="lesson_first_six_wrong">Esse não. Conte o que o bloco já tem e ache o número de 1 a 6 que não está lá.</string>
-    <string name="lesson_first_six_5">Boa. Daqui em diante os tabuleiros são nove por nove e os blocos voltam a ser quadrados, mas o hábito de conferir as três casas é o que vale guardar.</string>
+    <string name="lesson_first_six_5">Boa. Daqui em diante os tabuleiros são nove por nove e os blocos voltam a ser quadrados, mas o hábito de conferir as três regiões é o que vale guardar.</string>
 
     <string name="lesson_naked_single_title">O único nu</string>
     <string name="lesson_naked_single_summary">Uma casa em que só resta um número tem que ficar com ele.</string>
@@ -493,9 +493,9 @@
     <string name="lesson_naked_single_4">Então sobra um número, e a casa tem que ficar com ele. Nada mais é possível. Isso é um único nu: nu porque dá para ver olhando uma casa só, único porque sobrevive um número só.</string>
     <string name="lesson_naked_single_5">O aplicativo chama isto pelo nome quando dá uma dica. Agora você sabe o que significa.</string>
     <string name="lesson_hidden_single_title">O único oculto</string>
-    <string name="lesson_hidden_single_summary">Um número com um só lugar restante em uma casa tem que ir ali.</string>
+    <string name="lesson_hidden_single_summary">Um número com um só lugar restante em uma região tem que ir ali.</string>
     <string name="lesson_hidden_single_1">O outro tipo de único, e o que acha mais casas. Um único nu é uma casa com um número restante. Este é a imagem no espelho: um número com uma casa restante.</string>
-    <string name="lesson_hidden_single_2">Pegue uma casa e escolha um número que ainda falta nela. Pergunte onde, dentro dessa casa, o número poderia ir.</string>
+    <string name="lesson_hidden_single_2">Pegue uma região e escolha um número que ainda falta nela. Pergunte onde, dentro dessa região, o número poderia ir.</string>
     <string name="lesson_hidden_single_3">Neste bloco a resposta é uma casa só. Todas as outras casas vazias do bloco estão descartadas pela própria linha ou coluna.</string>
     <string name="lesson_hidden_single_4">Então o número vai ali, mesmo que aquela casa sozinha pudesse ter vários números. É por isso que se chama oculto: o número está escondido entre os outros.</string>
     <string name="lesson_hidden_single_5">Este é o que vale aprender direito. Na maioria dos jogos é ele que mantém você andando quando os únicos nus acabam.</string>
@@ -560,45 +560,45 @@
     <string name="lesson_naked_pair_title">O par nu</string>
     <string name="lesson_naked_pair_summary">Duas casas com os mesmos dois números são donas dos dois.</string>
     <string name="lesson_naked_pair_1">Agora os grupos. Este é o menor deles e o padrão que deixa os outros óbvios.</string>
-    <string name="lesson_naked_pair_2">Estas duas casas estão na mesma casa, e cada uma só pode ser um dos mesmos dois números.</string>
+    <string name="lesson_naked_pair_2">Estas duas casas estão na mesma região, e cada uma só pode ser um dos mesmos dois números.</string>
     <string name="lesson_naked_pair_3">Entre as duas, vão ficar com esses dois números, um em cada. Qual é qual não importa e você não precisa saber.</string>
-    <string name="lesson_naked_pair_4">Então nenhuma outra casa daquela casa pode ter qualquer um dos dois. Esta casa perde um deles.</string>
+    <string name="lesson_naked_pair_4">Então nenhuma outra casa daquela região pode ter qualquer um dos dois. Esta casa perde um deles.</string>
     <string name="lesson_naked_pair_5">Nu, de novo, porque dá para ver lendo as duas casas. Nada está escondido e nenhuma outra casa entra no argumento.</string>
 
     <string name="lesson_hidden_pair_title">O par oculto</string>
     <string name="lesson_hidden_pair_summary">Dois números com só os mesmos dois lugares restantes são donos dessas casas.</string>
     <string name="lesson_hidden_pair_1">A imagem no espelho do par nu, exatamente como o único oculto espelha o nu.</string>
-    <string name="lesson_hidden_pair_2">Nesta casa, dois números só podem ir cada um nas mesmas duas casas.</string>
+    <string name="lesson_hidden_pair_2">Nesta região, dois números só podem ir cada um nas mesmas duas casas.</string>
     <string name="lesson_hidden_pair_3">Esses dois números vão ficar com essas duas casas. Então, por mais que aquelas casas parecessem poder ter outra coisa, não podem.</string>
-    <string name="lesson_hidden_pair_4">As duas casas perdem todas as outras anotações. Agora são um par nu, e muitas vezes é para isso que o padrão serve: transformar um par oculto num par nu que limpa o resto da casa.</string>
+    <string name="lesson_hidden_pair_4">As duas casas perdem todas as outras anotações. Agora são um par nu, e muitas vezes é para isso que o padrão serve: transformar um par oculto num par nu que limpa o resto da região.</string>
     <string name="lesson_hidden_pair_5">Pares ocultos são mais difíceis de ver que os nus porque é preciso olhar números em vez de casas. Num tabuleiro parado, valem o esforço.</string>
 
     <string name="lesson_naked_triple_title">O trio nu</string>
     <string name="lesson_naked_triple_summary">Três casas que dividem três números são donas deles, mesmo que nenhuma tenha os três.</string>
     <string name="lesson_naked_triple_1">Um par com uma casa a mais, e um detalhe que pega todo mundo da primeira vez.</string>
-    <string name="lesson_naked_triple_2">Estas três casas estão na mesma casa, e entre as três usam só três números diferentes.</string>
+    <string name="lesson_naked_triple_2">Estas três casas estão na mesma região, e entre as três usam só três números diferentes.</string>
     <string name="lesson_naked_triple_3">Aqui está o detalhe: nenhuma delas precisa ter os três. Dois números numa casa, dois na seguinte, dois na terceira é um trio, desde que apareçam só três números no total.</string>
-    <string name="lesson_naked_triple_4">As três casas vão ficar com os três números, então todas as outras casas da casa perdem os três. É bastante anotação saindo de uma vez.</string>
+    <string name="lesson_naked_triple_4">As três casas vão ficar com os três números, então todas as outras casas da região perdem os três. É bastante anotação saindo de uma vez.</string>
     <string name="lesson_naked_triple_5">Quando estiver caçando, conte os números diferentes entre duas ou três casas em vez de procurar anotações idênticas. Esse é o hábito que acha trios.</string>
 
     <string name="lesson_hidden_triple_title">O trio oculto</string>
     <string name="lesson_hidden_triple_summary">Três números com só três lugares restantes são donos dessas casas.</string>
     <string name="lesson_hidden_triple_1">A mesma relação do par oculto, um tamanho acima, e realmente difícil de notar.</string>
-    <string name="lesson_hidden_triple_2">Nesta casa, três números só podem ir nas mesmas três casas.</string>
+    <string name="lesson_hidden_triple_2">Nesta região, três números só podem ir nas mesmas três casas.</string>
     <string name="lesson_hidden_triple_3">Então essas três casas ficam com esses três números, e todas as outras anotações nelas podem sair.</string>
-    <string name="lesson_hidden_triple_4">Não procure por estes primeiro. Procure quando uma casa tiver várias casas restantes e nada mais tiver funcionado. Quase sempre há um padrão nu na mesma casa que é mais fácil de ver.</string>
+    <string name="lesson_hidden_triple_4">Não procure por estes primeiro. Procure quando uma região tiver várias casas restantes e nada mais tiver funcionado. Quase sempre há um padrão nu na mesma região que é mais fácil de ver.</string>
 
     <string name="lesson_quads_title">Quartetos</string>
     <string name="lesson_quads_summary">A mesma ideia de novo com quatro, vale conhecer mas raramente vale caçar.</string>
     <string name="lesson_quads_1">Pares, trios, e agora quartetos. O argumento não muda: quatro casas que entre si usam quatro números são donas desses números, e quatro números com só quatro lugares são donos dessas casas.</string>
-    <string name="lesson_quads_2">Aqui está um quarteto nu. Quatro casas, quatro números entre elas, e o resto da casa perde os quatro.</string>
-    <string name="lesson_quads_3">E aqui vai o conselho honesto. Quartetos são reais e são válidos, mas são raros, e um quarteto numa casa com cinco ou seis casas vazias costuma querer dizer que há um padrão mais simples nas outras casas que passou batido.</string>
+    <string name="lesson_quads_2">Aqui está um quarteto nu. Quatro casas, quatro números entre elas, e o resto da região perde os quatro.</string>
+    <string name="lesson_quads_3">E aqui vai o conselho honesto. Quartetos são reais e são válidos, mas são raros, e um quarteto numa região com cinco ou seis casas vazias costuma querer dizer que há um padrão mais simples nas outras casas que passou batido.</string>
     <string name="lesson_quads_4">Aqui está um quarteto oculto, para completar. Quatro números com quatro lugares.</string>
     <string name="lesson_quads_5">Aprenda a reconhecê-los para que uma dica que nomeie um faça sentido. Não gaste tempo procurando por eles.</string>
 
     <string name="lesson_x_wing_title">O X-Wing</string>
     <string name="lesson_x_wing_summary">Um número preso a duas colunas em duas linhas sai dessas colunas em todo o resto.</string>
-    <string name="lesson_x_wing_1">O primeiro padrão que atravessa o tabuleiro inteiro em vez de caber numa casa. Ele tem um formato, e depois que você vê o formato passa a vê-lo em todo lugar.</string>
+    <string name="lesson_x_wing_1">O primeiro padrão que atravessa o tabuleiro inteiro em vez de caber numa região. Ele tem um formato, e depois que você vê o formato passa a vê-lo em todo lugar.</string>
     <string name="lesson_x_wing_2">Pegue um número. Nestas duas linhas, ele só pode ir em duas casas em cada, e essas casas estão nas mesmas duas colunas. Quatro casas, num retângulo.</string>
     <string name="lesson_x_wing_3">Agora pense. Cada linha tem que ter o número uma vez. Seja qual for o canto que uma linha usar, a outra tem que usar o oposto. Não existe terceira opção.</string>
     <string name="lesson_x_wing_4">Então, entre as duas, as duas linhas ficam com aquele número nas duas colunas. Todo o resto nessas colunas o perde.</string>
@@ -623,7 +623,7 @@
     <string name="lesson_xy_wing_summary">Três casas de dois números cada, e uma casa que perde de qualquer jeito.</string>
     <string name="lesson_xy_wing_1">Os wings pedem outro jeito de pensar. Até aqui você achava um padrão e lia uma conclusão. Aqui se raciocina por casos.</string>
     <string name="lesson_xy_wing_2">Comece por esta casa. Ela tem exatamente dois números possíveis e é a dobradiça do padrão.</string>
-    <string name="lesson_xy_wing_3">Ela tem duas amigas, cada uma dividindo uma casa com ela, e cada uma com dois números: um em comum com a dobradiça, outro em comum entre elas.</string>
+    <string name="lesson_xy_wing_3">Ela tem duas amigas, cada uma dividindo uma região com ela, e cada uma com dois números: um em comum com a dobradiça, outro em comum entre elas.</string>
     <string name="lesson_xy_wing_4">Agora o argumento. A dobradiça é um dos seus dois números. Se for o primeiro, a asa esquerda fica obrigada ao número comum. Se for o segundo, a asa direita fica obrigada ao mesmo número comum. De um jeito ou de outro, uma das asas fica com ele.</string>
     <string name="lesson_xy_wing_5">Então nenhuma casa que enxergue as duas asas pode ter esse número. Esta o perde.</string>
     <string name="lesson_xy_wing_6">Você nunca chega a saber o que a dobradiça é de verdade. É esse o ponto, e é o que faz os wings parecerem diferentes de tudo o que veio antes.</string>
@@ -639,13 +639,13 @@
     <string name="lesson_w_wing_title">O W-Wing</string>
     <string name="lesson_w_wing_summary">Dois pares idênticos ligados por uma linha que tem que ter um dos seus números.</string>
     <string name="lesson_w_wing_1">O terceiro wing, e o que menos exige conta.</string>
-    <string name="lesson_w_wing_2">Duas casas, sem dividir casa, cada uma com os mesmos dois números.</string>
-    <string name="lesson_w_wing_3">Agora ache uma casa onde um desses dois números só possa ir em dois lugares, e onde esses dois lugares enxerguem cada um uma das casas do par. Essa casa é a ligação.</string>
-    <string name="lesson_w_wing_4">A casa da ligação tem que ter aquele número em um dos seus dois lugares, e seja qual for, ela obriga uma das casas do par a ficar com o outro número. Então uma do par fica com o outro número, sempre.</string>
+    <string name="lesson_w_wing_2">Duas casas, sem dividir região, cada uma com os mesmos dois números.</string>
+    <string name="lesson_w_wing_3">Agora ache uma região onde um desses dois números só possa ir em dois lugares, e onde esses dois lugares enxerguem cada um uma das casas do par. Essa região é a ligação.</string>
+    <string name="lesson_w_wing_4">A região da ligação tem que ter aquele número em um dos seus dois lugares, e seja qual for, ela obriga uma das casas do par a ficar com o outro número. Então uma do par fica com o outro número, sempre.</string>
     <string name="lesson_w_wing_5">Qualquer casa que enxergue as duas do par o perde. Esta enxerga.</string>
 
     <string name="lesson_rectangle_title">O retângulo único</string>
-    <string name="lesson_rectangle_summary">Um jogo de solução única não pode conter um quadro que poderia girar.</string>
+    <string name="lesson_rectangle_summary">Um jogo de solução única não pode conter um quadrado que poderia girar.</string>
     <string name="lesson_rectangle_1">Esta técnica é de outro tipo em relação a todas as outras, e vale dizer por quê antes de usá-la.</string>
     <string name="lesson_rectangle_2">Olhe estas quatro casas. Elas ficam em duas linhas, duas colunas e exatamente dois blocos, e cada uma pode ter os mesmos dois números.</string>
     <string name="lesson_rectangle_3">Se fosse só isso, o jogo teria duas soluções: preencha o retângulo de um jeito, ou troque as duas diagonais, e os dois tabuleiros obedecem a todas as regras. Um jogo bem feito não tem duas soluções.</string>
@@ -656,14 +656,14 @@
     <string name="lesson_bug_title">BUG mais um</string>
     <string name="lesson_bug_summary">Se todas as casas menos uma tivessem dois candidatos, o jogo seria ambíguo. Então essa uma é especial.</string>
     <string name="lesson_bug_1">A mesma suposição do retângulo único, com outro formato.</string>
-    <string name="lesson_bug_2">Suponha que um tabuleiro chegue a uma posição em que cada casa não resolvida tenha exatamente duas possibilidades, e cada número apareça exatamente duas vezes em cada casa. Um tabuleiro assim sempre tem duas soluções.</string>
+    <string name="lesson_bug_2">Suponha que um tabuleiro chegue a uma posição em que cada casa não resolvida tenha exatamente duas possibilidades, e cada número apareça exatamente duas vezes em cada região. Um tabuleiro assim sempre tem duas soluções.</string>
     <string name="lesson_bug_3">Então um jogo bem feito nunca pode chegar lá. Se você achar uma posição que está a uma casa disso, em que exatamente uma casa tem três possibilidades em vez de duas, é essa casa que salva o jogo de ser ambíguo.</string>
-    <string name="lesson_bug_4">O número que aparece três vezes nas casas dela é o que ela tem que ter. É um padrão raro e um fim de jogo rapidíssimo quando aparece.</string>
+    <string name="lesson_bug_4">O número que aparece três vezes nas regiões dela é o que ela tem que ter. É um padrão raro e um fim de jogo rapidíssimo quando aparece.</string>
 
     <string name="lesson_colouring_title">Coloração simples</string>
     <string name="lesson_colouring_summary">Siga um número pelas casas em que ele só tem dois lugares e procure uma contradição.</string>
     <string name="lesson_colouring_1">Cadeias, com calma. A coloração é a entrada mais fácil e por baixo é o mesmo raciocínio.</string>
-    <string name="lesson_colouring_2">Escolha um número. Ache uma casa onde ele só tenha duas casas possíveis. Essas duas estão ligadas: exatamente uma delas é o número.</string>
+    <string name="lesson_colouring_2">Escolha um número. Ache uma região onde ele só tenha duas casas possíveis. Essas duas estão ligadas: exatamente uma delas é o número.</string>
     <string name="lesson_colouring_3">Pinte uma do par e siga as ligações. Toda casa ligada assim acaba de uma de duas cores, e uma cor inteira está certa enquanto a outra está errada. Você não sabe qual.</string>
     <string name="lesson_colouring_4">Agora procure a contradição. Se uma casa enxerga duas casas da mesma cor, essa cor não pode ser a certa, então a casa perde o número. É o que acontece aqui.</string>
     <string name="lesson_colouring_5">Duas cores, uma contradição, e nenhum chute em lugar nenhum. O método é todo isso.</string>
@@ -671,7 +671,7 @@
     <string name="lesson_remote_pairs_title">Pares remotos</string>
     <string name="lesson_remote_pairs_summary">Uma cadeia de pares idênticos alterna, então as pontas são opostas.</string>
     <string name="lesson_remote_pairs_1">A coloração aplicada a casas em vez de a um número só.</string>
-    <string name="lesson_remote_pairs_2">Aqui está uma cadeia de casas que têm todas os mesmos dois números, cada uma ligada à seguinte por uma casa compartilhada.</string>
+    <string name="lesson_remote_pairs_2">Aqui está uma cadeia de casas que têm todas os mesmos dois números, cada uma ligada à seguinte por uma região compartilhada.</string>
     <string name="lesson_remote_pairs_3">Como cada ligação é um par, os números alternam ao longo da cadeia. A primeira casa fica com um, a segunda com o outro, e assim por diante.</string>
     <string name="lesson_remote_pairs_4">Então as duas pontas de uma cadeia de comprimento par são opostas: têm números diferentes. Qualquer casa que enxergue as duas pontas perde os dois números, porque cada ponta tem um.</string>
     <string name="lesson_remote_pairs_5">É a cadeia mais fácil de notar, porque todas as casas dela têm a mesma cara.</string>
@@ -687,7 +687,7 @@
     <string name="lesson_x_chain_title">A cadeia X</string>
     <string name="lesson_x_chain_summary">Um número, ligações que alternam entre fortes e fracas, e uma eliminação nas pontas.</string>
     <string name="lesson_x_chain_1">A forma geral de tudo o que havia na etapa anterior. Um número, e uma cadeia de ligações alternadas.</string>
-    <string name="lesson_x_chain_2">Uma ligação forte são duas casas em que pelo menos uma tem que ter o número, que é o que uma casa com só dois lugares dá. Uma ligação fraca são duas casas em que no máximo uma pode tê-lo, que são quaisquer duas casas que dividam uma casa.</string>
+    <string name="lesson_x_chain_2">Uma ligação forte são duas casas em que pelo menos uma tem que ter o número, que é o que uma região com só dois lugares dá. Uma ligação fraca são duas casas em que no máximo uma pode tê-lo, que são quaisquer duas casas que dividam uma região.</string>
     <string name="lesson_x_chain_3">Alterne: forte, fraca, forte, e assim por diante, começando e terminando em forte. Então, aconteça o que acontecer no meio, uma das duas pontas tem o número.</string>
     <string name="lesson_x_chain_4">Então qualquer casa que enxergue as duas pontas o perde.</string>
     <string name="lesson_x_chain_5">A coloração é esta cadeia desenhada em duas cores. A cadeia é mais geral porque pode passar por casas que a coloração não alcança.</string>
@@ -695,8 +695,8 @@
     <string name="lesson_xy_chain_title">A cadeia XY</string>
     <string name="lesson_xy_chain_summary">Uma cadeia de casas de dois candidatos, em que as pontas dividem um número.</string>
     <string name="lesson_xy_chain_1">A mesma ideia alternada, mas passando por casas em vez de seguir um número só.</string>
-    <string name="lesson_xy_chain_2">Cada casa desta cadeia tem exatamente duas possibilidades, e cada uma divide uma casa com a seguinte.</string>
-    <string name="lesson_xy_chain_3">Dentro de uma casa, pegar um número obriga o outro, e essa é a ligação forte. Entre casas, uma casa compartilhada faz a fraca. Alternar as duas leva o argumento ao longo da cadeia.</string>
+    <string name="lesson_xy_chain_2">Cada casa desta cadeia tem exatamente duas possibilidades, e cada uma divide uma região com a seguinte.</string>
+    <string name="lesson_xy_chain_3">Dentro de uma casa, pegar um número obriga o outro, e essa é a ligação forte. Entre casas, uma região compartilhada faz a fraca. Alternar as duas leva o argumento ao longo da cadeia.</string>
     <string name="lesson_xy_chain_4">Se as duas pontas da cadeia podem ter o mesmo número, então uma delas tem, caia a cadeia como cair. Qualquer casa que enxergue as duas pontas perde esse número.</string>
     <string name="lesson_xy_chain_5">É a técnica que fecha a maioria dos jogos Especialista, e achar uma é mais questão de seguir com paciência as casas de dois números do que de ser esperto.</string>
 
@@ -713,14 +713,14 @@
     <string name="lesson_sue_de_coq_1">Um bloco e uma coluna se sobrepõem em três casas. Essas três casas pertencem aos dois ao mesmo tempo, e é disso que esta técnica vive.</string>
     <string name="lesson_sue_de_coq_2">Olhe duas delas aqui. Entre as duas têm 2, 6, 7 e 8: quatro números para duas casas. Dois entram, e dois sobram para outro lugar.</string>
     <string name="lesson_sue_de_coq_3">Mais abaixo na mesma coluna há uma casa com 6 e 7. Em outro ponto do mesmo bloco há uma casa com 2 e 8. Entre as duas, essas casas querem exatamente os quatro números do cruzamento, divididos igualmente e sem nada em comum.</string>
-    <string name="lesson_sue_de_coq_4">Faça a conta. Três casas da coluna ficam agora com três números diferentes dos quatro, e três casas do bloco fazem o mesmo. Só há um jeito de a conta fechar: o 6 e o 7 são gastos dentro da coluna, e o 2 e o 8 dentro do bloco.</string>
+    <string name="lesson_sue_de_coq_4">Faça a conta. Três casas da coluna ficam agora com três dos quatro números, e três casas do bloco fazem o mesmo. Só há um jeito de a conta fechar: o 6 e o 7 são gastos dentro da coluna, e o 2 e o 8 dentro do bloco.</string>
     <string name="lesson_sue_de_coq_5">Então nada mais naquela coluna pode ser 6 ou 7. Duas casas perdem um aqui.</string>
-    <string name="lesson_sue_de_coq_6">O mesmo argumento corre ao contrário para o bloco. Um padrão, duas casas, dois conjuntos separados de eliminações, e nenhuma cadeia em lugar nenhum.</string>
+    <string name="lesson_sue_de_coq_6">O mesmo argumento corre ao contrário para o bloco. Um padrão, duas regiões, dois conjuntos separados de eliminações, e nenhuma cadeia em lugar nenhum.</string>
 
     <string name="lesson_als_title">ALS-XZ</string>
     <string name="lesson_als_summary">Dois conjuntos quase travados dividindo um número, e a eliminação que sai daí.</string>
     <string name="lesson_als_1">A regra sobre a qual os níveis mais difíceis são construídos. Tudo acima desta etapa é uma variação dela.</string>
-    <string name="lesson_als_2">Um conjunto quase travado é um grupo de casas de uma mesma casa com exatamente um número a mais do que há casas. Quatro casas com cinco números entre elas. Se perdesse um número seria um conjunto travado, daí o nome.</string>
+    <string name="lesson_als_2">Um conjunto quase travado é um grupo de casas de uma mesma região com exatamente um número a mais do que há casas. Quatro casas com cinco números entre elas. Se perdesse um número seria um conjunto travado, daí o nome.</string>
     <string name="lesson_als_3">Pegue dois deles que dividam dois números. Chame de restrito um dos números divididos, e exija que todo lugar em que ele aparece num conjunto enxergue todo lugar em que aparece no outro.</string>
     <string name="lesson_als_4">Então ele só pode estar em um dos dois conjuntos. O conjunto que não fica com ele trava, o que fixa o outro número dividido dentro dele. E assim, qualquer casa que enxergue esse número nos dois conjuntos o perde.</string>
     <string name="lesson_als_5">Aqui está a eliminação que sai daí.</string>
@@ -738,7 +738,7 @@
     <string name="lesson_als_xy_summary">Três grupos em cadeia, e o número que não sobrevive em nenhuma das pontas.</string>
     <string name="lesson_als_xy_1">Três grupos desta vez, ligados em linha: um em cada ponta e um no meio separando os dois.</string>
     <string name="lesson_als_xy_2">Comece pelos dois da esquerda. r3c9 tem 1 e 3. r1c8 tem 3 e 7. Eles dividem um bloco, então só um dos dois pode ser o 3.</string>
-    <string name="lesson_als_xy_3">Agora o grupo que desce a coluna 8: três casas com 1, 3, 7 e 9 entre elas. Quatro números, três casas, então falta um número para ficar cheio. Ele divide o 7 com r1c8, e todos os 7 dele estão nessa mesma coluna, então de novo só um lado pode ficar com ele.</string>
+    <string name="lesson_als_xy_3">Agora o grupo que desce a coluna 8: três casas com 1, 3, 7 e 9 entre elas. Quatro números, três casas, então está a um número de ficar cheio. Ele divide o 7 com r1c8, e todos os 7 dele estão nessa mesma coluna, então de novo só um lado pode ficar com ele.</string>
     <string name="lesson_als_xy_4">Suponha que uma das duas casas marcadas na coluna 9 seja um 1. Ela enxerga r3c9, então r3c9 não é 1, então é 3. Aí r1c8 não é 3, então é 7. Aí não sobra nenhum 7 para o grupo, então ele fica cheio, e tem que usar 1, 3 e 9.</string>
     <string name="lesson_als_xy_5">Mas essas casas também enxergam todos os 1 do grupo, então o grupo também não pode ter um 1. O argumento se come sozinho, e o 1 vai embora.</string>
     <string name="lesson_als_xy_6">Duas junções, três grupos, e cada passo obriga o seguinte. Leia duas vezes: é uma cadeia, e cadeias só fazem sentido uma ligação de cada vez.</string>
@@ -757,7 +757,7 @@
     <string name="lesson_fork_summary">Teste uma casa dos dois jeitos e veja qual sobrevive. O mais difícil do aplicativo.</string>
     <string name="lesson_fork_1">A última técnica, e a única que não é um padrão. Não há nada para notar aqui. Há só trabalho.</string>
     <string name="lesson_fork_2">Esta casa é um 2 ou um 7. Todo o resto do tabuleiro já foi espremido, e nada diz qual dos dois é.</string>
-    <string name="lesson_fork_3">Então teste um. Diga que é um 2, a lápis, e siga só as consequências fáceis: uma casa com um número restante, ou um número com um lugar restante na casa dele.</string>
+    <string name="lesson_fork_3">Então teste um. Diga que é um 2, a lápis, e siga só as consequências fáceis: uma casa com um número restante, ou um número com um lugar restante na região dele.</string>
     <string name="lesson_fork_4">Elas vêm rápido. Um 2 fica obrigado aqui, depois um 7 ali, depois um 3, um 5, um 9. Continue. Quatorze números depois, olhe a casa marcada.</string>
     <string name="lesson_fork_5">Não sobrou nada nela. Todos os números que podiam ir ali foram levados por outra coisa. Isso não é azar, é uma contradição, e quer dizer que o 2 nunca foi possível.</string>
     <string name="lesson_fork_6">Então apague tudo e escreva o 7. Não porque o 7 tenha cara melhor, mas porque o 2 foi provado impossível, e duas possibilidades menos uma deixam uma.</string>
@@ -770,14 +770,14 @@
     <string name="lesson_nothing_applies_1">Você vai chegar a posições em que olhou tudo e não achou nada. Eis o que fazer, e o que não fazer.</string>
     <string name="lesson_nothing_applies_2">O que não fazer é chutar. Todos os jogos deste aplicativo se resolvem por raciocínio, e um chute que por acaso acerta não ensina nada, enquanto um chute errado custa o tabuleiro inteiro.</string>
     <string name="lesson_nothing_applies_3">Confira nesta ordem. Primeiro: todas as suas anotações são verdadeiras? Uma anotação velha é a causa mais comum de uma posição impossível, e este aplicativo as apaga por você se você deixar. Segundo: um número que você preencheu está mesmo certo? Aperte dica e ele avisa.</string>
-    <string name="lesson_nothing_applies_4">Depois procure de novo as coisas baratas. Quase nunca é uma cadeia que passou batido. Quase sempre é um único oculto numa casa que você parou de olhar vinte jogadas atrás.</string>
+    <string name="lesson_nothing_applies_4">Depois procure de novo as coisas baratas. Quase nunca é uma cadeia que passou batido. Quase sempre é um único oculto numa região que você parou de olhar vinte jogadas atrás.</string>
 
     <string name="lesson_look_first_title">O que procurar primeiro</string>
     <string name="lesson_look_first_summary">Os padrões baratos primeiro, sempre, porque são comuns e abrem o tabuleiro.</string>
     <string name="lesson_look_first_1">Agora você conhece todas as técnicas que este aplicativo sabe nomear. A última coisa a aprender é a ordem em que olhar.</string>
     <string name="lesson_look_first_2">Únicos primeiro, sempre. Nus, depois ocultos. São de longe os mais comuns e cada um que você preenche torna todas as outras técnicas mais fáceis de achar.</string>
-    <string name="lesson_look_first_3">Depois as eliminações baratas: pares apontadores e reivindicadores. São rápidos de conferir, casa por casa, e muitas vezes destravam um único na hora.</string>
-    <string name="lesson_look_first_4">Depois pares e trios nas casas com menos casas vazias. Depois os peixes, depois os wings. As cadeias por último, sempre, porque dão mais trabalho e são as menos comuns.</string>
+    <string name="lesson_look_first_3">Depois as eliminações baratas: pares apontadores e reivindicadores. São rápidos de conferir, região por região, e muitas vezes destravam um único na hora.</string>
+    <string name="lesson_look_first_4">Depois pares e trios nas regiões com menos casas vazias. Depois os peixes, depois os wings. As cadeias por último, sempre, porque dão mais trabalho e são as menos comuns.</string>
     <string name="lesson_look_first_5">Caçar um Jellyfish antes de conferir os únicos é o equivalente sudoku de reescrever um programa antes de ler a mensagem de erro. O aplicativo classifica os jogos pela coisa mais difícil que eles exigem, mas um Mestre continua sendo quase todo de únicos.</string>
     <string name="lesson_together_title">Um Mestre, juntos</string>
     <string name="lesson_together_summary">Um jogo difícil é quase todo de passos fáceis com alguns difíceis dentro.</string>
@@ -785,7 +785,7 @@
     <string name="lesson_together_2">Ele abre com um único nu. Quase todos abrem.</string>
     <string name="lesson_together_3">Depois um único oculto, no bloco do lado.</string>
     <string name="lesson_together_4">Agora trava, e um par apontador limpa uma coluna para que os únicos possam recomeçar. Note que nenhum número foi preenchido por esse passo e mesmo assim houve avanço.</string>
-    <string name="lesson_together_5">Um par nu um pouco depois, fazendo o mesmo trabalho numa casa.</string>
+    <string name="lesson_together_5">Um par nu um pouco depois, fazendo o mesmo trabalho numa região.</string>
     <string name="lesson_together_6">Mais adiante, um X-Wing. A essa altura o tabuleiro está meio cheio e são as anotações que estão trabalhando.</string>
     <string name="lesson_together_7">E perto do fim, o que garante o nível: um ALS-XZ. Uma eliminação, e o resto volta a ser únicos.</string>
     <string name="lesson_together_8">É isso que Mestre quer dizer aqui. Não oitenta e um passos difíceis, mas setenta fáceis e um punhado que exigem tudo o que você aprendeu.</string>
@@ -834,22 +834,22 @@
     <string name="settings_import_failed">Não foi possível ler esse arquivo, e nada neste telefone foi alterado.</string>
     <string name="settings_course_reset">O curso voltou ao começo. Os seus jogos estão intactos.</string>
     <string name="practice_looking">Procurando uma posição…</string>
-    <string name="practice_find">Encontre o %1$s.</string>
+    <string name="practice_find">Encontre: %1$s.</string>
     <string name="practice_keep_going">Esse é um deles. Continue.</string>
-    <string name="practice_wrong">Essa casa não. Leia a regra de novo: um %1$s não se apoia nela.</string>
-    <string name="practice_right">Esse é o %1$s. O que ele descarta está marcado.</string>
-    <string name="practice_revealed">Aqui está o %1$s, e o que ele descarta.</string>
+    <string name="practice_wrong">Essa casa não. Leia a regra de novo: %1$s não se apoia nela.</string>
+    <string name="practice_right">Isso mesmo: %1$s. O que essa técnica descarta está marcado.</string>
+    <string name="practice_revealed">Aqui está: %1$s, e o que essa técnica descarta.</string>
     <string name="practice_show_me">Mostre</string>
     <string name="practice_another">Outro</string>
     <string name="practice_skip">Pular</string>
     <string name="practice_title">Treino</string>
     <string name="technique_pick_title">Ache um para praticar</string>
-    <string name="technique_pick_body">Cada puzzle aqui foi avaliado pelo mesmo solucionador que escreve as dicas, então se sabe em qual regra cada um se apoia. Escolha uma técnica e receba um puzzle que não dá para terminar sem ela.</string>
+    <string name="technique_pick_body">Cada jogo aqui foi avaliado pelo mesmo solucionador que escreve as dicas, então se sabe em qual regra cada um se apoia. Escolha uma técnica e receba um jogo que não dá para terminar sem ela.</string>
     <string name="technique_pick_none">Esta versão não tem nenhum que dependa dela</string>
     <string name="technique_pick_play">Jogar um</string>
     <plurals name="technique_pick_count">
-        <item quantity="one">%1$d puzzle depende dela</item>
-        <item quantity="other">%1$d puzzles dependem dela</item>
+        <item quantity="one">%1$d jogo depende dela</item>
+        <item quantity="other">%1$d jogos dependem dela</item>
     </plurals>
     <string name="practice_none">Ainda não há nada para treinar. Termine primeiro uma lição que ensine uma técnica.</string>
     <string name="glossary_learn_this">Aprender isto</string>
@@ -864,7 +864,7 @@
     <string name="settings_hint_note">Ligado por padrão. Três dicas são de graça, e a quarta custa o jogo, o que faz de uma dica uma decisão em vez de um reflexo. Desligue enquanto estiver fazendo o curso.</string>
     <string name="settings_post_mortem">Dizer para onde foi o tempo</string>
     <string name="settings_post_mortem_note">Depois de uma vitória, apontar os dois lugares onde a resolução travou e o que havia no tabuleiro ali. De uma resolução sem pausas não se diz nada.</string>
-    <string name="post_mortem_line">Você parou %1$s aqui. Havia um %2$s para achar.</string>
+    <string name="post_mortem_line">Você parou %1$s aqui. Havia isto para achar: %2$s.</string>
     <string name="post_mortem_title">Para onde foi o tempo</string>
     <string name="clean_line">Resolvido limpo: sem dicas, sem erros, sem anotações.</string>
     <string name="clean_mark">Limpo</string>
