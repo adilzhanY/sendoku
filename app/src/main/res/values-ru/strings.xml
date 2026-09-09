@@ -38,7 +38,9 @@
     <string name="enter_marker">Введено вручную</string>
     <plurals name="enter_help">
         <item quantity="one">Пока %1$d подсказка. Нажмите на клетку, потом на цифру. Когда закончите, проверьте.</item>
-        <item quantity="other">Пока %1$d подсказок. Нажмите на клетку, потом на цифру. Когда закончите, проверьте.</item>
+        <item quantity="few">Пока %1$d подсказки. Нажмите на клетку, потом на цифру. Когда закончите, проверьте.</item>
+        <item quantity="many">Пока %1$d подсказок. Нажмите на клетку, потом на цифру. Когда закончите, проверьте.</item>
+        <item quantity="other">Пока %1$d подсказки. Нажмите на клетку, потом на цифру. Когда закончите, проверьте.</item>
     </plurals>
     <string name="enter_impossible">Эту сетку невозможно закончить. Одна из подсказок неверна.</string>
     <string name="enter_ambiguous">У этой сетки больше одного решения, так что это не совсем головоломка. Сыграть всё равно можно.</string>
@@ -861,7 +863,9 @@
     <string name="technique_pick_play">Сыграть</string>
     <plurals name="technique_pick_count">
         <item quantity="one">%1$d головоломка держится на нём</item>
-        <item quantity="other">%1$d головоломок держатся на нём</item>
+        <item quantity="few">%1$d головоломки держатся на нём</item>
+        <item quantity="many">%1$d головоломок держатся на нём</item>
+        <item quantity="other">%1$d головоломки держатся на нём</item>
     </plurals>
     <string name="practice_none">Пока нечего отрабатывать. Сначала пройдите урок с техникой.</string>
     <string name="glossary_learn_this">Учить</string>
