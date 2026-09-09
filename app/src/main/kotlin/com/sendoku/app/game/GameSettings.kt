@@ -5,7 +5,9 @@ import androidx.compose.runtime.Immutable
 /**
  * The choices a player can make about how the board helps them.
  *
- * Every one of these defaults to on except the mistake limit. Sendoku is not trying to make
+ * Most of these default to on. The exceptions are the three that change what the game asks of
+ * you rather than how comfortable it is to read: auto notes, auto check and highlighting where
+ * a digit can still go are all off, and the mistake limit is on at three. Sendoku is not trying to make
  * the game harder by withholding conveniences: the difficulty is in the puzzle, and it is
  * already past what most apps ship. Someone who wants a bare board can turn these off, and
  * the ones who do are exactly the ones who will find the settings screen.

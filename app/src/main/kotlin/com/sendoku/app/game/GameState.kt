@@ -282,8 +282,11 @@ public data class GameState(
      * itself. Charging somebody for a mistake and then hiding it is indefensible: either
      * the game does not judge the digit, or it says so at once.
      *
-     * With the limit off and auto check off, nothing is marked and the board plays like
-     * paper, which is the mode where the app is not judging anything.
+     * With the limit off and auto check off, nothing is marked here. That is not the same as
+     * the app keeping its opinion to itself, and it is worth being honest about which: sound
+     * is on by default, and a placement that matches the solution plays a different note from
+     * one that does not, so the board still says right or wrong on every entry. Turning the
+     * sound off as well is what actually makes it play like paper.
      */
     public val flaggedWrong: Set<Int>
         get() {
