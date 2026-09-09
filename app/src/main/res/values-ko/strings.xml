@@ -6,6 +6,10 @@
   씁니다. 이 퍼즐에서는 대부분 영어 이름을 한글로 옮긴 형태여서, 네이키드 싱글과 히든 싱글은
   억지로 한자어를 만들지 않고 그대로 씁니다. 그리고 말투는 원문과 같습니다. 차분하고,
   곧바로 말하고, 느낌표를 쓰지 않습니다.
+
+  높임은 파일 전체가 해요체 하나입니다. 합니다체를 섞지 마세요.
+  용어도 하나로 고정합니다. 칸, 행, 열, 박스, 줄, 영역(house와 region 둘 다), 숫자,
+  메모, 후보수, 무리(ALS 같은 cell group), 강한 연결과 약한 연결.
 -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Sendoku</string>
@@ -20,30 +24,30 @@
     <string name="home_your_level">현재 난이도</string>
     <string name="home_all_levels">모든 난이도</string>
     <string name="killer_title">킬러</string>
-    <string name="killer_note">케이지가 있고, 각 케이지는 합을 맞춰야 합니다</string>
+    <string name="killer_note">케이지가 있고, 각 케이지는 합을 맞춰야 해요</string>
     <string name="killer_marker">킬러</string>
     <string name="killer_card">%1$s · %2$s</string>
     <string name="code_title">받은 문제 풀기</string>
     <string name="code_hint">코드 붙여넣기</string>
     <string name="code_play">시작</string>
-    <string name="code_unreadable">Sendoku 코드가 아닌 것 같습니다.</string>
-    <string name="code_typo">코드에 없는 문자가 들어 있습니다. 받은 코드와 비교해 보세요.</string>
-    <string name="code_cut_short">코드가 잘린 채로 도착했습니다. 전체를 다시 보내 달라고 하세요.</string>
-    <string name="code_too_new">이 코드는 더 새로운 버전의 Sendoku에서 만들어졌습니다.</string>
-    <string name="code_missing">코드는 읽히지만, 이 버전에는 그런 문제가 없습니다.</string>
-    <string name="code_unplayable">이 판은 추론만으로는 풀 수 없어서, Sendoku는 설명할 수 있는 척하지 않습니다.</string>
+    <string name="code_unreadable">Sendoku 코드가 아닌 것 같아요.</string>
+    <string name="code_typo">코드에 없는 문자가 들어 있어요. 받은 코드와 비교해 보세요.</string>
+    <string name="code_cut_short">코드가 잘린 채로 도착했어요. 전체를 다시 보내 달라고 하세요.</string>
+    <string name="code_too_new">이 코드는 더 새로운 버전의 Sendoku에서 만들어졌어요.</string>
+    <string name="code_missing">코드는 읽히지만, 이 버전에는 그런 문제가 없어요.</string>
+    <string name="code_unplayable">이 판은 추론만으로는 풀 수 없어서, Sendoku는 설명할 수 있는 척하지 않아요.</string>
     <string name="code_shared">받은 문제</string>
     <string name="code_share">이 문제를 친구에게 보내기</string>
-    <string name="code_invitation">이 %1$s 문제를 풀어 보세요. 같은 판입니다.</string>
+    <string name="code_invitation">이 %1$s 문제를 풀어 보세요. 같은 판이고, 비교하는 데 앱은 필요 없어요.</string>
     <string name="enter_title">문제 입력하기</string>
     <string name="enter_marker">직접 입력</string>
     <plurals name="enter_help">
         <item quantity="other">지금까지 단서 %1$d개. 칸을 누르고 숫자를 누르세요. 다 넣었으면 확인하세요.</item>
     </plurals>
-    <string name="enter_impossible">이 판은 완성할 수 없습니다. 단서 중 하나가 틀렸습니다.</string>
-    <string name="enter_ambiguous">이 판은 답이 여러 개라 제대로 된 문제가 아닙니다. 그래도 풀 수는 있습니다.</string>
-    <string name="enter_beyond">답은 하나지만 추론만으로는 도달할 수 없어서, Sendoku가 단계별로 설명할 수 없습니다.</string>
-    <string name="enter_ready">답이 하나입니다. %1$s 난이도이고, 점수는 %2$s입니다.</string>
+    <string name="enter_impossible">이 판은 완성할 수 없어요. 단서 중 하나가 틀렸어요.</string>
+    <string name="enter_ambiguous">이 판은 답이 여러 개라 제대로 된 문제가 아니에요. 그래도 풀 수는 있어요.</string>
+    <string name="enter_beyond">답은 하나지만 추론만으로는 도달할 수 없어서, Sendoku가 단계별로 설명할 수 없어요.</string>
+    <string name="enter_ready">답이 하나예요. %1$s 난이도, 평점 %2$s.</string>
     <string name="enter_clear">비우기</string>
     <string name="enter_check">확인</string>
     <string name="enter_play">시작</string>
@@ -149,7 +153,7 @@
     <string name="hint_where">어디인지 보여주세요</string>
     <string name="hint_explain">설명해 주세요</string>
     <string name="hint_do_it">넣기</string>
-    <string name="hint_evidence">그 행에는 이미 %1$s이 있어요. 열에는 %2$s. 박스에는 %3$s. 합치면 %4$d을(를) 뺀 모든 숫자가 나와요.</string>
+    <string name="hint_evidence">그 행에는 이미 %1$s이(가) 있어요. 열에는 %2$s. 박스에는 %3$s. 합치면 %4$d을(를) 뺀 모든 숫자가 나와요.</string>
     <string name="hint_rests_on_earlier">이 추론의 일부는 앞선 힌트가 지운 후보수에 기대고 있어요. 그 후보수는 판에 메모로 적혀 있으니 거기서부터 따라가면 돼요.</string>
     <string name="hint_what_is_this">이게 뭔가요?</string>
     <string name="hint_wrong_title">뭔가 잘못됐어요</string>
@@ -162,7 +166,7 @@
     <string name="hint_stuck_title">제안할 것이 없어요</string>
     <string name="hint_stuck_body">이 판 자체는 규칙에 어긋나지 않지만, Sendoku가 아는 기법 중 어느 것도 들어맞지 않아요. 앱의 문제에서는 일어나지 않아야 할 일이에요.</string>
     <string name="hint_in_region">%1$s</string>
-    <string name="hint_in_regions">%1$s와 %2$s</string>
+    <string name="hint_in_regions">%1$s과(와) %2$s</string>
     <string name="hint_outcome_place" tools:ignore="PluralsCandidate">그래서 %1$d행 %2$d열에는 %3$d이(가) 들어가요.</string>
     <string name="hint_outcome_strike_one" tools:ignore="PluralsCandidate">그래서 %2$s에서 %1$d을(를) 지울 수 있어요.</string>
     <string name="hint_outcome_strike_two" tools:ignore="PluralsCandidate">그래서 %3$s에서 %1$d과(와) %2$d을(를) 지울 수 있어요.</string>
@@ -227,7 +231,7 @@
     <string name="settings_sound_note">조작할 때 나는 잔잔한 소리예요. 끄는 것은 한 번만 누르면 되고, 휴대폰의 무음 모드가 둘 다보다 우선해요.</string>
     <string name="settings_mistake_limit">실수 세 번이면 판을 끝내기</string>
     <string name="settings_mistake_note">기본으로 켜져 있고, 세 번이에요. 높은 난이도에서는 꺼 두세요. 한 번의 부주의로 한 시간을 잃는 것은 괴로우니까요.</string>
-    <string name="settings_about">SENDOKU 정보</string>
+    <string name="settings_about">Sendoku 정보</string>
 
     <string name="theme_deep_field">딥 필드</string>
     <string name="theme_deep_field_summary">완전한 검정에 시안 한 점, 그 외에는 아무것도</string>
@@ -245,7 +249,7 @@
     <string name="stats_solved">완성</string>
     <string name="stats_streak">연속</string>
     <string name="stats_hardest">최고 난이도</string>
-    <string name="stats_hardest_note">지금까지 완성한 것 중 가장 어려운 난이도는 %1$s예요.</string>
+    <string name="stats_hardest_note">지금까지 완성한 것 중 가장 어려운 것은 %1$s 난이도예요.</string>
     <plurals name="stats_longest_run">
         <item quantity="other">가장 길게 이어간 기록은 %1$d일이에요.</item>
     </plurals>
@@ -279,7 +283,7 @@
     <string name="about_hints">가르쳐 주는 힌트</string>
     <string name="about_hints_detail">힌트는 기법의 이름을 말하고 그 논리를 설명해요. 숫자만 채워 넣고 끝내지 않고, 팔지도 않아요. 문제마다 세 번씩 들어 있고, 제한은 설정에서 끌 수 있어요.</string>
     <string name="about_sharing">공유</string>
-    <string name="about_sharing_detail">문제 코드는 계정이 아니라 문제 그 자체입니다. 로그인할 곳도, 순위표도 없고, 누군가가 말한 기록을 앱이 확인할 방법도 없습니다. 같은 판을 두 사람이 풀고, 각자 무엇을 치렀는지 비교할 뿐입니다.</string>
+    <string name="about_sharing_detail">문제 코드는 계정이 아니라 문제 그 자체예요. 로그인할 곳도, 순위표도 없고, 누군가가 말한 기록을 앱이 확인할 방법도 없어요. 같은 판을 두 사람이 풀고, 각자 무엇을 치렀는지 비교할 뿐이에요.</string>
     <string name="about_rating">난이도는 그 문제가 정말로 필요로 하는 가장 어려운 기법으로 정해요. 사람이 푸는 방식 그대로 풀어 보고 계산한 값이에요. 그래서 여기의 「매우 어려움」은 지난번 「매우 어려움」과 같은 무게예요.</string>
     <string name="about_licence">Sendoku는 GNU 일반 공중 사용 허가서 버전 3에 따른 자유 소프트웨어예요.</string>
     <string name="about_privacy">개인정보처리방침은 스토어가 요구하는 형식으로 같은 내용을 적어 두었어요. adilzhany.github.io/sendoku/privacy</string>
@@ -311,7 +315,7 @@
     <string name="look_xy_chain">후보수가 둘인 칸들이 이어져, 각 칸이 다음 칸을 정해요.</string>
     <string name="look_forcing_chain">더 이상 찾을 것이 없을 때, 가능성이 정확히 둘인 칸이에요.</string>
     <string name="look_death_blossom">한 칸과, 그 칸이 될 수 있는 숫자마다 하나씩 딸린 무리예요. 그 칸은 무리 안의 그 숫자를 모두 볼 수 있어요.</string>
-    <string name="look_als_xy_wing">저마다 한 숫자만 더 있으면 가득 차는 무리 셋이, 서로 다른 두 숫자로 한 줄에 이어져 있어요.</string>
+    <string name="look_als_xy_wing">저마다 한 숫자만 빠지면 가득 차는 무리 셋이, 서로 다른 두 숫자로 한 줄에 이어져 있어요.</string>
     <string name="look_sue_de_coq">박스와 줄이 만나는 곳인데, 겹치는 칸에 들어갈 수 있는 것보다 숫자가 두 개 더 많아요.</string>
     <string name="look_als_xz">저마다 한 숫자만 빠지면 잠기는 칸 무리 둘이에요.</string>
 
@@ -410,26 +414,26 @@
     <string name="stage_the_deep_end">가장 깊은 곳</string>
     <string name="stage_cages">케이지</string>
     <string name="lesson_cage_is_title">케이지란</string>
-    <string name="lesson_cage_is_summary">점선으로 둘러싼 모양이 케이지이고, 작은 숫자는 그 칸들의 합입니다.</string>
-    <string name="lesson_cage_is_1">킬러는 숫자가 하나도 없이 시작합니다. 대신 판이 점선으로 케이지들로 나뉘어 있고, 케이지 모서리의 작은 숫자가 그 칸들의 합입니다. 나머지는 보통 스도쿠와 같습니다.</string>
-    <string name="lesson_cage_is_2">한 칸짜리 케이지는 다르게 쓴 단서입니다. 여기는 1이라고 적혀 있으니 1이 들어가고, 생각할 것이 없습니다.</string>
-    <string name="lesson_cage_is_3">넣었습니다. 이제 조금 생각해야 하는 케이지입니다.</string>
-    <string name="lesson_cage_is_4a">이 케이지는 두 칸에 5입니다. 1과 4이거나 2와 3이므로 아직 정해지지는 않지만, 5나 6이 들어갈 수 없다는 것은 이미 알 수 있습니다.</string>
-    <string name="lesson_cage_is_4">세 칸의 합이 15입니다. 6x6에서 가장 큰 숫자 셋은 4, 5, 6이고 더하면 정확히 15입니다. 그러니 이 케이지에는 그 셋이 순서만 다르게 들어가고, 다른 숫자는 들어갈 수 없습니다.</string>
-    <string name="lesson_cage_is_5">케이지 안에서는 숫자가 반복되지 않습니다. 합이 이렇게 많은 것을 말해 주는 이유가 바로 이 규칙입니다. 이것이 없다면 세 칸의 15는 5, 5, 5일 수도 있습니다.</string>
-    <string name="lesson_cage_house_title">하우스 안의 케이지</string>
-    <string name="lesson_cage_house_summary">행, 열, 박스의 합은 정해져 있고, 나머지는 그 안의 케이지가 알려 줍니다.</string>
-    <string name="lesson_cage_house_1">모든 행과 열과 박스는 각 숫자를 한 번씩 가지므로 합이 모두 같습니다. 6x6에서 그 합은 21입니다.</string>
-    <string name="lesson_cage_house_2">이 두 칸의 합은 10입니다. 서로 다른 두 숫자로 10을 만드는 방법은 4와 6뿐이므로, 이 케이지가 둘 다 가져갑니다. 이 행의 다른 칸은 4도 6도 될 수 없습니다.</string>
-    <string name="lesson_cage_house_3">이제 행 전체입니다. 합은 21이고, 케이지 셋이 통째로 그 안에 들어 있습니다. 5와 10과 1, 합쳐서 16입니다.</string>
-    <string name="lesson_cage_house_4">그러니 남은 칸은 21에서 16을 뺀 5입니다.</string>
-    <string name="lesson_cage_house_5">푸는 사람들은 이것을 이니라고 부릅니다. 같은 계산이 반대로도 통합니다. 케이지가 하우스 밖으로 삐져나오면 삐져나온 만큼이 차이이고, 그것을 아우티라고 합니다.</string>
+    <string name="lesson_cage_is_summary">점선으로 둘러싼 모양이 케이지이고, 작은 숫자는 그 칸들의 합이에요.</string>
+    <string name="lesson_cage_is_1">킬러는 숫자가 하나도 없이 시작해요. 대신 판이 점선으로 케이지들로 나뉘어 있고, 케이지 모서리의 작은 숫자가 그 칸들의 합이에요. 나머지는 보통 스도쿠와 같아요.</string>
+    <string name="lesson_cage_is_2">한 칸짜리 케이지는 다르게 쓴 단서예요. 여기는 1이라고 적혀 있으니 1이 들어가고, 생각할 것이 없어요.</string>
+    <string name="lesson_cage_is_3">넣었어요. 이제 조금 생각해야 하는 케이지예요.</string>
+    <string name="lesson_cage_is_4a">이 케이지는 두 칸에 5예요. 1과 4이거나 2와 3이라 아직 정해지지는 않지만, 5나 6이 들어갈 수 없다는 것은 이미 알 수 있어요.</string>
+    <string name="lesson_cage_is_4">세 칸의 합이 15예요. 6x6에서 가장 큰 숫자 셋은 4, 5, 6이고 더하면 정확히 15예요. 그러니 이 케이지에는 그 셋이 순서만 다르게 들어가고, 다른 숫자는 들어갈 수 없어요.</string>
+    <string name="lesson_cage_is_5">케이지 안에서는 숫자가 반복되지 않아요. 합이 이렇게 많은 것을 말해 주는 이유가 바로 이 규칙이에요. 이것이 없다면 세 칸의 15는 5, 5, 5일 수도 있어요.</string>
+    <string name="lesson_cage_house_title">영역 안의 케이지</string>
+    <string name="lesson_cage_house_summary">행, 열, 박스의 합은 정해져 있고, 나머지는 그 안의 케이지가 알려 줘요.</string>
+    <string name="lesson_cage_house_1">모든 행과 열과 박스는 각 숫자를 한 번씩 가지니 합이 모두 같아요. 6x6에서 그 합은 21이에요.</string>
+    <string name="lesson_cage_house_2">이 두 칸의 합은 10이에요. 서로 다른 두 숫자로 10을 만드는 방법은 4와 6뿐이라, 이 케이지가 둘 다 가져가요. 이 행의 다른 칸은 4도 6도 될 수 없어요.</string>
+    <string name="lesson_cage_house_3">이제 행 전체예요. 합은 21이고, 케이지 셋이 통째로 그 안에 들어 있어요. 5와 10과 1, 합쳐서 16이에요.</string>
+    <string name="lesson_cage_house_4">그러니 남은 칸은 21에서 16을 뺀 5예요.</string>
+    <string name="lesson_cage_house_5">푸는 사람들은 이것을 이니라고 불러요. 같은 계산이 반대로도 통해요. 케이지가 영역 밖으로 삐져나오면 삐져나온 만큼이 차이이고, 그것을 아우티라고 해요.</string>
     <string name="lesson_cage_home_title">케이지에 남은 한 자리</string>
-    <string name="lesson_cage_home_summary">케이지가 반드시 품어야 하는 숫자인데, 들어갈 칸이 하나만 남은 경우입니다.</string>
-    <string name="lesson_cage_home_1">킬러가 조금 진행되면 케이지는 합만이 아니라 더 많은 것을 말하기 시작합니다. 여기에는 이미 숫자 셋이 들어가 있습니다.</string>
-    <string name="lesson_cage_home_2">이 케이지는 두 칸에 10이므로 4와 6을 품습니다. 그런데 오른쪽 박스에 이미 6이 있어서, 케이지의 오른쪽 칸에서는 6이 빠집니다.</string>
-    <string name="lesson_cage_home_3">그래서 6이 들어갈 자리는 왼쪽 하나뿐입니다. 합이 케이지에 6이 있다고 말했고, 판의 나머지가 어디인지 말해 주었습니다.</string>
-    <string name="lesson_cage_home_4">이것이 케이지 유일입니다. 킬러의 숨은 유일로, 한 칸에 들어갈 수 있는 유일한 숫자가 아니라 한 숫자가 들어갈 수 있는 유일한 칸입니다.</string>
+    <string name="lesson_cage_home_summary">케이지가 반드시 품어야 하는 숫자인데, 들어갈 칸이 하나만 남은 경우예요.</string>
+    <string name="lesson_cage_home_1">킬러가 조금 진행되면 케이지는 합만이 아니라 더 많은 것을 말하기 시작해요. 여기에는 이미 숫자 셋이 들어가 있어요.</string>
+    <string name="lesson_cage_home_2">이 케이지는 두 칸에 10이라 4와 6을 품어요. 그런데 오른쪽 박스에 이미 6이 있어서, 케이지의 오른쪽 칸에서는 6이 빠져요.</string>
+    <string name="lesson_cage_home_3">그래서 6이 들어갈 자리는 왼쪽 하나뿐이에요. 합이 케이지에 6이 있다고 말했고, 판의 나머지가 어디인지 말해 줬어요.</string>
+    <string name="lesson_cage_home_4">이것이 케이지 유일이에요. 킬러의 히든 싱글로, 한 칸에 들어갈 수 있는 유일한 숫자가 아니라 한 숫자가 들어갈 수 있는 유일한 칸이에요.</string>
 
     <string name="lesson_what_is_title">스도쿠란 무엇인가</string>
     <string name="lesson_what_is_summary">모든 행, 모든 열, 모든 박스에 각 숫자가 한 번씩 들어가요.</string>
@@ -445,7 +449,7 @@
     <string name="lesson_houses_2">다시 행이에요.</string>
     <string name="lesson_houses_3">이것은 열이에요.</string>
     <string name="lesson_houses_4">그리고 이것이 박스예요. 굵은 선으로 나뉘어 있어요. 여기에도 각 숫자가 한 번씩 들어가요.</string>
-    <string name="lesson_houses_5">그래서 이 칸은 동시에 세 영역에 속해요. 같은 영역을 공유하는 칸을 모두 밝혀 두었는데, 그중 어느 것도 이 칸과 같은 숫자를 가질 수 없어요. 이 세 영역을 영역이라고 부르고, 앞으로도 그렇게 부를게요.</string>
+    <string name="lesson_houses_5">그래서 이 칸은 동시에 세 영역에 속해요. 같은 영역을 공유하는 칸을 모두 밝혀 두었는데, 그중 어느 것도 이 칸과 같은 숫자를 가질 수 없어요. 이 세 가지를 영역이라고 부르고, 앞으로도 그렇게 부를게요.</string>
 
     <string name="lesson_givens_title">처음부터 있는 숫자</string>
     <string name="lesson_givens_summary">처음에 인쇄되어 있는 숫자는 고정이고, 답을 하나로 만드는 것이 바로 그 숫자들이에요.</string>
@@ -831,11 +835,11 @@
     <string name="practice_skip">건너뛰기</string>
     <string name="practice_title">연습</string>
     <string name="technique_pick_title">연습할 문제 찾기</string>
-    <string name="technique_pick_body">여기 있는 문제는 모두 힌트를 쓰는 것과 같은 풀이기로 평가했기 때문에, 각 문제가 어떤 규칙에 기대고 있는지 알고 있습니다. 기법을 고르면 그것 없이는 끝낼 수 없는 문제가 나옵니다.</string>
-    <string name="technique_pick_none">이 버전에는 해당하는 문제가 없습니다</string>
+    <string name="technique_pick_body">여기 있는 문제는 모두 힌트를 쓰는 것과 같은 풀이기로 평가했기 때문에, 각 문제가 어떤 규칙에 기대고 있는지 알고 있어요. 기법을 고르면 그것 없이는 끝낼 수 없는 문제가 나와요.</string>
+    <string name="technique_pick_none">이 버전에는 해당하는 문제가 없어요</string>
     <string name="technique_pick_play">한 판 풀기</string>
     <plurals name="technique_pick_count">
-        <item quantity="other">%1$d문제가 이 기법에 기댑니다</item>
+        <item quantity="other">%1$d문제가 이 기법에 기대요</item>
     </plurals>
     <string name="practice_none">아직 연습할 것이 없어요. 기법을 가르치는 수업을 먼저 끝내 주세요.</string>
     <string name="glossary_learn_this">이것 배우기</string>
@@ -849,8 +853,8 @@
     <string name="settings_hint_limit">힌트 세 번이면 판을 끝내기</string>
     <string name="settings_hint_note">기본으로 켜져 있어요. 힌트 세 번은 무료이고 네 번째는 판을 잃게 되니, 힌트가 반사가 아니라 결정이 돼요. 코스를 따라가는 동안에는 꺼 두세요.</string>
     <string name="settings_post_mortem">시간이 어디로 갔는지 알려주기</string>
-    <string name="settings_post_mortem_note">이긴 뒤에, 풀이가 느려진 두 지점과 그때 판에 무엇이 있었는지 알려줍니다. 멈춤이 없던 풀이에 대해서는 아무 말도 하지 않습니다.</string>
-    <string name="post_mortem_line">여기서 %1$s 멈췄습니다. 그때 %2$s이(가) 있었습니다.</string>
+    <string name="settings_post_mortem_note">이긴 뒤에, 풀이가 느려진 두 지점과 그때 판에 무엇이 있었는지 알려줘요. 멈춤이 없던 풀이에 대해서는 아무 말도 하지 않아요.</string>
+    <string name="post_mortem_line">여기서 %1$s 멈췄어요. 그때 %2$s이(가) 있었어요.</string>
     <string name="post_mortem_title">시간이 어디로 갔나</string>
     <string name="clean_line">깔끔한 풀이: 힌트 없음, 실수 없음, 메모 없음.</string>
     <string name="clean_mark">깔끔</string>
@@ -869,7 +873,7 @@
     <string name="account_beaten">지금까지 깬 난이도</string>
     <string name="account_recent">최근 5주</string>
     <string name="account_hints">사용한 힌트</string>
-    <string name="account_empty">한 판만 끝내면 이 화면이 채워집니다. 난이도별로 깬 횟수와 플레이한 날이 모두 표시됩니다.</string>
+    <string name="account_empty">한 판만 끝내면 이 화면이 채워져요. 난이도별로 깬 횟수와 플레이한 날이 모두 표시돼요.</string>
     <string name="account_stats">기록</string>
     <string name="account_history">기록 목록</string>
     <string name="history_title">기록 목록</string>
