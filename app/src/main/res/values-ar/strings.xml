@@ -21,7 +21,7 @@
     <string name="home_new_puzzle">لغز جديد</string>
     <string name="home_resume">متابعة</string>
     <string name="home_in_progress">قيد اللعب</string>
-    <string name="home_placed">الموضوع: %1$d من %2$d</string>
+    <string name="home_placed">الأرقام الموضوعة: %1$d من %2$d</string>
     <string name="home_or_start">أو ابدأ لعبة جديدة</string>
     <string name="home_your_level">مستواك</string>
     <string name="home_all_levels">كل المستويات</string>
@@ -40,14 +40,18 @@
     <string name="code_unplayable">لا يمكن إنهاء هذه الشبكة بالاستنتاج وحده، ولن يتظاهر Sendoku بأنه يستطيع شرحها.</string>
     <string name="code_shared">أُرسل إليك</string>
     <string name="code_share">أرسل هذا اللغز إلى صديق</string>
-    <string name="code_invitation">جرّب هذا اللغز من مستوى %1$s. الشبكة نفسها.</string>
+    <string name="code_invitation">جرّب هذا اللغز من مستوى %1$s. الشبكة نفسها، ولا حاجة إلى تطبيق للمقارنة.</string>
     <string name="enter_title">أدخل لغزًا</string>
     <string name="enter_marker">مُدخل يدويًا</string>
     <plurals name="enter_help">
-        <item quantity="one">تلميح واحد حتى الآن. المس خانة ثم رقمًا. تحقق منه عندما تكتمل الشبكة.</item>
-        <item quantity="other">%1$d تلميحات حتى الآن. المس خانة ثم رقمًا. تحقق منه عندما تكتمل الشبكة.</item>
+        <item quantity="zero">لا أرقام معطاة حتى الآن. المس خانة ثم رقمًا. تحقق منها عندما تكتمل الشبكة.</item>
+        <item quantity="one">رقم معطى واحد حتى الآن. المس خانة ثم رقمًا. تحقق منها عندما تكتمل الشبكة.</item>
+        <item quantity="two">رقمان معطيان حتى الآن. المس خانة ثم رقمًا. تحقق منها عندما تكتمل الشبكة.</item>
+        <item quantity="few">%1$d أرقام معطاة حتى الآن. المس خانة ثم رقمًا. تحقق منها عندما تكتمل الشبكة.</item>
+        <item quantity="many">%1$d رقمًا معطى حتى الآن. المس خانة ثم رقمًا. تحقق منها عندما تكتمل الشبكة.</item>
+        <item quantity="other">%1$d رقم معطى حتى الآن. المس خانة ثم رقمًا. تحقق منها عندما تكتمل الشبكة.</item>
     </plurals>
-    <string name="enter_impossible">لا سبيل لإنهاء هذه الشبكة. أحد التلميحات خاطئ.</string>
+    <string name="enter_impossible">لا سبيل لإنهاء هذه الشبكة. أحد الأرقام المعطاة خاطئ.</string>
     <string name="enter_ambiguous">لهذه الشبكة أكثر من حل، فهي ليست لغزًا حقًا. ومع ذلك يمكنك لعبها.</string>
     <string name="enter_beyond">حل واحد، لكن لا يمكن الوصول إليه بالاستنتاج وحده، فلا يستطيع Sendoku شرحه خطوة بخطوة.</string>
     <string name="enter_ready">حل واحد. هذا لغز من مستوى %1$s، تقييمه %2$s.</string>
@@ -254,7 +258,7 @@
     <string name="settings_sound_note">نغمات هادئة أثناء اللعب. إيقافها بلمسة واحدة، ووضع الصامت في الهاتف يعلو على الاثنين.</string>
     <string name="settings_mistake_limit">إنهاء اللعبة بعد ثلاثة أخطاء</string>
     <string name="settings_mistake_note">مفعّل افتراضيًا، عند ثلاثة. عطّله في المستويات الصعبة، حيث خسارة ساعة بسبب سهو واحد أمر مؤلم.</string>
-    <string name="settings_about">عن SENDOKU</string>
+    <string name="settings_about">عن Sendoku</string>
 
     <string name="theme_deep_field">الحقل العميق</string>
     <string name="theme_deep_field_summary">أسود خالص، ولمسة سماوية واحدة، ولا شيء غير ذلك</string>
@@ -307,7 +311,7 @@
     <string name="about_no_purchases">بلا مشتريات</string>
     <string name="about_no_purchases_detail">كل الألغاز وكل التلميحات موجودة هنا بالفعل.</string>
     <string name="about_offline">يعمل دون إنترنت</string>
-    <string name="about_offline_detail">الدفعة كاملة تسافر داخل التطبيق.</string>
+    <string name="about_offline_detail">الدفعة كاملة تأتي داخل التطبيق.</string>
     <string name="about_hints">تلميحات تُعلّم</string>
     <string name="about_hints_detail">التلميح يسمي الأسلوب ويشرح الاستنتاج. لا يكتفي أبدًا بملء رقم، ولا يُباع أبدًا: ثلاثة مع كل لغز، والحد يمكن تعطيله من الإعدادات.</string>
     <string name="about_sharing">المشاركة</string>
@@ -449,14 +453,14 @@
     <string name="lesson_cage_is_title">ما هو القفص</string>
     <string name="lesson_cage_is_summary">الأشكال المرسومة بخط متقطع هي أقفاص، والرقم الصغير هو مجموع خاناتها.</string>
     <string name="lesson_cage_is_1">يبدأ الكيلر بلا أي رقم. بدلًا من ذلك تُقسَّم الشبكة إلى أقفاص مرسومة بخطوط متقطعة، والرقم الصغير في زاوية القفص هو مجموع خاناته. وكل ما عدا ذلك سودوكو عادي.</string>
-    <string name="lesson_cage_is_2">القفص المكوَّن من خانة واحدة هو تلميح مكتوب بطريقة أخرى. هنا مكتوب واحد، فيوضع واحد، ولا شيء يُستنتج.</string>
+    <string name="lesson_cage_is_2">القفص المكوَّن من خانة واحدة هو رقم معطى مكتوب بطريقة أخرى. هنا مكتوب واحد، فيوضع واحد، ولا شيء يُستنتج.</string>
     <string name="lesson_cage_is_3">وُضع. والآن قفص يحتاج إلى تفكير.</string>
     <string name="lesson_cage_is_4a">هذا القفص خمسة في خانتين. أي واحد وأربعة، أو اثنان وثلاثة، فلم يُحسم بعد، لكن يُعلم منذ الآن أنه لا خمسة فيه ولا ستة.</string>
     <string name="lesson_cage_is_4">ثلاث خانات مجموعها خمسة عشر. في شبكة ستة في ستة أكبر ثلاثة أرقام هي أربعة وخمسة وستة، ومجموعها خمسة عشر بالضبط. إذن يحوي هذا القفص هذه الثلاثة بأي ترتيب، ولا شيء غيرها.</string>
     <string name="lesson_cage_is_5">لا يتكرر رقم داخل القفص. هذه القاعدة هي التي تجعل المجموع يقول الكثير: لولاها لأمكن أن يكون خمسة عشر في ثلاث خانات هو خمسة وخمسة وخمسة.</string>
     <string name="lesson_cage_house_title">أقفاص داخل البيت</string>
     <string name="lesson_cage_house_summary">للصف والعمود والمربع مجموع معروف، والأقفاص التي بداخلها تكمل الباقي.</string>
-    <string name="lesson_cage_house_1">كل صف وكل عمود وكل مربع يحوي كل رقم مرة واحدة، فمجموعها واحد. في شبكة ستة في ستة هذا المجموع واحد وعشرون.</string>
+    <string name="lesson_cage_house_1">كل صف وكل عمود وكل مربع يحوي كل رقم مرة واحدة، فلها كلها المجموع نفسه. في شبكة ستة في ستة هذا المجموع واحد وعشرون.</string>
     <string name="lesson_cage_house_2">مجموع هاتين الخانتين عشرة. ولا تُصنع العشرة من رقمين مختلفين إلا بأربعة وستة، فيأخذ هذا القفص كليهما، ولا يمكن لأي خانة أخرى في هذا الصف أن تكون أربعة أو ستة.</string>
     <string name="lesson_cage_house_3">والآن الصف كله. مجموعه واحد وعشرون، وثلاثة أقفاص تقع بكاملها داخله: خمسة وعشرة وواحد، أي ستة عشر.</string>
     <string name="lesson_cage_house_4">إذن الخانة المتبقية هي واحد وعشرون ناقص ستة عشر، أي خمسة.</string>
@@ -877,8 +881,12 @@
     <string name="technique_pick_none">لا يوجد في هذا الإصدار لغز يقوم عليه</string>
     <string name="technique_pick_play">العب واحدًا</string>
     <plurals name="technique_pick_count">
+        <item quantity="zero">لا لغز يقوم عليه</item>
         <item quantity="one">لغز واحد يقوم عليه</item>
-        <item quantity="other">%1$d ألغاز تقوم عليه</item>
+        <item quantity="two">لغزان يقومان عليه</item>
+        <item quantity="few">%1$d ألغاز تقوم عليه</item>
+        <item quantity="many">%1$d لغزًا تقوم عليه</item>
+        <item quantity="other">%1$d لغز يقوم عليه</item>
     </plurals>
     <string name="practice_none">لا شيء للتدرب عليه بعد. أنهِ أولًا درسًا يعلّم أسلوبًا.</string>
     <string name="glossary_learn_this">تعلّم هذا</string>
@@ -935,7 +943,7 @@
         <item quantity="one">رقم واحد مما وضعته خاطئ. وإيجاده يبقى لك.</item>
         <item quantity="two">رقمان مما وضعته خاطئان. وإيجادهما يبقى لك.</item>
         <item quantity="few">%1$d أرقام مما وضعته خاطئة. وإيجادها يبقى لك.</item>
-        <item quantity="many">%1$d رقمًا مما وضعته خاطئة. وإيجادها يبقى لك.</item>
+        <item quantity="many">%1$d رقمًا مما وضعته خاطئ. وإيجادها يبقى لك.</item>
         <item quantity="other">%1$d رقم مما وضعته خاطئ. وإيجاده يبقى لك.</item>
     </plurals>
     <plurals name="path_summary">
