@@ -418,25 +418,25 @@
     <string name="stage_cages">ケージ</string>
     <string name="lesson_cage_is_title">ケージとは</string>
     <string name="lesson_cage_is_summary">破線で囲まれた形がケージで、小さな数字はそのマスの合計です。</string>
-    <string name="lesson_cage_is_1">キラーは数字が一つも書かれていない状態から始まります。かわりに盤面が破線でケージに切り分けられていて、ケージの角の小さな数字が、そのマスの合計です。それ以外は普通の数独と同じです。</string>
-    <string name="lesson_cage_is_2">一マスだけのケージは、書き方の違うヒントです。ここは一なので、一が入ります。考えることはありません。</string>
+    <string name="lesson_cage_is_1">キラーは数字がひとつも書かれていない状態から始まります。かわりに盤面が破線でケージに切り分けられていて、ケージの角の小さな数字が、そのマスの合計です。それ以外は普通のナンプレと同じです。</string>
+    <string name="lesson_cage_is_2">1マスだけのケージは、書き方の違う手がかりです。ここは1なので、1が入ります。考えることはありません。</string>
     <string name="lesson_cage_is_3">入りました。次は少し考えるケージです。</string>
-    <string name="lesson_cage_is_4a">こちらは二マスで五です。一と四、または二と三なので、まだ決まりませんが、五や六が入らないことはもう分かります。</string>
-    <string name="lesson_cage_is_4">三マスで合計十五。六かける六では大きい方から三つの数字は四、五、六で、足すとちょうど十五になります。つまりこのケージにはその三つが順不同で入り、ほかの数字は入りません。</string>
-    <string name="lesson_cage_is_5">ケージの中で同じ数字は繰り返しません。合計がこれほど多くを語るのは、この規則があるからです。なければ、三マスの十五は五、五、五でもよいことになります。</string>
+    <string name="lesson_cage_is_4a">こちらは2マスで5です。1と4、または2と3なので、まだ決まりませんが、5や6が入らないことはもう分かります。</string>
+    <string name="lesson_cage_is_4">3マスで合計15。6×6では大きい方から3つの数字は4、5、6で、足すとちょうど15になります。つまりこのケージにはその3つが順不同で入り、ほかの数字は入りません。</string>
+    <string name="lesson_cage_is_5">ケージの中で同じ数字は繰り返しません。合計がこれほど多くを語るのは、この規則があるからです。なければ、3マスの15は5、5、5でもよいことになります。</string>
     <string name="lesson_cage_house_title">ハウスの中のケージ</string>
     <string name="lesson_cage_house_summary">行、列、ブロックの合計は決まっていて、あとは中のケージが教えてくれます。</string>
-    <string name="lesson_cage_house_1">どの行も列もブロックも各数字を一つずつ持つので、合計はどれも同じです。六かける六では、その合計は二十一です。</string>
-    <string name="lesson_cage_house_2">この二マスの合計は十です。違う二つの数字で十になるのは四と六だけなので、このケージが両方を取ります。この行のほかのマスは四にも六にもなれません。</string>
-    <string name="lesson_cage_house_3">次は行全体です。合計は二十一で、三つのケージがすっぽり中に入っています。五と十と一で、十六です。</string>
-    <string name="lesson_cage_house_4">残った一マスは二十一引く十六、つまり五です。</string>
+    <string name="lesson_cage_house_1">どの行も列もブロックも各数字をひとつずつ持つので、合計はどれも同じです。6×6では、その合計は21です。</string>
+    <string name="lesson_cage_house_2">この2マスの合計は10です。違う2つの数字で10になるのは4と6だけなので、このケージが両方を取ります。この行のほかのマスは4にも6にもなれません。</string>
+    <string name="lesson_cage_house_3">次は行全体です。合計は21で、3つのケージがすっぽり中に入っています。5と10と1で、16です。</string>
+    <string name="lesson_cage_house_4">残った1マスは21引く16、つまり5です。</string>
     <string name="lesson_cage_house_5">これをインと呼びます。逆向きにも同じ計算が使えます。ケージがハウスからはみ出しているとき、はみ出した分が差になり、それをアウトと呼びます。</string>
-    <string name="lesson_cage_home_title">ケージの中の一つの居場所</string>
-    <string name="lesson_cage_home_summary">ケージが必ず含む数字で、入れる場所が一つしか残っていないもの。</string>
-    <string name="lesson_cage_home_1">キラーが少し進むと、ケージは合計だけでなくもっと多くを語りはじめます。ここではすでに三つの数字が入っています。</string>
-    <string name="lesson_cage_home_2">このケージは二マスで十なので、四と六を含みます。ところが右のブロックにはすでに六があり、ケージの右のマスから六が消えます。</string>
-    <string name="lesson_cage_home_3">つまり六の居場所は左の一つだけです。合計が「六がある」と言い、盤面の残りが「どこか」を言いました。</string>
-    <string name="lesson_cage_home_4">これがケージ内の唯一です。キラーにおける隠れた唯一で、マスに入る唯一の数字ではなく、数字が入れる唯一のマスのことです。</string>
+    <string name="lesson_cage_home_title">ケージの中のひとつの居場所</string>
+    <string name="lesson_cage_home_summary">ケージが必ず含む数字で、入れる場所がひとつしか残っていないもの。</string>
+    <string name="lesson_cage_home_1">キラーが少し進むと、ケージは合計だけでなくもっと多くを語りはじめます。ここではすでに3つの数字が入っています。</string>
+    <string name="lesson_cage_home_2">このケージは2マスで10なので、4と6を含みます。ところが右のブロックにはすでに6があり、ケージの右のマスから6が消えます。</string>
+    <string name="lesson_cage_home_3">つまり6の居場所は左のひとつだけです。合計が「6がある」と言い、盤面の残りが「どこか」を言いました。</string>
+    <string name="lesson_cage_home_4">これがケージ内の唯一です。キラーにおける隠れたシングルで、マスに入る唯一の数字ではなく、数字が入れる唯一のマスのことです。</string>
 
     <string name="lesson_what_is_title">ナンプレとは</string>
     <string name="lesson_what_is_summary">どの行にも、どの列にも、どのブロックにも、各数字がちょうど1回ずつ入ります。</string>
@@ -456,7 +456,7 @@
 
     <string name="lesson_givens_title">最初からある数字</string>
     <string name="lesson_givens_summary">最初に印刷されている数字は動かせず、それが答えをひとつに決めています。</string>
-    <string name="lesson_givens_1">この数字は問題に最初から入っています。動かすことも消すこともできません。</string>
+    <string name="lesson_givens_1">この数字は問題に最初から入っているもので、最初からある数字と呼びます。動かすことも消すこともできません。</string>
     <string name="lesson_givens_2">あなたが入れる数字とは書き方が違うので、いつでも見分けがつきます。このアプリでは、最初からある数字のほうが太く見えます。</string>
     <string name="lesson_givens_3">こちらがあなたの埋めるマスです。</string>
     <string name="lesson_givens_4">きちんと作られた問題は、埋め方がちょうど1通りしかありません。これは問題についての約束であって、あなたについての話ではありません。行き詰まっても答えはひとつのままで、かならず理屈で導けます。このアプリの問題はすべてそう作られています。</string>
@@ -635,8 +635,8 @@
     <string name="lesson_w_wing_summary">同じ2候補の2マスが、その数字のどちらかを必ず持つ線でつながっています。</string>
     <string name="lesson_w_wing_1">3つめのウィングで、計算がいちばん少ないものです。</string>
     <string name="lesson_w_wing_2">ハウスを共有していない2マスが、どちらも同じ2つの数字を持っています。</string>
-    <string name="lesson_w_wing_3">次に、その2つの数字のどちらかが2か所にしか入れないハウスを探します。その2か所が、それぞれ先ほどの2マスの一方を見ていること。そのハウスが連結器です。</string>
-    <string name="lesson_w_wing_4">連結器のハウスは2か所のどちらかにその数字を持たなければならず、どちらであっても、ペアの一方をもう片方の数字に追いこみます。だからペアのどちらかは必ずもう片方の数字です。</string>
+    <string name="lesson_w_wing_3">次に、その2つの数字のどちらかが2か所にしか入れないハウスを探します。その2か所が、それぞれ先ほどの2マスの一方を見ていること。そのハウスがつなぎ役です。</string>
+    <string name="lesson_w_wing_4">つなぎ役のハウスは2か所のどちらかにその数字を持たなければならず、どちらであっても、ペアの一方をもう片方の数字に追いこみます。だからペアのどちらかは必ずもう片方の数字です。</string>
     <string name="lesson_w_wing_5">ペアの両方を見ているマスはその数字を失います。このマスが見ています。</string>
 
     <string name="lesson_rectangle_title">ユニークレクタングル</string>
@@ -838,11 +838,11 @@
     <string name="practice_skip">とばす</string>
     <string name="practice_title">練習</string>
     <string name="technique_pick_title">練習する問題を探す</string>
-    <string name="technique_pick_body">ここにある問題はすべて、ヒントを書くのと同じソルバーで判定されているので、どの規則が要になっているかが分かっています。手筋を選ぶと、それなしでは解けない問題が出ます。</string>
+    <string name="technique_pick_body">ここにある問題はすべて、ヒントを書くのと同じソルバーで判定されているので、どの規則が要になっているかが分かっています。テクニックを選ぶと、それなしでは解けない問題が出ます。</string>
     <string name="technique_pick_none">このバージョンにはありません</string>
     <string name="technique_pick_play">問題を解く</string>
     <plurals name="technique_pick_count">
-        <item quantity="other">%1$d 問がこの手筋を要します</item>
+        <item quantity="other">%1$d 問がこのテクニックを要します</item>
     </plurals>
     <string name="practice_none">まだ練習できるものがありません。まずテクニックを教えるレッスンを終えてください。</string>
     <string name="glossary_learn_this">これを学ぶ</string>
@@ -890,7 +890,7 @@
         <item quantity="other">下の2つはヒントを1回使います。残りは%1$d回です。</item>
     </plurals>
     <plurals name="hint_check_wrong">
-        <item quantity="other">入れた数字のうち%1$dつが違います。どれかを見つけるのはあなたの仕事のままです。</item>
+        <item quantity="other">入れた数字のうち%1$dつが違います。それを見つけるのは、やはりあなたの仕事です。</item>
     </plurals>
     <plurals name="path_summary">
         <item quantity="other">%1$d手。安い規則から順に、アプリが評価したとおりです。</item>
