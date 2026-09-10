@@ -77,6 +77,13 @@ public enum class Language(public val tag: String, @StringRes public val label: 
     BENGALI("bn-u-nu-latn", R.string.language_bengali),
     THAI("th", R.string.language_thai),
     DANISH("da", R.string.language_danish),
+    DUTCH("nl", R.string.language_dutch),
+
+    // Bokmal, and the folder is values-nb rather than values-no. Android resolves resources on
+    // the tag it is given, and no is the macrolanguage covering both written standards, so a
+    // values-no folder is not what a phone set to Norwegian Bokmal asks for.
+    NORWEGIAN("nb", R.string.language_norwegian),
+    SWEDISH("sv", R.string.language_swedish),
 }
 
 /**

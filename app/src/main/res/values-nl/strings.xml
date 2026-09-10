@@ -1,0 +1,923 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Dutch.
+
+  The vocabulary is fixed throughout and nothing else may be used for these: vakje is a cell,
+  rij is a row, kolom is a column, blok is a box, gebied is any of the three, cijfer is a
+  digit, notitie is a pencil mark, kandidaat is a candidate and gegeven cijfer is a clue that
+  came with the puzzle. Half the faults found in the older translations were a second word
+  creeping in for one of these, so they are written down here rather than remembered.
+
+  Two words are deliberately kept apart. Een hint is the help the app gives you, and tikken is
+  what you do to the screen. German let those collide, so "off is one tap away" read there as
+  "one hint away", which in an app that limits hints says the opposite of what was meant.
+
+  The preposition for a region lives in hint_in_region and nowhere else. house_row is bare, and
+  hint_look_here and hint_cells_here take the finished phrase, so none of them adds an in of
+  its own. Four languages got that wrong and rendered "iets te vinden in in rij 4".
+
+  The fish and the wings keep their English names, because that is what Dutch solvers say. The
+  rules that describe themselves are translated. The player is addressed as je throughout.
+-->
+<resources>
+    <string name="app_name">Sendoku</string>
+
+    <string name="home_choose_level">Kies een niveau</string>
+    <string name="home_daily">Dagelijks</string>
+    <string name="home_new_puzzle">Nieuwe puzzel</string>
+    <string name="home_resume">Verdergaan</string>
+    <string name="home_in_progress">Nog bezig</string>
+    <string name="home_placed">Ingevuld: %1$d van %2$d</string>
+    <string name="home_or_start">Of begin iets nieuws</string>
+    <string name="home_your_level">Jouw niveau</string>
+    <string name="home_all_levels">Alle niveaus</string>
+    <string name="killer_title">Killer</string>
+    <string name="killer_note">Kooien, en elke kooi heeft haar eigen som</string>
+    <string name="killer_marker">Killer</string>
+    <string name="killer_card">%1$s, %2$s</string>
+    <string name="code_title">Speel een puzzel die iemand je heeft gestuurd</string>
+    <string name="code_hint">Plak een code</string>
+    <string name="code_play">Spelen</string>
+    <string name="code_unreadable">Dat lijkt niet op een Sendoku-code.</string>
+    <string name="code_typo">Er staat een teken in dat in geen enkele code voorkomt. Vergelijk hem met de code die je hebt gekregen.</string>
+    <string name="code_cut_short">Die code kwam onvolledig binnen. Vraag hem opnieuw, in één stuk.</string>
+    <string name="code_too_new">Die code is gemaakt door een nieuwere versie van Sendoku dan deze.</string>
+    <string name="code_missing">Die code leest goed, maar deze versie heeft die puzzel niet.</string>
+    <string name="code_unplayable">Dat raster is niet af te maken met redeneren alleen, dus Sendoku doet niet alsof het het kan uitleggen.</string>
+    <string name="code_shared">Naar jou gestuurd</string>
+    <string name="code_share">Stuur deze puzzel naar een vriend</string>
+    <string name="code_invitation">Probeer deze %1$s-puzzel eens. Hetzelfde raster, en je hebt geen app nodig om te vergelijken.</string>
+    <string name="enter_title">Typ een puzzel in</string>
+    <string name="enter_marker">Zelf ingetypt</string>
+    <plurals name="enter_help">
+        <item quantity="one">%1$d gegeven cijfer tot nu toe. Tik op een vakje en daarna op een cijfer. Controleer het raster als het erin staat.</item>
+        <item quantity="other">%1$d gegeven cijfers tot nu toe. Tik op een vakje en daarna op een cijfer. Controleer het raster als het erin staat.</item>
+    </plurals>
+    <string name="enter_impossible">Dit raster is niet af te maken. Een van de gegeven cijfers moet fout zijn.</string>
+    <string name="enter_ambiguous">Dit raster heeft meer dan één antwoord, dus het is eigenlijk geen puzzel. Je kunt hem toch spelen.</string>
+    <string name="enter_beyond">Eén antwoord, maar je komt er niet met redeneren alleen, dus Sendoku kan het niet stap voor stap uitleggen.</string>
+    <string name="enter_ready">Eén antwoord. Dit is een %1$s-puzzel, beoordeeld als %2$s.</string>
+    <string name="enter_clear">Wissen</string>
+    <string name="enter_check">Controleren</string>
+    <string name="enter_play">Spelen</string>
+
+    <string name="grade_gentle">Makkelijk</string>
+    <string name="grade_steady">Gemiddeld</string>
+    <string name="grade_tricky">Moeilijk</string>
+    <string name="grade_severe">Heel moeilijk</string>
+    <string name="grade_diabolical">Expert</string>
+    <string name="grade_beyond">Meester</string>
+    <string name="grade_insane">Waanzinnig</string>
+    <string name="grade_nightmare">Nachtmerrie</string>
+    <string name="grade_locked">Win één %1$s-puzzel om dit te openen</string>
+    <string name="gate_gentle">één duidelijk cijfer per keer</string>
+    <string name="gate_steady">paren, en cijfers die vastzitten aan een lijn</string>
+    <string name="gate_tricky">drietallen, en patronen dwars over het raster</string>
+    <string name="gate_severe">wings, kleuren en rechthoeken</string>
+    <string name="gate_diabolical">ketens van redeneringen</string>
+    <string name="gate_beyond">verder dan de meeste apps gaan</string>
+    <string name="gate_insane">groepen vakjes aan elkaar geketend</string>
+    <string name="gate_nightmare">één vakje beide kanten op, op papier</string>
+    <string name="grade_advanced">Gevorderd</string>
+    <string name="grade_advanced_talkback">een gevorderd niveau, waarvoor je een techniek uit de cursus nodig hebt</string>
+
+    <string name="tool_undo">Ongedaan maken</string>
+    <string name="tool_redo">Opnieuw</string>
+    <string name="tool_erase">Wissen</string>
+    <string name="tool_notes">Notities</string>
+    <string name="tool_hint">Hint</string>
+    <string name="paused">Gepauzeerd</string>
+    <string name="paused_tap">Tik ergens om verder te gaan</string>
+    <string name="mistakes_of">%1$d van %2$d</string>
+
+    <string name="cell_position">Rij %1$d, kolom %2$d</string>
+    <string name="cell_clue">%1$s, %2$d, gegeven cijfer</string>
+    <string name="cell_digit">%1$s, %2$d</string>
+    <string name="cell_empty">%1$s, leeg</string>
+    <string name="cell_noted">%1$s, leeg, genoteerd %2$s</string>
+    <string name="cell_hint_argument">%1$s. Onderdeel van de hint.</string>
+    <string name="cell_hint_struck">%1$s. De hint streept hier een notitie weg.</string>
+    <string name="cell_hint_region">%1$s. In het gebied waar de hint over gaat.</string>
+    <string name="cell_repeated">%1$s, herhaald</string>
+    <string name="pad_all_placed">%1$d, allemaal geplaatst</string>
+    <string name="pad_one_left">%1$d, nog één over</string>
+    <plurals name="pad_left">
+        <item quantity="one">%1$d, nog %2$d over</item>
+        <item quantity="other">%1$d, nog %2$d over</item>
+    </plurals>
+    <string name="pad_scanning">%1$s, laat zien waar dit kan staan</string>
+    <string name="pad_notes_mode">%1$s, notitiestand</string>
+
+    <string name="cell_actions_title">RIJ %1$d, KOLOM %2$d</string>
+    <string name="cell_actions_clue">Dit cijfer hoorde bij de puzzel, dus het kan niet veranderd worden.</string>
+    <plurals name="cell_actions_note_all">
+        <item quantity="one">Noteer de enige kandidaat</item>
+        <item quantity="other">Noteer alle %1$d kandidaten</item>
+    </plurals>
+    <string name="cell_actions_clear_notes">Wis de notities</string>
+    <string name="why_not_title">Waarom niet?</string>
+    <string name="tint_title">Kleur</string>
+    <string name="cell_tinted">%1$s, gekleurd %2$s</string>
+    <string name="tint_clear_all">Alle kleuren weghalen</string>
+    <string name="tint_one">Oranje</string>
+    <string name="tint_two">Blauw</string>
+    <string name="tint_three">Paars</string>
+    <string name="tint_four">Groen</string>
+    <string name="why_not_prompt">Tik op een cijfer om te horen wat het tegenhoudt.</string>
+    <string name="why_not_taken">Er staat al een %1$d in %2$s, op rij %3$d, kolom %4$d.</string>
+    <string name="why_not_filled">In dit vakje staat al een %1$d. Wis dat eerst.</string>
+    <string name="why_not_possible">Niets op het bord sluit %1$d uit. Daarmee is het nog niet goed, alleen mogelijk.</string>
+    <string name="cell_actions_clear">Vakje leegmaken</string>
+
+    <string name="leave_title">Deze puzzel verlaten?</string>
+    <string name="leave_body">Hij wacht waar je gebleven was.</string>
+    <string name="leave_confirm">Verlaten</string>
+    <string name="leave_cancel">Blijven</string>
+
+    <string name="outcome_solved">Opgelost</string>
+    <string name="outcome_lost">Fouten op</string>
+    <string name="outcome_rated">%1$s, beoordeeld als %2$s</string>
+    <string name="outcome_hints">Hints</string>
+    <string name="outcome_mistakes">Fouten</string>
+    <string name="outcome_moves">Zetten</string>
+    <string name="outcome_needed">Nodig: %1$s</string>
+    <string name="outcome_home">Start</string>
+    <string name="outcome_another">Nog een %1$s</string>
+
+    <string name="hint_remove_one">Haal hem weg</string>
+    <string name="hint_remove_many">Haal ze weg</string>
+    <string name="hint_look_here_title">Kijk hier</string>
+    <string name="hint_look_here">Er is iets te vinden %1$s. Meer zegt deze hint niet.</string>
+    <string name="hint_look_around">Er is een stap te vinden. Deze ligt verspreid over het raster in plaats van in één gebied.</string>
+    <string name="hint_what_kind">Wat voor stap?</string>
+    <string name="hint_menu_title">Hulp</string>
+    <string name="hint_menu_difficulty">De volgende stap vraagt om een techniek op niveau %1$s.</string>
+    <string name="hint_menu_broken">Iets wat je hebt ingevuld klopt niet, dus er volgt niets meer tot dat is rechtgezet.</string>
+    <string name="hint_menu_check">Is er iets fout?</string>
+    <string name="hint_menu_look">Waar moet ik kijken?</string>
+    <string name="hint_menu_explain">Leg de volgende stap uit</string>
+    <string name="hint_menu_free">Vragen kost hier niets. De limiet staat uit.</string>
+    <string name="hint_check_clean">Er is niets fout aan wat je hebt ingevuld.</string>
+    <string name="hint_close">Sluiten</string>
+    <string name="hint_previous">Een stap terug</string>
+    <string name="hint_cells_here">De vakjes waar het op rust zijn opgelicht %1$s.</string>
+    <string name="hint_where">Laat zien waar</string>
+    <string name="hint_explain">Leg het uit</string>
+    <string name="hint_do_it">Doe het</string>
+    <string name="hint_evidence">In de rij staat al %1$s. In de kolom staat %2$s. In het blok staat %3$s. Samen is dat elk cijfer behalve de %4$d.</string>
+    <string name="hint_rests_on_earlier">Een deel hiervan rust op notities die een eerdere hint heeft weggestreept. Ze staan op het bord, dus je kunt het vandaar volgen.</string>
+    <string name="hint_what_is_this">Wat is dit?</string>
+    <string name="hint_wrong_title">Er klopt iets niet</string>
+    <string name="hint_wrong_one">Een van de cijfers die je hebt ingevuld kan niet goed zijn. Het is opgelicht.</string>
+    <string name="hint_wrong_many">%1$d van de cijfers die je hebt ingevuld kunnen niet goed zijn. Ze zijn opgelicht.</string>
+    <string name="hint_wrong_until_one">Er valt niets meer af te leiden tot dat is rechtgezet.</string>
+    <string name="hint_wrong_until_many">Er valt niets meer af te leiden tot die zijn rechtgezet.</string>
+    <string name="hint_done_title">Klaar</string>
+    <string name="hint_done_body">De puzzel is af.</string>
+    <string name="hint_stuck_title">Niets te melden</string>
+    <string name="hint_stuck_body">Dit bord is toegestaan, maar geen van de technieken die Sendoku kent past erop. Dat hoort niet te gebeuren bij een puzzel uit de app.</string>
+    <string name="hint_in_region">in %1$s</string>
+    <string name="hint_in_regions">in %1$s en %2$s</string>
+    <string name="hint_outcome_place">Dus rij %1$d, kolom %2$d moet %3$d zijn.</string>
+    <string name="hint_outcome_strike_one">Dus de %1$d kan weg uit %2$s.</string>
+    <string name="hint_outcome_strike_two">Dus de %1$d en de %2$d kunnen weg uit %3$s.</string>
+    <plurals name="hint_cells">
+        <item quantity="one">één vakje</item>
+        <item quantity="other">%1$d vakjes</item>
+    </plurals>
+
+    <string name="house_row">rij %1$d</string>
+    <string name="house_column">kolom %1$d</string>
+    <string name="house_box">blok %1$d</string>
+
+    <string name="glossary_title">Technieken</string>
+    <string name="back">Terug</string>
+
+    <string name="settings_title">Instellingen</string>
+    <string name="settings_language">Taal</string>
+    <string name="language_system">Volg de telefoon</string>
+    <string name="language_english">English</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_german">Deutsch</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_italian">Italiano</string>
+    <string name="language_japanese">日本語</string>
+    <string name="language_french">Français</string>
+    <string name="language_portuguese">Português (Brasil)</string>
+    <string name="language_chinese">简体中文</string>
+    <string name="language_korean">한국어</string>
+    <string name="language_arabic">العربية</string>
+    <string name="language_ukrainian">Українська</string>
+    <string name="language_indonesian">Bahasa Indonesia</string>
+    <string name="language_vietnamese">Tiếng Việt</string>
+    <string name="language_hindi">हिन्दी</string>
+    <string name="language_bengali">বাংলা</string>
+    <string name="language_thai">ไทย</string>
+    <string name="language_danish">Dansk</string>
+    <string name="language_dutch">Nederlands</string>
+    <string name="language_norwegian">Norsk bokmål</string>
+    <string name="language_swedish">Svenska</string>
+    <plurals name="first_run_prompt">
+        <item quantity="one">Sendoku is in %1$d taal geschreven. Welke lees je?</item>
+        <item quantity="other">Sendoku is in %1$d talen geschreven. Welke lees je?</item>
+    </plurals>
+    <string name="first_run_system_is">Je telefoon staat op %1$s</string>
+    <string name="first_run_no_translation">Je telefoon staat op een taal die Sendoku nog niet spreekt. Engels is het dichtstbijzijnde dat het heeft.</string>
+    <string name="first_run_continue">Beginnen met spelen</string>
+    <string name="settings_interface">Uiterlijk</string>
+    <string name="settings_rules">Spelregels</string>
+    <string name="settings_light_or_dark">Licht of donker</string>
+    <string name="settings_terminal_is_dark">Terminal is donker, hoe je telefoon ook staat. Dat is met opzet.</string>
+    <string name="settings_board">Het bord</string>
+    <string name="settings_highlight_peers">Licht de rij, de kolom en het blok op</string>
+    <string name="settings_highlight_same">Licht hetzelfde cijfer elders op</string>
+    <string name="settings_auto_clear">Wis notities die een ingevuld cijfer uitsluit</string>
+    <string name="settings_auto_notes">Houd elk vakje van notities voorzien</string>
+    <string name="settings_auto_notes_note">De app houdt de boekhouding bij. Boven Expert is dat bijna noodzakelijk.</string>
+    <string name="settings_highlight_homes">Laat zien waar het gekozen cijfer nog kan staan</string>
+    <string name="settings_auto_check">Zeg het meteen als een cijfer fout is</string>
+    <string name="settings_auto_check_note">Met dit aan kost proberen niets, dus verliest de puzzel bijna al zijn spanning.</string>
+    <string name="settings_auto_check_forced">Staat aan zolang er een foutenlimiet loopt, want een fout waarvoor je betaalt moet een fout zijn die je kunt zien. Zet de limiet hieronder uit om zonder allebei te spelen.</string>
+    <string name="settings_flag_conflicts">Markeer een cijfer dat zich herhaalt in een rij, kolom of blok</string>
+    <string name="settings_clock">De klok</string>
+    <string name="settings_show_timer">Toon de tijd</string>
+    <string name="settings_feedback">Terugkoppeling</string>
+    <string name="settings_haptics">Tril als er een cijfer wordt geplaatst</string>
+    <string name="settings_sound">Geluiden</string>
+    <string name="settings_sound_note">Zachte tonen terwijl je speelt. Uitzetten is één tik verderop, en de stille stand van de telefoon wint van allebei.</string>
+    <string name="settings_mistake_limit">Beëindig het spel na drie fouten</string>
+    <string name="settings_mistake_note">Staat standaard aan, op drie. Zet hem uit voor de moeilijke niveaus, waar een uur verliezen door één misser gewoon vervelend is.</string>
+    <string name="settings_about">Over Sendoku</string>
+
+    <string name="theme_deep_field">Deep Field</string>
+    <string name="theme_deep_field_summary">Echt zwart, één cyaan accent, verder niets</string>
+    <string name="theme_ink">Ink and Paper</string>
+    <string name="theme_ink_summary">Een puzzelboekje uit de krant, gedrukt op warm papier</string>
+    <string name="theme_zen">Slate Zen</string>
+    <string name="theme_zen_summary">Saliegroen en steen, en zo weinig mogelijk daarnaast</string>
+    <string name="theme_terminal">Terminal</string>
+    <string name="theme_terminal_summary">Vaste breedte, scherpe randen, alleen donker</string>
+    <string name="mode_system">Volg het systeem</string>
+    <string name="mode_light">Altijd licht</string>
+    <string name="mode_dark">Altijd donker</string>
+
+    <string name="stats_title">Statistieken</string>
+    <string name="stats_solved">Opgelost</string>
+    <string name="stats_streak">Reeks</string>
+    <string name="stats_hardest">Moeilijkste</string>
+    <string name="stats_hardest_note">Het moeilijkste dat je hebt afgemaakt is %1$s.</string>
+    <plurals name="stats_longest_run">
+        <item quantity="one">Je langste reeks was %1$d dag.</item>
+        <item quantity="other">Je langste reeks was %1$d dagen.</item>
+    </plurals>
+    <string name="stats_totals">%1$s besteed, hints genomen: %2$d.</string>
+    <string name="stats_by_grade">Per niveau</string>
+    <string name="stats_hints_title">Waar je naar hebt gevraagd</string>
+    <string name="stats_hints_note">Je vraagt het vaakst naar %1$s. Dat is de les om naar terug te gaan.</string>
+    <string name="stats_needed">Wat jouw puzzels nodig hadden</string>
+    <string name="stats_solved_count">Opgelost: %1$d</string>
+    <string name="stats_solved_and_lost">Opgelost: %1$d, verloren: %2$d</string>
+    <string name="stats_average">gem. %1$s</string>
+    <string name="stats_reset">Statistieken wissen</string>
+    <string name="stats_reset_title">Je geschiedenis weggooien?</string>
+    <string name="stats_reset_body">Elke afgemaakte puzzel, elke reeks en elke beste tijd. Er staat nergens een kopie, dus dit kan niet ongedaan worden gemaakt.</string>
+    <string name="stats_reset_confirm">Wissen</string>
+    <string name="stats_reset_cancel">Bewaren</string>
+    <string name="stats_empty_title">Nog niets</string>
+    <string name="stats_empty_body">Maak een puzzel af en deze pagina loopt vol: hoe lang elk niveau je kost, hoe ver je bent geklommen, en welke technieken jouw puzzels nodig hadden.</string>
+
+    <string name="about_title">Over</string>
+    <string name="about_version">Sendoku %1$s</string>
+    <string name="about_tagline">Een sudoku-app voor wie door de moeilijke sudoku\'s heen is.</string>
+    <string name="about_no_ads">Geen advertenties</string>
+    <string name="about_no_ads_detail">Niet tussen puzzels, niet voor hints, nooit.</string>
+    <string name="about_no_tracking">Geen tracking</string>
+    <string name="about_no_tracking_detail">Er wordt niets gemeten en niets verstuurd. Er is geen server.</string>
+    <string name="about_no_purchases">Geen aankopen</string>
+    <string name="about_no_purchases_detail">Elke puzzel en elke hint zit er al in.</string>
+    <string name="about_offline">Werkt zonder internet</string>
+    <string name="about_offline_detail">De hele verzameling zit in de app zelf.</string>
+    <string name="about_hints">Hints die iets leren</string>
+    <string name="about_hints_detail">Een hint noemt de techniek en legt de redenering uit. Hij vult nooit zomaar een cijfer in, en hij wordt nooit verkocht: er horen er drie bij elke puzzel, en de limiet kun je in de instellingen uitzetten.</string>
+    <string name="about_sharing">Delen</string>
+    <string name="about_sharing_detail">Een puzzelcode is de puzzel zelf, geen account. Er is niemand om als in te loggen, geen ranglijst, en de app kan een tijd die iemand je noemt niet controleren: twee mensen spelen hetzelfde raster en vergelijken wat het ze kostte, en meer is het niet.</string>
+    <string name="about_rating">De moeilijkheid wordt bepaald door de zwaarste techniek die een puzzel echt nodig heeft, uitgerekend door hem op te lossen zoals een mens dat zou doen. Daarom betekent Heel moeilijk hier hetzelfde als de vorige Heel moeilijk.</string>
+    <string name="about_licence">Sendoku is vrije software onder de GNU General Public License versie 3.</string>
+    <string name="about_privacy">Het privacybeleid zegt hetzelfde in de vorm die de winkel vraagt, op adilzhany.github.io/sendoku/privacy</string>
+    <string name="about_licences">Opensourcelicenties</string>
+    <string name="licences_title">Licenties</string>
+
+    <string name="look_naked_single">Er is een vakje waar nog maar één cijfer in kan.</string>
+    <string name="look_hidden_single">Er is een cijfer dat nog maar één plek over heeft.</string>
+    <string name="look_locked_candidates_pointing">In één blok zit een cijfer vast op één rij of kolom.</string>
+    <string name="look_locked_candidates_claiming">Op één lijn kan een cijfer alleen binnen één blok staan.</string>
+    <string name="look_naked_pair">Twee vakjes in hetzelfde gebied hebben dezelfde twee cijfers en verder niets.</string>
+    <string name="look_hidden_pair">Twee cijfers kunnen in een gebied nergens anders heen dan naar dezelfde twee vakjes.</string>
+    <string name="look_naked_triple">Drie vakjes in één gebied delen samen drie cijfers.</string>
+    <string name="look_hidden_triple">Drie cijfers zitten opgesloten in dezelfde drie vakjes.</string>
+    <string name="look_naked_quad">Vier vakjes in één gebied delen samen vier cijfers.</string>
+    <string name="look_hidden_quad">Vier cijfers zitten opgesloten in dezelfde vier vakjes.</string>
+    <string name="look_x_wing">Twee rijen hebben een cijfer in dezelfde twee kolommen, of andersom.</string>
+    <string name="look_swordfish">Drie rijen hebben een cijfer binnen dezelfde drie kolommen.</string>
+    <string name="look_jellyfish">Vier rijen hebben een cijfer binnen dezelfde vier kolommen.</string>
+    <string name="look_xy_wing">Drie vakjes met elk twee cijfers, zo geplaatst dat één cijfer eruit wordt gedrukt.</string>
+    <string name="look_xyz_wing">Als een XY-Wing, maar het middelste vakje heeft er ook nog een derde cijfer bij.</string>
+    <string name="look_w_wing">Twee vakjes met hetzelfde paar, verbonden door een cijfer dat maar twee plekken heeft.</string>
+    <string name="look_simple_colouring">Eén cijfer vormt een keten die de hele weg om en om gaat.</string>
+    <string name="look_multi_colouring">Twee losse ketens op één cijfer, tegen elkaar uitgespeeld.</string>
+    <string name="look_remote_pairs">Een keten van vakjes die allemaal precies dezelfde twee cijfers hebben.</string>
+    <string name="look_unique_rectangle">Vier vakjes vormen een rechthoek die de puzzel twee antwoorden zou geven.</string>
+    <string name="look_bug_plus_one">Elk vakje op één na is terug tot twee cijfers.</string>
+    <string name="look_x_chain">Een keten op één cijfer, om en om tussen moet en kan niet.</string>
+    <string name="look_xy_chain">Een keten van vakjes met twee cijfers, waarbij elk het volgende dwingt.</string>
+    <string name="look_forcing_chain">Een vakje met precies twee mogelijkheden, als er verder niets meer te vinden is.</string>
+    <string name="look_death_blossom">Eén vakje, en een groep voor elk cijfer dat het kan zijn, waarbij dat vakje dat cijfer overal in de groep ziet.</string>
+    <string name="look_als_xy_wing">Drie groepen die elk één cijfer tekortkomen om vol te zijn, op een lijn verbonden door twee verschillende cijfers.</string>
+    <string name="look_sue_de_coq">Een blok en een lijn die elkaar kruisen, waarbij de gedeelde vakjes twee cijfers meer hebben dan er plek is.</string>
+    <string name="look_als_xz">Twee groepen vakjes die er elk één cijfer vanaf zijn om op slot te gaan.</string>
+
+    <string name="because_naked_single">Elk ander cijfer staat al in de rij, de kolom of het blok, dus er blijft er één over. Die moet hier staan.</string>
+    <string name="because_hidden_single">Het gebied heeft dit cijfer ergens nodig, en elk ander vakje erin valt af, dus dit is de enige plek die over is.</string>
+    <string name="because_locked_candidates_pointing">Het blok moet dit cijfer ergens hebben, en elke plek waar het kan staan ligt op één lijn. Dus het cijfer staat op die lijn, en het kan nergens anders op die lijn staan.</string>
+    <string name="because_locked_candidates_claiming">De lijn moet dit cijfer ergens hebben, en elke plek waar het kan staan ligt binnen één blok. Dus het cijfer staat in dat blok, en het kan nergens anders in dat blok staan.</string>
+    <string name="because_naked_pair">Die twee vakjes nemen die twee cijfers samen, elk één. Geen enkel ander vakje in het gebied kan er een van hebben.</string>
+    <string name="because_hidden_pair">Het gebied heeft beide cijfers nodig, en alleen deze twee vakjes kunnen ze aannemen, dus ze nemen er elk één. Al het andere in die twee vakjes valt af.</string>
+    <string name="because_naked_triple">Drie vakjes, drie cijfers, elk één. Niets anders in het gebied kan ze gebruiken, ook al heeft geen enkel vakje ze alle drie.</string>
+    <string name="because_hidden_triple">Drie cijfers die nergens anders heen kunnen vullen samen drie vakjes, dus al het andere in die vakjes is onmogelijk.</string>
+    <string name="because_naked_quad">Vier vakjes nemen samen vier cijfers, en dat sluit alle vier af voor de rest van het gebied.</string>
+    <string name="because_hidden_quad">Vier cijfers opgesloten in vier vakjes vullen die samen, dus er kan niets anders wonen.</string>
+    <string name="because_x_wing">Elk van die twee rijen heeft het cijfer één keer nodig, en allebei kunnen ze het alleen in dezelfde twee kolommen kwijt. Samen gebruiken ze beide kolommen op, dus geen andere rij kan het cijfer daar hebben.</string>
+    <string name="because_swordfish">Drie rijen hebben het cijfer nodig, en er zijn maar drie kolommen om het in te zetten. De drie rijen gebruiken alle drie de kolommen op, dus niets anders in die kolommen kan het hebben.</string>
+    <string name="because_jellyfish">Vier rijen en vier kolommen, weer dezelfde redenering. De vier rijen vullen samen alle vier de kolommen.</string>
+    <string name="because_xy_wing">Het middelste vakje is een van zijn twee cijfers. Hoe dan ook wordt een van de twee buitenste vakjes gedwongen tot het gedeelde cijfer, dus alles wat ze allebei ziet kan dat niet zijn.</string>
+    <string name="because_xyz_wing">Het middelste vakje kan ook het gedeelde cijfer zijn, dus de conclusie is zwakker: alleen een vakje dat alle drie ziet raakt het kwijt.</string>
+    <string name="because_w_wing">Als geen van de paarvakjes het tweede cijfer nam, zouden ze allebei het eerste nemen, en dan zou het verbindende gebied het nergens meer kwijt kunnen. Dus een van beide is het tweede cijfer.</string>
+    <string name="because_simple_colouring">Kleur de keten om en om en precies één kleur klopt. Of een kleur komt twee keer in hetzelfde gebied terecht en is daarmee fout, of een vakje erbuiten ziet beide kleuren en raakt het cijfer kwijt, hoe het ook uitpakt.</string>
+    <string name="because_multi_colouring">Een kleur van de eerste keten botst met een kleur van de tweede, en dat drukt het cijfer in een van de twee tegenovergestelde kleuren. Alles wat die allebei ziet kan het niet hebben.</string>
+    <string name="because_remote_pairs">Buren in de keten zien elkaar, dus ze wisselen om en om. De twee uiteinden liggen een oneven aantal stappen uit elkaar en hebben daarom elk één cijfer, en alles wat ze allebei ziet kan er geen van beide hebben.</string>
+    <string name="because_unique_rectangle">Als die vier vakjes niets anders bevatten dan dezelfde twee cijfers, konden ze rond de rechthoek verwisseld worden en had de puzzel twee antwoorden. Hij heeft er één, dus die opstelling is onmogelijk.</string>
+    <string name="because_bug_plus_one">Als die extra kandidaat werd weggehaald, zou elk cijfer precies twee keer in elk gebied staan, en zo\'n raster heeft altijd een even aantal antwoorden. Deze puzzel heeft er één, dus die extra kandidaat is het antwoord.</string>
+    <string name="because_x_chain">De keten wisselt om en om tussen plekken waar het cijfer moet staan en plekken waar het niet kan. De twee uiteinden kunnen niet allebei leeg zijn, dus alles wat ze allebei ziet raakt het kwijt.</string>
+    <string name="because_xy_chain">Stel dat het eerste vakje het cijfer niet is. Volg de keten en het laatste vakje wordt gedwongen het wel te zijn. Dus het ene of het andere uiteinde heeft het.</string>
+    <string name="because_forcing_chain">Volg allebei de mogelijkheden. Als er bij een van beide een vakje overblijft waar niets meer in kan, was die mogelijkheid nooit echt en kan hij weg. Als ze allebei hetzelfde cijfer op dezelfde plek zetten, hoort dat cijfer daar, welke van de twee ook waar blijkt. Niets hier hangt ervan af of de aanname klopt, en juist dat maakt het een bewijs en geen gok.</string>
+    <string name="because_death_blossom">Wat dat vakje ook blijkt te zijn, het slaat zijn eigen cijfer uit de bijbehorende groep, en die groep is dan vol en moet elk cijfer gebruiken dat ze nog heeft. Als alle groepen hetzelfde cijfer overhouden, komt dat cijfer in een ervan terecht, welke kant het vakje ook op valt. Alles wat het in alle groepen kan zien raakt het kwijt.</string>
+    <string name="because_als_xy_wing">Als het bedreigde cijfer weg is uit de eerste groep, is die groep vol en moet ze het cijfer nemen dat ze deelt met de middelste. De middelste groep raakt dat cijfer dan kwijt, dus die is ook vol en neemt het cijfer dat ze deelt met de derde. De derde groep is dan ook vol en moet het bedreigde cijfer gebruiken. Dus geen enkel vakje dat het in beide buitenste groepen ziet kan het hebben.</string>
+    <string name="because_sue_de_coq">De gedeelde vakjes gebruiken al hun cijfers op op twee na, en de twee groepen aan weerszijden claimen precies die twee. Dus elk cijfer van de groep op de lijn gaat op binnen de lijn, en elk cijfer van de groep in het blok gaat op binnen het blok. Niets anders in een van beide kan ze hebben.</string>
+    <string name="because_als_xz">Eén gedeeld cijfer kan maar in een van de twee groepen voorkomen, en dat zet de andere groep op slot en dwingt haar elk cijfer te gebruiken dat ze heeft. Dus het tweede gedeelde cijfer komt in de ene groep of de andere terecht.</string>
+
+    <string name="technique_naked_single">Naakte enkeling</string>
+    <string name="technique_hidden_single">Verborgen enkeling</string>
+    <string name="technique_locked_candidates_pointing">Wijzend paar of drietal</string>
+    <string name="technique_locked_candidates_claiming">Opeisend paar of drietal</string>
+    <string name="technique_naked_pair">Naakt paar</string>
+    <string name="technique_hidden_pair">Verborgen paar</string>
+    <string name="technique_naked_triple">Naakt drietal</string>
+    <string name="technique_hidden_triple">Verborgen drietal</string>
+    <string name="technique_naked_quad">Naakt viertal</string>
+    <string name="technique_hidden_quad">Verborgen viertal</string>
+    <string name="technique_x_wing">X-Wing</string>
+    <string name="technique_simple_colouring">Eenvoudig kleuren</string>
+    <string name="technique_xy_wing">XY-Wing</string>
+    <string name="technique_xyz_wing">XYZ-Wing</string>
+    <string name="technique_w_wing">W-Wing</string>
+    <string name="technique_swordfish">Swordfish</string>
+    <string name="technique_remote_pairs">Verre paren</string>
+    <string name="technique_unique_rectangle">Unieke rechthoek</string>
+    <string name="technique_bug_plus_one">BUG plus één</string>
+    <string name="technique_jellyfish">Jellyfish</string>
+    <string name="technique_multi_colouring">Meervoudig kleuren</string>
+    <string name="technique_x_chain">X-Chain</string>
+    <string name="technique_xy_chain">XY-Chain</string>
+    <string name="technique_als_xz">ALS XZ</string>
+    <string name="technique_sue_de_coq">Sue de Coq</string>
+    <string name="technique_als_xy_wing">ALS XY-Wing</string>
+    <string name="technique_death_blossom">Death blossom</string>
+    <string name="technique_forcing_chain">Dwingende keten</string>
+    <string name="technique_cage_sum">Kooisom</string>
+    <string name="technique_cage_single">Enkeling in een kooi</string>
+    <string name="technique_cage_locked">Kooi op slot</string>
+    <string name="technique_cage_innie">Binnen- en buitenvakjes</string>
+    <string name="daily_title">Dagelijks</string>
+    <string name="daily_no_streak">Nog geen reeks. Los de puzzel van vandaag op om er een te beginnen.</string>
+    <string name="daily_previous_month">Eerder</string>
+    <string name="daily_next_month">Later</string>
+    <string name="daily_cell_solved">opgelost</string>
+    <string name="daily_cell_attempted">gespeeld maar niet afgemaakt</string>
+    <string name="daily_cell_unplayed">niet gespeeld</string>
+    <string name="daily_cell_future">nog niet</string>
+    <string name="daily_play_today">Speel die van vandaag</string>
+    <plurals name="daily_streak">
+        <item quantity="one">%1$d dag op rij</item>
+        <item quantity="other">%1$d dagen op rij</item>
+    </plurals>
+    <string name="daily_cell">%1$d, %2$s, %3$s</string>
+    <string name="daily_cell_today">vandaag, %1$d, %2$s, %3$s</string>
+    <string name="stat_mistakes">Fouten</string>
+    <string name="stat_hints">Hints</string>
+    <string name="stat_time">Tijd</string>
+    <string name="stat_pause">Pauze</string>
+    <string name="game_daily_title">%1$s, %2$s</string>
+
+    <string name="stage_first_steps">Eerste stappen</string>
+    <string name="stage_one_at_a_time">Eén cijfer per keer</string>
+    <string name="stage_notes">Notities</string>
+    <string name="stage_locked_to_a_line">Cijfers vast aan een lijn</string>
+    <string name="stage_groups">Groepen</string>
+    <string name="stage_patterns">Patronen dwars over het raster</string>
+    <string name="stage_wings">Wings</string>
+    <string name="stage_colouring">Kleuren</string>
+    <string name="stage_one_answer">Uitgaan van één antwoord</string>
+    <string name="stage_chains">Ketens</string>
+    <string name="stage_the_far_end">Het verre eind</string>
+    <string name="stage_the_deep_end">Het diepe</string>
+    <string name="stage_cages">Kooien</string>
+    <string name="lesson_cage_is_title">Wat een kooi is</string>
+    <string name="lesson_cage_is_summary">De vormen met stippellijnen zijn kooien, en het kleine getal is waar hun vakjes bij elkaar op uitkomen.</string>
+    <string name="lesson_cage_is_1">Een Killer begint zonder ook maar één cijfer. In plaats daarvan is het raster in kooien geknipt, getekend met stippellijnen, en het kleine getal in de hoek van een kooi is waar haar vakjes bij elkaar op uitkomen. De rest is gewone sudoku.</string>
+    <string name="lesson_cage_is_2">Een kooi van één vakje is een gegeven cijfer, anders opgeschreven. Hier staat 1, dus daar komt een 1 en valt er niets uit te zoeken.</string>
+    <string name="lesson_cage_is_3">Ingevuld. Nu een kooi waar je even over moet nadenken.</string>
+    <string name="lesson_cage_is_4a">Deze is 5 in twee vakjes. Dat is 1 en 4, of 2 en 3, dus het ligt nog niet vast, maar er kan nu al geen 5 en geen 6 in.</string>
+    <string name="lesson_cage_is_4">Drie vakjes die samen 15 zijn. In een zes bij zes zijn de drie grootste cijfers 4, 5 en 6, en samen zijn die precies 15. Dus in deze kooi staan die drie in een of andere volgorde, en er kan niets anders in.</string>
+    <string name="lesson_cage_is_5">Een kooi herhaalt nooit een cijfer. Juist die regel maakt een som zo veelzeggend: zonder haar zou 15 in drie vakjes ook 5, 5 en 5 kunnen zijn.</string>
+    <string name="lesson_cage_house_title">Kooien binnen een gebied</string>
+    <string name="lesson_cage_house_summary">Een rij, een kolom en een blok komen elk op een bekend totaal uit, en de kooien erbinnen doen de rest.</string>
+    <string name="lesson_cage_house_1">Elke rij, kolom en elk blok bevat elk cijfer één keer, dus ze komen allemaal op hetzelfde totaal uit. In een zes bij zes is dat totaal 21.</string>
+    <string name="lesson_cage_house_2">Deze twee vakjes zijn samen 10. De enige twee verschillende cijfers die 10 maken zijn 4 en 6, dus deze kooi bezit ze allebei, en geen ander vakje in deze rij kan een 4 of een 6 zijn.</string>
+    <string name="lesson_cage_house_3">Nu de hele rij. Die komt op 21 uit, en er liggen drie kooien helemaal binnen: 5, 10 en 1. Dat is 16 waarvan we weten waar het zit.</string>
+    <string name="lesson_cage_house_4">Dus het vakje dat overblijft is 21 min 16, oftewel 5.</string>
+    <string name="lesson_cage_house_5">Oplossers noemen dat een innie. Dezelfde rekensom werkt ook andersom: als een kooi buiten een gebied uitsteekt, is wat uitsteekt het verschil, en dat heet een outie.</string>
+    <string name="lesson_cage_home_title">Eén plek in een kooi</string>
+    <string name="lesson_cage_home_summary">Een cijfer dat de kooi wel moet bevatten, met nog maar één vakje dat het aankan.</string>
+    <string name="lesson_cage_home_1">Als je een eind in een Killer bent, gaan de kooien meer zeggen dan alleen hun som. Er staan hier al drie cijfers.</string>
+    <string name="lesson_cage_home_2">Deze kooi is 10 in twee vakjes, dus er zit een 4 en een 6 in. Maar in het blok rechts staat al een 6, en daarmee valt dat cijfer af voor het rechtervakje van de kooi.</string>
+    <string name="lesson_cage_home_3">Dus de 6 heeft nog één plek over, en die is links. De som zei dat er een 6 in de kooi zat; de rest van het bord zei waar.</string>
+    <string name="lesson_cage_home_4">Dat is een enkeling in een kooi. Het is de verborgen enkeling van Killer: niet het enige cijfer dat een vakje aankan, maar het enige vakje waar een cijfer in kan.</string>
+
+    <string name="lesson_what_is_title">Wat een sudoku is</string>
+    <string name="lesson_what_is_summary">Elke rij, elke kolom en elk blok bevat elk cijfer één keer.</string>
+    <string name="lesson_what_is_1">Dit is een sudoku. Een kleine, vier vakjes bij vier, zodat alles tegelijk in je hoofd past. Een raster op ware grootte werkt precies hetzelfde.</string>
+    <string name="lesson_what_is_2">Dit is een rij. Daarin moeten de cijfers 1, 2, 3 en 4 staan, elk één keer. Geen herhalingen, en niets weggelaten.</string>
+    <string name="lesson_what_is_3">Dit is een kolom. Dezelfde regel: 1, 2, 3 en 4, elk één keer.</string>
+    <string name="lesson_what_is_4">Dat is het hele spel. Er komt geen rekenen aan te pas, en er valt niets op te tellen. Het is één regel over waar een cijfer mag staan.</string>
+    <string name="lesson_what_is_5">Deze twee vakjes zijn leeg. Ze zo invullen dat de regel blijft kloppen, dat is oplossen.</string>
+
+    <string name="lesson_houses_title">Rijen, kolommen en blokken</string>
+    <string name="lesson_houses_summary">Een vakje zit in drie gebieden tegelijk en deelt met alle drie dezelfde regel.</string>
+    <string name="lesson_houses_1">De regel had het over rijen en kolommen. Er is een derde soort groep, en die maakt een sudoku pas de moeite waard.</string>
+    <string name="lesson_houses_2">Hier is weer een rij.</string>
+    <string name="lesson_houses_3">Hier is een kolom.</string>
+    <string name="lesson_houses_4">En dit is een blok, aangegeven met de dikkere lijnen. Ook daarin staat elk cijfer één keer.</string>
+    <string name="lesson_houses_5">Dus dit vakje hoort tegelijk bij drie groepen. Elk vakje waarmee het een groep deelt is opgelicht, en geen daarvan kan hetzelfde cijfer bevatten. Die drie groepen heten gebieden, en dat woord wordt vanaf hier gebruikt.</string>
+
+    <string name="lesson_givens_title">Gegeven cijfers</string>
+    <string name="lesson_givens_summary">De cijfers die er vanaf het begin staan liggen vast, en juist zij maken het antwoord het enige.</string>
+    <string name="lesson_givens_1">Deze cijfers hoorden bij de puzzel. Ze heten gegeven cijfers, en je kunt ze niet veranderen of wissen.</string>
+    <string name="lesson_givens_2">Ze zijn anders getekend dan de cijfers die jij plaatst, zodat je ze altijd uit elkaar houdt. In deze app zijn de gegeven cijfers de zwaardere.</string>
+    <string name="lesson_givens_3">Dit zijn de vakjes die jij invult.</string>
+    <string name="lesson_givens_4">Een goed gemaakte puzzel heeft precies één manier om ze in te vullen. Dat is een belofte over de puzzel, niet over jou: als je vastzit is er nog steeds maar één antwoord, en je kunt er altijd naartoe redeneren. Elke puzzel in deze app is zo gemaakt.</string>
+
+    <string name="lesson_first_four_title">Je eerste oplossing</string>
+    <string name="lesson_first_four_summary">Kijk naar wat een vakje niet kan zijn, en soms blijft er maar één cijfer over.</string>
+    <string name="lesson_first_four_1">Los er nu een op. Twee vakjes zijn leeg, en de regel is genoeg om ze allebei in te vullen.</string>
+    <string name="lesson_first_four_2">Begin bij deze rij. Er staan al een 1 en een 4, dus de twee lege vakjes hebben samen 2 en 3. De vraag is alleen welke waar.</string>
+    <string name="lesson_first_four_3">Dit vakje kan geen 2 zijn, want in de kolom staat al een 2. Dus het is 3.</string>
+    <string name="lesson_first_four_4">Dan blijft er één leeg vakje over, en één cijfer dat nog niet in de rij staat.</string>
+    <string name="lesson_first_four_5">Jouw beurt. Zet het cijfer neer dat hier hoort.</string>
+    <string name="lesson_first_four_wrong">Net niet. Kijk naar de rij: welk cijfer van 1 tot 4 ontbreekt er nog?</string>
+    <string name="lesson_first_four_6">Opgelost. Dat is een sudoku, hoe groot het raster ook is.</string>
+
+    <string name="lesson_first_six_title">Een groter raster</string>
+    <string name="lesson_first_six_summary">Blokken zijn niet altijd vierkant, en dat maakt de regel niets uit.</string>
+    <string name="lesson_first_six_1">Zes bij zes. De regel is niet veranderd, de blokken wel: die zijn drie breed en twee hoog.</string>
+    <string name="lesson_first_six_2">Dit is één blok. Drie naast elkaar, twee onder elkaar, zes vakjes, elk cijfer van 1 tot 6 één keer.</string>
+    <string name="lesson_first_six_3">Daar trappen mensen in het begin in, want het oog verwacht een vierkant. Neem er even de tijd voor: zoek het blok waar dit vakje in ligt voordat je naar iets anders kijkt.</string>
+    <string name="lesson_first_six_4">Jouw beurt. In het blok linksboven ontbreekt één cijfer.</string>
+    <string name="lesson_first_six_wrong">Die niet. Tel op wat er al in het blok staat, en zoek dan het cijfer van 1 tot 6 dat er niet bij is.</string>
+    <string name="lesson_first_six_5">Goed. Vanaf hier zijn de rasters negen bij negen en zijn de blokken weer vierkant, maar de gewoonte om alle drie de gebieden na te lopen is degene om te houden.</string>
+
+    <string name="lesson_naked_single_title">De naakte enkeling</string>
+    <string name="lesson_naked_single_summary">Een vakje met nog maar één cijfer moet dat cijfer bevatten.</string>
+    <string name="lesson_naked_single_1">Een raster op ware grootte, en de eerste techniek met een naam. Het is de eenvoudigste die er is, en zelfs bij de moeilijkste puzzels vult juist deze de meeste vakjes.</string>
+    <string name="lesson_naked_single_2">Kijk naar dit vakje op zichzelf. Vraag je af wat erin kan.</string>
+    <string name="lesson_naked_single_3">Elk vakje dat iets uitsluit is opgelicht. Tussen de rij, de kolom en het blok staan acht van de negen cijfers al ergens waar dit vakje bij kan.</string>
+    <string name="lesson_naked_single_4">Dus er blijft één cijfer over, en het vakje moet dat bevatten. Iets anders kan niet. Dat is een naakte enkeling: naakt omdat je hem ziet door naar één vakje te kijken, enkeling omdat er één cijfer overleeft.</string>
+    <string name="lesson_naked_single_5">De app noemt hem bij naam als hij je een hint geeft. Nu weet je wat dat betekent.</string>
+    <string name="lesson_hidden_single_title">De verborgen enkeling</string>
+    <string name="lesson_hidden_single_summary">Een cijfer met nog maar één plek in een gebied moet daarheen.</string>
+    <string name="lesson_hidden_single_1">De andere soort enkeling, en degene die de meeste vakjes vindt. Een naakte enkeling is een vakje met één cijfer over. Deze is het spiegelbeeld: een cijfer met één vakje over.</string>
+    <string name="lesson_hidden_single_2">Neem een gebied en kies een cijfer dat er nog niet in staat. Vraag je af waar in dat gebied het cijfer zou kunnen staan.</string>
+    <string name="lesson_hidden_single_3">In dit blok is het antwoord één vakje. Elk ander leeg vakje in het blok valt af door zijn eigen rij of kolom.</string>
+    <string name="lesson_hidden_single_4">Dus het cijfer gaat daarheen, ook al zou dat vakje op zichzelf nog meerdere cijfers aankunnen. Daarom heet hij verborgen: het cijfer zit verstopt tussen de andere.</string>
+    <string name="lesson_hidden_single_5">Deze is het waard om goed te leren. Bij de meeste puzzels houdt juist hij je op gang als de naakte enkelingen op zijn.</string>
+    <string name="lesson_hidden_single_turn">Jouw beurt. Zet het cijfer neer dat nergens anders heen kan in dit blok.</string>
+    <string name="lesson_hidden_single_wrong">Die niet. Vraag je af welk cijfer het blok nog nodig heeft, en kijk dan waar elk daarvan echt zou passen.</string>
+
+    <string name="lesson_scanning_title">Hoe je moet kijken</string>
+    <string name="lesson_scanning_summary">Haal één cijfer over het hele raster in plaats van vakje voor vakje te bestuderen.</string>
+    <string name="lesson_scanning_1">Nu ken je twee technieken. Ze kennen is niet hetzelfde als ze vinden, en dat vinden is wat de tijd kost.</string>
+    <string name="lesson_scanning_2">Lees het raster niet vakje voor vakje. Neem één cijfer, bijvoorbeeld het cijfer dat er al het vaakst staat, en kijk naar de drie blokken in een band.</string>
+    <string name="lesson_scanning_3">Stel per blok één vraag: waar kan dit cijfer heen? Rijen en kolommen die het al hebben strepen de meeste antwoorden weg, en vaak blijft er maar één vakje over.</string>
+    <string name="lesson_scanning_4">Ga dan naar de volgende band, en als het cijfer op is naar het volgende cijfer. Dat is scannen, en dat is wat snelle oplossers doen als het lijkt of ze alleen maar staren.</string>
+    <string name="lesson_scanning_5">Systematisch zijn kost niets en scheelt je het gevoel vast te zitten, dat meestal gewoon het gevoel is dat je vier keer naar dezelfde hoek hebt gekeken.</string>
+
+    <string name="lesson_first_nine_title">Een heel raster, alleen met enkelingen</string>
+    <string name="lesson_first_nine_summary">Alles wat je tot nu toe hebt geleerd is genoeg om een hele puzzel af te maken.</string>
+    <string name="lesson_first_nine_1">Een echte negen bij negen, op niveau Makkelijk. Elke stap erin is een enkeling, naakt of verborgen, en er zit niets in wat je nog niet bent tegengekomen.</string>
+    <string name="lesson_first_nine_2">Hier is er een om mee te beginnen. Bij dit vakje vallen acht van de negen cijfers af door wat het kan zien.</string>
+    <string name="lesson_first_nine_3">Zo ziet een makkelijke puzzel eruit. Enkelingen, tot het eind, en nergens gokken.</string>
+    <string name="lesson_first_nine_4">Speel er een als je deze les verlaat. De volgende fase gaat over notities, en notities beginnen zich pas terug te verdienen bij puzzels die moeilijker zijn dan deze.</string>
+    <string name="lesson_first_nine_turn">Jouw beurt. Hier is één cijfer mogelijk.</string>
+    <string name="lesson_first_nine_wrong">Kijk nog eens naar de rij, de kolom en het blok waar dit vakje in ligt, en zet op een rij wat daar al staat.</string>
+
+    <string name="lesson_pencil_marks_title">Notities</string>
+    <string name="lesson_pencil_marks_summary">Een notitie legt vast wat je hebt uitgezocht, zodat je het niet nog eens hoeft uit te zoeken.</string>
+    <string name="lesson_pencil_marks_1">Vanaf hier geven de puzzels niet meer mee aan enkelingen, en zul je dingen moeten opschrijven. Een notitie, of potloodmerkje, is een klein cijfer in een vakje dat zegt dat dat cijfer daar nog kan.</string>
+    <string name="lesson_pencil_marks_2">Kijk naar dit vakje. Uitzoeken dat er maar twee cijfers in kunnen kost een paar seconden. Als je die twee cijfers opschrijft, kost het de volgende keer nul seconden.</string>
+    <string name="lesson_pencil_marks_3">Meer is een notitie niet. Het is geen gok en geen belofte. Het legt een conclusie vast die je al hebt getrokken.</string>
+    <string name="lesson_pencil_marks_4">Elke techniek vanaf hier gaat over patronen in de notities in plaats van patronen in de cijfers. Paren, drietallen, vissen en ketens lees je allemaal af aan de notities.</string>
+    <string name="lesson_pencil_marks_5">Niemand lost een moeilijke sudoku uit het hoofd op, en wie bij een Expert niets opschrijft is niet slim bezig maar traag.</string>
+
+    <string name="lesson_when_to_mark_title">Wanneer je ze opschrijft</string>
+    <string name="lesson_when_to_mark_summary">Vul notities in als de enkelingen op zijn, niet eerder.</string>
+    <string name="lesson_when_to_mark_1">Er zijn twee manieren om notities te gebruiken, en het verschil doet ertoe.</string>
+    <string name="lesson_when_to_mark_2">De eerste is elk leeg vakje vullen met elk mogelijk cijfer, allemaal tegelijk, voordat je iets anders doet. Dat is grondig, met de hand kost het een paar minuten, en bij een makkelijke puzzel is het meeste ervan verspild omdat de enkelingen het raster toch wel hadden afgemaakt.</string>
+    <string name="lesson_when_to_mark_3">De tweede is alleen noteren waar je aan het werk bent. Deze vier vakjes zijn het noteren waard omdat er iets tussen ze speelt. De rest van het raster niet.</string>
+    <string name="lesson_when_to_mark_4">Het eerlijke advies: los eerst de enkelingen op, en begin met noteren als je ze niet meer vindt. Op papier scheelt dat echt tijd. In deze app is alle notities invullen één tik, dus de prijs is lager, maar een raster vol cijfers blijft lastiger te lezen dan een raster met notities alleen waar ze ertoe doen.</string>
+
+    <string name="lesson_marks_true_title">Notities eerlijk houden</string>
+    <string name="lesson_marks_true_summary">Een notitie die niet meer klopt is erger dan helemaal geen notitie.</string>
+    <string name="lesson_marks_true_1">Notities hebben één gevaar. Elk cijfer dat je plaatst maakt er een paar onjuist, en een onjuiste notitie stuurt je een redenering in die niet kan kloppen.</string>
+    <string name="lesson_marks_true_2">Zet hier een cijfer neer, en elk vakje dat het kan zien raakt dat cijfer als mogelijkheid kwijt. Worden die notities niet gewist, dan kan de volgende techniek die je ziet op een daarvan gebouwd zijn.</string>
+    <string name="lesson_marks_true_3">Deze app kan het voor je doen. Er is een instelling die wis notities die een ingevuld cijfer uitsluit heet, en die staat standaard aan. Op papier doe je het met de hand, en daar komen de meeste fouten vandaan.</string>
+    <string name="lesson_marks_true_4">Als een puzzel misloopt en je ziet niet waarom, verdenk dan eerst een verouderde notitie. De hintknop zegt het je als een cijfer dat je hebt geplaatst niet goed kan zijn.</string>
+
+    <string name="lesson_pointing_title">Het wijzende paar</string>
+    <string name="lesson_pointing_summary">Zit een cijfer in een blok vast op één lijn, dan verdwijnt het overal elders van die lijn.</string>
+    <string name="lesson_pointing_1">De eerste techniek die mogelijkheden weghaalt in plaats van een cijfer te plaatsen. De meeste technieken hierna doen dat, en daar moet je aan wennen: je komt vooruit zonder één cijfer in te vullen.</string>
+    <string name="lesson_pointing_2">Kijk waar één cijfer in dit blok kan staan. Elke plek waar het zou kunnen ligt in dezelfde kolom.</string>
+    <string name="lesson_pointing_3">Het blok moet dat cijfer ergens bevatten. Dus waar het ook terechtkomt, het staat in die kolom.</string>
+    <string name="lesson_pointing_4">Wat betekent dat de rest van de kolom het niet kan hebben. Deze vakjes raken dat cijfer als mogelijkheid kwijt, ook al liggen ze nergens bij het blok in de buurt.</string>
+    <string name="lesson_pointing_5">Het heet wijzend omdat het paar binnen het blok langs de lijn wijst en hem schoonveegt.</string>
+
+    <string name="lesson_claiming_title">Het opeisende paar</string>
+    <string name="lesson_claiming_summary">Zit een cijfer op een lijn vast in één blok, dan verdwijnt het overal elders uit dat blok.</string>
+    <string name="lesson_claiming_1">Dezelfde redenering andersom gelezen, en het is de moeite waard hem apart te nemen, want het oog vindt hem op een andere plek.</string>
+    <string name="lesson_claiming_2">Begin deze keer bij een lijn. Kijk waar één cijfer langs deze rij kan staan.</string>
+    <string name="lesson_claiming_3">Elke plek waar het zou kunnen ligt binnen hetzelfde blok. De rij moet dat cijfer ergens bevatten, dus het cijfer zit in dat blok.</string>
+    <string name="lesson_claiming_4">Wat betekent dat de rest van het blok het kwijtraakt. Deze vakjes kunnen het niet meer hebben.</string>
+    <string name="lesson_claiming_5">Wijzend kijkt naar een blok en veegt een lijn schoon. Opeisend kijkt naar een lijn en veegt een blok schoon. Twee namen, één idee, en je komt ze allebei in elke moeilijke puzzel tegen.</string>
+
+    <string name="lesson_naked_pair_title">Het naakte paar</string>
+    <string name="lesson_naked_pair_summary">Twee vakjes met dezelfde twee cijfers bezitten ze allebei.</string>
+    <string name="lesson_naked_pair_1">Nu de groepen. Dit is de kleinste ervan en het patroon dat de rest vanzelfsprekend maakt.</string>
+    <string name="lesson_naked_pair_2">Deze twee vakjes liggen in hetzelfde gebied, en elk ervan kan alleen een van dezelfde twee cijfers zijn.</string>
+    <string name="lesson_naked_pair_3">Samen nemen ze die twee cijfers, elk één. Welke waar komt maakt niet uit en hoef je niet te weten.</string>
+    <string name="lesson_naked_pair_4">Dus geen ander vakje in dat gebied kan een van beide bevatten. Dit vakje raakt er een kwijt.</string>
+    <string name="lesson_naked_pair_5">Weer naakt, want je ziet het door die twee vakjes te lezen. Er is niets verborgen en er komt geen ander vakje aan te pas.</string>
+
+    <string name="lesson_hidden_pair_title">Het verborgen paar</string>
+    <string name="lesson_hidden_pair_summary">Twee cijfers met nog maar dezelfde twee plekken bezitten die vakjes.</string>
+    <string name="lesson_hidden_pair_1">Het spiegelbeeld van het naakte paar, net zoals de verborgen enkeling de naakte spiegelt.</string>
+    <string name="lesson_hidden_pair_2">In dit gebied kunnen twee cijfers elk alleen in dezelfde twee vakjes staan.</string>
+    <string name="lesson_hidden_pair_3">Die twee cijfers nemen samen die twee vakjes. Dus wat die vakjes verder ook leken te kunnen bevatten, dat kunnen ze niet.</string>
+    <string name="lesson_hidden_pair_4">De twee vakjes raken al hun andere notities kwijt. Nu zijn ze een naakt paar, en vaak is dat waar het patroon voor dient: een verborgen paar omzetten in een naakt paar dat de rest van het gebied schoonveegt.</string>
+    <string name="lesson_hidden_pair_5">Verborgen paren zijn lastiger te zien dan naakte, want je moet naar cijfers kijken in plaats van naar vakjes. Bij een raster dat vastloopt is het de moeite waard.</string>
+
+    <string name="lesson_naked_triple_title">Het naakte drietal</string>
+    <string name="lesson_naked_triple_summary">Drie vakjes die drie cijfers delen bezitten ze, ook al heeft geen ervan alle drie.</string>
+    <string name="lesson_naked_triple_1">Een paar met één vakje erbij, en één addertje waar iedereen de eerste keer in trapt.</string>
+    <string name="lesson_naked_triple_2">Deze drie vakjes liggen in hetzelfde gebied, en samen gebruiken ze maar drie verschillende cijfers.</string>
+    <string name="lesson_naked_triple_3">Hier is het addertje: geen van drieën hoeft alle drie te hebben. Twee cijfers in het ene vakje, twee in het volgende, twee in het derde is ook een drietal, zolang er over alle drie samen maar drie cijfers voorkomen.</string>
+    <string name="lesson_naked_triple_4">De drie vakjes nemen samen de drie cijfers, dus elk ander vakje in het gebied raakt alle drie kwijt. Dat zijn veel notities die in één keer verdwijnen.</string>
+    <string name="lesson_naked_triple_5">Tel bij het zoeken de verschillende cijfers over twee of drie vakjes in plaats van te zoeken naar dezelfde notities. Die gewoonte vindt drietallen.</string>
+
+    <string name="lesson_hidden_triple_title">Het verborgen drietal</string>
+    <string name="lesson_hidden_triple_summary">Drie cijfers met nog maar drie plekken bezitten die vakjes.</string>
+    <string name="lesson_hidden_triple_1">Dezelfde verhouding als bij het verborgen paar, een maat groter, en echt lastig te zien.</string>
+    <string name="lesson_hidden_triple_2">In dit gebied kunnen drie cijfers samen alleen in dezelfde drie vakjes staan.</string>
+    <string name="lesson_hidden_triple_3">Dus die drie vakjes bevatten die drie cijfers, en elke andere notitie erin kan weg.</string>
+    <string name="lesson_hidden_triple_4">Zoek hier niet als eerste naar. Kijk ernaar als een gebied nog maar een paar vakjes over heeft en niets anders heeft geholpen. Meestal is een naakt patroon in hetzelfde gebied makkelijker te zien.</string>
+
+    <string name="lesson_quads_title">Viertallen</string>
+    <string name="lesson_quads_summary">Hetzelfde idee met vier, goed om te kennen maar zelden om naar te zoeken.</string>
+    <string name="lesson_quads_1">Paren, drietallen, en nu viertallen. De redenering verandert niet: vier vakjes die samen vier cijfers gebruiken bezitten die cijfers, en vier cijfers met nog maar vier plekken bezitten die vakjes.</string>
+    <string name="lesson_quads_2">Hier is een naakt viertal. Vier vakjes, samen vier cijfers, en de rest van het gebied raakt alle vier kwijt.</string>
+    <string name="lesson_quads_3">En dit is het eerlijke advies. Viertallen bestaan en ze zijn geldig, maar ze zijn zeldzaam, en een viertal in een gebied met vijf of zes lege vakjes betekent meestal dat er in de andere vakjes een eenvoudiger patroon zit dat je hebt gemist.</string>
+    <string name="lesson_quads_4">Hier is een verborgen viertal, voor de volledigheid. Vier cijfers met nog vier plekken.</string>
+    <string name="lesson_quads_5">Leer ze herkennen zodat een hint die er een noemt ergens op slaat. Ga er geen tijd in steken om ze te zoeken.</string>
+
+    <string name="lesson_x_wing_title">De X-Wing</string>
+    <string name="lesson_x_wing_summary">Een cijfer dat in twee rijen vastzit aan twee kolommen verdwijnt overal elders uit die kolommen.</string>
+    <string name="lesson_x_wing_1">Het eerste patroon dat over het hele raster loopt in plaats van in één gebied te zitten. Het heeft een vorm, en zodra je die vorm eenmaal hebt gezien, zie je hem overal.</string>
+    <string name="lesson_x_wing_2">Neem één cijfer. In deze twee rijen kan het maar in twee vakjes per rij, en die vakjes liggen in dezelfde twee kolommen. Vier vakjes, in een rechthoek.</string>
+    <string name="lesson_x_wing_3">Denk het nu door. Elke rij moet het cijfer één keer bevatten. Welke hoek de ene rij ook neemt, de andere moet de tegenoverliggende nemen. Een derde mogelijkheid is er niet.</string>
+    <string name="lesson_x_wing_4">Dus samen nemen die twee rijen dat cijfer in allebei die kolommen. Al het andere in die kolommen raakt het kwijt.</string>
+    <string name="lesson_x_wing_5">Het werkt ook met kolommen en rijen omgedraaid. Twee kolommen waarvan het cijfer vastzit in dezelfde twee rijen vegen die rijen schoon.</string>
+
+    <string name="lesson_swordfish_title">De Swordfish</string>
+    <string name="lesson_swordfish_summary">Dezelfde redenering als een X-Wing, met drie lijnen in plaats van twee.</string>
+    <string name="lesson_swordfish_1">Een X-Wing met een rij erbij. De naam helpt niet, maar het patroon is een rechtstreekse uitbreiding.</string>
+    <string name="lesson_swordfish_2">Drie rijen, één cijfer, en in elke rij zit dat cijfer vast in vakjes van dezelfde drie kolommen.</string>
+    <string name="lesson_swordfish_3">Niet elke rij hoeft alle drie de kolommen te gebruiken. Twee van de drie is genoeg, zolang geen enkele rij erbuiten treedt.</string>
+    <string name="lesson_swordfish_4">De drie rijen nemen het cijfer samen in die drie kolommen, dus de rest van die kolommen raakt het kwijt.</string>
+    <string name="lesson_swordfish_5">Als je de X-Wing kunt volgen, kun je deze ook volgen. Hem vinden is een ander verhaal: hier houdt het op vrijblijvend te zijn om je notities in te vullen.</string>
+
+    <string name="lesson_jellyfish_title">De Jellyfish</string>
+    <string name="lesson_jellyfish_summary">Vier lijnen. Weer hetzelfde patroon, en de laatste die het leren waard is.</string>
+    <string name="lesson_jellyfish_1">Vier rijen, één cijfer, vier kolommen. De redenering is sinds de X-Wing niet veranderd en zal ook niet meer veranderen.</string>
+    <string name="lesson_jellyfish_2">Hier is er een. Vier rijen, en het cijfer zit in elk ervan vast in dezelfde vier kolommen.</string>
+    <string name="lesson_jellyfish_3">Voorbij vier valt er niets meer te leren. Een versie met vijf lijnen bestaat in theorie, maar op een negen bij negen raster is elk daarvan als kleiner patroon terug te vinden in de vier kolommen die overblijven, dus niemand zoekt ernaar.</string>
+    <string name="lesson_jellyfish_4">Dit is de buitenste rand van wat het waard is om als patroon te zoeken. Daarna kun je je aandacht beter aan ketens besteden.</string>
+
+    <string name="lesson_xy_wing_title">De XY-Wing</string>
+    <string name="lesson_xy_wing_summary">Drie vakjes met elk twee cijfers, en één vakje dat er hoe dan ook bij inschiet.</string>
+    <string name="lesson_xy_wing_1">Wings vragen om een andere manier van denken. Tot nu toe vond je een patroon en las je er een conclusie uit af. Hier redeneer je met gevallen.</string>
+    <string name="lesson_xy_wing_2">Begin bij dit vakje. Er passen precies twee cijfers in, en het is het scharnier van het patroon.</string>
+    <string name="lesson_xy_wing_3">Het heeft twee vrienden, die er elk een gebied mee delen en elk twee cijfers hebben: één gedeeld met het scharnier, één gedeeld met elkaar.</string>
+    <string name="lesson_xy_wing_4">Nu de redenering. Het scharnier is een van zijn twee cijfers. Is het het eerste, dan wordt de linkervleugel gedwongen tot het gedeelde cijfer. Is het het tweede, dan wordt de rechtervleugel gedwongen tot datzelfde gedeelde cijfer. Hoe dan ook heeft een van de vleugels het.</string>
+    <string name="lesson_xy_wing_5">Dus geen enkel vakje dat beide vleugels kan zien kan dat cijfer bevatten. Dit vakje raakt het kwijt.</string>
+    <string name="lesson_xy_wing_6">Je komt nooit te weten wat het scharnier eigenlijk is. Daar gaat het juist om, en dat maakt wings anders dan alles ervoor.</string>
+
+    <string name="lesson_xyz_wing_title">De XYZ-Wing</string>
+    <string name="lesson_xyz_wing_summary">Als een XY-Wing, maar het scharnier kan ook het gedeelde cijfer zijn, dus de conclusie is zwakker.</string>
+    <string name="lesson_xyz_wing_1">Eén verschil met de XY-Wing, en het maakt de conclusie kleiner.</string>
+    <string name="lesson_xyz_wing_2">Hier heeft het scharnier drie cijfers in plaats van twee, en het gedeelde cijfer is er een van.</string>
+    <string name="lesson_xyz_wing_3">Dus nu zijn er drie gevallen, niet twee. Beide vleugels kunnen het gedeelde cijfer hebben, of het scharnier zelf.</string>
+    <string name="lesson_xyz_wing_4">Dat betekent dat een vakje het cijfer alleen kwijtraakt als het alle drie kan zien, niet alleen de twee vleugels. Minder vakjes komen in aanmerking, en daarom haalt dit patroon minder weg dan zijn eenvoudiger neef.</string>
+    <string name="lesson_xyz_wing_5">Goed om te kennen, want de vorm ziet er bijna hetzelfde uit, en als je hem als XY-Wing leest haal je een cijfer weg waar je geen recht op hebt.</string>
+
+    <string name="lesson_w_wing_title">De W-Wing</string>
+    <string name="lesson_w_wing_summary">Twee identieke paren verbonden door een lijn die een van hun cijfers wel moet bevatten.</string>
+    <string name="lesson_w_wing_1">De derde wing, en degene die het minste rekenwerk vraagt.</string>
+    <string name="lesson_w_wing_2">Twee vakjes die geen gebied delen, elk met dezelfde twee cijfers.</string>
+    <string name="lesson_w_wing_3">Zoek nu een gebied waar een van die twee cijfers maar op twee plekken kan, en waar die twee plekken elk een van de paarvakjes zien. Dat gebied is de verbinding.</string>
+    <string name="lesson_w_wing_4">Het verbindende gebied moet dat cijfer op een van zijn twee plekken hebben, en welke het ook is, het dwingt een van de paarvakjes tot het andere cijfer. Dus een van het paar heeft altijd het andere cijfer.</string>
+    <string name="lesson_w_wing_5">Elk vakje dat beide paarvakjes ziet raakt het kwijt. Dit vakje dus.</string>
+
+    <string name="lesson_rectangle_title">De unieke rechthoek</string>
+    <string name="lesson_rectangle_summary">Een puzzel met één antwoord kan geen vierkant bevatten dat zou kunnen draaien.</string>
+    <string name="lesson_rectangle_1">Deze techniek is van een andere soort dan alle andere, en het is goed om te zeggen waarom voordat je hem gebruikt.</string>
+    <string name="lesson_rectangle_2">Kijk naar deze vier vakjes. Ze liggen in twee rijen, twee kolommen en precies twee blokken, en elk ervan kan dezelfde twee cijfers bevatten.</string>
+    <string name="lesson_rectangle_3">Als dat het hele verhaal was, zou de puzzel twee antwoorden hebben: vul de rechthoek op de ene manier in, of verwissel beide diagonalen, en allebei de rasters houden zich aan elke regel. Een goed gemaakte puzzel heeft geen twee antwoorden.</string>
+    <string name="lesson_rectangle_4">Dus dat kan niet het hele verhaal zijn. Een van die vakjes moet iets anders bevatten, en juist dat laat je iets weghalen.</string>
+    <string name="lesson_rectangle_5">Hier overleven de extra mogelijkheden en wordt het gedeelde paar uit deze vakjes weggestreept.</string>
+    <string name="lesson_rectangle_6">De adder onder het gras, ronduit gezegd: deze redenering gaat ervan uit dat de puzzel goed gemaakt is. Dat geldt voor elke puzzel in deze app, want de generator controleert het. Gebruik hem op een raster uit onbekende bron en hij kan je op het verkeerde been zetten.</string>
+
+    <string name="lesson_bug_title">BUG plus één</string>
+    <string name="lesson_bug_summary">Als elk vakje op één na twee kandidaten had, zou de puzzel dubbelzinnig zijn. Dus dat ene vakje is bijzonder.</string>
+    <string name="lesson_bug_1">Dezelfde aanname als bij de unieke rechthoek, in een andere vorm.</string>
+    <string name="lesson_bug_2">Stel dat een raster een stand bereikte waarin elk onopgelost vakje precies twee mogelijkheden had, en elk cijfer precies twee keer in elk gebied stond. Zo\'n raster heeft altijd twee antwoorden.</string>
+    <string name="lesson_bug_3">Dus een goed gemaakte puzzel kan daar nooit terechtkomen. Vind je een stand die er één vakje vanaf zit, waarin precies één vakje drie mogelijkheden heeft in plaats van twee, dan is dat vakje wat de puzzel voor dubbelzinnigheid behoedt.</string>
+    <string name="lesson_bug_4">Het cijfer dat drie keer in zijn gebieden voorkomt is het cijfer dat dat vakje moet bevatten. Het is een zeldzaam patroon en een heel snel einde als het zich voordoet.</string>
+
+    <string name="lesson_colouring_title">Eenvoudig kleuren</string>
+    <string name="lesson_colouring_summary">Volg één cijfer door de vakjes waar het maar twee plekken heeft, en zoek een tegenspraak.</string>
+    <string name="lesson_colouring_1">Ketens, rustig aan. Kleuren is de makkelijkste ingang en eronder zit dezelfde redenering.</string>
+    <string name="lesson_colouring_2">Kies een cijfer. Zoek een gebied waar het maar twee mogelijke vakjes heeft. Die twee zijn verbonden: precies een ervan is het cijfer.</string>
+    <string name="lesson_colouring_3">Kleur er een van het paar, en volg dan de verbindingen. Elk vakje dat zo verbonden is krijgt een van twee kleuren, en één hele kleur is goed terwijl de andere fout is. Welke, dat weet je niet.</string>
+    <string name="lesson_colouring_4">Zoek nu de tegenspraak. Kan een vakje twee vakjes van dezelfde kleur zien, dan kan die kleur niet de goede zijn, dus raakt dat vakje het cijfer kwijt. Dat is wat hier gebeurt.</string>
+    <string name="lesson_colouring_5">Twee kleuren, één tegenspraak, en nergens gokken. Dat is de hele methode.</string>
+
+    <string name="lesson_remote_pairs_title">Verre paren</string>
+    <string name="lesson_remote_pairs_summary">Een keten van identieke paren wisselt om en om, dus de uiteinden zijn tegengesteld.</string>
+    <string name="lesson_remote_pairs_1">Kleuren toegepast op vakjes in plaats van op één cijfer.</string>
+    <string name="lesson_remote_pairs_2">Hier is een keten van vakjes die allemaal dezelfde twee cijfers hebben, elk met het volgende verbonden door een gedeeld gebied.</string>
+    <string name="lesson_remote_pairs_3">Omdat elke schakel een paar is, wisselen de cijfers om en om langs de keten. Het eerste vakje neemt het ene, het tweede het andere, enzovoort.</string>
+    <string name="lesson_remote_pairs_4">Dus de twee uiteinden van een keten met een even lengte zijn tegengesteld: ze hebben verschillende cijfers. Elk vakje dat beide uiteinden kan zien moet allebei de cijfers kwijtraken, want de uiteinden hebben er elk een.</string>
+    <string name="lesson_remote_pairs_5">Het is de makkelijkste keten om te zien, want elk vakje erin ziet er hetzelfde uit.</string>
+
+    <string name="lesson_multi_colouring_title">Meervoudig kleuren</string>
+    <string name="lesson_multi_colouring_summary">Twee kleurketens die elkaar raken sluiten elkaar uit.</string>
+    <string name="lesson_multi_colouring_1">Eenvoudig kleuren gebruikt één keten. Soms zit er in één keten geen tegenspraak maar in twee ketens samen wel.</string>
+    <string name="lesson_multi_colouring_2">Hier zijn vakjes uit twee losse ketens voor hetzelfde cijfer.</string>
+    <string name="lesson_multi_colouring_3">Ziet een kleur in de ene keten een kleur in de andere, dan kunnen die twee kleuren niet allebei goed zijn. Dat doortrekken haalt het cijfer weg uit de vakjes die de twee overgebleven kleuren zien.</string>
+    <string name="lesson_multi_colouring_4">De conclusie komt hier terecht.</string>
+    <string name="lesson_multi_colouring_5">Hier houdt kleuren op iets te zijn dat je in je hoofd kunt houden, en begint het te vragen om op te schrijven welk vakje welke kleur heeft.</string>
+
+    <string name="lesson_x_chain_title">De X-Chain</string>
+    <string name="lesson_x_chain_summary">Eén cijfer, schakels die wisselen tussen sterk en zwak, en een afvaller aan de uiteinden.</string>
+    <string name="lesson_x_chain_1">De algemene vorm van alles uit de vorige fase. Eén cijfer, en een keten van wisselende schakels.</string>
+    <string name="lesson_x_chain_2">Een sterke schakel zijn twee vakjes waarvan er minstens één het cijfer moet bevatten, en dat is wat een gebied met maar twee plekken je geeft. Een zwakke schakel zijn twee vakjes waarvan er hoogstens één het kan hebben, en dat zijn willekeurig welke twee vakjes die een gebied delen.</string>
+    <string name="lesson_x_chain_3">Laat ze wisselen: sterk, zwak, sterk, enzovoort, beginnend en eindigend met sterk. Wat er in het midden ook gebeurt, dan heeft een van de twee uiteinden het cijfer.</string>
+    <string name="lesson_x_chain_4">Dus elk vakje dat beide uiteinden ziet raakt het kwijt.</string>
+    <string name="lesson_x_chain_5">Kleuren is deze keten getekend in twee kleuren. De keten is algemener omdat hij door vakjes kan lopen waar kleuren niet bij komt.</string>
+
+    <string name="lesson_xy_chain_title">De XY-Chain</string>
+    <string name="lesson_xy_chain_summary">Een keten van vakjes met twee kandidaten, waarvan de uiteinden een cijfer delen.</string>
+    <string name="lesson_xy_chain_1">Hetzelfde wisselende idee, maar je stapt door vakjes in plaats van één cijfer te volgen.</string>
+    <string name="lesson_xy_chain_2">Elk vakje in deze keten heeft precies twee mogelijkheden, en elk deelt een gebied met het volgende.</string>
+    <string name="lesson_xy_chain_3">Binnen een vakje dwingt het ene cijfer het andere, en dat is de sterke schakel. Tussen vakjes maakt een gedeeld gebied de zwakke. Ze laten wisselen laat de redenering langs de keten lopen.</string>
+    <string name="lesson_xy_chain_4">Kunnen beide uiteinden van de keten hetzelfde cijfer bevatten, dan heeft een ervan het, hoe de keten ook uitvalt. Elk vakje dat beide uiteinden ziet raakt dat cijfer kwijt.</string>
+    <string name="lesson_xy_chain_5">Dit is de techniek die de meeste Expert-puzzels afmaakt, en er een vinden is vooral een kwestie van geduldig vakjes met twee kandidaten volgen in plaats van slim zijn.</string>
+
+    <string name="lesson_writing_chains_title">Een keten opschrijven</string>
+    <string name="lesson_writing_chains_summary">Een keten die je niet kunt nalopen is een gok met extra stappen.</string>
+    <string name="lesson_writing_chains_1">Eén praktische les voor de laatste techniek, want bij ketens praten mensen zichzelf dingen aan die niet waar zijn.</string>
+    <string name="lesson_writing_chains_2">Een keten is een reeks beweringen, en elke bewering moet standhouden. Op het scherm ziet hij eruit als een stel opgelichte vakjes, en oplichten is geen redenering.</string>
+    <string name="lesson_writing_chains_3">Schrijf hem op als één regel: dit vakje is 4 of 7; is het 4, dan is dat 9; is dat 9, dan is die andere 4. Elke pijl is een schakel en elke schakel heeft een reden.</string>
+    <string name="lesson_writing_chains_4">Loop dan het wisselen na. Sterk, zwak, sterk, zwak, en sterk aan beide uiteinden. Een keten die begint of eindigt op een zwakke schakel bewijst niets, en zo gaat een keten het vaakst mis.</string>
+    <string name="lesson_writing_chains_5">Kun je hem niet opschrijven, dan heb je hem niet gevonden. Dat is geen regel over netheid, het is het verschil tussen een conclusie en een onderbuikgevoel.</string>
+
+    <string name="lesson_sue_de_coq_title">Sue de Coq</string>
+    <string name="lesson_sue_de_coq_summary">Waar een blok een lijn kruist, en de kruising meer cijfers heeft dan plek.</string>
+    <string name="lesson_sue_de_coq_1">Een blok en een kolom overlappen in drie vakjes. Die drie vakjes horen bij allebei tegelijk, en daar leeft deze techniek van.</string>
+    <string name="lesson_sue_de_coq_2">Kijk hier naar twee ervan. Samen hebben ze 2, 6, 7 en 8: vier cijfers voor twee vakjes. Twee daarvan gaan erin, en twee blijven over voor ergens anders.</string>
+    <string name="lesson_sue_de_coq_3">Verderop in dezelfde kolom zit een vakje met 6 en 7. Elders in hetzelfde blok zit een vakje met 2 en 8. Samen willen die twee vakjes precies de vier cijfers die de kruising heeft, netjes verdeeld en zonder overlap.</string>
+    <string name="lesson_sue_de_coq_4">Tel het na. Drie vakjes van de kolom nemen nu drie verschillende van de vier cijfers, en drie vakjes van het blok doen hetzelfde. De rekensom klopt maar op één manier: 6 en 7 gaan op binnen de kolom, en 2 en 8 binnen het blok.</string>
+    <string name="lesson_sue_de_coq_5">Dus niets anders in die kolom kan een 6 of een 7 zijn. Twee vakjes raken er hier een kwijt.</string>
+    <string name="lesson_sue_de_coq_6">Dezelfde redenering loopt andersom voor het blok. Eén patroon, twee gebieden, twee losse reeksen afvallers, en nergens een keten.</string>
+
+    <string name="lesson_als_title">ALS-XZ</string>
+    <string name="lesson_als_summary">Twee bijna gesloten verzamelingen die een cijfer delen, en de afvaller die daaruit volgt.</string>
+    <string name="lesson_als_1">De regel waar de moeilijkste niveaus op gebouwd zijn. Alles boven deze fase is er een variant van.</string>
+    <string name="lesson_als_2">Een bijna gesloten verzameling is een groep vakjes in één gebied met precies één cijfer meer dan er vakjes zijn. Vier vakjes met samen vijf cijfers. Raakte ze één cijfer kwijt, dan was ze een gesloten verzameling, vandaar de naam.</string>
+    <string name="lesson_als_3">Neem er twee die twee cijfers delen. Noem een van de gedeelde cijfers het beperkte, en eis dat elke plek waar het in de ene verzameling staat elke plek ziet waar het in de andere staat.</string>
+    <string name="lesson_als_4">Dan kan het maar in een van de twee verzamelingen zitten. De verzameling die het niet krijgt gaat op slot, en dat legt het andere gedeelde cijfer daarbinnen vast. En dus raakt elk vakje dat dat cijfer in beide verzamelingen ziet het kwijt.</string>
+    <string name="lesson_als_5">Hier is de afvaller die eruit komt.</string>
+    <string name="lesson_als_6">Als dit een paar keer lezen kost, is dat het normale aantal. Elke techniek voorbij dit punt is deze in een andere vorm.</string>
+
+    <string name="lesson_deep_end_title">Wat het diepe vraagt</string>
+    <string name="lesson_deep_end_summary">Wat er verandert bij Waanzinnig en Nachtmerrie, en waarom die niveaus papier vragen.</string>
+    <string name="lesson_deep_end_1">Alles tot hier kun je zien. Je kijkt naar een rij, een blok, twee vakjes, en het antwoord ligt voor je zodra je de vorm kent.</string>
+    <string name="lesson_deep_end_2">De twee moeilijkste niveaus zijn niet zo. Die vragen je een redenering drie of vier stappen ver te volgen en dat allemaal tegelijk in je hoofd te houden, en dat lukt bijna niemand door te kijken.</string>
+    <string name="lesson_deep_end_3">Dus schrijf het op. Een potlood en de achterkant van een envelop zijn geen valsspelen en geen teken dat je hier slecht in bent. Het is wat iedereen doet die deze oplost.</string>
+    <string name="lesson_deep_end_4">De regels hier zijn allemaal hetzelfde idee: een groep vakjes die één cijfer tekortkomt om vol te zijn. Haal dat cijfer weg en de groep ligt vast, en een vastliggende groep legt de volgende vast. Dat is het hele diepe.</string>
+    <string name="lesson_deep_end_5">Hieronder wordt nergens gegokt. Elke stap is bewezen, elke hint laat je het bewijs zien, en als een puzzel je hier verslaat, is er over een week op terugkomen gewoon hoe het gaat.</string>
+
+    <string name="lesson_als_xy_title">ALS-XY-Wing</string>
+    <string name="lesson_als_xy_summary">Drie groepen in een keten, en het cijfer dat aan geen van beide uiteinden overleeft.</string>
+    <string name="lesson_als_xy_1">Deze keer drie groepen, op een lijn verbonden: één aan elk uiteinde en één in het midden die ze uit elkaar houdt.</string>
+    <string name="lesson_als_xy_2">Begin bij de twee links. r3c9 heeft 1 en 3. r1c8 heeft 3 en 7. Ze delen een blok, dus maar een van beide kan de 3 zijn.</string>
+    <string name="lesson_als_xy_3">Nu de groep in kolom 8: drie vakjes met samen 1, 3, 7 en 9. Vier cijfers, drie vakjes, dus ze komt één cijfer tekort om vol te zijn. Ze deelt de 7 met r1c8, en elke 7 erin staat in diezelfde kolom, dus ook hier kan maar één kant hem nemen.</string>
+    <string name="lesson_als_xy_4">Stel dat een van de twee gemarkeerde vakjes in kolom 9 een 1 is. Dat ziet r3c9, dus r3c9 is geen 1, dus die is 3. Dan is r1c8 geen 3, dus die is 7. Dan houdt de groep geen 7 meer over, dus is ze vol, en moet ze 1, 3 en 9 gebruiken.</string>
+    <string name="lesson_als_xy_5">Maar die vakjes zien ook elke 1 in de groep, dus kan de groep ook geen 1 hebben. De redenering eet zichzelf op, en de 1 valt af.</string>
+    <string name="lesson_als_xy_6">Twee verbindingen, drie groepen, en elke stap dwingt de volgende. Lees het twee keer: het is een keten, en ketens slaan alleen ergens op als je ze schakel voor schakel neemt.</string>
+
+    <string name="lesson_blossom_title">Death blossom</string>
+    <string name="lesson_blossom_summary">Eén vakje met achter elk van zijn cijfers een groep die wacht.</string>
+    <string name="lesson_blossom_1">Deze heeft een vorm die je kunt zien: een steel, en een blaadje voor elk cijfer dat de steel zou kunnen zijn.</string>
+    <string name="lesson_blossom_2">De steel is r1c4. Die is 5 of 6, en niets anders. Twee mogelijkheden betekent twee gevallen, en deze techniek pakt ze allebei tegelijk aan.</string>
+    <string name="lesson_blossom_3">Stel dat het 5 is. Dan kan r1c7, in dezelfde rij, met 5 en 8, de 5 niet zijn. Dus die is 8.</string>
+    <string name="lesson_blossom_4">Stel in plaats daarvan dat het 6 is. Kijk naar deze drie vakjes in hetzelfde blok: samen hebben ze 2, 6, 7 en 8. Vier cijfers, drie vakjes, één tekort om vol te zijn. De steel ziet alle drie, dus zijn 6 haalt de 6 bij ze weg.</string>
+    <string name="lesson_blossom_5">Nu zijn ze vol, en drie volle vakjes gebruiken drie cijfers: 2, 7 en 8. Maar een ervan kan de 8 zijn, dus daar komt de 8.</string>
+    <string name="lesson_blossom_6">Zet de twee gevallen naast elkaar. Of er staat een 8 op r1c7, of er staat een 8 in dat blok, en een derde geval is er niet. Elk vakje dat beide plekken kan zien raakt zijn 8 kwijt, en dat geldt voor twee ervan.</string>
+    <string name="lesson_blossom_7">Merk op wat je nooit hebt hoeven weten: welk cijfer de steel eigenlijk is. Beide wegen eindigen op een 8, dus het antwoord hangt niet van die splitsing af.</string>
+
+    <string name="lesson_fork_title">Dwingende keten</string>
+    <string name="lesson_fork_summary">Neem een vakje beide kanten op en kijk welke overleeft. Het moeilijkste in de app.</string>
+    <string name="lesson_fork_1">De laatste techniek, en de enige die geen patroon is. Er valt hier niets te zien. Er is alleen werk.</string>
+    <string name="lesson_fork_2">Dit vakje is 2 of 7. Al het andere op het bord is drooggeknepen, en niets zegt welke van de twee het is.</string>
+    <string name="lesson_fork_3">Probeer er dus een. Zeg dat het 2 is, in potlood, en volg alleen de makkelijke gevolgen: een vakje met één cijfer over, of een cijfer met nog één plek in zijn gebied.</string>
+    <string name="lesson_fork_4">Die komen snel. Hier wordt een 2 afgedwongen, dan daar een 7, dan een 3, een 5, een 9. Ga door. Veertien cijfers later, kijk naar het gemarkeerde vakje.</string>
+    <string name="lesson_fork_5">Er is niets meer over. Elk cijfer dat daar had kunnen staan is door iets anders ingenomen. Dat is geen pech, dat is een tegenspraak, en het betekent dat de 2 nooit mogelijk was.</string>
+    <string name="lesson_fork_6">Wis het dus allemaal uit en schrijf de 7. Niet omdat de 7 er beter uitziet, maar omdat de 2 onmogelijk is gebleken, en twee mogelijkheden min één er één overhoudt.</string>
+    <string name="lesson_fork_7">Dit is bewijs met gevallen, en dit is wat mensen bedoelen met een puzzel op papier uitwerken. Gebruik papier. Niemand houdt veertien afgedwongen cijfers in zijn hoofd, en ze moeten opschrijven is geen zwakte.</string>
+    <string name="lesson_fork_8">Zet hem er nu in.</string>
+    <string name="lesson_fork_wrong">Het andere cijfer is degene die sneuvelde. De 2 leidde naar een vakje waar niets meer in kon, dus wat overblijft is de 7.</string>
+
+    <string name="lesson_nothing_applies_title">Als er niets past</string>
+    <string name="lesson_nothing_applies_summary">Loop het na voor je gaat gokken, want een puzzel uit deze app heeft altijd een volgende stap.</string>
+    <string name="lesson_nothing_applies_1">Je komt in standen waarin je overal naar hebt gekeken en niets hebt gevonden. Dit is wat je dan doet, en wat niet.</string>
+    <string name="lesson_nothing_applies_2">Wat je niet doet is gokken. Elke puzzel in deze app is met redeneren op te lossen, en een gok die toevallig klopt leert je niets terwijl een gok die fout is je het hele raster kost.</string>
+    <string name="lesson_nothing_applies_3">Loop het in deze volgorde na. Ten eerste: kloppen al je notities nog? Een verouderde notitie is de meest voorkomende oorzaak van een onmogelijke stand, en de app wist ze voor je als je dat toestaat. Ten tweede: klopt een cijfer dat je hebt geplaatst wel? Druk op hint en hij zegt het.</string>
+    <string name="lesson_nothing_applies_4">Zoek dan opnieuw naar de goedkope dingen. Het is bijna nooit een keten die je hebt gemist. Het is bijna altijd een verborgen enkeling in een gebied waar je twintig zetten geleden bent opgehouden te kijken.</string>
+
+    <string name="lesson_look_first_title">Waar je eerst naar kijkt</string>
+    <string name="lesson_look_first_summary">Goedkope patronen eerst, altijd, want ze komen vaak voor en ze openen het raster.</string>
+    <string name="lesson_look_first_1">Nu ken je elke techniek die deze app bij naam kent. Het laatste dat je moet leren is de volgorde van zoeken.</string>
+    <string name="lesson_look_first_2">Enkelingen eerst, elke keer. Naakt, dan verborgen. Ze komen met afstand het vaakst voor, en elke die je plaatst maakt elke andere techniek makkelijker te vinden.</string>
+    <string name="lesson_look_first_3">Dan de goedkope afvallers: wijzende en opeisende paren. Die zijn snel na te lopen, gebied voor gebied, en ze openen vaak meteen een enkeling.</string>
+    <string name="lesson_look_first_4">Dan paren en drietallen in de gebieden met de minste lege vakjes. Dan vissen, dan wings. Ketens als laatste, altijd, want die kosten het meeste werk en komen het minst voor.</string>
+    <string name="lesson_look_first_5">Op een Jellyfish jagen voordat je de enkelingen hebt nagelopen is het sudoku-equivalent van een programma herschrijven voordat je de foutmelding leest. De app beoordeelt puzzels op het moeilijkste dat ze nodig hebben, maar een Meester bestaat nog steeds vooral uit enkelingen.</string>
+    <string name="lesson_together_title">Een Meester, samen</string>
+    <string name="lesson_together_summary">Een moeilijke puzzel bestaat vooral uit makkelijke stappen met een paar moeilijke ertussen.</string>
+    <string name="lesson_together_1">De laatste les. Dit is het raster waar de cursus doorheen is gelopen, op niveau Meester, en hier is de hele oplossing, techniek voor techniek benoemd.</string>
+    <string name="lesson_together_2">Hij opent met een naakte enkeling. Bijna alles doet dat.</string>
+    <string name="lesson_together_3">Dan een verborgen enkeling, in het blok ernaast.</string>
+    <string name="lesson_together_4">Nu loopt hij vast, en een wijzend paar veegt een kolom schoon zodat de enkelingen weer op gang komen. Merk op dat die stap geen cijfer plaatste en dat er toch vooruitgang was.</string>
+    <string name="lesson_together_5">Even later een naakt paar, dat hetzelfde werk doet binnen een gebied.</string>
+    <string name="lesson_together_6">Dieper erin een X-Wing. Inmiddels is het raster halfvol en doen de notities het werk.</string>
+    <string name="lesson_together_7">En tegen het eind degene die het niveau oplevert: een ALS-XZ. Eén afvaller, en de rest is weer enkelingen.</string>
+    <string name="lesson_together_8">Dat is wat Meester hier betekent. Geen eenentachtig moeilijke stappen, maar zeventig makkelijke en een handvol die alles vragen wat je hebt geleerd.</string>
+    <string name="lesson_together_9">Je bent elke techniek tegengekomen die deze app bij naam kent. Ga er een spelen. Bij elke puzzel horen drie hints en het is geen schande om ze op te maken, en wil je er liever zoveel als je wilt, dan is de limiet een schakelaar in de instellingen.</string>
+    <string name="lesson_step_of">%1$d van %2$d</string>
+    <string name="lesson_back">Terug</string>
+    <string name="lesson_next">Volgende</string>
+    <string name="lesson_done">Klaar</string>
+    <string name="lesson_replay">Opnieuw</string>
+    <string name="lesson_show_me">Laat zien</string>
+    <string name="lesson_cell_at">Rij %1$d, kolom %2$d.</string>
+    <string name="course_title">Leren</string>
+    <string name="course_lesson_done">afgerond</string>
+    <string name="course_lesson_next">volgende</string>
+    <string name="course_lesson_todo">nog niet begonnen</string>
+    <string name="course_you_are_here">Je bent hier</string>
+    <string name="course_continue">Verdergaan</string>
+    <string name="course_stage_done">%1$d van %2$d afgerond</string>
+    <plurals name="course_progress">
+        <item quantity="one">%1$d van %2$d les</item>
+        <item quantity="other">%1$d van %2$d lessen</item>
+    </plurals>
+    <string name="settings_hint_detail">Hoeveel een hint zegt</string>
+    <string name="hint_detail_region">Alleen het gebied</string>
+    <string name="hint_detail_region_note">Naar welk blok of welke lijn je moet kijken, en niets meer.</string>
+    <string name="hint_detail_name">De techniek</string>
+    <string name="hint_detail_name_note">Wat voor stap het is, zodat je weet waar je naar zoekt.</string>
+    <string name="hint_detail_cells">De vakjes</string>
+    <string name="hint_detail_cells_note">De vakjes waar de redenering op rust, opgelicht op het bord.</string>
+    <string name="hint_detail_full">De hele redenering</string>
+    <string name="hint_detail_full_note">Alles, inclusief de zet. Om de cursus mee door te werken.</string>
+    <string name="path_title">Hoe hij is opgelost</string>
+    <string name="path_placed">Rij %1$d, kolom %2$d is %3$d.</string>
+    <string name="outcome_path">Laat zien hoe hij is opgelost</string>
+    <string name="settings_your_data">Jouw gegevens</string>
+    <string name="settings_data_note">Alles wat deze app over je weet staat op deze telefoon. Exporteren schrijft het naar een bestand dat jij kiest, zodat een nieuwe telefoon verder kan waar deze ophield. Er wordt niets ergens naartoe gestuurd.</string>
+    <string name="settings_export">Mijn voortgang exporteren</string>
+    <string name="settings_import">Uit een bestand importeren</string>
+    <string name="settings_reset_course">De cursus opnieuw beginnen, mijn spellen houden</string>
+    <string name="settings_exported">Opgeslagen. Lessen: %1$d. Spellen: %2$d.</string>
+    <string name="settings_imported">Toegevoegd. Lessen: %1$d. Spellen: %2$d.</string>
+    <string name="settings_imported_ignored">Toegevoegd. Lessen: %1$d. Spellen: %2$d. Overgeslagen, omdat ze van een nieuwere versie kwamen: %3$d.</string>
+    <string name="settings_import_empty">Dat bestand is leeg.</string>
+    <string name="settings_import_not_ours">Dat lijkt geen export van Sendoku.</string>
+    <string name="settings_import_future">Dat bestand is geschreven door een nieuwere versie van Sendoku.</string>
+    <string name="settings_import_failed">Dat bestand kon niet gelezen worden, en er is niets op deze telefoon veranderd.</string>
+    <string name="settings_course_reset">De cursus staat weer aan het begin. Je spellen zijn ongemoeid gelaten.</string>
+    <string name="practice_looking">Op zoek naar een stand…</string>
+    <string name="practice_find">Zoek: %1$s.</string>
+    <string name="practice_keep_going">Dat is er een. Ga door.</string>
+    <string name="practice_wrong">Dat vakje niet. Lees de regel nog eens: %1$s rust daar niet op.</string>
+    <string name="practice_right">Dat is %1$s. Wat er wegvalt is aangegeven.</string>
+    <string name="practice_revealed">Hier is %1$s, en wat er wegvalt.</string>
+    <string name="practice_show_me">Laat zien</string>
+    <string name="practice_another">Nog een</string>
+    <string name="practice_skip">Overslaan</string>
+    <string name="practice_title">Oefenen</string>
+    <string name="technique_pick_title">Zoek er een om op te oefenen</string>
+    <string name="technique_pick_body">Elke puzzel hier is beoordeeld door dezelfde oplosser die de hints schrijft, dus het is bekend op welke regel elke puzzel draait. Kies een techniek en krijg een puzzel die zonder die techniek niet af te maken is.</string>
+    <string name="technique_pick_none">Geen puzzel in deze versie draait daarop</string>
+    <string name="technique_pick_play">Speel er een</string>
+    <plurals name="technique_pick_count">
+        <item quantity="one">%1$d puzzel draait daarop</item>
+        <item quantity="other">%1$d puzzels draaien daarop</item>
+    </plurals>
+    <string name="practice_none">Er valt nog niets te oefenen. Maak eerst een les af die een techniek leert.</string>
+    <string name="glossary_learn_this">Leer deze</string>
+    <string name="hint_learn_this">Leer me dit</string>
+    <string name="outcome_learn">Leren: %1$s</string>
+    <string name="course_finished">Alles, af. Alles wat de app bij naam kent, ken jij ook bij naam. De puzzels zijn de rest.</string>
+    <string name="outcome_lost_hints">Hints op</string>
+    <string name="outcome_share">Delen</string>
+    <string name="card_solved">Opgelost</string>
+    <string name="card_lost">Verslagen door</string>
+    <string name="settings_hint_limit">Beëindig het spel na drie hints</string>
+    <string name="settings_hint_note">Staat standaard aan. Drie hints zijn gratis, en de vierde kost je het spel, waardoor een hint een keuze wordt in plaats van een reflex. Zet hem uit terwijl je de cursus doorwerkt.</string>
+    <string name="settings_post_mortem">Zeg waar de tijd bleef</string>
+    <string name="settings_post_mortem_note">Noem na een overwinning de twee plekken waar het oplossen vastliep en wat daar op het bord stond. Over een oplossing die nooit vastliep wordt niets gezegd.</string>
+    <string name="post_mortem_line">Hier stond je %1$s stil. Er was %2$s te vinden.</string>
+    <string name="post_mortem_title">Waar de tijd bleef</string>
+    <string name="clean_line">Een schone oplossing: geen hints, geen fouten, geen notities.</string>
+    <string name="clean_mark">Schoon</string>
+    <string name="clean_stat">Schone oplossingen</string>
+    <string name="clean_note">Schone oplossingen: %1$d van %2$d.</string>
+    <string name="account_title">Jij</string>
+    <string name="account_no_account">Er is geen account om op in te loggen. Alles hieronder staat op deze telefoon en nergens anders.</string>
+    <string name="account_solved">Opgelost</string>
+    <string name="account_streak">Dagen op rij</string>
+    <string name="account_played">Gespeeld</string>
+    <string name="account_time">Speeltijd</string>
+    <string name="account_lessons">Lessen</string>
+    <string name="account_about_detail">Wat deze app belooft, en de licenties waar hij op staat</string>
+    <string name="account_hardest">Moeilijkste opgelost</string>
+    <string name="account_hardest_note">Verslagen op %1$s, in %2$s</string>
+    <string name="account_beaten">Wat je hebt verslagen</string>
+    <string name="account_recent">De laatste vijf weken</string>
+    <string name="account_hints">Gebruikte hints</string>
+    <string name="account_empty">Maak één puzzel af en deze pagina loopt vol: wat je op elk niveau hebt verslagen, en elke dag dat je hebt gespeeld.</string>
+    <string name="account_stats">Statistieken</string>
+    <string name="account_history">Geschiedenis</string>
+    <string name="history_title">Geschiedenis</string>
+    <string name="history_lost">Verloren</string>
+    <string name="history_empty_body">Maak een puzzel af en hij komt hier terecht, met het bord zoals je het achterliet, klaar om te delen wanneer je maar wilt.</string>
+    <string name="history_no_board">Deze was af voordat de app borden bewaarde, dus er valt niets te tekenen. De getallen zijn alles wat er is.</string>
+    <string name="tab_home">Start</string>
+    <string name="tab_learn">Leren</string>
+    <string name="tab_account">Jij</string>
+    <plurals name="hint_menu_left">
+        <item quantity="one">De laatste twee kosten een hint, en je hebt er nog %1$d.</item>
+        <item quantity="other">De laatste twee kosten een hint, en je hebt er nog %1$d.</item>
+    </plurals>
+    <plurals name="hint_check_wrong">
+        <item quantity="one">%1$d cijfer dat je hebt ingevuld is fout. Het vinden blijft aan jou.</item>
+        <item quantity="other">%1$d cijfers die je hebt ingevuld zijn fout. Ze vinden blijft aan jou.</item>
+    </plurals>
+    <plurals name="path_summary">
+        <item quantity="one">%1$d stap, goedkoopste regel eerst, precies zoals de app hem beoordeelde.</item>
+        <item quantity="other">%1$d stappen, goedkoopste regel eerst, precies zoals de app hem beoordeelde.</item>
+    </plurals>
+    <plurals name="path_struck">
+        <item quantity="one">Haalt %1$d notitie weg.</item>
+        <item quantity="other">Haalt %1$d notities weg.</item>
+    </plurals>
+</resources>

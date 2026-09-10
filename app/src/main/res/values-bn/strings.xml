@@ -210,6 +210,9 @@
     <string name="language_bengali">বাংলা</string>
     <string name="language_thai">ไทย</string>
     <string name="language_danish">Dansk</string>
+    <string name="language_dutch">Nederlands</string>
+    <string name="language_norwegian">Norsk bokmål</string>
+    <string name="language_swedish">Svenska</string>
     <plurals name="first_run_prompt">
         <item quantity="one">Sendoku %1$d টি ভাষায় লেখা। আপনি কোনটি পড়েন?</item>
         <item quantity="other">Sendoku %1$d টি ভাষায় লেখা। আপনি কোনটি পড়েন?</item>

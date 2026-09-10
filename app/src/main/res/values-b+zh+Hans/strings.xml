@@ -202,6 +202,9 @@
     <string name="language_bengali">বাংলা</string>
     <string name="language_thai">ไทย</string>
     <string name="language_danish">Dansk</string>
+    <string name="language_dutch">Nederlands</string>
+    <string name="language_norwegian">Norsk bokmål</string>
+    <string name="language_swedish">Svenska</string>
     <plurals name="first_run_prompt">
         <item quantity="other">Sendoku 有 %1$d 种语言。你用哪一种阅读？</item>
     </plurals>

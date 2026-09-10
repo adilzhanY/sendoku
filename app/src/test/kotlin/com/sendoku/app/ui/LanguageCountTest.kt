@@ -56,7 +56,7 @@ class LanguageCountTest {
         // because the number changes every time a language is added and a test that hardcodes
         // it fails for the one reason that is never interesting.
         val play = repo("PLAY.md")
-        val sentence = Regex("""[A-Z][a-z]+ languages: ([^.]+)\.""").find(play)?.groupValues?.get(1)
+        val sentence = Regex("""[A-Z][a-z]+(?:-[a-z]+)? languages: ([^.]+)\.""").find(play)?.groupValues?.get(1)
         assertTrue("the store description no longer lists the languages", sentence != null)
         val named = sentence!!.split(",", " and ").count { it.isNotBlank() }
         assertEquals("the store description names a different number of languages", written, named)
@@ -69,7 +69,7 @@ class LanguageCountTest {
         val play = repo("PLAY.md")
         assertTrue(
             "the note under the store description no longer says how many languages there are",
-            Regex("""[A-Z][a-z]+ languages: `Language`""").containsMatchIn(play),
+            Regex("""[A-Z][a-z]+(?:-[a-z]+)? languages: `Language`""").containsMatchIn(play),
         )
     }
 }

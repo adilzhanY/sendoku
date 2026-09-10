@@ -214,6 +214,9 @@
     <string name="language_bengali">বাংলা</string>
     <string name="language_thai">ไทย</string>
     <string name="language_danish">Dansk</string>
+    <string name="language_dutch">Nederlands</string>
+    <string name="language_norwegian">Norsk bokmål</string>
+    <string name="language_swedish">Svenska</string>
     <plurals name="first_run_prompt">
         <item quantity="one">Sendoku is written in %1$d language. Which one do you read?</item>
         <item quantity="other">Sendoku is written in %1$d languages. Which one do you read?</item>

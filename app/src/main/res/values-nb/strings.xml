@@ -1,0 +1,925 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Norwegian Bokmål, and the folder is values-nb rather than values-no.
+
+  no is the old ISO 639-1 code for Norwegian as a whole; nb and nn are Bokmål and Nynorsk.
+  Android wants nb, and unlike Indonesian nothing rewrites it, so nb is what goes in the enum,
+  the folder, the locale config and the packaging list alike. Nynorsk is not shipped: Bokmål is
+  what the large majority write, and a half served Nynorsk reader is worse off than one handed
+  Bokmål.
+
+  This is written from the English, not adapted from the Danish. The two look alike on the page
+  and the false friends between them are exactly what reads as machine output to a native.
+
+  The vocabulary is fixed throughout: rute is a cell, rad is a row, kolonne is a column, boks
+  is a box, område is any of the three, siffer is a digit, notat is a pencil mark, kandidat is
+  a candidate and oppgitt siffer is a clue that came with the puzzle.
+
+  Et hint is the help the app gives; å trykke is what you do to the screen. German let those
+  collide and "off is one tap away" read there as "one hint away".
+
+  The preposition for a region lives in hint_in_region and nowhere else, so house_row is bare
+  and the wrappers add nothing of their own.
+-->
+<resources>
+    <string name="app_name">Sendoku</string>
+
+    <string name="home_choose_level">Velg et nivå</string>
+    <string name="home_daily">Dagens</string>
+    <string name="home_new_puzzle">Ny oppgave</string>
+    <string name="home_resume">Fortsett</string>
+    <string name="home_in_progress">Ikke ferdig</string>
+    <string name="home_placed">Fylt inn: %1$d av %2$d</string>
+    <string name="home_or_start">Eller start noe nytt</string>
+    <string name="home_your_level">Ditt nivå</string>
+    <string name="home_all_levels">Alle nivåer</string>
+    <string name="killer_title">Killer</string>
+    <string name="killer_note">Bur, og hvert bur har sin egen sum</string>
+    <string name="killer_marker">Killer</string>
+    <string name="killer_card">%1$s, %2$s</string>
+    <string name="code_title">Spill en oppgave noen har sendt deg</string>
+    <string name="code_hint">Lim inn en kode</string>
+    <string name="code_play">Spill</string>
+    <string name="code_unreadable">Det ser ikke ut som en Sendoku-kode.</string>
+    <string name="code_typo">Det er et tegn i den som ingen kode har. Sjekk den mot den du fikk tilsendt.</string>
+    <string name="code_cut_short">Koden kom ufullstendig fram. Be om den på nytt, hel.</string>
+    <string name="code_too_new">Koden er laget av en nyere versjon av Sendoku enn denne.</string>
+    <string name="code_missing">Koden leses riktig, men denne versjonen har ingen slik oppgave.</string>
+    <string name="code_unplayable">Det rutenettet kan ikke fullføres med resonnering alene, så Sendoku later ikke som om det kan forklare det.</string>
+    <string name="code_shared">Sendt til deg</string>
+    <string name="code_share">Send denne oppgaven til en venn</string>
+    <string name="code_invitation">Prøv denne %1$s-oppgaven. Samme rutenett, og du trenger ingen app for å sammenligne.</string>
+    <string name="enter_title">Skriv inn en oppgave</string>
+    <string name="enter_marker">Skrevet inn selv</string>
+    <plurals name="enter_help">
+        <item quantity="one">%1$d oppgitt siffer så langt. Trykk på en rute, og så på et siffer. Sjekk rutenettet når det er skrevet inn.</item>
+        <item quantity="other">%1$d oppgitte sifre så langt. Trykk på en rute, og så på et siffer. Sjekk rutenettet når det er skrevet inn.</item>
+    </plurals>
+    <string name="enter_impossible">Dette rutenettet kan ikke fullføres. Ett av de oppgitte sifrene må være feil.</string>
+    <string name="enter_ambiguous">Dette rutenettet har mer enn ett svar, så det er egentlig ikke en oppgave. Du kan spille det likevel.</string>
+    <string name="enter_beyond">Ett svar, men det kan ikke nås med resonnering alene, så Sendoku kan ikke forklare det steg for steg.</string>
+    <string name="enter_ready">Ett svar. Dette er en %1$s-oppgave, vurdert til %2$s.</string>
+    <string name="enter_clear">Tøm</string>
+    <string name="enter_check">Sjekk</string>
+    <string name="enter_play">Spill</string>
+
+    <string name="grade_gentle">Lett</string>
+    <string name="grade_steady">Middels</string>
+    <string name="grade_tricky">Vanskelig</string>
+    <string name="grade_severe">Svært vanskelig</string>
+    <string name="grade_diabolical">Ekspert</string>
+    <string name="grade_beyond">Mester</string>
+    <string name="grade_insane">Vanvittig</string>
+    <string name="grade_nightmare">Mareritt</string>
+    <string name="grade_locked">Vinn én %1$s-oppgave for å åpne dette</string>
+    <string name="gate_gentle">ett tydelig siffer om gangen</string>
+    <string name="gate_steady">par, og sifre låst til en linje</string>
+    <string name="gate_tricky">tripler, og mønstre på tvers av rutenettet</string>
+    <string name="gate_severe">wings, farging og rektangler</string>
+    <string name="gate_diabolical">kjeder av resonnement</string>
+    <string name="gate_beyond">lenger enn de fleste apper går</string>
+    <string name="gate_insane">grupper av ruter lenket sammen</string>
+    <string name="gate_nightmare">én rute tatt begge veier, på papir</string>
+    <string name="grade_advanced">Avansert</string>
+    <string name="grade_advanced_talkback">et avansert nivå, som krever en teknikk fra kurset</string>
+
+    <string name="tool_undo">Angre</string>
+    <string name="tool_redo">Gjør om</string>
+    <string name="tool_erase">Slett</string>
+    <string name="tool_notes">Notater</string>
+    <string name="tool_hint">Hint</string>
+    <string name="paused">Pause</string>
+    <string name="paused_tap">Trykk hvor som helst for å fortsette</string>
+    <string name="mistakes_of">%1$d av %2$d</string>
+
+    <string name="cell_position">Rad %1$d, kolonne %2$d</string>
+    <string name="cell_clue">%1$s, %2$d, oppgitt siffer</string>
+    <string name="cell_digit">%1$s, %2$d</string>
+    <string name="cell_empty">%1$s, tom</string>
+    <string name="cell_noted">%1$s, tom, notert %2$s</string>
+    <string name="cell_hint_argument">%1$s. Del av hintet.</string>
+    <string name="cell_hint_struck">%1$s. Hintet stryker et notat her.</string>
+    <string name="cell_hint_region">%1$s. I området hintet handler om.</string>
+    <string name="cell_repeated">%1$s, gjentatt</string>
+    <string name="pad_all_placed">%1$d, alle plassert</string>
+    <string name="pad_one_left">%1$d, én igjen</string>
+    <plurals name="pad_left">
+        <item quantity="one">%1$d, %2$d igjen</item>
+        <item quantity="other">%1$d, %2$d igjen</item>
+    </plurals>
+    <string name="pad_scanning">%1$s, viser hvor det kan stå</string>
+    <string name="pad_notes_mode">%1$s, notatmodus</string>
+
+    <string name="cell_actions_title">RAD %1$d, KOLONNE %2$d</string>
+    <string name="cell_actions_clue">Dette sifferet fulgte med oppgaven, så det kan ikke endres.</string>
+    <plurals name="cell_actions_note_all">
+        <item quantity="one">Noter den eneste kandidaten</item>
+        <item quantity="other">Noter alle %1$d kandidatene</item>
+    </plurals>
+    <string name="cell_actions_clear_notes">Slett notatene</string>
+    <string name="why_not_title">Hvorfor ikke?</string>
+    <string name="tint_title">Farge</string>
+    <string name="cell_tinted">%1$s, farget %2$s</string>
+    <string name="tint_clear_all">Fjern alle farger</string>
+    <string name="tint_one">Oransje</string>
+    <string name="tint_two">Blå</string>
+    <string name="tint_three">Lilla</string>
+    <string name="tint_four">Grønn</string>
+    <string name="why_not_prompt">Trykk på et siffer for å få vite hva som stopper det.</string>
+    <string name="why_not_taken">Det står allerede et %1$d i %2$s, i rad %3$d, kolonne %4$d.</string>
+    <string name="why_not_filled">Denne ruten har allerede et %1$d. Slett det først.</string>
+    <string name="why_not_possible">Ingenting på brettet utelukker %1$d. Det gjør det ikke riktig, bare mulig.</string>
+    <string name="cell_actions_clear">Tøm ruten</string>
+
+    <string name="leave_title">Forlate denne oppgaven?</string>
+    <string name="leave_body">Den venter der du slapp.</string>
+    <string name="leave_confirm">Forlat</string>
+    <string name="leave_cancel">Bli</string>
+
+    <string name="outcome_solved">Løst</string>
+    <string name="outcome_lost">Tom for feil</string>
+    <string name="outcome_rated">%1$s, vurdert til %2$s</string>
+    <string name="outcome_hints">Hint</string>
+    <string name="outcome_mistakes">Feil</string>
+    <string name="outcome_moves">Trekk</string>
+    <string name="outcome_needed">Krevde: %1$s</string>
+    <string name="outcome_home">Forsiden</string>
+    <string name="outcome_another">En %1$s til</string>
+
+    <string name="hint_remove_one">Ta den bort</string>
+    <string name="hint_remove_many">Ta dem bort</string>
+    <string name="hint_look_here_title">Se her</string>
+    <string name="hint_look_here">Det er noe å finne %1$s. Mer sier ikke dette hintet.</string>
+    <string name="hint_look_around">Det er et steg å finne. Dette ligger spredt utover rutenettet i stedet for i ett område.</string>
+    <string name="hint_what_kind">Hva slags steg?</string>
+    <string name="hint_menu_title">Hjelp</string>
+    <string name="hint_menu_difficulty">Neste steg krever en teknikk på nivået %1$s.</string>
+    <string name="hint_menu_broken">Noe du har satt inn er feil, så det følger ikke mer før det er rettet.</string>
+    <string name="hint_menu_check">Er noe galt?</string>
+    <string name="hint_menu_look">Hvor skal jeg se?</string>
+    <string name="hint_menu_explain">Forklar neste steg</string>
+    <string name="hint_menu_free">Det koster ingenting å spørre her. Grensen er av.</string>
+    <string name="hint_check_clean">Ingenting av det du har satt inn er feil.</string>
+    <string name="hint_close">Lukk</string>
+    <string name="hint_previous">Ett steg tilbake</string>
+    <string name="hint_cells_here">Rutene det hviler på er markert %1$s.</string>
+    <string name="hint_where">Vis meg hvor</string>
+    <string name="hint_explain">Forklar det</string>
+    <string name="hint_do_it">Gjør det</string>
+    <string name="hint_evidence">Raden har allerede %1$s. Kolonnen har %2$s. Boksen har %3$s. Til sammen er det alle sifre unntatt %4$d.</string>
+    <string name="hint_rests_on_earlier">En del av dette hviler på notater som et tidligere hint strøk ut. De står på brettet, så du kan følge det derfra.</string>
+    <string name="hint_what_is_this">Hva er dette?</string>
+    <string name="hint_wrong_title">Noe er galt</string>
+    <string name="hint_wrong_one">Ett av sifrene du har satt inn kan ikke være riktig. Det er markert.</string>
+    <string name="hint_wrong_many">%1$d av sifrene du har satt inn kan ikke være riktige. De er markert.</string>
+    <string name="hint_wrong_until_one">Ingenting mer kan utledes før det er rettet.</string>
+    <string name="hint_wrong_until_many">Ingenting mer kan utledes før de er rettet.</string>
+    <string name="hint_done_title">Ferdig</string>
+    <string name="hint_done_body">Oppgaven er løst.</string>
+    <string name="hint_stuck_title">Ingenting å foreslå</string>
+    <string name="hint_stuck_body">Dette brettet er lovlig, men ingen av teknikkene Sendoku kjenner passer på det. Det skal ikke skje med en oppgave fra appen.</string>
+    <string name="hint_in_region">i %1$s</string>
+    <string name="hint_in_regions">i %1$s og %2$s</string>
+    <string name="hint_outcome_place">Så rad %1$d, kolonne %2$d må være %3$d.</string>
+    <string name="hint_outcome_strike_one">Så %1$d kan fjernes fra %2$s.</string>
+    <string name="hint_outcome_strike_two">Så %1$d og %2$d kan fjernes fra %3$s.</string>
+    <plurals name="hint_cells">
+        <item quantity="one">én rute</item>
+        <item quantity="other">%1$d ruter</item>
+    </plurals>
+
+    <string name="house_row">rad %1$d</string>
+    <string name="house_column">kolonne %1$d</string>
+    <string name="house_box">boks %1$d</string>
+
+    <string name="glossary_title">Teknikker</string>
+    <string name="back">Tilbake</string>
+
+    <string name="settings_title">Innstillinger</string>
+    <string name="settings_language">Språk</string>
+    <string name="language_system">Følg telefonen</string>
+    <string name="language_english">English</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_german">Deutsch</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_italian">Italiano</string>
+    <string name="language_japanese">日本語</string>
+    <string name="language_french">Français</string>
+    <string name="language_portuguese">Português (Brasil)</string>
+    <string name="language_chinese">简体中文</string>
+    <string name="language_korean">한국어</string>
+    <string name="language_arabic">العربية</string>
+    <string name="language_ukrainian">Українська</string>
+    <string name="language_indonesian">Bahasa Indonesia</string>
+    <string name="language_vietnamese">Tiếng Việt</string>
+    <string name="language_hindi">हिन्दी</string>
+    <string name="language_bengali">বাংলা</string>
+    <string name="language_thai">ไทย</string>
+    <string name="language_danish">Dansk</string>
+    <string name="language_dutch">Nederlands</string>
+    <string name="language_norwegian">Norsk bokmål</string>
+    <string name="language_swedish">Svenska</string>
+    <plurals name="first_run_prompt">
+        <item quantity="one">Sendoku finnes på %1$d språk. Hvilket leser du?</item>
+        <item quantity="other">Sendoku finnes på %1$d språk. Hvilket leser du?</item>
+    </plurals>
+    <string name="first_run_system_is">Telefonen din er satt til %1$s</string>
+    <string name="first_run_no_translation">Telefonen din er satt til et språk Sendoku ennå ikke snakker. Engelsk er det nærmeste den har.</string>
+    <string name="first_run_continue">Begynn å spille</string>
+    <string name="settings_interface">Utseende</string>
+    <string name="settings_rules">Spillereglene</string>
+    <string name="settings_light_or_dark">Lyst eller mørkt</string>
+    <string name="settings_terminal_is_dark">Terminal er mørkt uansett hvordan telefonen er satt opp. Det er med vilje.</string>
+    <string name="settings_board">Brettet</string>
+    <string name="settings_highlight_peers">Marker raden, kolonnen og boksen</string>
+    <string name="settings_highlight_same">Marker det samme sifferet andre steder</string>
+    <string name="settings_auto_clear">Slett notater som et innsatt siffer utelukker</string>
+    <string name="settings_auto_notes">Hold notater i hver rute</string>
+    <string name="settings_auto_notes_note">Appen fører regnskapet. Over Ekspert er det nesten nødvendig.</string>
+    <string name="settings_highlight_homes">Vis hvor det valgte sifferet fortsatt kan stå</string>
+    <string name="settings_auto_check">Si fra med en gang når et siffer er feil</string>
+    <string name="settings_auto_check_note">Med denne på koster det ingenting å prøve seg, så oppgaven mister det meste av spenningen.</string>
+    <string name="settings_auto_check_forced">På så lenge en feilgrense løper, for en feil du betaler for må være en du kan se. Slå av grensen nedenfor for å spille uten noen av delene.</string>
+    <string name="settings_flag_conflicts">Merk et siffer som gjentas i en rad, kolonne eller boks</string>
+    <string name="settings_clock">Klokken</string>
+    <string name="settings_show_timer">Vis tiden</string>
+    <string name="settings_feedback">Tilbakemelding</string>
+    <string name="settings_haptics">Vibrer når et siffer settes inn</string>
+    <string name="settings_sound">Lyder</string>
+    <string name="settings_sound_note">Myke toner mens du spiller. Å slå dem av er ett trykk unna, og lydløs på telefonen vinner over begge deler.</string>
+    <string name="settings_mistake_limit">Avslutt spillet etter tre feil</string>
+    <string name="settings_mistake_note">På som standard, ved tre. Slå den av på de vanskelige nivåene, der det er surt å miste en time på én uoppmerksomhet.</string>
+    <string name="settings_about">Om Sendoku</string>
+
+    <string name="theme_deep_field">Deep Field</string>
+    <string name="theme_deep_field_summary">Ekte svart, én cyan detalj, ingenting annet</string>
+    <string name="theme_ink">Ink and Paper</string>
+    <string name="theme_ink_summary">En oppgavebok fra avisen, trykt på varmt papir</string>
+    <string name="theme_zen">Slate Zen</string>
+    <string name="theme_zen_summary">Salviegrønt og stein, og minst mulig annet</string>
+    <string name="theme_terminal">Terminal</string>
+    <string name="theme_terminal_summary">Fast bredde, skarpe kanter, bare mørkt</string>
+    <string name="mode_system">Følg systemet</string>
+    <string name="mode_light">Alltid lyst</string>
+    <string name="mode_dark">Alltid mørkt</string>
+
+    <string name="stats_title">Statistikk</string>
+    <string name="stats_solved">Løst</string>
+    <string name="stats_streak">Rekke</string>
+    <string name="stats_hardest">Vanskeligste</string>
+    <string name="stats_hardest_note">Det vanskeligste du har fullført er %1$s.</string>
+    <plurals name="stats_longest_run">
+        <item quantity="one">Den lengste rekken din var %1$d dag.</item>
+        <item quantity="other">Den lengste rekken din var %1$d dager.</item>
+    </plurals>
+    <string name="stats_totals">%1$s brukt, hint tatt: %2$d.</string>
+    <string name="stats_by_grade">Etter nivå</string>
+    <string name="stats_hints_title">Det du har spurt om</string>
+    <string name="stats_hints_note">Du spør mest om %1$s. Det er leksjonen det er verdt å gå tilbake til.</string>
+    <string name="stats_needed">Det oppgavene dine krevde</string>
+    <string name="stats_solved_count">Løst: %1$d</string>
+    <string name="stats_solved_and_lost">Løst: %1$d, tapt: %2$d</string>
+    <string name="stats_average">snitt %1$s</string>
+    <string name="stats_reset">Nullstill statistikken</string>
+    <string name="stats_reset_title">Kaste historikken din?</string>
+    <string name="stats_reset_body">Hver ferdig oppgave, hver rekke og hver bestetid. Det finnes ingen kopi noe sted, så dette kan ikke angres.</string>
+    <string name="stats_reset_confirm">Nullstill</string>
+    <string name="stats_reset_cancel">Behold den</string>
+    <string name="stats_empty_title">Ingenting ennå</string>
+    <string name="stats_empty_body">Fullfør en oppgave, så fylles denne siden opp: hvor lang tid hvert nivå tar deg, hvor høyt du har klatret, og hvilke teknikker oppgavene dine har krevd.</string>
+
+    <string name="about_title">Om</string>
+    <string name="about_version">Sendoku %1$s</string>
+    <string name="about_tagline">En sudoku-app for dem som har gått tom for vanskelige sudokuer.</string>
+    <string name="about_no_ads">Ingen reklame</string>
+    <string name="about_no_ads_detail">Ikke mellom oppgaver, ikke for hint, aldri.</string>
+    <string name="about_no_tracking">Ingen sporing</string>
+    <string name="about_no_tracking_detail">Ingenting måles, og ingenting sendes. Det finnes ingen server.</string>
+    <string name="about_no_purchases">Ingen kjøp</string>
+    <string name="about_no_purchases_detail">Hver oppgave og hvert hint ligger her allerede.</string>
+    <string name="about_offline">Virker uten nett</string>
+    <string name="about_offline_detail">Hele samlingen følger med inne i appen.</string>
+    <string name="about_hints">Hint som lærer bort</string>
+    <string name="about_hints_detail">Et hint navngir teknikken og forklarer resonnementet. Det fyller aldri bare inn et siffer, og det selges aldri: tre følger med hver oppgave, og grensen kan slås av i innstillingene.</string>
+    <string name="about_sharing">Deling</string>
+    <string name="about_sharing_detail">En oppgavekode er selve oppgaven, ikke en konto. Det er ingen å logge inn som, ingen resultatliste, og appen kan ikke sjekke en tid noen forteller deg: to spiller det samme rutenettet og sammenligner hva det kostet dem, og mer er det ikke.</string>
+    <string name="about_rating">Vanskelighetsgraden settes etter den vanskeligste teknikken en oppgave faktisk krever, funnet ved å løse den slik et menneske ville gjort. Derfor betyr Svært vanskelig her det samme som forrige Svært vanskelig.</string>
+    <string name="about_licence">Sendoku er fri programvare under GNU General Public License versjon 3.</string>
+    <string name="about_privacy">Personvernerklæringen sier det samme i den formen butikken ber om, på adilzhany.github.io/sendoku/privacy</string>
+    <string name="about_licences">Åpen kildekode-lisenser</string>
+    <string name="licences_title">Lisenser</string>
+
+    <string name="look_naked_single">Det finnes en rute der bare ett siffer er igjen.</string>
+    <string name="look_hidden_single">Det finnes et siffer som bare har én plass igjen.</string>
+    <string name="look_locked_candidates_pointing">I én boks sitter et siffer fast på én rad eller kolonne.</string>
+    <string name="look_locked_candidates_claiming">På én linje kan et siffer bare stå inne i én boks.</string>
+    <string name="look_naked_pair">To ruter i samme område har de samme to sifrene og ingenting annet.</string>
+    <string name="look_hidden_pair">To sifre har ingen andre steder å gå i et område enn de samme to rutene.</string>
+    <string name="look_naked_triple">Tre ruter i ett område deler tre sifre mellom seg.</string>
+    <string name="look_hidden_triple">Tre sifre er stengt inne i de samme tre rutene.</string>
+    <string name="look_naked_quad">Fire ruter i ett område deler fire sifre mellom seg.</string>
+    <string name="look_hidden_quad">Fire sifre er stengt inne i de samme fire rutene.</string>
+    <string name="look_x_wing">To rader har et siffer i de samme to kolonnene, eller omvendt.</string>
+    <string name="look_swordfish">Tre rader har et siffer inne i de samme tre kolonnene.</string>
+    <string name="look_jellyfish">Fire rader har et siffer inne i de samme fire kolonnene.</string>
+    <string name="look_xy_wing">Tre ruter med to sifre hver, satt opp slik at ett siffer presses ut.</string>
+    <string name="look_xyz_wing">Som en XY-Wing, men den midterste ruten har også et tredje siffer.</string>
+    <string name="look_w_wing">To ruter med det samme paret, bundet sammen av et siffer som bare har to hjem.</string>
+    <string name="look_simple_colouring">Ett siffer danner en kjede som veksler hele veien.</string>
+    <string name="look_multi_colouring">To atskilte kjeder på ett siffer, spilt ut mot hverandre.</string>
+    <string name="look_remote_pairs">En kjede av ruter som alle har nøyaktig de samme to sifrene.</string>
+    <string name="look_unique_rectangle">Fire ruter danner et rektangel som ville gitt oppgaven to svar.</string>
+    <string name="look_bug_plus_one">Alle ruter unntatt én er nede i to sifre.</string>
+    <string name="look_x_chain">En kjede på ett siffer, som veksler mellom må og kan ikke.</string>
+    <string name="look_xy_chain">En kjede av ruter med to sifre, der hver tvinger den neste.</string>
+    <string name="look_forcing_chain">En rute med nøyaktig to muligheter, når det ikke er mer igjen å finne.</string>
+    <string name="look_death_blossom">Én rute, og en gruppe for hvert siffer den kan være, der ruten ser det sifferet overalt i gruppen.</string>
+    <string name="look_als_xy_wing">Tre grupper som hver mangler ett siffer på å være fulle, bundet sammen på en linje av to ulike sifre.</string>
+    <string name="look_sue_de_coq">En boks og en linje som krysser hverandre, der de felles rutene har to sifre mer enn det er plass til.</string>
+    <string name="look_als_xz">To grupper av ruter som hver mangler ett siffer på å bli låst.</string>
+
+    <string name="because_naked_single">Alle andre sifre står allerede i raden, kolonnen eller boksen, så bare ett er igjen. Det må stå her.</string>
+    <string name="because_hidden_single">Området trenger dette sifferet et sted, og hver eneste andre rute i det er utelukket, så dette er den eneste plassen igjen.</string>
+    <string name="because_locked_candidates_pointing">Boksen må ha dette sifferet et sted, og hver plass det kan stå på ligger på én linje. Så sifferet står på den linjen, og det kan ikke stå noe annet sted langs den.</string>
+    <string name="because_locked_candidates_claiming">Linjen må ha dette sifferet et sted, og hver plass det kan stå på ligger inne i én boks. Så sifferet står i den boksen, og det kan ikke stå noe annet sted i boksen.</string>
+    <string name="because_naked_pair">De to rutene tar de to sifrene mellom seg, ett hver. Ingen annen rute i området kan ha noen av dem.</string>
+    <string name="because_hidden_pair">Området trenger begge sifrene, og bare disse to rutene kan ta dem, så de tar ett hver. Alt annet i de to rutene faller bort.</string>
+    <string name="because_naked_triple">Tre ruter, tre sifre, ett hver. Ingenting annet i området kan bruke dem, selv om ingen enkelt rute har alle tre.</string>
+    <string name="because_hidden_triple">Tre sifre uten andre steder å gå fyller tre ruter mellom seg, så alt annet i de rutene er umulig.</string>
+    <string name="because_naked_quad">Fire ruter tar fire sifre mellom seg, og det stenger alle fire ute fra resten av området.</string>
+    <string name="because_hidden_quad">Fire sifre stengt inne i fire ruter fyller dem mellom seg, så ingenting annet kan bo der.</string>
+    <string name="because_x_wing">Hver av de to radene trenger sifferet én gang, og begge kan bare plassere det i de samme to kolonnene. Mellom seg bruker de opp begge kolonnene, så ingen annen rad kan ha sifferet der.</string>
+    <string name="because_swordfish">Tre rader trenger sifferet, og det er bare tre kolonner å sette det i. De tre radene bruker opp alle tre kolonnene, så ingenting annet i de kolonnene kan ha det.</string>
+    <string name="because_jellyfish">Fire rader og fire kolonner, det samme argumentet igjen. De fire radene fyller alle fire kolonnene mellom seg.</string>
+    <string name="because_xy_wing">Den midterste ruten er ett av sine to sifre. Uansett tvinges en av de to ytre rutene til det felles sifferet, så alt som ser begge kan ikke være det.</string>
+    <string name="because_xyz_wing">Den midterste ruten kan også være det felles sifferet, så konklusjonen er svakere: bare en rute som ser alle tre mister sifferet.</string>
+    <string name="because_w_wing">Hvis ingen av parrutene tok det andre sifferet, ville begge tatt det første, og det bindende området ville ikke hatt plass til det. Så den ene av dem er det andre sifferet.</string>
+    <string name="because_simple_colouring">Farg kjeden vekselvis, og nøyaktig én farge er riktig. Enten havner en farge to ganger i samme område og er dermed feil, eller så ser en rute utenfor begge fargene og mister sifferet uansett hvordan det går.</string>
+    <string name="because_multi_colouring">En farge fra den første kjeden kolliderer med en farge fra den andre, og det presser sifferet inn i en av de to motsatte fargene. Alt som ser begge kan ikke ha det.</string>
+    <string name="because_remote_pairs">Naboer i kjeden ser hverandre, så de veksler. De to endene ligger et oddetall steg fra hverandre og har derfor ett siffer hver, og alt som ser begge kan ikke ha noen av dem.</string>
+    <string name="because_unique_rectangle">Hvis de fire rutene ikke inneholdt annet enn de samme to sifrene, kunne de byttes rundt rektangelet og oppgaven ville hatt to svar. Den har ett, så den oppstillingen er umulig.</string>
+    <string name="because_bug_plus_one">Hvis den ekstra kandidaten ble fjernet, ville hvert siffer stått nøyaktig to ganger i hvert område, og et slikt rutenett har alltid et partall antall svar. Denne oppgaven har ett, så den ekstra kandidaten er svaret.</string>
+    <string name="because_x_chain">Kjeden veksler mellom steder der sifferet må stå og steder der det ikke kan. De to endene kan ikke begge være tomme for det, så alt som ser begge mister det.</string>
+    <string name="because_xy_chain">Anta at den første ruten ikke er sifferet. Følg kjeden, og den siste ruten tvinges til å være det. Så har den ene eller den andre enden det.</string>
+    <string name="because_forcing_chain">Følg begge mulighetene. Hvis den ene etterlater en rute som ikke kan få noe i seg, var den muligheten aldri virkelig og kan gå. Hvis begge setter det samme sifferet på det samme stedet, hører sifferet til der, uansett hvilken som viser seg å stemme. Ingenting her avhenger av at antakelsen er sann, og nettopp det gjør det til et bevis og ikke en gjetning.</string>
+    <string name="because_death_blossom">Uansett hva ruten viser seg å være, slår den sitt eget siffer ut av den tilsvarende gruppen, og den gruppen er da full og må bruke hvert siffer den har igjen. Hvis alle gruppene har det samme sifferet til overs, havner det sifferet i en av dem, uansett hvilken vei ruten faller. Alt som kan se det i dem alle mister det.</string>
+    <string name="because_als_xy_wing">Hvis det truede sifferet er borte fra den første gruppen, er den gruppen full og må ta sifferet den deler med den midterste. Den midterste gruppen mister da det sifferet, så den er også full og tar sifferet den deler med den tredje. Den tredje gruppen er da også full, og må bruke det truede sifferet. Så ingen rute som ser det i begge de ytre gruppene kan ha det.</string>
+    <string name="because_sue_de_coq">De felles rutene bruker opp alle sifrene sine unntatt to, og de to gruppene på hver side gjør krav på nøyaktig de to. Så hvert siffer fra gruppen på linjen brukes opp inne på linjen, og hvert siffer fra gruppen i boksen inne i boksen. Ingenting annet i noen av dem kan ha dem.</string>
+    <string name="because_als_xz">Ett felles siffer kan bare stå i den ene av de to gruppene, og det låser den andre og tvinger den til å bruke hvert siffer den har. Så havner det andre felles sifferet i den ene gruppen eller den andre.</string>
+
+    <string name="technique_naked_single">Naken enling</string>
+    <string name="technique_hidden_single">Skjult enling</string>
+    <string name="technique_locked_candidates_pointing">Pekende par eller trippel</string>
+    <string name="technique_locked_candidates_claiming">Krevende par eller trippel</string>
+    <string name="technique_naked_pair">Nakent par</string>
+    <string name="technique_hidden_pair">Skjult par</string>
+    <string name="technique_naked_triple">Naken trippel</string>
+    <string name="technique_hidden_triple">Skjult trippel</string>
+    <string name="technique_naked_quad">Naken kvadruppel</string>
+    <string name="technique_hidden_quad">Skjult kvadruppel</string>
+    <string name="technique_x_wing">X-Wing</string>
+    <string name="technique_simple_colouring">Enkel farging</string>
+    <string name="technique_xy_wing">XY-Wing</string>
+    <string name="technique_xyz_wing">XYZ-Wing</string>
+    <string name="technique_w_wing">W-Wing</string>
+    <string name="technique_swordfish">Swordfish</string>
+    <string name="technique_remote_pairs">Fjerne par</string>
+    <string name="technique_unique_rectangle">Unikt rektangel</string>
+    <string name="technique_bug_plus_one">BUG pluss én</string>
+    <string name="technique_jellyfish">Jellyfish</string>
+    <string name="technique_multi_colouring">Flerfarging</string>
+    <string name="technique_x_chain">X-Chain</string>
+    <string name="technique_xy_chain">XY-Chain</string>
+    <string name="technique_als_xz">ALS XZ</string>
+    <string name="technique_sue_de_coq">Sue de Coq</string>
+    <string name="technique_als_xy_wing">ALS XY-Wing</string>
+    <string name="technique_death_blossom">Death blossom</string>
+    <string name="technique_forcing_chain">Tvingende kjede</string>
+    <string name="technique_cage_sum">Bursum</string>
+    <string name="technique_cage_single">Enling i bur</string>
+    <string name="technique_cage_locked">Låst bur</string>
+    <string name="technique_cage_innie">Innere og ytere</string>
+    <string name="daily_title">Dagens</string>
+    <string name="daily_no_streak">Ingen rekke ennå. Løs dagens oppgave for å starte en.</string>
+    <string name="daily_previous_month">Tidligere</string>
+    <string name="daily_next_month">Senere</string>
+    <string name="daily_cell_solved">løst</string>
+    <string name="daily_cell_attempted">spilt, men ikke fullført</string>
+    <string name="daily_cell_unplayed">ikke spilt</string>
+    <string name="daily_cell_future">ikke ennå</string>
+    <string name="daily_play_today">Spill dagens</string>
+    <plurals name="daily_streak">
+        <item quantity="one">%1$d dag på rad</item>
+        <item quantity="other">%1$d dager på rad</item>
+    </plurals>
+    <string name="daily_cell">%1$d, %2$s, %3$s</string>
+    <string name="daily_cell_today">i dag, %1$d, %2$s, %3$s</string>
+    <string name="stat_mistakes">Feil</string>
+    <string name="stat_hints">Hint</string>
+    <string name="stat_time">Tid</string>
+    <string name="stat_pause">Pause</string>
+    <string name="game_daily_title">%1$s, %2$s</string>
+
+    <string name="stage_first_steps">Første steg</string>
+    <string name="stage_one_at_a_time">Ett siffer om gangen</string>
+    <string name="stage_notes">Notater</string>
+    <string name="stage_locked_to_a_line">Sifre låst til en linje</string>
+    <string name="stage_groups">Grupper</string>
+    <string name="stage_patterns">Mønstre på tvers av rutenettet</string>
+    <string name="stage_wings">Wings</string>
+    <string name="stage_colouring">Farging</string>
+    <string name="stage_one_answer">Å anta ett svar</string>
+    <string name="stage_chains">Kjeder</string>
+    <string name="stage_the_far_end">Den fjerne enden</string>
+    <string name="stage_the_deep_end">Det dype vannet</string>
+    <string name="stage_cages">Bur</string>
+    <string name="lesson_cage_is_title">Hva et bur er</string>
+    <string name="lesson_cage_is_summary">De stiplede figurene er bur, og det lille tallet er hva rutene deres blir til sammen.</string>
+    <string name="lesson_cage_is_1">En Killer starter helt uten sifre. I stedet er rutenettet delt opp i bur, tegnet med stiplede streker, og det lille tallet i hjørnet av et bur er hva rutene der blir til sammen. Alt annet er vanlig sudoku.</string>
+    <string name="lesson_cage_is_2">Et bur med én rute er et oppgitt siffer skrevet på en annen måte. Her står det 1, så et 1-tall skal dit, og det er ingenting å regne ut.</string>
+    <string name="lesson_cage_is_3">Satt inn. Nå et bur som krever litt tenking.</string>
+    <string name="lesson_cage_is_4a">Dette er 5 i to ruter. Det er 1 og 4, eller 2 og 3, så det er ikke avgjort ennå, men allerede nå kan verken 5 eller 6 stå der.</string>
+    <string name="lesson_cage_is_4">Tre ruter som blir 15 til sammen. I en seks ganger seks er de tre største sifrene 4, 5 og 6, og til sammen blir de nøyaktig 15. Så dette buret har de tre i en eller annen rekkefølge, og ingenting annet kan stå der.</string>
+    <string name="lesson_cage_is_5">Et bur gjentar aldri et siffer. Nettopp den regelen gjør at en sum sier så mye: uten den kunne 15 i tre ruter vært 5, 5 og 5.</string>
+    <string name="lesson_cage_house_title">Bur inne i et område</string>
+    <string name="lesson_cage_house_summary">En rad, en kolonne og en boks blir hver for seg en kjent sum, og burene inni gjør resten.</string>
+    <string name="lesson_cage_house_1">Hver rad, kolonne og boks har hvert siffer én gang, så alle blir den samme summen. I en seks ganger seks er den summen 21.</string>
+    <string name="lesson_cage_house_2">Disse to rutene blir 10. De eneste to ulike sifrene som gir 10 er 4 og 6, så dette buret eier begge, og ingen annen rute i denne raden kan være 4 eller 6.</string>
+    <string name="lesson_cage_house_3">Nå hele raden. Den blir 21, og tre bur ligger helt inne i den: 5, 10 og 1. Det er 16 vi har gjort rede for.</string>
+    <string name="lesson_cage_house_4">Så ruten som er igjen er 21 minus 16, altså 5.</string>
+    <string name="lesson_cage_house_5">Løsere kaller det en innie. Det samme regnestykket virker den andre veien: når et bur stikker ut av et område, er det som stikker ut differansen, og det er en outie.</string>
+    <string name="lesson_cage_home_title">Ett hjem i et bur</string>
+    <string name="lesson_cage_home_summary">Et siffer buret må ha, med bare én rute igjen som kan ta det.</string>
+    <string name="lesson_cage_home_1">Et stykke inn i en Killer begynner burene å si mer enn bare summene sine. Tre sifre er allerede satt inn her.</string>
+    <string name="lesson_cage_home_2">Dette buret er 10 i to ruter, så det har et 4-tall og et 6-tall. Men boksen til høyre har allerede et 6-tall, og det utelukker sifferet fra den høyre ruten i buret.</string>
+    <string name="lesson_cage_home_3">Så 6-tallet har ett hjem igjen, og det står til venstre. Summen sa at buret hadde et 6-tall; resten av brettet sa hvor.</string>
+    <string name="lesson_cage_home_4">Det er en enling i bur. Den er Killers skjulte enling: ikke det eneste sifferet en rute kan ta, men den eneste ruten et siffer kan stå i.</string>
+
+    <string name="lesson_what_is_title">Hva en sudoku er</string>
+    <string name="lesson_what_is_summary">Hver rad, hver kolonne og hver boks har hvert siffer én gang.</string>
+    <string name="lesson_what_is_1">Dette er en sudoku. En liten en, fire ruter ganger fire, så alt får plass i hodet på én gang. Et rutenett i full størrelse virker på nøyaktig samme måte.</string>
+    <string name="lesson_what_is_2">Dette er en rad. Den må ha sifrene 1, 2, 3 og 4, hvert av dem én gang. Ingen gjentakelser, og ingenting utelatt.</string>
+    <string name="lesson_what_is_3">Dette er en kolonne. Samme regel: 1, 2, 3 og 4, hvert av dem én gang.</string>
+    <string name="lesson_what_is_4">Det er hele spillet. Det er ingen regning i det, og ingenting å legge sammen. Det er én regel om hvor et siffer får stå.</string>
+    <string name="lesson_what_is_5">Disse to rutene er tomme. Å fylle dem slik at regelen fortsatt holder, det er å løse.</string>
+
+    <string name="lesson_houses_title">Rader, kolonner og bokser</string>
+    <string name="lesson_houses_summary">En rute ligger i tre områder samtidig og deler en regel med alle tre.</string>
+    <string name="lesson_houses_1">Regelen nevnte rader og kolonner. Det finnes en tredje slags gruppe, og det er den som gjør en sudoku verdt å løse.</string>
+    <string name="lesson_houses_2">Her er en rad igjen.</string>
+    <string name="lesson_houses_3">Her er en kolonne.</string>
+    <string name="lesson_houses_4">Og her er en boks, markert med de tykkere strekene. Den har også hvert siffer én gang.</string>
+    <string name="lesson_houses_5">Så denne ruten hører til tre grupper samtidig. Hver rute den deler en gruppe med er markert, og ingen av dem kan ha det samme sifferet som den. De tre gruppene kalles områder, og det ordet brukes herfra.</string>
+
+    <string name="lesson_givens_title">Oppgitte sifre</string>
+    <string name="lesson_givens_summary">Sifrene som står trykt fra starten er faste, og det er de som gjør svaret til det eneste.</string>
+    <string name="lesson_givens_1">Disse sifrene fulgte med oppgaven. De kalles oppgitte sifre, og de kan ikke endres eller slettes.</string>
+    <string name="lesson_givens_2">De er tegnet annerledes enn sifrene du setter inn, så du ser alltid forskjell. I denne appen er de oppgitte sifrene de kraftigere.</string>
+    <string name="lesson_givens_3">Dette er rutene du fyller ut.</string>
+    <string name="lesson_givens_4">En ordentlig laget oppgave har nøyaktig én måte å fylle dem på. Det er et løfte om oppgaven, ikke om deg: sitter du fast, er det fortsatt bare ett svar, og det kan alltid resonneres fram. Hver eneste oppgave i denne appen er laget slik.</string>
+
+    <string name="lesson_first_four_title">Din første løsning</string>
+    <string name="lesson_first_four_summary">Se på hva en rute ikke kan være, og noen ganger er bare ett siffer igjen.</string>
+    <string name="lesson_first_four_1">Løs en nå. To ruter er tomme, og regelen er nok til å fylle begge.</string>
+    <string name="lesson_first_four_2">Start med denne raden. Den har allerede et 1-tall og et 4-tall, så de to tomme rutene deler 2 og 3 mellom seg. Spørsmålet er bare hvilken vei.</string>
+    <string name="lesson_first_four_3">Denne ruten kan ikke være 2, for kolonnen har allerede et 2-tall. Så den er 3.</string>
+    <string name="lesson_first_four_4">Da er én tom rute igjen, og ett ubrukt siffer i raden.</string>
+    <string name="lesson_first_four_5">Din tur. Sett inn sifferet som hører til her.</string>
+    <string name="lesson_first_four_wrong">Ikke helt. Se på raden: hvilket siffer fra 1 til 4 mangler fortsatt?</string>
+    <string name="lesson_first_four_6">Løst. Slik er en sudoku, uansett hvor stort rutenettet er.</string>
+
+    <string name="lesson_first_six_title">Et større rutenett</string>
+    <string name="lesson_first_six_summary">Bokser er ikke alltid kvadratiske, og regelen bryr seg ikke.</string>
+    <string name="lesson_first_six_1">Seks ganger seks. Regelen er ikke endret, men boksene er det: de er tre brede og to høye.</string>
+    <string name="lesson_first_six_2">Dette er én boks. Tre bortover, to nedover, seks ruter, hvert siffer fra 1 til 6 én gang.</string>
+    <string name="lesson_first_six_3">Det lurer folk i starten, fordi øyet venter et kvadrat. Bruk et øyeblikk på det: finn boksen denne ruten ligger i før du ser etter noe annet.</string>
+    <string name="lesson_first_six_4">Din tur. Ett siffer mangler i boksen øverst til venstre.</string>
+    <string name="lesson_first_six_wrong">Ikke det. Tell hva boksen allerede har, og finn så sifferet fra 1 til 6 som ikke er der.</string>
+    <string name="lesson_first_six_5">Bra. Herfra er rutenettene ni ganger ni og boksene kvadratiske igjen, men vanen med å sjekke alle tre områdene er den som er verdt å beholde.</string>
+
+    <string name="lesson_naked_single_title">Den nakne enlingen</string>
+    <string name="lesson_naked_single_summary">En rute med bare ett siffer igjen må ha det sifferet.</string>
+    <string name="lesson_naked_single_1">Et rutenett i full størrelse, og den første teknikken med et navn. Den er den enkleste som finnes, og selv på de vanskeligste oppgavene er det den som fyller flest ruter.</string>
+    <string name="lesson_naked_single_2">Se på denne ruten for seg. Spør hva den kan ha.</string>
+    <string name="lesson_naked_single_3">Hver rute som utelukker noe er markert. Mellom raden, kolonnen og boksen står åtte av de ni sifrene allerede et sted ruten kan se.</string>
+    <string name="lesson_naked_single_4">Så ett siffer er igjen, og ruten må ha det. Ingenting annet er mulig. Det er en naken enling: naken fordi du ser den ved å se på én rute, og enling fordi ett siffer overlever.</string>
+    <string name="lesson_naked_single_5">Appen kaller den ved navn når den gir deg et hint. Nå vet du hva det betyr.</string>
+    <string name="lesson_hidden_single_title">Den skjulte enlingen</string>
+    <string name="lesson_hidden_single_summary">Et siffer med bare én plass igjen i et område må stå der.</string>
+    <string name="lesson_hidden_single_1">Den andre slags enlingen, og den som finner flest ruter. En naken enling er en rute med ett siffer igjen. Denne er speilbildet: et siffer med én rute igjen.</string>
+    <string name="lesson_hidden_single_2">Ta et område, og velg et siffer det fortsatt mangler. Spør hvor i området sifferet kunne stått.</string>
+    <string name="lesson_hidden_single_3">I denne boksen er svaret én rute. Hver eneste andre tomme rute i boksen er utelukket av sin egen rad eller kolonne.</string>
+    <string name="lesson_hidden_single_4">Så sifferet skal dit, selv om den ruten i seg selv kunne hatt flere sifre. Derfor kalles den skjult: sifferet gjemmer seg blant de andre.</string>
+    <string name="lesson_hidden_single_5">Denne er verdt å lære skikkelig. På de fleste oppgaver er det den som holder deg i gang når de nakne enlingene tar slutt.</string>
+    <string name="lesson_hidden_single_turn">Din tur. Sett inn sifferet som ikke har noe annet sted å gå i denne boksen.</string>
+    <string name="lesson_hidden_single_wrong">Ikke det. Spør hvilket siffer boksen fortsatt mangler, og sjekk så hvor hvert av dem faktisk får plass.</string>
+
+    <string name="lesson_scanning_title">Hvordan man ser</string>
+    <string name="lesson_scanning_summary">Før ett siffer over hele rutenettet i stedet for å studere én rute av gangen.</string>
+    <string name="lesson_scanning_1">Nå kan du to teknikker. Å kunne dem er ikke det samme som å finne dem, og det er å finne dem som tar tid.</string>
+    <string name="lesson_scanning_2">Ikke les rutenettet rute for rute. Ta ett siffer, for eksempel det som allerede står flest ganger, og se på de tre boksene i et bånd.</string>
+    <string name="lesson_scanning_3">Still hver boks ett eneste spørsmål: hvor kan dette sifferet stå? Rader og kolonner som allerede har det stryker de fleste svarene, og ofte er bare én rute igjen.</string>
+    <string name="lesson_scanning_4">Gå så videre til neste bånd, og når sifferet er brukt opp, til neste siffer. Det er skanning, og det er det raske løsere gjør når det ser ut som om de bare stirrer.</string>
+    <string name="lesson_scanning_5">Å være systematisk koster ingenting, og det sparer deg for følelsen av å sitte fast, som stort sett bare er følelsen av å ha sett på det samme hjørnet fire ganger.</string>
+
+    <string name="lesson_first_nine_title">Et helt rutenett, bare med enlinger</string>
+    <string name="lesson_first_nine_summary">Alt du har lært så langt er nok til å fullføre en hel oppgave.</string>
+    <string name="lesson_first_nine_1">En ekte ni ganger ni, på nivået Lett. Hvert steg i den er en enling, naken eller skjult, og det er ingenting her du ikke har møtt.</string>
+    <string name="lesson_first_nine_2">Her er en å starte med. Denne ruten har åtte av de ni sifrene utelukket av det den kan se.</string>
+    <string name="lesson_first_nine_3">Slik ser en lett oppgave ut. Enlinger, helt til slutt, og ingen gjetting på noe punkt.</string>
+    <string name="lesson_first_nine_4">Når du går ut av denne leksjonen, spill en. Neste trinn handler om notater, og notater begynner først å lønne seg på oppgaver som er vanskeligere enn denne.</string>
+    <string name="lesson_first_nine_turn">Din tur. Ett siffer er mulig her.</string>
+    <string name="lesson_first_nine_wrong">Se en gang til på raden, kolonnen og boksen denne ruten ligger i, og list opp hva de allerede har.</string>
+
+    <string name="lesson_pencil_marks_title">Notater</string>
+    <string name="lesson_pencil_marks_summary">Et notat er et referat av det du regnet ut, så du slipper å regne det ut igjen.</string>
+    <string name="lesson_pencil_marks_1">Herfra gir ikke oppgavene lenger etter for enlinger, og du blir nødt til å skrive ting ned. Et notat, eller et blyantmerke, er et lite siffer i en rute som sier at sifferet fortsatt er mulig der.</string>
+    <string name="lesson_pencil_marks_2">Se på denne ruten. Å regne ut at den bare kan være ett av to sifre tar noen sekunder. Skriver du de to sifrene inn, tar det null sekunder neste gang du ser.</string>
+    <string name="lesson_pencil_marks_3">Mer er ikke et notat. Det er ikke en gjetning og ikke en forpliktelse. Det er et referat av en slutning du allerede har trukket.</string>
+    <string name="lesson_pencil_marks_4">Hver teknikk herfra handler om mønstre i notatene snarere enn om mønstre i sifrene. Par, tripler, fisk og kjeder leses alle av notatene.</string>
+    <string name="lesson_pencil_marks_5">Ingen løser en vanskelig sudoku i hodet, og en løser som ikke skriver noe ned på en Ekspert er ikke skarp, men treg.</string>
+
+    <string name="lesson_when_to_mark_title">Når de skal skrives</string>
+    <string name="lesson_when_to_mark_summary">Fyll inn notater når enlingene tar slutt, ikke før.</string>
+    <string name="lesson_when_to_mark_1">Det er to måter å bruke notater på, og forskjellen betyr noe.</string>
+    <string name="lesson_when_to_mark_2">Den første er å fylle hver tomme rute med hvert mulig siffer, alt på én gang, før man gjør noe annet. Det er grundig, det tar flere minutter for hånd, og på en lett oppgave er det meste bortkastet, fordi enlingene ville fullført rutenettet uansett.</string>
+    <string name="lesson_when_to_mark_3">Den andre er å notere bare der du arbeider. Disse fire rutene er verdt å notere fordi det foregår noe mellom dem. Resten av rutenettet er det ikke.</string>
+    <string name="lesson_when_to_mark_4">Det ærlige rådet: løs enlingene først, og begynn å notere når du slutter å finne dem. På papir sparer det virkelig tid. I appen er det ett trykk å fylle alle notatene, så prisen er lavere, men et rutenett fullt av tall er fortsatt vanskeligere å lese enn et med notater bare der de betyr noe.</string>
+
+    <string name="lesson_marks_true_title">Å holde notatene ærlige</string>
+    <string name="lesson_marks_true_summary">Et notat som er utdatert er verre enn ingen notater.</string>
+    <string name="lesson_marks_true_1">Notater har én fare. Hvert siffer du setter inn gjør noen av dem gale, og et galt notat sender deg inn i et resonnement som ikke kan stemme.</string>
+    <string name="lesson_marks_true_2">Sett inn et siffer her, og hver rute det kan se mister det sifferet som mulighet. Blir de notatene ikke slettet, kan den neste teknikken du får øye på være bygget på ett av dem.</string>
+    <string name="lesson_marks_true_3">Denne appen kan gjøre det for deg. Det finnes en innstilling som heter slett notater som et innsatt siffer utelukker, og den er på fra start. På papir gjør du det for hånd, og det er der de fleste feilene kommer fra.</string>
+    <string name="lesson_marks_true_4">Når en oppgave går galt og du ikke ser hvorfor, er et utdatert notat det første å mistenke. Hintknappen sier fra når et siffer du har satt inn ikke kan være riktig.</string>
+
+    <string name="lesson_pointing_title">Det pekende paret</string>
+    <string name="lesson_pointing_summary">Er et siffer i en boks låst til én linje, forsvinner det fra den linjen alle andre steder.</string>
+    <string name="lesson_pointing_1">Den første teknikken som fjerner muligheter i stedet for å sette inn et siffer. De fleste teknikkene herfra gjør det, og det tar litt tilvenning: du kommer videre uten å skrive inn et eneste siffer.</string>
+    <string name="lesson_pointing_2">Se hvor ett siffer kan stå i denne boksen. Hver plass det kunne stått på ligger i den samme kolonnen.</string>
+    <string name="lesson_pointing_3">Boksen må ha det sifferet et sted. Så uansett hvor det havner, står det i den kolonnen.</string>
+    <string name="lesson_pointing_4">Som betyr at resten av kolonnen ikke kan ha det. Disse rutene mister sifferet som mulighet, selv om de ikke er i nærheten av boksen.</string>
+    <string name="lesson_pointing_5">Det heter pekende fordi paret inne i boksen peker langs linjen og rydder den.</string>
+
+    <string name="lesson_claiming_title">Det krevende paret</string>
+    <string name="lesson_claiming_summary">Er et siffer på en linje låst til én boks, forsvinner det fra den boksen alle andre steder.</string>
+    <string name="lesson_claiming_1">Det samme argumentet lest andre veien, og det er verdt å ta for seg, fordi øyet finner det et annet sted.</string>
+    <string name="lesson_claiming_2">Start med en linje denne gangen. Se hvor ett siffer kan stå langs denne raden.</string>
+    <string name="lesson_claiming_3">Hver plass det kunne stått på ligger inne i den samme boksen. Raden må ha det sifferet et sted, så sifferet står i den boksen.</string>
+    <string name="lesson_claiming_4">Som betyr at resten av boksen mister det. Disse rutene kan ikke lenger ha det.</string>
+    <string name="lesson_claiming_5">Pekende ser på en boks og rydder en linje. Krevende ser på en linje og rydder en boks. To navn, én idé, og du møter begge i enhver vanskelig oppgave.</string>
+
+    <string name="lesson_naked_pair_title">Det nakne paret</string>
+    <string name="lesson_naked_pair_summary">To ruter med de samme to sifrene eier dem begge.</string>
+    <string name="lesson_naked_pair_1">Nå gruppene. Dette er den minste av dem og mønsteret som gjør resten opplagt.</string>
+    <string name="lesson_naked_pair_2">Disse to rutene ligger i det samme området, og hver av dem kan bare være ett av de samme to sifrene.</string>
+    <string name="lesson_naked_pair_3">Mellom seg tar de begge sifrene, ett hver. Hvilket som er hvor spiller ingen rolle, og du trenger ikke vite det.</string>
+    <string name="lesson_naked_pair_4">Så ingen annen rute i området kan ha noen av dem. Denne ruten mister det ene.</string>
+    <string name="lesson_naked_pair_5">Naken igjen, fordi du ser det ved å lese de to rutene. Ingenting er skjult, og ingen annen rute er med i argumentet.</string>
+
+    <string name="lesson_hidden_pair_title">Det skjulte paret</string>
+    <string name="lesson_hidden_pair_summary">To sifre med bare de samme to plassene igjen eier de rutene.</string>
+    <string name="lesson_hidden_pair_1">Speilbildet av det nakne paret, akkurat som den skjulte enlingen speiler den nakne.</string>
+    <string name="lesson_hidden_pair_2">I dette området kan to sifre hver bare stå i de samme to rutene.</string>
+    <string name="lesson_hidden_pair_3">De to sifrene tar de to rutene mellom seg. Så uansett hva rutene ellers så ut til å kunne ha, kan de det ikke.</string>
+    <string name="lesson_hidden_pair_4">De to rutene mister alle andre notater. Nå er de et nakent par, og ofte er nettopp det hva mønsteret er til for: å gjøre et skjult par om til et nakent som rydder resten av området.</string>
+    <string name="lesson_hidden_pair_5">Skjulte par er vanskeligere å se enn nakne, fordi du må se på sifre i stedet for på ruter. På et rutenett som har stoppet opp er det verdt strevet.</string>
+
+    <string name="lesson_naked_triple_title">Den nakne trippelen</string>
+    <string name="lesson_naked_triple_summary">Tre ruter som deler tre sifre eier dem, selv om ingen av dem har alle tre.</string>
+    <string name="lesson_naked_triple_1">Et par med én rute til, og én krølle som lurer alle første gang.</string>
+    <string name="lesson_naked_triple_2">Disse tre rutene ligger i det samme området, og mellom seg bruker de bare tre ulike sifre.</string>
+    <string name="lesson_naked_triple_3">Her er krøllen: ingen av dem trenger å ha alle tre. To sifre i én rute, to i den neste, to i den tredje er også en trippel, så lenge det bare finnes tre sifre på tvers av dem alle.</string>
+    <string name="lesson_naked_triple_4">De tre rutene tar de tre sifrene mellom seg, så hver eneste andre rute i området mister alle tre. Det er mange notater borte på én gang.</string>
+    <string name="lesson_naked_triple_5">Når du leter, tell de ulike sifrene på tvers av to eller tre ruter i stedet for å lete etter like notater. Det er vanen som finner tripler.</string>
+
+    <string name="lesson_hidden_triple_title">Den skjulte trippelen</string>
+    <string name="lesson_hidden_triple_summary">Tre sifre med bare tre plasser igjen eier de rutene.</string>
+    <string name="lesson_hidden_triple_1">Det samme forholdet som det skjulte paret, én størrelse opp, og virkelig vanskelig å få øye på.</string>
+    <string name="lesson_hidden_triple_2">I dette området kan tre sifre mellom seg bare stå i de samme tre rutene.</string>
+    <string name="lesson_hidden_triple_3">Så de tre rutene har de tre sifrene, og hvert annet notat i dem kan gå.</string>
+    <string name="lesson_hidden_triple_4">Ikke let etter disse først. Se etter dem når et område har noen få ruter igjen og ingenting annet har virket. Som regel er et nakent mønster i det samme området lettere å se.</string>
+
+    <string name="lesson_quads_title">Kvadrupler</string>
+    <string name="lesson_quads_summary">Den samme idéen med fire, verdt å kjenne, men sjelden verdt å lete etter.</string>
+    <string name="lesson_quads_1">Par, tripler, og nå kvadrupler. Argumentet endrer seg ikke: fire ruter som mellom seg bruker fire sifre eier de sifrene, og fire sifre med bare fire plasser eier de rutene.</string>
+    <string name="lesson_quads_2">Her er en naken kvadruppel. Fire ruter, fire sifre mellom seg, og resten av området mister alle fire.</string>
+    <string name="lesson_quads_3">Og her er det ærlige rådet. Kvadrupler finnes, og de er lovlige, men de er sjeldne, og en kvadruppel i et område med fem eller seks tomme ruter betyr som regel at det er et enklere mønster i de andre rutene som du har oversett.</string>
+    <string name="lesson_quads_4">Her er en skjult kvadruppel, for fullstendighetens skyld. Fire sifre med fire plasser igjen.</string>
+    <string name="lesson_quads_5">Lær å kjenne dem igjen, så et hint som nevner en gir mening. Ikke bruk tid på å lete etter dem.</string>
+
+    <string name="lesson_x_wing_title">X-Wing</string>
+    <string name="lesson_x_wing_summary">Et siffer bundet til to kolonner i to rader forsvinner fra de kolonnene alle andre steder.</string>
+    <string name="lesson_x_wing_1">Det første mønsteret som spenner over hele rutenettet i stedet for å ligge i ett område. Det har en form, og når du først har sett formen, ser du den overalt.</string>
+    <string name="lesson_x_wing_2">Ta ett siffer. I disse to radene kan det bare stå i to ruter i hver, og de rutene ligger i de samme to kolonnene. Fire ruter, i et rektangel.</string>
+    <string name="lesson_x_wing_3">Tenk det nå gjennom. Hver rad må ha sifferet én gang. Uansett hvilket hjørne den ene raden bruker, må den andre bruke det motsatte. Det finnes ikke noe tredje valg.</string>
+    <string name="lesson_x_wing_4">Så mellom seg tar de to radene sifferet i begge de kolonnene. Alt annet i de kolonnene mister det.</string>
+    <string name="lesson_x_wing_5">Det virker også med kolonner og rader byttet om. To kolonner der sifferet er låst til de samme to radene rydder de radene.</string>
+
+    <string name="lesson_swordfish_title">Swordfish</string>
+    <string name="lesson_swordfish_summary">Det samme argumentet som en X-Wing, med tre linjer i stedet for to.</string>
+    <string name="lesson_swordfish_1">En X-Wing med en rad til. Navnet hjelper ikke, men mønsteret er en direkte forlengelse.</string>
+    <string name="lesson_swordfish_2">Tre rader, ett siffer, og i hver rad er sifferet låst til ruter i de samme tre kolonnene.</string>
+    <string name="lesson_swordfish_3">Ikke hver rad trenger å bruke alle tre kolonnene. To av tre holder, så lenge ingen rad går utenfor dem.</string>
+    <string name="lesson_swordfish_4">De tre radene tar sifferet i de tre kolonnene mellom seg, så resten av de kolonnene mister det.</string>
+    <string name="lesson_swordfish_5">Klarer du å følge X-Wing, klarer du denne. Å finne den er en annen sak: det er her det slutter å være valgfritt å fylle inn notatene sine.</string>
+
+    <string name="lesson_jellyfish_title">Jellyfish</string>
+    <string name="lesson_jellyfish_summary">Fire linjer. Det samme mønsteret igjen, og det siste som er verdt å lære.</string>
+    <string name="lesson_jellyfish_1">Fire rader, ett siffer, fire kolonner. Argumentet har ikke endret seg siden X-Wing og kommer ikke til å endre seg igjen.</string>
+    <string name="lesson_jellyfish_2">Her er en. Fire rader, og sifferet i hver av dem er låst til de samme fire kolonnene.</string>
+    <string name="lesson_jellyfish_3">Forbi fire er det ingenting mer å lære. En variant med fem linjer finnes i teorien, men på et ni ganger ni rutenett kan hver eneste av dem finnes som et mindre mønster i de fire kolonnene som er igjen, så ingen leter etter dem.</string>
+    <string name="lesson_jellyfish_4">Dette er ytterkanten av hva som er verdt å lete etter som mønster. Etter dette er kjeder en bedre bruk av oppmerksomheten.</string>
+
+    <string name="lesson_xy_wing_title">XY-Wing</string>
+    <string name="lesson_xy_wing_summary">Tre ruter med to sifre hver, og én rute som taper uansett.</string>
+    <string name="lesson_xy_wing_1">Wings krever en annen måte å tenke på. Til nå har du funnet et mønster og lest av en konklusjon. Her resonnerer du med tilfeller.</string>
+    <string name="lesson_xy_wing_2">Start med denne ruten. Den har nøyaktig to mulige sifre, og den er hengselet i mønsteret.</string>
+    <string name="lesson_xy_wing_3">Den har to venner, som hver deler et område med den, og hver har to sifre: ett delt med hengselet, ett delt med hverandre.</string>
+    <string name="lesson_xy_wing_4">Nå argumentet. Hengselet er ett av sine to sifre. Er hengselet det første, tvinges den venstre vingen til det felles sifferet. Er det i stedet det andre, tvinges den høyre vingen til det samme felles sifferet. Uansett har den ene vingen det.</string>
+    <string name="lesson_xy_wing_5">Så ingen rute som kan se begge vingene kan ha det sifferet. Denne ruten mister det.</string>
+    <string name="lesson_xy_wing_6">Du får aldri vite hva hengselet faktisk er. Det er nettopp poenget, og det er det som gjør wings annerledes enn alt før dem.</string>
+
+    <string name="lesson_xyz_wing_title">XYZ-Wing</string>
+    <string name="lesson_xyz_wing_summary">Som en XY-Wing, men hengselet kan også være det felles sifferet, så konklusjonen er svakere.</string>
+    <string name="lesson_xyz_wing_1">Én endring fra XY-Wing, og den gjør konklusjonen mindre.</string>
+    <string name="lesson_xyz_wing_2">Her har hengselet tre sifre i stedet for to, og det felles sifferet er ett av dem.</string>
+    <string name="lesson_xyz_wing_3">Så nå er det tre tilfeller, ikke to. Begge vingene kan ha det felles sifferet, eller hengselet selv kan ha det.</string>
+    <string name="lesson_xyz_wing_4">Det betyr at en rute bare mister sifferet hvis den kan se alle tre, ikke bare de to vingene. Færre ruter kvalifiserer, og derfor fjerner dette mønsteret mindre enn sin enklere fetter.</string>
+    <string name="lesson_xyz_wing_5">Verdt å kjenne fordi formen ser nesten lik ut, og leser du den som en XY-Wing fjerner du et siffer du ikke har rett til å fjerne.</string>
+
+    <string name="lesson_w_wing_title">W-Wing</string>
+    <string name="lesson_w_wing_summary">To like par bundet sammen av en linje som må ha ett av sifrene deres.</string>
+    <string name="lesson_w_wing_1">Den tredje wingen, og den som krever minst regning.</string>
+    <string name="lesson_w_wing_2">To ruter som ikke deler et område, hver med de samme to sifrene.</string>
+    <string name="lesson_w_wing_3">Finn nå et område der ett av de to sifrene bare kan stå på to plasser, og der de to plassene hver ser én av parrutene. Det området er bindeleddet.</string>
+    <string name="lesson_w_wing_4">Bindeleddet må ha sifferet på én av sine to plasser, og uansett hvilken, tvinger det én av parrutene til å ta det andre sifferet. Så den ene av paret har alltid det andre sifferet.</string>
+    <string name="lesson_w_wing_5">Enhver rute som ser begge parrutene mister det. Denne ruten gjør det.</string>
+
+    <string name="lesson_rectangle_title">Det unike rektangelet</string>
+    <string name="lesson_rectangle_summary">En oppgave med ett svar kan ikke ha et kvadrat som kunne rotert.</string>
+    <string name="lesson_rectangle_1">Denne teknikken er av en annen art enn alle de andre, og det er verdt å si hvorfor før man bruker den.</string>
+    <string name="lesson_rectangle_2">Se på disse fire rutene. De ligger i to rader, to kolonner og nøyaktig to bokser, og hver av dem kan ha de samme to sifrene.</string>
+    <string name="lesson_rectangle_3">Var det hele historien, ville oppgaven hatt to svar: fyll rektangelet på den ene måten, eller bytt om begge diagonalene, og begge rutenettene følger hver regel. En ordentlig laget oppgave har ikke to svar.</string>
+    <string name="lesson_rectangle_4">Så det kan ikke være hele historien. Én av de rutene må ha noe annet, og det er det som lar deg fjerne.</string>
+    <string name="lesson_rectangle_5">Her overlever de ekstra mulighetene, og det felles paret strykes fra disse rutene.</string>
+    <string name="lesson_rectangle_6">Haken, sagt rett ut: dette argumentet forutsetter at oppgaven er ordentlig laget. Det gjelder hver eneste oppgave i denne appen, fordi generatoren sjekker. Bruk det på et rutenett fra en ukjent kilde, og det kan lede deg feil.</string>
+
+    <string name="lesson_bug_title">BUG pluss én</string>
+    <string name="lesson_bug_summary">Hadde hver rute unntatt én to kandidater, ville oppgaven vært tvetydig. Så den ene ruten er spesiell.</string>
+    <string name="lesson_bug_1">Den samme antakelsen som det unike rektangelet, i en annen form.</string>
+    <string name="lesson_bug_2">Tenk deg at et rutenett nådde en stilling der hver uløste rute hadde nøyaktig to muligheter, og hvert siffer sto nøyaktig to ganger i hvert område. Et slikt rutenett har alltid to svar.</string>
+    <string name="lesson_bug_3">Så en ordentlig laget oppgave kan aldri nå den. Finner du en stilling som er én rute unna, der nøyaktig én rute har tre muligheter i stedet for to, er den ruten det som redder oppgaven fra å være tvetydig.</string>
+    <string name="lesson_bug_4">Sifferet som står tre ganger i områdene sine er det ruten må ha. Det er et sjeldent mønster og en svært rask avslutning når det dukker opp.</string>
+
+    <string name="lesson_colouring_title">Enkel farging</string>
+    <string name="lesson_colouring_summary">Følg ett siffer gjennom rutene der det bare har to hjem, og let etter en motsigelse.</string>
+    <string name="lesson_colouring_1">Kjeder, forsiktig. Farging er den enkleste veien inn i dem, og resonnementet under er det samme.</string>
+    <string name="lesson_colouring_2">Velg et siffer. Finn et område der det bare har to mulige ruter. De to er bundet sammen: nøyaktig én av dem er sifferet.</string>
+    <string name="lesson_colouring_3">Farg den ene i paret, og følg så bindingene. Hver rute som er bundet slik ender med en av to farger, og én hel farge er riktig mens den andre er gal. Hvilken, det vet du ikke.</string>
+    <string name="lesson_colouring_4">Let nå etter motsigelsen. Kan en rute se to ruter med samme farge, kan ikke den fargen være den riktige, så ruten mister sifferet. Det er det som skjer her.</string>
+    <string name="lesson_colouring_5">To farger, én motsigelse, og ingen gjetting noe sted. Det er hele metoden.</string>
+
+    <string name="lesson_remote_pairs_title">Fjerne par</string>
+    <string name="lesson_remote_pairs_summary">En kjede av like par veksler, så endene er motsatte.</string>
+    <string name="lesson_remote_pairs_1">Farging brukt på ruter i stedet for på ett enkelt siffer.</string>
+    <string name="lesson_remote_pairs_2">Her er en kjede av ruter som alle har de samme to sifrene, hver bundet til den neste av et felles område.</string>
+    <string name="lesson_remote_pairs_3">Fordi hvert ledd er et par, veksler sifrene langs kjeden. Første rute tar det ene, andre tar det andre, og så videre.</string>
+    <string name="lesson_remote_pairs_4">Så de to endene av en kjede med partall lengde er motsatte: de har ulike sifre. Enhver rute som kan se begge endene må miste begge sifrene, fordi endene har ett hver.</string>
+    <string name="lesson_remote_pairs_5">Det er den enkleste kjeden å få øye på, fordi hver rute i den ser lik ut.</string>
+
+    <string name="lesson_multi_colouring_title">Flerfarging</string>
+    <string name="lesson_multi_colouring_summary">To fargekjeder som berører hverandre utelukker hverandre.</string>
+    <string name="lesson_multi_colouring_1">Enkel farging bruker én kjede. Noen ganger har én kjede ingen motsigelse, men to kjeder sammen har det.</string>
+    <string name="lesson_multi_colouring_2">Her er ruter fra to atskilte kjeder for det samme sifferet.</string>
+    <string name="lesson_multi_colouring_3">Ser en farge i den ene kjeden en farge i den andre, kan ikke begge de fargene være riktige. Følger man det til ende, fjernes sifferet fra rutene som ser de to fargene som er igjen.</string>
+    <string name="lesson_multi_colouring_4">Konklusjonen lander her.</string>
+    <string name="lesson_multi_colouring_5">Det er her farging slutter å være noe du kan holde i hodet, og begynner å kreve at du skriver ned hvilken rute som har hvilken farge.</string>
+
+    <string name="lesson_x_chain_title">X-Chain</string>
+    <string name="lesson_x_chain_summary">Ett siffer, ledd som veksler mellom sterke og svake, og en fjerning i endene.</string>
+    <string name="lesson_x_chain_1">Den generelle formen av alt i forrige trinn. Ett siffer, og en kjede av vekslende ledd.</string>
+    <string name="lesson_x_chain_2">Et sterkt ledd er to ruter der minst én må ha sifferet, og det er det et område med bare to plasser gir deg. Et svakt ledd er to ruter der høyst én kan ha det, og det er hvilke som helst to ruter som deler et område.</string>
+    <string name="lesson_x_chain_3">La dem veksle: sterkt, svakt, sterkt, og så videre, med sterkt i begge ender. Da har den ene av de to endene sifferet, uansett hva som skjer i midten.</string>
+    <string name="lesson_x_chain_4">Så enhver rute som ser begge endene mister det.</string>
+    <string name="lesson_x_chain_5">Farging er denne kjeden tegnet i to farger. Kjeden er mer generell fordi den kan gå gjennom ruter farging ikke når.</string>
+
+    <string name="lesson_xy_chain_title">XY-Chain</string>
+    <string name="lesson_xy_chain_summary">En kjede av ruter med to kandidater, der endene deler et siffer.</string>
+    <string name="lesson_xy_chain_1">Den samme vekslende idéen, men du går gjennom ruter i stedet for å følge ett siffer.</string>
+    <string name="lesson_xy_chain_2">Hver rute i denne kjeden har nøyaktig to muligheter, og hver deler et område med den neste.</string>
+    <string name="lesson_xy_chain_3">Inne i en rute tvinger det ene sifferet det andre, og det er det sterke leddet. Mellom ruter lager et felles område det svake. Å la dem veksle fører argumentet langs kjeden.</string>
+    <string name="lesson_xy_chain_4">Kan begge endene av kjeden ha det samme sifferet, så har den ene av dem det, uansett hvordan kjeden faller ut. Enhver rute som ser begge endene mister det sifferet.</string>
+    <string name="lesson_xy_chain_5">Dette er teknikken som fullfører de fleste Ekspert-oppgavene, og å finne en er mest et spørsmål om tålmodig å følge ruter med to kandidater enn om å være skarp.</string>
+
+    <string name="lesson_writing_chains_title">Å skrive ned en kjede</string>
+    <string name="lesson_writing_chains_summary">En kjede du ikke kan sjekke er en gjetning med ekstra steg.</string>
+    <string name="lesson_writing_chains_1">Én praktisk leksjon før den siste teknikken, for kjeder er der folk overbeviser seg selv om ting som ikke stemmer.</string>
+    <string name="lesson_writing_chains_2">En kjede er en rekke påstander, og hver av dem må holde. På skjermen ser den ut som en samling markerte ruter, og markering er ikke et argument.</string>
+    <string name="lesson_writing_chains_3">Skriv den som én linje: denne ruten er enten 4 eller 7; er den 4, så er den der 9; er den der 9, så er denne andre 4. Hver pil er et ledd, og hvert ledd har en grunn.</string>
+    <string name="lesson_writing_chains_4">Sjekk så vekslingen. Sterkt, svakt, sterkt, svakt, og sterkt i begge ender. En kjede som begynner eller slutter på et svakt ledd beviser ingenting, og det er den vanligste måten en kjede går galt på.</string>
+    <string name="lesson_writing_chains_5">Kan du ikke skrive den ned, har du ikke funnet den. Det er ikke en regel om ryddighet, det er forskjellen på en slutning og en magefølelse.</string>
+
+    <string name="lesson_sue_de_coq_title">Sue de Coq</string>
+    <string name="lesson_sue_de_coq_summary">Der en boks krysser en linje, og krysset har flere sifre enn plass.</string>
+    <string name="lesson_sue_de_coq_1">En boks og en kolonne overlapper i tre ruter. De tre rutene hører til begge samtidig, og det er det denne teknikken lever av.</string>
+    <string name="lesson_sue_de_coq_2">Se på to av dem her. Mellom seg har de 2, 6, 7 og 8: fire sifre til to ruter. To av dem går inn, og to blir til overs til et annet sted.</string>
+    <string name="lesson_sue_de_coq_3">Lenger ned i den samme kolonnen sitter en rute med 6 og 7. Et annet sted i den samme boksen sitter en rute med 2 og 8. Mellom seg vil de to rutene ha nøyaktig de fire sifrene krysset har, delt likt og uten noe felles.</string>
+    <string name="lesson_sue_de_coq_4">Tell etter. Tre ruter i kolonnen tar nå tre ulike sifre av de fire, og tre ruter i boksen gjør det samme. Regnestykket går bare opp på én måte: 6 og 7 brukes opp inne i kolonnen, og 2 og 8 inne i boksen.</string>
+    <string name="lesson_sue_de_coq_5">Så ingenting annet i den kolonnen kan være 6 eller 7. To ruter mister ett her.</string>
+    <string name="lesson_sue_de_coq_6">Det samme argumentet går andre veien for boksen. Ett mønster, to områder, to atskilte sett med fjerninger, og ingen kjede noe sted i det.</string>
+
+    <string name="lesson_als_title">ALS-XZ</string>
+    <string name="lesson_als_summary">To nesten låste mengder som deler et siffer, og fjerningen som følger.</string>
+    <string name="lesson_als_1">Regelen de vanskeligste nivåene er bygget på. Alt over dette trinnet er en variant av den.</string>
+    <string name="lesson_als_2">En nesten låst mengde er en gruppe ruter i ett område som har nøyaktig ett siffer mer enn det er ruter. Fire ruter med fem sifre mellom seg. Mistet den ett siffer, ville den vært en låst mengde, derav navnet.</string>
+    <string name="lesson_als_3">Ta to av dem som deler to sifre. Kall det ene av de felles sifrene det begrensede, og krev at hver plass det står på i den ene mengden ser hver plass det står på i den andre.</string>
+    <string name="lesson_als_4">Da kan det bare være i den ene av de to mengdene. Mengden som ikke får det blir låst, og det fastsetter det andre felles sifferet inne i den. Og dermed mister enhver rute som ser det sifferet i begge mengdene det.</string>
+    <string name="lesson_als_5">Her er fjerningen som kommer ut av det.</string>
+    <string name="lesson_als_6">Trenger dette flere gjennomlesninger, er antallet helt normalt. Hver teknikk etter dette punktet er denne i en annen form.</string>
+
+    <string name="lesson_deep_end_title">Hva det dype vannet krever</string>
+    <string name="lesson_deep_end_summary">Hva som endrer seg på Vanvittig og Mareritt, og hvorfor disse nivåene krever papir.</string>
+    <string name="lesson_deep_end_1">Alt fram til her kan ses. Du ser på en rad, en boks, et par ruter, og svaret ligger foran deg så snart du kjenner formen.</string>
+    <string name="lesson_deep_end_2">De to vanskeligste nivåene er ikke slik. De ber deg følge et argument gjennom tre eller fire steg og holde alt i hodet samtidig, og det klarer nesten ingen ved å se.</string>
+    <string name="lesson_deep_end_3">Så skriv det ned. En blyant og baksiden av en konvolutt er ikke juks og ikke et tegn på at du er dårlig til dette. Det er det alle som løser disse gjør.</string>
+    <string name="lesson_deep_end_4">Reglene her er alle den samme idéen: en gruppe ruter som mangler ett siffer på å være full. Ta det sifferet bort, og gruppen er tvunget, og en tvunget gruppe tvinger den neste. Det er hele det dype vannet.</string>
+    <string name="lesson_deep_end_5">Ingenting her nede er en gjetning. Hvert steg er bevist, hvert hint viser deg beviset, og slår en oppgave her deg, er det helt vanlig å komme tilbake til den om en uke.</string>
+
+    <string name="lesson_als_xy_title">ALS-XY-Wing</string>
+    <string name="lesson_als_xy_summary">Tre grupper i en kjede, og sifferet som ikke overlever i noen av endene.</string>
+    <string name="lesson_als_xy_1">Tre grupper denne gangen, bundet sammen på en linje: én i hver ende og én i midten som holder dem fra hverandre.</string>
+    <string name="lesson_als_xy_2">Start med de to til venstre. r3c9 har 1 og 3. r1c8 har 3 og 7. De deler en boks, så bare den ene av dem kan være 3-tallet.</string>
+    <string name="lesson_als_xy_3">Nå gruppen nedover kolonne 8: tre ruter med 1, 3, 7 og 9 mellom seg. Fire sifre, tre ruter, så den mangler ett siffer på å være full. Den deler 7-tallet med r1c8, og hvert 7-tall i den står i den samme kolonnen, så igjen kan bare den ene siden ta det.</string>
+    <string name="lesson_als_xy_4">Anta at en av de to markerte rutene i kolonne 9 er et 1-tall. Den ser r3c9, så r3c9 er ikke 1, så den er 3. Da er r1c8 ikke 3, så den er 7. Da har gruppen ikke noe 7-tall igjen, så den er full, og den må bruke 1, 3 og 9.</string>
+    <string name="lesson_als_xy_5">Men de rutene ser også hvert 1-tall i gruppen, så gruppen kan heller ikke ha et 1-tall. Argumentet spiser seg selv, og 1-tallet går.</string>
+    <string name="lesson_als_xy_6">To bindinger, tre grupper, og hvert steg tvinger det neste. Les det to ganger: det er en kjede, og kjeder gir bare mening ett ledd av gangen.</string>
+
+    <string name="lesson_blossom_title">Death blossom</string>
+    <string name="lesson_blossom_summary">Én rute med en gruppe som venter bak hvert av sifrene sine.</string>
+    <string name="lesson_blossom_1">Denne har en form du kan se: en stilk, og et kronblad for hvert siffer stilken kunne vært.</string>
+    <string name="lesson_blossom_2">Stilken er r1c4. Den er 5 eller 6, og ingenting annet. To muligheter betyr to tilfeller, og denne teknikken tar begge samtidig.</string>
+    <string name="lesson_blossom_3">Si at den er 5. Da kan r1c7, i den samme raden, med 5 og 8, ikke være 5-tallet. Så den er 8-tallet.</string>
+    <string name="lesson_blossom_4">Si i stedet at den er 6. Se på disse tre rutene i den samme boksen: mellom seg har de 2, 6, 7 og 8. Fire sifre, tre ruter, ett unna å være full. Stilken ser alle tre, så 6-tallet dens tar 6-tallet fra dem.</string>
+    <string name="lesson_blossom_5">Nå er de fulle, og tre fulle ruter bruker tre sifre: 2, 7 og 8. Bare én av dem kan være 8-tallet, så det er der 8-tallet står.</string>
+    <string name="lesson_blossom_6">Legg de to tilfellene sammen. Enten står det et 8-tall på r1c7, eller så står det et 8-tall i den boksen, og et tredje tilfelle finnes ikke. Enhver rute som kan se begge stedene mister sitt 8-tall, og det gjør to av dem.</string>
+    <string name="lesson_blossom_7">Legg merke til hva du aldri trengte å vite: hvilket siffer stilken faktisk er. Begge veiene ender i et 8-tall, så svaret avhenger ikke av forgreningen.</string>
+
+    <string name="lesson_fork_title">Tvingende kjede</string>
+    <string name="lesson_fork_summary">Ta en rute begge veier og se hvilken som overlever. Det vanskeligste i appen.</string>
+    <string name="lesson_fork_1">Den siste teknikken, og den eneste som ikke er et mønster. Det er ingenting å få øye på her. Det er bare arbeid.</string>
+    <string name="lesson_fork_2">Denne ruten er 2 eller 7. Alt annet på brettet er presset tørt, og ingenting sier hvilket av de to det er.</string>
+    <string name="lesson_fork_3">Så prøv det ene. Si at den er 2, med blyant, og følg bare de lette følgene: en rute med ett siffer igjen, eller et siffer med ett hjem igjen i sitt område.</string>
+    <string name="lesson_fork_4">De kommer fort. Et 2-tall tvinges her, så et 7-tall der, så et 3-tall, et 5-tall, et 9-tall. Fortsett. Fjorten sifre senere, se på den markerte ruten.</string>
+    <string name="lesson_fork_5">Den har ingenting igjen. Hvert siffer som kunne stått der er tatt av noe annet. Det er ikke uflaks, det er en motsigelse, og det betyr at 2-tallet aldri var mulig i det hele tatt.</string>
+    <string name="lesson_fork_6">Så slett alt og skriv 7-tallet. Ikke fordi 7-tallet ser bedre ut, men fordi 2-tallet er bevist umulig, og to muligheter minus én gir én.</string>
+    <string name="lesson_fork_7">Dette er bevis ved tilfeller, og det er dette folk mener med å regne ut en oppgave på papir. Bruk papir. Ingen holder fjorten tvungne sifre i hodet, og å trenge å skrive dem ned er ikke en svakhet.</string>
+    <string name="lesson_fork_8">Sett den inn nå.</string>
+    <string name="lesson_fork_wrong">Det er det andre sifferet som døde. 2-tallet førte til en rute uten noe i, så det som er igjen er 7-tallet.</string>
+
+    <string name="lesson_nothing_applies_title">Når ingenting passer</string>
+    <string name="lesson_nothing_applies_summary">Sjekk på nytt før du gjetter, for en oppgave fra denne appen har alltid et neste steg.</string>
+    <string name="lesson_nothing_applies_1">Du kommer til stillinger der du har sett på alt og ikke funnet noe. Her er hva du skal gjøre, og hva du ikke skal.</string>
+    <string name="lesson_nothing_applies_2">Det du ikke skal gjøre er å gjette. Hver eneste oppgave i denne appen kan løses med resonnering, og en gjetning som tilfeldigvis stemmer lærer deg ingenting mens en gjetning som er feil koster deg hele rutenettet.</string>
+    <string name="lesson_nothing_applies_3">Sjekk i denne rekkefølgen. Først: stemmer alle notatene dine? Et utdatert notat er den vanligste årsaken til en umulig stilling, og appen sletter dem for deg hvis du lar den. Så: er et siffer du har satt inn faktisk riktig? Trykk på hint, så sier den fra.</string>
+    <string name="lesson_nothing_applies_4">Se så etter de billige tingene igjen. Det er nesten aldri en kjede du har oversett. Det er nesten alltid en skjult enling i et område du sluttet å se på for tjue trekk siden.</string>
+
+    <string name="lesson_look_first_title">Hva du skal se etter først</string>
+    <string name="lesson_look_first_summary">Billige mønstre først, alltid, for de er vanlige og de åpner rutenettet.</string>
+    <string name="lesson_look_first_1">Nå kan du hver teknikk denne appen kan navngi. Det siste som gjenstår å lære er rekkefølgen å lete i.</string>
+    <string name="lesson_look_first_2">Enlinger først, hver gang. Nakne, så skjulte. De er de klart vanligste, og hver en du setter inn gjør hver annen teknikk lettere å finne.</string>
+    <string name="lesson_look_first_3">Så de billige fjerningene: pekende og krevende par. De er raske å sjekke, område for område, og de åpner ofte for en enling med en gang.</string>
+    <string name="lesson_look_first_4">Så par og tripler i de områdene med færrest tomme ruter. Så fisk, så wings. Kjeder til slutt, alltid, for de er mest arbeid og minst vanlige.</string>
+    <string name="lesson_look_first_5">Å jakte på en Jellyfish før du har sjekket enlingene er sudokuens svar på å skrive om et program før du leser feilmeldingen. Appen vurderer oppgaver etter det vanskeligste de krever, men en Mester er fortsatt for det meste enlinger.</string>
+    <string name="lesson_together_title">En Mester, sammen</string>
+    <string name="lesson_together_summary">En vanskelig oppgave er stort sett lette steg med noen få vanskelige i.</string>
+    <string name="lesson_together_1">Den siste leksjonen. Dette er rutenettet kurset har gått gjennom, på nivået Mester, og her er hele løsningen, teknikk for teknikk.</string>
+    <string name="lesson_together_2">Den åpner med en naken enling. Nesten alt gjør det.</string>
+    <string name="lesson_together_3">Så en skjult enling, i boksen ved siden av.</string>
+    <string name="lesson_together_4">Nå stopper den opp, og et pekende par rydder en kolonne så enlingene kan begynne igjen. Legg merke til at det steget ikke satte inn et eneste siffer, og at det likevel ble framgang.</string>
+    <string name="lesson_together_5">Et nakent par litt senere, som gjør den samme jobben i et område.</string>
+    <string name="lesson_together_6">Lenger inn, en X-Wing. Nå er rutenettet halvfullt, og notatene gjør jobben.</string>
+    <string name="lesson_together_7">Og mot slutten, den som gir nivået: en ALS-XZ. Én fjerning, og resten er enlinger igjen.</string>
+    <string name="lesson_together_8">Det er det Mester betyr her. Ikke åttien vanskelige steg, men sytti lette og en håndfull som krever alt du har lært.</string>
+    <string name="lesson_together_9">Du har møtt hver teknikk denne appen kan navngi. Gå og spill en. Tre hint følger med hver oppgave, og det er ingen skam i å bruke dem, og vil du heller ha så mange du vil, er grensen en bryter i innstillingene.</string>
+    <string name="lesson_step_of">%1$d av %2$d</string>
+    <string name="lesson_back">Tilbake</string>
+    <string name="lesson_next">Neste</string>
+    <string name="lesson_done">Ferdig</string>
+    <string name="lesson_replay">Om igjen</string>
+    <string name="lesson_show_me">Vis meg</string>
+    <string name="lesson_cell_at">Rad %1$d, kolonne %2$d.</string>
+    <string name="course_title">Lær</string>
+    <string name="course_lesson_done">fullført</string>
+    <string name="course_lesson_next">neste</string>
+    <string name="course_lesson_todo">ikke begynt</string>
+    <string name="course_you_are_here">Du er her</string>
+    <string name="course_continue">Fortsett</string>
+    <string name="course_stage_done">Fullført %1$d av %2$d</string>
+    <plurals name="course_progress">
+        <item quantity="one">%1$d av %2$d leksjon</item>
+        <item quantity="other">%1$d av %2$d leksjoner</item>
+    </plurals>
+    <string name="settings_hint_detail">Hvor mye et hint sier</string>
+    <string name="hint_detail_region">Bare området</string>
+    <string name="hint_detail_region_note">Hvilken boks eller linje du skal se på, og ikke mer.</string>
+    <string name="hint_detail_name">Teknikken</string>
+    <string name="hint_detail_name_note">Hva slags steg det er, så du vet hva du skal se etter.</string>
+    <string name="hint_detail_cells">Rutene</string>
+    <string name="hint_detail_cells_note">Rutene argumentet hviler på, markert på brettet.</string>
+    <string name="hint_detail_full">Hele argumentet</string>
+    <string name="hint_detail_full_note">Alt, også trekket. Til å arbeide seg gjennom kurset med.</string>
+    <string name="path_title">Slik ble den løst</string>
+    <string name="path_placed">Rad %1$d, kolonne %2$d er %3$d.</string>
+    <string name="outcome_path">Vis hvordan den ble løst</string>
+    <string name="settings_your_data">Dine data</string>
+    <string name="settings_data_note">Alt appen vet om deg ligger på denne telefonen. Eksport skriver det til en fil du velger, så en ny telefon kan fortsette der denne slapp. Ingenting sendes noe sted.</string>
+    <string name="settings_export">Eksporter framgangen min</string>
+    <string name="settings_import">Importer fra en fil</string>
+    <string name="settings_reset_course">Start kurset på nytt, behold spillene mine</string>
+    <string name="settings_exported">Lagret. Leksjoner: %1$d. Spill: %2$d.</string>
+    <string name="settings_imported">Lagt til. Leksjoner: %1$d. Spill: %2$d.</string>
+    <string name="settings_imported_ignored">Lagt til. Leksjoner: %1$d. Spill: %2$d. Utelatt, fordi de kom fra en nyere versjon: %3$d.</string>
+    <string name="settings_import_empty">Den filen er tom.</string>
+    <string name="settings_import_not_ours">Det ser ikke ut som en eksport fra Sendoku.</string>
+    <string name="settings_import_future">Den filen er skrevet av en nyere versjon av Sendoku.</string>
+    <string name="settings_import_failed">Den filen kunne ikke leses, og ingenting på denne telefonen ble endret.</string>
+    <string name="settings_course_reset">Kurset er tilbake ved starten. Spillene dine er urørt.</string>
+    <string name="practice_looking">Leter etter en stilling…</string>
+    <string name="practice_find">Finn: %1$s.</string>
+    <string name="practice_keep_going">Det er en av dem. Fortsett.</string>
+    <string name="practice_wrong">Ikke den ruten. Les regelen på nytt: %1$s hviler ikke på den.</string>
+    <string name="practice_right">Det er %1$s. Det den fjerner er markert.</string>
+    <string name="practice_revealed">Her er %1$s, og det den fjerner.</string>
+    <string name="practice_show_me">Vis meg</string>
+    <string name="practice_another">En til</string>
+    <string name="practice_skip">Hopp over</string>
+    <string name="practice_title">Trening</string>
+    <string name="technique_pick_title">Finn en å trene på</string>
+    <string name="technique_pick_body">Hver oppgave her er vurdert av den samme løseren som skriver hintene, så det er kjent hvilken regel hver enkelt hviler på. Velg en teknikk og få en oppgave som ikke kan fullføres uten den.</string>
+    <string name="technique_pick_none">Ingen oppgave i denne versjonen hviler på den</string>
+    <string name="technique_pick_play">Spill en</string>
+    <plurals name="technique_pick_count">
+        <item quantity="one">%1$d oppgave hviler på den</item>
+        <item quantity="other">%1$d oppgaver hviler på den</item>
+    </plurals>
+    <string name="practice_none">Ingenting å trene på ennå. Fullfør først en leksjon som lærer bort en teknikk.</string>
+    <string name="glossary_learn_this">Lær denne</string>
+    <string name="hint_learn_this">Lær meg dette</string>
+    <string name="outcome_learn">Lær: %1$s</string>
+    <string name="course_finished">Alt sammen, ferdig. Alt appen kan navngi, kan du navngi. Oppgavene er resten.</string>
+    <string name="outcome_lost_hints">Tom for hint</string>
+    <string name="outcome_share">Del</string>
+    <string name="card_solved">Løst</string>
+    <string name="card_lost">Slått av</string>
+    <string name="settings_hint_limit">Avslutt spillet etter tre hint</string>
+    <string name="settings_hint_note">På som standard. Tre hint er gratis, og det fjerde koster spillet, noe som gjør et hint til et valg framfor en refleks. Slå den av mens du arbeider deg gjennom kurset.</string>
+    <string name="settings_post_mortem">Si hvor tiden ble av</string>
+    <string name="settings_post_mortem_note">Etter en seier, nevn de to stedene løsningen stoppet opp og hva som sto på brettet der. Om en løsning som aldri stoppet opp sies ingenting.</string>
+    <string name="post_mortem_line">Du sto stille her i %1$s. Det var %2$s å finne.</string>
+    <string name="post_mortem_title">Hvor tiden ble av</string>
+    <string name="clean_line">En ren løsning: ingen hint, ingen feil, ingen notater.</string>
+    <string name="clean_mark">Ren</string>
+    <string name="clean_stat">Rene løsninger</string>
+    <string name="clean_note">Rene løsninger: %1$d av %2$d.</string>
+    <string name="account_title">Deg</string>
+    <string name="account_no_account">Det finnes ingen konto å logge inn på. Alt nedenfor ligger på denne telefonen og ingen andre steder.</string>
+    <string name="account_solved">Løst</string>
+    <string name="account_streak">Dager på rad</string>
+    <string name="account_played">Spilt</string>
+    <string name="account_time">Spilletid</string>
+    <string name="account_lessons">Leksjoner</string>
+    <string name="account_about_detail">Hva denne appen lover, og lisensene den står på</string>
+    <string name="account_hardest">Vanskeligste løste</string>
+    <string name="account_hardest_note">Slått %1$s, på %2$s</string>
+    <string name="account_beaten">Hva du har slått</string>
+    <string name="account_recent">De siste fem ukene</string>
+    <string name="account_hints">Brukte hint</string>
+    <string name="account_empty">Fullfør én oppgave, så fylles denne siden opp: hva du har slått på hvert nivå, og hver dag du har spilt.</string>
+    <string name="account_stats">Statistikk</string>
+    <string name="account_history">Historikk</string>
+    <string name="history_title">Historikk</string>
+    <string name="history_lost">Tapt</string>
+    <string name="history_empty_body">Fullfør en oppgave, så havner den her, med brettet slik du forlot det, klart til å deles når du vil.</string>
+    <string name="history_no_board">Denne ble fullført før appen tok vare på brett, så det er ingenting å tegne. Tallene er alt som finnes.</string>
+    <string name="tab_home">Forsiden</string>
+    <string name="tab_learn">Lær</string>
+    <string name="tab_account">Deg</string>
+    <plurals name="hint_menu_left">
+        <item quantity="one">De to siste koster et hint, og du har %1$d igjen.</item>
+        <item quantity="other">De to siste koster et hint, og du har %1$d igjen.</item>
+    </plurals>
+    <plurals name="hint_check_wrong">
+        <item quantity="one">%1$d siffer du har satt inn er feil. Å finne det er fortsatt din jobb.</item>
+        <item quantity="other">%1$d sifre du har satt inn er feil. Å finne dem er fortsatt din jobb.</item>
+    </plurals>
+    <plurals name="path_summary">
+        <item quantity="one">%1$d steg, billigste regel først, akkurat slik appen vurderte den.</item>
+        <item quantity="other">%1$d steg, billigste regel først, akkurat slik appen vurderte den.</item>
+    </plurals>
+    <plurals name="path_struck">
+        <item quantity="one">Fjerner %1$d notat.</item>
+        <item quantity="other">Fjerner %1$d notater.</item>
+    </plurals>
+</resources>

@@ -38,6 +38,9 @@ class PluralCategoriesTest {
         "values-hi" to setOf("one", "other"),
         "values-bn" to setOf("one", "other"),
         "values-da" to setOf("one", "other"),
+        "values-nl" to setOf("one", "other"),
+        "values-nb" to setOf("one", "other"),
+        "values-sv" to setOf("one", "other"),
         // Slavic: one for 1, 21, 31; few for 2 to 4; many for 0 and 5 to 20.
         "values-ru" to setOf("one", "few", "many", "other"),
         "values-uk" to setOf("one", "few", "many", "other"),

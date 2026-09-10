@@ -202,6 +202,9 @@
     <string name="language_bengali">বাংলা</string>
     <string name="language_thai">ไทย</string>
     <string name="language_danish">Dansk</string>
+    <string name="language_dutch">Nederlands</string>
+    <string name="language_norwegian">Norsk bokmål</string>
+    <string name="language_swedish">Svenska</string>
     <plurals name="first_run_prompt">
         <item quantity="other">Sendoku được viết bằng %1$d ngôn ngữ. Bạn đọc được ngôn ngữ nào?</item>
     </plurals>

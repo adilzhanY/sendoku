@@ -1,0 +1,920 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Svenska.
+
+  Skrivet från engelskan, inte anpassat från danskan eller norskan. De tre språken ligger nära
+  varandra, och just därför blir en översättning som går via ett av dem full av ord som är
+  begripliga men inte svenska.
+
+  Ordlistan, som hålls likadan hela filen igenom: ruta, rad, kolumn, box, område, siffra,
+  anteckning, kandidat, given siffra. Ett område är samlingsnamnet för en rad, en kolumn och
+  en box, precis som house i engelskan.
+
+  Två ord som lätt glider ihop hålls isär. Ett tips är det appen ger dig när du frågar. Att
+  trycka är det du gör med fingret. Ingen mening använder det ena för det andra.
+
+  Prepositionen bor bara i hint_in_region, som redan lyder "i %1$s". Ingen sträng som fogar in
+  ett område får därför skriva ut ett eget "i" framför argumentet.
+-->
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Sendoku</string>
+
+    <string name="home_choose_level">Välj en nivå</string>
+    <string name="home_daily">Dagens</string>
+    <string name="home_new_puzzle">Nytt pussel</string>
+    <string name="home_resume">Fortsätt</string>
+    <string name="home_in_progress">Påbörjat</string>
+    <string name="home_placed">Ifyllda: %1$d av %2$d</string>
+    <string name="home_or_start">Eller börja med något</string>
+    <string name="home_your_level">Din nivå</string>
+    <string name="home_all_levels">Alla nivåer</string>
+    <string name="killer_title">Killer</string>
+    <string name="killer_note">Burar, och varje bur har en summa</string>
+    <string name="killer_marker">Killer</string>
+    <string name="killer_card">%1$s, %2$s</string>
+    <string name="code_title">Spela ett pussel du har fått</string>
+    <string name="code_hint">Klistra in en kod</string>
+    <string name="code_play">Spela</string>
+    <string name="code_unreadable">Det där ser inte ut som en Sendoku-kod.</string>
+    <string name="code_typo">Det finns ett tecken där som ingen kod har. Jämför med den du fick.</string>
+    <string name="code_cut_short">Koden kom fram ofullständig. Be om den igen, i ett stycke.</string>
+    <string name="code_too_new">Koden är gjord av en nyare version av Sendoku än den här.</string>
+    <string name="code_missing">Koden går att läsa, men den här versionen har inget sådant pussel.</string>
+    <string name="code_unplayable">Det rutnätet går inte att lösa med resonemang ensamt, och Sendoku låtsas inte kunna förklara det.</string>
+    <string name="code_shared">Skickat till dig</string>
+    <string name="code_share">Skicka pusslet till en vän</string>
+    <string name="code_invitation">Prova det här pusslet på %1$s. Samma rutnät, ingen app behövs för att jämföra.</string>
+    <string name="enter_title">Mata in ett pussel</string>
+    <string name="enter_marker">Inmatat</string>
+    <plurals name="enter_help">
+        <item quantity="one">%1$d given siffra hittills. Tryck på en ruta och sedan på en siffra. Kontrollera när rutnätet är inmatat.</item>
+        <item quantity="other">%1$d givna siffror hittills. Tryck på en ruta och sedan på en siffra. Kontrollera när rutnätet är inmatat.</item>
+    </plurals>
+    <string name="enter_impossible">Det går inte att fylla i det här rutnätet. Någon av de givna siffrorna måste vara fel.</string>
+    <string name="enter_ambiguous">Rutnätet har mer än ett svar, så det är egentligen inget pussel. Du kan spela det ändå.</string>
+    <string name="enter_beyond">Ett svar, men det går inte att nå med resonemang ensamt, så Sendoku kan inte förklara det steg för steg.</string>
+    <string name="enter_ready">Ett svar. Det här är ett pussel på %1$s, betyget %2$s.</string>
+    <string name="enter_clear">Rensa</string>
+    <string name="enter_check">Kontrollera</string>
+    <string name="enter_play">Spela</string>
+
+    <string name="grade_gentle">Lätt</string>
+    <string name="grade_steady">Medel</string>
+    <string name="grade_tricky">Svår</string>
+    <string name="grade_severe">Mycket svår</string>
+    <string name="grade_diabolical">Expert</string>
+    <string name="grade_beyond">Mästare</string>
+    <string name="grade_insane">Vansinnig</string>
+    <string name="grade_nightmare">Mardröm</string>
+    <string name="grade_locked">Vinn ett pussel på %1$s för att öppna den här</string>
+    <string name="gate_gentle">en tydlig siffra i taget</string>
+    <string name="gate_steady">par, och siffror låsta till en linje</string>
+    <string name="gate_tricky">tripplar, och mönster över hela rutnätet</string>
+    <string name="gate_severe">wings, färgning och rektanglar</string>
+    <string name="gate_diabolical">kedjor av resonemang</string>
+    <string name="gate_beyond">längre än de flesta appar går</string>
+    <string name="gate_insane">grupper av rutor länkade till varandra</string>
+    <string name="gate_nightmare">en ruta prövad åt båda hållen, på papper</string>
+    <string name="grade_advanced">Avancerad</string>
+    <string name="grade_advanced_talkback">en avancerad nivå, som kräver en teknik från kursen</string>
+
+    <string name="tool_undo">Ångra</string>
+    <string name="tool_redo">Gör om</string>
+    <string name="tool_erase">Sudda</string>
+    <string name="tool_notes">Anteckningar</string>
+    <string name="tool_hint">Tips</string>
+    <string name="paused">Pausat</string>
+    <string name="paused_tap">Tryck var som helst för att fortsätta</string>
+    <string name="mistakes_of">%1$d av %2$d</string>
+
+    <string name="cell_position">Rad %1$d, kolumn %2$d</string>
+    <string name="cell_clue">%1$s, %2$d, en given siffra</string>
+    <string name="cell_digit">%1$s, %2$d</string>
+    <string name="cell_empty">%1$s, tom</string>
+    <string name="cell_noted">%1$s, tom, antecknat %2$s</string>
+    <string name="cell_hint_argument">%1$s. Del av tipset.</string>
+    <string name="cell_hint_struck">%1$s. Tipset stryker en anteckning här.</string>
+    <string name="cell_hint_region">%1$s. I området som tipset handlar om.</string>
+    <string name="cell_repeated">%1$s, upprepad</string>
+    <string name="pad_all_placed">%1$d, alla ifyllda</string>
+    <string name="pad_one_left">%1$d, en kvar</string>
+    <plurals name="pad_left">
+        <item quantity="one">%1$d, %2$d kvar</item>
+        <item quantity="other">%1$d, %2$d kvar</item>
+    </plurals>
+    <string name="pad_scanning">%1$s, visar var den kan stå</string>
+    <string name="pad_notes_mode">%1$s, anteckningsläge</string>
+
+    <string name="cell_actions_title">RAD %1$d, KOLUMN %2$d</string>
+    <string name="cell_actions_clue">Den här kom med pusslet och går inte att ändra.</string>
+    <plurals name="cell_actions_note_all">
+        <item quantity="one">Anteckna den enda kandidaten</item>
+        <item quantity="other">Anteckna alla %1$d kandidaterna</item>
+    </plurals>
+    <string name="cell_actions_clear_notes">Sudda anteckningarna</string>
+    <string name="why_not_title">Varför inte?</string>
+    <string name="tint_title">Färg</string>
+    <string name="cell_tinted">%1$s, färgad %2$s</string>
+    <string name="tint_clear_all">Ta bort alla färger</string>
+    <string name="tint_one">Orange</string>
+    <string name="tint_two">Blå</string>
+    <string name="tint_three">Lila</string>
+    <string name="tint_four">Grön</string>
+    <string name="why_not_prompt">Tryck på en siffra för att få veta vad som hindrar den.</string>
+    <string name="why_not_taken">Det står redan en %1$d i %2$s, på rad %3$d, kolumn %4$d.</string>
+    <string name="why_not_filled">Rutan innehåller redan en %1$d. Sudda den först.</string>
+    <string name="why_not_possible">Ingenting på brädet utesluter %1$d. Det gör den inte rätt, bara möjlig.</string>
+    <string name="cell_actions_clear">Töm rutan</string>
+
+    <string name="leave_title">Lämna pusslet?</string>
+    <string name="leave_body">Det väntar där du lämnade det.</string>
+    <string name="leave_confirm">Lämna</string>
+    <string name="leave_cancel">Stanna</string>
+
+    <string name="outcome_solved">Löst</string>
+    <string name="outcome_lost">Slut på misstag</string>
+    <string name="outcome_rated">%1$s, betyget %2$s</string>
+    <string name="outcome_hints">Tips</string>
+    <string name="outcome_mistakes">Misstag</string>
+    <string name="outcome_moves">Drag</string>
+    <string name="outcome_needed">Krävde en %1$s</string>
+    <string name="outcome_home">Startsidan</string>
+    <string name="outcome_another">Ett till på %1$s</string>
+
+    <string name="hint_remove_one">Ta bort den</string>
+    <string name="hint_remove_many">Ta bort dem</string>
+    <string name="hint_look_here_title">Titta här</string>
+    <string name="hint_look_here">Det finns något att hitta %1$s. Mer än så säger det här tipset inte.</string>
+    <string name="hint_look_around">Det finns ett steg att hitta. Det här ligger utspritt över rutnätet i stället för i ett enda område.</string>
+    <string name="hint_what_kind">Vad för slags steg?</string>
+    <string name="hint_menu_title">Hjälp</string>
+    <string name="hint_menu_difficulty">Nästa steg kräver en teknik på nivån %1$s.</string>
+    <string name="hint_menu_broken">Något du har fyllt i är fel, så ingenting mer följer förrän det är rättat.</string>
+    <string name="hint_menu_check">Är något fel?</string>
+    <string name="hint_menu_look">Var ska jag titta?</string>
+    <string name="hint_menu_explain">Förklara nästa steg</string>
+    <string name="hint_menu_free">Att fråga kostar ingenting här. Gränsen är avstängd.</string>
+    <string name="hint_check_clean">Ingenting du har fyllt i är fel.</string>
+    <string name="hint_close">Stäng</string>
+    <string name="hint_previous">Ett steg tillbaka</string>
+    <string name="hint_cells_here">Rutorna som resonemanget vilar på lyser upp %1$s.</string>
+    <string name="hint_where">Visa var</string>
+    <string name="hint_explain">Förklara</string>
+    <string name="hint_do_it">Gör det</string>
+    <string name="hint_evidence">Raden har redan %1$s. Kolumnen har %2$s. Boxen har %3$s. Tillsammans är det varenda siffra utom %4$d.</string>
+    <string name="hint_rests_on_earlier">En del av det här vilar på anteckningar som ett tidigare tips har strukit. De är ifyllda på brädet, så du kan följa resonemanget därifrån.</string>
+    <string name="hint_what_is_this">Vad är det här?</string>
+    <string name="hint_wrong_title">Något är fel</string>
+    <string name="hint_wrong_one">En av siffrorna du har fyllt i kan inte vara rätt. Den är markerad.</string>
+    <string name="hint_wrong_many">%1$d av siffrorna du har fyllt i kan inte vara rätt. De är markerade.</string>
+    <string name="hint_wrong_until_one">Ingenting mer går att räkna ut förrän den är rättad.</string>
+    <string name="hint_wrong_until_many">Ingenting mer går att räkna ut förrän de är rättade.</string>
+    <string name="hint_done_title">Klart</string>
+    <string name="hint_done_body">Pusslet är löst.</string>
+    <string name="hint_stuck_title">Inget att föreslå</string>
+    <string name="hint_stuck_body">Brädet är tillåtet, men ingen av teknikerna Sendoku kan passar på det. Det ska inte kunna hända på ett pussel från appen.</string>
+    <string name="hint_in_region">i %1$s</string>
+    <string name="hint_in_regions">i %1$s och %2$s</string>
+    <string name="hint_outcome_place" tools:ignore="PluralsCandidate">Alltså måste rad %1$d, kolumn %2$d vara %3$d.</string>
+    <string name="hint_outcome_strike_one" tools:ignore="PluralsCandidate">Alltså kan %1$d strykas från %2$s.</string>
+    <string name="hint_outcome_strike_two" tools:ignore="PluralsCandidate">Alltså kan %1$d och %2$d strykas från %3$s.</string>
+    <plurals name="hint_cells">
+        <item quantity="one">en ruta</item>
+        <item quantity="other">%1$d rutor</item>
+    </plurals>
+
+    <string name="house_row">rad %1$d</string>
+    <string name="house_column">kolumn %1$d</string>
+    <string name="house_box">box %1$d</string>
+
+    <string name="glossary_title">Tekniker</string>
+    <string name="back">Tillbaka</string>
+
+    <string name="settings_title">Inställningar</string>
+    <string name="settings_language">Språk</string>
+    <string name="language_system">Följ telefonen</string>
+    <string name="language_english">English</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_german">Deutsch</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_italian">Italiano</string>
+    <string name="language_japanese">日本語</string>
+    <string name="language_french">Français</string>
+    <string name="language_portuguese">Português (Brasil)</string>
+    <string name="language_chinese">简体中文</string>
+    <string name="language_korean">한국어</string>
+    <string name="language_arabic">العربية</string>
+    <string name="language_ukrainian">Українська</string>
+    <string name="language_indonesian">Bahasa Indonesia</string>
+    <string name="language_vietnamese">Tiếng Việt</string>
+    <string name="language_hindi">हिन्दी</string>
+    <string name="language_bengali">বাংলা</string>
+    <string name="language_thai">ไทย</string>
+    <string name="language_danish">Dansk</string>
+    <string name="language_dutch">Nederlands</string>
+    <string name="language_norwegian">Norsk bokmål</string>
+    <string name="language_swedish">Svenska</string>
+    <plurals name="first_run_prompt">
+        <item quantity="one">Sendoku är skrivet på %1$d språk. Vilket läser du?</item>
+        <item quantity="other">Sendoku är skrivet på %1$d språk. Vilket läser du?</item>
+    </plurals>
+    <string name="first_run_system_is">Din telefon är inställd på %1$s</string>
+    <string name="first_run_no_translation">Din telefon är inställd på ett språk som Sendoku ännu inte talar. Engelska är det närmaste som finns.</string>
+    <string name="first_run_continue">Börja spela</string>
+    <string name="settings_interface">Gränssnitt</string>
+    <string name="settings_rules">Spelregler</string>
+    <string name="settings_light_or_dark">Ljust eller mörkt</string>
+    <string name="settings_terminal_is_dark">Terminal är mörkt hur telefonen än är inställd. Det är med avsikt.</string>
+    <string name="settings_board">Brädet</string>
+    <string name="settings_highlight_peers">Markera raden, kolumnen och boxen</string>
+    <string name="settings_highlight_same">Markera samma siffra på andra ställen</string>
+    <string name="settings_auto_clear">Sudda anteckningar som en ifylld siffra utesluter</string>
+    <string name="settings_auto_notes">Håll varje ruta antecknad</string>
+    <string name="settings_auto_notes_note">Appen sköter bokföringen. Över Expert är det nästan nödvändigt.</string>
+    <string name="settings_highlight_homes">Visa var den valda siffran fortfarande kan stå</string>
+    <string name="settings_auto_check">Säg till direkt när en siffra är fel</string>
+    <string name="settings_auto_check_note">Med det här på finns det inget att förlora på att prova, så pusslet tappar det mesta av sin spänning.</string>
+    <string name="settings_auto_check_forced">På medan en misstagsgräns gäller, eftersom ett misstag du får betala för måste vara ett du kan se. Stäng av gränsen nedan för att spela utan någotdera.</string>
+    <string name="settings_flag_conflicts">Markera en siffra som upprepas i en rad, kolumn eller box</string>
+    <string name="settings_clock">Klockan</string>
+    <string name="settings_show_timer">Visa tiden</string>
+    <string name="settings_feedback">Återkoppling</string>
+    <string name="settings_haptics">Vibrera när en siffra fylls i</string>
+    <string name="settings_sound">Ljud</string>
+    <string name="settings_sound_note">Mjuka toner medan du spelar. Av är ett tryck bort, och telefonens eget tysta läge går före båda.</string>
+    <string name="settings_mistake_limit">Avsluta spelet efter tre misstag</string>
+    <string name="settings_mistake_note">På som standard, vid tre. Stäng av den för de svåra nivåerna, där en timme förlorad på ett enda felgrepp bara är trist.</string>
+    <string name="settings_about">Om Sendoku</string>
+
+    <string name="theme_deep_field">Deep Field</string>
+    <string name="theme_deep_field_summary">Äkta svart, en cyan accent, ingenting mer</string>
+    <string name="theme_ink">Bläck och papper</string>
+    <string name="theme_ink_summary">Ett pusselhäfte ur tidningen, tryckt på varmt papper</string>
+    <string name="theme_zen">Slate Zen</string>
+    <string name="theme_zen_summary">Salvia och sten, och så lite annat som möjligt</string>
+    <string name="theme_terminal">Terminal</string>
+    <string name="theme_terminal_summary">Fast teckenbredd, hårda kanter, bara mörkt</string>
+    <string name="mode_system">Följ systemet</string>
+    <string name="mode_light">Alltid ljust</string>
+    <string name="mode_dark">Alltid mörkt</string>
+
+    <string name="stats_title">Statistik</string>
+    <string name="stats_solved">Lösta</string>
+    <string name="stats_streak">Svit</string>
+    <string name="stats_hardest">Svåraste</string>
+    <string name="stats_hardest_note">Det svåraste du har klarat är ett på %1$s.</string>
+    <plurals name="stats_longest_run">
+        <item quantity="one">Din längsta svit var en dag.</item>
+        <item quantity="other">Din längsta svit var %1$d dagar.</item>
+    </plurals>
+    <string name="stats_totals">%1$s spelade, tagna tips: %2$d.</string>
+    <string name="stats_by_grade">Per nivå</string>
+    <string name="stats_hints_title">Vad du har frågat om</string>
+    <string name="stats_hints_note">Du frågar oftast om %1$s. Det är lektionen som är värd att gå tillbaka till.</string>
+    <string name="stats_needed">Vad dina pussel har krävt</string>
+    <string name="stats_solved_count">Lösta: %1$d</string>
+    <string name="stats_solved_and_lost">Lösta: %1$d, förlorade: %2$d</string>
+    <string name="stats_average">snitt %1$s</string>
+    <string name="stats_reset">Nollställ statistiken</string>
+    <string name="stats_reset_title">Kasta bort din historik?</string>
+    <string name="stats_reset_body">Varje löst pussel, varje svit och varje bästa tid. Det finns ingen kopia någon annanstans, så det går inte att ångra.</string>
+    <string name="stats_reset_confirm">Nollställ</string>
+    <string name="stats_reset_cancel">Behåll den</string>
+    <string name="stats_empty_title">Inget än</string>
+    <string name="stats_empty_body">Lös ett pussel så fylls det här: hur lång tid varje nivå tar dig, hur långt du har klättrat, och vilka tekniker dina pussel har krävt.</string>
+
+    <string name="about_title">Om</string>
+    <string name="about_version">Sendoku %1$s</string>
+    <string name="about_tagline">En sudokuapp för dem som har fått slut på svåra sudokun.</string>
+    <string name="about_no_ads">Inga annonser</string>
+    <string name="about_no_ads_detail">Inte mellan pussel, inte för tips, aldrig.</string>
+    <string name="about_no_tracking">Ingen spårning</string>
+    <string name="about_no_tracking_detail">Ingenting mäts och ingenting skickas. Det finns ingen server.</string>
+    <string name="about_no_purchases">Inga köp</string>
+    <string name="about_no_purchases_detail">Varje pussel och varje tips finns redan här.</string>
+    <string name="about_offline">Fungerar utan nät</string>
+    <string name="about_offline_detail">Hela pusselsamlingen ligger inne i appen.</string>
+    <string name="about_hints">Tips som lär ut</string>
+    <string name="about_hints_detail">Ett tips namnger tekniken och förklarar resonemanget. Det fyller aldrig bara i en siffra, och det säljs aldrig: tre följer med varje pussel, och du kan stänga av gränsen i inställningarna.</string>
+    <string name="about_sharing">Att dela</string>
+    <string name="about_sharing_detail">En pusselkod är själva pusslet, inte ett konto. Det finns ingen att logga in som, ingen topplista, och inget sätt för appen att kontrollera en tid någon uppger: två personer spelar samma rutnät och jämför vad det kostade dem, och mer är det inte.</string>
+    <string name="about_rating">Svårighetsgraden sätts efter den svåraste teknik ett pussel faktiskt kräver, framräknad genom att lösa det som en människa skulle. Därför betyder ett Mycket svår här samma sak som förra Mycket svår.</string>
+    <string name="about_licence">Sendoku är fri programvara under GNU General Public License version 3.</string>
+    <string name="about_privacy">Integritetspolicyn säger samma sak i den form butiken efterfrågar, på adilzhany.github.io/sendoku/privacy</string>
+    <string name="about_licences">Licenser för öppen källkod</string>
+    <string name="licences_title">Licenser</string>
+
+    <string name="look_naked_single">Det finns en ruta med bara en siffra kvar som får stå i den.</string>
+    <string name="look_hidden_single">Det finns en siffra med bara en plats kvar att stå på.</string>
+    <string name="look_locked_candidates_pointing">I en box sitter en siffra fast på en enda rad eller kolumn.</string>
+    <string name="look_locked_candidates_claiming">På en linje kan en siffra bara stå inne i en enda box.</string>
+    <string name="look_naked_pair">Två rutor i ett område har samma två siffror och ingenting annat.</string>
+    <string name="look_hidden_pair">Två siffror kan i ett område inte stå någon annanstans än i samma två rutor.</string>
+    <string name="look_naked_triple">Tre rutor i ett område delar tre siffror mellan sig.</string>
+    <string name="look_hidden_triple">Tre siffror är instängda i samma tre rutor.</string>
+    <string name="look_naked_quad">Fyra rutor i ett område delar fyra siffror mellan sig.</string>
+    <string name="look_hidden_quad">Fyra siffror är instängda i samma fyra rutor.</string>
+    <string name="look_x_wing">Två rader har en siffra i samma två kolumner, eller tvärtom.</string>
+    <string name="look_swordfish">Tre rader har en siffra inne i samma tre kolumner.</string>
+    <string name="look_jellyfish">Fyra rader har en siffra inne i samma fyra kolumner.</string>
+    <string name="look_xy_wing">Tre rutor med två siffror var, ställda så att en siffra pressas ut.</string>
+    <string name="look_xyz_wing">Som en XY-Wing, men mittrutan har en tredje siffra också.</string>
+    <string name="look_w_wing">Två rutor med samma par, sammanbundna av en siffra som bara har två hem.</string>
+    <string name="look_simple_colouring">En siffra bildar en kedja som växlar hela vägen.</string>
+    <string name="look_multi_colouring">Två skilda kedjor på samma siffra, spelade mot varandra.</string>
+    <string name="look_remote_pairs">En kedja av rutor som alla har exakt samma två siffror.</string>
+    <string name="look_unique_rectangle">Fyra rutor bildar en rektangel som skulle ge pusslet två svar.</string>
+    <string name="look_bug_plus_one">Varje ruta utom en är nere i två siffror.</string>
+    <string name="look_x_chain">En kedja på en siffra, som växlar mellan måste och kan inte.</string>
+    <string name="look_xy_chain">En kedja av rutor med två siffror, där varje tvingar nästa.</string>
+    <string name="look_forcing_chain">En ruta med exakt två möjligheter, när det inte finns något annat kvar att hitta.</string>
+    <string name="look_death_blossom">En ruta, och en grupp för varje siffra den kan vara, där rutan ser den siffran överallt inne i gruppen.</string>
+    <string name="look_als_xy_wing">Tre grupper, var och en en siffra från att vara full, hopbundna på en linje av två olika siffror.</string>
+    <string name="look_sue_de_coq">En box och en linje som korsar varandra, där de gemensamma rutorna har två siffror mer än de har plats för.</string>
+    <string name="look_als_xz">Två grupper av rutor, var och en en siffra från att vara låst.</string>
+
+    <string name="because_naked_single">Varenda annan siffra står redan i dess rad, dess kolumn eller dess box, så bara en är kvar. Den måste stå här.</string>
+    <string name="because_hidden_single">Området behöver den här siffran någonstans, och varje annan ruta i det är utesluten, så det här är den enda plats som är kvar.</string>
+    <string name="because_locked_candidates_pointing">Boxen måste ha den här siffran någonstans, och varje plats den kan stå på ligger på en linje. Alltså står siffran på den linjen, och den kan inte stå någon annanstans längs den.</string>
+    <string name="because_locked_candidates_claiming">Linjen måste ha den här siffran någonstans, och varje plats den kan stå på ligger inne i en box. Alltså står siffran i den boxen, och den kan inte stå någon annanstans i boxen.</string>
+    <string name="because_naked_pair">De två rutorna tar de två siffrorna mellan sig, en var. Ingen annan ruta i området kan ha någon av dem.</string>
+    <string name="because_hidden_pair">Området behöver båda siffrorna, och bara de här två rutorna kan ta dem, så de tar en var. Allt annat i de två rutorna är ute.</string>
+    <string name="because_naked_triple">Tre rutor, tre siffror, en var. Ingenting annat i området kan använda dem, även om ingen enskild ruta har alla tre.</string>
+    <string name="because_hidden_triple">Tre siffror utan någon annanstans att ta vägen fyller tre rutor mellan sig, så allt annat i de rutorna är omöjligt.</string>
+    <string name="because_naked_quad">Fyra rutor tar fyra siffror mellan sig, vilket låser ut alla fyra ur resten av området.</string>
+    <string name="because_hidden_quad">Fyra siffror instängda i fyra rutor fyller dem mellan sig, så ingenting annat kan bo där.</string>
+    <string name="because_x_wing">Var och en av de två raderna behöver siffran en gång, och båda kan bara placera den i samma två kolumner. Mellan sig förbrukar de båda kolumnerna, så ingen annan rad kan ha siffran där.</string>
+    <string name="because_swordfish">Tre rader som behöver siffran, och bara tre kolumner att lägga den i. De tre raderna förbrukar alla tre kolumnerna, så ingenting annat i de kolumnerna kan ha den.</string>
+    <string name="because_jellyfish">Fyra rader och fyra kolumner, samma resonemang igen. De fyra raderna fyller alla fyra kolumnerna mellan sig.</string>
+    <string name="because_xy_wing">Mittrutan är en av sina två siffror. Hur det än blir tvingas en av de två yttre rutorna till den gemensamma siffran, så allt som ser båda kan inte vara den.</string>
+    <string name="because_xyz_wing">Mittrutan kan också vara den gemensamma siffran, så slutsatsen är svagare: bara en ruta som ser alla tre förlorar den.</string>
+    <string name="because_w_wing">Om ingen av parrutorna tog den andra siffran skulle båda ta den första, och då skulle det bundna området inte ha någonstans kvar att lägga den. Alltså är en av dem den andra siffran.</string>
+    <string name="because_simple_colouring">Färga kedjan växelvis så är exakt en färg sann. Antingen hamnar en färg två gånger i ett område och är därmed falsk, eller så ser en ruta utanför båda färgerna och förlorar siffran hur det än faller ut.</string>
+    <string name="because_multi_colouring">En färg i den första kedjan krockar med en färg i den andra, vilket tvingar in siffran i en av de två motsatta färgerna. Allt som ser båda de färgerna kan inte ha den.</string>
+    <string name="because_remote_pairs">Grannarna i kedjan ser varandra, så de växlar. De två ändarna ligger ett udda antal steg från varandra och har därför en siffra var, och allt som ser båda kan inte ha någondera.</string>
+    <string name="because_unique_rectangle">Om de fyra rutorna inte hade något annat än samma två siffror skulle de kunna kastas om runt rektangeln och pusslet skulle ha två svar. Det har ett, så den uppställningen är omöjlig.</string>
+    <string name="because_bug_plus_one">Om den extra kandidaten togs bort skulle varje siffra stå exakt två gånger i varje område, och ett sådant rutnät har alltid ett jämnt antal svar. Det här pusslet har ett, så den extra kandidaten är svaret.</string>
+    <string name="because_x_chain">Kedjan växlar mellan platser där siffran måste stå och platser där den inte kan stå. De två ändarna kan inte båda sakna den, så allt som ser båda förlorar den.</string>
+    <string name="because_xy_chain">Anta att den första rutan inte är siffran. Följ kedjan så tvingas den sista rutan att vara den. Alltså har den ena eller den andra änden den.</string>
+    <string name="because_forcing_chain">Följ båda möjligheterna. Om en av dem lämnar en ruta utan något att fylla i, så var den möjligheten aldrig verklig och kan strykas. Om båda lägger samma siffra på samma plats, hör den siffran hemma där vilken av dem som än visar sig vara sann. Ingenting här beror på att antagandet är rätt, och det är det som gör det till ett bevis och inte en gissning.</string>
+    <string name="because_death_blossom">Vad rutan än visar sig vara slår den ut sin egen siffra ur den matchande gruppen, och gruppen är då full och måste använda varenda siffra den har kvar. Om alla grupperna har samma extra siffra hamnar den siffran i en av dem oavsett hur rutan faller ut. Allt som kan se den i dem alla förlorar den.</string>
+    <string name="because_als_xy_wing">Om den hotade siffran är borta ur den första gruppen är den gruppen full och måste ta den siffra den delar med mittgruppen. Mittgruppen förlorar då den siffran, så den är också full och tar den siffra den delar med den tredje. Den tredje gruppen är då full den med, och måste använda den hotade siffran. Alltså kan ingen ruta som ser den i båda de yttre grupperna ha den.</string>
+    <string name="because_sue_de_coq">De gemensamma rutorna förbrukar alla sina siffror utom två, och de två grupperna på var sin sida gör anspråk på precis de två. Alltså förbrukas varje siffra i gruppen på linjen inne i linjen, och varje siffra i gruppen i boxen inne i boxen. Ingenting annat i någondera kan ha dem.</string>
+    <string name="because_als_xz">En gemensam siffra kan bara stå i en av de två grupperna, vilket låser den andra gruppen och tvingar den att använda varenda siffra den har. Alltså hamnar den andra gemensamma siffran i den ena gruppen eller den andra.</string>
+
+    <string name="technique_naked_single">Naken enling</string>
+    <string name="technique_hidden_single">Dold enling</string>
+    <string name="technique_locked_candidates_pointing">Pekande par eller trippel</string>
+    <string name="technique_locked_candidates_claiming">Krävande par eller trippel</string>
+    <string name="technique_naked_pair">Naket par</string>
+    <string name="technique_hidden_pair">Dolt par</string>
+    <string name="technique_naked_triple">Naken trippel</string>
+    <string name="technique_hidden_triple">Dold trippel</string>
+    <string name="technique_naked_quad">Naken kvadrupel</string>
+    <string name="technique_hidden_quad">Dold kvadrupel</string>
+    <string name="technique_x_wing">X-Wing</string>
+    <string name="technique_simple_colouring">Enkel färgning</string>
+    <string name="technique_xy_wing">XY-Wing</string>
+    <string name="technique_xyz_wing">XYZ-Wing</string>
+    <string name="technique_w_wing">W-Wing</string>
+    <string name="technique_swordfish">Swordfish</string>
+    <string name="technique_remote_pairs">Fjärran par</string>
+    <string name="technique_unique_rectangle">Unik rektangel</string>
+    <string name="technique_bug_plus_one">BUG plus en</string>
+    <string name="technique_jellyfish">Jellyfish</string>
+    <string name="technique_multi_colouring">Flerfärgning</string>
+    <string name="technique_x_chain">X-Chain</string>
+    <string name="technique_xy_chain">XY-Chain</string>
+    <string name="technique_als_xz">ALS XZ</string>
+    <string name="technique_sue_de_coq">Sue de Coq</string>
+    <string name="technique_als_xy_wing">ALS XY-Wing</string>
+    <string name="technique_death_blossom">Death blossom</string>
+    <string name="technique_forcing_chain">Tvingande kedja</string>
+    <string name="technique_cage_sum">Bursumma</string>
+    <string name="technique_cage_single">Burenling</string>
+    <string name="technique_cage_locked">Låst bur</string>
+    <string name="technique_cage_innie">Innies och outies</string>
+    <string name="daily_title">Dagens</string>
+    <string name="daily_no_streak">Ingen svit än. Lös dagens pussel för att starta en.</string>
+    <string name="daily_previous_month">Tidigare</string>
+    <string name="daily_next_month">Senare</string>
+    <string name="daily_cell_solved">löst</string>
+    <string name="daily_cell_attempted">spelat men inte avslutat</string>
+    <string name="daily_cell_unplayed">inte spelat</string>
+    <string name="daily_cell_future">inte än</string>
+    <string name="daily_play_today">Spela dagens</string>
+    <plurals name="daily_streak">
+        <item quantity="one">%1$d dag i rad</item>
+        <item quantity="other">%1$d dagar i rad</item>
+    </plurals>
+    <string name="daily_cell">%1$d, %2$s, %3$s</string>
+    <string name="daily_cell_today">i dag, %1$d, %2$s, %3$s</string>
+    <string name="stat_mistakes">Misstag</string>
+    <string name="stat_hints">Tips</string>
+    <string name="stat_time">Tid</string>
+    <string name="stat_pause">Paus</string>
+    <string name="game_daily_title">%1$s, %2$s</string>
+
+    <string name="stage_first_steps">Första stegen</string>
+    <string name="stage_one_at_a_time">En siffra i taget</string>
+    <string name="stage_notes">Anteckningar</string>
+    <string name="stage_locked_to_a_line">Siffror låsta till en linje</string>
+    <string name="stage_groups">Grupper</string>
+    <string name="stage_patterns">Mönster över hela rutnätet</string>
+    <string name="stage_wings">Wings</string>
+    <string name="stage_colouring">Färgning</string>
+    <string name="stage_one_answer">Att anta ett enda svar</string>
+    <string name="stage_chains">Kedjor</string>
+    <string name="stage_the_far_end">Bortre änden</string>
+    <string name="stage_the_deep_end">Djupa änden</string>
+    <string name="stage_cages">Burar</string>
+    <string name="lesson_cage_is_title">Vad ett bur är</string>
+    <string name="lesson_cage_is_summary">De streckade figurerna är burar, och den lilla siffran är vad deras rutor blir tillsammans.</string>
+    <string name="lesson_cage_is_1">En Killer börjar helt utan siffror. I stället är rutnätet uppdelat i burar, ritade med streck, och den lilla siffran i hörnet av ett bur är vad dess rutor blir tillsammans. Allt annat är vanlig sudoku.</string>
+    <string name="lesson_cage_is_2">Ett bur med en enda ruta är en given siffra skriven på ett annat sätt. Det här säger ett, så en etta står där, och det finns ingenting att räkna ut.</string>
+    <string name="lesson_cage_is_3">Ifyllt. Nu ett bur som kräver lite tankearbete.</string>
+    <string name="lesson_cage_is_4a">Det här är fem i två rutor. Det är ett och fyra, eller två och tre, så det är inte avgjort än, men redan nu kan varken en femma eller en sexa stå där.</string>
+    <string name="lesson_cage_is_4">Tre rutor som blir femton. I en sex gånger sex är de tre största siffrorna fyra, fem och sex, och tillsammans blir de precis femton. Alltså har det här buret de tre i någon ordning, och ingenting annat kan stå där.</string>
+    <string name="lesson_cage_is_5">Ett bur upprepar aldrig en siffra. Det är just den regeln som gör att en summa säger så mycket: utan den skulle femton i tre rutor kunna vara fem, fem och fem.</string>
+    <string name="lesson_cage_house_title">Burar inne i ett område</string>
+    <string name="lesson_cage_house_summary">En rad, en kolumn och en box har var för sig en känd summa, och burarna inuti gör resten.</string>
+    <string name="lesson_cage_house_1">Varje rad, kolumn och box har varje siffra en gång, så de blir alla samma summa. I en sex gånger sex är den summan tjugoett.</string>
+    <string name="lesson_cage_house_2">De här två rutorna blir tio. De enda två olika siffror som blir tio är fyra och sex, så det här buret äger dem båda, och ingen annan ruta i raden kan vara en fyra eller en sexa.</string>
+    <string name="lesson_cage_house_3">Nu hela raden. Den blir tjugoett, och tre burar ligger helt inne i den: fem, tio och ett. Det är sexton som är redovisat.</string>
+    <string name="lesson_cage_house_4">Alltså är rutan som blir över tjugoett minus sexton, alltså fem.</string>
+    <string name="lesson_cage_house_5">Lösare kallar det en innie. Samma räkning fungerar åt andra hållet: när ett bur sticker ut ur ett område är det som sticker ut skillnaden, och det är en outie.</string>
+    <string name="lesson_cage_home_title">Ett hem i ett bur</string>
+    <string name="lesson_cage_home_summary">En siffra som buret måste ha, med bara en ruta kvar som kan ta den.</string>
+    <string name="lesson_cage_home_1">En bit in i en Killer börjar burarna säga mer än bara sina summor. Tre siffror är redan ifyllda här.</string>
+    <string name="lesson_cage_home_2">Det här buret är tio i två rutor, så det har en fyra och en sexa. Men boxen till höger har redan en sexa, och det utesluter siffran ur burets högra ruta.</string>
+    <string name="lesson_cage_home_3">Alltså har sexan ett hem kvar, och det ligger till vänster. Summan sa att buret hade en sexa; resten av brädet sa var.</string>
+    <string name="lesson_cage_home_4">Det är en burenling. Den är Killers dolda enling: inte den enda siffra en ruta kan ta, utan den enda ruta en siffra kan stå i.</string>
+
+    <string name="lesson_what_is_title">Vad en sudoku är</string>
+    <string name="lesson_what_is_summary">Varje rad, varje kolumn och varje box har varje siffra en gång.</string>
+    <string name="lesson_what_is_1">Det här är en sudoku. En liten, fyra rutor gånger fyra, så att allt får plats i huvudet på en gång. Ett rutnät i full storlek fungerar precis likadant.</string>
+    <string name="lesson_what_is_2">Det här är en rad. Den ska ha siffrorna 1, 2, 3 och 4, var och en en gång. Inga upprepningar, och ingenting utelämnat.</string>
+    <string name="lesson_what_is_3">Det här är en kolumn. Samma regel: 1, 2, 3 och 4, var och en en gång.</string>
+    <string name="lesson_what_is_4">Det är hela spelet. Det finns ingen räkning i det, och ingenting att lägga ihop. Det är en regel om var en siffra får stå.</string>
+    <string name="lesson_what_is_5">De här två rutorna är tomma. Att fylla i dem så att regeln fortfarande håller, det är vad det vill säga att lösa.</string>
+
+    <string name="lesson_houses_title">Rader, kolumner och boxar</string>
+    <string name="lesson_houses_summary">En ruta ligger i tre områden samtidigt och delar en regel med dem alla.</string>
+    <string name="lesson_houses_1">Regeln nämnde rader och kolumner. Det finns en tredje sorts grupp, och det är den som gör en sudoku värd att lösa.</string>
+    <string name="lesson_houses_2">Här är en rad igen.</string>
+    <string name="lesson_houses_3">Här är en kolumn.</string>
+    <string name="lesson_houses_4">Och här är en box, utmärkt av de tjockare linjerna. Den har också varje siffra en gång.</string>
+    <string name="lesson_houses_5">Alltså hör den här rutan till tre grupper samtidigt. Varje ruta den delar en grupp med lyser upp, och ingen av dem kan ha samma siffra som den. De tre grupperna kallas områden, och det ordet används härifrån och framåt.</string>
+
+    <string name="lesson_givens_title">Givna siffror</string>
+    <string name="lesson_givens_summary">Siffrorna som står tryckta från början är fasta, och det är de som gör svaret till det enda.</string>
+    <string name="lesson_givens_1">De här siffrorna följde med pusslet. De kallas givna siffror, och de går inte att ändra eller sudda.</string>
+    <string name="lesson_givens_2">De är ritade på ett annat sätt än siffrorna du fyller i, så du ser alltid skillnad. I den här appen är de givna siffrorna de kraftigare.</string>
+    <string name="lesson_givens_3">Det här är rutorna du fyller i.</string>
+    <string name="lesson_givens_4">Ett ordentligt gjort pussel har exakt ett sätt att fylla i dem. Det är ett löfte om pusslet, inte om dig: sitter du fast finns det ändå bara ett svar, och det går alltid att resonera sig fram till. Varje pussel i den här appen är gjort så.</string>
+
+    <string name="lesson_first_four_title">Din första lösning</string>
+    <string name="lesson_first_four_summary">Titta på vad en ruta inte kan vara, och ibland är bara en siffra kvar.</string>
+    <string name="lesson_first_four_1">Lös ett nu. Två rutor är tomma, och regeln räcker för att fylla båda.</string>
+    <string name="lesson_first_four_2">Börja med den här raden. Den har redan en etta och en fyra, så de två tomma rutorna delar tvåan och trean mellan sig. Frågan är bara åt vilket håll.</string>
+    <string name="lesson_first_four_3">Den här rutan kan inte vara en tvåa, för kolumnen har redan en. Alltså är den en trea.</string>
+    <string name="lesson_first_four_4">Då är en tom ruta kvar, och en oanvänd siffra i raden.</string>
+    <string name="lesson_first_four_5">Din tur. Fyll i siffran som hör hemma här.</string>
+    <string name="lesson_first_four_wrong">Inte riktigt. Titta på raden: vilken siffra från 1 till 4 saknas fortfarande?</string>
+    <string name="lesson_first_four_6">Löst. Så är en sudoku, hur stort rutnätet än är.</string>
+
+    <string name="lesson_first_six_title">Ett större rutnät</string>
+    <string name="lesson_first_six_summary">Boxar är inte alltid kvadratiska, och regeln bryr sig inte.</string>
+    <string name="lesson_first_six_1">Sex gånger sex. Regeln har inte ändrats, men boxarna har det: de är tre breda och två höga.</string>
+    <string name="lesson_first_six_2">Det här är en box. Tre på bredden, två på höjden, sex rutor, varje siffra från 1 till 6 en gång.</string>
+    <string name="lesson_first_six_3">Det lurar folk i början, för ögat väntar sig en kvadrat. Det är värt ett ögonblick: hitta boxen som den här rutan ligger i innan du letar efter något annat.</string>
+    <string name="lesson_first_six_4">Din tur. En siffra saknas i boxen uppe till vänster.</string>
+    <string name="lesson_first_six_wrong">Inte den. Räkna vad boxen redan har, och hitta sedan siffran från 1 till 6 som inte finns där.</string>
+    <string name="lesson_first_six_5">Bra. Härifrån är rutnäten nio gånger nio och boxarna kvadratiska igen, men vanan att kontrollera alla tre områdena är den som är värd att behålla.</string>
+
+    <string name="lesson_naked_single_title">Den nakna enlingen</string>
+    <string name="lesson_naked_single_summary">En ruta med bara en siffra kvar måste ha den siffran.</string>
+    <string name="lesson_naked_single_1">Ett rutnät i full storlek, och den första tekniken med ett namn. Den är den enklaste som finns, och även på de svåraste pusslen är det den som fyller flest rutor.</string>
+    <string name="lesson_naked_single_2">Titta på den här rutan för sig. Fråga vad den kan ha.</string>
+    <string name="lesson_naked_single_3">Varje ruta som utesluter något lyser upp. Mellan raden, kolumnen och boxen står åtta av de nio siffrorna redan någonstans där rutan kan se dem.</string>
+    <string name="lesson_naked_single_4">Alltså är en siffra kvar, och rutan måste ha den. Ingenting annat är möjligt. Det är en naken enling: naken för att du ser den genom att titta på en enda ruta, enling för att en siffra överlever.</string>
+    <string name="lesson_naked_single_5">Appen nämner den vid namn när den ger dig ett tips. Nu vet du vad det betyder.</string>
+    <string name="lesson_hidden_single_title">Den dolda enlingen</string>
+    <string name="lesson_hidden_single_summary">En siffra med bara en plats kvar i ett område måste stå där.</string>
+    <string name="lesson_hidden_single_1">Den andra sortens enling, och den som hittar flest rutor. En naken enling är en ruta med en siffra kvar. Den här är spegelbilden: en siffra med en ruta kvar.</string>
+    <string name="lesson_hidden_single_2">Ta ett område, och välj en siffra som fortfarande saknas där. Fråga var i området siffran skulle kunna stå.</string>
+    <string name="lesson_hidden_single_3">I den här boxen är svaret en enda ruta. Varenda annan tom ruta i boxen är utesluten av sin egen rad eller kolumn.</string>
+    <string name="lesson_hidden_single_4">Alltså står siffran där, även om den rutan i sig skulle kunna ha flera siffror. Därför kallas den dold: siffran gömmer sig bland de andra.</string>
+    <string name="lesson_hidden_single_5">Den här är värd att lära sig ordentligt. På de flesta pussel är det den som håller dig igång när de nakna enlingarna tar slut.</string>
+    <string name="lesson_hidden_single_turn">Din tur. Fyll i siffran som inte har någon annanstans att ta vägen i den här boxen.</string>
+    <string name="lesson_hidden_single_wrong">Inte den. Fråga vilken siffra boxen fortfarande saknar, och kontrollera sedan var var och en av dem faktiskt får plats.</string>
+
+    <string name="lesson_scanning_title">Hur man tittar</string>
+    <string name="lesson_scanning_summary">För en siffra över hela rutnätet i stället för att studera en ruta i taget.</string>
+    <string name="lesson_scanning_1">Nu kan du två tekniker. Att kunna dem är inte samma sak som att hitta dem, och det är att hitta dem som tar tid.</string>
+    <string name="lesson_scanning_2">Läs inte rutnätet ruta för ruta. Ta en siffra, till exempel den som redan står flest gånger, och titta på de tre boxarna i ett band.</string>
+    <string name="lesson_scanning_3">Ställ varje box en enda fråga: var kan den här siffran stå? Rader och kolumner som redan har den stryker de flesta svaren, och ofta är bara en ruta kvar.</string>
+    <string name="lesson_scanning_4">Gå sedan vidare till nästa band, och när siffran är förbrukad, till nästa siffra. Det är skanning, och det är vad snabba lösare gör när det ser ut som om de bara stirrar.</string>
+    <string name="lesson_scanning_5">Att vara systematisk kostar ingenting, och det besparar dig känslan av att sitta fast, som mest är känslan av att ha tittat på samma hörn fyra gånger.</string>
+
+    <string name="lesson_first_nine_title">Ett helt rutnät, bara enlingar</string>
+    <string name="lesson_first_nine_summary">Allt du har lärt dig hittills räcker för att lösa ett helt pussel.</string>
+    <string name="lesson_first_nine_1">Ett riktigt nio gånger nio, på nivån Lätt. Varje steg i det är en enling, naken eller dold, och det finns ingenting här som du inte har mött.</string>
+    <string name="lesson_first_nine_2">Här är en att börja med. Den här rutan har åtta av de nio siffrorna uteslutna av det den kan se.</string>
+    <string name="lesson_first_nine_3">Så ser ett pussel på Lätt ut. Enlingar, hela vägen till slutet, och ingen gissning på något ställe.</string>
+    <string name="lesson_first_nine_4">När du lämnar den här lektionen, spela ett. Nästa steg handlar om anteckningar, och anteckningar börjar löna sig först på pussel som är svårare än det här.</string>
+    <string name="lesson_first_nine_turn">Din tur. En siffra är möjlig här.</string>
+    <string name="lesson_first_nine_wrong">Titta en gång till på raden, kolumnen och boxen som rutan ligger i, och räkna upp vad de redan har.</string>
+
+    <string name="lesson_pencil_marks_title">Anteckningar</string>
+    <string name="lesson_pencil_marks_summary">En anteckning är ett kvitto på det du räknat ut, så att du slipper räkna ut det igen.</string>
+    <string name="lesson_pencil_marks_1">Härifrån ger pusslen inte längre efter för enlingar, och du kommer att behöva skriva ner saker. En anteckning, eller ett blyertsmärke, är en liten siffra i en ruta som säger att siffran fortfarande är möjlig där.</string>
+    <string name="lesson_pencil_marks_2">Titta på den här rutan. Att räkna ut att den bara kan vara en av två siffror tar några sekunder. Skriver du in de två siffrorna tar det noll sekunder nästa gång du tittar.</string>
+    <string name="lesson_pencil_marks_3">Mer är inte en anteckning. Den är ingen gissning och inget löfte. Den är ett kvitto på en slutsats du redan dragit.</string>
+    <string name="lesson_pencil_marks_4">Varje teknik härifrån handlar om mönster i anteckningarna snarare än om mönster i siffrorna. Par, tripplar, fiskar och kedjor läses alla av anteckningarna.</string>
+    <string name="lesson_pencil_marks_5">Ingen löser en svår sudoku i huvudet, och en lösare som inte skriver något alls på ett Expert-pussel är inte skarp, utan långsam.</string>
+
+    <string name="lesson_when_to_mark_title">När de ska skrivas</string>
+    <string name="lesson_when_to_mark_summary">Fyll i anteckningar när enlingarna tar slut, inte tidigare.</string>
+    <string name="lesson_when_to_mark_1">Det finns två sätt att använda anteckningar, och skillnaden spelar roll.</string>
+    <string name="lesson_when_to_mark_2">Det första är att fylla varje tom ruta med varje möjlig siffra, allt på en gång, innan man gör något annat. Det är grundligt, det tar flera minuter för hand, och på ett lätt pussel är det mesta bortkastat, eftersom enlingarna skulle ha fyllt rutnätet ändå.</string>
+    <string name="lesson_when_to_mark_3">Det andra är att anteckna bara där du arbetar. De här fyra rutorna är värda att anteckna, för det pågår något mellan dem. Resten av rutnätet är det inte.</string>
+    <string name="lesson_when_to_mark_4">Det ärliga rådet: lös enlingarna först, och börja anteckna när du slutar hitta dem. På papper sparar det verklig tid. I appen är det ett tryck att fylla varje anteckning, så priset är lägre, men ett rutnät fullt av siffror är fortfarande svårare att läsa än ett med anteckningar bara där de betyder något.</string>
+
+    <string name="lesson_marks_true_title">Att hålla anteckningarna ärliga</string>
+    <string name="lesson_marks_true_summary">En anteckning som är föråldrad är sämre än ingen alls.</string>
+    <string name="lesson_marks_true_1">Anteckningar har en fara. Varje siffra du fyller i gör några av dem fel, och en felaktig anteckning för dig in i ett resonemang som omöjligt kan stämma.</string>
+    <string name="lesson_marks_true_2">Fyll i en siffra här, så förlorar varje ruta den kan se den siffran som möjlighet. Suddas de anteckningarna inte, kan nästa teknik du får syn på vara byggd på en av dem.</string>
+    <string name="lesson_marks_true_3">Den här appen kan göra det åt dig. Det finns en inställning som heter sudda anteckningar som en ifylld siffra utesluter, och den är på från början. På papper gör du det för hand, och det är därifrån de flesta misstagen kommer.</string>
+    <string name="lesson_marks_true_4">När ett pussel går snett och du inte ser varför är en föråldrad anteckning det första att misstänka. Tipsknappen säger till när en siffra du har fyllt i inte kan vara rätt.</string>
+
+    <string name="lesson_pointing_title">Det pekande paret</string>
+    <string name="lesson_pointing_summary">Sitter en siffra i en box fast på en linje, försvinner den från linjen överallt annars.</string>
+    <string name="lesson_pointing_1">Den första tekniken som tar bort möjligheter i stället för att fylla i en siffra. De flesta tekniker härifrån gör det, och det tar lite tillvänjning: du kommer framåt utan att skriva in en enda siffra.</string>
+    <string name="lesson_pointing_2">Titta på var en siffra kan stå i den här boxen. Varje plats den skulle kunna stå på ligger i samma kolumn.</string>
+    <string name="lesson_pointing_3">Boxen måste ha den siffran någonstans. Alltså står den i den kolumnen, var den än hamnar.</string>
+    <string name="lesson_pointing_4">Vilket betyder att resten av kolumnen inte kan ha den. De här rutorna förlorar siffran som möjlighet, trots att de inte är i närheten av boxen.</string>
+    <string name="lesson_pointing_5">Den kallas pekande för att paret inne i boxen pekar längs linjen och rensar den.</string>
+
+    <string name="lesson_claiming_title">Det krävande paret</string>
+    <string name="lesson_claiming_summary">Sitter en siffra på en linje fast i en box, försvinner den från boxen överallt annars.</string>
+    <string name="lesson_claiming_1">Samma resonemang läst åt andra hållet, och värt att ta för sig, för ögat hittar det på ett annat ställe.</string>
+    <string name="lesson_claiming_2">Börja med en linje den här gången. Titta på var en siffra kan stå längs den här raden.</string>
+    <string name="lesson_claiming_3">Varje plats den skulle kunna stå på ligger inne i samma box. Raden måste ha den siffran någonstans, alltså står siffran i den boxen.</string>
+    <string name="lesson_claiming_4">Vilket betyder att resten av boxen förlorar den. De här rutorna kan inte längre ha den.</string>
+    <string name="lesson_claiming_5">Pekande tittar på en box och rensar en linje. Krävande tittar på en linje och rensar en box. Två namn, en idé, och du möter båda i varje svårt pussel.</string>
+
+    <string name="lesson_naked_pair_title">Det nakna paret</string>
+    <string name="lesson_naked_pair_summary">Två rutor med samma två siffror äger dem båda.</string>
+    <string name="lesson_naked_pair_1">Nu grupperna. Det här är den minsta av dem och mönstret som gör resten självklart.</string>
+    <string name="lesson_naked_pair_2">De här två rutorna ligger i samma område, och var och en av dem kan bara vara en av samma två siffror.</string>
+    <string name="lesson_naked_pair_3">Mellan sig tar de båda siffrorna, en var. Vilken som är var spelar ingen roll, och du behöver inte veta det.</string>
+    <string name="lesson_naked_pair_4">Alltså kan ingen annan ruta i området ha någon av dem. Den här rutan förlorar den ena.</string>
+    <string name="lesson_naked_pair_5">Naket igen, för att du ser det genom att läsa de två rutorna. Ingenting är dolt, och ingen annan ruta ingår i resonemanget.</string>
+
+    <string name="lesson_hidden_pair_title">Det dolda paret</string>
+    <string name="lesson_hidden_pair_summary">Två siffror med bara samma två platser kvar äger de rutorna.</string>
+    <string name="lesson_hidden_pair_1">Spegelbilden av det nakna paret, precis som den dolda enlingen speglar den nakna.</string>
+    <string name="lesson_hidden_pair_2">I det här området kan två siffror var för sig bara stå i samma två rutor.</string>
+    <string name="lesson_hidden_pair_3">De två siffrorna tar de två rutorna mellan sig. Alltså kan rutorna inte ha det de såg ut att kunna ha i övrigt.</string>
+    <string name="lesson_hidden_pair_4">De två rutorna förlorar alla andra anteckningar. Nu är de ett naket par, och ofta är det vad mönstret är till för: att göra ett dolt par till ett naket som rensar resten av området.</string>
+    <string name="lesson_hidden_pair_5">Dolda par är svårare att se än nakna, för du måste titta på siffror i stället för på rutor. På ett rutnät som har stannat av är det värt besväret.</string>
+
+    <string name="lesson_naked_triple_title">Den nakna trippeln</string>
+    <string name="lesson_naked_triple_summary">Tre rutor som delar tre siffror äger dem, även om ingen av dem har alla tre.</string>
+    <string name="lesson_naked_triple_1">Ett par med en ruta till, och en hake som lurar alla första gången.</string>
+    <string name="lesson_naked_triple_2">De här tre rutorna ligger i samma område, och mellan sig använder de bara tre olika siffror.</string>
+    <string name="lesson_naked_triple_3">Här är haken: ingen av dem behöver ha alla tre. Två siffror i en ruta, två i nästa, två i den tredje är också en trippel, så länge det bara finns tre siffror över dem alla.</string>
+    <string name="lesson_naked_triple_4">De tre rutorna tar de tre siffrorna mellan sig, så varenda annan ruta i området förlorar alla tre. Det är många anteckningar borta på en gång.</string>
+    <string name="lesson_naked_triple_5">När du letar, räkna de olika siffrorna över två eller tre rutor i stället för att leta efter likadana anteckningar. Det är vanan som hittar tripplar.</string>
+
+    <string name="lesson_hidden_triple_title">Den dolda trippeln</string>
+    <string name="lesson_hidden_triple_summary">Tre siffror med bara tre platser kvar äger de rutorna.</string>
+    <string name="lesson_hidden_triple_1">Samma förhållande som det dolda paret, en storlek upp, och verkligen svårt att få syn på.</string>
+    <string name="lesson_hidden_triple_2">I det här området kan tre siffror mellan sig bara stå i samma tre rutor.</string>
+    <string name="lesson_hidden_triple_3">Alltså har de tre rutorna de tre siffrorna, och varje annan anteckning i dem kan strykas.</string>
+    <string name="lesson_hidden_triple_4">Leta inte efter de här först. Titta efter dem när ett område har några få rutor kvar och ingenting annat har fungerat. För det mesta är ett naket mönster i samma område lättare att se.</string>
+
+    <string name="lesson_quads_title">Kvadrupler</string>
+    <string name="lesson_quads_summary">Samma idé med fyra, värd att känna till men sällan värd att leta efter.</string>
+    <string name="lesson_quads_1">Par, tripplar, och nu kvadrupler. Resonemanget ändras inte: fyra rutor som mellan sig använder fyra siffror äger de siffrorna, och fyra siffror med bara fyra platser äger de rutorna.</string>
+    <string name="lesson_quads_2">Här är en naken kvadrupel. Fyra rutor, fyra siffror mellan sig, och resten av området förlorar alla fyra.</string>
+    <string name="lesson_quads_3">Och här är det ärliga rådet. Kvadrupler finns, och de är tillåtna, men de är sällsynta, och en kvadrupel i ett område med fem eller sex tomma rutor betyder oftast att det finns ett enklare mönster i de andra rutorna som du har missat.</string>
+    <string name="lesson_quads_4">Här är en dold kvadrupel, för fullständighetens skull. Fyra siffror med fyra platser kvar.</string>
+    <string name="lesson_quads_5">Lär dig känna igen dem så att ett tips som nämner en blir begripligt. Lägg inte tid på att leta efter dem.</string>
+
+    <string name="lesson_x_wing_title">X-Wing</string>
+    <string name="lesson_x_wing_summary">En siffra bunden till två kolumner i två rader försvinner från de kolumnerna överallt annars.</string>
+    <string name="lesson_x_wing_1">Det första mönstret som sträcker sig över hela rutnätet i stället för att ligga i ett område. Det har en form, och när du väl har sett formen ser du den överallt.</string>
+    <string name="lesson_x_wing_2">Ta en siffra. I de här två raderna kan den bara stå i två rutor i var och en, och de rutorna ligger i samma två kolumner. Fyra rutor, i en rektangel.</string>
+    <string name="lesson_x_wing_3">Tänk igenom det nu. Varje rad måste ha siffran en gång. Vilket hörn den ena raden än använder måste den andra använda det motsatta. Det finns inget tredje val.</string>
+    <string name="lesson_x_wing_4">Alltså tar de två raderna mellan sig siffran i båda kolumnerna. Allt annat i de kolumnerna förlorar den.</string>
+    <string name="lesson_x_wing_5">Det fungerar också med kolumner och rader ombytta. Två kolumner vars siffra är instängd i samma två rader rensar de raderna.</string>
+
+    <string name="lesson_swordfish_title">Swordfish</string>
+    <string name="lesson_swordfish_summary">Samma resonemang som en X-Wing, med tre linjer i stället för två.</string>
+    <string name="lesson_swordfish_1">En X-Wing med en rad till. Namnet hjälper inte, men mönstret är en direkt förlängning.</string>
+    <string name="lesson_swordfish_2">Tre rader, en siffra, och i varje rad är siffran instängd i rutor i samma tre kolumner.</string>
+    <string name="lesson_swordfish_3">Varje rad behöver inte använda alla tre kolumnerna. Två av tre räcker, så länge ingen rad går utanför dem.</string>
+    <string name="lesson_swordfish_4">De tre raderna tar siffran i de tre kolumnerna mellan sig, så resten av de kolumnerna förlorar den.</string>
+    <string name="lesson_swordfish_5">Klarar du X-Wing klarar du den här. Att hitta den är en annan sak: det är här det slutar vara valfritt att fylla i sina anteckningar.</string>
+
+    <string name="lesson_jellyfish_title">Jellyfish</string>
+    <string name="lesson_jellyfish_summary">Fyra linjer. Samma mönster igen, och det sista som är värt att lära sig.</string>
+    <string name="lesson_jellyfish_1">Fyra rader, en siffra, fyra kolumner. Resonemanget har inte ändrats sedan X-Wing och kommer inte att ändras igen.</string>
+    <string name="lesson_jellyfish_2">Här är en. Fyra rader, och siffran i var och en är instängd i samma fyra kolumner.</string>
+    <string name="lesson_jellyfish_3">Bortom fyra finns ingenting mer att lära sig. En variant med fem linjer finns i teorin, men på ett nio gånger nio går varenda en av dem att hitta som ett mindre mönster i de fyra kolumner som blir över, så ingen letar efter dem.</string>
+    <string name="lesson_jellyfish_4">Det här är ytterkanten av vad som är värt att leta efter som mönster. Efter det här är kedjor en bättre användning av uppmärksamheten.</string>
+
+    <string name="lesson_xy_wing_title">XY-Wing</string>
+    <string name="lesson_xy_wing_summary">Tre rutor med två siffror var, och en ruta som förlorar hur det än går.</string>
+    <string name="lesson_xy_wing_1">Wings kräver ett annat sätt att tänka. Hittills har du hittat ett mönster och läst av en slutsats. Här resonerar du med fall.</string>
+    <string name="lesson_xy_wing_2">Börja med den här rutan. Den har exakt två möjliga siffror, och den är gångjärnet i mönstret.</string>
+    <string name="lesson_xy_wing_3">Den har två vänner, som var och en delar ett område med den, och var och en har två siffror: en delad med gångjärnet, en delad med varandra.</string>
+    <string name="lesson_xy_wing_4">Nu resonemanget. Gångjärnet är en av sina två siffror. Är det den första tvingas den vänstra vingen till den gemensamma siffran. Är det den andra tvingas den högra vingen till samma gemensamma siffra. Hur det än går har den ena vingen den.</string>
+    <string name="lesson_xy_wing_5">Alltså kan ingen ruta som ser båda vingarna ha den siffran. Den här rutan förlorar den.</string>
+    <string name="lesson_xy_wing_6">Du får aldrig veta vad gångjärnet faktiskt är. Det är just poängen, och det är det som gör wings annorlunda än allt före dem.</string>
+
+    <string name="lesson_xyz_wing_title">XYZ-Wing</string>
+    <string name="lesson_xyz_wing_summary">Som en XY-Wing, men gångjärnet kan också vara den gemensamma siffran, så slutsatsen är svagare.</string>
+    <string name="lesson_xyz_wing_1">En ändring från XY-Wing, och den gör slutsatsen mindre.</string>
+    <string name="lesson_xyz_wing_2">Här har gångjärnet tre siffror i stället för två, och den gemensamma siffran är en av dem.</string>
+    <string name="lesson_xyz_wing_3">Alltså finns det nu tre fall, inte två. Båda vingarna kan ha den gemensamma siffran, eller så kan gångjärnet självt ha den.</string>
+    <string name="lesson_xyz_wing_4">Det betyder att en ruta bara förlorar siffran om den ser alla tre, inte bara de två vingarna. Färre rutor kvalificerar sig, och därför stryker det här mönstret mindre än sin enklare kusin.</string>
+    <string name="lesson_xyz_wing_5">Värd att känna till för att formen ser nästan likadan ut, och läser du den som en XY-Wing stryker du en siffra du inte har rätt att stryka.</string>
+
+    <string name="lesson_w_wing_title">W-Wing</string>
+    <string name="lesson_w_wing_summary">Två likadana par sammanbundna av en linje som måste ha en av deras siffror.</string>
+    <string name="lesson_w_wing_1">Den tredje wingen, och den som kräver minst räknande.</string>
+    <string name="lesson_w_wing_2">Två rutor som inte delar ett område, var och en med samma två siffror.</string>
+    <string name="lesson_w_wing_3">Hitta nu ett område där en av de två siffrorna bara kan stå på två platser, och där de två platserna var för sig ser en av parrutorna. Det området är länken.</string>
+    <string name="lesson_w_wing_4">Länkområdet måste ha siffran på en av sina två platser, och vilken det än är tvingar det en av parrutorna att ta den andra siffran. Alltså har en av paret alltid den andra siffran.</string>
+    <string name="lesson_w_wing_5">Varje ruta som ser båda parrutorna förlorar den. Den här gör det.</string>
+
+    <string name="lesson_rectangle_title">Den unika rektangeln</string>
+    <string name="lesson_rectangle_summary">Ett pussel med ett enda svar kan inte innehålla en kvadrat som skulle kunna vridas.</string>
+    <string name="lesson_rectangle_1">Den här tekniken är av ett annat slag än alla andra, och det är värt att säga varför innan man använder den.</string>
+    <string name="lesson_rectangle_2">Titta på de här fyra rutorna. De ligger i två rader, två kolumner och exakt två boxar, och var och en av dem kan ha samma två siffror.</string>
+    <string name="lesson_rectangle_3">Vore det hela historien skulle pusslet ha två svar: fyll rektangeln på det ena sättet, eller byt om båda diagonalerna, och båda rutnäten följer varje regel. Ett ordentligt gjort pussel har inte två svar.</string>
+    <string name="lesson_rectangle_4">Alltså kan det inte vara hela historien. En av rutorna måste ha något annat, och det är det som låter dig stryka.</string>
+    <string name="lesson_rectangle_5">Här överlever de extra möjligheterna, och det gemensamma paret stryks ur de här rutorna.</string>
+    <string name="lesson_rectangle_6">Haken, rakt ut: det här resonemanget förutsätter att pusslet är ordentligt gjort. Det gäller varje pussel i den här appen, för generatorn kontrollerar det. Använd det på ett rutnät från en okänd källa och det kan leda dig fel.</string>
+
+    <string name="lesson_bug_title">BUG plus en</string>
+    <string name="lesson_bug_summary">Om varje ruta utom en hade två kandidater vore pusslet tvetydigt. Alltså är den ena rutan speciell.</string>
+    <string name="lesson_bug_1">Samma antagande som den unika rektangeln, i en annan form.</string>
+    <string name="lesson_bug_2">Tänk dig att ett rutnät nådde ett läge där varje olöst ruta hade exakt två möjligheter, och varje siffra stod exakt två gånger i varje område. Ett sådant rutnät har alltid två svar.</string>
+    <string name="lesson_bug_3">Alltså kan ett ordentligt gjort pussel aldrig nå dit. Hittar du ett läge som är en ruta därifrån, där exakt en ruta har tre möjligheter i stället för två, är den rutan det som räddar pusslet från att vara tvetydigt.</string>
+    <string name="lesson_bug_4">Siffran som står tre gånger i sina områden är den som rutan måste ha. Det är ett sällsynt mönster och en mycket snabb avslutning när det dyker upp.</string>
+
+    <string name="lesson_colouring_title">Enkel färgning</string>
+    <string name="lesson_colouring_summary">Följ en siffra genom rutorna där den bara har två hem, och leta efter en motsägelse.</string>
+    <string name="lesson_colouring_1">Kedjor, försiktigt. Färgning är den enklaste vägen in i dem, och resonemanget under är detsamma.</string>
+    <string name="lesson_colouring_2">Välj en siffra. Hitta ett område där den bara har två möjliga rutor. De två är bundna till varandra: exakt en av dem är siffran.</string>
+    <string name="lesson_colouring_3">Färga den ena i paret, och följ sedan bindningarna. Varje ruta som är bunden på det viset hamnar i en av två färger, och en hel färg är rätt medan den andra är fel. Vilken vet du inte.</string>
+    <string name="lesson_colouring_4">Leta nu efter motsägelsen. Kan en ruta se två rutor med samma färg kan den färgen inte vara den rätta, så rutan förlorar siffran. Det är vad som händer här.</string>
+    <string name="lesson_colouring_5">Två färger, en motsägelse, och ingen gissning någonstans. Det är hela metoden.</string>
+
+    <string name="lesson_remote_pairs_title">Fjärran par</string>
+    <string name="lesson_remote_pairs_summary">En kedja av likadana par växlar, så ändarna är motsatser.</string>
+    <string name="lesson_remote_pairs_1">Färgning tillämpad på rutor i stället för på en enda siffra.</string>
+    <string name="lesson_remote_pairs_2">Här är en kedja av rutor som alla har samma två siffror, var och en bunden till nästa av ett gemensamt område.</string>
+    <string name="lesson_remote_pairs_3">Eftersom varje länk är ett par växlar siffrorna längs kedjan. Första rutan tar den ena, andra tar den andra, och så vidare.</string>
+    <string name="lesson_remote_pairs_4">Alltså är de två ändarna av en kedja med jämn längd motsatser: de har olika siffror. Varje ruta som kan se båda ändarna måste förlora båda siffrorna, för ändarna har en var.</string>
+    <string name="lesson_remote_pairs_5">Det är den enklaste kedjan att få syn på, för varje ruta i den ser likadan ut.</string>
+
+    <string name="lesson_multi_colouring_title">Flerfärgning</string>
+    <string name="lesson_multi_colouring_summary">Två färgkedjor som rör vid varandra utesluter varandra.</string>
+    <string name="lesson_multi_colouring_1">Enkel färgning använder en kedja. Ibland har en kedja ingen motsägelse i sig, men två kedjor tillsammans har det.</string>
+    <string name="lesson_multi_colouring_2">Här är rutor från två skilda kedjor för samma siffra.</string>
+    <string name="lesson_multi_colouring_3">Ser en färg i den ena kedjan en färg i den andra kan de två färgerna inte båda vara rätt. Följer man det till slutet stryks siffran ur de rutor som ser de två färger som blir över.</string>
+    <string name="lesson_multi_colouring_4">Slutsatsen landar här.</string>
+    <string name="lesson_multi_colouring_5">Det är här färgning slutar vara något du kan hålla i huvudet och börjar kräva att du skriver ner vilken ruta som har vilken färg.</string>
+
+    <string name="lesson_x_chain_title">X-Chain</string>
+    <string name="lesson_x_chain_summary">En siffra, länkar som växlar mellan starka och svaga, och en strykning i ändarna.</string>
+    <string name="lesson_x_chain_1">Den allmänna formen av allt i förra steget. En siffra, och en kedja av växlande länkar.</string>
+    <string name="lesson_x_chain_2">En stark länk är två rutor där minst en måste ha siffran, och det är vad ett område med bara två platser ger dig. En svag länk är två rutor där högst en kan ha den, och det är vilka två rutor som helst som delar ett område.</string>
+    <string name="lesson_x_chain_3">Låt dem växla: stark, svag, stark, och så vidare, med stark i båda ändarna. Då har en av de två ändarna siffran, vad som än händer i mitten.</string>
+    <string name="lesson_x_chain_4">Alltså förlorar varje ruta som ser båda ändarna den.</string>
+    <string name="lesson_x_chain_5">Färgning är den här kedjan ritad i två färger. Kedjan är mer allmän, för den kan gå genom rutor som färgning inte når.</string>
+
+    <string name="lesson_xy_chain_title">XY-Chain</string>
+    <string name="lesson_xy_chain_summary">En kedja av rutor med två kandidater, där ändarna delar en siffra.</string>
+    <string name="lesson_xy_chain_1">Samma växlande idé, men du går genom rutor i stället för att följa en enda siffra.</string>
+    <string name="lesson_xy_chain_2">Varje ruta i den här kedjan har exakt två möjligheter, och var och en delar ett område med nästa.</string>
+    <string name="lesson_xy_chain_3">Inne i en ruta tvingar den ena siffran fram den andra, och det är den starka länken. Mellan rutor gör ett gemensamt område den svaga. Att låta dem växla för resonemanget längs kedjan.</string>
+    <string name="lesson_xy_chain_4">Kan kedjans båda ändar ha samma siffra så har en av dem den, hur kedjan än faller ut. Varje ruta som ser båda ändarna förlorar den siffran.</string>
+    <string name="lesson_xy_chain_5">Det här är tekniken som avslutar de flesta Expert-pussel, och att hitta en handlar mest om att tåligt följa rutor med två kandidater än om att vara skarp.</string>
+
+    <string name="lesson_writing_chains_title">Att skriva ner en kedja</string>
+    <string name="lesson_writing_chains_summary">En kedja du inte kan kontrollera är en gissning med extra steg.</string>
+    <string name="lesson_writing_chains_1">En praktisk lektion före den sista tekniken, för kedjor är där folk övertygar sig själva om sådant som inte stämmer.</string>
+    <string name="lesson_writing_chains_2">En kedja är en rad påståenden, och vart och ett måste hålla. På skärmen ser den ut som en samling markerade rutor, och markering är inget resonemang.</string>
+    <string name="lesson_writing_chains_3">Skriv den som en rad: den här rutan är antingen 4 eller 7; är den 4 så är den där 9; är den där 9 så är den här andra 4. Varje pil är en länk och varje länk har ett skäl.</string>
+    <string name="lesson_writing_chains_4">Kontrollera sedan växlingen. Stark, svag, stark, svag, och stark i båda ändarna. En kedja som börjar eller slutar på en svag länk bevisar ingenting, och det är det vanligaste sättet en kedja går fel på.</string>
+    <string name="lesson_writing_chains_5">Kan du inte skriva ner den har du inte hittat den. Det är ingen regel om ordning, det är skillnaden mellan en slutsats och en aning.</string>
+
+    <string name="lesson_sue_de_coq_title">Sue de Coq</string>
+    <string name="lesson_sue_de_coq_summary">Där en box korsar en linje, och korsningen har fler siffror än plats.</string>
+    <string name="lesson_sue_de_coq_1">En box och en kolumn överlappar i tre rutor. De tre rutorna hör till båda samtidigt, och det är det den här tekniken lever på.</string>
+    <string name="lesson_sue_de_coq_2">Titta på två av dem här. Mellan sig har de 2, 6, 7 och 8: fyra siffror till två rutor. Två av dem går in, och två blir över till någon annanstans.</string>
+    <string name="lesson_sue_de_coq_3">Längre ner i samma kolumn sitter en ruta med 6 och 7. Någon annanstans i samma box sitter en ruta med 2 och 8. Mellan sig vill de två rutorna ha precis de fyra siffror som korsningen har, jämnt delade och utan något gemensamt.</string>
+    <string name="lesson_sue_de_coq_4">Räkna efter. Tre rutor i kolumnen tar nu tre olika siffror av de fyra, och tre rutor i boxen gör detsamma. Räkningen går bara ihop på ett sätt: 6 och 7 förbrukas inne i kolumnen, och 2 och 8 inne i boxen.</string>
+    <string name="lesson_sue_de_coq_5">Alltså kan ingenting annat i den kolumnen vara en 6 eller en 7. Två rutor förlorar en här.</string>
+    <string name="lesson_sue_de_coq_6">Samma resonemang går åt andra hållet för boxen. Ett mönster, två områden, två skilda uppsättningar strykningar, och ingen kedja någonstans i det.</string>
+
+    <string name="lesson_als_title">ALS-XZ</string>
+    <string name="lesson_als_summary">Två nästan låsta mängder som delar en siffra, och strykningen som följer.</string>
+    <string name="lesson_als_1">Regeln som de svåraste nivåerna är byggda på. Allt över det här steget är en variant av den.</string>
+    <string name="lesson_als_2">En nästan låst mängd är en grupp rutor i ett område som har exakt en siffra mer än det finns rutor. Fyra rutor med fem siffror mellan sig. Förlorade den en siffra vore den en låst mängd, därav namnet.</string>
+    <string name="lesson_als_3">Ta två av dem som delar två siffror. Kalla den ena gemensamma siffran den begränsade, och kräv att varje plats den står på i den ena mängden ser varje plats den står på i den andra.</string>
+    <string name="lesson_als_4">Då kan den bara stå i en av de två mängderna. Mängden som inte får den blir låst, vilket fastställer den andra gemensamma siffran inne i den. Och därmed förlorar varje ruta som ser den siffran i båda mängderna den.</string>
+    <string name="lesson_als_5">Här är strykningen som kommer ut av det.</string>
+    <string name="lesson_als_6">Kräver det här flera genomläsningar är det det normala antalet. Varje teknik efter den här punkten är den här i en annan form.</string>
+
+    <string name="lesson_deep_end_title">Vad djupa änden kräver</string>
+    <string name="lesson_deep_end_summary">Vad som ändras på Vansinnig och Mardröm, och varför de nivåerna kräver papper.</string>
+    <string name="lesson_deep_end_1">Allt fram till här går att se. Du tittar på en rad, en box, ett par rutor, och svaret ligger framför dig så snart du känner formen.</string>
+    <string name="lesson_deep_end_2">De två svåraste nivåerna är inte sådana. De ber dig följa ett resonemang genom tre eller fyra steg och hålla allt i huvudet samtidigt, och det klarar nästan ingen genom att titta.</string>
+    <string name="lesson_deep_end_3">Så skriv ner det. En penna och baksidan av ett kuvert är inte fusk och inget tecken på att du är dålig på det här. Det är vad alla som löser de här gör.</string>
+    <string name="lesson_deep_end_4">Reglerna här är alla samma idé: en grupp rutor som saknar en siffra på att vara full. Ta bort den siffran så är gruppen tvingad, och en tvingad grupp tvingar nästa. Det är hela djupa änden.</string>
+    <string name="lesson_deep_end_5">Ingenting här nere är en gissning. Varje steg är bevisat, varje tips visar dig beviset, och slår ett pussel här dig är det helt vanligt att komma tillbaka till det om en vecka.</string>
+
+    <string name="lesson_als_xy_title">ALS-XY-Wing</string>
+    <string name="lesson_als_xy_summary">Tre grupper i en kedja, och siffran som inte överlever i någon av ändarna.</string>
+    <string name="lesson_als_xy_1">Tre grupper den här gången, hopbundna på en linje: en i varje ände och en i mitten som håller dem isär.</string>
+    <string name="lesson_als_xy_2">Börja med de två till vänster. r3c9 har 1 och 3. r1c8 har 3 och 7. De delar en box, så bara den ena av dem kan vara trean.</string>
+    <string name="lesson_als_xy_3">Nu gruppen nedåt kolumn 8: tre rutor med 1, 3, 7 och 9 mellan sig. Fyra siffror, tre rutor, så den saknar en siffra på att vara full. Den delar sjuan med r1c8, och varje sjua i den står i samma kolumn, så återigen kan bara den ena sidan ta den.</string>
+    <string name="lesson_als_xy_4">Anta att en av de två markerade rutorna i kolumn 9 är en etta. Den ser r3c9, så r3c9 är inte 1, alltså är den 3. Då är r1c8 inte 3, alltså är den 7. Då har gruppen ingen sjua kvar, så den är full, och den måste använda 1, 3 och 9.</string>
+    <string name="lesson_als_xy_5">Men de rutorna ser också varje etta i gruppen, så gruppen kan inte ha en etta heller. Resonemanget äter upp sig självt, och ettan stryks.</string>
+    <string name="lesson_als_xy_6">Två bindningar, tre grupper, och varje steg tvingar fram nästa. Läs det två gånger: det är en kedja, och kedjor blir begripliga bara en länk i taget.</string>
+
+    <string name="lesson_blossom_title">Death blossom</string>
+    <string name="lesson_blossom_summary">En ruta med en grupp som väntar bakom var och en av dess siffror.</string>
+    <string name="lesson_blossom_1">Den här har en form du kan se: en stjälk, och ett kronblad för varje siffra stjälken skulle kunna vara.</string>
+    <string name="lesson_blossom_2">Stjälken är r1c4. Den är 5 eller 6, och ingenting annat. Två möjligheter betyder två fall, och den här tekniken tar båda samtidigt.</string>
+    <string name="lesson_blossom_3">Säg att den är 5. Då kan r1c7, längs samma rad, med 5 och 8, inte vara femman. Alltså är den åttan.</string>
+    <string name="lesson_blossom_4">Säg i stället att den är 6. Titta på de här tre rutorna i samma box: mellan sig har de 2, 6, 7 och 8. Fyra siffror, tre rutor, en från att vara full. Stjälken ser alla tre, så dess sexa tar bort sexan från dem.</string>
+    <string name="lesson_blossom_5">Nu är de fulla, och tre fulla rutor använder tre siffror: 2, 7 och 8. Bara en av dem kan vara åttan, så det är där åttan står.</string>
+    <string name="lesson_blossom_6">Lägg ihop de två fallen. Antingen står det en åtta på r1c7, eller så står det en åtta i den boxen, och något tredje fall finns inte. Varje ruta som kan se båda ställena förlorar sin åtta, och två av dem gör det.</string>
+    <string name="lesson_blossom_7">Lägg märke till vad du aldrig behövde veta: vilken siffra stjälken faktiskt är. Båda vägarna slutar i en åtta, så svaret hänger inte på förgreningen.</string>
+
+    <string name="lesson_fork_title">Tvingande kedja</string>
+    <string name="lesson_fork_summary">Pröva en ruta åt båda hållen och se vilket som överlever. Det svåraste i appen.</string>
+    <string name="lesson_fork_1">Den sista tekniken, och den enda som inte är ett mönster. Det finns ingenting här att få syn på. Det finns bara arbete.</string>
+    <string name="lesson_fork_2">Den här rutan är 2 eller 7. Allt annat på brädet är utpressat i botten, och ingenting säger vilken av de två det är.</string>
+    <string name="lesson_fork_3">Så pröva den ena. Säg att den är 2, med blyerts, och följ bara de lätta följderna: en ruta med en siffra kvar, eller en siffra med ett hem kvar i sitt område.</string>
+    <string name="lesson_fork_4">De kommer snabbt. En tvåa tvingas fram här, sedan en sjua där, sedan en trea, en femma, en nia. Fortsätt. Fjorton siffror senare, titta på den markerade rutan.</string>
+    <string name="lesson_fork_5">Den har ingenting kvar. Varje siffra som kunde ha stått där är tagen av något annat. Det är ingen otur, det är en motsägelse, och det betyder att tvåan aldrig var möjlig över huvud taget.</string>
+    <string name="lesson_fork_6">Så sudda allt och skriv sjuan. Inte för att sjuan ser bättre ut, utan för att tvåan är bevisat omöjlig, och två möjligheter minus en blir en.</string>
+    <string name="lesson_fork_7">Det här är bevis genom fall, och det är vad folk menar med att räkna ut ett pussel på papper. Använd papper. Ingen håller fjorton framtvingade siffror i huvudet, och att behöva skriva ner dem är ingen svaghet.</string>
+    <string name="lesson_fork_8">Fyll i den nu.</string>
+    <string name="lesson_fork_wrong">Det är den andra siffran som dog. Tvåan ledde till en ruta utan något i, så det som är kvar är sjuan.</string>
+
+    <string name="lesson_nothing_applies_title">När ingenting passar</string>
+    <string name="lesson_nothing_applies_summary">Kontrollera på nytt innan du gissar, för ett pussel från den här appen har alltid ett nästa steg.</string>
+    <string name="lesson_nothing_applies_1">Du kommer till lägen där du har tittat på allt och inte hittat något. Här är vad du ska göra, och vad du inte ska.</string>
+    <string name="lesson_nothing_applies_2">Det du inte ska göra är att gissa. Varje pussel i den här appen går att lösa med resonemang, och en gissning som råkar stämma lär dig ingenting medan en gissning som är fel kostar dig hela rutnätet.</string>
+    <string name="lesson_nothing_applies_3">Kontrollera i den här ordningen. Först: stämmer alla dina anteckningar? En föråldrad anteckning är den vanligaste orsaken till ett omöjligt läge, och appen suddar dem åt dig om du låter den. Sedan: är en siffra du har fyllt i faktiskt rätt? Tryck på tips så säger den till.</string>
+    <string name="lesson_nothing_applies_4">Leta sedan efter de billiga sakerna igen. Det är nästan aldrig en kedja du har missat. Det är nästan alltid en dold enling i ett område som du slutade titta på för tjugo drag sedan.</string>
+
+    <string name="lesson_look_first_title">Vad du ska leta efter först</string>
+    <string name="lesson_look_first_summary">Billiga mönster först, alltid, för de är vanliga och de öppnar upp rutnätet.</string>
+    <string name="lesson_look_first_1">Nu kan du varje teknik den här appen kan namnge. Det sista som återstår att lära sig är ordningen att leta i.</string>
+    <string name="lesson_look_first_2">Enlingar först, varje gång. Nakna, sedan dolda. De är de klart vanligaste, och varje en du fyller i gör varje annan teknik lättare att hitta.</string>
+    <string name="lesson_look_first_3">Sedan de billiga strykningarna: pekande och krävande par. De är snabba att kontrollera, område för område, och de öppnar ofta för en enling direkt.</string>
+    <string name="lesson_look_first_4">Sedan par och tripplar i de områden som har minst antal tomma rutor. Sedan fiskar, sedan wings. Kedjor sist, alltid, för de är mest arbete och minst vanliga.</string>
+    <string name="lesson_look_first_5">Att jaga en Jellyfish innan du har kontrollerat enlingarna är sudokuns motsvarighet till att skriva om ett program innan man läser felmeddelandet. Appen betygsätter pussel efter det svåraste de kräver, men en Mästare är fortfarande mest enlingar.</string>
+    <string name="lesson_together_title">En Mästare, tillsammans</string>
+    <string name="lesson_together_summary">Ett svårt pussel är mest lätta steg med några få svåra i.</string>
+    <string name="lesson_together_1">Den sista lektionen. Det här är rutnätet som kursen har gått igenom, på nivån Mästare, och här är hela lösningen, teknik för teknik.</string>
+    <string name="lesson_together_2">Det öppnar med en naken enling. Nästan allting gör det.</string>
+    <string name="lesson_together_3">Sedan en dold enling, i boxen bredvid.</string>
+    <string name="lesson_together_4">Nu stannar det av, och ett pekande par rensar en kolumn så att enlingarna kan börja igen. Lägg märke till att det steget inte fyllde i en enda siffra, och att det ändå blev framsteg.</string>
+    <string name="lesson_together_5">Ett naket par lite senare, som gör samma jobb i ett område.</string>
+    <string name="lesson_together_6">Längre in, en X-Wing. Nu är rutnätet halvfullt och anteckningarna gör jobbet.</string>
+    <string name="lesson_together_7">Och mot slutet, den som ger nivån dess namn: en ALS-XZ. En strykning, och resten är enlingar igen.</string>
+    <string name="lesson_together_8">Det är vad Mästare betyder här. Inte åttioen svåra steg, utan sjuttio lätta och en handfull som kräver allt du har lärt dig.</string>
+    <string name="lesson_together_9">Du har mött varje teknik den här appen kan namnge. Gå och spela ett. Tre tips följer med varje pussel, och det är ingen skam att använda dem, och vill du hellre ha hur många som helst är gränsen en knapp i inställningarna.</string>
+    <string name="lesson_step_of">%1$d av %2$d</string>
+    <string name="lesson_back">Tillbaka</string>
+    <string name="lesson_next">Nästa</string>
+    <string name="lesson_done">Klar</string>
+    <string name="lesson_replay">Igen</string>
+    <string name="lesson_show_me">Visa</string>
+    <string name="lesson_cell_at">Rad %1$d, kolumn %2$d.</string>
+    <string name="course_title">Lär dig</string>
+    <string name="course_lesson_done">avklarad</string>
+    <string name="course_lesson_next">nästa</string>
+    <string name="course_lesson_todo">inte påbörjad</string>
+    <string name="course_you_are_here">Du är här</string>
+    <string name="course_continue">Fortsätt</string>
+    <string name="course_stage_done">Klart %1$d av %2$d</string>
+    <plurals name="course_progress">
+        <item quantity="one">%1$d av %2$d lektion</item>
+        <item quantity="other">%1$d av %2$d lektioner</item>
+    </plurals>
+    <string name="settings_hint_detail">Hur mycket ett tips säger</string>
+    <string name="hint_detail_region">Bara området</string>
+    <string name="hint_detail_region_note">Vilken box eller linje du ska titta på, och inget mer.</string>
+    <string name="hint_detail_name">Tekniken</string>
+    <string name="hint_detail_name_note">Vad för slags steg det är, så att du vet vad du ska leta efter.</string>
+    <string name="hint_detail_cells">Rutorna</string>
+    <string name="hint_detail_cells_note">Rutorna som resonemanget vilar på, upplysta på brädet.</string>
+    <string name="hint_detail_full">Hela resonemanget</string>
+    <string name="hint_detail_full_note">Allt, även draget. Att arbeta sig genom kursen med.</string>
+    <string name="path_title">Så löstes det</string>
+    <string name="path_placed">Rad %1$d, kolumn %2$d är en %3$d.</string>
+    <string name="outcome_path">Visa hur det löstes</string>
+    <string name="settings_your_data">Dina data</string>
+    <string name="settings_data_note">Allt appen vet om dig ligger på den här telefonen. Export skriver det till en fil du väljer, så att en ny telefon kan ta vid där den här slutade. Ingenting skickas någonstans.</string>
+    <string name="settings_export">Exportera mina framsteg</string>
+    <string name="settings_import">Importera från en fil</string>
+    <string name="settings_reset_course">Börja om kursen, behåll mina spel</string>
+    <string name="settings_exported">Sparat. Lektioner: %1$d. Spel: %2$d.</string>
+    <string name="settings_imported">Tillagt. Lektioner: %1$d. Spel: %2$d.</string>
+    <string name="settings_imported_ignored">Tillagt. Lektioner: %1$d. Spel: %2$d. Utelämnat, eftersom det kom från en nyare version: %3$d.</string>
+    <string name="settings_import_empty">Filen är tom.</string>
+    <string name="settings_import_not_ours">Det ser inte ut som en export från Sendoku.</string>
+    <string name="settings_import_future">Filen är skriven av en nyare version av Sendoku.</string>
+    <string name="settings_import_failed">Filen gick inte att läsa, och ingenting på den här telefonen ändrades.</string>
+    <string name="settings_course_reset">Kursen är tillbaka vid början. Dina spel är orörda.</string>
+    <string name="practice_looking">Letar efter ett läge…</string>
+    <string name="practice_find">Hitta: %1$s.</string>
+    <string name="practice_keep_going">Det är en av dem. Fortsätt.</string>
+    <string name="practice_wrong">Inte den rutan. Läs regeln igen: %1$s vilar inte på den.</string>
+    <string name="practice_right">Det är %1$s. Det som stryks är markerat.</string>
+    <string name="practice_revealed">Här är %1$s, och det som stryks.</string>
+    <string name="practice_show_me">Visa</string>
+    <string name="practice_another">En till</string>
+    <string name="practice_skip">Hoppa över</string>
+    <string name="practice_title">Träning</string>
+    <string name="technique_pick_title">Hitta ett att träna på</string>
+    <string name="technique_pick_body">Varje pussel här har betygsatts av samma lösare som skriver tipsen, så det är känt vilken regel vart och ett vilar på. Välj en teknik och få ett pussel som inte går att avsluta utan den.</string>
+    <string name="technique_pick_none">Inget pussel i den här versionen vilar på den</string>
+    <string name="technique_pick_play">Spela ett</string>
+    <plurals name="technique_pick_count">
+        <item quantity="one">%1$d pussel vilar på den</item>
+        <item quantity="other">%1$d pussel vilar på den</item>
+    </plurals>
+    <string name="practice_none">Inget att träna på än. Gör först klart en lektion som lär ut en teknik.</string>
+    <string name="glossary_learn_this">Lär dig den här</string>
+    <string name="hint_learn_this">Lär mig det här</string>
+    <string name="outcome_learn">Lär dig: %1$s</string>
+    <string name="course_finished">Allt, klart. Allt appen kan namnge kan du namnge. Pusslen är resten.</string>
+    <string name="outcome_lost_hints">Slut på tips</string>
+    <string name="outcome_share">Dela</string>
+    <string name="card_solved">Löst</string>
+    <string name="card_lost">Besegrad av</string>
+    <string name="settings_hint_limit">Avsluta spelet efter tre tips</string>
+    <string name="settings_hint_note">På som standard. Tre tips är gratis, och det fjärde kostar spelet, vilket gör ett tips till ett beslut i stället för en reflex. Stäng av den medan du arbetar dig genom kursen.</string>
+    <string name="settings_post_mortem">Säg var tiden tog vägen</string>
+    <string name="settings_post_mortem_note">Efter en vinst, nämn de två ställen där lösningen saktade ner och vad som stod på brädet där. Om en lösning som aldrig saktade ner sägs ingenting.</string>
+    <string name="post_mortem_line">Du stod stilla här i %1$s. Det fanns %2$s att hitta.</string>
+    <string name="post_mortem_title">Var tiden tog vägen</string>
+    <string name="clean_line">En ren lösning: inga tips, inga misstag, inga anteckningar.</string>
+    <string name="clean_mark">Ren</string>
+    <string name="clean_stat">Rena lösningar</string>
+    <string name="clean_note">Rena lösningar: %1$d av %2$d.</string>
+    <string name="account_title">Du</string>
+    <string name="account_no_account">Det finns inget konto att logga in på. Allt nedanför ligger på den här telefonen och ingen annanstans.</string>
+    <string name="account_solved">Lösta</string>
+    <string name="account_streak">Dagar i rad</string>
+    <string name="account_played">Spelade</string>
+    <string name="account_time">Speltid</string>
+    <string name="account_lessons">Lektioner</string>
+    <string name="account_about_detail">Vad den här appen lovar, och licenserna den vilar på</string>
+    <string name="account_hardest">Svåraste lösta</string>
+    <string name="account_hardest_note">Klarat på %1$s, på %2$s</string>
+    <string name="account_beaten">Vad du har klarat</string>
+    <string name="account_recent">De senaste fem veckorna</string>
+    <string name="account_hints">Använda tips</string>
+    <string name="account_empty">Lös ett pussel så fylls den här sidan: vad du har klarat på varje nivå, och varje dag du har spelat.</string>
+    <string name="account_stats">Statistik</string>
+    <string name="account_history">Historik</string>
+    <string name="history_title">Historik</string>
+    <string name="history_lost">Förlorat</string>
+    <string name="history_empty_body">Lös ett pussel så hamnar det här, med brädet som du lämnade det, redo att delas när du vill.</string>
+    <string name="history_no_board">Det här löstes innan appen sparade bräden, så det finns ingenting att rita. Siffrorna är allt som finns.</string>
+    <string name="tab_home">Startsidan</string>
+    <string name="tab_learn">Lär dig</string>
+    <string name="tab_account">Du</string>
+    <plurals name="hint_menu_left">
+        <item quantity="one">De två sista kostar ett tips, och du har %1$d kvar.</item>
+        <item quantity="other">De två sista kostar ett tips, och du har %1$d kvar.</item>
+    </plurals>
+    <plurals name="hint_check_wrong">
+        <item quantity="one">%1$d siffra du har fyllt i är fel. Att hitta den är fortfarande ditt jobb.</item>
+        <item quantity="other">%1$d siffror du har fyllt i är fel. Att hitta dem är fortfarande ditt jobb.</item>
+    </plurals>
+    <plurals name="path_summary">
+        <item quantity="one">%1$d steg, billigaste regeln först, precis som appen betygsatte det.</item>
+        <item quantity="other">%1$d steg, billigaste regeln först, precis som appen betygsatte det.</item>
+    </plurals>
+    <plurals name="path_struck">
+        <item quantity="one">Stryker %1$d anteckning.</item>
+        <item quantity="other">Stryker %1$d anteckningar.</item>
+    </plurals>
+</resources>
